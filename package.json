@@ -1,0 +1,21 @@
+{
+  "name": "wish-work-front",
+  "version": "1.0.0",
+  "description": "Wish Work Front-End Project for Web",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack",
+    "start": "./node_modules/.bin/webpack-dev-server"
+  },
+  "author": "Wish Work Technical Team",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "webpack": "^3.5.6",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}

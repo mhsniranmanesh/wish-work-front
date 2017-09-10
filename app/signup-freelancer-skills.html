@@ -50,7 +50,7 @@
             <h4>فرم تخصص های خود را تکمیل کنید.</h4>
         </div>
         <div class="con-body">
-            <form class="signup-form">
+            <form class="signup-form" action="javascript:add_translation_tags();">
                 <div class="input-group">
                     <label for="skillType" class="col-form-label">
                         در چه رشته هایی از ترجمه تخصص دارید؟
@@ -69,21 +69,23 @@
                     </label>
                     <div class="row">
                         <div class="col-sm-6">
-                            <select class="selectpicker" data-style="form-control" id="skillLangs" title="از زبان ...">
+                            <select class="selectpicker" data-style="form-control" id="skillLangsFrom" title="از زبان ...">
                                 <option>فارسی</option>
                                 <option>انگلیسی</option>
                                 <option>فرانسوی</option>
                                 <option>عربی</option>
                                 <option>اسپانیایی</option>
+								<option>آلمانی</option>
                             </select>
                         </div>
                         <div class="col-sm-6">
-                            <select class="selectpicker" data-style="form-control" id="skillLangs" title="به زبان ...">
+                            <select class="selectpicker" data-style="form-control" id="skillLangsTo" title="به زبان ...">
                                 <option>فارسی</option>
                                 <option>انگلیسی</option>
                                 <option>فرانسوی</option>
                                 <option>عربی</option>
                                 <option>اسپانیایی</option>
+								<option>آلمانی</option>
                             </select>
                         </div>
                     </div>
@@ -94,8 +96,10 @@
                         <i class="fa fa-quote-left" aria-hidden="true"></i>
                         برای حذف موارد انتخاب شده روی آن ها کلیک کنید.
                     </label>
-                    <div class="row">
+                    <div class="row" id="skills-container">
+<!--
                         <div class="col-sm-6">
+
                             <input class="form-control" type="text" placeholder="انگلیسی به فارسی" readonly>
                         </div>
                         <div class="col-sm-6">
@@ -104,8 +108,14 @@
                         <div class="col-sm-6">
                             <input class="form-control" type="text" placeholder="فارسی به عربی" readonly>
                         </div>
+-->
+
                     </div>
-                    <button type="submit" class="btn btn-primary btn-rec">
+					<span id = "ErrorMessage" class="error-msg" Style="display:none">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                    لطفا خطا(ها) را برطرف کنید.
+                </span>
+                    <button type="submit" class="btn btn-primary btn-rec" onclick="gotonext();">
                         <i class="fa fa-angle-right" aria-hidden="true"></i> مرحله ی بعد
                     </button>
                 </div>
@@ -123,7 +133,7 @@
 <!-- Bootstrap-Select -->
 <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 <!-- Custom scripts for this template -->
-<script src="js/wish.js"></script>
+	<script src="js/Freelancer_info_and_Skills.js"></script>
 </body>
 
 </html>

@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="css/fontiran.css">
     <!-- Custom styles for this template -->
     <link href="css/wish.css" rel="stylesheet">
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
@@ -41,19 +43,19 @@
             <h4>اطلاعات خود را کامل کنید.</h4>
         </div>
         <div class="con-body">
-            <form class="signup-form">
+            <form class="signup-form" action="javascript:gotonext2();">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="signupNameInput" placeholder="نام و نام خانوادگی">
+                    <input type="text" class="form-control" id="signupNameInput" placeholder="نام و نام خانوادگی" required>
                 </div>
-                <div class="form-group has-danger">
-                    <input type="email" class="form-control form-control-danger" id="signupEmailInput" placeholder="ایمیل">
-                    <div class="form-control-feedback">این ایمیل قبلا ثبت شده است!</div>
+<!--                <div class="form-group has-danger">-->  <div class="form-group">
+                    <input type="email" class="form-control form-control-danger" id="signupEmailInput" placeholder="ایمیل" required>
+                    <div class="form-control-feedback" Style="display:none">این ایمیل قبلا ثبت شده است!</div>
                 </div>
-                <div class="form-group has-danger">
-                    <input type="text" class="form-control form-control-danger" id="mobilePassInput" placeholder="موبایل">
-                    <div class="form-control-feedback">این شماره موبایل قبلا ثبت شده است!</div>
+<!--                <div class="form-group has-danger">--> <div class="form-group">
+                    <input type="text" class="form-control form-control-danger" id="mobilePassInput" placeholder="موبایل" required>
+                    <div id="mobileError" class="form-control-feedback" Style="display:none">این شماره موبایل قبلا ثبت شده است!</div>
                 </div>
-                <span class="error-msg">
+                <span id = "ErrorMessage" class="error-msg" Style="display:none">
                     <i class="fa fa-times" aria-hidden="true"></i>
                     لطفا خطا(ها) را برطرف کنید.
                 </span>

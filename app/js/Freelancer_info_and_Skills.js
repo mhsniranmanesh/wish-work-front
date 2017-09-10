@@ -84,4 +84,6 @@ function gotonext(){
 		$('#ErrorMessage').text('لطفا حداقل یک مهارت را انتخاب نمایید').css('display' , 'block');
 	}
 }
-
+function gotoVerificationMsg(){
+	window.location.href = "signup-verification-msg.html";
+}

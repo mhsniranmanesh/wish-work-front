@@ -1,12 +1,11 @@
-var freelancer;
-var client ;
 var password = $('#signupPassInput');
 var username = $('#signupUsernameInput');
 var mobileNumber = $('#mobilePassInput');
 var readyFunc = function(client , freelancer){
     $("#btn_sign_up_freelancer").click(function(){
-      freelancer++;
-		window.location.href = "signup-user-pass.html?freelancer=" +freelancer;
+      	localStorage.setItem('registertype' , 'freelancer' )
+		
+		window.location.href = "signup-user-pass.html";
 	
 		
 	});
@@ -14,9 +13,9 @@ var readyFunc = function(client , freelancer){
 
 $(document).ready(readyFunc);
 $(document).ready(function(client , freelancer){
-	$('#btn_sign_up_cl ient').click(function(){
-	client++;
-		window.location.href = "signup-user-pass.html?client" +client ;
+	$('#btn_sign_up_client').click(function(){
+	localStorage.setItem('registertype' , 'client' )
+		window.location.href = "signup-user-pass.html" ;
 	});
 });
 console.log('Y');
@@ -34,7 +33,7 @@ function gotonext(){
 	var validityPass = checkPassword(password.val());
 	var validityUser = checkUserName(username.val());
 	if(validityPass === "okpass" && validityUser =="okusername")
-	window.location.href = "signup-form.html?freelancer=" + freelancer;
+	window.location.href = "signup-form.html";
 	else
 	$('#error-msg').show();
 }
@@ -42,7 +41,9 @@ function gotonext2(){
 	console.log('kir');
 	var checking = checkmobile(mobileNumber.val());
 	if(checking === 'ok' ){
- window.location.href = "signup-freelancer-skills.html" ; 
+		if(localStorage.getItem('registertype') === 'freelancer'){
+ window.location.href = "signup-freelancer-skills.html" ; }
+		else window.location.href = "signup-verification-msg.html";
 	}
 
 else $("#ErrorMessage").show();	

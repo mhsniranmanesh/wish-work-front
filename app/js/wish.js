@@ -18,11 +18,10 @@ $(document).ready(function(client , freelancer){
 		window.location.href = "signup-user-pass.html" ;
 	});
 });
-console.log('Y');
 
 
 
-
+// 0 || checkingMobile === 'ok' && checkingName != null || checkingName != ""
 //$('#signup-form').submit(function(){
 //	console.log('kir');
 //	window.location.href = "signup-form.html";
@@ -32,22 +31,29 @@ var form = $('#signup-form');
 function gotonext(){
 	var validityPass = checkPassword(password.val());
 	var validityUser = checkUserName(username.val());
-	if(validityPass === "okpass" && validityUser =="okusername")
+	var CheckBox = document.getElementById("checkBox");
+	console.log(CheckBox);
+	if(validityPass === "okpass" && validityUser =="okusername" && CheckBox.checked === true)
 	window.location.href = "signup-form.html";
 	else
 	$('#error-msg').show();
 }
 function gotonext2(){
-	console.log('kir');
-	var checking = checkmobile(mobileNumber.val());
-	if(checking === 'ok' ){
+	var checkingMobile = checkmobile(mobileNumber.val());
+	var checkingName = $('#signupNameInput').val();
+	console.log(checkingName);
+	if(checkingMobile === 'ok' && checkingName != ""){
 		if(localStorage.getItem('registertype') === 'freelancer'){
  window.location.href = "signup-freelancer-skills.html" ; }
 		else window.location.href = "signup-verification-msg.html";
 	}
 
-else $("#ErrorMessage").show();	
-
+else if (checkingMobile != 'ok' || checkingName==="" ){
+	if(checkingName === "") {
+		$('#nameError').show();
+	}
+	$("#ErrorMessage").show();	
+}
 }
 	
 
@@ -115,8 +121,11 @@ var checkmobile = function(signUpForm) {
 	if(signUpForm.search(/\d/) == -1 ){
 		return 'شماره موبایل شامل کاراکتر های نامعتبر است';
 	}
+	if(signUpForm.match(/^\d{11}/)){
+		return 'ok';
+	}
 	else {
-		return 'ok' ;
+		return 'شماره موبایل شما نامعتبر است' ;
 }
 }
 mobileNumber.keyup(function(){
@@ -128,3 +137,10 @@ mobileNumber.keyup(function(){
 		$('#mobileError').css('display' , 'none');
 	}
 });
+
+
+//-----------------------------------------------------------------
+                    // AJAX For SignUp/In Wish-Work
+//-----------------------------------------------------------------
+
+

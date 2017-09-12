@@ -45,16 +45,16 @@
         <div class="con-body">
             <form class="signup-form" action="javascript:gotonext2();">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="signupNameInput" placeholder="نام و نام خانوادگی" >
+                    <input type="text" class="form-control form-control-danger" id="signupNameInput" placeholder="نام و نام خانوادگی" >
                                     <div id="nameError" class="form-control-feedback" Style="color:red;display:none">لطفا نام و نام خانوادگی خود را وارد کنید.</div>
 
 				</div>
 <!--                <div class="form-group has-danger">-->  <div class="form-group">
                     <input type="email" class="form-control form-control-danger" id="signupEmailInput" placeholder="ایمیل" >
-                    <div class="form-control-feedback" Style="display:none">این ایمیل قبلا ثبت شده است!</div>
+                    <div id ="EmailError" class="form-control-feedback" Style="display:none">این ایمیل قبلا ثبت شده است!</div>
                 </div>
 <!--                <div class="form-group has-danger">--> <div class="form-group">
-                    <input type="text" class="form-control form-control-danger" id="mobilePassInput" placeholder="موبایل" required>
+                    <input type="text" class="form-control form-control-danger" id="mobilePassInput" placeholder="موبایل" >
                     <div id="mobileError" class="form-control-feedback" Style="display:none">این شماره موبایل قبلا ثبت شده است!</div>
                 </div>
                 <span id = "ErrorMessage" class="error-msg" Style="display:none">

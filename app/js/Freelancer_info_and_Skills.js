@@ -1,6 +1,5 @@
 var skills = [];
-var skillsbox = document.getElementById("skills-container");
-
+var fatherTag = document.getElementById('skillType');
 Element.prototype.remove = function() {
     this.parentElement.removeChild(this);
 }
@@ -14,13 +13,16 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
 
 function add_translation_tags(){
 
+var skillsbox = document.getElementById("skills-container");
+//-----------------------------------------------------------------------------------------------
+
 var translatefrom = document.getElementById('skillLangsFrom');
 var translateto = document.getElementById('skillLangsTo');
 var TF = translatefrom.options[translatefrom.selectedIndex].text;
 var TT = translateto.options[translateto.selectedIndex].text;
 var TFvalue =  translatefrom.options[translatefrom.selectedIndex].value;
 var TTvalue = translateto.options[translateto.selectedIndex].value;
-	
+
 var skill = {};
 skill.from = TF;
 skill.to = TT;
@@ -77,13 +79,18 @@ function remove_tag(skill){
 	}
 }
 function gotonext(){
-	if( 0 < skills.length ){
+	if( 0 < skills.length && fatherTag.selectedIndex != -1){
 		window.location.href="signup-freelancer-infos.html";
 	}
-	else {
-		$('#ErrorMessage').text('لطفا حداقل یک مهارت را انتخاب نمایید').css('display' , 'block');
+	else if ( skills.length != 0 && fatherTag.selectedIndex === -1){
+		
+		$('#ErrorMessage').text('لطفا زمینه(ها)ی تخصصی خود را وارد کنید').css('display' , 'block');
 	}
+	else if (skills.length === 0)
+				$('#ErrorMessage').text('لطفا حداقل یک مهارت را وارد کنید').css('display' , 'block');
 }
 function gotoVerificationMsg(){
 	window.location.href = "signup-verification-msg.html";
 }
+var Email = localStorage.getItem('EmailVerification');
+document.getElementById('EmailofClientOrFreelancer').innerHTML = Email;

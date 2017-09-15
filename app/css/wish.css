@@ -58,7 +58,6 @@ a:hover {
 
 .bg-light {
     background-color: #fff !important;
-    padding: 20px 10px;
 }
 
 .navbar {
@@ -437,4 +436,10 @@ textarea.form-control {
     background: #e9ecef;
     padding: 0 3px;
     color: #495057;;
+}
+
+section.profile {
+    background-color: #f1f1f1;
+    padding-bottom: 75px;
+    padding-top: 50px;
 }

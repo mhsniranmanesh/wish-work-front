@@ -102,18 +102,21 @@ body.fixed-nav {
 
 #mainNav .navbar-collapse .navbar-sidenav .nav-link-collapse.collapsed:after {
     content: '\f105';
+    margin-left: .255em;
 }
 
 #mainNav .navbar-collapse .navbar-sidenav .sidenav-second-level,
 #mainNav .navbar-collapse .navbar-sidenav .sidenav-third-level {
     padding-left: 0;
+    list-style: none;
 }
 
 #mainNav .navbar-collapse .navbar-sidenav .sidenav-second-level>li>a,
 #mainNav .navbar-collapse .navbar-sidenav .sidenav-third-level>li>a {
     display: block;
     padding: 0.5em 0;
-    color: #d6d6d6;
+    color: #a9a9a9;
+    font-weight: 300;
 }
 
 #mainNav .navbar-collapse .navbar-sidenav .sidenav-second-level>li>a:focus,
@@ -194,7 +197,7 @@ body.fixed-nav {
         -webkit-flex-direction: column;
         -ms-flex-direction: column;
         flex-direction: column;
-        margin-top: 86px;
+        margin-top: 62px;
         background: #014762;
     }
     #mainNav .navbar-collapse .navbar-sidenav>.nav-item {
@@ -249,7 +252,7 @@ body.fixed-nav {
 
 @media (min-width: 992px) {
     #mainNav.fixed-top .navbar-sidenav {
-        height: calc(100vh - 112px);
+        height: calc(100vh - 117px);
     }
     #mainNav.fixed-top .sidenav-toggler {
         position: absolute;
@@ -317,14 +320,14 @@ body.sidenav-toggled #mainNav.static-top #sidenavToggler i {
 .content-wrapper {
     overflow-x: hidden;
     background: #f1f1f1;
-    margin-top: 27px;
+    margin-top: 3px;
     color: #555;
 }
 
 @media (min-width: 992px) {
     .content-wrapper {
         margin-right: 250px;
-        min-height: calc(100vh - 83px);
+        min-height: calc(100vh - 59px);
     }
 }
 
@@ -407,6 +410,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 }
 .content-wrapper h6 {
     font-weight: 300;
+    margin-bottom: 5px;
 }
 
 .dash-con h5 .fa, .dash-con h6 .fa {
@@ -465,17 +469,22 @@ h6.dash-profile-stars {
 
 .navbar-light .navbar-sidenav .nav-link {
     font-weight: 300;
-    color: #d6d6d6;
+    color: #a9a9a9;
 }
 
 .navbar-light .navbar-sidenav .nav-link:focus,
 .navbar-light .navbar-sidenav .nav-link:hover {
-    color: #efefef;
+    color: #7f7f7f;
 }
 
 .dash-new-project .sub-heading {
     margin-top: 10px;
     font-size: 15px;
+}
+
+span.sub-heading {
+    line-height: 30px;
+    display: block;
 }
 
 .noUi-handle {
@@ -555,4 +564,14 @@ span.time-msg {
 .more {
     color:#018abe !important;
     font-weight: 400;
+}
+
+@media (min-width: 768px) {
+    .navbar-nav {
+        float: none;
+    }
+    .navbar-right:last-child {
+        margin-left: -4px;
+        margin-right: auto;
+    }
 }

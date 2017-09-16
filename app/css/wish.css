@@ -75,7 +75,7 @@ a:hover {
 }
 
 section.signup {
-    background-color: #f8f9fa;
+    background-color: #f1f1f1;
     padding-bottom: 75px;
 }
 
@@ -115,7 +115,7 @@ section.signup .con-body .col-right {
 }
 
 section.signup-form {
-    background-color: #f8f9fa;
+    background-color: #f1f1f1;
     padding-bottom: 75px;
 }
 
@@ -148,7 +148,7 @@ footer {
 }
 
 section.signin {
-    background-color: #f8f9fa;
+    background-color: #f1f1f1;
     padding-bottom: 75px;
     padding-top: 50px;
 }
@@ -292,9 +292,8 @@ span.error-msg {
 }*/
 
 .con {
-    border: 5px solid #777;
     padding: 0 25px 25px 25px;
-    background: #fff
+    background: #fff;
 }
 
 @media (min-width: 1200px) {
@@ -447,6 +446,8 @@ section.profile {
     background-color: #f1f1f1;
     padding-bottom: 75px;
     padding-top: 50px;
-=======
->>>>>>> 7e701b17a6a508425451f80e76fad904ec16b15f
+}
+
+.navbar-toggler {
+    padding: 0 .4rem;
 }

@@ -583,6 +583,7 @@ span.time-msg {
     clear: both;
     font-weight: 300;
     color: #212529;
+    font-size: 15px;
     border: 0;
 }
 .notif:hover {

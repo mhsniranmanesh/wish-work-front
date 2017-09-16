@@ -575,3 +575,37 @@ span.time-msg {
         margin-right: auto;
     }
 }
+
+.notif {
+    display: block;
+    width: 100%;
+    clear: both;
+    font-weight: 300;
+    color: #212529;
+    border: 0;
+}
+.notif:hover {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #f8f9fa;
+}
+span.notif-cat {
+    padding: 0 5px;
+    color: #fff;
+}
+
+.notif-txt {
+    display: inline;
+}
+
+.notif-project {
+    background-color: orangered;
+}
+
+.notif-msg {
+    background-color: mediumvioletred;
+}
+
+.dash-notif h5 {
+    display: inline;
+}

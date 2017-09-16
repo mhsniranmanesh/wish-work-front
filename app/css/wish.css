@@ -66,6 +66,12 @@ a:hover {
 
 .navbar-light .navbar-nav .nav-link {
     font-weight: 300;
+    color: rgba(125, 125, 125, 1);
+}
+
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+    color: rgba(75, 75, 75, 1);
 }
 
 section.signup {
@@ -142,7 +148,7 @@ footer {
 }
 
 section.signin {
-    background-color: #f1f1f1;
+    background-color: #f8f9fa;
     padding-bottom: 75px;
     padding-top: 50px;
 }
@@ -191,6 +197,7 @@ section.signin .con-body .btn-rec {
 .form-control-danger,
 .form-control-success,
 .form-control-warning {
+    padding-right: 2.25rem;
     background-repeat: no-repeat;
     background-position: center right .5625rem;
     -webkit-background-size: 1.125rem 1.125rem;
@@ -252,7 +259,6 @@ span.error-msg {
 .form-control {
     display: block;
     width: 100%;
-    margin-bottom: 5px;
     font-size: 1rem;
     font-weight: 300;
     line-height: 1.25;
@@ -286,7 +292,7 @@ span.error-msg {
 }*/
 
 .con {
-    border: none;
+    border: 5px solid #777;
     padding: 0 25px 25px 25px;
     background: #fff
 }
@@ -359,8 +365,6 @@ span.error-msg {
 
 .bootstrap-select.btn-group .dropdown-toggle .filter-option {
     text-align: right;
-    position: relative;
-    right: -12px;
 }
 
 .bootstrap-select.btn-group .dropdown-menu li:hover,
@@ -397,6 +401,7 @@ section.signin .con-body .sub-label {
 
 textarea.form-control {
     min-height: 100px;
+<<<<<<< HEAD
 }
 
 .navbar-toggler {
@@ -442,4 +447,6 @@ section.profile {
     background-color: #f1f1f1;
     padding-bottom: 75px;
     padding-top: 50px;
+=======
+>>>>>>> 7e701b17a6a508425451f80e76fad904ec16b15f
 }

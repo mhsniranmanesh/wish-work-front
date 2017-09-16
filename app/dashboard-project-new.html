@@ -185,6 +185,7 @@
                             <label for="" class="col-form-label">
                                 بودجه ی خود را مشخص کنید.
                             </label>
+                            <input type="text" class="form-control" id="priceInput">
                             <div id="price-range"></div>    
                             <span class="price-msg">
                                 <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
@@ -195,6 +196,7 @@
                             <label for="" class="col-form-label">
                                 زمان دلخواه خود را مشخص کنید.
                             </label>
+                            <input type="text" class="form-control" id="timeInput">
                             <div id="time-range"></div>   
                             <span class="time-msg">
                                 <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
@@ -235,7 +237,10 @@
     <script src="js/wish.js"></script>
     <script>
       var price = document.getElementById('price-range');
+      var priceInput = document.getElementById('priceInput');
       var time = document.getElementById('time-range');
+      var timeInput = document.getElementById('timeInput');
+
 
         noUiSlider.create(price, {
           start: [240000],
@@ -245,11 +250,19 @@
             min: [0],
             max: [1000000]
           },
-          tooltips: wNumb({ 
-              decimals: 0,
-              thousand: ',',
-              prefix: 'تومان ',
+          format: wNumb({
+            decimals: 0,
+            thousand: ',',
+            postfix: ' تومان',
           }),
+        });
+
+        price.noUiSlider.on('update', function( values, handle ) {
+          priceInput.value = values[handle];
+        });
+
+        priceInput.addEventListener('change', function(){
+          price.noUiSlider.set(this.value);
         });
 
         noUiSlider.create(time, {
@@ -260,10 +273,19 @@
             min: [0],
             max: [100]
           },
-          tooltips: wNumb({ 
-            decimals: 0 ,
-            prefix: 'روز ',
+          format: wNumb({
+            decimals: 0,
+            thousand: ',',
+            postfix: ' روز',
           }),
+        });
+
+        time.noUiSlider.on('update', function( values, handle ) {
+          timeInput.value = values[handle];
+        });
+
+        timeInput.addEventListener('change', function(){
+          time.noUiSlider.set(this.value);
         });
     </script>
 </body>

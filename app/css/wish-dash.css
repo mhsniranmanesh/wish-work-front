@@ -399,7 +399,6 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 
 .dash-con {
     border: none;
-    padding: 0 25px 25px 25px;
     background: #fff;
     padding: 15px;
 }
@@ -408,6 +407,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     font-weight: 300;
     padding-top: 10px;
 }
+
 .content-wrapper h6 {
     font-weight: 300;
     margin-bottom: 5px;
@@ -419,14 +419,14 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 
 .dash-divider {
     height: 0;
-    margin: 1rem 0;
+    margin: .75rem 0;
     overflow: hidden;
     border-top: 1px solid #e9ecef;
 }
 
 .dash-recom-item {
     border-right: 5px solid;
-    padding: 3px 10px;
+    padding: 5px 10px;
     margin-bottom: 10px;
 }
 
@@ -500,6 +500,7 @@ span.sub-heading {
     border-radius: 0;
     border: 1px solid #D3D3D3;
     box-shadow: none;
+    margin-top: 15px;
 }
 
 .noUi-tooltip {
@@ -606,6 +607,3 @@ span.notif-cat {
     background-color: mediumvioletred;
 }
 
-.dash-notif h5 {
-    display: inline;
-}

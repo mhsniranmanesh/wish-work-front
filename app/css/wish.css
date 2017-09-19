@@ -58,7 +58,6 @@ a:hover {
 
 .bg-light {
     background-color: #fff !important;
-    padding: 20px 10px;
 }
 
 .navbar {
@@ -76,7 +75,7 @@ a:hover {
 }
 
 section.signup {
-    background-color: #f8f9fa;
+    background-color: #f1f1f1;
     padding-bottom: 75px;
 }
 
@@ -116,7 +115,7 @@ section.signup .con-body .col-right {
 }
 
 section.signup-form {
-    background-color: #f8f9fa;
+    background-color: #f1f1f1;
     padding-bottom: 75px;
 }
 
@@ -149,7 +148,7 @@ footer {
 }
 
 section.signin {
-    background-color: #f8f9fa;
+    background-color: #f1f1f1;
     padding-bottom: 75px;
     padding-top: 50px;
 }
@@ -293,9 +292,8 @@ span.error-msg {
 }*/
 
 .con {
-    border: 5px solid #777;
     padding: 0 25px 25px 25px;
-    background: #fff
+    background: #fff;
 }
 
 @media (min-width: 1200px) {
@@ -402,4 +400,54 @@ section.signin .con-body .sub-label {
 
 textarea.form-control {
     min-height: 100px;
+<<<<<<< HEAD
+}
+
+.navbar-toggler {
+    border-radius: 0;
+}
+
+.badge-success {
+    color: #fff;
+    background-color: #00cd59;
+}
+
+.tooltip {
+    font-family: iransans;
+    font-weight: 300;
+    font-size: 15px;
+    padding: 2px 5px;
+}
+
+.dash-profile-item {
+    background: #000;
+    height: 100px;
+}
+
+.fa {
+    vertical-align: middle;
+}
+
+
+.sub-heading {
+    font-size: 13px;
+    padding-top: 2px;
+    color: #777;
+    font-weight: 300;
+}
+
+.sub-heading .tag {
+    background: #e9ecef;
+    padding: 0 3px;
+    color: #495057;;
+}
+
+section.profile {
+    background-color: #f1f1f1;
+    padding-bottom: 75px;
+    padding-top: 50px;
+}
+
+.navbar-toggler {
+    padding: 0 .4rem;
 }

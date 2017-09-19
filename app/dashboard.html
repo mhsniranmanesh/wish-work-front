@@ -21,12 +21,103 @@
     <!-- Custom styles for this template -->
     <link href="css/wish.css" rel="stylesheet">
     <link href="css/wish-dash.css" rel="stylesheet">
-
 </head>
 
 <body class="fixed-nav" id="page-top">
     <!-- Navigation -->
-    <iframe src="navbar.html"></iframe>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+              <img src="img/nav-logo.png" height="30" class="d-inline-block align-top" alt="nav-logo">
+              Wish-Work
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav navbar-sidenav">
+                    <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="داشبورد">
+                        <a class="nav-link" href="#">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">داشبورد</span>
+                  </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="پروژه">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents">
+                          <i class="fa fa-fw fa-tasks"></i>
+                          <span class="nav-link-text">پروژه</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="collapseComponents">
+                            <li>
+                                <a href="dashboard-project-new.html">ایجاد پروژه</a>
+                            </li>
+                            <li>
+                                <a href="dashboard-project-recoms.html">دریافت پروژه</a>
+                            </li>
+                            <li>
+                                <a href="#">کنترل پروژه</a>
+                            </li>
+                            <li>
+                                <a href="#">پروژه های سابق</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-sidenav sidenav-toggler">
+                    <li class="nav-item">
+                        <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-right"></i>
+                  </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mr-lg-2" href="#" id="alertsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-fw fa-bell nav-icon"></i>
+                          <span class="d-lg-none">پیغام ها
+                            <span class="badge badge-pill badge-success">6</span>
+                          </span>
+                          <span class="new-indicator d-none d-lg-block">
+                            <i class="fa fa-fw fa-circle"></i>
+                            <span class="number">12</span>
+                          </span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                            <h6 class="dropdown-header">پیغام های جدید:</h6>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                              <div class="dropdown-message small">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی".</div>
+                              <span class="small text-muted">12:12</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                              <div class="dropdown-message small">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی".</div>
+                              <span class="small text-muted">12:12</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                              <div class="dropdown-message small">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی".</div>
+                              <span class="small text-muted">12:12</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item small" href="#">
+                              تمام پیغام ها
+                            </a>
+                          </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">       
+                          <img class="rounded-circle" src="http://via.placeholder.com/50x50" width="30" height="30">
+                          وحید علوی
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarUserDropdown">
+                            <a class="dropdown-item" href="#">خروج</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="content-wrapper py-3">
         <div class="container-fluid">
             <div class="row">
@@ -98,15 +189,15 @@
                             </a>
                             <div class="sub-heading">
                               <a class="tag" href="#">#فارسی_به_انگلیسی</a>
-                              <a class="tag" href="#">#علمی</a>
-                              <a class="tag" href="#">#زیست_شناسی</a>
-                              <a class="tag" href="#">#میکرو_بیولوژی</a>
+                              <a class="tag" href="#">#علمی</a> 
+                              <a class="tag" href="#">#زیست_شناسی</a> 
+                              <a class="tag" href="#">#میکرو_بیولوژی</a> 
                               <a class="tag" href="#">#فوری</a>
                             </div>
                             <div class="sub-heading">
-                              <i class="fa fa-user"></i> <a href="#">4/5</a>
-                              <i class="fa fa-usd"></i> 2,000,000 تومان
-                              <i class="fa fa-clock-o"></i> دو ساعت قبل
+                              <i class="fa fa-user"></i> <a href="#">4/5</a> 
+                              <i class="fa fa-usd"></i> 2,000,000 تومان 
+                              <i class="fa fa-clock-o"></i> دو ساعت قبل 
                             </div>
                         </div>
                         <div class="dash-recom-item price-fair">
@@ -115,15 +206,15 @@
                             </a>
                             <div class="sub-heading">
                               <a class="tag" href="#">#فارسی_به_انگلیسی</a>
-                              <a class="tag" href="#">#علمی</a>
-                              <a class="tag" href="#">#زیست_شناسی</a>
-                              <a class="tag" href="#">#میکرو_بیولوژی</a>
+                              <a class="tag" href="#">#علمی</a> 
+                              <a class="tag" href="#">#زیست_شناسی</a> 
+                              <a class="tag" href="#">#میکرو_بیولوژی</a> 
                               <a class="tag" href="#">#فوری</a>
                             </div>
                             <div class="sub-heading">
-                              <i class="fa fa-user"></i> <a href="#">4/5</a>
-                              <i class="fa fa-usd"></i> 2,000,000 تومان
-                              <i class="fa fa-clock-o"></i> دو ساعت قبل
+                              <i class="fa fa-user"></i> <a href="#">4/5</a> 
+                              <i class="fa fa-usd"></i> 2,000,000 تومان 
+                              <i class="fa fa-clock-o"></i> دو ساعت قبل 
                             </div>
                         </div>
                         <div class="dash-recom-item price-low">
@@ -132,15 +223,15 @@
                             </a>
                             <div class="sub-heading">
                               <a class="tag" href="#">#فارسی_به_انگلیسی</a>
-                              <a class="tag" href="#">#علمی</a>
-                              <a class="tag" href="#">#زیست_شناسی</a>
-                              <a class="tag" href="#">#میکرو_بیولوژی</a>
+                              <a class="tag" href="#">#علمی</a> 
+                              <a class="tag" href="#">#زیست_شناسی</a> 
+                              <a class="tag" href="#">#میکرو_بیولوژی</a> 
                               <a class="tag" href="#">#فوری</a>
                             </div>
                             <div class="sub-heading">
-                              <i class="fa fa-user"></i> <a href="#">4/5</a>
-                              <i class="fa fa-usd"></i> 2,000,000 تومان
-                              <i class="fa fa-clock-o"></i> دو ساعت قبل
+                              <i class="fa fa-user"></i> <a href="#">4/5</a> 
+                              <i class="fa fa-usd"></i> 2,000,000 تومان 
+                              <i class="fa fa-clock-o"></i> دو ساعت قبل 
                             </div>
                         </div>
                         <form action="dashboard-project-recoms.html">

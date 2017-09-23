@@ -11,7 +11,7 @@ a {
 
 a:hover {
     color: #014762;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .btn-rec-lg {
@@ -197,7 +197,6 @@ section.signin .con-body .btn-rec {
 .form-control-danger,
 .form-control-success,
 .form-control-warning {
-    padding-right: 2.25rem;
     background-repeat: no-repeat;
     background-position: center right .5625rem;
     -webkit-background-size: 1.125rem 1.125rem;
@@ -248,7 +247,7 @@ span.error-msg {
     display: inline-block;
     width: 0;
     height: 0;
-    margin-left: .255em;
+    margin-left: 0;
     vertical-align: 0;
     content: "";
     border-top: .3em solid;
@@ -292,7 +291,7 @@ span.error-msg {
 }*/
 
 .con {
-    padding: 0 25px 25px 25px;
+    padding: 25px;
     background: #fff;
 }
 
@@ -430,6 +429,8 @@ textarea.form-control {
 
 
 .sub-heading {
+    display: block;
+    line-height: 1.75rem;
     font-size: 13px;
     padding-top: 2px;
     color: #777;
@@ -438,8 +439,16 @@ textarea.form-control {
 
 .sub-heading .tag {
     background: #e9ecef;
-    padding: 0 3px;
-    color: #495057;;
+    padding: 0 5px;
+    color: #495057;
+}
+
+.sub-heading .tag:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #727b84;
+    border-color: #6c757d;
+    transition: all .15s ease-in-out;
 }
 
 section.profile {
@@ -450,4 +459,141 @@ section.profile {
 
 .navbar-toggler {
     padding: 0 .4rem;
+}
+
+.divider {
+    height: 0;
+    margin: .75rem 0;
+    overflow: hidden;
+    border-top: 1px solid #e9ecef;
+}
+
+.project-title {
+    display: inline;
+    font-weight: 400;
+    line-height: 1.75rem;
+}
+
+.modal-content {
+    border-radius: 0;
+    border: 0;
+}
+
+.project-discript {
+    font-weight: 300;
+    line-height: 1.5rem;
+}
+#biddingBtn {
+    width: 100%;
+}
+
+.profile .sub-heading {
+    font-size: 15px;
+}
+
+.sub-heading a {
+    color: #777;
+}
+
+.not-inline {
+    display: block;
+}
+
+.fl-wrap {
+}
+
+.fl-discript {
+    display: block;
+    font-weight: 300;
+    font-size: 15px;
+    margin: 5px 0 3px 0;
+}
+
+.fl-wrap .btn-rec .fa {
+    padding:0 ;
+}
+
+.fl-wrap .btn-rec {
+    padding: 1px 10px;
+}
+
+.fl-name {
+    padding-right: 5px;
+    color: #212529;
+}
+
+.bidding-price {
+    background: #D77000;
+    padding: 0 5px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.price-badge {
+    background: #D77000;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    width: 30px;
+    vertical-align: middle;
+}
+
+.time-badge {
+    background: #08b0f0;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    width: 30px;
+    vertical-align: middle;
+}
+
+.profile .dropdown {
+    display: inline;
+}
+
+.btn-secondary {
+    color: #555;
+    background-color: #fff;
+    border-color: #868e96;
+}
+
+.btn-small {
+    padding: 5px 10px;
+}
+
+.fl-p h5.name {
+
+}
+
+.fl-p h6.s-discript {
+    font-weight: 400;
+}
+
+.fl-p .discript {
+    font-weight: 300;
+}
+
+#inviteBtn {
+    width:100%;
+}
+
+#followBtn {
+    width:100%;
+}
+
+.card {
+    border-radius: 0;
+}
+
+p.card-text {
+    font-weight: 300;
+}   
+
+h4.card-title {
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+h4.card-title a {
+
 }

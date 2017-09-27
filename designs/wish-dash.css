@@ -15,8 +15,8 @@ body.fixed-nav {
 
 .scroll-to-top {
     position: fixed;
-    right: 15px;
-    bottom: 3px;
+    left: 15px;
+    bottom: 15px;
     display: none;
     width: 50px;
     height: 50px;
@@ -474,7 +474,7 @@ h6.dash-profile-stars {
 
 .navbar-light .navbar-sidenav .nav-link:focus,
 .navbar-light .navbar-sidenav .nav-link:hover {
-    color: #7f7f7f;
+    color: #e0e0e0;
 }
 
 .dash-new-project .sub-heading {

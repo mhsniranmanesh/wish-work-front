@@ -4,17 +4,18 @@ var mobileNumber = $('#mobilePassInput');
 var VEmail = $('#signupEmailInput');
 var readyFunc = function(client , freelancer){
     $("#btn_sign_up_freelancer").click(function(){
+        //If he was freelancer
       	localStorage.setItem('registertype' , 'freelancer' )
-		
 		window.location.href = "signup-user-pass.html";
-	
-		
+
+
 	});
 };
 
 $(document).ready(readyFunc);
 $(document).ready(function(client , freelancer){
 	$('#btn_sign_up_client').click(function(){
+    //If he was client
 	localStorage.setItem('registertype' , 'client' )
 		window.location.href = "signup-user-pass.html" ;
 	});
@@ -22,11 +23,8 @@ $(document).ready(function(client , freelancer){
 
 
 
-// 0 || checkingMobile === 'ok' && checkingName != null || checkingName != ""
-//$('#signup-form').submit(function(){
-//	console.log('kir');
-//	window.location.href = "signup-form.html";
-//});
+// Go to the next page = signup-form.html
+
 var form = $('#signup-form');
 function gotonext(){
 	var validityPass = checkPassword(password.val());
@@ -35,7 +33,7 @@ function gotonext(){
 	if(username.val() ===""){
 		validityUser = "EmptyUsername";
 	}
-	console.log(validityPass,validityUser,CheckBox.checked);
+
 	if(validityPass === "okpass" && validityUser ==="okusername" && CheckBox.checked === true)
 	window.location.href = "signup-form.html";
 	else {
@@ -53,13 +51,15 @@ function gotonext(){
 		$('#error-msg').text('انتخاب نام کاربری و رمز عبور مناسب و همچنین تایید قوانین الزامی است!').css('display' , 'block');
 		}
 }
+// Go to the next page = for freelancer singup-freelancer-skills.html/ for client signup-verification-msg.html
 function gotonext2(){
 	var checkingMobile = checkmobile(mobileNumber.val());
 	var checkingName = $('#signupNameInput').val();
 	var EMail = $('#signupEmailInput').val();
-		localStorage.setItem('EmailVerification' , EMail ) //storage Email of client for signup-verification-msg.html
-	console.log(EMail);
-	console.log(checkingName);
+
+    //storage Email of client for signup-verification-msg.html
+
+		localStorage.setItem('EmailVerification' , EMail )
 	if(checkingMobile === 'ok' && checkingName != "" && EMail !="" && validateEmail(EMail) === true){
 		if(localStorage.getItem('registertype') === 'freelancer'){
  window.location.href = "signup-freelancer-skills.html" ; }
@@ -79,68 +79,68 @@ else if (checkingMobile != 'ok' || checkingName==="" || EMail==="" ){
 	}
 	if(checkingMobile != 'ok'){
 		$('#mobileError').text('شماره تماس نامعتبر است').css('display' , 'block').css('color' , 'red');
-		
+
 	}
-	$("#ErrorMessage").show();	
+	$("#ErrorMessage").show();
 }
 }
-	
 
 
 
-//validation of characters
+
+//validation of characters of password
 var checkPassword = function(passText){
-	if (passText.length < 8) 
+	if (passText.length < 8)
 	{
-		 return "پسورد شما باید حداقل شامل ۸ حرف باشد";	 
-    } 
+		 return "پسورد شما باید حداقل شامل ۸ حرف باشد";
+    }
 	else if (passText.length > 50)
 	{
          return "پسورد شما باید حداکثر شامل ۵۰ حرف باشد";
-		
-    } 
+
+    }
 	else if (passText.search(/\d/) == -1) {
  		return "پسورد شما باید حداقل شامل یک عدد باشد";
-	} 
+	}
 	else if (passText.search(/[A-Z]/) == -1) {
         return "پسورد شما باید حداقل شامل یک حرف انگلیسی بزرگ باشد";
-	 
+
     }
 	else if (passText.search(/[!\@\#\$\%\^\&\*\(\)\_\+]/) != -1) {
-         return "پسورد شما دارای نماد های نامعتبر است";	
+         return "پسورد شما دارای نماد های نامعتبر است";
     }
     else return "okpass";
 }
 
 password.keyup(function(){
 	var passStatus = checkPassword(this.value);
-	if (passStatus === "okpass") 
+	if (passStatus === "okpass")
 	{
-	
+
 		$('#form-control-feedback-pass').text("پسورد شما مناسب می باشد").css('color' , '#3399ff');
-	
-		
-    } 
+
+
+    }
 	else
 	{
-       
+
 		$('#form-control-feedback-pass').text(passStatus).css('display' , 'block').css('color' , 'red');
-		
+		$('#usn').addClass('has-danger');
     }
 });
 username.keyup(function (){
 	var UserNameX = checkUserName(this.value)
 	if(UserNameX != "okusername"){
-		
+
 		$("#form-control-feedback-username").text(UserNameX).css('display' , 'block').css('color' , 'red').addClass('class' , 'has-danger');
 	}
-	else 
+	else
 		$("#form-control-feedback-username").css('display' , 'none');
 });
 var checkUserName = function (userText){
 
 	if (userText.search(/[!\@\#\$\%\^\&\*\(\)\+\;\']/) != -1)
-	         return "نام کاربری شما دارای نماد های نامعتبر است";	
+	         return "نام کاربری شما دارای نماد های نامعتبر است";
 	if(userText === ""){
 		return "لطفا نام کاربری خود را وارد کنید."
 	}
@@ -148,16 +148,16 @@ var checkUserName = function (userText){
 			return "okusername";
 	if(userText.length < 4 )
 			return "نام کاربری شما باید حداقل شامل ۴ کاراکتر باشد";
-	   
-	else 
-		return " نام کاربری شما دارای نماد های نامعتبر است(نام کاربری باید تنها شامل حروف انگلیسی باشد)";	
+
+	else
+		return " نام کاربری شما دارای نماد های نامعتبر است(نام کاربری باید تنها شامل حروف انگلیسی باشد)";
 
 }
 
 var checkmobile = function(signUpForm) {
-	
+
 	signUpForm = persianToEnglish(signUpForm);
-	
+
 	if(signUpForm.search(/\d/) == -1 ){
 		return 'شماره موبایل شامل کاراکتر های نامعتبر است';
 	}
@@ -180,14 +180,14 @@ VEmail.on('input' , function(){
 	else{
 		$('#EmailError').css('display' , 'none');
 	}
-	
+
 })
 
 
 mobileNumber.on('input',function(){
 	var mobile = checkmobile(this.value)
 	if(mobile != 'ok'){
-	
+
 		$('#mobileError').text(mobile).css('display' , 'block').css('color' , 'red');
 	}
 	else{
@@ -220,4 +220,24 @@ function persianToEnglish(value) {
                     // AJAX For SignUp/In Wish-Work
 //-----------------------------------------------------------------
 
+var SignUpDatas = {
+  "username" : "$('#signupUsernameInput')" ,
+  "password" : "$('#signupPassInput')" ,
+  "Name" : "$('#signupNameInput')" ,
+  "Email": "$('#signupEmailInput')" ,
+  "mobileNumber" : "$('#mobilePassInput')",
+}
 
+$.AJAX({
+  type:     "GET",
+                    url: 'http://172.25.0.195:8000/bucketlists/3/',
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function(results){
+                            // What to do when the ajax is successful.
+                            // "results" is the response from the url (eg. "theAction" here)
+                    },
+                    error: function(error){
+                            // What to do when the ajax fails.
+                    }
+});

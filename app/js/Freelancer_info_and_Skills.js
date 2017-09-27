@@ -89,7 +89,7 @@ function gotonext(){
 	else if (skills.length === 0)
 				$('#ErrorMessage').text('لطفا حداقل یک مهارت را وارد کنید').css('display' , 'block');
 }
-function gotoVerificationMsg(){
+function gotoVerificationMsg(){ 
 	window.location.href = "signup-verification-msg.html";
 }
 var Email = localStorage.getItem('EmailVerification');

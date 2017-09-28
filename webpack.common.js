@@ -16,7 +16,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         loader: 'babel-loader',
         query: {
           presets: [
@@ -67,7 +67,8 @@ module.exports = {
     }),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'Production'
+        template: 'index.template.ejs',
+        inject: 'body',
     }),
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'common' // Specify the common bundle's name.

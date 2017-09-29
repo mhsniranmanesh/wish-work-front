@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './styles.css';
 import './wish.css';
 import './wish-dash.css';
@@ -10,18 +8,14 @@ import './bootstrap.css';
 import './bootstrap-select.min.css';
 import './dataTables.bootstrap4.css';
 import './bootstrap-rtl.min.css';
-// import 'jquery';
-// import 'bootstrap';
 import './MainNavBarAction.js';
-import SideNavbar from '../SideNavBar/constants.js';
 import 'reactstrap/dist/reactstrap.min.js';
-import 'react-addons-css-transition-group/index.js';
-import 'react-addons-transition-group/index.js';
 import 'reactstrap/dist/reactstrap.cjs.js';
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
+import MainContentWrapper from '../Main Content Wrapper/MainContentWrapper.js'
 
 import SideNavbar from '../SideNavBar/SideNavBar.js'
 
@@ -94,6 +88,7 @@ class MainNavBar extends React.Component{
             </div>
           </div>
         </nav>
+        <MainContentWrapper/>
       </div>
     )
   }

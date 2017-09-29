@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: './app/src/index.js'
+    app: './app/src/app.js'
   },
   module: {
     rules: [{

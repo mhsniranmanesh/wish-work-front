@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles.css';
@@ -95,3 +96,5 @@ class MainNavBar extends React.Component{
 }
 
 module.exports = MainNavBar;
+=======
+>>>>>>> 683bad4f01025de5448df02241f2d4ca24046b8f

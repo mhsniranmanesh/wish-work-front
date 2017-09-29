@@ -1,4 +1,4 @@
-import 'jquery';
-$('#tool').click(function(){
-  $('#profile').addClass('show');
-})
+// import 'jquery';
+// $('#tool').click(function(){
+//   $('#profile').addClass('show');
+// })

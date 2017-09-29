@@ -8,11 +8,18 @@ import './bootstrap.css';
 import './bootstrap-select.min.css';
 import './dataTables.bootstrap4.css';
 import './bootstrap-rtl.min.css';
-import 'jquery';
-import 'bootstrap';
-import './MainNavBarAction.js'
-import SideNavbar from '../SideNavBar/constants.js'
-
+// import 'jquery';
+// import 'bootstrap';
+import './MainNavBarAction.js';
+import SideNavbar from '../SideNavBar/constants.js';
+import 'reactstrap/dist/reactstrap.min.js';
+import 'react-addons-css-transition-group/index.js';
+import 'react-addons-transition-group/index.js';
+import 'reactstrap/dist/reactstrap.cjs.js';
+import 'jquery/dist/jquery.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'jquery/dist/jquery.min.js';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 class MainNavBar extends React.Component{
   constructor(props){
@@ -70,7 +77,7 @@ class MainNavBar extends React.Component{
                       </div>
                   </li>
                   <li id="tool" className="nav-item dropdown">
-                      <a className="nav-link dropdown-toggle" href="http://example.com" id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <a className="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img className="rounded-circle" src="http://via.placeholder.com/50x50" width="30" height="30"></img>
                         وحید علوی
                       </a>

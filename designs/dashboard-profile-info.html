@@ -68,7 +68,7 @@
                           <span class="nav-link-text">پروفایل</span>
                         </a>
                         <ul class="sidenav-second-level collapse show" id="profileComponents">
-                            <li class="active" >
+                            <li class="active">
                                 <a href="dashboard-profile-info.html">ویرایش اطلاعات</a>
                             </li>
                             <li>
@@ -80,8 +80,8 @@
                 <ul class="navbar-nav navbar-sidenav sidenav-toggler">
                     <li class="nav-item">
                         <a class="nav-link text-center" id="sidenavToggler">
-                    <i class="fa fa-fw fa-angle-right"></i>
-                  </a>
+                            <i class="fa fa-fw fa-angle-right"></i>
+                        </a>
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-right">
@@ -134,31 +134,178 @@
     </nav>
     <div class="content-wrapper py-3">
         <div class="container-fluid">
-            
+            <div class="row">
+                <div class="col-sm-6 d-block mx-auto">
+                    <div class="dash-con dash-profile-info con-body mb-4">
+                        <h5>تغییر عکس پروفایل</h5>
+                        <div class="dash-divider"></div>
+                        <form class="">
+                            <div class="media">
+                                <a href="#" class="">
+                                    <img class="rounded-circle d-flex ml-3" src="http://via.placeholder.com/100x100">
+                                    <i class="fa fa-camera"></i>
+                                </a>
+                                <div class="media-body">
+                                    <label for="" class="col-form-label">
+                                        برای تغییر عکس پروفایل، روی عکس خود کلیک کنید.
+                                    </label>
+                                    <label for="" class="col-form-label sub-label">
+                                        <i class="fa fa-quote-left" aria-hidden="true"></i> فریلنسر هایی که برای خود عکسی با ظاهری دوستانه و حرفه ای انتخاب می کنند، تا 5 برابر شانس بیشتری برای پروژه انجام دادن دارند.
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-rec">
+                                <i class="fa fa-check"></i>آپلود عکس
+                            </button>
+                        </form>
+                    </div>
+                    <div class="dash-con dash-profile-info con-body mb-4">
+                        <h5>تغییر اطلاعات شخصی</h5>
+                        <div class="dash-divider"></div>
+                        <form class="">
+                            <div id="" class="form-group">
+                                <label for="" class="col-form-label">
+                                    برای تغییر هر مورد روی آن کلیک کنید.
+                                </label>
+                                <label for="" class="col-form-label" style="display:block;">
+                                    عنوان حرفه ای کوتاه.
+                                </label>
+                                <input type="text" class="form-control form-control-danger" id="" value="مترجم رسمی فارسی به انگلیسی" readonly>
+                            </div>
+                            <div class="input-group">
+                                <label for="" class="col-form-label">
+                                    توضیح کامل در مورد من.
+                                </label>
+                                <textarea type="text" class="form-control" id="" placeholder="" style="    height: 163px; overflow: hidden;" readonly>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
+                                </textarea>
+                            </div>
+                            <div class="input-group">
+                                <label for="" class="col-form-label">
+                                    شغل.
+                                </label>
+                                <input type="text" class="form-control" id="" value="برنامه نویس وب" readonly>
+                                <label for="" class="col-form-label">
+                                    مدرک تحصیلی.
+                                </label>
+                                <input type="text" class="form-control" id="" value="مهندسی کامپیوتر" readonly>
+                                <label for="" class="col-form-label">
+                                    دانشگاه.
+                                </label>
+                                <input type="text" class="form-control" id="" value="دانشگاه ایالتی میشیگان" readonly>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-rec">
+                                <i class="fa fa-check"></i>ثبت تغییرات
+                            </button>
+                        </form>
+                    </div>
+                    <div class="dash-con dash-profile-info con-body mb-4">
+                        <h5>تغییر تخصص ها</h5>
+                        <div class="dash-divider"></div>
+                        <form class="">
+                            <div class="input-group">
+                                <label for="skillType" class="col-form-label">
+                                    در چه رشته هایی از ترجمه تخصص دارید؟
+                                </label>
+                                <select class="selectpicker" data-style="form-control" id="skillType" multiple data-max-options="4" title="پزشکی، ادبی، سیاسی">
+                                    <option class="selected">پزشکی</option>
+                                    <option class="selected">ادبی</option>
+                                    <option class="selected">سیاسی</option>
+                                    <option>ریاضی</option>
+                                    <option>شیمی</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="skillLangs" class="col-form-label">
+                                    توانایی ترجمه ی چه زبان هایی را دارید؟
+                                </label>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <select class="selectpicker" data-style="form-control" id="skillLangsFrom" title="از زبان ...">
+                                            <option>فارسی</option>
+                                            <option>انگلیسی</option>
+                                            <option>فرانسوی</option>
+                                            <option>عربی</option>
+                                            <option>اسپانیایی</option>
+                                            <option>آلمانی</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <select class="selectpicker" data-style="form-control" id="skillLangsTo" title="به زبان ...">
+                                            <option>فارسی</option>
+                                            <option>انگلیسی</option>
+                                            <option>فرانسوی</option>
+                                            <option>عربی</option>
+                                            <option>اسپانیایی</option>
+                                            <option>آلمانی</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success btn-rec">
+                                        <i class="fa fa-plus"></i>افزودن
+                                    </button>
+                                </div>
+                                <label for="" class="col-form-label sub-label">
+                                    <i class="fa fa-quote-left" aria-hidden="true"></i> برای حذف موارد انتخاب شده روی آن ها کلیک کنید.
+                                </label>
+                                <div class="sub-heading" style="font-size: 15px;">
+                                    <a class="tag" href="#">علمی</a>
+                                    <a class="tag" href="#">زیست شناسی</a>
+                                    <a class="tag" href="#">میکرو بیولوژی</a>
+                                    <a class="tag" href="#">فوری</a>
+                                    <a class="tag" href="#">علمی</a>
+                                    <a class="tag" href="#">زیست شناسی</a>
+                                    <a class="tag" href="#">میکرو بیولوژی</a>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-rec">
+                                        <i class="fa fa-check"></i>ثبت تغییرات
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        </div>
+                        <div class="dash-con dash-profile-info con-body mb-4">
+                            <h5>تغییر رمز عبور</h5>
+                            <div class="dash-divider"></div>
+                            <form class="">
+                                <div id="" class="form-group">
+                                    <input type="password" class="form-control form-control-danger" id="" placeholder="رمز عبور فعلی">
+                                    <div id="form-control-feedback-username" class="form-control-feedback" style="display: none;">رمز عبور فعلی صحیح نمیباشد!</div>
+                                </div>
+                                <div id="" class="form-group">
+                                    <input type="password" class="form-control form-control-danger" id="" placeholder="رمز عبور جدید">
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-rec">
+                                    <i class="fa fa-check"></i>ثبت تغییر
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- /.container-fluid -->
         </div>
-        <!-- /.container-fluid -->
-    </div>
-    <!-- /.content-wrapper -->
-    <!-- Scroll to Top Button -->
-    <a class="scroll-to-top" href="#page-top">
+        <!-- /.content-wrapper -->
+        <!-- Scroll to Top Button -->
+        <a class="scroll-to-top" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-    <script src="vendor/persianumber/persianumber.min.js"></script>
-    <!-- Bootstrap-Select -->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
-    <!-- Custom scripts for this template -->
-    <script src="js/wish-dash.js"></script>
-    <script src="js/wish.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/popper/popper.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Plugin JavaScript -->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="vendor/chart.js/Chart.min.js"></script>
+        <script src="vendor/datatables/jquery.dataTables.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+        <script src="vendor/persianumber/persianumber.min.js"></script>
+        <!-- Bootstrap-Select -->
+        <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+        <!-- Custom scripts for this template -->
+        <script src="js/wish-dash.js"></script>
+        <script src="js/wish.js"></script>
 </body>
 
 </html>

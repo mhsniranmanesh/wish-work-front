@@ -387,6 +387,7 @@ span.error-msg {
 .input-group .form-control {
     margin-bottom: 10px;
     width: 100%;
+    float: none;
 }
 
 section.signin .con-body .sub-label {
@@ -595,4 +596,38 @@ h4.card-title {
 
 h4.card-title a {
 
+}
+
+.navbar-nav .input-group .form-control {
+    margin: 0;
+}
+
+.navbar-nav .dropdown-toggle::after {
+    content: none;
+}
+
+.bootstrap-select>.dropdown-toggle {
+    padding-right: 12px;
+}
+
+.bootstrap-select.btn-group.show-tick .dropdown-menu li a span.text {
+    margin-right: 20px;
+}
+
+.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark {
+    margin-top: 3px;
+}
+
+.input-group-btn .btn-secondary {
+    border: 1px solid rgba(0, 0, 0, .15); 
+}
+
+.pagination>li:last-child>a, .pagination>li:last-child>span {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.pagination>li:first-child>a, .pagination>li:first-child>span {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
 }

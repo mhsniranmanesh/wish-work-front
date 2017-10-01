@@ -186,7 +186,7 @@
                             <button type="submit" class="btn btn-success btn-rec">
                               <i class="fa fa-plus"></i>افزودن مهارت
                             </button>
-                            <span class="sub-heading">
+                            <span class="sub-heading mt-2">
                               <a class="tag" href="#">علمی</a>
                               <a class="tag" href="#">زیست شناسی</a>
                               <a class="tag" href="#">میکرو بیولوژی</a>
@@ -196,6 +196,13 @@
                               <a class="tag" href="#">میکرو بیولوژی</a>
                             </span>
                           </div>
+
+						  <div class="form-group drag-drop mt-2 mb-4">
+					        <label class="col-form-label">فایل های مربوط به پروژه را آپلود کنید.</label>
+					        <label class="sub-label"><i class="fa fa-quote-left" aria-hidden="true"></i> برای این منظور تنها کافیست که فایل را بگیرید و در محل زیر رها کنید.</label>
+					        <input type="file" class="form-control-file" id="inputFile"onchange="dragDrop(this)" data-title="فایل را بگیرید و اینجا رها کنید." multiple="">
+					      </div>
+
                           <div class="form-group">
                             <label for="" class="col-form-label">
                                 بودجه ی خود را مشخص کنید.
@@ -302,6 +309,21 @@
         timeInput.addEventListener('change', function(){
           time.noUiSlider.set(this.value);
         });
+
+        function dragDrop(input) {
+  
+		  if (input.files && input.files[0]) {
+		    let reader = new FileReader();
+		    reader.onload = (e) => {
+		      let imgData = e.target.result;
+		      let imgName = input.files[0].name;
+		      input.setAttribute("data-title", "فایل(ها) ضمیمه شد(ند).");
+		      console.log(e.target.result);
+		    }
+		    reader.readAsDataURL(input.files[0]);
+		  }
+
+		}
     </script>
 </body>
 

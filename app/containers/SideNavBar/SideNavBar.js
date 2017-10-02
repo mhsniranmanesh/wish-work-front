@@ -1,9 +1,80 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// import 'dva-reducer';
+// import 'redux-thunk';
+// import 'redux-router';
+// import 'reducers/index.js';
+// import 'react-redux'; //layout or MainContentWrapper
+//
+// import Profile from '../../components/ProjectSubmitionForm/ProjectSubmitionForm.js';
+// import thunk from "redux-thunk"; //store
+// import promise from 'redux-promise-middleware'; //store
+// import {applyMiddleware , createStore } from 'redux'  //store
+// export default function reducer(state={
+//   user: {
+//     name : "Amirhosein"
+//     lastname: "Shirani"
+//     id:"1"
+//   },
+//   fetching: false,
+//   fetched: false,
+//   error: null
+// } , action){
+//   switch (action.type) {
+//     case : "FETCH_USER":{
+//       return{...state, fetching:true}
+//     }
+//     case : "FETCH_USER_REJECTED"
+//       return{...state, fetching: false}
+//
+//   }
+// }
+// export function changetoprofile(){
+//   return function(dispatch){
+//     //axios.get
+//     <Profile/>
+//   }
+// }
+//
+//
+//
+//
+//
+// const store = createStore(reducer, 0);
+//
+// store.dispatch({type: "INCREMENT" , payload:1})
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
 
 class SideNavbar extends React.Component{
   constructor(props){
     super(props);
+    this.state = { Projectsublitionform : 'ایجاد پروژه' , Dashboard : 'داشبورد'}
   }
   render(){
     return(
@@ -12,7 +83,7 @@ class SideNavbar extends React.Component{
           <li className="nav-item active" data-toggle="tooltip" data-placement="right" title="داشبورد">
             <a className="nav-link" href="#">
               <i className="fa fa-fw fa-dashboard"></i>
-              <span className="nav-link-text">داشبورد</span>
+              <span className="nav-link-text">{this.state.Dashboard}</span>
             </a>
           </li>
           <li className="nav-item" data-toggle="tooltip" data-placement="right" title="پروژه">
@@ -22,7 +93,7 @@ class SideNavbar extends React.Component{
             </a>
             <ul className="sidenav-second-level collapse" id="collapseComponents">
               <li>
-                <a href="dashboard-project-new.html">ایجاد پروژه</a>
+                <a href="dashboard-project-new.html">{this.state.Projectsublitionform}</a>
               </li>
               <li>
                 <a href="dashboard-project-recoms.html">دریافت پروژه</a>

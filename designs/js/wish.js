@@ -90,7 +90,10 @@ else if (checkingMobile != 'ok' || checkingName==="" || EMail==="" ){
 
 //validation of characters of password
 var checkPassword = function(passText){
-	if (passText.length < 8)
+	if (passText.length < 8 && passText.search(/\dd/) == -1 && passText.search(/[A-Z]/) == -1){
+		return "پسورد شما باید شامل ۸ حرف شامل ، یک حرف بزرگ و یک عدد باشد";
+	}
+	else if (passText.length < 8)
 	{
 		 return "پسورد شما باید حداقل شامل ۸ حرف باشد";
     }
@@ -109,7 +112,10 @@ var checkPassword = function(passText){
 	else if (passText.search(/[!\@\#\$\%\^\&\*\(\)\_\+]/) != -1) {
          return "پسورد شما دارای نماد های نامعتبر است";
     }
-    else return "okpass";
+    else if(passText.search(/[\u0600-\u06FF]/) != -1) {
+        return "لطفا پسورد خود را انگلیسی وارد نمایید!";
+    }
+	else return "okpass";
 }
 
 password.keyup(function(){
@@ -125,14 +131,15 @@ password.keyup(function(){
 	{
 
 		$('#form-control-feedback-pass').text(passStatus).css('display' , 'block').css('color' , 'red');
-		$('#usn').addClass('has-danger');
+		$('#pas').addClass('has-danger');
     }
 });
 username.keyup(function (){
 	var UserNameX = checkUserName(this.value)
 	if(UserNameX != "okusername"){
 
-		$("#form-control-feedback-username").text(UserNameX).css('display' , 'block').css('color' , 'red').addClass('class' , 'has-danger');
+		$("#form-control-feedback-username").text(UserNameX).css('display' , 'block').css('color' , 'red')
+        $('#usn').addClass('has-danger');
 	}
 	else
 		$("#form-control-feedback-username").css('display' , 'none');

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import button from '../../components/DashboardButton/DashboardButton.js'
+import button from '../DashboardButton/DashboardButton.js'
 
 class QuickProjectRegister extends React.Component{
   constructor(props){

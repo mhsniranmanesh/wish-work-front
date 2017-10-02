@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Profile from '../DashboardProfileSection/DashboardProfileSection.js';
 import QuickProjectRegister from '../QuickProjectRegistration/QuickProjectRegistration.js';
-import NewNotifDashboard from '../NewNotifDashboard/NewNotifDashboard.js'
+import NewNotifDashboard from '../NewNotifDashboard/NewNotifDashboard.js';
+import SuggestedProjectsDashboard from '../SuggestedProjectsDashboard/SuggestedProjectsDashboard.js';
 class DashboardSectionsSizesColsm5 extends React.Component{
   render(){
     return(
@@ -21,6 +22,7 @@ class DashboardSectionsSizesColsm7 extends React.Component{
     return(
       <div className="col-sm-7">
       <NewNotifDashboard/>
+      <SuggestedProjectsDashboard/>
       </div>
     )
   }

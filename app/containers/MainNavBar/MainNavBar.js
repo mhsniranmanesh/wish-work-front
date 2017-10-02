@@ -1,23 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles.css';
-import './wish.css';
-import './wish-dash.css';
-import './font-awesome/css/font-awesome.min.css';
-import './bootstrap.css';
-import './bootstrap-select.min.css';
-import './dataTables.bootstrap4.css';
-import './bootstrap-rtl.min.css';
-import './MainNavBarAction.js';
+import '../../src/styles.css';
+import '../../src/wish.css';
+import '../../src/wish-dash.css';
+import '../../src/font-awesome/css/font-awesome.min.css';
+import '../../src/bootstrap.css';
+import '../../src/bootstrap-select.min.css';
+import '../../src/dataTables.bootstrap4.css';
+import '../../src/bootstrap-rtl.min.css';
+import '.MainNavBarAction.js';
 import 'reactstrap/dist/reactstrap.min.js';
 import 'reactstrap/dist/reactstrap.cjs.js';
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
+import '../../src/wish-dash.js';
 import MainContentWrapper from '../Main Content Wrapper/MainContentWrapper.js'
-
 import SideNavbar from '../SideNavBar/SideNavBar.js'
+
 
 
 class MainNavBar extends React.Component{
@@ -78,7 +79,7 @@ class MainNavBar extends React.Component{
                 <li id="tool" className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="http://example.com" id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img className="rounded-circle" src="http://via.placeholder.com/50x50" width="30" height="30"></img>
-                    وحید علوی
+                      {Informations.Name}
                   </a>
                   <div id="profile" className="dropdown-menu" aria-labelledby="navbarUserDropdown">
                     <a className="dropdown-item" href="#">خروج</a>
@@ -93,5 +94,7 @@ class MainNavBar extends React.Component{
     )
   }
 }
-
+const Informations = {
+  Name : 'امیرحسین شیرانی'
+}
 module.exports = MainNavBar;

@@ -32,6 +32,7 @@
               <img src="img/nav-logo.png" height="30" class="d-inline-block align-top" alt="nav-logo">
               Wish-Work
             </a>
+            
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -86,11 +87,27 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-right">
+                    <form class="form-inline">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="جستجو..." aria-label="">
+                          <div class="input-group-btn">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fa fa-search"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-left">
+                              <a class="dropdown-item" href="#">در فریلنسر ها</a>
+                              <a class="dropdown-item" href="#">در پروژه ها</a>
+                              <div role="separator" class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="#">همه</a>
+                            </div>
+                          </div>
+                        </div>
+                    </form>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle mr-lg-2" href="#" id="alertsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="fa fa-fw fa-bell nav-icon"></i>
                           <span class="d-lg-none">پیغام ها
-                            <span class="badge badge-pill badge-success">6</span>
+                            <span class="badge badge-pill badge-success">12</span>
                           </span>
                           <span class="new-indicator d-none d-lg-block">
                             <i class="fa fa-fw fa-circle"></i>
@@ -98,7 +115,7 @@
                           </span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="alertsDropdown">
-                            <h6 class="dropdown-header">پیغام های جدید:</h6>
+                            <h6 class="dropdown-header">اطلاعیه های جدید</h6>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">
                                 <div class="dropdown-message small">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی".</div>
@@ -116,7 +133,7 @@
                             </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item small" href="#">
-                              تمام پیغام ها
+                              تمام اطلاعیه ها
                             </a>
                         </div>
                     </li>

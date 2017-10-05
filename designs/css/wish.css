@@ -650,3 +650,26 @@ footer {
   background-color: #222;
   text-align: center;
 }
+
+/*alerts and quotes*/
+
+.alert{
+  font-weight: 300;
+  font-size: 13px;
+  color:#c52622;
+  padding-top:0;
+  margin:0;
+}
+
+.alert-set{
+  margin: 5px 0 0 0;
+}
+
+.con-body .quote{
+    color:#5cb85c;
+    font-weight: 400;
+}
+
+.point{
+  color:#E8990F;
+}

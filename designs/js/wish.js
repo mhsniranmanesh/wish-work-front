@@ -1,11 +1,11 @@
 //-------------------------------------------------
-//                    Global Val
+//                 Global Val
 //-------------------------------------------------
 var password = $('#signupPassInput');
 var username = $('#signupUsernameInput');
 var mobileNumber = $('#mobilePassInput');
 var VEmail = $('#signupEmailInput');
-
+var firstName = $('#signupLastNameInput');
 //----------------------------------------
 
 //         Freelancer Or Client
@@ -56,25 +56,25 @@ var form = $('#signup-form');
 
 
 var checkPassword = function(passText){
-	if (passText.length < 8 && passText.search(/\dd/) == -1 && passText.search(/[A-Z]/) == -1){
-		return "پسورد شما باید شامل ۸ حرف شامل ، یک حرف بزرگ و یک عدد باشد";
+	if (passText.length < 6 && passText.search(/\dd/) == -1 && passText.search(/[A-Z]/) == -1){
+		return "پسورد شما باید شامل ۶ حرف لاتین باشد";
 	}
-	else if (passText.length < 8)
+	else if (passText.length < 6)
 	{
-		 return "پسورد شما باید حداقل شامل ۸ حرف باشد";
+		 return "پسورد شما باید حداقل شامل ۶ حرف باشد";
     }
 	else if (passText.length > 50)
 	{
          return "پسورد شما باید حداکثر شامل ۵۰ حرف باشد";
 
     }
-	else if (passText.search(/\d/) == -1) {
- 		return "پسورد شما باید حداقل شامل یک عدد باشد";
-	}
-	else if (passText.search(/[A-Z]/) == -1) {
-        return "پسورد شما باید حداقل شامل یک حرف انگلیسی بزرگ باشد";
-
-    }
+	// else if (passText.search(/\d/) == -1) {
+ 	// 	return "پسورد شما باید حداقل شامل یک عدد باشد";
+	// }
+	// else if (passText.search(/[A-Z]/) == -1) {
+     //    return "پسورد شما باید حداقل شامل یک حرف انگلیسی بزرگ باشد";
+    //
+    // }
 	else if (passText.search(/[!\@\#\$\%\^\&\*\(\)\_\+]/) != -1) {
          return "پسورد شما دارای نماد های نامعتبر است";
     }
@@ -113,7 +113,7 @@ var checkUserName = function (userText){
         return "نام کاربری شما باید حداقل شامل ۴ کاراکتر باشد";
 
     else
-        return " نام کاربری شما دارای نماد های نامعتبر است(نام کاربری باید تنها شامل حروف انگلیسی باشد)";
+        return " نام کاربری شما دارای نماد های نامعتبر است(نام کاربری باید تنها شامل حروف انگلیسی باشد";
 
 }
 
@@ -131,31 +131,71 @@ username.on('input' ,function (){
         console.log("KU", this.value);
         console.log("this", this);
 
-        if (UserNameX != "okusername") {
+        if (UserNameX !== "okusername") {
 
             $("#form-control-feedback-username").text(UserNameX).css('display', 'block').css('color', 'red');
             $('#usn').addClass('has-danger');
         }
-        else
+        else {
             $("#form-control-feedback-username").css('display', 'none');
-        $('#usn').removeClass('has-danger');
+            $('#usn').removeClass('has-danger');
+        }
     }
 });
 
+firstName.on('input' ,function (){
+   if(firstName !== ""){
+       $('#fname').removeClass("has-danger");
+   }
+   else
+       $('#fname').addClass("has-danger");
+});
+function isValidMobileNumber(str) {
+    var numStr = persianToEnglish(str);
+    if(!isStrContainsJustDigit(numStr)){
+        return false;
+    }
+    if(numStr[0] != '0' && numStr[0] != '9'){
+        return false;
+    }
+    else if(numStr[0] == '0' && numStr.length !== 11){
+        return false;
+    }
+    else if(numStr[0] == '9' && numStr.length !== 10){
+        return false;
+    }
+    return true;
+
+}
+
+function isStrContainsJustDigit(str){
+    for(var i=0; i < str.length ; i++){
+        var ch = str.charCodeAt(i)
+        if(48 > ch || ch > 57)
+            return false;
+    }
+    return true;
+}
+
 var checkmobile = function(signUpForm) {
 
-	signUpForm = persianToEnglish(signUpForm);
+	var checkMobileSignUpForm = persianToEnglish(signUpForm);
 
-	if(signUpForm.search(/\d/) == -1 ){
-		return 'شماره موبایل شامل کاراکتر های نامعتبر است';
-	}
-	if(signUpForm.match(/^\d{11}/)){
-		return 'ok';
-	}
-	else {
-		return 'شماره موبایل شما نامعتبر است' ;
+    if(!isStrContainsJustDigit(checkMobileSignUpForm)){
+        return 'لطفا شماره تماس را صحیح وارد نمایید';
+    }
+    if(checkMobileSignUpForm[0] !== '0' && checkMobileSignUpForm[0] !== '9'){
+        return 'لطفا شماره تماس را صحیح وارد نمایید';
+    }
+    else if(checkMobileSignUpForm[0] === '0' && checkMobileSignUpForm.length !== 11){
+        return 'لطفا شماره تماس را صحیح وارد نمایید';
+    }
+    else if(checkMobileSignUpForm[0] === '9' && checkMobileSignUpForm.length !== 10){
+        return 'لطفا شماره تماس را صحیح وارد نمایید';
+    }
+    return 'ok';
 }
-}
+
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
@@ -164,23 +204,28 @@ VEmail.on('input' , function(){
 	var checkMail = this.value;
 	if(!validateEmail(checkMail)){
 		$('#EmailError').text('ایمیل شما نامعتبر است').css('display' , 'block').css('color' , 'red');
+        $('#eml').addClass('has-danger');
 	}
 	else{
 		$('#EmailError').css('display' , 'none');
+        $('#eml').removeClass('has-danger');
 	}
 
 })
 
 
+
+
 mobileNumber.on('input',function(){
 	var mobile = checkmobile(this.value)
-	if(mobile != 'ok'){
+	if(mobile !== 'ok'){
 
 		$('#mobileError').text(mobile).css('display' , 'block').css('color' , 'red');
+        $('#mobilenmbr').addClass('has-danger');
 	}
 	else{
-		console.log('ok');
 		$('#mobileError').css('display' , 'none');
+        $('#mobilenmbr').removeClass('has-danger');
 	}
 });
 
@@ -254,27 +299,30 @@ function gotonext2(){
     //storage Email of client for signup-verification-msg.html
 
     localStorage.setItem('EmailVerification' , EMail )
-    if(checkingLastName!="" && checkingMobile === 'ok' && checkingName != "" && EMail !="" && validateEmail(EMail) === true){
+    if(checkingLastName!=="" && checkingMobile === 'ok' && checkingName !== "" && EMail !=="" && validateEmail(EMail) === true){
         sendForm2DataToServer();
     }
 
-    else if (checkingMobile != 'ok' || checkingName==="" || EMail==="" || checkingLastName ==""){
+    else if (checkingMobile !== 'ok' || checkingName==="" || EMail==="" || checkingLastName ===""){
         if(checkingName === "") {
             $('#nameError').show();
+            $('#fname').addClass('has-danger');
         }
         if(EMail ===""){
             $('#EmailError').text('لطفا ایمیل خود را وارد کنید').css('display' , 'block').css('color' , 'red');
+            $('#eml').addClass('has-danger');
         }
-        if(validateEmail(EMail) ===false && EMail != ""){
+        if(validateEmail(EMail) === false && EMail !== ""){
             $('#EmailError').text('ایمیل شما نامعتبر است').css('display' , 'block').css('color' , 'red');
-
+            $('#eml').addClass('has-danger');
         }
-        if(checkingMobile != 'ok'){
+        if(checkingMobile !== 'ok'){
             $('#mobileError').text('شماره تماس نامعتبر است').css('display' , 'block').css('color' , 'red');
-
+            $('#mobilenmbr').addClass('has-danger');
         }
         if(checkingLastName ===""){
             $('#LnameError').text('لطفا نام خانوادگی خود را وارد کنید').css('display' , 'block').css('color' , 'red');
+            $('#lname').addClass('has-danger');
         }
         $("#ErrorMessage").show();
     }
@@ -380,9 +428,7 @@ function checkUserNameAndPasswordValidation() {
         }
     });
 }
-function X() {
 
-}
 
 // $.AJAX({
 //   type:     "GET",

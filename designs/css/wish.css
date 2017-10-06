@@ -66,6 +66,7 @@ a:hover {
 
 .navbar-light .navbar-nav .nav-link {
     font-weight: 300;
+    font-size:13px;
     color: rgba(125, 125, 125, 1);
 }
 
@@ -76,14 +77,16 @@ a:hover {
 
 section.signup {
     background-color: #f1f1f1;
-    padding-bottom: 75px;
+    /*max-height: 91.52vh;*/
+    padding-bottom: 91px;
 }
 
 section.signup .con-title {
-    padding: 75px 0;
+    padding: 50px  0;
 }
 
-section.signup .con-title h4 {
+
+section.signup .con-title h3 {
     font-weight: 300;
     text-align: center;
     color: #555;
@@ -111,6 +114,13 @@ section.signup .con-body .col-right {
     section.signup .con-body .col-right {
         border-left: none;
         border-bottom: 1px solid #555;
+        padding: 0 15px 60px 15px;
+    }
+    section.signup .con-body .col-left{
+      padding: 60px 15px 40px 15px;
+    }
+    .con-title{
+      padding: 30px 0 90px 0;
     }
 }
 
@@ -120,16 +130,20 @@ section.signup-form {
 }
 
 section.signup-form .con-title {
-    padding: 75px 0;
+    padding: 50.5px 0;
 }
 
 section.signup-form .con-title h4 {
-    font-weight: 300;
+    font-weight: 500;
+    line-height: 1.6;
     text-align: center;
     color: #555;
 }
 
-section.signup-form .con-body {
+
+
+section.signup-form .con-body .email h4 , section.signup-form .con-body .email h6 {
+    line-height: 1.7;
     color: #555;
 }
 
@@ -142,23 +156,22 @@ section.signup-form .con-body button {
     margin-top: 30px;
 }
 
-footer {
-    min-height: 150px;
-    background-color: #222;
-}
-
 section.signin {
     background-color: #f1f1f1;
     padding-bottom: 75px;
     padding-top: 50px;
 }
 
+section.user .container .con-title{
+  padding: 37.5px 0 37.5px 0;
+}
+
 section.signin .con-title {
-    padding: 50px 0;
+    padding: 27.5px 0;
 }
 
 section.signin .con-title h4 {
-    font-weight: 300;
+    font-weight: 500;
     text-align: center;
     color: #555;
 }
@@ -176,7 +189,13 @@ section.signin .con-body .btn-rec {
     margin: 10px 0 20px 0;
 }
 
-.has-danger .col-form-label,
+.max-vol h6{
+  font-size: 12px;
+  font-weight: 300;
+  color: red;
+}
+
+.has-danger .-label,
 .has-danger .custom-control,
 .has-danger .form-check-label,
 .has-danger .form-control-feedback,
@@ -295,7 +314,7 @@ span.error-msg {
     background: #fff;
 }
 
-@media (min-width: 1200px) {
+@media (min-width:1200) {
     section.signin .container {
         max-width: calc(1140px - 600px);
     }
@@ -401,7 +420,6 @@ span.error-msg {
 .input-group .form-control {
     margin-bottom: 10px;
     width: 100%;
-    float: none;
 }
 
 section.signin .con-body .sub-label {
@@ -411,6 +429,8 @@ section.signin .con-body .sub-label {
     color: #868686;
     padding-bottom: 10px;
 }
+
+
 
 textarea.form-control {
     min-height: 100px;
@@ -471,7 +491,7 @@ section.profile {
 }
 
 .navbar-toggler {
-    padding: 0 .4rem;
+    padding: 0 0.4rem;
 }
 
 .divider {
@@ -607,26 +627,50 @@ h4.card-title {
 
 h4.card-title a {}
 
-.navbar-nav .input-group .form-control {
-    margin: 0;
+
+/*----------------------footer design------------------------------------*/
+
+/*footer .footer-logo{
+  display: block;
+  padding-top: 1vh;
+}*/
+
+.main-foot .socialmedia-foot .fa-linkedin , .main-foot .socialmedia-foot .fa-instagram , .main-foot .socialmedia-foot .fa-twitter , .main-foot .socialmedia-foot .fa-paper-plane {
+  color: white;
+  padding: 2.5vh 0 1.5vh 0;
+  padding-right: 1.5vh;
+  display: inline-block;
+  font-size:25px;
+
+}
+.main-foot .socialmedia-foot .right{
+  color: white;
+  font-weight: 200;
+  font-size: 12px;
+  display: block;
+  /*float:right;*/
+  /*padding-right: 1vw;*/
+  padding-top: 1vh;
 }
 
-.navbar-nav .dropdown-toggle::after {
-    content: none;
+
+footer {
+  height:15vh;
+  background-color: #222;
+  text-align: center;
 }
 
-.bootstrap-select>.dropdown-toggle {
-    padding-right: 12px;
+/*alerts and quotes*/
+
+.alert{
+  font-weight: 300;
+  font-size: 13px;
+  color:#c52622;
+  padding-top:0;
+  margin:0;
 }
 
-.bootstrap-select.btn-group.show-tick .dropdown-menu li a span.text {
-    margin-right: 20px;
-}
-
-.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark {
-    margin-top: 3px;
-}
-
+<<<<<<< HEAD
 .input-group-btn .btn-secondary {
     border: 1px solid rgba(0, 0, 0, .15);
 }
@@ -901,3 +945,17 @@ ul.social-buttons li a:focus,
 ul.social-buttons li a:hover {
     background-color: #018abe;
 }
+=======
+.alert-set{
+  margin: 5px 0 0 0;
+}
+
+.con-body .quote{
+    color:#5cb85c;
+    font-weight: 400;
+}
+
+.point{
+  color:#E8990F;
+}
+>>>>>>> 26db8ddece49534c04e808ea5c36df7f284aea22

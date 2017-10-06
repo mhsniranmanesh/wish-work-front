@@ -1,5 +1,5 @@
 //-------------------------------------------------
-//                 Global Val
+//                 Global Values
 //-------------------------------------------------
 var password = $('#signupPassInput');
 var username = $('#signupUsernameInput');
@@ -58,11 +58,11 @@ var form = $('#signup-form');
 
 var checkPassword = function(passText){
 	if (passText.length < 6 && passText.search(/\dd/) == -1 && passText.search(/[A-Z]/) == -1){
-		return "پسورد شما باید شامل ۶ حرف لاتین باشد";
+		return "پسورد شما باید شامل ۶ حرف انگلیسی باشد";
 	}
 	else if (passText.length < 6)
 	{
-		 return "پسورد شما باید حداقل شامل ۶ حرف باشد";
+		 return "پسورد شما باید حداقل شامل ۶ حرف انگلیسی باشد";
     }
 	else if (passText.length > 50)
 	{
@@ -90,16 +90,30 @@ password.on('input' ,function(){
 	if (passStatus === "okpass")
 	{
 
-		$('#form-control-feedback-pass').text("پسورد شما مناسب می باشد").addClass('form-control-feedback');
+		$('#form-control-feedback-pass').hide();
         $('#pas').removeClass('has-danger');
 
     }
-	else
+	else if(passStatus === "لطفا پسورد خود را انگلیسی وارد نمایید!")
 	{
 
-		$('#form-control-feedback-pass').text(passStatus).css('display' , 'block').css('color' , 'red');
+        $('#errorText').text(passStatus);
+		$('#form-control-feedback-pass').show();
 		$('#pas').addClass('has-danger');
+
     }
+    else if(passStatus === "پسورد شما دارای نماد های نامعتبر است"){
+        $('#errorText').text(passStatus);
+        $('#form-control-feedback-pass').show();
+        $('#pas').addClass('has-danger');
+    }
+    else{
+        $('#errorText').text(passStatus);
+        $('#form-control-feedback-pass').show();
+        $('#pas').addClass('has-danger');
+    }
+
+
 });
 var checkUserName = function (userText){
     console.log(userText);
@@ -134,8 +148,12 @@ username.on('input' ,function (){
 
         if (UserNameX !== "okusername") {
 
-            $("#form-control-feedback-username").text(UserNameX).css('display', 'block').css('color', 'red');
+            $('#form-control-feedback-username').css('display' , 'block');
             $('#usn').addClass('has-danger');
+
+
+
+
         }
         else {
             $("#form-control-feedback-username").css('display', 'none');
@@ -154,11 +172,12 @@ function firstNameValidation(strr){
 firstName.on('input' ,function () {
     var checkFirstName = this.value;
     if(firstNameValidation(checkFirstName) !== "ok" ) {
-        $('#nameError').text('لطفا نام خود را فارسی وارد کنید!').css('display' , 'block').css('color' , 'red');
+        $('#nameError').show();
         $('#fname').addClass('has-danger');
+        $('#errorTextFirstName').text(firstNameValidation(checkFirstName));
     }
     else {
-        $('#nameError').css('display' , 'none');
+        $('#nameError').hide();
         $('#fname').removeClass('has-danger');
     }
 });
@@ -168,17 +187,21 @@ function lastNameValidation(strr){
     if(strr.match(/^[\u0600-\u06FF]/)) {
         return "ok";
     }
+    else if (strr ===""){
+        return "لطفا نام خانوادگی خود را وارد کنید.";
+    }
     else
         return 'لطفا نام خود را فارسی وارد کنید.';
 }
 lastName.on('input' ,function () {
-    var checkFirstName = this.value;
-    if(lastNameValidation(checkFirstName) !== "ok" ) {
-        $('#LnameError').text('لطفا نام خود را فارسی وارد کنید!').css('display' , 'block').css('color' , 'red');
+    var checkLastName = this.value;
+    if(lastNameValidation(checkLastName) !== "ok" ) {
+        $('#LnameError').show();
         $('#lname').addClass('has-danger');
+        $('#errorTextLastName').text(lastNameValidation(checkLastName));
     }
     else {
-        $('#LnameError').css('display' , 'none');
+        $('#LnameError').hide();
         $('#lname').removeClass('has-danger');
     }
 });
@@ -186,16 +209,16 @@ lastName.on('input' ,function () {
 function isValidMobileNumber(str) {
     var numStr = persianToEnglish(str);
     if(!isStrContainsJustDigit(numStr)){
-        return "لطفا شماره ی خود را صحیح وارد کنید";
+        return "لطفا شماره ی خود را صحیح وارد کنید.";
     }
     if(numStr[0] != '0' && numStr[0] != '9'){
-        return "لطفا شماره ی خود را صحیح وارد کنید";
+        return "لطفا شماره ی خود را صحیح وارد کنید.";
     }
     else if(numStr[0] == '0' && numStr.length !== 11){
-        return "لطفا شماره ی خود را صحیح وارد کنید";
+        return "لطفا شماره ی خود را صحیح وارد کنید.";
     }
     else if(numStr[0] == '9' && numStr.length !== 10){
-        return "لطفا شماره ی خود را صحیح وارد کنید";
+        return "لطفا شماره ی خود را صحیح وارد کنید.";
     }
     return "ok";
 
@@ -215,16 +238,16 @@ var checkmobile = function(signUpForm) {
 	var checkMobileSignUpForm = persianToEnglish(signUpForm);
 
     if(!isStrContainsJustDigit(checkMobileSignUpForm)){
-        return 'لطفا شماره تماس را صحیح وارد نمایید';
+        return 'لطفا شماره تماس را صحیح وارد نمایید.';
     }
     if(checkMobileSignUpForm[0] !== '0' && checkMobileSignUpForm[0] !== '9'){
-        return 'لطفا شماره تماس را صحیح وارد نمایید';
+        return 'لطفا شماره تماس را صحیح وارد نمایید.';
     }
     else if(checkMobileSignUpForm[0] === '0' && checkMobileSignUpForm.length !== 11){
-        return 'لطفا شماره تماس را صحیح وارد نمایید';
+        return 'لطفا شماره تماس را صحیح وارد نمایید.';
     }
     else if(checkMobileSignUpForm[0] === '9' && checkMobileSignUpForm.length !== 10){
-        return 'لطفا شماره تماس را صحیح وارد نمایید';
+        return 'لطفا شماره تماس را صحیح وارد نمایید.';
     }
     return 'ok';
 }
@@ -232,12 +255,14 @@ var checkmobile = function(signUpForm) {
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
+
 }
 VEmail.on('input' , function(){
 	var checkMail = this.value;
 	if(!validateEmail(checkMail)){
-		$('#EmailError').text('ایمیل شما نامعتبر است').css('display' , 'block').css('color' , 'red');
+		$('#EmailError').show();
         $('#eml').addClass('has-danger');
+        $('#errorTextEmail').text('ایمیل شما نامعتبر می باشد')
 	}
 	else{
 		$('#EmailError').css('display' , 'none');
@@ -253,11 +278,12 @@ mobileNumber.on('input',function(){
 	var mobile = checkmobile(this.value)
 	if(mobile !== 'ok'){
 
-		$('#mobileError').text(mobile).css('display' , 'block').css('color' , 'red');
+		$('#mobileError').show()
         $('#mobilenmbr').addClass('has-danger');
+		$('#errorTextMobile').text(mobile)
 	}
 	else{
-		$('#mobileError').css('display' , 'none');
+		$('#mobileError').hide();
         $('#mobilenmbr').removeClass('has-danger');
 	}
 });
@@ -299,21 +325,39 @@ function gotonext(){
 
     if(validityPass === "okpass" && validityUser ==="okusername" && CheckBox.checked === true){
         console.log('salam asal');
+        window.location.href = "signup-form.html";
         //checkUserNameAndPasswordValidation();
     }
     else {
-        if(CheckBox.checked != true && validityPass != "okpass" && validityUser ==="okusername")
+        if(CheckBox.checked != true && validityPass != "okpass" && validityUser ==="okusername"){
             $('#error-msg').text('لطفا پسورد خود را صحیح وارد کنید و قوانین را تایید کنید.').css('display' , 'block');
-        if (CheckBox.checked != true && validityUser ==="okusername" && validityPass === "okpass")
+            $('#pas').addClass('has-danger');
+          }
+        if (CheckBox.checked != true && validityUser ==="okusername" && validityPass === "okpass"){
             $('#error-msg').text('لطفا قوانین را تایید کنید.').css('display' , 'block');
-        if(CheckBox.checked != true && validityUser !="okusername" && validityPass === "okpass")
+          }
+        if(CheckBox.checked != true && validityUser !="okusername" && validityPass === "okpass"){
             $('#error-msg').text('لطفا نام کاربری را صحیح وارد کنید و قوانین را تایید کنید.').css('display' , 'block');
-        if (CheckBox.checked === true && validityUser !="okusername" && validityPass != "okpass")
+            $('#usn').addClass('has-danger');
+          }
+        if (CheckBox.checked === true && validityUser !="okusername" && validityPass != "okpass"){
             $('#error-msg').text('لطفا نام کاربری و پسورد خود را صحیح وارد کنید.').css('display' , 'block');
-        if(CheckBox.checked === true && validityUser ==="okusername" && validityPass != "okpass")
+            $('#pas').addClass('has-danger');
+            $('#usn').addClass('has-danger');
+          }
+        if(CheckBox.checked === true && validityUser ==="okusername" && validityPass != "okpass"){
             $('#error-msg').text('لطفا پسورد خود را صحیح وارد کنید.').css('display' , 'block');
-        if (CheckBox.checked != true && validityUser !="okusername" && validityPass != "okpass")
+            $('#pas').addClass('has-danger');
+          }
+        if (CheckBox.checked != true && validityUser !="okusername" && validityPass != "okpass"){
             $('#error-msg').text('انتخاب نام کاربری و رمز عبور مناسب و همچنین تایید قوانین الزامی است!').css('display' , 'block');
+            $('#pas').addClass('has-danger');
+            $('#usn').addClass('has-danger');
+          }
+        if(CheckBox.checked === true && validityUser !="okusername" && validityPass === "okpass"){
+              $('#error-msg').text('لطفا نام کاربری را صحیح وارد کنید.').css('display' , 'block');
+              $('#usn').addClass('has-danger');
+        }
     }
 }
 
@@ -343,22 +387,28 @@ function gotonext2(){
         if(checkingName === "") {
             $('#nameError').show();
             $('#fname').addClass('has-danger');
+            $('#errorTextFirstName').text(firstNameValidation(checkingName));
         }
         if(EMail ===""){
-            $('#EmailError').text('لطفا ایمیل خود را وارد کنید').css('display' , 'block').css('color' , 'red');
+            $('#EmailError').show();
             $('#eml').addClass('has-danger');
+            $('#errorTextEmail').text('لطفا ایمیل خود را وارد کنید.')
         }
         if(validateEmail(EMail) === false && EMail !== ""){
-            $('#EmailError').text('ایمیل شما نامعتبر است').css('display' , 'block').css('color' , 'red');
+            $('#EmailError').show();
             $('#eml').addClass('has-danger');
+            $('#errorTextEmail').text('ایمیل شما نامعتبر است.')
         }
         if(checkingMobile !== 'ok'){
-            $('#mobileError').text('شماره تماس نامعتبر است').css('display' , 'block').css('color' , 'red');
+            $('#mobileError').show()
             $('#mobilenmbr').addClass('has-danger');
+            $('#errorTextMobile').text(checkingMobile);
         }
         if(checkingLastName ===""){
-            $('#LnameError').text('لطفا نام خانوادگی خود را وارد کنید').css('display' , 'block').css('color' , 'red');
+
+            $('#LnameError').show();
             $('#lname').addClass('has-danger');
+            $('#errorTextLastName').text(lastNameValidation(checkingLastName));
         }
         $("#ErrorMessage").show();
     }
@@ -478,5 +528,3 @@ $("#submit-signup-btn2").click(function () {
 //
 //                     }
 // });
-
-

@@ -92,8 +92,8 @@ function gotonext(){
 function gotoVerificationMsg(){ 
 	window.location.href = "signup-verification-msg.html";
 }
-var Name = localStorage.getItem('userFirstAndLastName');
-document.getElementById('userlogin').innerHTML = Name;
+// var Name = localStorage.getItem('userFirstAndLastName');
+// document.getElementById('userlogin').innerHTML = Name;
 
 
 var Email = localStorage.getItem('EmailVerification');

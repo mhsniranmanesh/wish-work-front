@@ -10,3 +10,15 @@
   });
 
 })(jQuery); // End of use strict
+
+
+$('#ctaStart').click(function () {
+    window.location.href = 'signup.html';
+})
+
+$('#ctaStart2').click(function(){
+  window.location.href = 'signup.html';
+})
+$('#navBarButtonRegister').click(function () {
+  window.location.href = "signup.html";
+})

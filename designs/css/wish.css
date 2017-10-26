@@ -420,7 +420,10 @@ span.error-msg {
 }
 
 .input-group .form-control {
+<<<<<<< HEAD
+=======
     /*margin-bottom: 10px;*/
+>>>>>>> d4a80e413f1998f021b02def367ae8871a494ecb
     width: 100%;
 }
 

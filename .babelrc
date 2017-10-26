@@ -6,13 +6,5 @@
         "modules": false
       }
     }], "react"
-  ],
-  "env" : {
-    "development" : {
-      "presets" : [
-        "react-hmre"
-      ]
-    }
-  }
+  ],  
 }
-

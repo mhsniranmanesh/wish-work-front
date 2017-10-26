@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: './app/src/app.js'
+    app: './src/index.js'
   },
   module: {
     rules: [{
@@ -26,7 +26,7 @@ module.exports = {
           plugins: []
         },
         include: [
-          path.resolve(__dirname, 'app')
+          path.resolve(__dirname, 'src')
         ]
       },
       {

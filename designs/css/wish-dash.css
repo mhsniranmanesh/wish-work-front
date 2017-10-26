@@ -418,28 +418,97 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 }
 
 .dash-divider {
+    display: block;
     height: 0;
     margin: .75rem 0;
     overflow: hidden;
-    border-top: 1px solid #e9ecef;
+    /*border-top: 1px solid #e9ecef;*/
 }
 
-.dash-recom-item {
-    border-right: 5px solid;
-    padding: 5px 10px;
-    margin-bottom: 10px;
+
+@media(min-width:768px){
+  .dash-recom-item {
+      border-bottom: 3px solid #D9DADB;
+      display: inline-block;
+      min-height:20vh;
+      width:100%;
+    }
+.prices{
+  float: right;
+  display: inline-block;
+  min-height:20vh;
+  margin-left: 10px;
+  }
+  svg{
+    width: 5px;
+    height: 8vh;
+  }
+}
+
+@media(min-width:426px){
+  .dash-recom-item {
+      border-bottom: 3px solid #D9DADB;
+      display: inline-block;
+      min-height:10vh;
+      width:100%;
+    }
+.prices{
+  float: right;
+  display: inline-block;
+  min-height:10vh;
+  margin-left: 10px;
+  }
+  svg{
+    width: 5px;
+    height: 5vh;
+  }
+}
+@media(max-width:425px){
+  .dash-recom-item {
+      border-bottom: 3px solid #D9DADB;
+      display: inline-block;
+      min-height:20vh;
+      width:100%;
+    }
+.prices{
+  float: right;
+  display: inline-block;
+  min-height:20vh;
+  margin-left: 10px;
+  }
+  svg{
+    width: 5px;
+    height: 8vh;
+  }
+}
+.content{
+  vertical-align: middle;
+  /*text-align: center;*/
+}
+
+svg rect{
+  padding-top: 2px;
 }
 
 .price-good {
-    border-color: #08b0f0;
+    float: right;
+    fill:#08b0f0;
+    stroke-width:5px;
+    stroke:#08b0f0;
 }
 
 .price-fair {
-    border-color: #00f36a;
+    float: right;
+    fill: #00f36a;
+    stroke-width:5px;
+    stroke: #00f36a;
 }
 
 .price-low {
-    border-color: #D77000;
+    float: right;
+    fill: #D77000;
+    stroke-width:5px;
+    stroke: #D77000;
 }
 
 .dash-recom-item a {

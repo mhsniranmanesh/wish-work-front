@@ -12,6 +12,10 @@ body.fixed-nav {
     }
 }
 
+.icon{
+  margin-right: 30px;
+}
+
 .scroll-to-top {
     position: fixed;
     left: 15px;

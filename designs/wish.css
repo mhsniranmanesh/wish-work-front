@@ -323,13 +323,20 @@ span.error-msg {
     display: block;
 }
 
-.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+.input-group-btn:last-child>.btn,
+.input-group-btn:last-child>.btn-group {
     margin-right: -1px;
     margin-left: auto;
     margin-top: 0;
 }
 
-.input-group .form-control:last-child, .input-group-addon:last-child, .input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group>.btn, .input-group-btn:last-child>.dropdown-toggle, .input-group-btn:first-child>.btn:not(:first-child), .input-group-btn:first-child>.btn-group:not(:first-child)>.btn {
+.input-group .form-control:last-child,
+.input-group-addon:last-child,
+.input-group-btn:last-child>.btn,
+.input-group-btn:last-child>.btn-group>.btn,
+.input-group-btn:last-child>.dropdown-toggle,
+.input-group-btn:first-child>.btn:not(:first-child),
+.input-group-btn:first-child>.btn-group:not(:first-child)>.btn {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -344,11 +351,11 @@ span.error-msg {
     display: block;
 }
 
-.bootstrap-select > .dropdown-menu > .dropdown-menu li.hidden{
-    display:none;
+.bootstrap-select>.dropdown-menu>.dropdown-menu li.hidden {
+    display: none;
 }
 
-.bootstrap-select > .dropdown-menu > .dropdown-menu li a{
+.bootstrap-select>.dropdown-menu>.dropdown-menu li a {
     display: block;
     width: 100%;
     padding: 3px 1.5rem;
@@ -372,14 +379,21 @@ span.error-msg {
     background-color: #f5f5f5;
 }
 
-.input-group .form-control:first-child, .input-group-addon:first-child, .input-group-btn:first-child>.btn, .input-group-btn:first-child>.btn-group>.btn, .input-group-btn:first-child>.dropdown-toggle, .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle), .input-group-btn:last-child>.btn-group:not(:last-child)>.btn {
+.input-group .form-control:first-child,
+.input-group-addon:first-child,
+.input-group-btn:first-child>.btn,
+.input-group-btn:first-child>.btn-group>.btn,
+.input-group-btn:first-child>.dropdown-toggle,
+.input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:last-child>.btn-group:not(:last-child)>.btn {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
 }
 
-.btn-rec .fa , .error-msg .fa{
+.btn-rec .fa,
+.error-msg .fa {
     vertical-align: middle;
     padding-left: 5px;
 }
@@ -425,7 +439,6 @@ textarea.form-control {
 .fa {
     vertical-align: middle;
 }
-
 
 .sub-heading {
     display: block;
@@ -482,6 +495,7 @@ section.profile {
     font-weight: 300;
     line-height: 1.5rem;
 }
+
 #biddingBtn {
     width: 100%;
 }
@@ -498,8 +512,7 @@ section.profile {
     display: block;
 }
 
-.fl-wrap {
-}
+.fl-wrap {}
 
 .fl-discript {
     display: block;
@@ -509,7 +522,7 @@ section.profile {
 }
 
 .fl-wrap .btn-rec .fa {
-    padding:0 ;
+    padding: 0;
 }
 
 .fl-wrap .btn-rec {
@@ -560,9 +573,7 @@ section.profile {
     padding: 5px 10px;
 }
 
-.fl-p h5.name {
-
-}
+.fl-p h5.name {}
 
 .fl-p h6.s-discript {
     font-weight: 400;
@@ -573,11 +584,11 @@ section.profile {
 }
 
 #inviteBtn {
-    width:100%;
+    width: 100%;
 }
 
 #followBtn {
-    width:100%;
+    width: 100%;
 }
 
 .card {
@@ -593,6 +604,4 @@ h4.card-title {
     font-size: 1.25rem;
 }
 
-h4.card-title a {
-
-}
+h4.card-title a {}

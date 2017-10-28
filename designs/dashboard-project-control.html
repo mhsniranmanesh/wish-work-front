@@ -30,15 +30,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#">
-<<<<<<< HEAD
-
-              <img src="img/nav-logo.png" height="30" class="d-inline-block align-top" alt="nav-logo">
-              <span style="font-family:elham;color:#018abe;font-size:22px;">ویش ورک</span>
-=======
-                <<<<<<< HEAD <img src="img/nav-logo.png" height="30" class="d-inline-block align-top" alt="nav-logo"> Wish-Work =======
-                    <img src="img/nav-logo.png" height="30" class="d-inline-block align-top" alt="nav-logo">
-                    <span style="font-family:elham;color:#018abe;font-size:22px;">ویش ورک</span> >>>>>>> d4a80e413f1998f021b02def367ae8871a494ecb
->>>>>>> 36aa38dbc28cc7c6310cc0fef75b0fa140ff0a4f
+                <img src="img/nav-logo.png" height="30" class="d-inline-block align-top" alt="nav-logo">
+                <span style="font-family:elham;color:#018abe;font-size:22px;">ویش ورک</span>
             </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -57,13 +50,13 @@
                             <span class="nav-link-text">پروژه</span>
                         </a>
                         <ul class="sidenav-second-level collapse show" id="collapseComponents">
+                            <li>
+                                <a href="dashboard-project-new.html">ایجاد پروژه</a>
+                            </li>
+                            <li>
+                                <a href="#">دریافت پروژه</a>
+                            </li>
                             <li class="active">
-                                <a href="#">ایجاد پروژه</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-project-recoms.html">دریافت پروژه</a>
-                            </li>
-                            <li>
                                 <a href="#">کنترل پروژه</a>
                             </li>
                             <li>
@@ -160,103 +153,110 @@
     <div class="content-wrapper py-3">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-6 d-block mx-auto">
+                <div class="col-sm-8 d-block mx-auto">
                     <div class="dash-con dash-new-project con-body mb-4">
-                        <h5>ایجاد پروژه جدید</h5>
+                        <h5>کنترل پروژه</h5>
                         <div class="dash-divider"></div>
-                        <form class="">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="" placeholder="عنوان پروژه">
-                            </div>
-                            <div class="input-group">
-                                <select class="selectpicker" data-style="form-control" id="" title="زمینه ترجمه را انتخاب کنید.">
-                                  <option>پزشکی</option>
-                                  <option>ادبی</option>
-                                  <option>سیاسی</option>
-                                  <option>ریاضی</option>
-                                  <option>شیمی</option>
-                              </select>
-                            </div>
+                        <label class="col-form-label">مایل‌استون‌های پروژه ی شما</label>
+                        <label class="sub-label mb-4"><i class="fa fa-quote-left" aria-hidden="true"></i> در زیر می توانید همه ی مایل استون های پروژه خود را ببینید.</label>
+                        <div class="container">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="input-group">
-                                        <select class="selectpicker" data-style="form-control" id="" title="از زبان ...">
-                                      <option>فارسی</option>
-                                      <option>انگلیسی</option>
-                                      <option>فرانسوی</option>
-                                      <option>عربی</option>
-                                      <option>اسپانیایی</option>
-                                  </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="input-group">
-                                        <select class="selectpicker" data-style="form-control" id="" title="به زبان ...">
-                                      <option>فارسی</option>
-                                      <option>انگلیسی</option>
-                                      <option>فرانسوی</option>
-                                      <option>عربی</option>
-                                      <option>اسپانیایی</option>
-                                  </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <textarea type="text" class="form-control" id="" placeholder="توضیحاتی را در مورد پروژه بنویسید."></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="" placeholder="مهارت های لازم فریلنسر.">
-                                <button type="submit" class="btn btn-success btn-rec">
-                              <i class="fa fa-plus"></i>افزودن مهارت
-                            </button>
-                                <span class="sub-heading mt-2">
-                              <a class="tag" href="#">علمی</a>
-                              <a class="tag" href="#">زیست شناسی</a>
-                              <a class="tag" href="#">میکرو بیولوژی</a>
-                              <a class="tag" href="#">فوری</a>
-                              <a class="tag" href="#">علمی</a>
-                              <a class="tag" href="#">زیست شناسی</a>
-                              <a class="tag" href="#">میکرو بیولوژی</a>
-                            </span>
-                            </div>
+                                <div class="timeline-centered">
+                                    <article class="timeline-entry">
+                                        <div class="timeline-entry-inner">
+                                            <time class="timeline-time"><span>۲۴ آبان</span> <span class="text-muted">تحویل و تایید شد</span></time>
+                                            <div class="timeline-icon bg-primary">
+                                                <i class="entypo-feather"></i>
+                                            </div>
+                                            <div class="timeline-label">
+                                                <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
+                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                                <button type="submit" class="btn btn-primary btn-rec"> 
+                                                    <i class="fa fa-download"></i>
+                                                </button>
+                                                <button type="submit" class="btn btn-secondary btn-rec" disabled> 
+                                                    تایید شده
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="timeline-entry left-aligned">
+                                        <div class="timeline-entry-inner">
+                                            <time class="timeline-time"><span>۲۴ آبان</span> <span class="text-muted">تحویل در انتظار تایید</span></time>
+                                            <div class="timeline-icon bg-success">
+                                                <i class="entypo-suitcase"></i>
+                                            </div>
+                                            <div class="timeline-label">
+                                                <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
+                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                                <button type="submit" class="btn btn-primary btn-rec"> 
+                                                    <i class="fa fa-download"></i>
+                                                </button>
+                                                <button type="submit" class="btn btn-primary btn-rec"> 
+                                                    تایید؟
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="timeline-entry">
+                                        <div class="timeline-entry-inner">
+                                            <time class="timeline-time"><span>۲۴ آبان</span> <span class="text-muted">هنوز نرسیده</span></time>
+                                            <div class="timeline-icon bg-secondary">
+                                                <i class="entypo-location"></i>
+                                            </div>
+                                            <div class="timeline-label">
+                                                <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
+                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                                <button type="submit" class="btn btn-secondary btn-rec" disabled> 
+                                                    <i class="fa fa-download"></i>
+                                                </button>
+                                                <button type="submit" class="btn btn-secondary btn-rec" disabled> 
+                                                    نرسیده
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="timeline-entry left-aligned">
+                                        <div class="timeline-entry-inner">
+                                            <time class="timeline-time"><span>۲۴ آبان</span> <span class="text-muted">هنوز نرسیده</span></time>
+                                            <div class="timeline-icon bg-secondary">
+                                                <i class="entypo-location"></i>
+                                            </div>
+                                            <div class="timeline-label">
+                                                <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
+                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                                <button type="submit" class="btn btn-secondary btn-rec" disabled> 
+                                                    <i class="fa fa-download"></i>
+                                                </button>
+                                                <button type="submit" class="btn btn-secondary btn-rec" disabled> 
+                                                    نرسیده
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </article>
 
-                            <div class="form-group drag-drop mt-2 mb-4">
-                                <label class="col-form-label">فایل های مربوط به پروژه را آپلود کنید.</label>
-                                <label class="sub-label"><i class="fa fa-quote-left" aria-hidden="true"></i> برای این منظور تنها کافیست که فایل را بگیرید و در محل زیر رها کنید.</label>
-                                <input type="file" class="form-control-file" id="inputFile" onchange="dragDrop(this)" data-title="فایل را بگیرید و اینجا رها کنید." multiple="">
-                            </div>
 
-                            <div class="form-group">
-                                <label for="" class="col-form-label">
-                                بودجه ی خود را مشخص کنید.
-                            </label>
-                                <input type="text" class="form-control" id="priceInput">
-                                <div id="price-range"></div>
-                                <span class="price-msg">
-                                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                                نارنجی: بودجه تعیین شده به نسبت ارزش پروژه کمتر است! ویش ورک پیشنهاد می کند که برای بالا بردن شانس انجام پروژه ی با کیفیت، کف بودجه را افزایش دهید.
-                            </span>
+                                    <article class="timeline-entry begin">
+
+                                        <div class="timeline-entry-inner">
+
+                                            <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
+                                                <i class="entypo-flight"></i>
+                                            </div>
+
+                                        </div>
+
+                                    </article>
+
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="" class="col-form-label">
-                                زمان دلخواه خود را مشخص کنید.
-                            </label>
-                                <input type="text" class="form-control" id="timeInput">
-                                <div id="time-range"></div>
-                                <span class="time-msg">
-                                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                                آبی: مقدار زمان طلب شده به نسبت اندازه ی پروژه مطلوب می باشد!
-                            </span>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-rec">
-                            ایجاد پروژه
-                          </button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
+    </div>
+    <!-- /.container-fluid -->
     </div>
     <!-- /.content-wrapper -->
     <!-- Scroll to Top Button -->
@@ -281,87 +281,9 @@
     <script src="js/wish-dash.js"></script>
     <script src="js/wish.js"></script>
     <script>
-        var price = document.getElementById('price-range');
-        var priceInput = document.getElementById('priceInput');
-        var time = document.getElementById('time-range');
-        var timeInput = document.getElementById('timeInput');
+        $(document).ready(function() {
 
-
-        noUiSlider.create(price, {
-            start: [240000],
-            step: 10000,
-            connect: [true, false],
-            range: {
-                min: [0],
-                max: [1000000]
-            },
-            format: wNumb({
-                decimals: 0,
-                thousand: ',',
-                postfix: ' تومان',
-            }),
         });
-
-        price.noUiSlider.on('update', function(values, handle) {
-            priceInput.value = values[handle];
-        });
-
-        priceInput.addEventListener('change', function() {
-            price.noUiSlider.set(this.value);
-        });
-
-        noUiSlider.create(time, {
-            start: [45],
-            step: 1,
-            connect: [true, false],
-            range: {
-                min: [0],
-                max: [100]
-            },
-            format: wNumb({
-                decimals: 0,
-                thousand: ',',
-                postfix: ' روز',
-            }),
-        });
-
-        time.noUiSlider.on('update', function(values, handle) {
-            timeInput.value = values[handle];
-        });
-
-        timeInput.addEventListener('change', function() {
-            time.noUiSlider.set(this.value);
-        });
-
-        function dragDrop(input) { <<
-            << << < HEAD
-                ===
-                === =
-
-                if (input.files && input.files[0]) {
-                    let reader = new FileReader();
-                    reader.onload = (e) => {
-                        let imgData = e.target.result;
-                        let imgName = input.files[0].name;
-                        input.setAttribute("data-title", "فایل(ها) ضمیمه شد(ند).");
-                        console.log(e.target.result);
-                    }
-                    reader.readAsDataURL(input.files[0]);
-                } >>>
-                >>> > d4a80e413f1998f021b02def367ae8871a494ecb
-
-            if (input.files && input.files[0]) {
-                let reader = new FileReader();
-                reader.onload = (e) => {
-                    let imgData = e.target.result;
-                    let imgName = input.files[0].name;
-                    input.setAttribute("data-title", "فایل(ها) ضمیمه شد(ند).");
-                    console.log(e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-
-        }
     </script>
 </body>
 

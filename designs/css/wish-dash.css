@@ -471,92 +471,93 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     height: 0;
     margin: .75rem 0;
     overflow: hidden;
-    /*border-top: 1px solid #e9ecef;*/
+    border-top: 1px solid #e9ecef;
 }
 
-
-@media(min-width:768px){
-  .dash-recom-item {
-      border-bottom: 3px solid #D9DADB;
-      display: inline-block;
-      min-height:20vh;
-      width:100%;
+@media(min-width:768px) {
+    .dash-recom-item {
+        border-bottom: 3px solid #D9DADB;
+        display: inline-block;
+        min-height: 20vh;
+        width: 100%;
     }
-.prices{
-  float: right;
-  display: inline-block;
-  min-height:20vh;
-  margin-left: 10px;
-  }
-  svg{
-    width: 5px;
-    height: 8vh;
-  }
+    .prices {
+        float: right;
+        display: inline-block;
+        min-height: 20vh;
+        margin-left: 10px;
+    }
+    svg {
+        width: 5px;
+        height: 8vh;
+    }
 }
 
-@media(min-width:426px){
-  .dash-recom-item {
-      border-bottom: 3px solid #D9DADB;
-      display: inline-block;
-      min-height:10vh;
-      width:100%;
+@media(min-width:426px) {
+    .dash-recom-item {
+        border-bottom: 3px solid #D9DADB;
+        display: inline-block;
+        min-height: 10vh;
+        width: 100%;
     }
-.prices{
-  float: right;
-  display: inline-block;
-  min-height:10vh;
-  margin-left: 10px;
-  }
-  svg{
-    width: 5px;
-    height: 5vh;
-  }
-}
-@media(max-width:425px){
-  .dash-recom-item {
-      border-bottom: 3px solid #D9DADB;
-      display: inline-block;
-      min-height:20vh;
-      width:100%;
+    .prices {
+        float: right;
+        display: inline-block;
+        min-height: 10vh;
+        margin-left: 10px;
     }
-.prices{
-  float: right;
-  display: inline-block;
-  min-height:20vh;
-  margin-left: 10px;
-  }
-  svg{
-    width: 5px;
-    height: 8vh;
-  }
-}
-.content{
-  vertical-align: middle;
-  /*text-align: center;*/
+    svg {
+        width: 5px;
+        height: 5vh;
+    }
 }
 
-svg rect{
-  padding-top: 2px;
+@media(max-width:425px) {
+    .dash-recom-item {
+        border-bottom: 3px solid #D9DADB;
+        display: inline-block;
+        min-height: 20vh;
+        width: 100%;
+    }
+    .prices {
+        float: right;
+        display: inline-block;
+        min-height: 20vh;
+        margin-left: 10px;
+    }
+    svg {
+        width: 5px;
+        height: 8vh;
+    }
+}
+
+.content {
+    vertical-align: middle;
+    /*text-align: center;*/
+}
+
+svg rect {
+    padding-top: 2px;
 }
 
 .price-good {
     float: right;
-    fill:#08b0f0;
-    stroke-width:5px;
-    stroke:#08b0f0;
+    fill: #08b0f0;
+    stroke-width: 5px;
+    stroke: #08b0f0;
 }
 
 .price-fair {
     float: right;
     fill: #00f36a;
-    stroke-width:5px;
+    stroke-width: 5px;
     stroke: #00f36a;
 }
 
 .price-low {
     float: right;
     fill: #D77000;
-    stroke-width:5px;
+    stroke-width: 5px;
     stroke: #D77000;
 }
 

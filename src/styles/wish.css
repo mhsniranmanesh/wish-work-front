@@ -275,7 +275,7 @@ span.error-msg {
 .form-control {
     display: block;
     width: 100%;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 300;
     line-height: 1.25;
     color: #495057;
@@ -385,6 +385,10 @@ span.error-msg {
     border: 0;
 }
 
+/*.dropdown-header{
+  background-color: #f1f1f1;
+}*/
+
 .bootstrap-select.btn-group .dropdown-toggle .filter-option {
     text-align: right;
 }
@@ -416,7 +420,10 @@ span.error-msg {
 }
 
 .input-group .form-control {
-    margin-bottom: 10px;
+<<<<<<< HEAD
+=======
+    /*margin-bottom: 10px;*/
+>>>>>>> d4a80e413f1998f021b02def367ae8871a494ecb
     width: 100%;
 }
 
@@ -956,4 +963,26 @@ ul.social-buttons li a:hover {
 
 .point {
     color: #E8990F;
+}
+
+/* privacy&policy */
+.pripol .container .pri-head{
+  text-align: center;
+  font-size: 60px;
+  font-weight: 300;
+  padding: 25px 0 0 0;
+}
+
+.rule-row-head{
+  padding: 0;
+  margin: 0;
+}
+
+.rule-row-content{
+  padding: 10px 0;
+}
+
+.pripol .container .set{
+padding:29px 0 55px 0;
+
 }

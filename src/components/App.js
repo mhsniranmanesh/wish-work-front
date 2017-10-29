@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import Header from './common/Header.js';
 import Main from '../routes.js';
 import Header2 from './common/Header2.js';
-import '../styles/wish.css';
-import '../styles/wish-dash.css';
 import '../styles/font-awesome/css/font-awesome.min.css';
 import '../styles/bootstrap.min.css';
 import '../styles/bootstrap-select.min.css';
@@ -17,6 +15,8 @@ import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
+import 'react-bootstrap';
+
 class App extends React.Component {
   render(){
     return(

@@ -46,6 +46,7 @@
     "react-addons-css-transition-group": "^15.6.2",
     "react-addons-transition-group": "^15.6.2",
     "react-bootstrap": "^0.31.3",
+    "react-bootstrap-select": "^0.14.0",
     "react-dom": "^15.6.2",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
@@ -54,6 +55,7 @@
     "reactstrap": "^4.8.0",
     "reducers": "^3.0.0-alpha",
     "redux": "^3.7.2",
+    "redux-immutable-state-invariant": "^2.1.0",
     "redux-promise-middleware": "^4.4.1",
     "redux-router": "^1.0.0-beta3",
     "redux-thunk": "^2.2.0"

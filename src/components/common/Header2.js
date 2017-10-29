@@ -2,13 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import  {PropTypes} from 'prop-types';
 //import '../../src/styles.css';
+//className = 'active' show the side navbar active when you click on the object
 
 const Header2 = ({loading}) => {
   return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
           <div className="container">
             <a className="navbar-brand" href="#">
-              <img src="img/nav-logo.png" height="30" className="d-inline-block align-top" alt="nav-logo"></img>
+              <img src={require('../../img/nav-logo.png')} height="30" className="d-inline-block align-top" alt="nav-logo"/>
               Wish-Work
             </a>
             <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,6 +57,23 @@ const Header2 = ({loading}) => {
           </li>
         </ul>
       </li>
+      <li className="nav-item" data-toggle="tooltip" data-placement="right" title="حساب">
+  <a className="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#accountComponents">
+      <i className="fa fa-fw fa-usd"></i>
+      <span className="nav-link-text">حساب</span>
+  </a>
+  <ul className="sidenav-second-level collapse" id="accountComponents">
+      <li className="active">
+          <NavLink to="/cashout-in">واریز - برداشت</NavLink>
+      </li>
+      <li>
+          <NavLink to='/financialmanagement'>مدیریت مالی</NavLink>
+      </li>
+      <li>
+          <NavLink to="/accountbill">صورت حساب</NavLink>
+      </li>
+  </ul>
+</li>
     </ul>
     <ul className="navbar-nav navbar-sidenav sidenav-toggler">
       <li className="nav-item">

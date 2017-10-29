@@ -1,6 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Dashboard extends React.Component{
+  constructor(props , context){
+    super(props);
+    this.state = {name : "" , rate : "" }
+  }
   render(){
     return(
       <div>
@@ -12,7 +17,7 @@ class Dashboard extends React.Component{
                       <div className="row">
                           <div className="mx-auto">
                               <img src="http://via.placeholder.com/125x125" className="rounded-circle"></img>
-                              <h5>وحید علوی</h5>
+                              <h5> {this.state.name} </h5>
                               <h6 className="dash-profile-stars">
                             <i className="fa fa-star shine-on"></i>
                             <i className="fa fa-star shine-on"></i>

@@ -275,7 +275,7 @@ span.error-msg {
 .form-control {
     display: block;
     width: 100%;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 300;
     line-height: 1.25;
     color: #495057;
@@ -495,6 +495,9 @@ section.profile {
 
 .navbar-toggler {
     padding: 0 0.4rem;
+    /*margin-right: 35px;*/
+    /*margin-top: 10px;*/
+    /*padding-bottom: 10px;*/
 }
 
 .divider {

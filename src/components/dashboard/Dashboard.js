@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import * as profileInfo from '../../actions/profileInfo.js';
+import {bindActionCreators} from 'redux';
 
 class Dashboard extends React.Component{
   constructor(props , context){
-    super(props);
-    this.state = {name : "" , rate : "" }
+    super(props , context);
+  }
+  profileRow(profileInfo , index){
+    return <div key={index}>{profileInfo.first_name +' '+ profileInfo.last_name}</div>;
   }
   render(){
     return(
@@ -17,7 +22,7 @@ class Dashboard extends React.Component{
                       <div className="row">
                           <div className="mx-auto">
                               <img src="http://via.placeholder.com/125x125" className="rounded-circle"></img>
-                              <h5> {this.state.name} </h5>
+                              <h5> {this.props.profileInfo.first_name + ' ' + this.props.profileInfo.last_name} </h5>
                               <h6 className="dash-profile-stars">
                             <i className="fa fa-star shine-on"></i>
                             <i className="fa fa-star shine-on"></i>
@@ -165,4 +170,20 @@ class Dashboard extends React.Component{
     );
   }
 }
-module.exports = Dashboard;
+Dashboard.PropTypes = {
+  profileInfo: PropTypes.array.isRequired,
+  actions : PropTypes.object.isRequired
+};
+
+function mapStateToProps(state , ownProps){
+  return{
+    profileInfo : state.profileInfo
+  };
+}
+function mapDispatchToProps(dispatch){
+  return{
+  actions : bindActionCreators(profileInfo , dispatch)
+  }
+}
+
+export default connect(mapStateToProps , mapDispatchToProps)(Dashboard);

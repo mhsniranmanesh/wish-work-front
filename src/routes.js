@@ -8,7 +8,7 @@ import Notifspage from './components/notifspage/Notifspage.js';
 import CashOutIn from './components/cashout-in/cashout-in.js';
 import financialManagement from './components/financialmanagement/financialManagement.js';
 import accountBill from './components/accountbill/accountBill.js';
-import logoPic from './img/nav-logo.png'
+import logoPic from './img/nav-logo.png';
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
 // and /schedule routes will match any pathname that starts
@@ -25,7 +25,6 @@ const Main = () => (
       <Route path='/cashout-in' component={CashOutIn}/>
       <Route path='/financialmanagement' component={financialManagement}/>
       <Route path='/accountbill' component={accountBill}/>
-      <Route path='/logopic' component={logoPic} />
     </Switch>
   </main>
 )

@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import profileReducer from './profileReducer.js';
+import profileInfo from './profileInfo.js';
 
 const rootReducer = combineReducers({
-  profileReducer
+  profileInfo 
 });
 
-export default rootReducer ; 
+export default rootReducer ;

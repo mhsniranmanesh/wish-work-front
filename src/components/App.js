@@ -3,33 +3,35 @@ import PropTypes from 'prop-types';
 import Header from './common/Header.js';
 import Main from '../routes.js';
 import Header2 from './common/Header2.js';
-import '../styles/font-awesome/css/font-awesome.min.css';
-import '../styles/bootstrap.min.css';
-import '../styles/bootstrap-select.min.css';
-import '../styles/dataTables.bootstrap4.css';
-import '../styles/bootstrap-rtl.min.css';
-// import '.MainNavBarAction.js';
-import 'reactstrap/dist/reactstrap.min.js';
-import 'reactstrap/dist/reactstrap.cjs.js';
-import 'jquery/dist/jquery.min.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'jquery/dist/jquery.min.js';
-import 'bootstrap/dist/js/bootstrap.min.js';
-import 'react-bootstrap';
+import {connect} from 'react-redux';
+import * as profileInfo from '../actions/profileInfo.js';
+import { withRouter } from 'react-router-dom';
+
 
 class App extends React.Component {
+  constructor(props , context){
+    super(props , context);
+  }
   render(){
     return(
       <div>
-        <Header2/>
-        <Main/>
+        <Header2 yourName={' ' + this.props.profileInfo.first_name + ' ' + this.props.profileInfo.last_name}/>
+        <Main />
       </div>
       );
     }
 }
 
 App.PropTypes = {
-  routes: PropTypes.object.isRequired
+  routes: PropTypes.object.isRequired,
+  profileInfo: PropTypes.array.isRequired
 };
 
-module.exports = App;
+function mapStateToProps(state , ownProps){
+  return{
+    profileInfo : state.profileInfo
+  };
+}
+
+
+export default withRouter(connect(mapStateToProps)(App));

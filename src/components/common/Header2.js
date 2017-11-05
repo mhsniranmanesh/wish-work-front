@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import  {PropTypes} from 'prop-types';
 //import '../../src/styles.css';
 //className = 'active' show the side navbar active when you click on the object
-
-const Header2 = ({loading}) => {
+const Header2 = (props) => {
   return (
+
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
           <div className="container">
             <a className="navbar-brand" href="#">
@@ -18,7 +18,7 @@ const Header2 = ({loading}) => {
             <div className="collapse navbar-collapse" id="navbarResponsive">
             <ul className="navbar-nav navbar-sidenav">
       <li className="nav-item active" data-toggle="tooltip" data-placement="right" title="داشبورد">
-        <NavLink to="/" className="nav-link" href="#">
+        <NavLink to="/" className="nav-link" >
           <i className="fa fa-fw fa-dashboard"></i>
           <span className="nav-link-text">داشبورد</span>
         </NavLink>
@@ -121,7 +121,7 @@ const Header2 = ({loading}) => {
                 <li id="tool" className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="http://example.com" id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img className="rounded-circle" src="http://via.placeholder.com/50x50" width="30" height="30"></img>
-                      {Informations.Name}
+                      {props.yourName}
                   </a>
                   <div id="profile" className="dropdown-menu" aria-labelledby="navbarUserDropdown">
                     <a className="dropdown-item" href="#">خروج</a>
@@ -131,10 +131,11 @@ const Header2 = ({loading}) => {
             </div>
           </div>
         </nav>
+
   );
 };
-const Informations = {
-  Name : 'امیرحسین شیرانی'
+Header2.PropTypes = {
+  yourName : PropTypes.object.isRequired
 }
 
 export default Header2;

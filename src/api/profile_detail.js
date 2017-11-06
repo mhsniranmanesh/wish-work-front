@@ -8,6 +8,11 @@ const profileInfo =
     id: "1",
     first_name: "امیر",
     last_name: "شیرانی",
+    title:'مترجم خوب',
+    bio: "I don't think limits",
+    job: "none of your business",
+    degree: "کارشناسی",
+    university:"دانشگاه صنعتی شریف"
   }
 
 function replaceAll(str, find, replace) {

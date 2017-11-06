@@ -1,4 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as profileInfo from '../../actions/profileInfo.js';
+
 
 class Profileinfo extends React.Component{
   render(){
@@ -18,10 +23,10 @@ class Profileinfo extends React.Component{
                                 <i className="fa fa-camera"></i>
                             </a>
                             <div className="media-body">
-                                <label for="" className="col-form-label">
+                                <label htmlFor="" className="col-form-label">
                                     برای تغییر عکس پروفایل، روی عکس خود کلیک کنید.
                                 </label>
-                                <label for="" className="col-form-label sub-label">
+                                <label htmlFor="" className="col-form-label sub-label">
                                     <i className="fa fa-quote-left" aria-hidden="true"></i> فریلنسر هایی که برای خود عکسی با ظاهری دوستانه و حرفه ای انتخاب می کنند، تا 5 برابر شانس بیشتری برای پروژه انجام دادن دارند.
                                 </label>
                             </div>
@@ -36,34 +41,34 @@ class Profileinfo extends React.Component{
                     <div className="dash-divider"></div>
                     <form className="">
                         <div id="" className="form-group">
-                            <label for="" className="col-form-label">
+                            <label htmlFor="" className="col-form-label">
                                 برای تغییر هر مورد روی آن کلیک کنید.
                             </label>
-                            <label for="" className="col-form-label">
+                            <label htmlFor="" className="col-form-label">
                                 عنوان حرفه ای کوتاه.
                             </label>
-                            <input type="text" className="form-control form-control-danger" id="" value="مترجم رسمی فارسی به انگلیسی" readOnly></input>
+                            <input type="text" className="form-control form-control-danger" id="" value="مترجم رسمی فارسی به انگلیسی" readOnly/>
                         </div>
                         <div className="input-group">
-                            <label for="" className="col-form-label">
+                            <label htmlFor="" className="col-form-label">
                                 توضیح کامل در مورد من.
                             </label>
-                            <textarea type="text" className="form-control" id="" placeholder="" readOnly>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
-                            </textarea>
+                            <input type="text" className="form-control" id="" value={this.props.profileInfo.bio}readOnly/>
+
                         </div>
                         <div className="input-group">
-                            <label for="" className="col-form-label">
+                            <label htmlFor="" className="col-form-label">
                                 شغل.
                             </label>
-                            <input type="text" className="form-control" id="" value="برنامه نویس وب" readOnly></input>
-                            <label for="" className="col-form-label">
+                            <input type="text" className="form-control" id="" value={this.props.profileInfo.job} readOnly/>
+                            <label htmlFor="" className="col-form-label">
                                 مدرک تحصیلی.
                             </label>
-                            <input type="text" className="form-control" id="" value="مهندسی کامپیوتر" readOnly></input>
-                            <label for="" className="col-form-label">
+                            <input type="text" className="form-control" id="" value={this.props.profileInfo.degree} readOnly/>
+                            <label htmlFor="" className="col-form-label">
                                 دانشگاه.
                             </label>
-                            <input type="text" className="form-control" id="" value="دانشگاه ایالتی میشیگان" readOnly></input>
+                            <input type="text" className="form-control" id="" value={this.props.profileInfo.university} readOnly/>
                         </div>
                         <button type="submit" className="btn btn-primary btn-rec">
                             <i className="fa fa-check"></i>ثبت تغییرات
@@ -75,7 +80,7 @@ class Profileinfo extends React.Component{
                     <div className="dash-divider"></div>
                     <form className="">
                         <div className="input-group">
-                            <label for="skillType" className="col-form-label">
+                            <label htmlFor="skillType" className="col-form-label">
                                 در چه رشته هایی از ترجمه تخصص دارید؟
                             </label>
                             <select className="selectpicker" data-style="form-control" id="skillType" multiple data-max-options="4" title="پزشکی، ادبی، سیاسی">
@@ -87,7 +92,7 @@ class Profileinfo extends React.Component{
                             </select>
                         </div>
                         <div className="input-group">
-                            <label for="skillLangs" className="col-form-label">
+                            <label htmlFor="skillLangs" className="col-form-label">
                                 توانایی ترجمه ی چه زبان هایی را دارید؟
                             </label>
                             <div className="row">
@@ -117,7 +122,7 @@ class Profileinfo extends React.Component{
                                     <i className="fa fa-plus"></i>افزودن
                                 </button>
                             </div>
-                            <label for="" className="col-form-label sub-label">
+                            <label htmlFor="" className="col-form-label sub-label">
                                 <i className="fa fa-quote-left" aria-hidden="true"></i> برای حذف موارد انتخاب شده روی آن ها کلیک کنید.
                             </label>
                             <div className="sub-heading" >
@@ -162,4 +167,22 @@ class Profileinfo extends React.Component{
   );
   }
 }
-module.exports = Profileinfo;
+
+
+Profileinfo.PropTypes = {
+    profileInfo: PropTypes.array.isRequired,
+    actions : PropTypes.object.isRequired
+};
+
+function mapStateToProps(state , ownProps){
+    return{
+        profileInfo : state.profileInfo,
+    };
+}
+function mapDispatchToProps(dispatch){
+    return{
+        actions : bindActionCreators(profileInfo  , dispatch)
+    }
+}
+
+export default connect(mapStateToProps , mapDispatchToProps)(Profileinfo);

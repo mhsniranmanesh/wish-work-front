@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import * as profileInfo from '../../actions/profileInfo.js';
 import {bindActionCreators} from 'redux';
+import * as recomendedProject from '../../actions/recomendedProjectForFreelancer.js';
 
 class Dashboard extends React.Component{
   constructor(props , context){
@@ -11,9 +12,11 @@ class Dashboard extends React.Component{
   profileRow(profileInfo , index){
     return <div key={index}>{profileInfo.first_name +' '+ profileInfo.last_name}</div>;
   }
+
   render(){
     return(
       <div>
+
       <div className="content-wrapper py-3">
       <div className="container-fluid">
           <div className="row">
@@ -105,19 +108,15 @@ class Dashboard extends React.Component{
                       <div className="dash-divider"></div>
                       <div className="dash-recom-item price-good">
                           <a href="#">
-                              <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
+                              <h6><strong>{this.props.recomendedProject.title}</strong></h6>
                           </a>
                           <span className="sub-heading">
-                            <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                            <a className="tag" href="#">#علمی</a>
-                            <a className="tag" href="#">#زیست_شناسی</a>
-                            <a className="tag" href="#">#میکرو_بیولوژی</a>
-                            <a className="tag" href="#">#فوری</a>
+                            <a className="tag" href="#">{this.props.recomendedProject.tags}</a>
                           </span>
                           <div className="sub-heading">
                               <i className="fa fa-user"></i> <a href="#">4/5</a>
-                              <i className="fa fa-usd"></i> 2,000,000 تومان
-                              <i className="fa fa-clock-o"></i> دو ساعت قبل
+                              <i className="fa fa-usd"></i> {this.props.recomendedProject.price}
+                              <i className="fa fa-clock-o"></i> {this.props.recomendedProject.releaseTime}
                           </div>
                       </div>
                       <div className="dash-divider"></div>
@@ -171,18 +170,20 @@ class Dashboard extends React.Component{
   }
 }
 Dashboard.PropTypes = {
-  profileInfo: PropTypes.array.isRequired,
-  actions : PropTypes.object.isRequired
+    profileInfo: PropTypes.array.isRequired,
+    recomendedProject: PropTypes.array.isRequired,
+    actions : PropTypes.object.isRequired
 };
 
 function mapStateToProps(state , ownProps){
   return{
-    profileInfo : state.profileInfo
+        profileInfo : state.profileInfo,
+        recomendedProject : state.recomendedProject
   };
 }
 function mapDispatchToProps(dispatch){
   return{
-  actions : bindActionCreators(profileInfo , dispatch)
+  actions : bindActionCreators(profileInfo , recomendedProject , dispatch)
   }
 }
 

@@ -1,7 +1,37 @@
 import React from 'react';
 
-//import just css for this part!!!!!!!!!!!!!! its realy good !
+
+
 class Projectsubmition extends React.Component{
+    constructor(props , context){
+        super(props);
+
+        this.state={ projectTitle:"" , projectDescription:"", submitProjectPrice:"" , submitProjectTime:"" , requiredTags:[]};
+
+        this.projectTitleState = this.projectTitleState.bind(this);
+        this.projectDescriptionState = this.projectDescriptionState.bind(this);
+        this.submitProjectTimeState = this.submitProjectTimeState.bind(this);
+        this.submitProjectPriceState = this.submitProjectPriceState.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
+    }
+    projectDescriptionState(event){
+        this.setState({projectDescription: event.target.value})
+    }
+    submitProjectTimeState(event){
+        this.setState({submitProjectTime: event.target.value})
+        console.log('state:' ,this.state);
+    }
+    submitProjectPriceState(event){
+        this.setState({submitProjectPrice: event.target.value})
+    }
+    projectTitleState(event){
+        this.setState({projectTitle: event.target.value})
+    }
+    handleSubmit(event){
+        alert("A project was submitted:" + this.state.projectTitle);
+    }
+
   render(){
     return(
       <div>
@@ -12,9 +42,9 @@ class Projectsubmition extends React.Component{
                   <div className="dash-con dash-new-project con-body mb-4">
                       <h5>ایجاد پروژه جدید</h5>
                       <div className="dash-divider"></div>
-                      <form className="">
+                      <form className="" onSubmit={this.handleSubmit}>
                         <div className="form-group">
-                          <input type="text" className="form-control" id="" placeholder="عنوان پروژه"></input>
+                          <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.projectTitle} onChange={this.projectTitleState}/>
                         </div>
                         <div className="input-group">
                             <select className="selectpicker" data-style="form-control" id="" title="زمینه ترجمه را انتخاب کنید.">
@@ -50,10 +80,10 @@ class Projectsubmition extends React.Component{
                           </div>
                         </div>
                         <div className="form-group">
-                          <textarea type="text" className="form-control" id="" placeholder="توضیحاتی را در مورد پروژه بنویسید."></textarea>
+                          <textarea type="text" className="form-control" id="" placeholder="توضیحاتی را در مورد پروژه بنویسید." value={this.state.projectDescription} onChange={this.projectDescriptionState}/>
                         </div>
                         <div className="form-group">
-                          <input type="text" className="form-control" id="" placeholder="مهارت های لازم فریلنسر."></input>
+                          <input type="text" className="form-control" id="" placeholder="مهارت های لازم فریلنسر." />
                           <button type="submit" className="btn btn-success btn-rec">
                             <i className="fa fa-plus"></i>افزودن مهارت
                           </button>
@@ -75,10 +105,10 @@ class Projectsubmition extends React.Component{
               </div>
 
                         <div className="form-group">
-                          <label for="" className="col-form-label">
+                          <label htmlFor="" className="col-form-label">
                               بودجه ی خود را مشخص کنید.
                           </label>
-                          <input type="text" className="form-control" id="priceInput"></input>
+                          <input type="text" className="form-control" id="priceInput" value={this.state.submitProjectPrice} onChange={this.submitProjectPriceState}/>
                           <div id="price-range"></div>
                           <span className="price-msg">
                               <i className="fa fa-exclamation-triangle" aria-hidden="true"></i>
@@ -86,17 +116,17 @@ class Projectsubmition extends React.Component{
                           </span>
                         </div>
                         <div className="form-group">
-                          <label for="" className="col-form-label">
+                          <label htmlFor="" className="col-form-label">
                               زمان دلخواه خود را مشخص کنید.
                           </label>
-                          <input type="text" className="form-control" id="timeInput"></input>
+                          <input type="text" className="form-control" id="timeInput" value={this.state.submitProjectTime} onChange={this.submitProjectTimeState}/>
                           <div id="time-range"></div>
                           <span className="time-msg">
                               <i className="fa fa-exclamation-triangle" aria-hidden="true"></i>
                               آبی: مقدار زمان طلب شده به نسبت اندازه ی پروژه مطلوب می باشد!
                           </span>
                         </div>
-                        <button type="submit" className="btn btn-primary btn-rec">
+                        <button type="submit" className="btn btn-primary btn-rec" >
                           ایجاد پروژه
                         </button>
                       </form>

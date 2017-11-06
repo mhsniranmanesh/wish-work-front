@@ -5,9 +5,11 @@ import delay from './delay';
 // All calls return promises.
 const recomendedProject =
   {
-    id: "1",
-    title: "ترجمه ی کس شر در حوزه ی بایو ",
-    tags: "#فوری",
+      id: "1",
+      title: "ترجمه ی کس شر در حوزه ی بایو ",
+      tags: "#فوری",
+      price: '...۲۲۳ تومان',
+      releaseTime: '2hoursAgo'
   }
 
 function replaceAll(str, find, replace) {
@@ -19,16 +21,19 @@ const generateId = (recomendedProject) => {
   return replaceAll(recomendedProject.title, ' ', '-');
 };
 
-class recomendedProjectApi {
-  static getAllInfo() {
-    return new Promise((resolve, reject) => {
-        resolve(Object.assign([], profileInfo));
-    });
-  }
 
-  static saveCourse(profileInfo) {
+class recomendedProjectApi {
+    static getAllInfo() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(Object.assign([], recomendedProject));
+            }, delay);
+        });
+     }
+
+  static saveCourse(recomendedProject) {
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
+      setTimeout( () => {
         // Simulate server-side validation
         const minCourseTitleLength = 1;
         if (recomendedProject.title.length < minCourseTitleLength) {

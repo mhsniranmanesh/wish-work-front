@@ -1,8 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
 
 class Notifspage extends React.Component{
-  render(){
+
+
+    render(){
     return(
       <div className="content-wrapper py-3">
       <div className="container-fluid">

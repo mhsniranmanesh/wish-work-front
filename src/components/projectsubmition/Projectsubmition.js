@@ -1,4 +1,7 @@
 import React from 'react';
+import {PropTypes} from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 
 
@@ -29,7 +32,8 @@ class Projectsubmition extends React.Component{
         this.setState({projectTitle: event.target.value})
     }
     handleSubmit(event){
-        alert("A project was submitted:" + this.state.projectTitle);
+        event.preventDefault();
+        this.context.router.history.push('/');
     }
 
   render(){
@@ -41,7 +45,7 @@ class Projectsubmition extends React.Component{
               <div className="col-sm-6 d-block mx-auto">
                   <div className="dash-con dash-new-project con-body mb-4">
                       <h5>ایجاد پروژه جدید</h5>
-                      <div className="dash-divider"></div>
+                      <div className="dash-divider"/>
                       <form className="" onSubmit={this.handleSubmit}>
                         <div className="form-group">
                           <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.projectTitle} onChange={this.projectTitleState}/>
@@ -139,4 +143,8 @@ class Projectsubmition extends React.Component{
     );
 }
 }
-module.exports = Projectsubmition;
+Projectsubmition.contextTypes = {
+    router: PropTypes.object.isRequired
+};
+
+export default (Projectsubmition);

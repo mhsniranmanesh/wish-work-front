@@ -11,6 +11,7 @@ import 'jquery/dist/jquery.min.js';
 import configureStore from './store/configureStore.js';
 import {profileInfo} from './actions/profileInfo.js';
 import {recomendedProject} from './actions/recomendedProjectForFreelancer';
+import {Notifications} from "./actions/Notifications";
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import './styles/wish.css';
@@ -22,6 +23,8 @@ import App from './components/App.js';
 const store = configureStore();
 store.dispatch(profileInfo());
 store.dispatch(recomendedProject());
+//store.dispatch(Notifications());
+
 
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');

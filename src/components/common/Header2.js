@@ -45,7 +45,7 @@ const Header2 = (props) => {
       </li>
       <li className="nav-item" data-toggle="tooltip" data-placement="right" title="پروفایل">
         <a className="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#profileComponents">
-          <i className="fa fa-fw fa-user"></i>
+          <i className="fa fa-fw fa-user"/>
           <span className="nav-link-text">پروفایل</span>
         </a>
         <ul className="sidenav-second-level collapse" id="profileComponents">

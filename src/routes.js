@@ -9,7 +9,7 @@ import CashOutIn from './components/cashout-in/cashout-in.js';
 import financialManagement from './components/financialmanagement/financialManagement.js';
 import accountBill from './components/accountbill/accountBill.js';
 import controlProject from './components/controlproject/controlProject.js';
-import logoPic from './img/nav-logo.png';
+import logoPic from '../static/img/nav-logo.png';
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
 // and /schedule routes will match any pathname that starts

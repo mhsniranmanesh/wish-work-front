@@ -2,8 +2,6 @@ import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import {Provider} from 'react-redux';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap-rtl/dist/css/bootstrap-rtl.min.css';
 import "../static/css/bootstrap.min.css"
 import "../static/css/bootstrap-rtl.min.css";
 import "../static/css/fontiran.css"

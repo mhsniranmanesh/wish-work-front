@@ -48,7 +48,7 @@ class Projectsubmition extends React.Component{
         // this.context.router.history.push('/')
         //}
         //else if(this.state.response === "sth"){
-        //
+        //error show
         this.context.router.history.push('/');
     }
 

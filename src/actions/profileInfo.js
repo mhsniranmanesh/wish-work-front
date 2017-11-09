@@ -1,9 +1,12 @@
 import profileInfoApi from '../api/profile_detail.js';
 import * as types from './actionTypes.js';
+import axios from 'axios';
 
 export function loadProfileInfoSuccess(profileInfo){
   return{type: types.LOAD_INFO_SUCCESS , profileInfo}
 }
+
+
 
 export function profileInfo(){
   return function(dispatch){
@@ -14,3 +17,20 @@ export function profileInfo(){
     });
   };
 }
+
+
+export function changeBioProfileInfo() {
+    return function (dispatch) {
+        
+    }
+}
+
+// export function ProfileInfo(){
+//   return function(dispatch){
+//     return profileInfoApi().axios.get('/api/v1/profiles/get-pub-infos/').then(profileInfo =>{
+//       dispatch(loadProfileInfoSuccess(profileInfo));
+//     }).catch(error =>{
+//       throw (error);
+//     });
+//   };
+// }

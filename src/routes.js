@@ -8,7 +8,7 @@ import Notifspage from './components/notifspage/Notifspage.js';
 import CashOutIn from './components/cashout-in/cashout-in.js';
 import financialManagement from './components/financialmanagement/financialManagement.js';
 import accountBill from './components/accountbill/accountBill.js';
-import controlProject from './components/controlproject/controlProject.js';
+import ProjectControl from './components/projectcontrol/projectcontrol.js';
 import logoPic from '../static/img/nav-logo.png';
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster

@@ -2,20 +2,19 @@ import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import {Provider} from 'react-redux';
-import 'bootstrap-rtl/dist/css/bootstrap-rtl.min.css';
+import "../static/css/bootstrap.min.css"
+import "../static/css/bootstrap-rtl.min.css";
+import "../static/css/fontiran.css"
 import "react-bootstrap-select";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/font-awesome/css/font-awesome.min.css';
-import './styles/bootstrap-rtl.min.css';
-import 'jquery/dist/jquery.min.js';
+import "font-awesome/css/font-awesome.min.css";
 import configureStore from './store/configureStore.js';
 import {profileInfo} from './actions/profileInfo.js';
 import {recomendedProject} from './actions/recomendedProjectForFreelancer';
 import {Notifications} from "./actions/Notifications";
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
-import './styles/wish.css';
-import './styles/wish-dash.css';
+import '../static/css/wish.css';
+import '../static/css/wish-dash.css';
 import { BrowserRouter } from 'react-router-dom';
 import App from './components/App.js';
 

@@ -1,10 +1,6 @@
 import React from 'react';
 
 
-
-
-
-
 class Recomendedprojects extends React.Component{
   render(){
     return(

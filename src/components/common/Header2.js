@@ -9,7 +9,7 @@ const Header2 = (props) => {
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
           <div className="container">
             <a className="navbar-brand" href="#">
-              <img src={require('../../img/nav-logo.png')} height="30" className="d-inline-block align-top" alt="nav-logo"/>
+              <img src={require('../../../static/img/nav-logo.png')} height="30" className="d-inline-block align-top" alt="nav-logo"/>
               Wish-Work
             </a>
             <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +45,7 @@ const Header2 = (props) => {
       </li>
       <li className="nav-item" data-toggle="tooltip" data-placement="right" title="پروفایل">
         <a className="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#profileComponents">
-          <i className="fa fa-fw fa-user"></i>
+          <i className="fa fa-fw fa-user"/>
           <span className="nav-link-text">پروفایل</span>
         </a>
         <ul className="sidenav-second-level collapse" id="profileComponents">

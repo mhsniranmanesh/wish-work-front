@@ -4,14 +4,21 @@ import {connect} from 'react-redux';
 import * as profileInfo from '../../actions/profileInfo.js';
 import {bindActionCreators} from 'redux';
 import * as recomendedProject from '../../actions/recomendedProjectForFreelancer.js';
+import DashboardProjectSubmission from "./DashboardProjectSubmisson";
 
 class Dashboard extends React.Component{
   constructor(props , context){
     super(props , context);
+
+    this.submitProject = this.submitProject.bind(this);
   }
-  profileRow(profileInfo , index){
-    return <div key={index}>{profileInfo.first_name +' '+ profileInfo.last_name}</div>;
-  }
+  // profileRow(profileInfo , index){
+  //   return <div key={index}>{profileInfo.first_name +' '+ profileInfo.last_name}</div>;
+  // }
+    submitProject(event){
+        event.preventDefault();
+        this.context.router.history.push('/projectsubmition');
+    }
 
   render(){
     return(
@@ -24,59 +31,19 @@ class Dashboard extends React.Component{
                   <div className="dash-con dash-profile mb-4">
                       <div className="row">
                           <div className="mx-auto">
-                              <img src="http://via.placeholder.com/125x125" className="rounded-circle"></img>
+                              <img src="http://via.placeholder.com/125x125" className="rounded-circle"/>
                               <h5> {this.props.profileInfo.first_name + ' ' + this.props.profileInfo.last_name} </h5>
                               <h6 className="dash-profile-stars">
-                            <i className="fa fa-star shine-on"></i>
-                            <i className="fa fa-star shine-on"></i>
-                            <i className="fa fa-star shine-on"></i>
-                            <i className="fa fa-star-o shine-on"></i>
-                            <i className="fa fa-star-o shine-on"></i>
+                            <i className="fa fa-star shine-on"/>
+                            <i className="fa fa-star shine-on"/>
+                            <i className="fa fa-star shine-on"/>
+                            <i className="fa fa-star-o shine-on"/>
+                            <i className="fa fa-star-o shine-on"/>
                           </h6>
                           </div>
                       </div>
                   </div>
-                  <div className="dash-con dash-new-project con-body mb-4">
-                      <h5>ایجاد پروژه جدید</h5>
-                      <div className="dash-divider"></div>
-                      <form className="">
-                          <div className="form-group">
-                              <input type="text" className="form-control" id="" placeholder="عنوان پروژه"></input>
-                          </div>
-                          <div className="input-group">
-                              <select className="selectpicker" data-style="form-control" id="" title="زمینه ترجمه را انتخاب کنید.">
-                                  <option>پزشکی</option>
-                                  <option>ادبی</option>
-                                  <option>سیاسی</option>
-                                  <option>ریاضی</option>
-                                  <option>شیمی</option>
-                              </select>
-                          </div>
-                          <div className="input-group">
-                              <select className="selectpicker" data-style="form-control" id="" title="از زبان ...">
-                                  <option>فارسی</option>
-                                  <option>انگلیسی</option>
-                                  <option>فرانسوی</option>
-                                  <option>عربی</option>
-                                  <option>اسپانیایی</option>
-                              </select>
-                          </div>
-                          <div className="input-group">
-                              <select className="selectpicker" data-style="form-control" id="" title="به زبان ...">
-                                  <option>فارسی</option>
-                                  <option>انگلیسی</option>
-                                  <option>فرانسوی</option>
-                                  <option>عربی</option>
-                                  <option>اسپانیایی</option>
-                              </select>
-                          </div>
-                      </form>
-                      <form action="dashboard-project-new.html">
-                          <button type="submit" className="btn btn-primary btn-rec">
-                              ایجاد پروژه
-                          </button>
-                      </form>
-                  </div>
+                 <DashboardProjectSubmission myFunc={this.submitProject}/>
               </div>
               <div className="col-sm-7">
                   <div className="dash-con con-body dash-notif mb-4">
@@ -157,7 +124,7 @@ class Dashboard extends React.Component{
                       </div>
                       <form action="dashboard-project-recoms.html">
                           <button type="submit" className="btn btn-primary btn-rec">
-                              <i className="fa fa-angle-right" aria-hidden="true"></i> بیشتر
+                              <i className="fa fa-angle-right" aria-hidden="true"/> بیشتر
                           </button>
                       </form>
                   </div>
@@ -169,6 +136,11 @@ class Dashboard extends React.Component{
     );
   }
 }
+
+Dashboard.contextTypes = {
+    router: PropTypes.object.isRequired
+};
+
 Dashboard.PropTypes = {
     profileInfo: PropTypes.array.isRequired,
     recomendedProject: PropTypes.array.isRequired,

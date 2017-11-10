@@ -1,17 +1,6 @@
 import React from 'react';
 
 class ProjectControl extends React.Component{
-  // const MyWebkit = {
-  //   -web-kitTransform: rotate(-90deg),
-  //   -moz-transform: rotate(-90deg),
-  // };
-  // function Webkit(){
-  //   return (
-  //     <div className="timeline-icon" style={MyWebkit}>
-  //         <i className="entypo-flight"></i>
-  //     </div>
-  //   )
-  // }
   render(){
     return(
       <div className="content-wrapper py-3">

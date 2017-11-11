@@ -36,7 +36,7 @@ const Header2 = (props) => {
             <NavLink to="/recomendedprojects">دریافت پروژه</NavLink>
           </li>
           <li>
-            <a to="/">کنترل پروژه</a>
+            <NavLink to="/projectcontrol">کنترل پروژه</NavLink>
           </li>
           <li>
             <a href="#">پروژه های سابق</a>

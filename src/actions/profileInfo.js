@@ -18,19 +18,29 @@ export function profileInfo(){
   };
 }
 
-
-export function changeBioProfileInfo() {
-    return function (dispatch) {
-        
-    }
+export function loadNewInfosSuccess(newInfos){
+    return{type: types.LOAD_NEW_INFOS_SUCCESS , newInfos}
 }
 
 // export function ProfileInfo(){
 //   return function(dispatch){
-//     return profileInfoApi().axios.get('/api/v1/profiles/get-pub-infos/').then(profileInfo =>{
+//     return axios.get('/api/v1/profiles/get-pub-infos/').then(profileInfo =>{
 //       dispatch(loadProfileInfoSuccess(profileInfo));
 //     }).catch(error =>{
 //       throw (error);
 //     });
 //   };
 // }
+//
+// export function updateInformations(newInfos){
+//     return function (dispatch) {
+//         return axios.post('/apiv1/profiles/lublublub').then(newInfos =>{
+//         dispatch(loadNewInfosSuccess(newInfos));
+//         }).catch(error => {
+//             throw (error);
+//         })
+//     }
+// }
+
+//TODO for profile information , change it in store (I don't know how!) and also axios to server
+//TODO localStorage for get token and return username of user for axios

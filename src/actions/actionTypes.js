@@ -8,4 +8,4 @@ export const LOAD_NOTIF_SUCCESS = 'LOAD_NOTIF_SUCCESS';
 //for submition of project
 export const SUBMIT_PROJECT_SUCCESS = 'SUBMIT_PROJECT_SUCCESS';
 //for change and submit new information
-export const LOAD_NEW_INFOS_SUCCESS = 'LOAD_NEW_INFOS_SUCCESS';
+export const UPDATE_NEW_INFOS_SUCCESS = 'UPDATE_NEW_INFOS_SUCCESS';

@@ -3,13 +3,20 @@ import delay from './delay';
 // This file mocks a web API by working with the hard-coded data below.
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises.
-const Notifications =
+const Notifications =[
     {
         id: "1",
         Title: "پیام",
-        Description: "امیرحسین دوست داریم",
+        descriptionFor: "امیرحسین دوست داریم",
         ReleaseTime:'۱۲:۰۰',
-    };
+    },
+    {
+        id: '2',
+        Title: 'پیام' ,
+        descriptionFor:'سلام عزیزم!',
+        ReleaseTime:'۱:۰۰'
+    }
+]
 
 function replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);
@@ -17,7 +24,7 @@ function replaceAll(str, find, replace) {
 
 //This would be performed on the server in a real app. Just stubbing in.
 const generateId = (Notifications) => {
-    return replaceAll(Notifications.first_name, ' ', '-');
+    return replaceAll(Notifications.id, ' ', '-');
 };
 
 class NotificationsApi {

@@ -19,7 +19,7 @@ export function profileInfo(){
 }
 
 export function loadNewInfosSuccess(newInfos){
-    return{type: types.LOAD_NEW_INFOS_SUCCESS , newInfos}
+    return{type: types.UPDATE_NEW_INFOS_SUCCESS , newInfos}
 }
 
 // export function ProfileInfo(){

@@ -120,7 +120,7 @@ const Header2 = (props) => {
                 </li>
                 <li id="tool" className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="http://example.com" id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img className="rounded-circle" src="http://via.placeholder.com/50x50" width="30" height="30"></img>
+                    <img className="rounded-circle" src="http://via.placeholder.com/50x50" width="30" height="30"/>
                       {props.yourName}
                   </a>
                   <div id="profile" className="dropdown-menu" aria-labelledby="navbarUserDropdown">
@@ -136,6 +136,6 @@ const Header2 = (props) => {
 };
 Header2.PropTypes = {
   yourName : PropTypes.object.isRequired
-}
+};
 
 export default Header2;

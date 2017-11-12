@@ -5,9 +5,11 @@ export default function profileInfo(state= initialState.profileInfo , action){
   switch (action.type) {
     case types.LOAD_INFO_SUCCESS:
         return action.profileInfo;
-      // case types.LOAD_NEW_INFOS_SUCCESS:
+        //it update profileInfo to new information
+      // case types.UPDATE_NEW_INFOS_SUCCESS:
       //     return [...state , Object.assign({}, action.newInfos)];
     default:
         return state;
   }
 }
+

@@ -3,6 +3,7 @@ import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as projectSubmit from '../../actions/projectSubmit.js';
+import {Button , Modal , ModalHeader , ModalBody , ModalFooter} from 'reactstrap';
 // import Error Component for showing ;)
 
 
@@ -19,6 +20,7 @@ class Projectsubmition extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.translationFatherTagState = this.translationFatherTagState.bind(this);
     }
+
     translationFatherTagState(event){
         this.setState({translationFatherTag: event.target.value});
     }
@@ -152,6 +154,7 @@ class Projectsubmition extends React.Component{
                         </button>
                           {/*error show */}
                           {/*{this.state.response ? <Error/> : (null || true)}*/}
+
                       </form>
                   </div>
               </div>

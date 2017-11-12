@@ -540,6 +540,63 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     }
 }
 
+@media(min-width:768px) {
+    .modal-submission {
+      margin-top: 20vh;
+    }
+    .modal-item {
+        display: inline-block;
+        min-height: 20vh;
+        width: 100%;
+    }
+    .prices {
+        float: right;
+        display: inline-block;
+        min-height: 20vh;
+        margin-left: 10px;
+    }
+    svg {
+        width: 5px;
+        height: 8vh;
+    }
+}
+
+@media(min-width:426px) {
+    .modal-item {
+        display: inline-block;
+        min-height: 10vh;
+        width: 100%;
+    }
+    .prices {
+        float: right;
+        display: inline-block;
+        min-height: 10vh;
+        margin-left: 10px;
+    }
+    svg {
+        width: 5px;
+        height: 5vh;
+    }
+}
+
+@media(max-width:425px) {
+    .modal-item {
+        display: inline-block;
+        min-height: 20vh;
+        width: 100%;
+    }
+    .prices {
+        float: right;
+        display: inline-block;
+        min-height: 20vh;
+        margin-left: 10px;
+    }
+    svg {
+        width: 5px;
+        height: 8vh;
+    }
+}
+
 .content {
     vertical-align: middle;
     /*text-align: center;*/
@@ -1134,4 +1191,3 @@ img {
     color: #fff;
     font-weight: 400;
 }
->>>>>>> 36aa38dbc28cc7c6310cc0fef75b0fa140ff0a4f

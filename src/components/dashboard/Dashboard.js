@@ -48,31 +48,31 @@ class Dashboard extends React.Component{
               <div className="col-sm-7">
                   <div className="dash-con con-body dash-notif mb-4">
                       <h5>اطلاعیه های جدید</h5>
-                      <div className="dash-divider"></div>
+                      <div className="dash-divider"/>
                       <a className="notif" href="#">
                           <span className="notif-cat notif-project">پروژه</span>
                           <div className="notif-txt">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی". چهار روز دیگر تا اتمام مهلت ارسال پروژه.</div>
                           <span className="text-muted">12:12</span>
                       </a>
-                      <div className="dash-divider"></div>
+                      <div className="dash-divider"/>
                       <a className="notif" href="#">
                           <span className="notif-cat notif-msg">پیام</span>
                           <div className="notif-txt">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی". چهار روز دیگر تا اتمام مهلت ارسال پروژه.</div>
                           <span className="text-muted">12:12</span>
                       </a>
-                      <div className="dash-divider"></div>
+                      <div className="dash-divider"/>
                       <a className="notif" href="#">
                           <span className="notif-cat notif-project">پروژه</span>
                           <div className="notif-txt">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی". چهار روز دیگر تا اتمام مهلت ارسال پروژه.</div>
                           <span className="text-muted">12:12</span>
                       </a>
                       <button type="submit" className="btn btn-primary btn-rec">
-                        <i className="fa fa-angle-right" aria-hidden="true"></i> بیشتر
+                        <i className="fa fa-angle-right" aria-hidden="true"/> بیشتر
                       </button>
                   </div>
                   <div className="dash-con dash-recoms mb-4">
                       <h5>پروژه های پیشنهادی</h5>
-                      <div className="dash-divider"></div>
+                      <div className="dash-divider"/>
                       <div className="dash-recom-item price-good">
                           <a href="#">
                               <h6><strong>{this.props.recomendedProject.title}</strong></h6>
@@ -81,12 +81,12 @@ class Dashboard extends React.Component{
                             <a className="tag" href="#">{this.props.recomendedProject.tags}</a>
                           </span>
                           <div className="sub-heading">
-                              <i className="fa fa-user"></i> <a href="#">4/5</a>
-                              <i className="fa fa-usd"></i> {this.props.recomendedProject.price}
-                              <i className="fa fa-clock-o"></i> {this.props.recomendedProject.releaseTime}
+                              <i className="fa fa-user"/> <a href="#">4/5</a>
+                              <i className="fa fa-usd"/> {this.props.recomendedProject.price}
+                              <i className="fa fa-clock-o"/> {this.props.recomendedProject.releaseTime}
                           </div>
                       </div>
-                      <div className="dash-divider"></div>
+                      <div className="dash-divider"/>
                       <div className="dash-recom-item price-fair">
                           <a href="#">
                               <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
@@ -99,12 +99,12 @@ class Dashboard extends React.Component{
                             <a className="tag" href="#">#فوری</a>
                           </span>
                           <div className="sub-heading">
-                              <i className="fa fa-user"></i> <a href="#">4/5</a>
-                              <i className="fa fa-usd"></i> 2,000,000 تومان
-                              <i className="fa fa-clock-o"></i> دو ساعت قبل
+                              <i className="fa fa-user"/> <a href="#">4/5</a>
+                              <i className="fa fa-usd"/> 2,000,000 تومان
+                              <i className="fa fa-clock-o"/> دو ساعت قبل
                           </div>
                       </div>
-                      <div className="dash-divider"></div>
+                      <div className="dash-divider"/>
                       <div className="dash-recom-item price-low">
                           <a href="#">
                               <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
@@ -117,9 +117,9 @@ class Dashboard extends React.Component{
                             <a className="tag" href="#">#فوری</a>
                           </span>
                           <div className="sub-heading">
-                              <i className="fa fa-user"></i> <a href="#">4/5</a>
-                              <i className="fa fa-usd"></i> 2,000,000 تومان
-                              <i className="fa fa-clock-o"></i> دو ساعت قبل
+                              <i className="fa fa-user"/> <a href="#">4/5</a>
+                              <i className="fa fa-usd"/> 2,000,000 تومان
+                              <i className="fa fa-clock-o"/> دو ساعت قبل
                           </div>
                       </div>
                       <form action="dashboard-project-recoms.html">

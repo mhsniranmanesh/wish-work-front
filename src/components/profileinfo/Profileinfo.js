@@ -8,20 +8,55 @@ import * as profileInfo from '../../actions/profileInfo.js';
 class Profileinfo extends React.Component{
     constructor(props){
         super(props);
-        this.state = { bioReadOnly : true};
+        this.state = { bioReadOnly : true , jobReadOnly : true , degreeReadOnly : true, universityReadOnly : true ,
+                       bio: "" , job:"" , degree:"", university:""};
+        this.state.bio = this.props.profileInfo.bio;
+        this.state.job = this.props.profileInfo.job;
+        this.state.degree = this.props.profileInfo.degree;
+        this.state.university = this.props.profileInfo.university;
         this.changeBioInput = this.changeBioInput.bind(this);
-        this.changeBioServer = this.changeBioServer.bind(this);
+        this.changeJobInput = this.changeJobInput.bind(this);
+        this.changeDegreeInput = this.changeDegreeInput.bind(this);
+        this.changeUniversityInput = this.changeUniversityInput.bind(this);
+
+        this.changeBioOnChange = this.changeBioOnChange.bind(this);
+        this.changeJobOnChange = this.changeJobOnChange.bind(this);
+        this.changeDegreeOnChange = this.changeDegreeOnChange.bind(this);
+        this.changeUniversityOnChange = this.changeUniversityOnChange.bind(this);
+
         this.submitChanges = this.submitChanges.bind(this);
     }
     changeBioInput(){
         this.setState(prevState => ({bioReadOnly: !prevState.bioReadOnly}))
 
     };
-    changeBioServer(){
+    changeJobInput(){
+        this.setState(prevState => ({jobReadOnly: !prevState.jobReadOnly}))
+    }
+    changeDegreeInput(){
+        this.setState(prevState => ({degreeReadOnly : !prevState.degreeReadOnly}) )
+    }
+    changeUniversityInput(){
+        this.setState(prevState => ({universityReadOnly : !prevState.universityReadOnly}))
+    }
+    changeBioOnChange(event) {
+        this.setState({bio : event.target.value});
+    }
+    changeJobOnChange(event){
+        this.setState({job : event.target.value});
 
-    };
+    }
+    changeDegreeOnChange(event){
+        this.setState({degree : event.target.value});
+
+    }
+    changeUniversityOnChange(event){
+        this.setState({university : event.target.value});
+
+    }
     submitChanges(){
-
+        //action from redux
+        this.props.actions.updateInformations(this.state);
     }
   render(){
     return(
@@ -59,7 +94,7 @@ class Profileinfo extends React.Component{
                         <form className="">
                             <div id="" className="form-group">
                                 <label htmlFor="" className="col-form-label">
-                                    برای تغییر هر مورد روی آن کلیک کنید.
+                                    برای تغییر هر مورد روی آن دوبار کلیک کنید.
                                 </label>
                                 <label htmlFor="" className="col-form-label">
                                     عنوان حرفه ای کوتاه.
@@ -70,22 +105,22 @@ class Profileinfo extends React.Component{
                                 <label htmlFor="" className="col-form-label">
                                     توضیح کامل در مورد من.
                                 </label>
-                                <input type="text" className="form-control" id="" value={this.props.profileInfo.bio} onDoubleClick={this.changeBioInput} onChange={this.changeBioServer} readOnly={this.state.bioReadOnly}/>
+                                <input type="text" className="form-control" id="" value={this.state.bio} onDoubleClick={this.changeBioInput} onChange={this.changeBioOnChange} readOnly={this.state.bioReadOnly}/>
 
                             </div>
                             <div className="input-group">
                                 <label htmlFor="" className="col-form-label">
                                     شغل.
                                 </label>
-                                <input type="text" className="form-control" id="" value={this.props.profileInfo.job} readOnly/>
+                                <input type="text" className="form-control" id="" value={this.state.job} onDoubleClick={this.changeJobInput} onChange={this.changeJobOnChange} readOnly={this.state.jobReadOnly}/>
                                 <label htmlFor="" className="col-form-label">
                                     مدرک تحصیلی.
                                 </label>
-                                <input type="text" className="form-control" id="" value={this.props.profileInfo.degree} readOnly/>
+                                <input type="text" className="form-control" id="" value={this.state.degree} onDoubleClick={this.changeDegreeInput} onChange={this.changeDegreeOnChange} readOnly={this.state.degreeReadOnly}/>
                                 <label htmlFor="" className="col-form-label">
                                     دانشگاه.
                                 </label>
-                                <input type="text" className="form-control" id="" value={this.props.profileInfo.university} readOnly/>
+                                <input type="text" className="form-control" id="" value={this.state.university} onDoubleClick={this.changeUniversityInput} onChange={this.changeUniversityOnChange} readOnly={this.state.universityReadOnly}/>
                             </div>
                             <button type="submit" className="btn btn-primary btn-rec">
                                 <i className="fa fa-check" onClick={this.submitChanges}/>ثبت تغییرات
@@ -188,7 +223,9 @@ class Profileinfo extends React.Component{
 
 Profileinfo.PropTypes = {
     profileInfo: PropTypes.array.isRequired,
-    actions : PropTypes.object.isRequired
+    actions : PropTypes.object.isRequired,
+    //action for changing information :
+    //updateInformations : PropTypes.func.isRequired
 };
 
 function mapStateToProps(state , ownProps){

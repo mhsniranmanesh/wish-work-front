@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
+import notificationsTemplate from './notificationsTemplate';
 
 class Notifspage extends React.Component{
 
@@ -15,13 +15,13 @@ class Notifspage extends React.Component{
               <div className="col-sm-6 d-block mx-auto">
                   <div className="dash-con dash-profile-info con-body mb-4">
                       <h5>اطلاعیه ها</h5>
-                      <div className="dash-divider"></div>
+                      <div className="dash-divider"/>
                       <a className="notif" href="#">
-                          <span className="notif-cat notif-project">پروژه</span>
-                          <div className="notif-txt">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی". چهار روز دیگر تا اتمام مهلت ارسال پروژه.</div>
-                          <span className="text-muted">12:12</span>
+                          <span className="notif-cat notif-project">{this.props.Notifications.Title}</span>
+                          <div className="notif-txt">{this.props.Notifications.Description}</div>
+                          <span className="text-muted">{this.props.Notifications.ReleaseTime}</span>
                       </a>
-                      <div className="dash-divider"></div>
+                      <div className="dash-divider"/>
                       <a className="notif" href="#">
                           <span className="notif-cat notif-msg">پیام</span>
                           <div className="notif-txt">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی". چهار روز دیگر تا اتمام مهلت ارسال پروژه.</div>
@@ -119,4 +119,13 @@ class Notifspage extends React.Component{
   }
 }
 
-module.exports = Notifspage ;
+Notifspage.PropTypes ={
+  Notifications  : PropTypes.array.isRequired,
+};
+function mapStateToProps(state , ownProps) {
+    return{
+        Notifications : state.Notifications,
+    };
+}
+
+export default connect(mapStateToProps)(Notifspage) ;

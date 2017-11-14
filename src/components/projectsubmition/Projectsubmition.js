@@ -198,7 +198,7 @@ class Projectsubmition extends React.Component{
                                 </select> */}
                                 <Form>
                                     <Label for="toLanguage"></Label>
-                                    <Input type="select" placeHolder="به زبان ..." name="select" id="toLanguage">
+                                    <Input type="select" placeholder="به زبان ..." name="select" id="toLanguage">
                                       <option>به زبان ...</option>
                                       <option>فارسی</option>
                                       <option>انگلیسی</option>

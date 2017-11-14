@@ -63,6 +63,7 @@ class Projectsubmition extends React.Component{
     projectTitleState(event){
         this.setState({projectTitle: event.target.value});
     }
+
     handleSubmit(event){
         event.preventDefault();
             console.log('state is:' , this.state);
@@ -70,11 +71,11 @@ class Projectsubmition extends React.Component{
             this.setState({showError: true});
             this.setState({message:"لطفا عنوان پروژه ی خود را وارد کنید!"});
         }
-        else if(!this.state.translationFatherTag.length){
-            //farghesh ba this.state = hamun moghe avaz mikone!
-            this.setState({showError : true});
-            this.setState({message:"لطفا زمینه ی ترجمه ی خود را وارد کنید!"});
-        }
+        // else if(!this.state.translationFatherTag.length){
+        //     //farghesh ba this.state = hamun moghe avaz mikone!
+        //     this.setState({showError : true});
+        //     this.setState({message:"لطفا زمینه ی ترجمه ی خود را وارد کنید!"});
+        // }
         else if(!this.state.projectDescription.length){
             this.setState({showError: true});
             this.setState({message:"لطفا توضیحاتی در رابطه با پروژه ی خود ارائه دهید."});
@@ -87,6 +88,11 @@ class Projectsubmition extends React.Component{
             this.setState({showError: true});
             this.setState({message:"لطفا زبان مقصد خود را مشخص کنید"})
         }
+        else{
+          toggle();
+
+        }
+
         // else if(!this.state.translationTo.length){
         //     this.setState({showError: true});
         //     this
@@ -97,9 +103,6 @@ class Projectsubmition extends React.Component{
         //}
         //else if(this.state.response === "sth"){
         //error show
-        else {
-            this.context.router.history.push('/');
-        }
     }
 
   render(){
@@ -116,7 +119,7 @@ class Projectsubmition extends React.Component{
                       <h5>ایجاد پروژه جدید</h5>
                       <errorFatherTag/>
                       <div className="dash-divider"/>
-                      <form className="" onSubmit={this.handleSubmit}>
+                      <form className="" >
                         <div className="form-group">
                           <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.projectTitle} onChange={this.projectTitleState}/>
                         </div>
@@ -262,7 +265,7 @@ class Projectsubmition extends React.Component{
                           {/*{this.state.response ? <Error/> : (null || true)}*/}
                           {showError ? <Error message={this.state.message}/> : (true)}
                           <div>
-                            <Button color="primary" className = "btn btn-rec btn-primary" onClick={this.toggle}>ایجاد پروژه</Button>
+                            <Button color="primary" className = "btn btn-rec btn-primary" onClick={this.handleSubmit}>ایجاد پروژه</Button>
                             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                               <ModalHeader toggle={this.toggle}>نحوه نمایش پروژه</ModalHeader>
                               <ModalBody>

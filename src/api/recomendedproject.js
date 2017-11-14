@@ -3,14 +3,24 @@ import delay from './delay';
 // This file mocks a web API by working with the hard-coded data below.
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises.
-const recomendedProject =
+const recomendedProject =[
   {
       id: "1",
-      title: "ترجمه ی کس شر در حوزه ی بایو ",
+      title: "ترجمه ی یک متن تخصصی در حوزه ی بایو ",
+      description:"این متن واقعا برای افراد مبتدی سخت می باشد ، نیاز به یک فریلنسر برجسته مسلط به حوزه ی بایو می باشد",
       tags: "#فوری",
-      price: '...۲۲۳ تومان',
-      releaseTime: '2hoursAgo'
-  }
+      price: '۲۲۳۰۰۰ تومان',
+      releaseTime: '۳ ساعت قبل'
+  },
+    {
+        id: "2",
+        title: "ترجمه ی یک متن تخصصی کلی ",
+        description:"متنی از کتاب سفر در زمان، ۲۰ دقیقه معادل یک ساعت است! ، نوشته ی پرفسور محسن ایرانمنش",
+        tags: "#عمومی",
+        price: '۲۱۰۰۰۰ تومان',
+        releaseTime: '۴ ساعت قبل'
+    }
+    ]
 
 function replaceAll(str, find, replace) {
   return str.replace(new RegExp(find, 'g'), replace);
@@ -40,7 +50,7 @@ class recomendedProjectApi {
           reject(`Title must be at least ${minCourseTitleLength} characters.`);
         }
 
-        if (recomendedProject.id) {
+        if (recomendedProjects.id) {
           const existingCourseIndex = recomendedProject.findIndex(a => a.id == recomendedProject.id);
           courses.splice(existingCourseIndex, 1, course);
         } else {

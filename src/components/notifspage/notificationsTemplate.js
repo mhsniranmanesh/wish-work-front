@@ -6,8 +6,8 @@ const NotificationsTemplate = ({Notification}) => {
     return(
         <div>
             <a className="notif" href="#">
-                <span className="notif-cat notif-project">{Notification.Title}</span>
-                <div className="notif-txt">{Notification.descriptionFor}</div>
+                <span className="notif-cat notif-project">{Notification.Title }</span>
+                <div className="notif-txt">{' ' + Notification.descriptionFor}</div>
                 <span className="text-muted">{Notification.timeRelease}</span>
             </a>
             <div className="dash-divider"/>

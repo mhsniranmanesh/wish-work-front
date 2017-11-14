@@ -104,6 +104,7 @@ class Projectsubmition extends React.Component{
         //error show
     }
 
+
   render(){
         //const showError = this.state.translationFatherTagError ;
         // const showErrorProjectTitle = this.state.projectTitleError;
@@ -163,10 +164,10 @@ class Projectsubmition extends React.Component{
                                 </Row>
                             </FormGroup>
                         </div>
+
                         <Row>
                           <Col>
                             <div className="input-group">
-
                                     <SelectPicker className="form-control" title="از زبان ..." value={this.state.translationFrom} onChange={this.translationFromState}>
                                       <option>فارسی</option>
                                       <option>انگلیسی</option>
@@ -178,22 +179,8 @@ class Projectsubmition extends React.Component{
                             </Col>
                             <Col>
                               <div className="input-group">
-<<<<<<< HEAD
 
-                                    <SelectPicker className="form-control" title="به زبان ..." value={this.state.translationTo} onChange={this.translationToState}>
-=======
-                                {/* <select className="selectpicker" data-style="form-control" id="" title="به زبان ..." value={this.state.translationTo} onChange={this.translationToState}>
-                                    <option>فارسی</option>
-                                    <option>انگلیسی</option>
-                                    <option>فرانسوی</option>
-                                    <option>عربی</option>
-                                    <option>اسپانیایی</option>
-                                </select> */}
-                                <Form>
-
-                                    {/* <Label for="toLanguage"></Label> */}
-                                    <Input type="select" name="select" id="toLanguage" value={this.state.translationTo} onChange={this.translationToState}>
->>>>>>> 19a1b180100049d6b3f6f45c63d3b1d88b0d1518
+                                    <SelectPicker className="tolang form-control" title="به زبان ..." value={this.state.translationTo} onChange={this.translationToState}>
                                       <option>به زبان ...</option>
                                       <option>فارسی</option>
                                       <option>انگلیسی</option>

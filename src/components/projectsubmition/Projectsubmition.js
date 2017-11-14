@@ -178,8 +178,22 @@ class Projectsubmition extends React.Component{
                             </Col>
                             <Col>
                               <div className="input-group">
+<<<<<<< HEAD
 
                                     <SelectPicker className="form-control" title="به زبان ..." value={this.state.translationTo} onChange={this.translationToState}>
+=======
+                                {/* <select className="selectpicker" data-style="form-control" id="" title="به زبان ..." value={this.state.translationTo} onChange={this.translationToState}>
+                                    <option>فارسی</option>
+                                    <option>انگلیسی</option>
+                                    <option>فرانسوی</option>
+                                    <option>عربی</option>
+                                    <option>اسپانیایی</option>
+                                </select> */}
+                                <Form>
+
+                                    {/* <Label for="toLanguage"></Label> */}
+                                    <Input type="select" name="select" id="toLanguage" value={this.state.translationTo} onChange={this.translationToState}>
+>>>>>>> 19a1b180100049d6b3f6f45c63d3b1d88b0d1518
                                       <option>به زبان ...</option>
                                       <option>فارسی</option>
                                       <option>انگلیسی</option>

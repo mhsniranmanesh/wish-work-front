@@ -6,6 +6,8 @@ import {bindActionCreators} from 'redux';
 import * as recomendedProject from '../../actions/recomendedProjectForFreelancer.js';
 import DashboardProjectSubmission from "./DashboardProjectSubmisson";
 import ProjectsListForDashboard from './ProjectsListForDashboard';
+import NotificationsListForDashboard from "./NotificationsListForDashboard";
+import Notifications from '../../actions/Notifications';
 
 
 class Dashboard extends React.Component{
@@ -14,6 +16,7 @@ class Dashboard extends React.Component{
 
     this.gotoRecomendedProjects = this.gotoRecomendedProjects.bind(this);
     this.submitProject = this.submitProject.bind(this);
+    this.gotoNotifications = this.gotoNotifications.bind(this);
   }
   // profileRow(profileInfo , index){
   //   return <div key={index}>{profileInfo.first_name +' '+ profileInfo.last_name}</div>;
@@ -26,6 +29,11 @@ class Dashboard extends React.Component{
     gotoRecomendedProjects(event){
         event.preventDefault();
         this.context.router.history.push('/recomendedprojects');
+    }
+
+    gotoNotifications(event){
+        event.preventDefault();
+        this.context.router.history.push('/notifspage');
     }
 
   render(){
@@ -54,91 +62,10 @@ class Dashboard extends React.Component{
                  <DashboardProjectSubmission myFunc={this.submitProject}/>
               </div>
               <div className="col-sm-7">
-                  <div className="dash-con con-body dash-notif mb-4">
-                      <h5>اطلاعیه های جدید</h5>
-                      <div className="dash-divider"/>
-                      <a className="notif" href="#">
-                          <span className="notif-cat notif-project">پروژه</span>
-                          <div className="notif-txt">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی". چهار روز دیگر تا اتمام مهلت ارسال پروژه.</div>
-                          <span className="text-muted">12:12</span>
-                      </a>
-                      <div className="dash-divider"/>
-                      <a className="notif" href="#">
-                          <span className="notif-cat notif-msg">پیام</span>
-                          <div className="notif-txt">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی". چهار روز دیگر تا اتمام مهلت ارسال پروژه.</div>
-                          <span className="text-muted">12:12</span>
-                      </a>
-                      <div className="dash-divider"/>
-                      <a className="notif" href="#">
-                          <span className="notif-cat notif-project">پروژه</span>
-                          <div className="notif-txt">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی". چهار روز دیگر تا اتمام مهلت ارسال پروژه.</div>
-                          <span className="text-muted">12:12</span>
-                      </a>
-                      <button type="submit" className="btn btn-primary btn-rec">
-                        <i className="fa fa-angle-right" aria-hidden="true"/> بیشتر
-                      </button>
-                  </div>
-                  {/*<div className="dash-con dash-recoms mb-4">*/}
-                      {/*<h5>پروژه های پیشنهادی</h5>*/}
-                      {/*<div className="dash-divider"/>*/}
 
-                            <ProjectsListForDashboard Projects={this.props.recomendedProject} myFunc={this.gotoRecomendedProjects}/>
+                  <NotificationsListForDashboard Notifications={this.props.Notifications} myFunc={this.gotoNotifications}/>
+                  <ProjectsListForDashboard Projects={this.props.recomendedProject} myFunc={this.gotoRecomendedProjects}/>
 
-                      {/*<div className="dash-recom-item price-good">*/}
-                          {/*<a href="#">*/}
-                              {/*<h6><strong>{this.props.recomendedProject.title}</strong></h6>*/}
-                          {/*</a>*/}
-                          {/*<span className="sub-heading">*/}
-                            {/*<a className="tag" href="#">{this.props.recomendedProject.tags}</a>*/}
-                          {/*</span>*/}
-                          {/*<div className="sub-heading">*/}
-                              {/*<i className="fa fa-user"/> <a href="#">4/5</a>*/}
-                              {/*<i className="fa fa-usd"/> {this.props.recomendedProject.price}*/}
-                              {/*<i className="fa fa-clock-o"/> {this.props.recomendedProject.releaseTime}*/}
-                          {/*</div>*/}
-                      {/*</div>*/}
-                      {/*<div className="dash-divider"/>*/}
-                      {/*<div className="dash-recom-item price-fair">*/}
-                          {/*<a href="#">*/}
-                              {/*<h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>*/}
-                          {/*</a>*/}
-                          {/*<span className="sub-heading">*/}
-                            {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
-                            {/*<a className="tag" href="#">#علمی</a>*/}
-                            {/*<a className="tag" href="#">#زیست_شناسی</a>*/}
-                            {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
-                            {/*<a className="tag" href="#">#فوری</a>*/}
-                          {/*</span>*/}
-                          {/*<div className="sub-heading">*/}
-                              {/*<i className="fa fa-user"/> <a href="#">4/5</a>*/}
-                              {/*<i className="fa fa-usd"/> 2,000,000 تومان*/}
-                              {/*<i className="fa fa-clock-o"/> دو ساعت قبل*/}
-                          {/*</div>*/}
-                      {/*</div>*/}
-                      {/*<div className="dash-divider"/>*/}
-                      {/*<div className="dash-recom-item price-low">*/}
-                          {/*<a href="#">*/}
-                              {/*<h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>*/}
-                          {/*</a>*/}
-                          {/*<span className="sub-heading">*/}
-                            {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
-                            {/*<a className="tag" href="#">#علمی</a>*/}
-                            {/*<a className="tag" href="#">#زیست_شناسی</a>*/}
-                            {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
-                            {/*<a className="tag" href="#">#فوری</a>*/}
-                          {/*</span>*/}
-                          {/*<div className="sub-heading">*/}
-                              {/*<i className="fa fa-user"/> <a href="#">4/5</a>*/}
-                              {/*<i className="fa fa-usd"/> 2,000,000 تومان*/}
-                              {/*<i className="fa fa-clock-o"/> دو ساعت قبل*/}
-                          {/*</div>*/}
-                      {/*</div>*/}
-                      {/*<form action="dashboard-project-recoms.html">*/}
-                          {/*<button type="submit" className="btn btn-primary btn-rec">*/}
-                              {/*<i className="fa fa-angle-right" aria-hidden="true"/> بیشتر*/}
-                          {/*</button>*/}
-                      {/*</form>*/}
-                  {/*</div>*/}
               </div>
           </div>
       </div>
@@ -155,18 +82,20 @@ Dashboard.contextTypes = {
 Dashboard.PropTypes = {
     profileInfo: PropTypes.array.isRequired,
     recomendedProject: PropTypes.array.isRequired,
-    actions : PropTypes.object.isRequired
+    actions : PropTypes.object.isRequired,
+    Notifications : PropTypes.object.isRequired
 };
 
 function mapStateToProps(state , ownProps){
   return{
         profileInfo : state.profileInfo,
-        recomendedProject : state.recomendedProject
+        recomendedProject : state.recomendedProject,
+        Notifications : state.Notifications
   };
 }
 function mapDispatchToProps(dispatch){
   return{
-  actions : bindActionCreators(profileInfo , recomendedProject , dispatch)
+  actions : bindActionCreators(profileInfo , recomendedProject , Notifications , dispatch)
   }
 }
 

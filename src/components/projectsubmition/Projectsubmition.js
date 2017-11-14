@@ -118,7 +118,7 @@ class Projectsubmition extends React.Component{
                       <h5>ایجاد پروژه جدید</h5>
                       <errorFatherTag/>
                       <div className="dash-divider"/>
-                      <form>
+                      <Form>
                         <div className="form-group">
                           <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.projectTitle} onChange={this.projectTitleState}/>
                         </div>
@@ -129,7 +129,7 @@ class Projectsubmition extends React.Component{
                                   <Col>
                                     <FormGroup check>
                                       <Label check>
-                                        <Input className="btn-radio btn-success" type="radio" name="radio1" />
+                                        <Input className="btn btn-radio btn-radio-success" type="radio" name="radio1" />
                                       </Label>
                                         عمومی
                                     </FormGroup>
@@ -137,7 +137,7 @@ class Projectsubmition extends React.Component{
                                   <Col>
                                     <FormGroup check>
                                       <Label check>
-                                        <Input type="radio" name="radio1" />
+                                        <Input className="btn btn-radio btn-radio-success" type="radio" name="radio1" />
                                       </Label>
                                       فنی
                                     </FormGroup>
@@ -147,7 +147,7 @@ class Projectsubmition extends React.Component{
                                   <Col>
                                     <FormGroup check>
                                       <Label check>
-                                        <Input type="radio" name="radio1" />
+                                        <Input className="btn btn-radio btn btn-radio-success" type="radio" name="radio1" />
                                       </Label>
                                       پزشکی
                                     </FormGroup>
@@ -155,7 +155,7 @@ class Projectsubmition extends React.Component{
                                   <Col>
                                     <FormGroup check>
                                       <Label check>
-                                        <Input type="radio" name="radio1" />
+                                        <Input className="btn btn-radio btn-radio-success" type="radio" name="radio1" />
                                       </Label>
                                         حقوقی
                                     </FormGroup>
@@ -166,45 +166,27 @@ class Projectsubmition extends React.Component{
                         <Row>
                           <Col>
                             <div className="input-group">
-                                {/* <select className="selectpicker" data-style="form-control" id="" title="از زبان ..." value={this.state.translationFrom} onChange={this.translationFromState}>
-                                    <option>فارسی</option>
-                                    <option>انگلیسی</option>
-                                    <option>فرانسوی</option>
-                                    <option>عربی</option>
-                                    <option>اسپانیایی</option>
-                                </select> */}
-                                <Form>
-                                    {/* <Label for="fromLanguage">از زبان ...</Label> */}
-                                    <Input type="select" name="select" id="fromLanguage" value={this.state.translationFrom} onChange={this.translationFromState}>
+
+                                    <SelectPicker className="form-control" title="از زبان ..." value={this.state.translationFrom} onChange={this.translationFromState}>
                                       <option>فارسی</option>
                                       <option>انگلیسی</option>
                                       <option>فرانسوی</option>
                                       <option>عربی</option>
                                       <option>اسپانیایی</option>
-                                    </Input>
-                                  </Form>
+                                    </SelectPicker>
                               </div>
                             </Col>
                             <Col>
                               <div className="input-group">
-                                {/* <select className="selectpicker" data-style="form-control" id="" title="به زبان ..." value={this.state.translationTo} onChange={this.translationToState}>
-                                    <option>فارسی</option>
-                                    <option>انگلیسی</option>
-                                    <option>فرانسوی</option>
-                                    <option>عربی</option>
-                                    <option>اسپانیایی</option>
-                                </select> */}
-                                <Form>
-                                    {/* <Label for="toLanguage"></Label> */}
-                                    <Input type="select" name="select" id="toLanguage" value={this.state.translationTo} onChange={this.translationToState}>
+
+                                    <SelectPicker className="form-control" title="به زبان ..." value={this.state.translationTo} onChange={this.translationToState}>
                                       <option>به زبان ...</option>
                                       <option>فارسی</option>
                                       <option>انگلیسی</option>
                                       <option>فرانسوی</option>
                                       <option>عربی</option>
                                       <option>اسپانیایی</option>
-                                    </Input>
-                                  </Form>
+                                    </SelectPicker>
                             </div>
                           </Col>
                         </Row>
@@ -303,7 +285,7 @@ class Projectsubmition extends React.Component{
                               </ModalFooter>
                             </Modal>
                           </div>
-                      </form>
+                      </Form>
                   </div>
               </div>
           </div>

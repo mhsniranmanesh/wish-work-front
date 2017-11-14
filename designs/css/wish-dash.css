@@ -6,6 +6,8 @@ body.fixed-nav {
     padding-top: 54px;
 }
 
+
+
 @media(max-width:769px){
   .space , .input-group-btn button .space{
     margin-top: 10px;

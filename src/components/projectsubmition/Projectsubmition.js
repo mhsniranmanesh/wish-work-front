@@ -4,16 +4,21 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as projectSubmit from '../../actions/projectSubmit.js';
 import Error from './Errors';
+import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Form, FormGroup, Label, Input, FormText , Row , Col} from 'reactstrap';
+import Select from 'react-select';
+import SelectPicker from 'react-select-picker';
+// import SelectPicker from 'react-select-picker';
 
 
 class Projectsubmition extends React.Component{
     constructor(props , context){
         super(props);
 
-        this.state={ translationFatherTag:"",translationFrom:"", translationTo:"" ,projectTitle:"" , projectDescription:"", submitProjectPrice:"" , submitProjectTime:"" , requiredTags:[] , response:[],
+        this.state={ modal: false , translationFatherTag:"",translationFrom:"", translationTo:"" ,projectTitle:"" , projectDescription:"", submitProjectPrice:"" , submitProjectTime:"" , requiredTags:[] , response:[],
                      message:"" ,showError : false,
         };
 
+        this.toggle = this.toggle.bind(this);
         this.translationToState = this.translationToState.bind(this);
         this.translationFromState = this.translationFromState.bind(this);
         this.projectTitleState = this.projectTitleState.bind(this);
@@ -23,6 +28,12 @@ class Projectsubmition extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.translationFatherTagState = this.translationFatherTagState.bind(this);
         this.dragDrop = this.dragDrop.bind(this);
+    }
+
+    toggle(){
+      this.setState({
+      modal: !this.state.modal
+      });
     }
     dragDrop(event){
         this.readFile(event);
@@ -110,38 +121,92 @@ class Projectsubmition extends React.Component{
                           <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.projectTitle} onChange={this.projectTitleState}/>
                         </div>
                         <div className="input-group">
-                            <select className="selectpicker" data-style="form-control" id="" title="زمینه ترجمه را انتخاب کنید." value={this.state.translationFatherTag} onChange={this.translationFatherTagState}>
-
-                                <option>عمومی</option>
-                                <option>حقوقی</option>
-                                <option>پزشکی</option>
-                                <option>فنی</option>
-                            </select>
+                          <FormGroup tag="fieldset">
+                              <legend>زمینه ترجمه تان را انتخاب کنید</legend>
+                                <Row>
+                                  <Col>
+                                    <FormGroup check>
+                                      <Label check>
+                                        <Input className="btn-radio btn-success" type="radio" name="radio1" />
+                                      </Label>
+                                        عمومی
+                                    </FormGroup>
+                                  </Col>
+                                  <Col>
+                                    <FormGroup check>
+                                      <Label check>
+                                        <Input type="radio" name="radio1" />
+                                      </Label>
+                                      فنی
+                                    </FormGroup>
+                                  </Col>
+                                </Row>
+                                <Row>
+                                  <Col>
+                                    <FormGroup check>
+                                      <Label check>
+                                        <Input type="radio" name="radio1" />
+                                      </Label>
+                                      پزشکی
+                                    </FormGroup>
+                                  </Col>
+                                  <Col>
+                                    <FormGroup check>
+                                      <Label check>
+                                        <Input type="radio" name="radio1" />
+                                      </Label>
+                                        حقوقی
+                                    </FormGroup>
+                                  </Col>
+                                </Row>
+                            </FormGroup>
                         </div>
-                        <div className="row">
-                          <div className="col-sm-6">
+                        <Row>
+                          <Col>
                             <div className="input-group">
-                                <select className="selectpicker" data-style="form-control" id="" title="از زبان ..." value={this.state.translationFrom} onChange={this.translationFromState}>
+                                {/* <select className="selectpicker" data-style="form-control" id="" title="از زبان ..." value={this.state.translationFrom} onChange={this.translationFromState}>
                                     <option>فارسی</option>
                                     <option>انگلیسی</option>
                                     <option>فرانسوی</option>
                                     <option>عربی</option>
                                     <option>اسپانیایی</option>
-                                </select>
+                                </select> */}
+                                <Form>
+                                    <Label for="fromLanguage"></Label>
+                                    <Input type="select" title="از زبان..." name="select" id="fromLanguage">
+                                      <option>از زبان ...</option>
+                                      <option>فارسی</option>
+                                      <option>انگلیسی</option>
+                                      <option>فرانسوی</option>
+                                      <option>عربی</option>
+                                      <option>اسپانیایی</option>
+                                    </Input>
+                                  </Form>
                               </div>
-                            </div>
-                            <div className="col-sm-6">
+                            </Col>
+                            <Col>
                               <div className="input-group">
-                                <select className="selectpicker" data-style="form-control" id="" title="به زبان ..." value={this.state.translationTo} onChange={this.translationToState}>
+                                {/* <select className="selectpicker" data-style="form-control" id="" title="به زبان ..." value={this.state.translationTo} onChange={this.translationToState}>
                                     <option>فارسی</option>
                                     <option>انگلیسی</option>
                                     <option>فرانسوی</option>
                                     <option>عربی</option>
                                     <option>اسپانیایی</option>
-                                </select>
+                                </select> */}
+                                <Form>
+                                    <Label for="toLanguage"></Label>
+                                    <Input type="select" placeHolder="به زبان ..." name="select" id="toLanguage">
+                                      <option>به زبان ...</option>
+                                      <option>فارسی</option>
+                                      <option>انگلیسی</option>
+                                      <option>فرانسوی</option>
+                                      <option>عربی</option>
+                                      <option>اسپانیایی</option>
+                                    </Input>
+                                  </Form>
                             </div>
-                          </div>
-                        </div>
+                          </Col>
+                        </Row>
                         <div className="form-group">
                           <textarea type="text" className="form-control" id="" placeholder="توضیحاتی را در مورد پروژه بنویسید." value={this.state.projectDescription} onChange={this.projectDescriptionState}/>
                         </div>
@@ -190,12 +255,53 @@ class Projectsubmition extends React.Component{
                               آبی: مقدار زمان طلب شده به نسبت اندازه ی پروژه مطلوب می باشد!
                           </span>
                         </div>
-                        <button type="submit" className="btn btn-primary btn-rec" >
+                        {/* <button type="submit" className="btn btn-primary btn-rec" >
                           ایجاد پروژه
-                        </button>
+                        </button> */}
                           {/*error show */}
                           {/*{this.state.response ? <Error/> : (null || true)}*/}
                           {showError ? <Error message={this.state.message}/> : (true)}
+                          <div>
+                            <Button color="primary" className = "btn btn-rec btn-primary" onClick={this.toggle}>ایجاد پروژه</Button>
+                            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                              <ModalHeader toggle={this.toggle}>نحوه نمایش پروژه</ModalHeader>
+                              <ModalBody>
+                                <span className="prices">
+                                  <div>
+                                    <svg width="5px" height="8vh">
+                                      <rect className="price-good" width="5px" height="8vh" />
+                                    </svg>
+                                  </div>
+                                  <div>
+                                    <svg width="5px" height="8vh">
+                                      <rect className="price-low" width="5px" height="8vh"/>
+                                    </svg>
+                                  </div>
+                                </span>
+                                <div>
+                                    <a href="#">
+                                        <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
+                                    </a>
+                                    <span className="sub-heading">
+                                        <a className="tag" href="#">#فارسی_به_انگلیسی</a>
+                                        <a className="tag" href="#">#علمی</a>
+                                        <a className="tag" href="#">#زیست_شناسی</a>
+                                        <a className="tag" href="#">#میکرو_بیولوژی</a>
+                                        <a className="tag" href="#">#فوری</a>
+                                      </span>
+                                    <span className="sub-heading">
+                                          <i className="fa fa-user"></i> <a href="#">4/5</a>
+                                          <i className="fa fa-usd"></i> 2,000,000 تومان
+                                          <i className="fa fa-clock-o"></i> دو ساعت قبل
+                                      </span>
+                                </div>
+                              </ModalBody>
+                              <ModalFooter>
+                                <Button color="secondary" className = "btn btn-secondary btn-rec" onClick={this.toggle}>اصلاح</Button>
+                                <Button color="primary" className = "btn btn-primary btn-rec" onClick={this.toggle}>تأیید</Button>{' '}
+                              </ModalFooter>
+                            </Modal>
+                          </div>
                       </form>
                   </div>
               </div>

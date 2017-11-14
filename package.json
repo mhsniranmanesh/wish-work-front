@@ -55,12 +55,15 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
+    "react-select": "^1.0.0-rc.10",
+    "react-select-picker": "0.0.7",
     "reactstrap": "^5.0.0-alpha.3",
     "reducers": "^3.0.0-alpha",
     "redux": "^3.7.2",
     "redux-immutable-state-invariant": "^2.1.0",
     "redux-promise-middleware": "^4.4.1",
     "redux-router": "^1.0.0-beta3",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "select-picker": "^0.3.1"
   }
 }

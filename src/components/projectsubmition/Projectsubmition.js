@@ -71,11 +71,11 @@ class Projectsubmition extends React.Component{
             this.setState({showError: true});
             this.setState({message:"لطفا عنوان پروژه ی خود را وارد کنید!"});
         }
-        // else if(!this.state.translationFatherTag.length){
-        //     //farghesh ba this.state = hamun moghe avaz mikone!
-        //     this.setState({showError : true});
-        //     this.setState({message:"لطفا زمینه ی ترجمه ی خود را وارد کنید!"});
-        // }
+        else if(!this.state.translationFatherTag.length){
+            //farghesh ba this.state = hamun moghe avaz mikone!
+            this.setState({showError : true});
+            this.setState({message:"لطفا زمینه ی ترجمه ی خود را وارد کنید!"});
+        }
         else if(!this.state.projectDescription.length){
             this.setState({showError: true});
             this.setState({message:"لطفا توضیحاتی در رابطه با پروژه ی خود ارائه دهید."});
@@ -90,7 +90,6 @@ class Projectsubmition extends React.Component{
         }
         else{
           toggle();
-
         }
 
         // else if(!this.state.translationTo.length){
@@ -119,7 +118,7 @@ class Projectsubmition extends React.Component{
                       <h5>ایجاد پروژه جدید</h5>
                       <errorFatherTag/>
                       <div className="dash-divider"/>
-                      <form className="" >
+                      <form>
                         <div className="form-group">
                           <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.projectTitle} onChange={this.projectTitleState}/>
                         </div>
@@ -175,9 +174,8 @@ class Projectsubmition extends React.Component{
                                     <option>اسپانیایی</option>
                                 </select> */}
                                 <Form>
-                                    <Label for="fromLanguage"></Label>
-                                    <Input type="select" title="از زبان..." name="select" id="fromLanguage">
-                                      <option>از زبان ...</option>
+                                    {/* <Label for="fromLanguage">از زبان ...</Label> */}
+                                    <Input type="select" name="select" id="fromLanguage" value={this.state.translationFrom} onChange={this.translationFromState}>
                                       <option>فارسی</option>
                                       <option>انگلیسی</option>
                                       <option>فرانسوی</option>
@@ -197,8 +195,9 @@ class Projectsubmition extends React.Component{
                                     <option>اسپانیایی</option>
                                 </select> */}
                                 <Form>
-                                    <Label for="toLanguage"></Label>
-                                    <Input type="select" placeholder="به زبان ..." name="select" id="toLanguage">
+
+                                    {/* <Label for="toLanguage"></Label> */}
+                                    <Input type="select" name="select" id="toLanguage" value={this.state.translationTo} onChange={this.translationToState}>
                                       <option>به زبان ...</option>
                                       <option>فارسی</option>
                                       <option>انگلیسی</option>

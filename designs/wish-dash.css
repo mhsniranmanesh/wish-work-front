@@ -12,6 +12,10 @@ body.fixed-nav {
     }
 }
 
+.fromlang{
+  width: 50vh;
+}
+
 .scroll-to-top {
     position: fixed;
     left: 15px;

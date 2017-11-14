@@ -10,7 +10,7 @@ const Header2 = (props) => {
           <div className="container">
             <a className="navbar-brand" href="#">
               <img src={require('../../../static/img/nav-logo.png')} height="30" className="d-inline-block align-top" alt="nav-logo"/>
-              Wish-Work
+              <img src={require('../../../static/img/wishworkFontLogo.jpg')} height="30" />
             </a>
             <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
@@ -39,7 +39,7 @@ const Header2 = (props) => {
             <NavLink to="/projectcontrol">کنترل پروژه</NavLink>
           </li>
           <li>
-            <a href="#">پروژه های سابق</a>
+            <a href="#">پروژه های من</a>
           </li>
         </ul>
       </li>

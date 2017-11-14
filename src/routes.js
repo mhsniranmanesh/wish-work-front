@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import Dashboard from './components/dashboard/dashboard.js'
-import Projectsubmition from './components/projectsubmition/projectsubmition.js'
+import Dashboard from './components/dashboard/Dashboard.js'
+import Projectsubmition from './components/projectsubmition/Projectsubmition.js'
 import Recomendedprojects from './components/recomendedprojects/Recomendedprojects.js';
 import Profileinfo from './components/profileinfo/Profileinfo.js';
 import Notifspage from './components/notifspage/Notifspage.js';

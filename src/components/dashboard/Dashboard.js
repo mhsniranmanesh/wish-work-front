@@ -5,11 +5,14 @@ import * as profileInfo from '../../actions/profileInfo.js';
 import {bindActionCreators} from 'redux';
 import * as recomendedProject from '../../actions/recomendedProjectForFreelancer.js';
 import DashboardProjectSubmission from "./DashboardProjectSubmisson";
+import ProjectsListForDashboard from './ProjectsListForDashboard';
+
 
 class Dashboard extends React.Component{
   constructor(props , context){
     super(props , context);
 
+    this.gotoRecomendedProjects = this.gotoRecomendedProjects.bind(this);
     this.submitProject = this.submitProject.bind(this);
   }
   // profileRow(profileInfo , index){
@@ -18,6 +21,11 @@ class Dashboard extends React.Component{
     submitProject(event){
         event.preventDefault();
         this.context.router.history.push('/projectsubmition');
+    }
+
+    gotoRecomendedProjects(event){
+        event.preventDefault();
+        this.context.router.history.push('/recomendedprojects');
     }
 
   render(){
@@ -70,64 +78,67 @@ class Dashboard extends React.Component{
                         <i className="fa fa-angle-right" aria-hidden="true"/> بیشتر
                       </button>
                   </div>
-                  <div className="dash-con dash-recoms mb-4">
-                      <h5>پروژه های پیشنهادی</h5>
-                      <div className="dash-divider"/>
-                      <div className="dash-recom-item price-good">
-                          <a href="#">
-                              <h6><strong>{this.props.recomendedProject.title}</strong></h6>
-                          </a>
-                          <span className="sub-heading">
-                            <a className="tag" href="#">{this.props.recomendedProject.tags}</a>
-                          </span>
-                          <div className="sub-heading">
-                              <i className="fa fa-user"/> <a href="#">4/5</a>
-                              <i className="fa fa-usd"/> {this.props.recomendedProject.price}
-                              <i className="fa fa-clock-o"/> {this.props.recomendedProject.releaseTime}
-                          </div>
-                      </div>
-                      <div className="dash-divider"/>
-                      <div className="dash-recom-item price-fair">
-                          <a href="#">
-                              <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
-                          </a>
-                          <span className="sub-heading">
-                            <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                            <a className="tag" href="#">#علمی</a>
-                            <a className="tag" href="#">#زیست_شناسی</a>
-                            <a className="tag" href="#">#میکرو_بیولوژی</a>
-                            <a className="tag" href="#">#فوری</a>
-                          </span>
-                          <div className="sub-heading">
-                              <i className="fa fa-user"/> <a href="#">4/5</a>
-                              <i className="fa fa-usd"/> 2,000,000 تومان
-                              <i className="fa fa-clock-o"/> دو ساعت قبل
-                          </div>
-                      </div>
-                      <div className="dash-divider"/>
-                      <div className="dash-recom-item price-low">
-                          <a href="#">
-                              <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
-                          </a>
-                          <span className="sub-heading">
-                            <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                            <a className="tag" href="#">#علمی</a>
-                            <a className="tag" href="#">#زیست_شناسی</a>
-                            <a className="tag" href="#">#میکرو_بیولوژی</a>
-                            <a className="tag" href="#">#فوری</a>
-                          </span>
-                          <div className="sub-heading">
-                              <i className="fa fa-user"/> <a href="#">4/5</a>
-                              <i className="fa fa-usd"/> 2,000,000 تومان
-                              <i className="fa fa-clock-o"/> دو ساعت قبل
-                          </div>
-                      </div>
-                      <form action="dashboard-project-recoms.html">
-                          <button type="submit" className="btn btn-primary btn-rec">
-                              <i className="fa fa-angle-right" aria-hidden="true"/> بیشتر
-                          </button>
-                      </form>
-                  </div>
+                  {/*<div className="dash-con dash-recoms mb-4">*/}
+                      {/*<h5>پروژه های پیشنهادی</h5>*/}
+                      {/*<div className="dash-divider"/>*/}
+
+                            <ProjectsListForDashboard Projects={this.props.recomendedProject} myFunc={this.gotoRecomendedProjects}/>
+
+                      {/*<div className="dash-recom-item price-good">*/}
+                          {/*<a href="#">*/}
+                              {/*<h6><strong>{this.props.recomendedProject.title}</strong></h6>*/}
+                          {/*</a>*/}
+                          {/*<span className="sub-heading">*/}
+                            {/*<a className="tag" href="#">{this.props.recomendedProject.tags}</a>*/}
+                          {/*</span>*/}
+                          {/*<div className="sub-heading">*/}
+                              {/*<i className="fa fa-user"/> <a href="#">4/5</a>*/}
+                              {/*<i className="fa fa-usd"/> {this.props.recomendedProject.price}*/}
+                              {/*<i className="fa fa-clock-o"/> {this.props.recomendedProject.releaseTime}*/}
+                          {/*</div>*/}
+                      {/*</div>*/}
+                      {/*<div className="dash-divider"/>*/}
+                      {/*<div className="dash-recom-item price-fair">*/}
+                          {/*<a href="#">*/}
+                              {/*<h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>*/}
+                          {/*</a>*/}
+                          {/*<span className="sub-heading">*/}
+                            {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
+                            {/*<a className="tag" href="#">#علمی</a>*/}
+                            {/*<a className="tag" href="#">#زیست_شناسی</a>*/}
+                            {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
+                            {/*<a className="tag" href="#">#فوری</a>*/}
+                          {/*</span>*/}
+                          {/*<div className="sub-heading">*/}
+                              {/*<i className="fa fa-user"/> <a href="#">4/5</a>*/}
+                              {/*<i className="fa fa-usd"/> 2,000,000 تومان*/}
+                              {/*<i className="fa fa-clock-o"/> دو ساعت قبل*/}
+                          {/*</div>*/}
+                      {/*</div>*/}
+                      {/*<div className="dash-divider"/>*/}
+                      {/*<div className="dash-recom-item price-low">*/}
+                          {/*<a href="#">*/}
+                              {/*<h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>*/}
+                          {/*</a>*/}
+                          {/*<span className="sub-heading">*/}
+                            {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
+                            {/*<a className="tag" href="#">#علمی</a>*/}
+                            {/*<a className="tag" href="#">#زیست_شناسی</a>*/}
+                            {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
+                            {/*<a className="tag" href="#">#فوری</a>*/}
+                          {/*</span>*/}
+                          {/*<div className="sub-heading">*/}
+                              {/*<i className="fa fa-user"/> <a href="#">4/5</a>*/}
+                              {/*<i className="fa fa-usd"/> 2,000,000 تومان*/}
+                              {/*<i className="fa fa-clock-o"/> دو ساعت قبل*/}
+                          {/*</div>*/}
+                      {/*</div>*/}
+                      {/*<form action="dashboard-project-recoms.html">*/}
+                          {/*<button type="submit" className="btn btn-primary btn-rec">*/}
+                              {/*<i className="fa fa-angle-right" aria-hidden="true"/> بیشتر*/}
+                          {/*</button>*/}
+                      {/*</form>*/}
+                  {/*</div>*/}
               </div>
           </div>
       </div>

@@ -13,19 +13,19 @@ const Header2 = (props) => {
               <img src={require('../../../static/img/wishworkFontLogo.jpg')} height="30" />
             </a>
             <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"/>
             </button>
             <div className="collapse navbar-collapse" id="navbarResponsive">
             <ul className="navbar-nav navbar-sidenav">
       <li className="nav-item active" data-toggle="tooltip" data-placement="right" title="داشبورد">
         <NavLink to="/" className="nav-link" >
-          <i className="fa fa-fw fa-dashboard"></i>
+          <i className="fa fa-fw fa-dashboard"/>
           <span className="nav-link-text">داشبورد</span>
         </NavLink>
       </li>
       <li className="nav-item" data-toggle="tooltip" data-placement="right" title="پروژه">
         <a  className="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents">
-          <i className="fa fa-fw fa-tasks"></i>
+          <i className="fa fa-fw fa-tasks"/>
           <span className="nav-link-text">پروژه</span>
         </a>
         <ul className="sidenav-second-level collapse" id="collapseComponents">
@@ -59,7 +59,7 @@ const Header2 = (props) => {
       </li>
       <li className="nav-item" data-toggle="tooltip" data-placement="right" title="حساب">
   <a className="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#accountComponents">
-      <i className="fa fa-fw fa-usd"></i>
+      <i className="fa fa-fw fa-usd"/>
       <span className="nav-link-text">حساب</span>
   </a>
   <ul className="sidenav-second-level collapse" id="accountComponents">
@@ -78,7 +78,7 @@ const Header2 = (props) => {
     <ul className="navbar-nav navbar-sidenav sidenav-toggler">
       <li className="nav-item">
         <a className="nav-link text-center" id="sidenavToggler">
-          <i className="fa fa-fw fa-angle-right"></i>
+          <i className="fa fa-fw fa-angle-right"/>
         </a>
       </li>
     </ul>
@@ -86,33 +86,33 @@ const Header2 = (props) => {
               <ul className="navbar-nav navbar-right">
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle mr-lg-2" href="#" id="alertsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i className="fa fa-fw fa-bell nav-icon"></i>
+                    <i className="fa fa-fw fa-bell nav-icon"/>
                     <span className="d-lg-none">پیغام ها
                           <span className="badge badge-pill badge-success">6</span>
                         </span>
                     <span className="new-indicator d-none d-lg-block">
-                          <i className="fa fa-fw fa-circle"></i>
+                          <i className="fa fa-fw fa-circle"/>
                           <span className="number">12</span>
                         </span>
                   </a>
                   <div className="dropdown-menu" aria-labelledby="alertsDropdown">
                     <h6 className="dropdown-header">پیغام های جدید:</h6>
-                    <div className="dropdown-divider"></div>
+                    <div className="dropdown-divider"/>
                     <a className="dropdown-item" href="#">
                       <div className="dropdown-message small">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی".</div>
                       <span className="small text-muted">12:12</span>
                     </a>
-                    <div className="dropdown-divider"></div>
+                    <div className="dropdown-divider"/>
                     <a className="dropdown-item" href="#">
                       <div className="dropdown-message small">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی".</div>
                       <span className="small text-muted">12:12</span>
                     </a>
-                    <div className="dropdown-divider"></div>
+                    <div className="dropdown-divider"/>
                     <a className="dropdown-item" href="#">
                       <div className="dropdown-message small">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی".</div>
                       <span className="small text-muted">12:12</span>
                     </a>
-                    <div className="dropdown-divider"></div>
+                    <div className="dropdown-divider"/>
                     <a className="dropdown-item small" href="#">
                       تمام پیغام ها
                     </a>

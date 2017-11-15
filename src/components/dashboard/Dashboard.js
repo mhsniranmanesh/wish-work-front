@@ -8,6 +8,7 @@ import DashboardProjectSubmission from "./DashboardProjectSubmisson";
 import ProjectsListForDashboard from './ProjectsListForDashboard';
 import NotificationsListForDashboard from "./NotificationsListForDashboard";
 import Notifications from '../../actions/Notifications';
+import ProfileInfoForDashboard from "./ProfileInfoForDashboard";
 
 
 class Dashboard extends React.Component{
@@ -18,9 +19,7 @@ class Dashboard extends React.Component{
     this.submitProject = this.submitProject.bind(this);
     this.gotoNotifications = this.gotoNotifications.bind(this);
   }
-  // profileRow(profileInfo , index){
-  //   return <div key={index}>{profileInfo.first_name +' '+ profileInfo.last_name}</div>;
-  // }
+
     submitProject(event){
         event.preventDefault();
         this.context.router.history.push('/projectsubmition');
@@ -39,37 +38,26 @@ class Dashboard extends React.Component{
   render(){
     return(
       <div>
+        <div className="content-wrapper py-3">
+            <div className="container-fluid">
+                <div className="row">
 
-      <div className="content-wrapper py-3">
-      <div className="container-fluid">
-          <div className="row">
-              <div className="col-sm-5">
-                  <div className="dash-con dash-profile mb-4">
-                      <div className="row">
-                          <div className="mx-auto">
-                              <img src="http://via.placeholder.com/125x125" className="rounded-circle"/>
-                              <h5> {this.props.profileInfo.first_name + ' ' + this.props.profileInfo.last_name} </h5>
-                              <h6 className="dash-profile-stars">
-                            <i className="fa fa-star shine-on"/>
-                            <i className="fa fa-star shine-on"/>
-                            <i className="fa fa-star shine-on"/>
-                            <i className="fa fa-star-o shine-on"/>
-                            <i className="fa fa-star-o shine-on"/>
-                          </h6>
-                          </div>
-                      </div>
-                  </div>
-                 <DashboardProjectSubmission myFunc={this.submitProject}/>
-              </div>
-              <div className="col-sm-7">
 
-                  <NotificationsListForDashboard Notifications={this.props.Notifications} myFunc={this.gotoNotifications}/>
-                  <ProjectsListForDashboard Projects={this.props.recomendedProject} myFunc={this.gotoRecomendedProjects}/>
+                    <div className="col-sm-5">
+                        <ProfileInfoForDashboard profileInfo = {this.props.profileInfo} />
+                        <DashboardProjectSubmission myFunc={this.submitProject}/>
+                    </div>
 
-              </div>
-          </div>
-      </div>
-  </div>
+
+                    <div className="col-sm-7">
+                        <NotificationsListForDashboard Notifications={this.props.Notifications} myFunc={this.gotoNotifications}/>
+                        <ProjectsListForDashboard Projects={this.props.recomendedProject} myFunc={this.gotoRecomendedProjects}/>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
       </div>
     );
   }

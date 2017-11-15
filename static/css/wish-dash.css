@@ -11,6 +11,9 @@ body.fixed-nav {
         padding-top: 56px;
     }
 }
+.tolang{
+  width: 50vh;
+}
 
 .scroll-to-top {
     position: fixed;

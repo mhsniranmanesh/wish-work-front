@@ -2,8 +2,6 @@ import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import {Provider} from 'react-redux';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap-rtl/dist/css/bootstrap-rtl.min.css';
 import "../static/css/bootstrap.min.css"
 import "../static/css/bootstrap-rtl.min.css";
 import "../static/css/fontiran.css"
@@ -12,6 +10,7 @@ import "font-awesome/css/font-awesome.min.css";
 import configureStore from './store/configureStore.js';
 import {profileInfo} from './actions/profileInfo.js';
 import {recomendedProject} from './actions/recomendedProjectForFreelancer';
+
 import {Notifications} from "./actions/Notifications";
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
@@ -24,7 +23,7 @@ import App from './components/App.js';
 const store = configureStore();
 store.dispatch(profileInfo());
 store.dispatch(recomendedProject());
-//store.dispatch(Notifications());
+store.dispatch(Notifications());
 
 
 if (process.env.NODE_ENV !== 'production') {

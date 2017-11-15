@@ -31,7 +31,7 @@ class profileInfoApi {
     });
   }
 
-  static saveCourse(profileInfo) {
+  static newInfos(profileInfo) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         // Simulate server-side validation

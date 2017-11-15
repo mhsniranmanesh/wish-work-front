@@ -1,11 +1,16 @@
 import React from 'react';
-
-
-
-
-
+import * as recomendedProject from '../../actions/recomendedProjectForFreelancer.js';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import ProjectsList from './ProjectsList';
 
 class Recomendedprojects extends React.Component{
+    constructor(props){
+        super(props);
+    }
+
+
   render(){
     return(
       <div>
@@ -15,144 +20,9 @@ class Recomendedprojects extends React.Component{
                   <div className="col-sm-8 d-block mx-auto">
                       <div className="dash-con dash-new-project con-body mb-4">
                           <h5>پروژه های پیشنهادی برای شما</h5>
-                          <div className="dash-divider"></div>
-                          <div className="dash-recom-item price-good">
-                              <a href="#">
-                                  <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
-                              </a>
-                              <div id="wrap">
-                                <h6 className="dash-recom-item-discription">
-                                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته... <a href="# " className="more">بیشتر...</a>
-                                </h6>
-                              </div>
-                              <div className="sub-heading">
-                                  <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                                  <a className="tag" href="#">#علمی</a>
-                                  <a className="tag" href="#">#زیست_شناسی</a>
-                                  <a className="tag" href="#">#میکرو_بیولوژی</a>
-                                  <a className="tag" href="#">#فوری</a>
-                              </div>
-                              <div className="sub-heading">
-                                  <i className="fa fa-user"></i> <a href="#">4/5</a>
-                                  <i className="fa fa-usd"></i> 2,000,000 تومان
-                                  <i className="fa fa-clock-o"></i> دو ساعت قبل
-                              </div>
-                          </div>
-                          <div className="dash-divider"></div>
-                          <div className="dash-recom-item price-fair">
-                              <a href="#">
-                                  <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
-                              </a>
-                              <div id="wrap">
-                                <h6 className="dash-recom-item-discription">
-                                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته... <a href="# " className="more">بیشتر...</a>
-                                </h6>
-                              </div>
-                              <div className="sub-heading">
-                                  <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                                  <a className="tag" href="#">#علمی</a>
-                                  <a className="tag" href="#">#زیست_شناسی</a>
-                                  <a className="tag" href="#">#میکرو_بیولوژی</a>
-                                  <a className="tag" href="#">#فوری</a>
-                              </div>
-                              <div className="sub-heading">
-                                  <i className="fa fa-user"></i> <a href="#">4/5</a>
-                                  <i className="fa fa-usd"></i> 2,000,000 تومان
-                                  <i className="fa fa-clock-o"></i> دو ساعت قبل
-                              </div>
-                          </div>
-                          <div className="dash-divider"></div>
-                          <div className="dash-recom-item price-low">
-                              <a href="#">
-                                  <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
-                              </a>
-                              <div id="wrap">
-                                <h6 className="dash-recom-item-discription">
-                                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته... <a href="# " className="more">بیشتر...</a>
-                                </h6>
-                              </div>
-                              <div className="sub-heading">
-                                  <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                                  <a className="tag" href="#">#علمی</a>
-                                  <a className="tag" href="#">#زیست_شناسی</a>
-                                  <a className="tag" href="#">#میکرو_بیولوژی</a>
-                                  <a className="tag" href="#">#فوری</a>
-                              </div>
-                              <div className="sub-heading">
-                                  <i className="fa fa-user"></i> <a href="#">4/5</a>
-                                  <i className="fa fa-usd"></i> 2,000,000 تومان
-                                  <i className="fa fa-clock-o"></i> دو ساعت قبل
-                              </div>
-                          </div>
-                          <div className="dash-divider"></div>
-                          <div className="dash-recom-item price-low">
-                              <a href="#">
-                                  <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
-                              </a>
-                              <div id="wrap">
-                                <h6 className="dash-recom-item-discription">
-                                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته... <a href="# " className="more">بیشتر...</a>
-                                </h6>
-                              </div>
-                              <div className="sub-heading">
-                                  <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                                  <a className="tag" href="#">#علمی</a>
-                                  <a className="tag" href="#">#زیست_شناسی</a>
-                                  <a className="tag" href="#">#میکرو_بیولوژی</a>
-                                  <a className="tag" href="#">#فوری</a>
-                              </div>
-                              <div className="sub-heading">
-                                  <i className="fa fa-user"></i> <a href="#">4/5</a>
-                                  <i className="fa fa-usd"></i> 2,000,000 تومان
-                                  <i className="fa fa-clock-o"></i> دو ساعت قبل
-                              </div>
-                          </div>
-                          <div className="dash-divider"></div>
-                          <div className="dash-recom-item price-good">
-                              <a href="#">
-                                  <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
-                              </a>
-                              <div id="wrap">
-                                <h6 className="dash-recom-item-discription">
-                                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته... <a href="# " className="more">بیشتر...</a>
-                                </h6>
-                              </div>
-                              <div className="sub-heading">
-                                  <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                                  <a className="tag" href="#">#علمی</a>
-                                  <a className="tag" href="#">#زیست_شناسی</a>
-                                  <a className="tag" href="#">#میکرو_بیولوژی</a>
-                                  <a className="tag" href="#">#فوری</a>
-                              </div>
-                              <div className="sub-heading">
-                                  <i className="fa fa-user"></i> <a href="#">4/5</a>
-                                  <i className="fa fa-usd"></i> 2,000,000 تومان
-                                  <i className="fa fa-clock-o"></i> دو ساعت قبل
-                              </div>
-                          </div>
-                          <div className="dash-divider"></div>
-                          <div className="dash-recom-item price-fair">
-                              <a href="#">
-                                  <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
-                              </a>
-                              <div id="wrap">
-                                <h6 className="dash-recom-item-discription">
-                                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته... <a href="# " className="more">بیشتر...</a>
-                                </h6>
-                              </div>
-                              <div className="sub-heading">
-                                  <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                                  <a className="tag" href="#">#علمی</a>
-                                  <a className="tag" href="#">#زیست_شناسی</a>
-                                  <a className="tag" href="#">#میکرو_بیولوژی</a>
-                                  <a className="tag" href="#">#فوری</a>
-                              </div>
-                              <div className="sub-heading">
-                                  <i className="fa fa-user"></i> <a href="#">4/5</a>
-                                  <i className="fa fa-usd"></i> 2,000,000 تومان
-                                  <i className="fa fa-clock-o"></i> دو ساعت قبل
-                              </div>
-                          </div>
+                          <div className="dash-divider"/>
+                          <ProjectsList Projects={this.props.recomendedProject}/>
+
                           <button type="submit" className="btn btn-primary btn-rec">
                               تمام پروژه ها
                           </button>
@@ -165,4 +35,14 @@ class Recomendedprojects extends React.Component{
     );
   }
 }
-module.exports = Recomendedprojects;
+
+Recomendedprojects.PropTypes = {
+  recomendedProject : PropTypes.object.isRequired,
+};
+function mapStateToProps(state, ownProps) {
+    return {
+        recomendedProject: state.recomendedProject
+    }
+}
+
+export default connect(mapStateToProps)(Recomendedprojects);

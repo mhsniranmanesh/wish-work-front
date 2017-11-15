@@ -38,6 +38,10 @@ a:hover {
     border-color: #009942;
 }
 
+.btn-radio{
+  border-radius: 100;
+}
+
 .btn-success:hover {
     color: #fff;
     background-color: #007031;

@@ -14,11 +14,12 @@ a:hover {
     text-decoration: none;
 }
 
-.SelectPicker{
-  background-color: white;
-  color: white;
-  font-size: 1000px;
+.section{
+  background-color: #014762;
+  color: #009942;
+  font-size: 20px;
 }
+
 
 .btn-radio{
   border-radius: 100%;

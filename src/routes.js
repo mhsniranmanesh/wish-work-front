@@ -7,7 +7,7 @@ import Profileinfo from './components/profileinfo/Profileinfo.js';
 import Notifspage from './components/notifspage/Notifspage.js';
 import CashOutIn from './components/cashout-in/cashout-in.js';
 import financialManagement from './components/financialmanagement/financialManagement.js';
-import accountBill from './components/accountbill/accountBill.js';
+import AccountBill from './components/accountbill/AccountBill.js';
 import ProjectControl from './components/projectcontrol/projectcontrol.js';
 import logoPic from '../static/img/nav-logo.png';
 // The Main component renders one of the three provided
@@ -25,7 +25,7 @@ const Main = () => (
       <Route path='/notifspage' component={Notifspage}/>
       <Route path='/cashout-in' component={CashOutIn}/>
       <Route path='/financialmanagement' component={financialManagement}/>
-      <Route path='/accountbill' component={accountBill}/>
+      <Route path='/accountbill' component={AccountBill}/>
       <Route path='/projectcontrol' component={ProjectControl}/>
     </Switch>
   </main>

@@ -14,6 +14,15 @@ a:hover {
     text-decoration: none;
 }
 
+.SelectPicker{
+  background-color: white;
+  color: white;
+  font-size: 1000px;
+}
+
+.btn-radio{
+  border-radius: 100%;
+}
 .btn-rec-lg {
     border-radius: 22.5px;
     padding-right: 25px;
@@ -36,6 +45,13 @@ a:hover {
     color: #fff;
     background-color: #009942;
     border-color: #009942;
+}
+
+.btn-radio-success{
+  border-radius: 100%;
+  color: #009942;
+  background-color: #009942;
+  border-color: #009942;
 }
 
 .btn-success:hover {

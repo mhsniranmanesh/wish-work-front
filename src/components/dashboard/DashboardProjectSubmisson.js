@@ -2,6 +2,8 @@ import React from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import SelectPicker from 'react-select-picker';
+
 
 
 const DashboardProjectSubmission = (props) =>{
@@ -14,31 +16,31 @@ const DashboardProjectSubmission = (props) =>{
                         <input type="text" className="form-control" id="" placeholder="عنوان پروژه"/>
                     </div>
                     <div className="input-group">
-                        <select className="selectpicker" data-style="form-control" id="" title="زمینه ترجمه را انتخاب کنید.">
+                        <SelectPicker className="form-control" title="زمینه ترجمه را انتخاب کنید.">
                             <option>پزشکی</option>
                             <option>ادبی</option>
                             <option>سیاسی</option>
                             <option>ریاضی</option>
                             <option>شیمی</option>
-                        </select>
+                        </SelectPicker>
                     </div>
                     <div className="input-group">
-                        <select className="selectpicker" data-style="form-control" id="" title="از زبان ...">
+                        <SelectPicker className="form-control" id="" title="از زبان ...">
                             <option>فارسی</option>
                             <option>انگلیسی</option>
                             <option>فرانسوی</option>
                             <option>عربی</option>
                             <option>اسپانیایی</option>
-                        </select>
+                        </SelectPicker>
                     </div>
                     <div className="input-group">
-                        <select className="selectpicker" data-style="form-control" id="" title="به زبان ...">
+                        <SelectPicker className="form-control" title="به زبان ...">
                             <option>فارسی</option>
                             <option>انگلیسی</option>
                             <option>فرانسوی</option>
                             <option>عربی</option>
                             <option>اسپانیایی</option>
-                        </select>
+                        </SelectPicker>
                     </div>
                 </form>
                 <form onSubmit={props.myFunc}>

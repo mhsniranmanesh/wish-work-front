@@ -65,6 +65,7 @@
     "redux-promise-middleware": "^4.4.1",
     "redux-router": "^1.0.0-beta3",
     "redux-thunk": "^2.2.0",
-    "select-picker": "^0.3.1"
+    "select-picker": "^0.3.1",
+    "styled-components": "^2.2.3"
   }
 }

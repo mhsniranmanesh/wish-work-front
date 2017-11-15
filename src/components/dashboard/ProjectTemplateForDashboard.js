@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import TagsRow from '../common/TagsRow';
 
+//TODO tags maping !
 
 const ProjectTemplateForDashboard = ({ProjectDetail}) => {
     return (
             <div>
                 <div className="dash-recom-item price-fair">
                     <a href="#">
-                        <h6><strong></strong>{ProjectDetail.title}</h6>
+                        <h6><strong>{ProjectDetail.title}</strong></h6>
                     </a>
                     <span className="sub-heading">
+
+                        {/*{ProjectDetail.tags.map(Tag =>*/}
+                            {/*<TagsRow Tag = {Tag} />*/}
+                        {/*)}*/}
                             {/*/!*list for tag*!/*/}
                             {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
                             {/*<a className="tag" href="#">#علمی</a>*/}
@@ -20,8 +26,8 @@ const ProjectTemplateForDashboard = ({ProjectDetail}) => {
                           </span>
                     <div className="sub-heading">
                         <i className="fa fa-user"/> <a href="#">4/5</a>
-                        <i className="fa fa-usd"/> {ProjectDetail.price}
-                        <i className="fa fa-clock-o"/> {ProjectDetail.releaseTime}
+                        {'  '}<i className="fa fa-usd"/> {' ' + ProjectDetail.price}
+                        {'  '}<i className="fa fa-clock-o"/> {' ' + ProjectDetail.releaseTime}
                     </div>
                 </div>
             </div>

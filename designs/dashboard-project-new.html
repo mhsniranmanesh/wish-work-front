@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="img/tab-img.png"/>
+    <link rel="shortcut icon" href="img/tab-img.png" />
     <title>Wish-Work Dashboard</title>
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -30,10 +30,10 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
         <div class="container">
-          <a class="navbar-brand" href="http://wishwork.ir">
-              <img src="img/nav-logo.png" height="30" class="d-inline-block align-top" alt="our logo. A shake hand that is like two wings too means that we fly high together">
-              <span style="font-family:elham;color:#018abe;font-size:22px;">ویش ورک</span>
-          </a>
+            <a class="navbar-brand" href="http://wishwork.ir">
+                <img src="img/nav-logo.png" height="30" class="d-inline-block align-top" alt="our logo. A shake hand that is like two wings too means that we fly high together">
+                <span style="font-family:elham;color:#018abe;font-size:22px;">ویش ورک</span>
+            </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -95,6 +95,12 @@
                                 <a href="dashboard-account-bill.html">صورت حساب</a>
                             </li>
                         </ul>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="پیام‌رسان">
+                        <a class="nav-link" href="dashboard-msg.html">
+                            <i class="fa fa-fw fa-comments"></i>
+                            <span class="nav-link-text">پیام‌رسان</span>
+                        </a>
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-sidenav sidenav-toggler">
@@ -249,17 +255,17 @@
 
                             <!-- Modal -->
                             <div class="modal fade modal-submission" id="projectsubmission" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="projectsubmissionLabel" aria-hidden="true">
-                              <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="projectsubmissionLabel">نحوه نمایش پروژه</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="projectsubmissionLabel">نحوه نمایش پروژه</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
                                     </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <div>
-                                      <span class="modal-item">
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <span class="modal-item">
                                         <span class="prices">
                                           <div>
                                             <svg width="5px" height="8vh">
@@ -272,32 +278,32 @@
                                             </svg>
                                           </div>
                                         </span>
-                                        <div>
-                                            <a href="#">
-                                                <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
-                                            </a>
-                                            <span class="sub-heading">
+                                                <div>
+                                                    <a href="#">
+                                                        <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
+                                                    </a>
+                                                    <span class="sub-heading">
                                                 <a class="tag" href="#">#فارسی_به_انگلیسی</a>
                                                 <a class="tag" href="#">#علمی</a>
                                                 <a class="tag" href="#">#زیست_شناسی</a>
                                                 <a class="tag" href="#">#میکرو_بیولوژی</a>
                                                 <a class="tag" href="#">#فوری</a>
                                               </span>
-                                            <span class="sub-heading">
+                                                    <span class="sub-heading">
                                                   <i class="fa fa-user"></i> <a href="#">4/5</a>
                                                   <i class="fa fa-usd"></i> 2,000,000 تومان
                                                   <i class="fa fa-clock-o"></i> دو ساعت قبل
                                               </span>
+                                                </div>
+                                                </span>
+                                            </div>
                                         </div>
-                                      </span>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-rec btn-secondary" data-dismiss="modal">اصلاح</button>
+                                            <button type="button" class="btn btn-rec btn-primary">تأیید</button>
+                                        </div>
                                     </div>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-rec btn-secondary" data-dismiss="modal">اصلاح</button>
-                                    <button type="button" class="btn btn-rec btn-primary">تأیید</button>
-                                  </div>
                                 </div>
-                              </div>
                             </div>
                         </form>
                     </div>
@@ -383,16 +389,16 @@
 
         function dragDrop(input) {
 
-                if (input.files && input.files[0]) {
-                    let reader = new FileReader();
-                    reader.onload = (e) => {
-                        let imgData = e.target.result;
-                        let imgName = input.files[0].name;
-                        input.setAttribute("data-title", "فایل(ها) ضمیمه شد(ند).");
-                        console.log(e.target.result);
-                    }
-                    reader.readAsDataURL(input.files[0]);
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    let imgData = e.target.result;
+                    let imgName = input.files[0].name;
+                    input.setAttribute("data-title", "فایل(ها) ضمیمه شد(ند).");
+                    console.log(e.target.result);
                 }
+                reader.readAsDataURL(input.files[0]);
+            }
 
             if (input.files && input.files[0]) {
                 let reader = new FileReader();

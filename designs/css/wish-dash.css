@@ -6,12 +6,11 @@ body.fixed-nav {
     padding-top: 54px;
 }
 
-
-
-@media(max-width:769px){
-  .space , .input-group-btn button .space{
-    margin-top: 10px;
-  }
+@media(max-width:769px) {
+    .space,
+    .input-group-btn button .space {
+        margin-top: 10px;
+    }
 }
 
 @media (min-width: 992px) {
@@ -20,56 +19,52 @@ body.fixed-nav {
     }
 }
 
-
-@media(min-width:769px){
-  .nav-value{
-    display: none;
-  }
-  .icon1{
-    margin-right: 30px;
-    width:110px;
-    height: 20px;
-    float: right;
-    display: inline-block;
-    font-size: 12px;
-    color: #EDC800;
-  }
-
-  .icon2{
-    margin-right: 30px;
-    width:130px;
-    height: 20px;
-    display: inline-block;
-    font-size: 12px;
-    float:right;
-    position: relative;
-    color: #85bb65;
-  }
+@media(min-width:769px) {
+    .nav-value {
+        display: none;
+    }
+    .icon1 {
+        margin-right: 30px;
+        width: 110px;
+        height: 20px;
+        float: right;
+        display: inline-block;
+        font-size: 12px;
+        color: #EDC800;
+    }
+    .icon2 {
+        margin-right: 30px;
+        width: 130px;
+        height: 20px;
+        display: inline-block;
+        font-size: 12px;
+        float: right;
+        position: relative;
+        color: #85bb65;
+    }
 }
 
-@media(max-width:768px){
-  .value{
-    display: none;
-  }
-  .icon1{
-    width:110px;
-    height: 20px;
-    float: right;
-    display: inline-block;
-    font-size: 12px;
-    color: #EDC800;
-  }
-
-  .icon2{
-    width:130px;
-    height: 20px;
-    display: inline-block;
-    font-size: 12px;
-    float:right;
-    position: relative;
-    color: #85bb65;
-  }
-
+@media(max-width:768px) {
+    .value {
+        display: none;
+    }
+    .icon1 {
+        width: 110px;
+        height: 20px;
+        float: right;
+        display: inline-block;
+        font-size: 12px;
+        color: #EDC800;
+    }
+    .icon2 {
+        width: 130px;
+        height: 20px;
+        display: inline-block;
+        font-size: 12px;
+        float: right;
+        position: relative;
+        color: #85bb65;
+    }
 }
 
 .scroll-to-top {
@@ -544,7 +539,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 
 @media(min-width:768px) {
     .modal-submission {
-      margin-top: 20vh;
+        margin-top: 20vh;
     }
     .modal-item {
         display: inline-block;
@@ -754,6 +749,7 @@ span.time-msg {
     font-weight: 400;
 }
 
+
 /*@media (min-width: 768px) {
     .navbar-nav {
         float: none;
@@ -891,10 +887,8 @@ span.notif-cat {
 .chart .row {
     margin: 1rem 0;
 }
-<<<<<<< HEAD
-=======
 
-img {
+<<<<<<< HEAD=======img {
     vertical-align: middle;
 }
 
@@ -1192,4 +1186,215 @@ img {
 .timeline-label .btn-secondary {
     color: #fff;
     font-weight: 400;
+}
+
+.contacts-section {
+    height: calc(100vh - 59px);
+    background: #00141B;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.msg-holder {
+    height: calc(100vh - 115px);
+    height: -moz-calc(100vh - 115px);
+    height: -webkit-calc(100vh - 115px);
+    padding: 25px 35px 25px 20px;
+    overflow-y: scroll;
+}
+
+.input-holder {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    /* z-index: 3; */
+}
+
+.input-holder textarea {
+    width: calc(100% - 50px);
+    height: 56px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0);
+    padding: 14px 25px;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: "iransans";
+    color: #555;
+    box-sizing: padding-box;
+    resize: none;
+    background-color: #fff;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid #ddd;
+}
+
+.dash-msg .col-sm-8,
+.dash-msg .col-sm-4 {
+    padding: 0;
+}
+
+.me {
+    background: #018abe;
+    color: #fff;
+    margin: 0px 0px 10px auto;
+}
+
+.chat-bubble {
+    border-radius: 0;
+    padding: 5px 15px;
+    width: 350px;
+    max-width: 100%;
+    position: relative;
+}
+
+.my-mouth {
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid #018abe;
+    border-right: 10px solid transparent;
+    position: absolute;
+    bottom: 10px;
+    left: 100%;
+}
+
+.chat-bubble .content {
+    margin: 0.5em 0;
+    line-height: 120%;
+    font-size: 0.9em;
+}
+
+.chat-bubble .time {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.8em;
+}
+
+.me .time {
+    color: rgba(255, 255, 255, 0.6);
+    text-align: left;
+}
+
+.you {
+    background: #ffffff;
+    margin: 0px auto 10px 0px;
+}
+
+.your-mouth {
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid white;
+    border-left: 10px solid transparent;
+    position: absolute;
+    bottom: 10px;
+    left: -10px;
+}
+
+.search-holder input {
+    height: 50px;
+}
+
+.contact-list {
+    padding: 0;
+    margin: 0;
+    color: #fff;
+    list-style: none;
+}
+
+.contact-list li.contact:hover {
+    background: #002533;
+}
+
+.contact-list li.contact {
+    position: relative;
+    padding: 10px 0 15px 0;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.contact-list li.contact .wrap {
+    width: 95%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.contact-list li.contact .wrap img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.contact-list li.contact .wrap .meta {
+    padding: 5px 15px 0 0;
+    width: 100%;
+}
+
+.contact-list li.contact .wrap .meta .name {
+    font-weight: 400;
+    margin: 0;
+    float: right;
+}
+
+.contact-list li.contact .wrap .meta .time {
+    font-weight: 400;
+    margin: 0;
+    text-align: left;
+}
+
+.contact-list li.contact .wrap .meta .preview {
+    margin: 5px 0 0 0;
+    padding: 0 0 1px;
+    font-weight: 300;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-holder .input-group-addon:first-child {
+    border-left: 0;
+    border-right: 0;
+    background: #fff;
+    border-color: #fff;
+    color: #777;
+}
+
+.search-holder .input-group .form-control:last-child,
+.input-group-addon:last-child {
+    border-color: #fff;
+    padding-right: 0;
+}
+
+.dash-msg {
+    overflow: hidden;
+}
+
+.contact-list .active {
+    background-color: #002533;
+}
+
+.contact-list .badge {
+    float: right;
+    margin-right: 5px;
+    font-weight: 400;
+}
+
+.send-btn {
+    background: #018abe;
+    position: absolute;
+    width: 50px;
+    color: #fff;
+    font-size: 25px;
+    height: 100%;
+}
+
+.send-btn:hover {
+    background: #014762;
+    color: #fff;
+}
+
+.send-btn .fa {
+    position: relative;
+    top: 10px;
 }

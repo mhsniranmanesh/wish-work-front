@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="img/tab-img.png" />
+    <title>Wish-Work Dashboard</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap-RTL CSS -->
+    <link href="vendor/bootstrap-rtl/css/bootstrap-rtl.min.css" rel="stylesheet">
+    <!-- Bootstrap-Select -->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-select/css/bootstrap-select.min.css">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Plugin CSS -->
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/fontiran.css" rel="stylesheet">
+    <link href="css/wish.css" rel="stylesheet">
+    <link href="css/wish-dash.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav" id="page-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="img/nav-logo.png" height="30" class="d-inline-block align-top" alt="nav-logo">
+                <span style="font-family:elham;color:#018abe;font-size:22px;">ویش ورک</span>
+            </a>
+
+            <span class="value">
+              <span class="icon1">
+                <!-- Coins icon by Icons8 -->
+                <!-- Coins icon by Icons8 -->
+              <img class="icon icons8-Coins" width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAABqUlEQVRIS72WQVLCQBBFX4cS3AmlB+AG4MaSFfEEcgQ8ARwlnECOgCcQV6HcCDfgAFjgDrFIWxnASihCJoRytpnMn37d/XuEE9b8g/J6xaModYV69AiBsQrjQpGXyi2L3TfJohMKBCs6KF2gnPLvAsFzivRCQWshI/LNK3sRWFx07JR4sBb6HOEBHYuDD23pWQvNfIYiNE8RUuXNWujfIpr7VANhANQyRjVxlFamiBzFC6CNmKq7ShH8QvEc6AdC117Ip49QcxyeuGC6XuGK4qru9ZGYPhoWigz5oRoEPEOGHG3LexiiUxggDArCpHLHOBrZ/J36WqmhtAVcIBu68DDjCEtaQNuiApPRZbGWuY8bgKubW/8tOYYuj7XsF0QiurzWwpJ6IMaa9lccXd5GvL6nOxsxQDcmm4gur7XcNOI5SkR3logO+2AcXV5rqTSYhpfdNW4iunBTHmsJc5TasCVc2aJrnmotphiOobvEMxM2iu4UazmGLvZmODe6JEc/Czqb+SS5XLmEG8VzTNDMIyO2pJtpoG2TbBONcYxYaW4ehqkDzTaK6Nm/GWJaQ5XbKCgAAAAASUVORK5CYII=">
+              <span>5761 سکه</span>
+            </span>
+            <!-- Paper Money icon by Icons8 -->
+            <span class="icon2">
+                <!-- Paper Money icon by Icons8 -->
+              <img class="icons8-Paper-Money" width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAD5ElEQVR4Xu1aS07bUBQ91/1MS1dAWAFhBQSpzrR0BSA1ljoDhm1SNagJHQKzSnFVWEHp1KlEWAHpCjA7aMcUn+pFhD6MP/FHJG5sCSEl73fOPff63ncjmPNH5hw/SgJKBcw5A6ULzLkAyiBYusD/6ALt082Fp1dPlglUm/XeYRTGQitAB0phBUBV/QlkYQy6afYiMRaGgD3HWvUMryKUCoGa+g+BAh35eODae9MehA2aOQK6jlWlcFGAahKgYQAJ7rRM+2DmCNCBAlIFoSyqJJzvQxw2673tqRHw6fRNhVfXixTWoOQrrAiklhdKEj8hdAUYinDoUdT6+7frE2fNei90v9xcQA9IKhDlDhS8hAJ5A5Se4TbrvaGfSEW49+f6Yvw5wV8t036emwImibxZrEvwUiguhANQXE/oRgWxoL26fYv658bjR0tv1z67QWMjFZA28k5IwG8QyoJDCl0Cw6RAw/bpOtYAgtXx91FvgtxcYELQMzesJMBvEr//zJzJMh7InxneU0BJgC+CZiR85qaXCvAVR6ldIK7KemjTT+q6uSlgrgkg+L1l2utprNzpN14KRc2t3hY//xKik5Zpf0+zrj/5CVsjFwXE1dhBm+/9eL1Oz9iPreEJVwxv592LLydJiBitT+Nb3JwcCOBu07TbcRvp33f6jX2BhJakQWsRPGiZ9k6Sfbr9RhuQD1Fz0hNAnHnCdtJ8vetYBxBsJQGilbKRtXzQmh/7jZpBaeu1gD4uMQFZgl2oLAl1UXk0LmfV5QiAzSCiRLxXSd1BB+x/OzwoAV3HuvD5vKoAa0F1vDr0iAiBur97pqlA1f1LqRSk1vQldg9GQKD1iZUw8GOANySc64CzqGBqBHScxpGIbKTxZ3/cIHncqtubaVQwNQK6jnV+55JzAuuHqoAYNuu9lWIREON7cWDiLBc3/5bMacWArACyzp86AR3HGopgWYsBsQEwzAXU1Xer3kvVM4gjMrYaTJsHzH0QnPvXoJJzp99wBbI4lrZqUghlLSoRovBU7+6qPkHLtGOboGFBcWouoA4UlgqrQkcox3oqTOFGUMGUJQkaZZdZ3wKa9QYEdme9GFKke5StsP5j4lT4vrSSl8OpKsKYrm6Q5LuO9RWCyIwxBwKAtBciHuVAjwkh9wCXhnA7aQX4gBciAGJazlFZ2kiinroSk+o4Txi1uMGhYfAkKXAtd7jTDww7Qy4KUIunzQ8mTWGTjitvhSds6OSmgKQWmpXxJQF5dYZmxaJJz1EqIE4BSRkt+vjyFyJFt2DW85cKyMpg0eeXCii6BbOev1RAVgaLPr9UQNEtmPX8c6+Av+vTfF91JQ+HAAAAAElFTkSuQmCC">
+              1/549/020 تومان
+              </span>
+            </span>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav navbar-right">
+                    <li class="nav-item dropdown">
+                        <span class="nav-value">
+                    <span class="icon1">
+                    <img class="icon icons8-Coins" width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAABqUlEQVRIS72WQVLCQBBFX4cS3AmlB+AG4MaSFfEEcgQ8ARwlnECOgCcQV6HcCDfgAFjgDrFIWxnASihCJoRytpnMn37d/XuEE9b8g/J6xaModYV69AiBsQrjQpGXyi2L3TfJohMKBCs6KF2gnPLvAsFzivRCQWshI/LNK3sRWFx07JR4sBb6HOEBHYuDD23pWQvNfIYiNE8RUuXNWujfIpr7VANhANQyRjVxlFamiBzFC6CNmKq7ShH8QvEc6AdC117Ip49QcxyeuGC6XuGK4qru9ZGYPhoWigz5oRoEPEOGHG3LexiiUxggDArCpHLHOBrZ/J36WqmhtAVcIBu68DDjCEtaQNuiApPRZbGWuY8bgKubW/8tOYYuj7XsF0QiurzWwpJ6IMaa9lccXd5GvL6nOxsxQDcmm4gur7XcNOI5SkR3logO+2AcXV5rqTSYhpfdNW4iunBTHmsJc5TasCVc2aJrnmotphiOobvEMxM2iu4UazmGLvZmODe6JEc/Czqb+SS5XLmEG8VzTNDMIyO2pJtpoG2TbBONcYxYaW4ehqkDzTaK6Nm/GWJaQ5XbKCgAAAAASUVORK5CYII=">
+                    <span>5761 سکه</span>
+                        </span>
+                        <!-- Paper Money icon by Icons8 -->
+                        <span class="icon2">
+                      <!-- Paper Money icon by Icons8 -->
+                    <img class="icons8-Paper-Money" width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAD5ElEQVR4Xu1aS07bUBQ91/1MS1dAWAFhBQSpzrR0BSA1ljoDhm1SNagJHQKzSnFVWEHp1KlEWAHpCjA7aMcUn+pFhD6MP/FHJG5sCSEl73fOPff63ncjmPNH5hw/SgJKBcw5A6ULzLkAyiBYusD/6ALt082Fp1dPlglUm/XeYRTGQitAB0phBUBV/QlkYQy6afYiMRaGgD3HWvUMryKUCoGa+g+BAh35eODae9MehA2aOQK6jlWlcFGAahKgYQAJ7rRM+2DmCNCBAlIFoSyqJJzvQxw2673tqRHw6fRNhVfXixTWoOQrrAiklhdKEj8hdAUYinDoUdT6+7frE2fNei90v9xcQA9IKhDlDhS8hAJ5A5Se4TbrvaGfSEW49+f6Yvw5wV8t036emwImibxZrEvwUiguhANQXE/oRgWxoL26fYv658bjR0tv1z67QWMjFZA28k5IwG8QyoJDCl0Cw6RAw/bpOtYAgtXx91FvgtxcYELQMzesJMBvEr//zJzJMh7InxneU0BJgC+CZiR85qaXCvAVR6ldIK7KemjTT+q6uSlgrgkg+L1l2utprNzpN14KRc2t3hY//xKik5Zpf0+zrj/5CVsjFwXE1dhBm+/9eL1Oz9iPreEJVwxv592LLydJiBitT+Nb3JwcCOBu07TbcRvp33f6jX2BhJakQWsRPGiZ9k6Sfbr9RhuQD1Fz0hNAnHnCdtJ8vetYBxBsJQGilbKRtXzQmh/7jZpBaeu1gD4uMQFZgl2oLAl1UXk0LmfV5QiAzSCiRLxXSd1BB+x/OzwoAV3HuvD5vKoAa0F1vDr0iAiBur97pqlA1f1LqRSk1vQldg9GQKD1iZUw8GOANySc64CzqGBqBHScxpGIbKTxZ3/cIHncqtubaVQwNQK6jnV+55JzAuuHqoAYNuu9lWIREON7cWDiLBc3/5bMacWArACyzp86AR3HGopgWYsBsQEwzAXU1Xer3kvVM4gjMrYaTJsHzH0QnPvXoJJzp99wBbI4lrZqUghlLSoRovBU7+6qPkHLtGOboGFBcWouoA4UlgqrQkcox3oqTOFGUMGUJQkaZZdZ3wKa9QYEdme9GFKke5StsP5j4lT4vrSSl8OpKsKYrm6Q5LuO9RWCyIwxBwKAtBciHuVAjwkh9wCXhnA7aQX4gBciAGJazlFZ2kiinroSk+o4Txi1uMGhYfAkKXAtd7jTDww7Qy4KUIunzQ8mTWGTjitvhSds6OSmgKQWmpXxJQF5dYZmxaJJz1EqIE4BSRkt+vjyFyJFt2DW85cKyMpg0eeXCii6BbOev1RAVgaLPr9UQNEtmPX8c6+Av+vTfF91JQ+HAAAAAElFTkSuQmCC">
+                    1/549/020 تومان
+                  </span>
+                        </span>
+                    </li>
+                    <form class="form-inline">
+                        <div class="input-group">
+                            <input type="text" class="form-control space" placeholder="جستجو..." aria-label="">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-secondary space dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-search"></i>
+                          </button>
+                                <div class="dropdown-menu dropdown-menu-left">
+                                    <a class="dropdown-item" href="#">در فریلنسر ها</a>
+                                    <a class="dropdown-item" href="#">در پروژه ها</a>
+                                    <div role="separator" class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">همه</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mr-lg-2" href="#" id="alertsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-fw fa-bell nav-icon"></i>
+                            <span class="d-lg-none">پیغام ها
+                          <span class="badge badge-pill badge-success">12</span>
+                            </span>
+                            <span class="new-indicator d-none d-lg-block">
+                          <i class="fa fa-fw fa-circle"></i>
+                          <span class="number">12</span>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                            <h6 class="dropdown-header">اطلاعیه های جدید</h6>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <div class="dropdown-message small">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی".</div>
+                                <span class="small text-muted">12:12</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <div class="dropdown-message small">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی".</div>
+                                <span class="small text-muted">12:12</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <div class="dropdown-message small">چهار روز دیگر تا اتمام مهلت ارسال پروژه ی "متن حرفه ای در زمینه زیست شناسی مولوکولی".</div>
+                                <span class="small text-muted">12:12</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item small" href="#">
+                            تمام اطلاعیه ها
+                          </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle" src="http://via.placeholder.com/50x50" width="30" height="30"> وحید علوی
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarUserDropdown">
+                            <a class="dropdown-item" href="#">خروج</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-sidenav">
+
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="داشبورد">
+                        <a class="nav-link" href="#">
+                            <i class="fa fa-fw fa-dashboard"></i>
+                            <span class="nav-link-text">داشبورد</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="پروژه">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents">
+                            <i class="fa fa-fw fa-tasks"></i>
+                            <span class="nav-link-text">پروژه</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="collapseComponents">
+                            <li>
+                                <a href="dashboard-project-new.html">ایجاد پروژه</a>
+                            </li>
+                            <li>
+                                <a href="dashboard-project-recoms.html">دریافت پروژه</a>
+                            </li>
+                            <li>
+                                <a href="#">کنترل پروژه</a>
+                            </li>
+                            <li>
+                                <a href="#">پروژه های سابق</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="پروفایل">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#profileComponents">
+                            <i class="fa fa-fw fa-user"></i>
+                            <span class="nav-link-text">پروفایل</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="profileComponents">
+                            <li>
+                                <a href="dashboard-profile-info.html">ویرایش اطلاعات</a>
+                            </li>
+                            <li>
+                                <a href="dashboard-profile-notif.html">اطلاعیه ها</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="حساب">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#accountComponents">
+                            <i class="fa fa-fw fa-usd"></i>
+                            <span class="nav-link-text">حساب</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="accountComponents">
+                            <li>
+                                <a href="dashboard-account-deposit.html">واریز - برداشت</a>
+                            </li>
+                            <li>
+                                <a href="dashboard-account-management.html">مدیریت مالی</a>
+                            </li>
+                            <li>
+                                <a href="dashboard-account-bill.html">صورت حساب</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="پیام‌رسان">
+                        <a class="nav-link" href="#">
+                            <i class="fa fa-fw fa-comments"></i>
+                            <span class="nav-link-text">پیام‌رسان</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-sidenav sidenav-toggler">
+                    <li class="nav-item">
+                        <a class="nav-link text-center" id="sidenavToggler">
+                            <i class="fa fa-fw fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="content-wrapper dash-msg">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-8 chat-section">
+                    <div class="msg-holder">
+                        <div class="chat-bubble me">
+                            <div class="my-mouth"></div>
+                            <div class="content">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</div>
+                            <div class="time">۲۲:۳۰</div>
+                        </div>
+                        <div class="chat-bubble you">
+                            <div class="your-mouth"></div>
+                            <div class="content">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود
+                                ابزارهای کاربردی می باشد.</div>
+                            <div class="time">۲۲:۳۰</div>
+                        </div>
+                        <div class="chat-bubble me">
+                            <div class="my-mouth"></div>
+                            <div class="content">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</div>
+                            <div class="time">۲۲:۳۰</div>
+                        </div>
+                    </div>
+                    <div class="input-holder">
+                        <textarea></textarea>
+                        <a href="#" class="send-btn text-center">
+                            <i class="fa fa-paper-plane"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4 contacts-section">
+                    <div class="search-holder">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
+                            <input type="text" class="form-control" placeholder="جستجوی مخاطبین..." aria-label="search">
+                        </div>
+                    </div>
+                    <ul class="contact-list">
+                        <li class="contact active">
+                            <div class="wrap d-flex flex-row">
+                                <img src="img/wish-avatar.jpg" alt="">
+                                <div class="meta">
+                                    <p class="name">پشتیبانی</p>
+                                    <span class="badge badge-pill badge-primary">۳</span>
+                                    <p class="time">۲۲:۳۰</p>
+                                    <p class="preview">لورم ایپسوم متن ساختگی با تولید سادگی نام...</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="contact">
+                            <div class="wrap d-flex flex-row">
+                                <img src="img/hamid-avatar.jpg" alt="">
+                                <div class="meta">
+                                    <p class="name">حمید تولیتی</p>
+                                    <span class="badge badge-pill badge-primary">۳</span>
+                                    <p class="time">۲۲:۳۰</p>
+                                    <p class="preview">لورم ایپسوم متن ساختگی با تولید سادگی نام...</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="contact">
+                            <div class="wrap d-flex flex-row">
+                                <img src="img/mohsen-avatar.jpg" alt="">
+                                <div class="meta">
+                                    <p class="name">محسن ایرانمنش</p>
+                                    <p class="time">۲۲:۳۰</p>
+                                    <p class="preview">لورم ایپسوم متن ساختگی با تولید سادگی نام...</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="contact">
+                            <div class="wrap d-flex flex-row">
+                                <img src="img/amir-avatar.jpg" alt="">
+                                <div class="meta">
+                                    <p class="name">امیرحسین شیرانی</p>
+                                    <p class="time">۲۲:۳۰</p>
+                                    <p class="preview">لورم ایپسوم متن ساختگی با تولید سادگی نام...</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Scroll to Top Button -->
+    <a class="scroll-to-top" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="vendor/persianumber/persianumber.min.js"></script>
+    <!-- Bootstrap-Select -->
+    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="js/wish-dash.js"></script>
+    <script src="js/wish.js"></script>
+</body>
+
+</html>

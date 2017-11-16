@@ -33,6 +33,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "@types/react-virtualized-select": "^3.0.2",
     "axios": "^0.17.0",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.0.0-beta",
@@ -58,6 +59,7 @@
     "react-router-redux": "^4.0.8",
     "react-select": "^1.0.0-rc.10",
     "react-select-picker": "0.0.7",
+    "react-virtualized": "^9.12.0",
     "reactstrap": "^5.0.0-alpha.3",
     "reducers": "^3.0.0-alpha",
     "redux": "^3.7.2",

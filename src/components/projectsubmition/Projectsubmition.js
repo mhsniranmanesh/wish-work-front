@@ -7,18 +7,24 @@ import Error from './Errors';
 import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Form, FormGroup, Label, Input, FormText , Row , Col} from 'reactstrap';
 import Select from 'react-select';
 import SelectPicker from 'react-select-picker';
-// import SelectPicker from 'react-select-picker';
+import createClass from 'create-react-class';
+import VirtualizedSelect from 'react-virtualized-select';
 
+const LANGUAGES = require('./Datas/Languages.js')
 
 class Projectsubmition extends React.Component{
+
     constructor(props , context){
         super(props);
 
         this.state={ modal: false , translationFatherTag:"",translationFrom:"", translationTo:"" ,projectTitle:"" , projectDescription:"", submitProjectPrice:"" , submitProjectTime:"" , requiredTags:[] , response:[],
-                     message:"" ,showError : false,
+                     message:"" ,showError : false, selectValueTF :"" , selectValueTT : ""
         };
 
+        this.getInitialState = this.getInitialState.bind(this);
+        this.updateValueTF = this.updateValueTF.bind(this);
         this.toggle = this.toggle.bind(this);
+        this.updateValueTT = this.updateValueTT.bind(this);
         this.translationToState = this.translationToState.bind(this);
         this.translationFromState = this.translationFromState.bind(this);
         this.projectTitleState = this.projectTitleState.bind(this);
@@ -30,6 +36,19 @@ class Projectsubmition extends React.Component{
         this.dragDrop = this.dragDrop.bind(this);
     }
 
+    getInitialState(){
+      return{};
+    }
+    updateValueTT (newValue) {
+    	this.setState({
+    		selectValueTT: newValue
+  		});
+	  }
+    updateValueTF(newValue) {
+      this.setState({
+        selectValueTF: newValue
+      });
+    }
     toggle(){
       this.setState({
       modal: !this.state.modal
@@ -108,6 +127,9 @@ class Projectsubmition extends React.Component{
   render(){
         //const showError = this.state.translationFatherTagError ;
         // const showErrorProjectTitle = this.state.projectTitleError;
+        var options1 = LANGUAGES.AVAILABLETOLANGUAGES;
+        var options2 = LANGUAGES.AVAILABLEFROMLANGUAGES;
+
       const showError = this.state.showError;
     return(
       <div>
@@ -167,28 +189,35 @@ class Projectsubmition extends React.Component{
 
                         <Row>
                           <Col>
-                            <div className="input-group">
-                                    <SelectPicker className="form-control" title="از زبان ..." value={this.state.translationFrom} onChange={this.translationFromState}>
-                                      <option>فارسی</option>
-                                      <option>انگلیسی</option>
-                                      <option>فرانسوی</option>
-                                      <option>عربی</option>
-                                      <option>اسپانیایی</option>
-                                    </SelectPicker>
+                              <div className="section">
+                                  <Select
+                                    className="customPicker"
+                                    ref="fromLanguage"
+                                    placeholder="از زبان ..."
+                                    options={options1}
+                                    name="select-language"
+                                    value={this.state.selectValueTF}
+                                    onChange={this.updateValueTF}
+                                    labelKey="name"
+                                    valueKey="name"
+                                  />
                               </div>
                             </Col>
                             <Col>
-                              <div className="input-group">
-
-                                    <SelectPicker className="tolang form-control" title="به زبان ..." value={this.state.translationTo} onChange={this.translationToState}>
-                                      <option>به زبان ...</option>
-                                      <option>فارسی</option>
-                                      <option>انگلیسی</option>
-                                      <option>فرانسوی</option>
-                                      <option>عربی</option>
-                                      <option>اسپانیایی</option>
-                                    </SelectPicker>
-                            </div>
+                                  <Select
+                                    placeholder="به زبان ..."
+                                    className="customPicker section"
+                                    ref="toLanguage"
+                                    options={options2}
+                                    simpleValue
+                                    clearable
+                                    name="select-language"
+                                    value={this.state.selectValueTT}
+                                    onChange={this.updateValueTT}
+                                    searchable
+                                    labelKey="name"
+                                    valueKey="name"
+                                  />
                           </Col>
                         </Row>
                         <div className="form-group">

@@ -145,7 +145,7 @@ class Projectsubmition extends React.Component{
                         <div className="input-group">
                           <FormGroup tag="fieldset">
                               <legend>زمینه ترجمه تان را انتخاب کنید</legend>
-                              <ul className="xcont">
+                              {/* <ul className="xcont">
                                 <Row className= "fields">
                                   <Col>
                                   <li>
@@ -183,8 +183,8 @@ class Projectsubmition extends React.Component{
                                 </Col>
                                 </Row>
 
-                                </ul>
-                                {/* <Row>
+                                </ul> */}
+                                <Row>
                                   <Col>
                                     <FormGroup check>
                                       <Label className="btn-r" check>
@@ -219,7 +219,7 @@ class Projectsubmition extends React.Component{
                                         حقوقی
                                     </FormGroup>
                                   </Col>
-                                </Row> */}
+                                </Row>
                             </FormGroup>
                         </div>
 

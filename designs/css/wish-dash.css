@@ -1308,7 +1308,7 @@ span.notif-cat {
 
 .contact-list li.contact {
     position: relative;
-    padding: 10px 0 15px 0;
+    padding: 10px 0 0 0;
     font-size: 0.9em;
     cursor: pointer;
 }
@@ -1327,8 +1327,9 @@ span.notif-cat {
 }
 
 .contact-list li.contact .wrap .meta {
-    padding: 5px 15px 0 0;
+    padding: 5px 15px 15px 0;
     width: 100%;
+    border-bottom: 1px solid #002533;
 }
 
 .contact-list li.contact .wrap .meta .name {

@@ -6,9 +6,6 @@ import * as projectSubmit from '../../actions/projectSubmit.js';
 import Error from './Errors';
 import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Form, FormGroup, Label, Input, FormText , Row , Col} from 'reactstrap';
 import Select from 'react-select';
-import SelectPicker from 'react-select-picker';
-import createClass from 'create-react-class';
-import VirtualizedSelect from 'react-virtualized-select';
 
 const LANGUAGES = require('./Datas/Languages.js')
 
@@ -148,10 +145,49 @@ class Projectsubmition extends React.Component{
                         <div className="input-group">
                           <FormGroup tag="fieldset">
                               <legend>زمینه ترجمه تان را انتخاب کنید</legend>
-                                <Row>
+                              <ul className="xcont">
+                                <Row className= "fields">
+                                  <Col>
+                                  <li>
+                                    <input type="radio" id="f-option" name="selector"/>
+                                    <label for="f-option">Pizza</label>
+
+                                    <div class="check"></div>
+                                  </li>
+                                </Col>
+                                <Col>
+                                  <li>
+                                    <input type="radio" id="s-option" name="selector"/>
+                                    <label for="s-option">Bacon</label>
+
+                                    <div class="check"><div class="inside"></div></div>
+                                  </li>
+                                </Col>
+                              </Row>
+                                <Row className="fields">
+                                  <Col>
+                                  <li>
+                                    <input type="radio" id="t-option" name="selector"/>
+                                    <label for="t-option">Cats</label>
+
+                                    <div class="check"><div class="inside"></div></div>
+                                  </li>
+                                </Col>
+                                <Col>
+                                  <li>
+                                    <input type="radio" id="q-option" name="selector"/>
+                                    <label for="q-option">Cats</label>
+
+                                    <div class="check"><div class="inside"></div></div>
+                                  </li>
+                                </Col>
+                                </Row>
+
+                                </ul>
+                                {/* <Row>
                                   <Col>
                                     <FormGroup check>
-                                      <Label check>
+                                      <Label className="btn-r" check>
                                         <Input className="btn btn-radio btn-radio-success" type="radio" name="radio1" />
                                       </Label>
                                         عمومی
@@ -183,7 +219,7 @@ class Projectsubmition extends React.Component{
                                         حقوقی
                                     </FormGroup>
                                   </Col>
-                                </Row>
+                                </Row> */}
                             </FormGroup>
                         </div>
 

@@ -143,48 +143,39 @@ class Projectsubmition extends React.Component{
                           <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.projectTitle} onChange={this.projectTitleState}/>
                         </div>
                         <div className="input-group">
-                          <FormGroup tag="fieldset">
+                          {/* <FormGroup tag="fieldset"> */}
                               <legend>زمینه ترجمه تان را انتخاب کنید</legend>
-                              {/* <ul className="xcont">
                                 <Row className= "fields">
                                   <Col>
-                                  <li>
-                                    <input type="radio" id="f-option" name="selector"/>
-                                    <label for="f-option">Pizza</label>
-
-                                    <div class="check"></div>
-                                  </li>
+                                    <label>
+                                      <input className="btn-radio" type="radio" name="rb" id="rb1" />
+                                        <span for="rb1" className="radio-text">عمومی</span>
+                                    </label>
                                 </Col>
                                 <Col>
-                                  <li>
-                                    <input type="radio" id="s-option" name="selector"/>
-                                    <label for="s-option">Bacon</label>
-
-                                    <div class="check"><div class="inside"></div></div>
-                                  </li>
+                                  <label>
+                                    <input className="btn-radio" type="radio" name="rb" id="rb2" />
+                                    <span for="rb2" className="radio-text">فنی</span>
+                                </label>
                                 </Col>
                               </Row>
                                 <Row className="fields">
                                   <Col>
-                                  <li>
-                                    <input type="radio" id="t-option" name="selector"/>
-                                    <label for="t-option">Cats</label>
-
-                                    <div class="check"><div class="inside"></div></div>
-                                  </li>
+                                    <label>
+                                      <input className="btn-radio" type="radio" name="rb" id="rb3" />
+                                      <span for="rb3" className="radio-text">پزشکی</span>
+                                    </label>
                                 </Col>
                                 <Col>
-                                  <li>
-                                    <input type="radio" id="q-option" name="selector"/>
-                                    <label for="q-option">Cats</label>
-
-                                    <div class="check"><div class="inside"></div></div>
-                                  </li>
+                                  <label>
+                                    <input className="btn-radio" type="radio" name="rb" id="rb4" />
+                                    <span for="rb4" className="radio-text">حقوقی</span>
+                                  </label>
                                 </Col>
                                 </Row>
 
-                                </ul> */}
-                                <Row>
+
+                                {/* <Row>
                                   <Col>
                                     <FormGroup check>
                                       <Label className="btn-r" check>
@@ -219,8 +210,8 @@ class Projectsubmition extends React.Component{
                                         حقوقی
                                     </FormGroup>
                                   </Col>
-                                </Row>
-                            </FormGroup>
+                                </Row> */}
+                            {/* </FormGroup> */}
                         </div>
 
                         <Row>

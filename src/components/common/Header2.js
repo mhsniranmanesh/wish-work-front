@@ -7,9 +7,49 @@ import NotifsListForHeader from './NotifsListForHeader';
 //import '../../src/styles.css';
 //className = 'active' show the side navbar active when you click on the object
 class Header2 extends React.Component {
-    constructor(props , context){
+    constructor(props){
         super(props);
+        this.state = {activeDashboard : true , activeProject : false , activeProfile: false , activeAccounting : false , activeMessage : false };
+        this.dashboardActive = this.dashboardActive.bind(this);
+        this.projectActive = this.projectActive.bind(this);
+        this.profileActive = this.profileActive.bind(this);
+        this.accountingActive = this.accountingActive.bind(this);
+        this.messageActive = this.messageActive.bind(this);
     }
+
+    dashboardActive (){
+        if(!this.state.activeDashboard) {
+            this.setState(prevState => ({activeDashboard: !prevState.activeDashboard}));
+            this.setState({activeProject : false , activeProfile: false , activeAccounting: false , activeMessage: false})
+        }
+    }
+    projectActive(){
+        if(!this.state.activeProject) {
+            this.setState(prevState => ({activeProject: !prevState.activeProject}));
+            this.setState({activeDashboard : false ,activeProfile : false,activeAccounting:false, activeMessage : false })
+        }
+    }
+    profileActive(){
+        if(!this.state.activeProfile){
+            this.setState(prevState => ({activeProfile: !prevState.activeProfile}));
+            this.setState({activeDashboard : false ,activeProject : false,activeAccounting:false, activeMessage : false })
+
+        }
+    }
+    accountingActive() {
+        if (!this.state.activeAccounting) {
+            this.setState(prevState => ({activeAccounting: !prevState.activeAccounting}));
+            this.setState({activeDashboard: false, activeProject: false, activeProfile: false, activeMessage: false})
+        }
+    }
+    messageActive() {
+        if (!this.state.activeMessage) {
+            this.setState(prevState => ({activeMessage: !prevState.activeMessage}));
+            this.setState({activeDashboard: false, activeProject: false, activeProfile: false, activeAccounting: false})
+        }
+    }
+
+
     render() {
         return (
 
@@ -27,16 +67,16 @@ class Header2 extends React.Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav navbar-sidenav">
-                            <li className="nav-item active" data-toggle="tooltip" data-placement="right"
-                                title="داشبورد">
+                            <li className={this.state.activeDashboard ? "nav-item active" : "nav-item"} data-toggle="tooltip" data-placement="right"
+                                title="داشبورد" onClick={this.dashboardActive}>
                                 <NavLink to="/" className="nav-link">
                                     <i className="fa fa-fw fa-dashboard"/>
                                     <span className="nav-link-text">داشبورد</span>
                                 </NavLink>
                             </li>
-                            <li className="nav-item" data-toggle="tooltip" data-placement="right" title="پروژه">
-                                <a className="nav-link nav-link-collapse collapsed" data-toggle="collapse"
-                                   href="#collapseComponents">
+                            <li className={this.state.activeProject ? "nav-item active" : "nav-item"} data-toggle="tooltip" data-placement="right" title="پروژه"
+                                onClick={this.projectActive}>
+                                <a className="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents">
                                     <i className="fa fa-fw fa-tasks"/>
                                     <span className="nav-link-text">پروژه</span>
                                 </a>
@@ -55,7 +95,8 @@ class Header2 extends React.Component {
                                     </li>
                                 </ul>
                             </li>
-                            <li className="nav-item" data-toggle="tooltip" data-placement="right" title="پروفایل">
+                            <li className={this.state.activeProfile ? "nav-item active" : "nav-item"} data-toggle="tooltip" data-placement="right" title="پروفایل"
+                                onClick={this.profileActive}>
                                 <a className="nav-link nav-link-collapse collapsed" data-toggle="collapse"
                                    href="#profileComponents">
                                     <i className="fa fa-fw fa-user"/>
@@ -70,7 +111,8 @@ class Header2 extends React.Component {
                                     </li>
                                 </ul>
                             </li>
-                            <li className="nav-item" data-toggle="tooltip" data-placement="right" title="حساب">
+                            <li className={this.state.activeAccounting ? "nav-item active" : "nav-item"} data-toggle="tooltip" data-placement="right" title="حساب"
+                                onClick={this.accountingActive}>
                                 <a className="nav-link nav-link-collapse collapsed" data-toggle="collapse"
                                    href="#accountComponents">
                                     <i className="fa fa-fw fa-usd"/>
@@ -88,6 +130,13 @@ class Header2 extends React.Component {
                                     </li>
                                 </ul>
                             </li>
+                            <li className={this.state.activeMessage ? "nav-item active" : "nav-item"} data-toggle="tooltip" data-placement="right" title="پیام‌رسان"
+                                 onClick={this.messageActive}>
+                                <NavLink className="nav-link" to='/messages'>
+                                    <i className="fa fa-fw fa-comments"/>
+                                    <span className="nav-link-text">پیام‌رسان</span>
+                                </NavLink>
+                            </li>
                         </ul>
                         <ul className="navbar-nav navbar-sidenav sidenav-toggler">
                             <li className="nav-item">
@@ -98,6 +147,22 @@ class Header2 extends React.Component {
                         </ul>
 
                         <ul className="navbar-nav navbar-right">
+                            <form className="form-inline">
+                                <div className="input-group">
+                                    <input type="text" className="form-control" placeholder="جستجو..." aria-label=""/>
+                                        <div className="input-group-btn">
+                                            <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i className="fa fa-search"/>
+                                            </button>
+                                            <div className="dropdown-menu dropdown-menu-left">
+                                                <a className="dropdown-item" href="#">در فریلنسر ها</a>
+                                                <a className="dropdown-item" href="#">در پروژه ها</a>
+                                                <div role="separator" className="dropdown-divider"/>
+                                                <a className="dropdown-item" href="#">همه</a>
+                                            </div>
+                                        </div>
+                                </div>
+                            </form>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle mr-lg-2" href="#" id="alertsDropdown"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -112,29 +177,7 @@ class Header2 extends React.Component {
                                 </a>
 
                                 <NotifsListForHeader Notifications={this.props.Notifications}/>
-                                {/*<div className="dropdown-menu" aria-labelledby="alertsDropdown">*/}
-                                    {/*<h6 className="dropdown-header">پیغام های جدید:</h6>*/}
-                                    {/*<div className="dropdown-divider"/>*/}
-                                        {/*<NotifsListForHeader Notifications={this.props.Notifications}/>*/}
 
-                                    {/*<a className="dropdown-item" href="#">*/}
-                                        {/*<div className="dropdown-message small">چهار روز دیگر تا اتمام مهلت ارسال پروژه*/}
-                                            {/*ی "متن حرفه ای در زمینه زیست شناسی مولوکولی".*/}
-                                        {/*</div>*/}
-                                        {/*<span className="small text-muted">12:12</span>*/}
-                                    {/*</a>*/}
-                                    {/*<div className="dropdown-divider"/>*/}
-                                    {/*<a className="dropdown-item" href="#">*/}
-                                        {/*<div className="dropdown-message small">چهار روز دیگر تا اتمام مهلت ارسال پروژه*/}
-                                            {/*ی "متن حرفه ای در زمینه زیست شناسی مولوکولی".*/}
-                                        {/*</div>*/}
-                                        {/*<span className="small text-muted">12:12</span>*/}
-                                    {/*</a>*/}
-                                    {/*<div className="dropdown-divider"/>*/}
-                                    {/*<a className="dropdown-item small" href="#">*/}
-                                        {/*تمام پیغام ها*/}
-                                    {/*</a>*/}
-                                {/*</div>*/}
                             </li>
                             <li id="tool" className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="http://example.com"

@@ -9,6 +9,7 @@ import CashOutIn from './components/cashout-in/cashout-in.js';
 import financialManagement from './components/financialmanagement/financialManagement.js';
 import AccountBill from './components/accountbill/AccountBill.js';
 import ProjectControl from './components/projectcontrol/projectcontrol.js';
+import Messages from './components/messages/Messages';
 import logoPic from '../static/img/nav-logo.png';
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
@@ -27,6 +28,7 @@ const Main = () => (
       <Route path='/financialmanagement' component={financialManagement}/>
       <Route path='/accountbill' component={AccountBill}/>
       <Route path='/projectcontrol' component={ProjectControl}/>
+      <Route path='/messages' component={Messages}/>
     </Switch>
   </main>
 )

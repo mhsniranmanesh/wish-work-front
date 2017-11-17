@@ -90,7 +90,7 @@ class Profileinfo extends React.Component{
                 <div className="col-sm-6 d-block mx-auto">
                     <div className="dash-con dash-profile-info con-body mb-4">
 
-                        <span /*className="projectinfo"*/>
+                        <span className="projectinfo">
                           <h5 style={{display:'inline'}}>تغییر عکس پروفایل</h5>
                         </span>
                         <span className="projectinfo">
@@ -121,7 +121,7 @@ class Profileinfo extends React.Component{
                         </form>
                     </div>
                     <div className="dash-con dash-profile-info con-body mb-4">
-                      <span /*className="projectinfo"*/>
+                      <span className="projectinfo">
                         <h5 style={{display:'inline'}}>تغییر اطلاعات شخصی</h5>
                       </span>
                       <span className="projectinfo">
@@ -177,7 +177,7 @@ class Profileinfo extends React.Component{
                         </form>
                     </div>
                     <div className="dash-con dash-profile-info con-body mb-4">
-                      <span /*className="projectinfo"*/>
+                      <span className="projectinfo">
                         <h5 style={{display:'inline'}}>تغییر تخصص ها</h5>
                       </span>
                       <span className="projectinfo">
@@ -287,7 +287,7 @@ class Profileinfo extends React.Component{
                         </div>
 
                     <div className="dash-con dash-profile-info con-body mb-4">
-                      <span /*className="projectinfo"*/>
+                      <span className="projectinfo">
                         <h5 style={{display:'inline'}}>تغییر رمز عبور</h5>
                       </span>
                       <span className="projectinfo">

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from './common/Header.js';
 import Main from '../routes.js';
 import Header2 from './common/Header2.js';
 import {connect} from 'react-redux';
@@ -11,6 +10,8 @@ import { withRouter } from 'react-router-dom';
 class App extends React.Component {
   constructor(props , context){
     super(props , context);
+
+
   }
   render(){
     return(

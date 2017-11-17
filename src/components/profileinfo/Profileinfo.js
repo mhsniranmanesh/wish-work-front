@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as profileInfo from '../../actions/profileInfo.js';
-import {Input,Row,Col} from 'reactstrap';
+import {Input,Row,Col,InputGroupAddon} from 'reactstrap';
 import Select from 'react-select';
 
 const LANGUAGES = require('./Datas/Languages.js')
@@ -89,7 +89,10 @@ class Profileinfo extends React.Component{
             <div className="row">
                 <div className="col-sm-6 d-block mx-auto">
                     <div className="dash-con dash-profile-info con-body mb-4">
+                      <div>
+                        <i class="fa fa-camera" aria-hidden="true"></i>
                         <h5>تغییر عکس پروفایل</h5>
+                      </div>
                         <div className="dash-divider"/>
                         <form className="">
                             <div className="media">

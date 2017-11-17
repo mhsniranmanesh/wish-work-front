@@ -90,10 +90,14 @@ class Profileinfo extends React.Component{
             <div className="row">
                 <div className="col-sm-6 d-block mx-auto">
                     <div className="dash-con dash-profile-info con-body mb-4">
-                      <div>
-                        <i className="fa fa-camera" aria-hidden="true"/>
-                        <h5>تغییر عکس پروفایل</h5>
-                      </div>
+
+                        <span className="projectinfo">
+                          <h5 style={{display:'inline'}}>تغییر عکس پروفایل</h5>
+                        </span>
+                        <span className="projectinfo">
+                          <i className="fa fa-camera" aria-hidden="true"/>
+                        </span>
+
                         <div className="dash-divider"/>
                         <form className="">
                             <div className="media">
@@ -118,19 +122,27 @@ class Profileinfo extends React.Component{
                         </form>
                     </div>
                     <div className="dash-con dash-profile-info con-body mb-4">
-                        <h5>تغییر اطلاعات شخصی</h5>
+                      <span className="projectinfo">
+                        <h5 style={{display:'inline'}}>تغییر اطلاعات شخصی</h5>
+                      </span>
+                      <span className="projectinfo">
+                        <i className="fa fa-user" aria-hidden="true"></i>
+                      </span>
+
                         <div className="dash-divider"/>
                         <form className="">
                             <div id="" className="form-group">
                                 <label htmlFor="" className="col-form-label">
                                   <span className="point">
+
                                     <i className="fa fa-exclamation point" aria-hidden="true"/>
                                       برای تغییر هر مورد روی آن دوبار کلیک کنید.
+
                                   </span>
                                 </label>
                                 <div>
                                 <label htmlFor="" className="col-form-label">
-                                    عنوان حرفه ای کوتاه.
+                                    عنوان حرفه ای کوتاه
                                 </label>
                               </div>
                                 <input type="text" className="form-control form-control-danger" id="" value="مترجم رسمی فارسی به انگلیسی" readOnly />
@@ -168,8 +180,14 @@ class Profileinfo extends React.Component{
                         </form>
                     </div>
                     <div className="dash-con dash-profile-info con-body mb-4">
-                        <h5>تغییر تخصص ها</h5>
-                        <div className="dash-divider"/>
+
+                      <span className="projectinfo">
+                        <h5 style={{display:'inline'}}>تغییر تخصص ها</h5>
+                      </span>
+                      <span className="projectinfo">
+                        <i className="fa fa-wrench" aria-hidden="true"></i>
+                      </span>
+                        <div className="dash-divider"></div>
                         <form className="">
                             <div className="input-group">
 
@@ -273,8 +291,14 @@ class Profileinfo extends React.Component{
                         </div>
 
                     <div className="dash-con dash-profile-info con-body mb-4">
-                        <h5>تغییر رمز عبور</h5>
-                        <div className="dash-divider"/>
+
+                      <span className="projectinfo">
+                        <h5 style={{display:'inline'}}>تغییر رمز عبور</h5>
+                      </span>
+                      <span className="projectinfo">
+                        <i className="fa fa-unlock-alt" aria-hidden="true"></i>
+                      </span>
+                        <div className="dash-divider"></div>
                         <form className="">
                             <div id="" className="form-group">
                                 <input type="password" className="form-control form-control-danger" id="" placeholder="رمز عبور فعلی"/>

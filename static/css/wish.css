@@ -18,6 +18,19 @@ a:hover {
   color: orangered;
 }
 
+.projectinfo h5{
+  display:inline-block;
+  margin-right: 10px;
+  color: #be018a;
+  font-size: 16px;
+}
+
+.projectinfo i{
+  display:inline-block;
+  margin-right: 10px;
+  color: #be018a;
+  font-size: 18px;
+}
 /**
  * React Select
  * ============
@@ -1427,12 +1440,14 @@ ul.social-buttons li a:hover {
 }
 
 .con-body .quote {
-    color: #5cb85c;
+    /*color: #5cb85c;*/
+    color: limegreen;
     font-weight: 400;
 }
 
 .point {
-    color: #E8990F;
+    /*color: #E8990F;*/
+    color: orangered;
 }
 
 /* privacy&policy */

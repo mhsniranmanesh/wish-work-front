@@ -14,37 +14,76 @@ class Projectsubmition extends React.Component{
     constructor(props , context){
         super(props);
 
-        this.state={ modal: false , translationFatherTag:"",translationFrom:"", translationTo:"" ,projectTitle:"" , projectDescription:"", submitProjectPrice:"" , submitProjectTime:"" , requiredTags:[] , response:[],
+        this.state={ translationFatherTag:false , modal: false , is_general: false , is_medical : false , is_technical : false , is_law : false,translationFrom:"", translationTo:"" ,projectTitle:"" , projectDescription:"", submitProjectPrice:"" , submitProjectTime:"" , requiredTags:[] , response:[],
                      message:"" ,showError : false, selectValueTF :"" , selectValueTT : ""
         };
 
+        this.IsLaw = this.IsLaw.bind(this);
+        this.IsMedical = this.IsMedical.bind(this);
+        this.IsTechnical = this.IsTechnical.bind(this);
+        this.IsGeneral = this.IsGeneral.bind(this);
         this.getInitialState = this.getInitialState.bind(this);
         this.updateValueTF = this.updateValueTF.bind(this);
         this.toggle = this.toggle.bind(this);
         this.updateValueTT = this.updateValueTT.bind(this);
-        this.translationToState = this.translationToState.bind(this);
-        this.translationFromState = this.translationFromState.bind(this);
+        // this.translationToState = this.translationToState.bind(this);
+        // this.translationFromState = this.translationFromState.bind(this);
         this.projectTitleState = this.projectTitleState.bind(this);
         this.projectDescriptionState = this.projectDescriptionState.bind(this);
         this.submitProjectTimeState = this.submitProjectTimeState.bind(this);
         this.submitProjectPriceState = this.submitProjectPriceState.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.translationFatherTagState = this.translationFatherTagState.bind(this);
         this.dragDrop = this.dragDrop.bind(this);
+        this.submit = this.submit.bind(this);
+    }
+    submit(){
+        alert('your project submited')
+    }
+    IsTechnical(){
+            this.setState({is_technical: true , is_general : false , is_law: false , is_medical: false , translationFatherTag : true});
+
+    }
+
+    IsGeneral(){
+            this.setState({is_general: true , is_technical: false , is_medical: false , is_law: false , translationFatherTag : true});
+    }
+
+    IsMedical(){
+            this.setState({is_general: false , is_technical: false , is_medical: true , is_law: false , translationFatherTag : true});
+
+    }
+
+    IsLaw(){
+            this.setState({is_general: false , is_technical: false , is_medical: false , is_law: true , translationFatherTag : true});
+
     }
 
     getInitialState(){
       return{};
     }
     updateValueTT (newValue) {
-    	this.setState({
-    		selectValueTT: newValue
-  		});
+        if(newValue === null){
+            this.setState({
+                translationTo: ""
+            });
+        }
+        else {
+            this.setState({
+                translationTo: newValue
+            });
+        }
 	  }
     updateValueTF(newValue) {
-      this.setState({
-        selectValueTF: newValue
-      });
+        if(newValue === null){
+            this.setState({
+                translationFrom: ""
+            });
+        }
+        else {
+            this.setState({
+                translationFrom: newValue
+            });
+        }
     }
     toggle(){
       this.setState({
@@ -56,15 +95,12 @@ class Projectsubmition extends React.Component{
         event.target.value = null;
     }
 
-    translationFatherTagState(event){
-        this.setState({translationFatherTag: event.target.value});
-    }
-    translationFromState(event){
-        this.setState({translationFrom: event.target.value});
-    }
-    translationToState(event){
-        this.setState({translationTo: event.target.value});
-    }
+    // translationFromState(event){
+    //     this.setState({translationFrom: event.target.value});
+    // }
+    // translationToState(event){
+    //     this.setState({translationTo: event.target.value});
+    // }
     projectDescriptionState(event){
         this.setState({projectDescription: event.target.value});
     }
@@ -82,12 +118,13 @@ class Projectsubmition extends React.Component{
 
     handleSubmit(event){
         event.preventDefault();
+        console.log('__TF__' , this.state.translationFrom);
             console.log('state is:' , this.state);
         if(!this.state.projectTitle.length){
             this.setState({showError: true});
             this.setState({message:"لطفا عنوان پروژه ی خود را وارد کنید!"});
         }
-        else if(!this.state.translationFatherTag.length){
+        else if(!this.state.translationFatherTag){
             //farghesh ba this.state = hamun moghe avaz mikone!
             this.setState({showError : true});
             this.setState({message:"لطفا زمینه ی ترجمه ی خود را وارد کنید!"});
@@ -96,16 +133,19 @@ class Projectsubmition extends React.Component{
             this.setState({showError: true});
             this.setState({message:"لطفا توضیحاتی در رابطه با پروژه ی خود ارائه دهید."});
         }
-        else if(!this.state.translationTo.length){
+        else if((!this.state.translationTo.length) || this.state.translationTo === null ){
+            this.setState({showError: true});
+            this.setState({message:"لطفا زبان مقصد خود را مشخص کنید"})
+
+        }
+        else if(!this.state.translationFrom.length || this.state.translationFrom === null){
             this.setState({showError: true});
             this.setState({message:"لطفا زبان مبدا ترجمه ی خود را مشخص کنید."})
         }
-        else if(!this.state.translationFrom.length){
-            this.setState({showError: true});
-            this.setState({message:"لطفا زبان مقصد خود را مشخص کنید"})
-        }
         else{
-          toggle();
+            this.setState({
+                modal: !this.state.modal
+            });
         }
 
         // else if(!this.state.translationTo.length){
@@ -138,7 +178,7 @@ class Projectsubmition extends React.Component{
                       <h5>ایجاد پروژه جدید</h5>
                       <errorFatherTag/>
                       <div className="dash-divider"/>
-                      <Form>
+                      <form>
                         <div className="form-group">
                           <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.projectTitle} onChange={this.projectTitleState}/>
                         </div>
@@ -148,70 +188,32 @@ class Projectsubmition extends React.Component{
                                 <Row className= "fields">
                                   <Col>
                                     <label>
-                                      <input className="btn-radio" type="radio" name="rb" id="rb1" />
-                                        <span for="rb1" className="radio-text">عمومی</span>
+                                      <input className="btn-radio" type="radio" name="rb" id="rb1" onChange={this.IsGeneral} checked={this.state.is_general}/>
+                                        <span htmlFor="rb1" className="radio-text">عمومی</span>
                                     </label>
                                 </Col>
                                 <Col>
                                   <label>
-                                    <input className="btn-radio" type="radio" name="rb" id="rb2" />
-                                    <span for="rb2" className="radio-text">فنی</span>
+                                    <input className="btn-radio" type="radio" name="rb" id="rb2" onChange={this.IsTechnical} checked={this.state.is_technical}/>
+                                    <span htmlFor="rb2" className="radio-text">فنی</span>
                                 </label>
                                 </Col>
                               </Row>
                                 <Row className="fields">
                                   <Col>
                                     <label>
-                                      <input className="btn-radio" type="radio" name="rb" id="rb3" />
-                                      <span for="rb3" className="radio-text">پزشکی</span>
+                                      <input className="btn-radio" type="radio" name="rb" id="rb3" onChange={this.IsMedical} checked={this.state.is_medical}/>
+                                      <span htmlFor="rb3" className="radio-text">پزشکی</span>
                                     </label>
                                 </Col>
                                 <Col>
                                   <label>
-                                    <input className="btn-radio" type="radio" name="rb" id="rb4" />
-                                    <span for="rb4" className="radio-text">حقوقی</span>
+                                    <input className="btn-radio" type="radio" name="rb" id="rb4" onChange={this.IsLaw} checked={this.state.is_law}/>
+                                    <span htmlFor="rb4" className="radio-text">حقوقی</span>
                                   </label>
                                 </Col>
                                 </Row>
 
-
-                                {/* <Row>
-                                  <Col>
-                                    <FormGroup check>
-                                      <Label className="btn-r" check>
-                                        <Input className="btn btn-radio btn-radio-success" type="radio" name="radio1" />
-                                      </Label>
-                                        عمومی
-                                    </FormGroup>
-                                  </Col>
-                                  <Col>
-                                    <FormGroup check>
-                                      <Label check>
-                                        <Input className="btn btn-radio btn-radio-success" type="radio" name="radio1" />
-                                      </Label>
-                                      فنی
-                                    </FormGroup>
-                                  </Col>
-                                </Row>
-                                <Row>
-                                  <Col>
-                                    <FormGroup check>
-                                      <Label check>
-                                        <Input className="btn btn-radio btn btn-radio-success" type="radio" name="radio1" />
-                                      </Label>
-                                      پزشکی
-                                    </FormGroup>
-                                  </Col>
-                                  <Col>
-                                    <FormGroup check>
-                                      <Label check>
-                                        <Input className="btn btn-radio btn-radio-success" type="radio" name="radio1" />
-                                      </Label>
-                                        حقوقی
-                                    </FormGroup>
-                                  </Col>
-                                </Row> */}
-                            {/* </FormGroup> */}
                         </div>
 
                         <Row>
@@ -222,8 +224,10 @@ class Projectsubmition extends React.Component{
                                     ref="fromLanguage"
                                     placeholder="از زبان ..."
                                     options={options1}
+                                    simpleValue
+                                    clearable
                                     name="select-language"
-                                    value={this.state.selectValueTF}
+                                    value={this.state.translationFrom}
                                     onChange={this.updateValueTF}
                                     labelKey="name"
                                     valueKey="name"
@@ -233,15 +237,14 @@ class Projectsubmition extends React.Component{
                             <Col>
                                   <Select
                                     placeholder="به زبان ..."
-                                    className="customPicker section"
+                                    className="customPicker"
                                     ref="toLanguage"
                                     options={options2}
                                     simpleValue
                                     clearable
                                     name="select-language"
-                                    value={this.state.selectValueTT}
+                                    value={this.state.translationTo}
                                     onChange={this.updateValueTT}
-                                    searchable
                                     labelKey="name"
                                     valueKey="name"
                                   />
@@ -320,7 +323,7 @@ class Projectsubmition extends React.Component{
                                 </span>
                                 <div>
                                     <a href="#">
-                                        <h6><strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong></h6>
+                                        <h6><strong>{this.state.projectTitle}</strong></h6>
                                     </a>
                                     <span className="sub-heading">
                                         <a className="tag" href="#">#فارسی_به_انگلیسی</a>
@@ -330,19 +333,19 @@ class Projectsubmition extends React.Component{
                                         <a className="tag" href="#">#فوری</a>
                                       </span>
                                     <span className="sub-heading">
-                                          <i className="fa fa-user"></i> <a href="#">4/5</a>
-                                          <i className="fa fa-usd"></i> 2,000,000 تومان
-                                          <i className="fa fa-clock-o"></i> دو ساعت قبل
+                                          <i className="fa fa-user"/> <a href="#">4/5</a>
+                                          <i className="fa fa-usd"/> {this.state.submitProjectPrice}
+                                          <i className="fa fa-clock-o"/>GetTime
                                       </span>
                                 </div>
                               </ModalBody>
                               <ModalFooter>
                                 <Button color="secondary" className = "btn btn-secondary btn-rec" onClick={this.toggle}>اصلاح</Button>
-                                <Button color="primary" className = "btn btn-primary btn-rec" onClick={this.toggle}>تأیید</Button>{' '}
+                                <Button color="primary" className = "btn btn-primary btn-rec" onClick={this.submit}>تأیید</Button>{' '}
                               </ModalFooter>
                             </Modal>
                           </div>
-                      </Form>
+                      </form>
                   </div>
               </div>
           </div>

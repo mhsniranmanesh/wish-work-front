@@ -10,6 +10,7 @@ class Profileinfo extends React.Component{
         super(props);
         this.state = { bioReadOnly : true , jobReadOnly : true , degreeReadOnly : true, universityReadOnly : true ,
                        bio: "" , job:"" , degree:"", university:""};
+
         this.state.bio = this.props.profileInfo.bio;
         this.state.job = this.props.profileInfo.job;
         this.state.degree = this.props.profileInfo.degree;

@@ -7,7 +7,7 @@ export function loadProfileInfoSuccess(profileInfo){
 }
 
 
-
+//
 export function profileInfo(){
   return function(dispatch){
     return profileInfoApi.getAllInfo().then(profileInfo =>{
@@ -22,17 +22,20 @@ export function loadNewInfosSuccess(newInfos){
     return{type: types.UPDATE_NEW_INFOS_SUCCESS , newInfos}
 }
 
-// export function ProfileInfo(){
+// export function profileInfo(){
 //   return function(dispatch){
-//     return axios.get('/api/v1/profiles/get-pub-infos/').then(profileInfo =>{
-//       dispatch(loadProfileInfoSuccess(profileInfo));
+//     console.log('axios is' , axios.defaults.headers.common['Authorization'])
+//     return axios.get('/api/v1/profiles/initial/').then(
+//         response =>{
+//           console.log(response);
+//       dispatch(loadProfileInfoSuccess(response.data));
 //     }).catch(error =>{
 //       throw (error);
 //     });
 //   };
 // }
 //
-// export function updateInformations(newInfos){
+// export function updateInformations(newInfos , getState){
 //     return function (dispatch) {
 //         return axios.post('/apiv1/profiles/lublublub').then(newInfos =>{
 //         dispatch(loadNewInfosSuccess(newInfos));

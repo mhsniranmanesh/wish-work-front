@@ -6,6 +6,10 @@ body.fixed-nav {
     padding-top: 54px;
 }
 
+.justify{
+  text-align: justify;
+}
+
 @media(max-width:769px) {
     .space,
     .input-group-btn button .space {

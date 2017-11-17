@@ -10,15 +10,17 @@ import NotificationsListForDashboard from "./NotificationsListForDashboard";
 import Notifications from '../../actions/Notifications';
 import ProfileInfoForDashboard from "./ProfileInfoForDashboard";
 
+const LANGUAGES = require('./Datas/Languages.js')
 
 class Dashboard extends React.Component{
   constructor(props , context){
     super(props , context);
 
-    this.gotoRecomendedProjects = this.gotoRecomendedProjects.bind(this);
+
     this.submitProject = this.submitProject.bind(this);
     this.gotoNotifications = this.gotoNotifications.bind(this);
   }
+
 
     submitProject(event){
         event.preventDefault();
@@ -35,7 +37,10 @@ class Dashboard extends React.Component{
         this.context.router.history.push('/notifspage');
     }
 
+
+
   render(){
+
     return(
       <div>
         <div className="content-wrapper py-3">
@@ -45,7 +50,7 @@ class Dashboard extends React.Component{
 
                     <div className="col-sm-5">
                         <ProfileInfoForDashboard profileInfo = {this.props.profileInfo} />
-                        <DashboardProjectSubmission myFunc={this.submitProject}/>
+                        <DashboardProjectSubmission   myFunc={this.submitProject}/>
                     </div>
 
 

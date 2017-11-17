@@ -14,6 +14,10 @@ a:hover {
     text-decoration: none;
 }
 
+.complementary{
+  color: orangered;
+}
+
 /**
  * React Select
  * ============
@@ -458,7 +462,7 @@ a:hover {
 
 .fields input[type="radio"]:checked +  span::before {
   top: 0;
-  width: 150%;
+  width: 165%;
   height: 100%;
   background: orangered;
   z-index:-1;

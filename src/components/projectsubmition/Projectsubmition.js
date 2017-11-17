@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as projectSubmit from '../../actions/projectSubmit.js';
 import Error from './Errors';
-import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Form, FormGroup, Label, Input, FormText , Row , Col} from 'reactstrap';
+import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Form, Label, Input, Row , Col} from 'reactstrap';
 import Select from 'react-select';
 
 const LANGUAGES = require('./Datas/Languages.js')
@@ -143,7 +143,6 @@ class Projectsubmition extends React.Component{
                           <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.projectTitle} onChange={this.projectTitleState}/>
                         </div>
                         <div className="input-group">
-                          {/* <FormGroup tag="fieldset"> */}
                               <legend>زمینه ترجمه تان را انتخاب کنید</legend>
                                 <Row className= "fields">
                                   <Col>
@@ -173,45 +172,6 @@ class Projectsubmition extends React.Component{
                                   </label>
                                 </Col>
                                 </Row>
-
-
-                                {/* <Row>
-                                  <Col>
-                                    <FormGroup check>
-                                      <Label className="btn-r" check>
-                                        <Input className="btn btn-radio btn-radio-success" type="radio" name="radio1" />
-                                      </Label>
-                                        عمومی
-                                    </FormGroup>
-                                  </Col>
-                                  <Col>
-                                    <FormGroup check>
-                                      <Label check>
-                                        <Input className="btn btn-radio btn-radio-success" type="radio" name="radio1" />
-                                      </Label>
-                                      فنی
-                                    </FormGroup>
-                                  </Col>
-                                </Row>
-                                <Row>
-                                  <Col>
-                                    <FormGroup check>
-                                      <Label check>
-                                        <Input className="btn btn-radio btn btn-radio-success" type="radio" name="radio1" />
-                                      </Label>
-                                      پزشکی
-                                    </FormGroup>
-                                  </Col>
-                                  <Col>
-                                    <FormGroup check>
-                                      <Label check>
-                                        <Input className="btn btn-radio btn-radio-success" type="radio" name="radio1" />
-                                      </Label>
-                                        حقوقی
-                                    </FormGroup>
-                                  </Col>
-                                </Row> */}
-                            {/* </FormGroup> */}
                         </div>
 
                         <Row>

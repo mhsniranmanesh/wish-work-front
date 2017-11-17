@@ -2,11 +2,12 @@ import axios from 'axios';
 
 export function Authentication() {
     return new Promise((resolve , reject) => {
-        var token = localStorage.getItem('current_login_token');
+        const token = localStorage.getItem('current_login_token');
         if (token) {
             axios.defaults.headers.common['Authorization'] = 'JWT ' + token;
             resolve();
-        } else {
+        }
+        else {
             axios.defaults.headers.common['Authorization'] = null;
             /*if setting null does not remove `Authorization` header then try
               delete axios.defaults.headers.common['Authorization'];

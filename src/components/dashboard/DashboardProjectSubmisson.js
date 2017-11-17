@@ -9,8 +9,7 @@ const LANGUAGES = require('./Datas/Languages.js')
 
 const DashboardProjectSubmission = (props) =>{
 
-      var options1 = LANGUAGES.AVAILABLETOLANGUAGES;
-      var options2 = LANGUAGES.AVAILABLEFROMLANGUAGES;
+
         return(
             <div className="dash-con dash-new-project con-body mb-4">
                 <h5>ایجاد پروژه جدید</h5>

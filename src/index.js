@@ -18,15 +18,33 @@ import '../static/css/wish-dash.css';
 import { BrowserRouter } from 'react-router-dom';
 import App from './components/App.js';
 import axios from 'axios';
-import {Authentication} from './promises/authentication';
+//import {Authentication} from './promises/authentication';
 
 
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');
 }
+function Authentication() {
+    return new Promise((resolve , reject) => {
+        const token = localStorage.getItem('current_login_token');
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = 'JWT ' + token;
+            resolve();
+        }
+        else {
+            axios.defaults.headers.common['Authorization'] = null;
+            /*if setting null does not remove `Authorization` header then try
+              delete axios.defaults.headers.common['Authorization'];
+            */
+            reject();
+        }
+    });
 
-// Authentication().then(() => {
-//     console.log('ok' , axios.defaults.headers.common['Authorization'] );
+    // console.log('token is: ' , axios.defaults.headers.common['Authorization']);
+}
+
+Authentication().then(() => {
+    console.log('ok' , axios.defaults.headers.common['Authorization'] );
     const store = configureStore();
     store.dispatch(profileInfo());
     store.dispatch(recomendedProject());
@@ -43,5 +61,5 @@ if (process.env.NODE_ENV !== 'production') {
         document.getElementById('root')
     );
 
-// });
+});
 

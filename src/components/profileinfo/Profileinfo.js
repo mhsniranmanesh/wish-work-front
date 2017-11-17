@@ -77,6 +77,7 @@ class Profileinfo extends React.Component{
     }
     submitChanges(){
         //action from redux
+        console.log(this.state);
         this.props.actions.updateInformations(this.state);
     }
   render(){
@@ -90,7 +91,7 @@ class Profileinfo extends React.Component{
                 <div className="col-sm-6 d-block mx-auto">
                     <div className="dash-con dash-profile-info con-body mb-4">
                       <div>
-                        <i class="fa fa-camera" aria-hidden="true"></i>
+                        <i className="fa fa-camera" aria-hidden="true"/>
                         <h5>تغییر عکس پروفایل</h5>
                       </div>
                         <div className="dash-divider"/>
@@ -123,7 +124,7 @@ class Profileinfo extends React.Component{
                             <div id="" className="form-group">
                                 <label htmlFor="" className="col-form-label">
                                   <span className="point">
-                                    <i className="fa fa-exclamation point" aria-hidden="true"></i>
+                                    <i className="fa fa-exclamation point" aria-hidden="true"/>
                                       برای تغییر هر مورد روی آن دوبار کلیک کنید.
                                   </span>
                                 </label>
@@ -168,7 +169,7 @@ class Profileinfo extends React.Component{
                     </div>
                     <div className="dash-con dash-profile-info con-body mb-4">
                         <h5>تغییر تخصص ها</h5>
-                        <div className="dash-divider"></div>
+                        <div className="dash-divider"/>
                         <form className="">
                             <div className="input-group">
 
@@ -182,13 +183,13 @@ class Profileinfo extends React.Component{
                                           <Col>
                                             <label>
                                               <input className="btn-radio" type="radio" name="rb" id="rb1" />
-                                                <span for="rb1" className="radio-text">عمومی</span>
+                                                <span htmlFor="rb1" className="radio-text">عمومی</span>
                                             </label>
                                         </Col>
                                         <Col>
                                           <label>
                                             <input className="btn-radio" type="radio" name="rb" id="rb2" />
-                                            <span for="rb2" className="radio-text">فنی</span>
+                                            <span htmlFor="rb2" className="radio-text">فنی</span>
                                         </label>
                                         </Col>
                                       </Row>
@@ -196,13 +197,13 @@ class Profileinfo extends React.Component{
                                           <Col>
                                             <label>
                                               <input className="btn-radio" type="radio" name="rb" id="rb3" />
-                                              <span for="rb3" className="radio-text">پزشکی</span>
+                                              <span htmlFor="rb3" className="radio-text">پزشکی</span>
                                             </label>
                                         </Col>
                                         <Col>
                                           <label>
                                             <input className="btn-radio" type="radio" name="rb" id="rb4" />
-                                            <span for="rb4" className="radio-text">حقوقی</span>
+                                            <span htmlFor="rb4" className="radio-text">حقوقی</span>
                                           </label>
                                         </Col>
                                         </Row>
@@ -247,11 +248,11 @@ class Profileinfo extends React.Component{
                                 </Row>
                                 <div className="form-group">
                                     <button type="submit" className="btn btn-success btn-rec">
-                                        <i className="fa fa-plus"></i>افزودن
+                                        <i className="fa fa-plus"/>افزودن
                                     </button>
                                 </div>
                                 <label htmlFor="" className="col-form-label sub-label">
-                                    <i className="fa fa-quote-left" aria-hidden="true"></i> برای حذف موارد انتخاب شده روی آن ها کلیک کنید.
+                                    <i className="fa fa-quote-left" aria-hidden="true"/> برای حذف موارد انتخاب شده روی آن ها کلیک کنید.
                                 </label>
                                 <div className="sub-heading" >
                                     <a className="tag" href="#">علمی</a>
@@ -264,7 +265,7 @@ class Profileinfo extends React.Component{
                                 </div>
                                 <div className="form-group">
                                     <button type="submit" className="btn btn-primary btn-rec">
-                                        <i className="fa fa-check"></i>ثبت تغییرات
+                                        <i className="fa fa-check"/>ثبت تغییرات
                                     </button>
                                 </div>
                                 </div>
@@ -273,17 +274,17 @@ class Profileinfo extends React.Component{
 
                     <div className="dash-con dash-profile-info con-body mb-4">
                         <h5>تغییر رمز عبور</h5>
-                        <div className="dash-divider"></div>
+                        <div className="dash-divider"/>
                         <form className="">
                             <div id="" className="form-group">
-                                <input type="password" className="form-control form-control-danger" id="" placeholder="رمز عبور فعلی"></input>
+                                <input type="password" className="form-control form-control-danger" id="" placeholder="رمز عبور فعلی"/>
                                 <div id="form-control-feedback-username" className="form-control-feedback" >رمز عبور فعلی صحیح نمیباشد!</div>
                             </div>
                             <div id="" className="form-group">
-                                <input type="password" className="form-control form-control-danger" id="" placeholder="رمز عبور جدید"></input>
+                                <input type="password" className="form-control form-control-danger" id="" placeholder="رمز عبور جدید"/>
                             </div>
                             <button type="submit" className="btn btn-primary btn-rec">
-                                <i className="fa fa-check"></i>ثبت تغییر
+                                <i className="fa fa-check"/>ثبت تغییر
                             </button>
                         </form>
                     </div>
@@ -301,7 +302,7 @@ Profileinfo.PropTypes = {
     profileInfo: PropTypes.array.isRequired,
     actions : PropTypes.object.isRequired,
     //action for changing information :
-    //updateInformations : PropTypes.func.isRequired
+    updateInformations : PropTypes.func.isRequired
 };
 
 function mapStateToProps(state , ownProps){

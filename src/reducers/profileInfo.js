@@ -6,8 +6,8 @@ export default function profileInfo(state= initialState.profileInfo , action){
     case types.LOAD_INFO_SUCCESS:
         return action.profileInfo;
         //it update profileInfo to new information
-      // case types.UPDATE_NEW_INFOS_SUCCESS:
-      //     return [...state , Object.assign({}, action.newInfos)];
+      case types.UPDATE_NEW_INFOS_SUCCESS:
+          return [...state , Object.assign({}, action.updateInformations)];
     default:
         return state;
   }

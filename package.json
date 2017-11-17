@@ -7,7 +7,7 @@
     "build": "webpack --config webpack.prod.js",
     "watch": "webpack --watch --config webpack.prod.js",
     "start": "webpack-dev-server --open --config webpack.dev.js",
-    "server": "webpack-dev-server --public 10.10.10.61 --watch-poll --config webpack.dev.js"
+    "server": "webpack-dev-server --open 10.10.10.61 --config webpack.dev.js"
   },
   "author": "Wish Work Technical Team",
   "license": "ISC",
@@ -68,6 +68,7 @@
     "redux-router": "^1.0.0-beta3",
     "redux-thunk": "^2.2.0",
     "select-picker": "^0.3.1",
-    "styled-components": "^2.2.3"
+    "styled-components": "^2.2.3",
+    "webpack": "^3.8.1"
   }
 }

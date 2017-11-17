@@ -107,12 +107,12 @@ class financialManagement extends React.Component{
                 </div>
                 <div className="dash-con dash-new-project con-body mb-4">
                     <div className="chart">
-                        <DoughnutChart data={mockData2} options={mockOptions2} width="400" height="200"/>
+                        <DoughnutChart data={mockData2} options={mockOptions2} width="400" height="200"></DoughnutChart>
                     </div>
                 </div>
                 <div className="dash-con dash-new-project con-body mb-4">
                     <div className="chart">
-                      <DoughnutChart data={mockData2} options={mockOptions2} width="400" height="200"/>
+                        <canvas id="timeColorChart" width="400" height="200"></canvas>
                     </div>
                 </div>
             </div>

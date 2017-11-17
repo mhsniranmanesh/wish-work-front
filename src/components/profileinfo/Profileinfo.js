@@ -77,6 +77,7 @@ class Profileinfo extends React.Component{
     }
     submitChanges(){
         //action from redux
+        console.log(this.state);
         this.props.actions.updateInformations(this.state);
     }
   render(){
@@ -133,8 +134,10 @@ class Profileinfo extends React.Component{
                             <div id="" className="form-group">
                                 <label htmlFor="" className="col-form-label">
                                   <span className="point">
-                                    <i className="fa fa-exclamation point" aria-hidden="true"></i>
-                                      برای تغییر هر مورد روی آن دوبار کلیک کنی
+
+                                    <i className="fa fa-exclamation point" aria-hidden="true"/>
+                                      برای تغییر هر مورد روی آن دوبار کلیک کنید.
+
                                   </span>
                                 </label>
                                 <div>
@@ -177,6 +180,7 @@ class Profileinfo extends React.Component{
                         </form>
                     </div>
                     <div className="dash-con dash-profile-info con-body mb-4">
+
                       <span className="projectinfo">
                         <i className="fa fa-wrench" aria-hidden="true"></i>
                       </span>
@@ -262,11 +266,11 @@ class Profileinfo extends React.Component{
                                 </Row>
                                 <div className="form-group">
                                     <button type="submit" className="btn btn-success btn-rec">
-                                        <i className="fa fa-plus"></i>افزودن
+                                        <i className="fa fa-plus"/>افزودن
                                     </button>
                                 </div>
                                 <label htmlFor="" className="col-form-label sub-label">
-                                    <i className="fa fa-quote-left" aria-hidden="true"></i> برای حذف موارد انتخاب شده روی آن ها کلیک کنید.
+                                    <i className="fa fa-quote-left" aria-hidden="true"/> برای حذف موارد انتخاب شده روی آن ها کلیک کنید.
                                 </label>
                                 <div className="sub-heading" >
                                     <a className="tag" href="#">علمی</a>
@@ -279,7 +283,7 @@ class Profileinfo extends React.Component{
                                 </div>
                                 <div className="form-group">
                                     <button type="submit" className="btn btn-primary btn-rec">
-                                        <i className="fa fa-check"></i>ثبت تغییرات
+                                        <i className="fa fa-check"/>ثبت تغییرات
                                     </button>
                                 </div>
                                 </div>
@@ -287,6 +291,7 @@ class Profileinfo extends React.Component{
                         </div>
 
                     <div className="dash-con dash-profile-info con-body mb-4">
+
                       <span className="projectinfo">
                         <i className="fa fa-unlock-alt" aria-hidden="true"></i>
                       </span>
@@ -297,14 +302,14 @@ class Profileinfo extends React.Component{
                         <div className="dash-divider"></div>
                         <form className="">
                             <div id="" className="form-group">
-                                <input type="password" className="form-control form-control-danger" id="" placeholder="رمز عبور فعلی"></input>
+                                <input type="password" className="form-control form-control-danger" id="" placeholder="رمز عبور فعلی"/>
                                 <div id="form-control-feedback-username" className="form-control-feedback" >رمز عبور فعلی صحیح نمیباشد!</div>
                             </div>
                             <div id="" className="form-group">
-                                <input type="password" className="form-control form-control-danger" id="" placeholder="رمز عبور جدید"></input>
+                                <input type="password" className="form-control form-control-danger" id="" placeholder="رمز عبور جدید"/>
                             </div>
                             <button type="submit" className="btn btn-primary btn-rec">
-                                <i className="fa fa-check"></i>ثبت تغییر
+                                <i className="fa fa-check"/>ثبت تغییر
                             </button>
                         </form>
                     </div>
@@ -322,7 +327,7 @@ Profileinfo.PropTypes = {
     profileInfo: PropTypes.array.isRequired,
     actions : PropTypes.object.isRequired,
     //action for changing information :
-    //updateInformations : PropTypes.func.isRequired
+    updateInformations : PropTypes.func.isRequired
 };
 
 function mapStateToProps(state , ownProps){

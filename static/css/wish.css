@@ -22,13 +22,15 @@ a:hover {
   display:inline-block;
   margin-right: 10px;
   /*color: #be018a;*/
+  color: #9401BE;
   font-size: 16px;
 }
 
 .projectinfo i{
   display:inline-block;
   margin-right: 10px;
-  color: #be018a;
+  /*color: #be018a;*/
+  color: #9401BE;
   font-size: 18px;
 }
 /**
@@ -434,7 +436,8 @@ a:hover {
   font-weight: 400;
 }
 
-.fields input[type="radio"] {
+.fields input[type="radio"] ,
+.fields input[type="checkbox"]{
   position: absolute;
   opacity: 0;
   z-index: 102;
@@ -449,7 +452,8 @@ a:hover {
   line-height: 36px;
   cursor: pointer;
 }
-.fields span.radio-text::before {
+.fields span.radio-text::before ,
+.fields span.checkbox-text::before {
   content: " ";
   /*margin-left: px;*/
   position: absolute;
@@ -467,13 +471,15 @@ a:hover {
 }
 
  /*Checked*/
-.fields input[type="radio"]:checked + span {
+.fields input[type="radio"]:checked + span ,
+.fields input[type="checkbox"]:checked + span {
   padding-left: 10px;
   color: #fff;
   z-index: 105;
 }
 
-.fields input[type="radio"]:checked +  span::before {
+.fields input[type="radio"]:checked +  span::before,
+.fields input[type="checkbox"]:checked +  span::before {
   top: 0;
   width: 165%;
   height: 100%;

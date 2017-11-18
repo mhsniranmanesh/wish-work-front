@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as profileInfo from '../../actions/profileInfo.js';
-import {Input,Row,Col,InputGroupAddon} from 'reactstrap';
+import {Input,Row,Col,InputGroupAddon , Button} from 'reactstrap';
 import Select from 'react-select';
 
 const LANGUAGES = require('./Datas/Languages.js')
@@ -130,7 +130,7 @@ class Profileinfo extends React.Component{
                       </span>
 
                         <div className="dash-divider"/>
-                        <form className="">
+                        <form>
                             <div id="" className="form-group">
                                 <label htmlFor="" className="col-form-label">
                                   <span className="point">
@@ -174,9 +174,9 @@ class Profileinfo extends React.Component{
 
 
 
-                            <button type="submit" className="btn btn-primary btn-rec">
-                                <i className="fa fa-check" onClick={this.submitChanges}/>ثبت تغییرات
-                            </button>
+                            <Button color="primary" className="btn btn-primary btn-rec" onClick={this.submitChanges}>
+                                <i className="fa fa-check" />ثبت تغییرات
+                            </Button>
                         </form>
                     </div>
                     <div className="dash-con dash-profile-info con-body mb-4">

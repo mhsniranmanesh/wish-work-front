@@ -15,7 +15,7 @@ class Projectsubmition extends React.Component{
         super(props);
 
         this.state={ translationFatherTag:false , modal: false , is_general: false , is_medical : false , is_technical : false , is_law : false,translationFrom:"", translationTo:"" ,projectTitle:"" , projectDescription:"", submitProjectPrice:"" , submitProjectTime:"" , requiredTags:[] , response:[],
-                     message:"" ,showError : false, selectValueTF :"" , selectValueTT : ""
+                     message:"" , showError : false, selectValueTF :"" , selectValueTT : "" , validPrice : false , validTime : false
         };
 
         this.IsLaw = this.IsLaw.bind(this);
@@ -35,9 +35,11 @@ class Projectsubmition extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.dragDrop = this.dragDrop.bind(this);
         this.submit = this.submit.bind(this);
+        this.validatePrice = this.validatePrice.bind(this);
+        this.validateTime = this.validateTime.bind(this);
     }
     submit(){
-        alert('your project submited')
+        alert('your project submited');
     }
     IsTechnical(){
             this.setState({is_technical: true , is_general : false , is_law: false , is_medical: false , translationFatherTag : true});
@@ -56,6 +58,14 @@ class Projectsubmition extends React.Component{
     IsLaw(){
             this.setState({is_general: false , is_technical: false , is_medical: false , is_law: true , translationFatherTag : true});
 
+    }
+
+    validatePrice(price){
+        const pr = /^\d+$/ ;
+        return pr.test(price) ;
+    }
+    validateTime(time){
+        const
     }
 
     getInitialState(){
@@ -110,7 +120,10 @@ class Projectsubmition extends React.Component{
         console.log('length:' , this.state.translationFatherTag.length);
     }
     submitProjectPriceState(event){
-        this.setState({submitProjectPrice: event.target.value})
+        const price = event.target.value;
+        const trueOrFalsePriceValid = this.validatePrice(price);
+
+        this.setState({submitProjectPrice: event.target.value , validPrice : trueOrFalsePriceValid})
     }
     projectTitleState(event){
         this.setState({projectTitle: event.target.value});
@@ -142,6 +155,14 @@ class Projectsubmition extends React.Component{
             this.setState({showError: true});
             this.setState({message:"لطفا زبان مبدا ترجمه ی خود را مشخص کنید."})
         }
+        else if(!this.state.validPrice){
+            this.setState({showError: true});
+            this.setState({message:"لطفا مبلغ خود را صحیح وارد کنید"})
+        }
+        // else if(!this.state.validTime){
+        //     this.setState({showError: true});
+        //     this.setState({message:"لطفا مبلغ خود را صحیح وارد کنید"})
+        // }
         else{
             this.setState({
                 modal: !this.state.modal
@@ -166,6 +187,7 @@ class Projectsubmition extends React.Component{
         // const showErrorProjectTitle = this.state.projectTitleError;
         var options1 = LANGUAGES.AVAILABLETOLANGUAGES;
         var options2 = LANGUAGES.AVAILABLEFROMLANGUAGES;
+        const emailRegex = /^\S+@\S+\.\S+$/;
 
       const showError = this.state.showError;
     return(

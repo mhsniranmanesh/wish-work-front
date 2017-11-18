@@ -5,8 +5,7 @@ import {bindActionCreators} from 'redux';
 import * as profileInfo from '../../actions/profileInfo.js';
 import {Input,Row,Col,InputGroupAddon} from 'reactstrap';
 import Select from 'react-select';
-
-const LANGUAGES = require('./Datas/Languages.js')
+const LANGUAGES = require('./Datas/Languages.js');
 
 
 class Profileinfo extends React.Component{
@@ -30,7 +29,6 @@ class Profileinfo extends React.Component{
         this.changeJobOnChange = this.changeJobOnChange.bind(this);
         this.changeDegreeOnChange = this.changeDegreeOnChange.bind(this);
         this.changeUniversityOnChange = this.changeUniversityOnChange.bind(this);
-
         this.submitChanges = this.submitChanges.bind(this);
     }
 
@@ -83,7 +81,7 @@ class Profileinfo extends React.Component{
   render(){
     var options1 = LANGUAGES.AVAILABLETOLANGUAGES;
     var options2 = LANGUAGES.AVAILABLEFROMLANGUAGES;
-    return(
+    return (
       <div>
       <div className="content-wrapper py-3">
         <div className="container-fluid">
@@ -126,7 +124,7 @@ class Profileinfo extends React.Component{
                         <h5 style={{display:'inline'}}>تغییر اطلاعات شخصی</h5>
                       </span>
                       <span className="projectinfo">
-                        <i className="fa fa-user" aria-hidden="true"></i>
+                        <i className="fa fa-user" aria-hidden="true"/>
                       </span>
 
                         <div className="dash-divider"/>
@@ -185,9 +183,9 @@ class Profileinfo extends React.Component{
                         <h5 style={{display:'inline'}}>تغییر تخصص ها</h5>
                       </span>
                       <span className="projectinfo">
-                        <i className="fa fa-wrench" aria-hidden="true"></i>
+                        <i className="fa fa-wrench" aria-hidden="true"/>
                       </span>
-                        <div className="dash-divider"></div>
+                        <div className="dash-divider"/>
                         <form className="">
                             <div className="input-group">
 
@@ -296,9 +294,9 @@ class Profileinfo extends React.Component{
                         <h5 style={{display:'inline'}}>تغییر رمز عبور</h5>
                       </span>
                       <span className="projectinfo">
-                        <i className="fa fa-unlock-alt" aria-hidden="true"></i>
+                        <i className="fa fa-unlock-alt" aria-hidden="true"/>
                       </span>
-                        <div className="dash-divider"></div>
+                        <div className="dash-divider"/>
                         <form className="">
                             <div id="" className="form-group">
                                 <input type="password" className="form-control form-control-danger" id="" placeholder="رمز عبور فعلی"/>

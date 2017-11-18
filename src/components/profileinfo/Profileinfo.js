@@ -120,15 +120,10 @@ class Profileinfo extends React.Component{
                         </form>
                     </div>
                     <div className="dash-con dash-profile-info con-body mb-4">
+
                       <span className="projectinfo">
-                        <i className="fa fa-user" aria-hidden="true"></i>
-                      </span>
-                      <span className="projectinfo">
-<<<<<<< HEAD
                         <i className="fa fa-user" aria-hidden="true"/>
-=======
                         <h5 style={{display:'inline'}}>تغییر اطلاعات شخصی</h5>
->>>>>>> e489a269ba28f038fcc966b63040c5888fa684b0
                       </span>
 
                         <div className="dash-divider"/>
@@ -183,15 +178,11 @@ class Profileinfo extends React.Component{
                     </div>
                     <div className="dash-con dash-profile-info con-body mb-4">
 
+
                       <span className="projectinfo">
-                        <i className="fa fa-wrench" aria-hidden="true"></i>
-                      </span>
-                      <span className="projectinfo">
-<<<<<<< HEAD
                         <i className="fa fa-wrench" aria-hidden="true"/>
-=======
+
                         <h5 style={{display:'inline'}}>تغییر تخصص ها</h5>
->>>>>>> e489a269ba28f038fcc966b63040c5888fa684b0
                       </span>
                         <div className="dash-divider"/>
                         <form className="">

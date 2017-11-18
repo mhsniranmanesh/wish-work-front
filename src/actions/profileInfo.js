@@ -35,7 +35,7 @@ export function profileInfo(){
 //
 export function updateInformations(newInfos , getState){
     return function (dispatch) {
-        return axios.post('/api/v1/profiles/' , newInfos).then(newInfos =>{
+        return axios.post('/api/v1/profiles/update-infos/' , newInfos).then(newInfos =>{
         dispatch(loadNewInfosSuccess(newInfos));
         }).catch(error => {
             throw (error);

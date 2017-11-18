@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as profileInfo from '../../actions/profileInfo.js';
-import {Input,Row,Col,InputGroupAddon} from 'reactstrap';
+import {Input,Row,Col,InputGroupAddon , Button} from 'reactstrap';
 import Select from 'react-select';
 const LANGUAGES = require('./Datas/Languages.js');
 
@@ -90,10 +90,10 @@ class Profileinfo extends React.Component{
                     <div className="dash-con dash-profile-info con-body mb-4">
 
                         <span className="projectinfo">
-                          <h5 style={{display:'inline'}}>تغییر عکس پروفایل</h5>
+                          <i className="fa fa-camera" aria-hidden="true"/>
                         </span>
                         <span className="projectinfo">
-                          <i className="fa fa-camera" aria-hidden="true"/>
+                          <h5 style={{display:'inline'}}>تغییر عکس پروفایل</h5>
                         </span>
 
                         <div className="dash-divider"/>
@@ -121,14 +121,18 @@ class Profileinfo extends React.Component{
                     </div>
                     <div className="dash-con dash-profile-info con-body mb-4">
                       <span className="projectinfo">
-                        <h5 style={{display:'inline'}}>تغییر اطلاعات شخصی</h5>
+                        <i className="fa fa-user" aria-hidden="true"></i>
                       </span>
                       <span className="projectinfo">
+<<<<<<< HEAD
                         <i className="fa fa-user" aria-hidden="true"/>
+=======
+                        <h5 style={{display:'inline'}}>تغییر اطلاعات شخصی</h5>
+>>>>>>> e489a269ba28f038fcc966b63040c5888fa684b0
                       </span>
 
                         <div className="dash-divider"/>
-                        <form className="">
+                        <form>
                             <div id="" className="form-group">
                                 <label htmlFor="" className="col-form-label">
                                   <span className="point">
@@ -172,18 +176,22 @@ class Profileinfo extends React.Component{
 
 
 
-                            <button type="submit" className="btn btn-primary btn-rec">
-                                <i className="fa fa-check" onClick={this.submitChanges}/>ثبت تغییرات
-                            </button>
+                            <Button color="primary" className="btn btn-primary btn-rec" onClick={this.submitChanges}>
+                                <i className="fa fa-check" />ثبت تغییرات
+                            </Button>
                         </form>
                     </div>
                     <div className="dash-con dash-profile-info con-body mb-4">
 
                       <span className="projectinfo">
-                        <h5 style={{display:'inline'}}>تغییر تخصص ها</h5>
+                        <i className="fa fa-wrench" aria-hidden="true"></i>
                       </span>
                       <span className="projectinfo">
+<<<<<<< HEAD
                         <i className="fa fa-wrench" aria-hidden="true"/>
+=======
+                        <h5 style={{display:'inline'}}>تغییر تخصص ها</h5>
+>>>>>>> e489a269ba28f038fcc966b63040c5888fa684b0
                       </span>
                         <div className="dash-divider"/>
                         <form className="">
@@ -198,28 +206,28 @@ class Profileinfo extends React.Component{
                                         <Row className= "fields">
                                           <Col>
                                             <label>
-                                              <input className="btn-radio" type="radio" name="rb" id="rb1" />
-                                                <span htmlFor="rb1" className="radio-text">عمومی</span>
+                                              <input className="btn-radio" type="checkbox" name="rb" id="rb1" />
+                                                <span for="rb1" className="checkbox-text">عمومی</span>
                                             </label>
                                         </Col>
                                         <Col>
                                           <label>
-                                            <input className="btn-radio" type="radio" name="rb" id="rb2" />
-                                            <span htmlFor="rb2" className="radio-text">فنی</span>
+                                            <input className="btn-radio" type="checkbox" name="rb" id="rb2" />
+                                            <span for="rb2" className="checkbox-text">فنی</span>
                                         </label>
                                         </Col>
                                       </Row>
                                         <Row className="fields">
                                           <Col>
                                             <label>
-                                              <input className="btn-radio" type="radio" name="rb" id="rb3" />
-                                              <span htmlFor="rb3" className="radio-text">پزشکی</span>
+                                              <input className="btn-radio" type="checkbox" name="rb" id="rb3" />
+                                              <span for="rb3" className="checkbox-text">پزشکی</span>
                                             </label>
                                         </Col>
                                         <Col>
                                           <label>
-                                            <input className="btn-radio" type="radio" name="rb" id="rb4" />
-                                            <span htmlFor="rb4" className="radio-text">حقوقی</span>
+                                            <input className="btn-radio" type="checkbox" name="rb" id="rb4" />
+                                            <span for="rb4" className="checkbox-text">حقوقی</span>
                                           </label>
                                         </Col>
                                         </Row>
@@ -291,10 +299,11 @@ class Profileinfo extends React.Component{
                     <div className="dash-con dash-profile-info con-body mb-4">
 
                       <span className="projectinfo">
-                        <h5 style={{display:'inline'}}>تغییر رمز عبور</h5>
+                        <i className="fa fa-unlock-alt" aria-hidden="true"/>
                       </span>
                       <span className="projectinfo">
-                        <i className="fa fa-unlock-alt" aria-hidden="true"/>
+                      <h5 style={{display:'inline'}}>تغییر رمز عبور</h5>
+
                       </span>
                         <div className="dash-divider"/>
                         <form className="">

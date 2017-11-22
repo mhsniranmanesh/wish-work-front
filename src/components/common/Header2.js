@@ -69,7 +69,7 @@ class Header2 extends React.Component {
                         <ul className="navbar-nav navbar-sidenav">
                             <li className={this.state.activeDashboard ? "nav-item active" : "nav-item"} data-toggle="tooltip" data-placement="right"
                                 title="داشبورد" onClick={this.dashboardActive}>
-                                <NavLink to="/" className="nav-link">
+                                <NavLink to="/dashboard" className="nav-link">
                                     <i className="fa fa-fw fa-dashboard"/>
                                     <span className="nav-link-text">داشبورد</span>
                                 </NavLink>
@@ -82,13 +82,13 @@ class Header2 extends React.Component {
                                 </a>
                                 <ul className="sidenav-second-level collapse" id="collapseComponents">
                                     <li>
-                                        <NavLink to="/projectsubmition">ثبت پروژه</NavLink>
+                                        <NavLink to="/project/submit">ثبت پروژه</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/recomendedprojects">دریافت پروژه</NavLink>
+                                        <NavLink to="/project/recommend">دریافت پروژه</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/projectcontrol">کنترل پروژه</NavLink>
+                                        <NavLink to="/project/control">کنترل پروژه</NavLink>
                                     </li>
                                     <li>
                                         <a href="#">پروژه های من</a>
@@ -104,10 +104,10 @@ class Header2 extends React.Component {
                                 </a>
                                 <ul className="sidenav-second-level collapse" id="profileComponents">
                                     <li>
-                                        <NavLink to="/profileinfo">ویرایش اطلاعات</NavLink>
+                                        <NavLink to="/profile/edit">ویرایش اطلاعات</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/notifspage">اطلاعیه ها</NavLink>
+                                        <NavLink to="/profile/notif">اطلاعیه ها</NavLink>
                                     </li>
                                 </ul>
                             </li>
@@ -120,13 +120,13 @@ class Header2 extends React.Component {
                                 </a>
                                 <ul className="sidenav-second-level collapse" id="accountComponents">
                                     <li className="active">
-                                        <NavLink to="/cashout-in">واریز - برداشت</NavLink>
+                                        <NavLink to="/account/cash">واریز - برداشت</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to='/financialmanagement'>مدیریت مالی</NavLink>
+                                        <NavLink to='/account/manage'>مدیریت مالی</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/accountbill">صورت حساب</NavLink>
+                                        <NavLink to="/account/bill">صورت حساب</NavLink>
                                     </li>
                                 </ul>
                             </li>

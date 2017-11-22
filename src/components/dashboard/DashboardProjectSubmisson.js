@@ -19,7 +19,6 @@ const DashboardProjectSubmission = (props) =>{
                         <div className="section">
                             <Select
                               className="customPicker"
-                              ref="fromLanguage"
                               placeholder="از زبان ..."
                               options={ [
                                 {name: 'فارسی'},
@@ -40,7 +39,6 @@ const DashboardProjectSubmission = (props) =>{
                             <Select
                               placeholder="به زبان ..."
                               className="customPicker section"
-                              ref="toLanguage"
                               options={ [
                                 {name: 'فارسی'},
                                 {name: 'انگلیسی'},
@@ -62,7 +60,6 @@ const DashboardProjectSubmission = (props) =>{
                             <Select
                               placeholder="به زبان ..."
                               className="customPicker section"
-                              ref="toLanguage"
                               options={ [
                                 {name: 'فارسی'},
                                 {name: 'انگلیسی'},
@@ -90,7 +87,9 @@ const DashboardProjectSubmission = (props) =>{
         );
     };
 
-
+DashboardProjectSubmission.PropTypes = {
+    myFunc : PropTypes.func.isRequired
+};
 
 
 export default DashboardProjectSubmission ;

@@ -12,13 +12,16 @@ class Profileinfo extends React.Component{
     constructor(props){
         super(props);
         this.state = { bioReadOnly : true , jobReadOnly : true , degreeReadOnly : true, universityReadOnly : true ,
-                       bio: "" , job:"" , degree:"", university:"" , selectValueTF :"" , selectValueTT : ""};
+                       bio: "" , job:"" , degree:"", university:"" , selectValueTF :"" , selectValueTT : "" , saving : false};
+
 
         this.getInitialState = this.getInitialState.bind(this);
         this.updateValueTF = this.updateValueTF.bind(this);
         this.updateValueTT = this.updateValueTT.bind(this);
+        this.redirect = this.redirect.bind(this);
         this.state.bio = this.props.profileInfo.bio;
         this.state.job = this.props.profileInfo.job;
+        this.state.profile_picture = this.props.profile_picture ;
         this.state.degree = this.props.profileInfo.degree;
         this.state.university = this.props.profileInfo.university;
         this.changeBioInput = this.changeBioInput.bind(this);
@@ -73,12 +76,27 @@ class Profileinfo extends React.Component{
         this.setState({university : event.target.value});
 
     }
+
+
+
     submitChanges(){
         //action from redux
         console.log(this.state);
-        this.props.actions.updateInformations(this.state);
+        this.setState({bioReadOnly : true , jobReadOnly : true , degreeReadOnly: true , universityReadOnly: true});
+        this.props.actions.updateInformations(this.state).then(
+            () => this.redirect())
+            .catch(error => {
+                this.setState({saving: false});
+            });
     }
-  render(){
+
+    redirect() {
+        this.setState({saving: true});
+        this.context.router.history.push('/');
+    }
+
+
+    render(){
     var options1 = LANGUAGES.AVAILABLETOLANGUAGES;
     var options2 = LANGUAGES.AVAILABLEFROMLANGUAGES;
     return (
@@ -100,7 +118,7 @@ class Profileinfo extends React.Component{
                         <form className="">
                             <div className="media">
                                 <a href="#" className="">
-                                    <img className="rounded-circle d-flex ml-3" src="http://via.placeholder.com/100x100"/>
+                                    <img className="rounded-circle d-flex ml-3" src={this.props.profileInfo.profile_picture}  style={ {height:125 , width:125} }/>
                                     <i className="fa fa-camera"/>
                                 </a>
                                 <div className="media-body">
@@ -198,13 +216,13 @@ class Profileinfo extends React.Component{
                                           <Col>
                                             <label>
                                               <input className="btn-radio" type="checkbox" name="rb" id="rb1" />
-                                                <span for="rb1" className="checkbox-text">عمومی</span>
+                                                <span htmlFor="rb1" className="checkbox-text">عمومی</span>
                                             </label>
                                         </Col>
                                         <Col>
                                           <label>
                                             <input className="btn-radio" type="checkbox" name="rb" id="rb2" />
-                                            <span for="rb2" className="checkbox-text">فنی</span>
+                                            <span htmlFor="rb2" className="checkbox-text">فنی</span>
                                         </label>
                                         </Col>
                                       </Row>
@@ -212,13 +230,13 @@ class Profileinfo extends React.Component{
                                           <Col>
                                             <label>
                                               <input className="btn-radio" type="checkbox" name="rb" id="rb3" />
-                                              <span for="rb3" className="checkbox-text">پزشکی</span>
+                                              <span htmlFor="rb3" className="checkbox-text">پزشکی</span>
                                             </label>
                                         </Col>
                                         <Col>
                                           <label>
                                             <input className="btn-radio" type="checkbox" name="rb" id="rb4" />
-                                            <span for="rb4" className="checkbox-text">حقوقی</span>
+                                            <span htmlFor="rb4" className="checkbox-text">حقوقی</span>
                                           </label>
                                         </Col>
                                         </Row>
@@ -318,6 +336,10 @@ class Profileinfo extends React.Component{
   );
   }
 }
+
+Profileinfo.contextTypes = {
+    router: PropTypes.object.isRequired
+};
 
 
 Profileinfo.PropTypes = {

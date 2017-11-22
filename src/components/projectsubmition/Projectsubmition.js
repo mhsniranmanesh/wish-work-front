@@ -15,7 +15,7 @@ class Projectsubmition extends React.Component{
         super(props);
 
         this.state={ translationFatherTag:false , modal: false , is_general: false , is_medical : false , is_technical : false , is_law : false,translationFrom:"", translationTo:"" ,projectTitle:"" , projectDescription:"", submitProjectPrice:"" , submitProjectTime:"" , requiredTags:[] , response:[],
-                     message:"" , showError : false, selectValueTF :"" , selectValueTT : "" , validPrice : false , validTime : false
+                     message:"" , showError : false , validPrice : false , validTime : false
         };
         this.roundProjectPrice =this.roundProjectPrice.bind(this);
         this.roundProjectTime = this.roundProjectTime.bind(this);
@@ -39,9 +39,13 @@ class Projectsubmition extends React.Component{
         this.validatePrice = this.validatePrice.bind(this);
         this.validateTime = this.validateTime.bind(this);
     }
+
+
     submit(){
         alert('your project submited');
+        this.props.actions.projectSubmit(this.state)
     }
+
     IsTechnical(){
             this.setState({is_technical: true , is_general : false , is_law: false , is_medical: false , translationFatherTag : true});
 
@@ -420,7 +424,8 @@ Projectsubmition.contextTypes = {
 };
 
 Projectsubmition.PropTypes = {
-    actions : PropTypes.object.isRequired
+    actions : PropTypes.object.isRequired,
+    projectSubmit : PropTypes.func.isRequired
 };
 
 function mapStateToProps(state , ownProps){

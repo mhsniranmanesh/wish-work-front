@@ -4,4 +4,4 @@ export default {
     Notifications : [],
     projectOfMine : [],
     token : null
-}
+};

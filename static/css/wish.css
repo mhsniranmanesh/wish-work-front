@@ -14,6 +14,25 @@ a:hover {
     text-decoration: none;
 }
 
+.complementary{
+  color: orangered;
+}
+
+.projectinfo h5{
+  display:inline-block;
+  margin-right: 10px;
+  /*color: #be018a;*/
+  color: #9401BE;
+  font-size: 16px;
+}
+
+.projectinfo i{
+  display:inline-block;
+  margin-right: 10px;
+  /*color: #be018a;*/
+  color: #9401BE;
+  font-size: 18px;
+}
 /**
  * React Select
  * ============
@@ -407,9 +426,76 @@ a:hover {
 }
 
 
-.btn-radio{
-  border-radius: 100%;
+
+.fields{
+  margin-right: 10px;
 }
+
+.fields span{
+  color: #555;
+  font-weight: 400;
+}
+
+.fields input[type="radio"] ,
+.fields input[type="checkbox"]{
+  position: absolute;
+  opacity: 0;
+  z-index: 102;
+}
+.fields span {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 10px;
+  line-height: 36px;
+  cursor: pointer;
+}
+.fields span.radio-text::before ,
+.fields span.checkbox-text::before {
+  content: " ";
+  /*margin-left: px;*/
+  position: absolute;
+  top: 6px;
+  right: -20px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: 2px solid orangered;
+  border-radius: 4px;
+  z-index: 103;
+}
+.fields label input[type="radio"] + span::before {
+  border-radius: 18px;
+}
+
+ /*Checked*/
+.fields input[type="radio"]:checked + span ,
+.fields input[type="checkbox"]:checked + span {
+  padding-left: 10px;
+  color: #fff;
+  z-index: 105;
+}
+
+.fields input[type="radio"]:checked +  span::before,
+.fields input[type="checkbox"]:checked +  span::before {
+  top: 0;
+  width: 165%;
+  height: 100%;
+  background: orangered;
+  z-index:-1;
+}
+
+ /*Transition*/
+.fields span,
+.fields span::before {
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+
+
 .btn-rec-lg {
     border-radius: 22.5px;
     padding-right: 25px;
@@ -1360,12 +1446,14 @@ ul.social-buttons li a:hover {
 }
 
 .con-body .quote {
-    color: #5cb85c;
+    /*color: #5cb85c;*/
+    color: limegreen;
     font-weight: 400;
 }
 
 .point {
-    color: #E8990F;
+    /*color: #E8990F;*/
+    color: orangered;
 }
 
 /* privacy&policy */

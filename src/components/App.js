@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from './common/Header.js';
-import Main from '../routes.js';
+import Main from '../routes/routes.js';
 import Header2 from './common/Header2.js';
 import {connect} from 'react-redux';
 import * as profileInfo from '../actions/profileInfo.js';
@@ -11,11 +10,13 @@ import { withRouter } from 'react-router-dom';
 class App extends React.Component {
   constructor(props , context){
     super(props , context);
+
+
   }
   render(){
     return(
       <div>
-        <Header2 yourName={' ' + this.props.profileInfo.first_name + ' ' + this.props.profileInfo.last_name}/>
+        <Header2 yourName={' ' + this.props.profileInfo.first_name + ' ' + this.props.profileInfo.last_name} />
         <Main />
       </div>
       );

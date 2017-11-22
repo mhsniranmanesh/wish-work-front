@@ -1,5 +1,7 @@
 export default {
     recomendedProject:[],
     profileInfo : [],
-    Notifications : []
-}
+    Notifications : [],
+    projectOfMine : [],
+    token : null
+};

@@ -13,7 +13,7 @@ import Account from './accountRoutes';
 const Main = () => (
   <main>
     <Switch>
-      <Route exact path='/dashboard' component={Dashboard}/>
+      <Route exact path='/' component={Dashboard}/>
         <Route path='/project' component={Project}/>
           {/*<Route path='/project/submit' component={Projectsubmition} />*/}
           {/*<Route path='project/recomend' component={Recomendedprojects}/>*/}

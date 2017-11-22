@@ -69,7 +69,7 @@ class Header2 extends React.Component {
                         <ul className="navbar-nav navbar-sidenav">
                             <li className={this.state.activeDashboard ? "nav-item active" : "nav-item"} data-toggle="tooltip" data-placement="right"
                                 title="داشبورد" onClick={this.dashboardActive}>
-                                <NavLink to="/dashboard" className="nav-link">
+                                <NavLink to="/" className="nav-link">
                                     <i className="fa fa-fw fa-dashboard"/>
                                     <span className="nav-link-text">داشبورد</span>
                                 </NavLink>

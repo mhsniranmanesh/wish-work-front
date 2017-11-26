@@ -10,18 +10,21 @@ import kosnanat from '../dashboard/Dashboard';
 
 const STATIC_DATAS = require('../../Datas/STATIC_DATAS.js');
 
+
+
 class Projectsubmition extends React.Component{
 
     constructor(props , context){
         super(props);
 
-        this.state={ translationFatherTag:false , modal: false , is_general: false , is_medical : false , is_technical : false , is_law : false,translationFrom:"", translationTo:"" ,projectTitle:"" , projectDescription:"", submitProjectPrice:"" , submitProjectTime:"" , requiredTags:[] , response:[],
+        this.state={ value: undefined,options: [{ value: 'R', label: 'Red' },{ value: 'G', label: 'Green' },{ value: 'B', label: 'Blue' }], multiValue: [], multi: true,translationFatherTag:false , modal: false , is_general: false , is_medical : false , is_technical : false , is_law : false,translationFrom:"", translationTo:"" ,projectTitle:"" , projectDescription:"", submitProjectPrice:"" , submitProjectTime:"" , requiredTags:[] , response:[],
                      message:"" , showError : false , validPrice : false , validTime : false
         };
 
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
 
+        this.handleOnChange = this.handleOnChange.bind(this);
         this.roundProjectPrice =this.roundProjectPrice.bind(this);
         this.roundProjectTime = this.roundProjectTime.bind(this);
         this.IsLaw = this.IsLaw.bind(this);
@@ -46,6 +49,11 @@ class Projectsubmition extends React.Component{
     }
 
 
+
+    handleOnChange (value) {
+  		const { multi } = this.state;
+  		this.setState({ multiValue: value });
+  	}
     submit(){
         alert('your project submited');
         this.props.actions.projectSubmit(this.state)
@@ -80,7 +88,16 @@ class Projectsubmition extends React.Component{
     }
 
     getInitialState(){
-      return{};
+      return {
+			multi: true,
+			multiValue: [],
+			options: [
+				{ value: 'R', label: 'Red' },
+				{ value: 'G', label: 'Green' },
+				{ value: 'B', label: 'Blue' }
+			],
+			value: undefined
+		  };
     }
     updateValueTT (newValue) {
         if(newValue === null){
@@ -237,6 +254,8 @@ class Projectsubmition extends React.Component{
         var options1 = STATIC_DATAS.AVAILABLETOLANGUAGES;
         var options2 = STATIC_DATAS.AVAILABLEFROMLANGUAGES;
         const emailRegex = /^\S+@\S+\.\S+$/;
+        const { multi, multiValue, options, value } = this.state;
+
 
       const showError = this.state.showError;
     return(
@@ -323,7 +342,21 @@ class Projectsubmition extends React.Component{
                           <textarea type="text" className="form-control" id="" placeholder="توضیحاتی را در مورد پروژه بنویسید." value={this.state.projectDescription} onChange={this.projectDescriptionState}/>
                         </div>
                         <div className="form-group">
-                          <input type="text" className="form-control" id="" placeholder="مهارت های لازم فریلنسر." />
+
+                          <div className="section">
+                            <Select.Creatable
+                              placeholder='مهارتهای لازم فریلنسر'
+                    					multi={multi}
+                    					options={options}
+                    					onChange={this.handleOnChange}
+                    					value={multi ? multiValue : value}
+                              onClick={() => this.setState({ multi: true })}
+                    				/>
+                            <div className="hint">{this.props.hint}</div>
+
+                          </div>
+
+
                           <button type="submit" className="btn btn-success btn-rec">
                             <i className="fa fa-plus"/>افزودن مهارت
                           </button>
@@ -421,9 +454,10 @@ class Projectsubmition extends React.Component{
       </div>
   </div>
       </div>
-    );
+        );
+    }
 }
-}
+
 
 Projectsubmition.contextTypes = {
     router: PropTypes.object.isRequired
@@ -432,8 +466,10 @@ Projectsubmition.contextTypes = {
 Projectsubmition.PropTypes = {
     actions : PropTypes.object.isRequired,
     projectSubmit : PropTypes.func.isRequired,
-    kosnanat : PropTypes.object.isRequired
+    kosnanat : PropTypes.object.isRequired,
     //dashProjectSubmit : PropTypes.func.isRequired
+    hint: PropTypes.string,
+		label: PropTypes.string
 };
 
 function mapStateToProps(state , ownProps){

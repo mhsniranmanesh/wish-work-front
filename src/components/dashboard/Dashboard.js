@@ -9,35 +9,66 @@ import ProjectsListForDashboard from './ProjectsListForDashboard';
 import NotificationsListForDashboard from "./NotificationsListForDashboard";
 import Notifications from '../../actions/Notifications';
 import ProfileInfoForDashboard from "./ProfileInfoForDashboard";
+import * as PSLFD from '../../actions/projectSubmitLocalForDashboard';
 
-const LANGUAGES = require('./Datas/Languages.js')
+
+const LANGUAGES = require('./Datas/Languages.js');
 
 class Dashboard extends React.Component{
   constructor(props , context){
     super(props , context);
-
+    this.state = {translationTo : "" , translationFrom : ""};
 
     this.submitProject = this.submitProject.bind(this);
     this.gotoNotifications = this.gotoNotifications.bind(this);
+    this.gotoRecomendedProjects = this.gotoRecomendedProjects.bind(this);
+    this.updateValueTT = this.updateValueTT.bind(this);
+    this.updateValueTF = this.updateValueTF.bind(this);
   }
 
 
-    submitProject(event){
-        event.preventDefault();
-        this.context.router.history.push('/projectsubmition');
+    submitProject(){
+        this.props.actions.PSLFD(this.state);
+        //this.props.kosnanat.translationTo = this.state.translationTo;
+        //this.props.kosnanat.translationFrom = this.state.translationFrom;
+
+        this.context.router.history.push('/project/submit');
     }
 
     gotoRecomendedProjects(event){
         event.preventDefault();
-        this.context.router.history.push('/recomendedprojects');
+        this.context.router.history.push('/project/recommend');
     }
 
     gotoNotifications(event){
         event.preventDefault();
-        this.context.router.history.push('/notifspage');
+        this.context.router.history.push('/profile/notif');
     }
 
-
+    updateValueTT (newValue) {
+        if(newValue === null){
+            this.setState({
+                translationTo: ""
+            });
+        }
+        else {
+            this.setState({
+                translationTo: newValue
+            });
+        }
+    }
+    updateValueTF(newValue) {
+        if(newValue === null){
+            this.setState({
+                translationFrom: ""
+            });
+        }
+        else {
+            this.setState({
+                translationFrom: newValue
+            });
+        }
+    }
 
   render(){
 
@@ -49,8 +80,8 @@ class Dashboard extends React.Component{
 
 
                     <div className="col-sm-5">
-                        <ProfileInfoForDashboard profileInfo = {this.props.profileInfo} />
-                        <DashboardProjectSubmission   myFunc={this.submitProject}/>
+                        <ProfileInfoForDashboard profileInfo={this.props.profileInfo} />
+                        <DashboardProjectSubmission upVTF={this.updateValueTF} upVTT={this.updateValueTT} translationFrom={this.state.translationFrom} translationTo={this.state.translationTo}  myFunc={this.submitProject}/>
                     </div>
 
 
@@ -74,21 +105,26 @@ Dashboard.contextTypes = {
 
 Dashboard.PropTypes = {
     profileInfo: PropTypes.array.isRequired,
+    kosnanat : PropTypes.array.isRequired,
     recomendedProject: PropTypes.array.isRequired,
     actions : PropTypes.object.isRequired,
-    Notifications : PropTypes.object.isRequired
+    Notifications : PropTypes.object.isRequired,
+    PS : PropTypes.object.isRequired,
+    PSLFD : PropTypes.func.isRequired
 };
 
 function mapStateToProps(state , ownProps){
   return{
         profileInfo : state.profileInfo,
         recomendedProject : state.recomendedProject,
-        Notifications : state.Notifications
+        Notifications : state.Notifications,
+        PSLFD : state.PSLFD,
+
   };
 }
 function mapDispatchToProps(dispatch){
   return{
-  actions : bindActionCreators(profileInfo , recomendedProject , Notifications , dispatch)
+  actions : bindActionCreators(profileInfo , recomendedProject , Notifications , PSLFD , dispatch)
   }
 }
 

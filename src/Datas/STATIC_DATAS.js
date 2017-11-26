@@ -13,3 +13,9 @@ exports.AVAILABLEFROMLANGUAGES = [
   {name: 'عربی'},
   {name: 'اسپانیایی'}
 ];
+exports.CATEGORY = {
+    TRANSLATION : 1
+};
+exports.TYPE = {
+    NORMAL : 1
+};

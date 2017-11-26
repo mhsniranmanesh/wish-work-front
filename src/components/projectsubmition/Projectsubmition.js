@@ -4,10 +4,11 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as projectSubmit from '../../actions/projectSubmit.js';
 import Error from './Errors';
-import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Form, Label, Input, Row , Col} from 'reactstrap';
+import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Row , Col} from 'reactstrap';
 import Select from 'react-select';
+import kosnanat from '../dashboard/Dashboard';
 
-const LANGUAGES = require('./Datas/Languages.js')
+const STATIC_DATAS = require('../../Datas/STATIC_DATAS.js');
 
 class Projectsubmition extends React.Component{
 
@@ -17,6 +18,10 @@ class Projectsubmition extends React.Component{
         this.state={ translationFatherTag:false , modal: false , is_general: false , is_medical : false , is_technical : false , is_law : false,translationFrom:"", translationTo:"" ,projectTitle:"" , projectDescription:"", submitProjectPrice:"" , submitProjectTime:"" , requiredTags:[] , response:[],
                      message:"" , showError : false , validPrice : false , validTime : false
         };
+
+        //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
+        //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
+
         this.roundProjectPrice =this.roundProjectPrice.bind(this);
         this.roundProjectTime = this.roundProjectTime.bind(this);
         this.IsLaw = this.IsLaw.bind(this);
@@ -90,6 +95,7 @@ class Projectsubmition extends React.Component{
         }
 	  }
     updateValueTF(newValue) {
+        console.log(this.props.kosnanat);
         if(newValue === null){
             this.setState({
                 translationFrom: ""
@@ -205,7 +211,7 @@ class Projectsubmition extends React.Component{
              this.setState({showError: true});
              this.setState({message:"لطفا زمان خود را صحیح وارد کنید"})
          }
-        else{
+        else {
             this.setState({showError: false});
             this.setState({
                 modal: !this.state.modal
@@ -228,8 +234,8 @@ class Projectsubmition extends React.Component{
   render(){
         //const showError = this.state.translationFatherTagError ;
         // const showErrorProjectTitle = this.state.projectTitleError;
-        var options1 = LANGUAGES.AVAILABLETOLANGUAGES;
-        var options2 = LANGUAGES.AVAILABLEFROMLANGUAGES;
+        var options1 = STATIC_DATAS.AVAILABLETOLANGUAGES;
+        var options2 = STATIC_DATAS.AVAILABLEFROMLANGUAGES;
         const emailRegex = /^\S+@\S+\.\S+$/;
 
       const showError = this.state.showError;
@@ -425,7 +431,9 @@ Projectsubmition.contextTypes = {
 
 Projectsubmition.PropTypes = {
     actions : PropTypes.object.isRequired,
-    projectSubmit : PropTypes.func.isRequired
+    projectSubmit : PropTypes.func.isRequired,
+    kosnanat : PropTypes.object.isRequired
+    //dashProjectSubmit : PropTypes.func.isRequired
 };
 
 function mapStateToProps(state , ownProps){

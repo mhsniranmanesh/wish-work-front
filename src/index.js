@@ -15,7 +15,7 @@ import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import '../static/css/wish.css';
 import '../static/css/wish-dash.css';
-import { BrowserRouter } from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
 import App from './components/App.js';
 import axios from 'axios';
 //import {Authentication} from './promises/authentication';

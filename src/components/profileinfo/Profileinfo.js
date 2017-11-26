@@ -35,9 +35,6 @@ class Profileinfo extends React.Component{
         this.submitChanges = this.submitChanges.bind(this);
     }
 
-    getInitialState(){
-      return{};
-    }
     updateValueTT (newValue) {
     	this.setState({
     		selectValueTT: newValue

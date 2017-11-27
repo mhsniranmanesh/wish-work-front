@@ -423,7 +423,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 .dash-divider {
     display: block;
     height: 0;
-    margin: .75rem 0;
+    margin: 0.75rem 0;
     overflow: hidden;
     border-top: 1px solid #e9ecef;
 }
@@ -434,6 +434,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
         display: inline-block;
         min-height: 20vh;
         width: 100%;
+        margin-bottom: 0.75rem;
     }
     .prices {
         float: right;
@@ -453,6 +454,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
         display: inline-block;
         min-height: 10vh;
         width: 100%;
+        margin-bottom: 0.75rem;
     }
     .prices {
         float: right;
@@ -472,6 +474,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
         display: inline-block;
         min-height: 20vh;
         width: 100%;
+        margin-bottom: 0.75rem;
     }
     .prices {
         float: right;

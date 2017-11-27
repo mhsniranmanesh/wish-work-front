@@ -5,6 +5,18 @@ const ProjectTemplate = ({ProjectDetail}) =>{
     return(
         <div>
             <div className="dash-recom-item price-fair">
+                <span className="prices">
+                  <div>
+                    <svg width="5px" height="20vh">
+                      <rect className="price-good" width="5px" height="10vh" />
+                    </svg>
+                  </div>
+                  <div>
+                    <svg width="5px" height="8vh">
+                      <rect className="price-low" width="5px" height="8vh"/>
+                    </svg>
+                  </div>
+                </span>
                 <a href="#">
                     <h6><strong>{ProjectDetail.title}</strong></h6>
                 </a>
@@ -21,8 +33,10 @@ const ProjectTemplate = ({ProjectDetail}) =>{
                     <i className="fa fa-clock-o"></i>{ProjectDetail.releaseTime}
                 </div>
             </div>
-            <div className="dash-divider"/>
+          <div className="dash-divider"/>
         </div>
+
+
     )
 };
 

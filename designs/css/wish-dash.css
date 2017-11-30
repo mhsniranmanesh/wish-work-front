@@ -6,8 +6,8 @@ body.fixed-nav {
     padding-top: 54px;
 }
 
-.justify{
-  text-align: justify;
+.justify {
+    text-align: justify;
 }
 
 @media(max-width:769px) {

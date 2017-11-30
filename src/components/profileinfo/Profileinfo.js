@@ -15,7 +15,6 @@ class Profileinfo extends React.Component{
                        bio: "" , job:"" , degree:"", university:"" , selectValueTF :"" , selectValueTT : "" , saving : false};
 
 
-        this.getInitialState = this.getInitialState.bind(this);
         this.updateValueTF = this.updateValueTF.bind(this);
         this.updateValueTT = this.updateValueTT.bind(this);
         this.redirect = this.redirect.bind(this);

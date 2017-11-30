@@ -14,10 +14,22 @@ const STATIC_DATAS = require('../../Datas/STATIC_DATAS.js');
 
 class Projectsubmition extends React.Component{
 
-    constructor(props , context){
+    constructor(props , contextc){
         super(props);
 
-        this.state={ value: undefined,options: [{ value: 'R', label: 'Red' },{ value: 'G', label: 'Green' },{ value: 'B', label: 'Blue' }], multiValue: [], multi: true,translationFatherTag:false , modal: false , is_general: false , is_medical : false , is_technical : false , is_law : false,translationFrom:"", translationTo:"" ,projectTitle:"" , projectDescription:"", submitProjectPrice:"" , submitProjectTime:"" , requiredTags:[] , response:[],
+        this.state={ value: undefined,options: [{ value: 'math', label: 'ریاضیات' },{ value: 'math1', label: 'ریاضی محض' },{ value: 'math2', label: 'ریاضی کاربردی' }
+                                                ,{ value: 'math3', label: 'ریاضی مالی' },{ value: 'CS', label: 'علوم کامپیوتر' },{ value: 'CS1', label: 'نظریهٔ محاسبه' }
+                                                ,{ value: 'CS2', label: 'هوش مصنوعی' },{ value: 'physics', label: 'فیزیک' },{ value: 'physics1', label: 'فیزیک حالت جامد'},{ value: 'physics2', label: 'فیزیک اتمی و مولکولی' },{ value: 'physics3', label: 'فیزیک هسته‌ای' }
+                                                ,{ value: 'physics4', label: 'فیزیک ذرات بنیادی' },{ value: 'physics5', label: 'فیزیک نجومی' }
+                                                ,{ value: 'chemistry', label: 'شیمی' },{ value: 'chemistry1', label: 'شیمی آلی' },{ value: 'chemistry2', label: 'شیمی معدنی' },{ value: 'chemistry3', label: 'شیمی تجزیه' },{ value: 'chemistry4', label: 'شیمی فیزیک' }
+                                                ,{ value: 'chemistry5', label: 'شیمی کاربردی' },{ value: 'chemistry6', label: 'شیمی پلیمر' },{ value: 'biology', label: 'زیست شناسی' },{ value: 'biology1', label: 'ژنتیک' },{ value: 'biology2', label: 'بیوشیمی' }
+                                                ,{ value: 'biology3', label: 'بیوشیمی' }
+                                                ,{ value: 'geology', label: 'زمین شناسی' },{ value: 'geology1', label: 'پترولوژی' },{ value: 'geology2', label: 'زمین شناسی اقتصادی' },{ value: 'geology2', label: 'زمین شناسی اقتصادی' }
+                                                ,{ value: 'elec', label: 'مهندسی برق' },{ value: 'elec1', label: 'مهندسی الکترونیک' },{ value: 'elec2', label: 'مهندسی مخابرات' },{ value: 'elec3', label: 'مهندسی کنترل' },{ value: 'elec4', label: 'مهندسی قدرت' }
+                                                ,{ value: 'elec5', label: 'مکاترونیک' },{ value: 'mech', label: 'مهندسی مکانیک' },{ value: 'mech1', label: 'ساخت و تولید' },{ value: 'mech2', label: 'طراحی کاربردی' },{ value: 'mech3', label: 'بیومکانیک' }
+                                                ,{ value: 'c', label: 'مهندسی کامپیوتر' },{ value: 'c1', label: 'نرم‌افزار' },{ value: 'c2', label: 'گرایش شبکه' },{ value: 'c3', label: 'معماری سیستم های کامپیوتری' }
+                                                ,{ value: 'civil', label: 'مهندسی عمران' },{ value: 'civil1', label: 'سازه' },{ value: 'civil2', label: 'زلزله' },{ value: 'civil3', label: 'حمل و نقل' },{ value: 'civil4', label: 'خاک و پی ' }
+                                                ,{ value: 'civil5', label: 'محیط زیست' },{ value: 'aero', label: 'محیط زیست' }], multiValue: [], multi: true,translationFatherTag:false , modal: false , is_general: false , is_medical : false , is_technical : false , is_law : false,translationFrom:"", translationTo:"" ,projectTitle:"" , projectDescription:"", submitProjectPrice:"" , submitProjectTime:"" , requiredTags:[] , response:[],
                      message:"" , showError : false , validPrice : false , validTime : false
         };
 

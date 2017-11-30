@@ -8,3 +8,5 @@ export const LOAD_NOTIF_SUCCESS = 'LOAD_NOTIF_SUCCESS';
 export const SUBMIT_PROJECT_SUCCESS = 'SUBMIT_PROJECT_SUCCESS';
 //for change and submit new information
 export const UPDATE_NEW_INFOS_SUCCESS = 'UPDATE_NEW_INFOS_SUCCESS';
+//submit project local in dashboard
+export const PROJECT_SUBMIT_LOCAL_FOR_DASHBOARD = 'PROJECT_SUBMIT_LOCAL_FOR_DASHBOARD';

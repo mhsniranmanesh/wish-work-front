@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import NotifsListForHeader from './NotifsListForHeader';
 //import '../../src/styles.css';
 //className = 'active' show the side navbar active when you click on the object
+
+
 class Header2 extends React.Component {
     constructor(props){
         super(props);
@@ -69,12 +71,12 @@ class Header2 extends React.Component {
                         <ul className="navbar-nav navbar-sidenav">
                             <li className={this.state.activeDashboard ? "nav-item active" : "nav-item"} data-toggle="tooltip" data-placement="right"
                                 title="داشبورد" onClick={this.dashboardActive}>
-                                <NavLink to="/" className="nav-link">
+                                <NavLink to="/dashboard" className="nav-link">
                                     <i className="fa fa-fw fa-dashboard"/>
                                     <span className="nav-link-text">داشبورد</span>
                                 </NavLink>
                             </li>
-                            <li className={this.state.activeProject ? "nav-item active" : "nav-item"} data-toggle="tooltip" data-placement="right" title="پروژه"
+                            <li className = { this.state.activeProject ? "nav-item active" : "nav-item" } data-toggle="tooltip" data-placement="right" title="پروژه"
                                 onClick={this.projectActive}>
                                 <a className="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents">
                                     <i className="fa fa-fw fa-tasks"/>

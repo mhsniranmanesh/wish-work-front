@@ -1427,3 +1427,36 @@ span.notif-cat {
     position: relative;
     top: 10px;
 }
+
+.badge {
+    border-radius: 0;
+    font-size: 90%;
+}
+
+.badgebox {
+    opacity: 0;
+}
+
+.badgebox+.badge {
+    text-indent: -999999px;
+    width: 27px;
+}
+
+.badgebox:checked+.badge {
+    text-indent: 0;
+}
+
+.project-status {
+    margin: 0;
+    padding: 0;
+    width: 490px;
+}
+
+.project-status label {
+    width: 150px;
+    margin: 5px;
+}
+
+.project-status .btn-rec {
+    padding: 10px;
+}

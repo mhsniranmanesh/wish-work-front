@@ -12,8 +12,8 @@ body.fixed-nav {
     }
 }
 
-.fromlang{
-  width: 50vh;
+.fromlang {
+    width: 50vh;
 }
 
 .scroll-to-top {
@@ -612,4 +612,8 @@ span.notif-cat {
 
 .notif-msg {
     background-color: mediumvioletred;
+}
+
+.badge {
+    border-radius: 0;
 }

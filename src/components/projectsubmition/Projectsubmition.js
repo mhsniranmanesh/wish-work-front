@@ -14,15 +14,35 @@ const STATIC_DATAS = require('../../Datas/STATIC_DATAS.js');
 
 class Projectsubmition extends React.Component{
 
-    constructor(props , context){
+    constructor(props , contextc){
         super(props);
 
-        this.state={ value: undefined,options: [{ value: 'R', label: 'Red' },{ value: 'G', label: 'Green' },{ value: 'B', label: 'Blue' }],
-            multiValue: [], multi: true,translationFatherTag:false , modal: false , is_general: false , is_medical : false , is_technical : false ,
-            is_law : false,translationFrom:"", translationTo:"" ,title:"" , description:"", budget:"" , time_limit:"" , requiredTags:[] , response:[],
-                     message:"" , showError : false , validPrice : false , validTime : false , type : 0 , category : 0
-        };
-
+        this.state= {
+            value: undefined,
+            options: [{value: 'R', label: 'Red'}, {value: 'G', label: 'Green'}, {value: 'B', label: 'Blue'}],
+            multiValue: [],
+            multi: true,
+            translationFatherTag: false,
+            modal: false,
+            is_general: false,
+            is_medical: false,
+            is_technical: false,
+            is_law: false,
+            translationFrom: "",
+            translationTo: "",
+            title: "",
+            description: "",
+            budget: "",
+            time_limit: "",
+            requiredTags: [],
+            response: [],
+            message: "",
+            showError: false,
+            validPrice: false,
+            validTime: false,
+            type: 0,
+            category: 0
+        }
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
 

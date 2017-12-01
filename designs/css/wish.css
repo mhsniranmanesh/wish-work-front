@@ -38,8 +38,8 @@ a:hover {
     border-color: #009942;
 }
 
-.btn-radio{
-  border-radius: 100;
+.btn-radio {
+    border-radius: 100;
 }
 
 .btn-success:hover {
@@ -389,6 +389,7 @@ span.error-msg {
     border: 0;
 }
 
+
 /*.dropdown-header{
   background-color: #f1f1f1;
 }*/
@@ -424,11 +425,8 @@ span.error-msg {
 }
 
 .input-group .form-control {
-<<<<<<< HEAD
-=======
-    /*margin-bottom: 10px;*/
->>>>>>> d4a80e413f1998f021b02def367ae8871a494ecb
-    width: 100%;
+    <<<<<<< HEAD=======/*margin-bottom: 10px;*/
+    >>>>>>>d4a80e413f1998f021b02def367ae8871a494ecb width: 100%;
 }
 
 section.signin .con-body .sub-label {
@@ -972,24 +970,78 @@ ul.social-buttons li a:hover {
     color: #E8990F;
 }
 
+
 /* privacy&policy */
-.pripol .container .pri-head{
-  text-align: center;
-  font-size: 60px;
-  font-weight: 300;
-  padding: 25px 0 0 0;
+
+.pripol .container .pri-head {
+    text-align: center;
+    font-size: 60px;
+    font-weight: 300;
+    padding: 25px 0 0 0;
 }
 
-.rule-row-head{
-  padding: 0;
-  margin: 0;
+.rule-row-head {
+    padding: 0;
+    margin: 0;
 }
 
-.rule-row-content{
-  padding: 10px 0;
+.rule-row-content {
+    padding: 10px 0;
 }
 
-.pripol .container .set{
-padding:29px 0 55px 0;
+.pripol .container .set {
+    padding: 29px 0 55px 0;
+}
 
+.jumbotron {
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.max-min {
+    list-style: none;
+    margin: 0;
+    padding: 0 10px 0 0;
+}
+
+.noUi-vertical .noUi-handle {
+    width: 20px;
+    height: 20px;
+    top: -11px;
+}
+
+.noUi-handle {
+    border: 0;
+    border-radius: 30px;
+    background: #018abe;
+    box-shadow: none;
+}
+
+.noUi-vertical {
+    width: 10px;
+}
+
+.noUi-target {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.noUi-vertical .noUi-handle:before,
+.noUi-vertical .noUi-handle:after {
+    display: none
+}
+
+.noUi-value-vertical {
+    -webkit-transform: translate3d(0, -45%, 0);
+    transform: translate3d(0, -45%, 0);
+}
+
+.noUi-tooltip {
+    border-radius: 0;
+    padding: 1px 10px;
+}
+
+.noUi-value-sub {
+    color: #b5b5b5;
+    font-size: 15px;
 }

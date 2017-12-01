@@ -17,8 +17,10 @@ class Projectsubmition extends React.Component{
     constructor(props , context){
         super(props);
 
-        this.state={ value: undefined,options: [{ value: 'R', label: 'Red' },{ value: 'G', label: 'Green' },{ value: 'B', label: 'Blue' }], multiValue: [], multi: true,translationFatherTag:false , modal: false , is_general: false , is_medical : false , is_technical : false , is_law : false,translationFrom:"", translationTo:"" ,projectTitle:"" , projectDescription:"", submitProjectPrice:"" , submitProjectTime:"" , requiredTags:[] , response:[],
-                     message:"" , showError : false , validPrice : false , validTime : false
+        this.state={ value: undefined,options: [{ value: 'R', label: 'Red' },{ value: 'G', label: 'Green' },{ value: 'B', label: 'Blue' }],
+            multiValue: [], multi: true,translationFatherTag:false , modal: false , is_general: false , is_medical : false , is_technical : false ,
+            is_law : false,translationFrom:"", translationTo:"" ,title:"" , description:"", budget:"" , time_limit:"" , requiredTags:[] , response:[],
+                     message:"" , showError : false , validPrice : false , validTime : false , type : 0 , category : 0
         };
 
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
@@ -31,7 +33,6 @@ class Projectsubmition extends React.Component{
         this.IsMedical = this.IsMedical.bind(this);
         this.IsTechnical = this.IsTechnical.bind(this);
         this.IsGeneral = this.IsGeneral.bind(this);
-        this.getInitialState = this.getInitialState.bind(this);
         this.updateValueTF = this.updateValueTF.bind(this);
         this.toggle = this.toggle.bind(this);
         this.updateValueTT = this.updateValueTT.bind(this);
@@ -65,10 +66,12 @@ class Projectsubmition extends React.Component{
     }
 
     IsGeneral(){
-            this.setState({is_general: true , is_technical: false , is_medical: false , is_law: false , translationFatherTag : true});
+        console.log(this.state);
+        this.setState({is_general: true , is_technical: false , is_medical: false , is_law: false , translationFatherTag : true});
     }
 
     IsMedical(){
+        console.log(this.state);
             this.setState({is_general: false , is_technical: false , is_medical: true , is_law: false , translationFatherTag : true});
 
     }
@@ -87,19 +90,8 @@ class Projectsubmition extends React.Component{
         return tm.test(time);
     }
 
-    getInitialState(){
-      return {
-			multi: true,
-			multiValue: [],
-			options: [
-				{ value: 'R', label: 'Red' },
-				{ value: 'G', label: 'Green' },
-				{ value: 'B', label: 'Blue' }
-			],
-			value: undefined
-		  };
-    }
     updateValueTT (newValue) {
+        console.log(this.props);
         if(newValue === null){
             this.setState({
                 translationTo: ""
@@ -112,7 +104,6 @@ class Projectsubmition extends React.Component{
         }
 	  }
     updateValueTF(newValue) {
-        console.log(this.props.kosnanat);
         if(newValue === null){
             this.setState({
                 translationFrom: ""
@@ -136,12 +127,12 @@ class Projectsubmition extends React.Component{
 
 
     projectDescriptionState(event){
-        this.setState({projectDescription: event.target.value});
+        this.setState({description: event.target.value});
     }
     submitProjectTimeState(event){
         const time = event.target.value;
         const trueOrFalseTimeValid = this.validateTime(time);
-        this.setState({submitProjectTime: event.target.value , validTime: trueOrFalseTimeValid});
+        this.setState({time_limit: event.target.value , validTime: trueOrFalseTimeValid});
         console.log('state:' ,this.state);
         console.log('length:' , this.state.translationFatherTag.length);
     }
@@ -149,10 +140,10 @@ class Projectsubmition extends React.Component{
         const price = event.target.value;
         const trueOrFalsePriceValid = this.validatePrice(price);
 
-        this.setState({submitProjectPrice: price , validPrice : trueOrFalsePriceValid})
+        this.setState({budget: price , validPrice : trueOrFalsePriceValid})
     }
     projectTitleState(event){
-        this.setState({projectTitle: event.target.value});
+        this.setState({title: event.target.value});
     }
     roundProjectPrice(event){
         let numb = Number(event.target.value);
@@ -165,7 +156,7 @@ class Projectsubmition extends React.Component{
         if(isNaN(numb)){
             numb = "";
         }
-        this.setState({submitProjectPrice: numb , validPrice : trueOrFalsePriceValid2})
+        this.setState({budget: numb , validPrice : trueOrFalsePriceValid2})
 
     }
     roundProjectTime(event){
@@ -176,7 +167,7 @@ class Projectsubmition extends React.Component{
         if(isNaN(numb)){
             numb = "";
         }
-        this.setState({submitProjectTime: numb , validTime: trueOrFalseTimeValid2});
+        this.setState({time_limit: numb , validTime: trueOrFalseTimeValid2});
     }
 
 
@@ -184,7 +175,7 @@ class Projectsubmition extends React.Component{
         event.preventDefault();
         console.log('__TF__' , this.state.translationFrom);
             console.log('state is:' , this.state);
-        if(!this.state.projectTitle.length){
+        if(!this.state.title.length){
             this.setState({showError: true});
             this.setState({message:"لطفا عنوان پروژه ی خود را وارد کنید!"});
         }
@@ -206,12 +197,12 @@ class Projectsubmition extends React.Component{
             this.setState({message:"لطفا زبان مبدا و مقصد خود را متفاوت مشخص کنید"})
 
         }
-        else if(!this.state.projectDescription.length){
+        else if(!this.state.description.length){
             this.setState({showError: true});
             this.setState({message:"لطفا توضیحاتی در رابطه با پروژه ی خود ارائه دهید."});
         }
 
-        else if(!this.state.validPrice && this.state.submitProjectPrice === ""){
+        else if(!this.state.validPrice && this.state.budget === ""){
             this.setState({showError: true});
             this.setState({message:"لطفا مبلغ خود را وارد کنید"})
         }
@@ -219,7 +210,7 @@ class Projectsubmition extends React.Component{
             this.setState({showError: true});
             this.setState({message:"لطفا مبلغ خود را صحیح وارد کنید"})
         }
-        else if(!this.state.validTime && this.state.submitProjectTime === ""){
+        else if(!this.state.validTime && this.state.time_limit === ""){
             this.setState({showError: true});
             this.setState({message:"لطفا زمان وارد کنید"})
 
@@ -229,10 +220,11 @@ class Projectsubmition extends React.Component{
              this.setState({message:"لطفا زمان خود را صحیح وارد کنید"})
          }
         else {
-            this.setState({showError: false});
-            this.setState({
-                modal: !this.state.modal
-            });
+            // this.setState({});
+            this.setState({showError: false, type : STATIC_DATAS.TYPE.NORMAL ,category : STATIC_DATAS.CATEGORY.TRANSLATION ,  modal: !this.state.modal});
+            // this.setState({
+            //     modal: !this.state.modal
+            // });
         }
 
         // else if(!this.state.translationTo.length){
@@ -249,11 +241,76 @@ class Projectsubmition extends React.Component{
 
 
   render(){
+        console.log(this.props.location.search[0]);
+      if(this.props.location.search){
+          if(this.props.location.search[1] === '0'){
+              this.state.translationFrom = 'فارسی';
+          }
+          if(this.props.location.search[1] === '1') {
+              this.state.translationFrom = 'انگلیسی';
+          }
+          if(this.props.location.search[1] === '2') {
+              this.state.translationFrom = 'فرانسوی';
+
+          }
+          if(this.props.location.search[1] === '3') {
+              this.state.translationFrom = 'عربی';
+
+          }
+          if(this.props.location.search[1] === '4') {
+              this.state.translationFrom = 'اسپانیایی';
+          }
+          if(this.props.location.search[3] === '0'){
+              this.state.translationTo = 'فارسی';
+          }
+          if(this.props.location.search[3] === '1') {
+              this.state.translationTo = 'انگلیسی';
+          }
+          if(this.props.location.search[3] === '2') {
+              this.state.translationTo = 'فرانسوی';
+
+          }
+          if(this.props.location.search[3] === '3') {
+              this.state.translationTo = 'عربی';
+
+          }
+          if(this.props.location.search[3] === '4') {
+              this.state.translationTo = 'اسپانیایی';
+          }
+          if(this.props.location.search[5] === '1'){
+              this.state.is_general = true ;
+              this.state.is_law = false ;
+              this.state.is_medical = false;
+              this.state.is_technical = false;
+              this.state.translationFatherTag = true ;
+          }
+          if(this.props.location.search[5] === '2'){
+              this.state.is_general = false ;
+              this.state.is_law = true ;
+              this.state.is_medical = false;
+              this.state.is_technical = false;
+              this.state.translationFatherTag = true
+          }
+          if(this.props.location.search[5] === '3'){
+              this.state.is_general = false ;
+              this.state.is_law = false ;
+              this.state.is_medical = true;
+              this.state.is_technical = false;
+              this.state.translationFatherTag = true
+          }
+          if(this.props.location.search[5] === '4'){
+              this.state.is_general = false ;
+              this.state.is_law = false ;
+              this.state.is_medical = false;
+              this.state.is_technical = true;
+              this.state.translationFatherTag = true
+          }
+      }
         //const showError = this.state.translationFatherTagError ;
         // const showErrorProjectTitle = this.state.projectTitleError;
         var options1 = STATIC_DATAS.AVAILABLETOLANGUAGES;
         var options2 = STATIC_DATAS.AVAILABLEFROMLANGUAGES;
-        const emailRegex = /^\S+@\S+\.\S+$/;
+       // const emailRegex = /^\S+@\S+\.\S+$/;
         const { multi, multiValue, options, value } = this.state;
 
 
@@ -270,7 +327,7 @@ class Projectsubmition extends React.Component{
                       <div className="dash-divider"/>
                       <form>
                         <div className="form-group">
-                          <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.projectTitle} onChange={this.projectTitleState}/>
+                          <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.title} onChange={this.projectTitleState}/>
                         </div>
                         <div className="input-group">
                               <legend>زمینه ترجمه تان را انتخاب کنید</legend>
@@ -339,7 +396,7 @@ class Projectsubmition extends React.Component{
                           </Col>
                         </Row>
                         <div className="form-group">
-                          <textarea type="text" className="form-control" id="" placeholder="توضیحاتی را در مورد پروژه بنویسید." value={this.state.projectDescription} onChange={this.projectDescriptionState}/>
+                          <textarea type="text" className="form-control" id="" placeholder="توضیحاتی را در مورد پروژه بنویسید." value={this.state.description} onChange={this.projectDescriptionState}/>
                         </div>
                         <div className="form-group">
 
@@ -382,7 +439,7 @@ class Projectsubmition extends React.Component{
                           <label htmlFor="" className="col-form-label">
                               بودجه ی خود را مشخص کنید.
                           </label>
-                          <input type="text" className="form-control" id="priceInput" value={this.state.submitProjectPrice} onChange={this.submitProjectPriceState} onBlur={this.roundProjectPrice}/>
+                          <input type="text" className="form-control" id="priceInput" value={this.state.budget} onChange={this.submitProjectPriceState} onBlur={this.roundProjectPrice}/>
                           <div id="price-range"/>
                           <span className="price-msg">
                               <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
@@ -393,7 +450,7 @@ class Projectsubmition extends React.Component{
                           <label htmlFor="" className="col-form-label">
                               زمان دلخواه خود را مشخص کنید.
                           </label>
-                          <input type="text" className="form-control" id="timeInput" value={this.state.submitProjectTime} onChange={this.submitProjectTimeState} onBlur={this.roundProjectTime}/>
+                          <input type="text" className="form-control" id="timeInput" value={this.state.time_limit} onChange={this.submitProjectTimeState} onBlur={this.roundProjectTime}/>
                           <div id="time-range"/>
                           <span className="time-msg">
                               <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
@@ -425,7 +482,7 @@ class Projectsubmition extends React.Component{
                                 </span>
                                 <div>
                                     <a href="#">
-                                        <h6><strong>{this.state.projectTitle}</strong></h6>
+                                        <h6><strong>{this.state.title}</strong></h6>
                                     </a>
                                     <span className="sub-heading">
                                         <a className="tag" href="#">#فارسی_به_انگلیسی</a>
@@ -436,7 +493,7 @@ class Projectsubmition extends React.Component{
                                       </span>
                                     <span className="sub-heading">
                                           <i className="fa fa-user"/> <a href="#">4/5</a>
-                                          <i className="fa fa-usd"/> {this.state.submitProjectPrice}
+                                          <i className="fa fa-usd"/> {this.state.budget}
                                           <i className="fa fa-clock-o"/>GetTime
                                       </span>
                                 </div>
@@ -469,7 +526,7 @@ Projectsubmition.PropTypes = {
     kosnanat : PropTypes.object.isRequired,
     //dashProjectSubmit : PropTypes.func.isRequired
     hint: PropTypes.string,
-		label: PropTypes.string
+    label: PropTypes.string
 };
 
 function mapStateToProps(state , ownProps){

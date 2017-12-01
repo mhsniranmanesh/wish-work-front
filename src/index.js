@@ -47,6 +47,7 @@ Authentication().then(() => {
     console.log('ok' , axios.defaults.headers.common['Authorization'] );
     const store = configureStore();
     store.dispatch(profileInfo());
+    // store.dispatch(projectSubmitLocalForDashboard())
     store.dispatch(recomendedProject());
     store.dispatch(Notifications());
 

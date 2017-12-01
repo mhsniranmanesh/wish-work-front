@@ -3,6 +3,6 @@ export default {
     profileInfo : [],
     Notifications : [],
     projectOfMine : [],
-    localProjectForDash : [],
+    //PSD : [],
     token : null
 };

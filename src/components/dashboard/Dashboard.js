@@ -9,7 +9,7 @@ import ProjectsListForDashboard from './ProjectsListForDashboard';
 import NotificationsListForDashboard from "./NotificationsListForDashboard";
 import Notifications from '../../actions/Notifications';
 import ProfileInfoForDashboard from "./ProfileInfoForDashboard";
-import * as PSLFD from '../../actions/projectSubmitLocalForDashboard';
+// import * as x from '../../actions/projectSubmitLocalForDashboard';
 
 
 const LANGUAGES = require('./Datas/Languages.js');
@@ -17,24 +17,92 @@ const LANGUAGES = require('./Datas/Languages.js');
 class Dashboard extends React.Component{
   constructor(props , context){
     super(props , context);
-    this.state = {translationTo : "" , translationFrom : ""};
+    this.state = { translationTo : "" , translationFrom : "" , projectSkillTag : "" , translationFatherTag : false ,
+        is_general: false , is_medical : false , is_technical : false , is_law : false };
 
-    this.submitProject = this.submitProject.bind(this);
-    this.gotoNotifications = this.gotoNotifications.bind(this);
-    this.gotoRecomendedProjects = this.gotoRecomendedProjects.bind(this);
-    this.updateValueTT = this.updateValueTT.bind(this);
-    this.updateValueTF = this.updateValueTF.bind(this);
+        this.IsLaw = this.IsLaw.bind(this);
+        this.IsMedical = this.IsMedical.bind(this);
+        this.IsTechnical = this.IsTechnical.bind(this);
+        this.IsGeneral = this.IsGeneral.bind(this);
+        this.submitProject = this.submitProject.bind(this);
+        this.gotoNotifications = this.gotoNotifications.bind(this);
+        this.gotoRecomendedProjects = this.gotoRecomendedProjects.bind(this);
+        this.updateValueTT = this.updateValueTT.bind(this);
+        this.updateValueTF = this.updateValueTF.bind(this);
+        this.getOptions = this.getOptions.bind(this);
   }
 
-
     submitProject(){
-        this.props.actions.PSLFD(this.state);
-        //this.props.kosnanat.translationTo = this.state.translationTo;
-        //this.props.kosnanat.translationFrom = this.state.translationFrom;
+        // console.log(this.props.actions2);
+        //this.props.actions2.projectSubmitLocalForDashboard(this.state);
+        // console.log(this.props.actions2);
+        // console.log(this.props.actions);
+        // console.log(this.props.profileInfo);
+        // console.log(this.props);
+        // console.log(this.state);
+        console.log(this.state.is_general);
+        if(this.state.is_general){
+            console.log(this.state.projectSkillTag);
+            this.context.router.history.push({
+                pathname:'/project/submit',
+                search : this.state.translationFrom +' ' + this.state.translationTo + ' ' + '1'
+            });
+        }
+        else if(this.state.is_law){
+            this.context.router.history.push({
+                pathname:'/project/submit',
+                search : this.state.translationFrom +' ' + this.state.translationTo + ' ' + '2'
+            });
+        }
+        else if(this.state.is_medical){
+            this.context.router.history.push({
+                pathname:'/project/submit',
+                search : this.state.translationFrom +' ' + this.state.translationTo + ' ' + '3'
+            });
+        }
+        else if(this.state.is_technical){
+            this.context.router.history.push({
+                pathname:'/project/submit',
+                search : this.state.translationFrom +' ' + this.state.translationTo + ' ' + '4'
+            });
+        }
+        else {
+            this.context.router.history.push({
+                pathname:'/project/submit',
+                search : this.state.translationFrom +' ' + this.state.translationTo
+            });
+        }
 
-        this.context.router.history.push('/project/submit');
+    }
+    IsTechnical(){
+        this.setState({is_technical: true , is_general : false , is_law: false , is_medical: false , translationFatherTag : true});
+
     }
 
+    IsGeneral(){
+        this.setState({is_general: true , is_technical: false , is_medical: false , is_law: false , translationFatherTag : true});
+    }
+
+    IsMedical(){
+        this.setState({is_general: false , is_technical: false , is_medical: true , is_law: false , translationFatherTag : true});
+
+    }
+
+    IsLaw(){
+        this.setState({is_general: false , is_technical: false , is_medical: false , is_law: true , translationFatherTag : true});
+
+    }
+
+    getOptions(){
+        // setTimeout(function() {
+        //     SchoolsDataService.getSchools(function(data) {
+        //         callback(null, {
+        //             options: data.schools,
+        //             complete: true,
+        //         });
+        //     });
+        // }, 500);
+    }
     gotoRecomendedProjects(event){
         event.preventDefault();
         this.context.router.history.push('/project/recommend');
@@ -71,7 +139,6 @@ class Dashboard extends React.Component{
     }
 
   render(){
-
     return(
       <div>
         <div className="content-wrapper py-3">
@@ -81,7 +148,16 @@ class Dashboard extends React.Component{
 
                     <div className="col-sm-5">
                         <ProfileInfoForDashboard profileInfo={this.props.profileInfo} />
-                        <DashboardProjectSubmission upVTF={this.updateValueTF} upVTT={this.updateValueTT} translationFrom={this.state.translationFrom} translationTo={this.state.translationTo}  myFunc={this.submitProject}/>
+
+                        <DashboardProjectSubmission upVTF={this.updateValueTF} upVTT={this.updateValueTT}
+                                                    translationFrom={this.state.translationFrom}
+                                                    translationTo={this.state.translationTo}
+                                                    myFunc={this.submitProject} index={this.state.index}
+                                                    is_general={this.state.is_general} IsGeneral={this.IsGeneral}
+                                                    is_technical={this.state.is_technical} IsTechnical={this.IsTechnical}
+                                                    is_medical={this.state.is_medical} IsMedical={this.IsMedical}
+                                                    is_law={this.state.is_law} IsLaw={this.IsLaw}
+                        />
                     </div>
 
 
@@ -105,26 +181,25 @@ Dashboard.contextTypes = {
 
 Dashboard.PropTypes = {
     profileInfo: PropTypes.array.isRequired,
-    kosnanat : PropTypes.array.isRequired,
     recomendedProject: PropTypes.array.isRequired,
     actions : PropTypes.object.isRequired,
     Notifications : PropTypes.object.isRequired,
-    PS : PropTypes.object.isRequired,
-    PSLFD : PropTypes.func.isRequired
+  //  PSD : PropTypes.array.isRequired,
+   // projectSubmitLocalForDashboard : PropTypes.func.isRequired,
+   // actions2 : PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state , ownProps){
-  return{
+    return{
         profileInfo : state.profileInfo,
         recomendedProject : state.recomendedProject,
         Notifications : state.Notifications,
-        PSLFD : state.PSLFD,
-
   };
 }
 function mapDispatchToProps(dispatch){
   return{
-  actions : bindActionCreators(profileInfo , recomendedProject , Notifications , PSLFD , dispatch)
+  actions : bindActionCreators( profileInfo , recomendedProject ,  Notifications , dispatch  ),
+   //actions2 : bindActionCreators(x , dispatch)
   }
 }
 

@@ -6,6 +6,9 @@ export function loadProfileInfoSuccess(profileInfo){
   return{type: types.LOAD_INFO_SUCCESS , profileInfo}
 }
 
+// export function projectSubmitLocalForDashboard(NewPSLFD) {
+//     return {type: types.PROJECT_SUBMIT_LOCAL_FOR_DASHBOARD , NewPSLFD}
+// }
 
 //
 // export function profileInfo(){
@@ -17,6 +20,12 @@ export function loadProfileInfoSuccess(profileInfo){
 //     });
 //   };
 // }
+
+// export function projectSubmitLocalForDashboard2(PSD2) {
+//     return {type: types.PROJECT_SUBMIT_LOCAL_FOR_DASHBOARD , PSD2}
+// }
+
+
 
 export function loadNewInfosSuccess(newInfos){
     return{type: types.UPDATE_NEW_INFOS_SUCCESS , newInfos}

@@ -15,7 +15,6 @@ class Profileinfo extends React.Component{
                        bio: "" , job:"" , degree:"", university:"" , selectValueTF :"" , selectValueTT : "" , saving : false};
 
 
-        this.getInitialState = this.getInitialState.bind(this);
         this.updateValueTF = this.updateValueTF.bind(this);
         this.updateValueTT = this.updateValueTT.bind(this);
         this.redirect = this.redirect.bind(this);
@@ -81,6 +80,7 @@ class Profileinfo extends React.Component{
         console.log(this.state);
         this.setState({bioReadOnly : true , jobReadOnly : true , degreeReadOnly: true , universityReadOnly: true});
         this.props.actions.updateInformations(this.state).then(
+
             () => this.redirect())
             .catch(error => {
                 this.setState({saving: false});

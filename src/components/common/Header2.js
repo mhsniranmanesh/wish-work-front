@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import NotifsListForHeader from './NotifsListForHeader';
 //import '../../src/styles.css';
 //className = 'active' show the side navbar active when you click on the object
+import FilterLink from './FilterLink';
 
 
 class Header2 extends React.Component {

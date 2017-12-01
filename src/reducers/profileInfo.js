@@ -8,6 +8,9 @@ export default function profileInfo(state= initialState.profileInfo , action){
         //it update profileInfo to new information
       case types.UPDATE_NEW_INFOS_SUCCESS:
           return [...state , Object.assign({}, action.updateInformations)];
+      case types.PROJECT_SUBMIT_LOCAL_FOR_DASHBOARD:
+          debugger;
+          return [...state , Object.assign( action.PSD)];
     default:
         return state;
   }

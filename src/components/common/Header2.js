@@ -94,7 +94,7 @@ class Header2 extends React.Component {
                                         <NavLink to="/project/control">کنترل پروژه</NavLink>
                                     </li>
                                     <li>
-                                        <a href="#">پروژه های من</a>
+                                        <NavLink to="/project/me">پروژه های من</NavLink>
                                     </li>
                                 </ul>
                             </li>

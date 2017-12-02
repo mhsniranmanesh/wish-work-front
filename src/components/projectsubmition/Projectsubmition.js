@@ -86,12 +86,10 @@ class Projectsubmition extends React.Component{
     }
 
     IsGeneral(){
-        console.log(this.state);
         this.setState({is_general: true , is_technical: false , is_medical: false , is_law: false , translationFatherTag : true});
     }
 
     IsMedical(){
-        console.log(this.state);
             this.setState({is_general: false , is_technical: false , is_medical: true , is_law: false , translationFatherTag : true});
 
     }
@@ -109,7 +107,72 @@ class Projectsubmition extends React.Component{
         const tm = /^\d+$/;
         return tm.test(time);
     }
+    componentWillMount(){
+        if(this.props.location.search){
+            if(this.props.location.search[1] === '0'){
+                this.state.translationFrom = 'فارسی';
+            }
+            if(this.props.location.search[1] === '1') {
+                this.state.translationFrom = 'انگلیسی';
+            }
+            if(this.props.location.search[1] === '2') {
+                this.state.translationFrom = 'فرانسوی';
 
+            }
+            if(this.props.location.search[1] === '3') {
+                this.state.translationFrom = 'عربی';
+
+            }
+            if(this.props.location.search[1] === '4') {
+                this.state.translationFrom = 'اسپانیایی';
+            }
+            if(this.props.location.search[3] === '0'){
+                this.state.translationTo = 'فارسی';
+            }
+            if(this.props.location.search[3] === '1') {
+                this.state.translationTo = 'انگلیسی';
+            }
+            if(this.props.location.search[3] === '2') {
+                this.state.translationTo = 'فرانسوی';
+
+            }
+            if(this.props.location.search[3] === '3') {
+                this.state.translationTo = 'عربی';
+
+            }
+            if(this.props.location.search[3] === '4') {
+                this.state.translationTo = 'اسپانیایی';
+            }
+            if(this.props.location.search[5] === '1'){
+                this.state.is_general = true ;
+                this.state.is_law = false ;
+                this.state.is_medical = false;
+                this.state.is_technical = false;
+                this.state.translationFatherTag = true ;
+            }
+            if(this.props.location.search[5] === '2'){
+                this.state.is_general = false ;
+                this.state.is_law = true ;
+                this.state.is_medical = false;
+                this.state.is_technical = false;
+                this.state.translationFatherTag = true
+            }
+            if(this.props.location.search[5] === '3'){
+                this.state.is_general = false ;
+                this.state.is_law = false ;
+                this.state.is_medical = true;
+                this.state.is_technical = false;
+                this.state.translationFatherTag = true
+            }
+            if(this.props.location.search[5] === '4'){
+                this.state.is_general = false ;
+                this.state.is_law = false ;
+                this.state.is_medical = false;
+                this.state.is_technical = true;
+                this.state.translationFatherTag = true
+            }
+        }
+    }
     updateValueTT (newValue) {
         console.log(this.props);
         if(newValue === null){
@@ -123,6 +186,8 @@ class Projectsubmition extends React.Component{
             });
         }
 	  }
+
+
     updateValueTF(newValue) {
         if(newValue === null){
             this.setState({
@@ -141,8 +206,11 @@ class Projectsubmition extends React.Component{
       });
     }
     dragDrop(event){
-        this.readFile(event);
-        event.target.value = null;
+        const data = new FormData();
+        // data.append('file', event.target.files[0]);
+        // data.append('name', 'some value user types');
+        // data.append('description', 'some value user types');
+        console.log(event.target.files[0]);
     }
 
 
@@ -262,70 +330,6 @@ class Projectsubmition extends React.Component{
 
   render(){
         console.log(this.props.location.search[0]);
-      if(this.props.location.search){
-          if(this.props.location.search[1] === '0'){
-              this.state.translationFrom = 'فارسی';
-          }
-          if(this.props.location.search[1] === '1') {
-              this.state.translationFrom = 'انگلیسی';
-          }
-          if(this.props.location.search[1] === '2') {
-              this.state.translationFrom = 'فرانسوی';
-
-          }
-          if(this.props.location.search[1] === '3') {
-              this.state.translationFrom = 'عربی';
-
-          }
-          if(this.props.location.search[1] === '4') {
-              this.state.translationFrom = 'اسپانیایی';
-          }
-          if(this.props.location.search[3] === '0'){
-              this.state.translationTo = 'فارسی';
-          }
-          if(this.props.location.search[3] === '1') {
-              this.state.translationTo = 'انگلیسی';
-          }
-          if(this.props.location.search[3] === '2') {
-              this.state.translationTo = 'فرانسوی';
-
-          }
-          if(this.props.location.search[3] === '3') {
-              this.state.translationTo = 'عربی';
-
-          }
-          if(this.props.location.search[3] === '4') {
-              this.state.translationTo = 'اسپانیایی';
-          }
-          if(this.props.location.search[5] === '1'){
-              this.state.is_general = true ;
-              this.state.is_law = false ;
-              this.state.is_medical = false;
-              this.state.is_technical = false;
-              this.state.translationFatherTag = true ;
-          }
-          if(this.props.location.search[5] === '2'){
-              this.state.is_general = false ;
-              this.state.is_law = true ;
-              this.state.is_medical = false;
-              this.state.is_technical = false;
-              this.state.translationFatherTag = true
-          }
-          if(this.props.location.search[5] === '3'){
-              this.state.is_general = false ;
-              this.state.is_law = false ;
-              this.state.is_medical = true;
-              this.state.is_technical = false;
-              this.state.translationFatherTag = true
-          }
-          if(this.props.location.search[5] === '4'){
-              this.state.is_general = false ;
-              this.state.is_law = false ;
-              this.state.is_medical = false;
-              this.state.is_technical = true;
-              this.state.translationFatherTag = true
-          }
-      }
         //const showError = this.state.translationFatherTagError ;
         // const showErrorProjectTitle = this.state.projectTitleError;
         var options1 = STATIC_DATAS.AVAILABLETOLANGUAGES;

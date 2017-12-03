@@ -7,7 +7,8 @@
     "build": "webpack --config webpack.prod.js",
     "watch": "webpack --watch --config webpack.prod.js",
     "start": "webpack-dev-server --open --config webpack.dev.js",
-    "server": "webpack-dev-server --open 10.10.10.61 --config webpack.dev.js"
+    "server": "webpack-dev-server --open 10.10.10.61 --config webpack.dev.js",
+    "public": "webpack-dev-server --open 10.10.10.61 --config webpack.dev2.js"
   },
   "author": "Wish Work Technical Team",
   "license": "ISC",

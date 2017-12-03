@@ -12,7 +12,7 @@ class Header extends React.Component {
     <div className="container">
         <a className="navbar-brand" href="http://wishwork.ir">
             <img src="img/nav-logo.png" height="30" className="d-inline-block align-top" alt="our logo. A shake hand that is like two wings too means that we fly high together"/>
-                <span style="font-family:elham;color:#018abe;font-size:22px;">ویش ورک</span>
+                <span>ویش ورک</span>
         </a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>

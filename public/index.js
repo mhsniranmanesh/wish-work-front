@@ -12,17 +12,22 @@ import '../static/css/wish.css';
 import '../static/css/wish-dash.css';
 import {BrowserRouter} from 'react-router-dom';
 import App from './components/App.js';
+import {Provider} from 'react-redux';
+import configureStore from './store/configureStore.js';
 
 
+const store = configureStore();
 
 if (process.env.NODE_ENV !== 'production') {
     console.log('Here We are!');
 }
 
 render((
+        <Provider store={store}>
             <BrowserRouter>
                 <App/>
             </BrowserRouter>
+        </Provider>
     )
     ,
     document.getElementById('root2')

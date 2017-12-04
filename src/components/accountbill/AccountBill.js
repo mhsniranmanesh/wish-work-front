@@ -13,128 +13,128 @@ class AccountBill extends React.Component {
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">واریز</th>
-                        <th scope="col">برداشت</th>
+                        <th scope="col">واریز/برداشت</th>
+                        <th scope="col">مبلغ</th>
                         <th scope="col">تاریخ</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr className="cashin">
                         <th scope="row">1</th>
-                        <td>0</td>
+                        <td>واریز</td>
                         <td>2,500,000 تومان</td>
                         <td>
                           1396/08/03 23:47:34
                         </td>
                       </tr>
-                      <tr>
+                      <tr className="cashin">
                         <th scope="row">2</th>
+                        <td>واریز</td>
                         <td>2,500,000 تومان</td>
-                        <td>0</td>
                         <td>
                           1396/08/03 23:47:34
                         </td>
                       </tr>
-                      <tr>
-                        <th scope="row">3</th>
+                      <tr className="cashout">
+                        <th>3</th>
+                        <td>برداشت</td>
                         <td>2,500,000 تومان</td>
-                        <td>0</td>
                         <td>
                           1396/08/03 23:47:34
                         </td>
                       </tr>
-                      <tr>
+                      <tr className="cashin">
                         <th scope="row">4</th>
-                        <td>0</td>
+                        <td>واریز</td>
                         <td>2,500,000 تومان</td>
                         <td>
                           1396/08/03 23:47:34
                         </td>
                       </tr>
-                      <tr>
+                      <tr className="cashout">
                         <th scope="row">5</th>
+                        <td>برداشت</td>
                         <td>2,500,000 تومان</td>
-                        <td>0</td>
                         <td>
                           1396/08/03 23:47:34
                         </td>
                       </tr>
-                      <tr>
+                      <tr className="cashout">
                         <th scope="row">6</th>
+                        <td>برداشت</td>
                         <td>2,500,000 تومان</td>
-                        <td>0</td>
                         <td>
                           1396/08/03 23:47:34
                         </td>
                       </tr>
-                      <tr>
+                      <tr className="cashin">
                         <th scope="row">7</th>
-                        <td>0</td>
+                        <td>واریز</td>
                         <td>2,500,000 تومان</td>
                         <td>
                           1396/08/03 23:47:34
                         </td>
                       </tr>
-                      <tr>
+                      <tr className="cashout">
                         <th scope="row">8</th>
+                        <td>برداشت</td>
                         <td>2,500,000 تومان</td>
-                        <td>0</td>
                         <td>
                           1396/08/03 23:47:34
                         </td>
                       </tr>
-                      <tr>
+                      <tr className="cashin">
                         <th scope="row">9</th>
+                        <td>واریز</td>
                         <td>2,500,000 تومان</td>
-                        <td>0</td>
                         <td>
                           1396/08/03 23:47:34
                         </td>
                       </tr>
-                      <tr>
+                      <tr className="cashin">
                         <th scope="row">10</th>
-                        <td>0</td>
+                        <td>واریز</td>
                         <td>2,500,000 تومان</td>
                         <td>
                           1396/08/03 23:47:34
                         </td>
                       </tr>
-                      <tr>
+                      <tr className="cashout">
                         <th scope="row">11</th>
+                        <td>برداشت</td>
                         <td>2,500,000 تومان</td>
-                        <td>0</td>
                         <td>
                           1396/08/03 23:47:34
                         </td>
                       </tr>
-                      <tr>
+                      <tr className="cashin">
                         <th scope="row">12</th>
+                        <td>واریز</td>
                         <td>2,500,000 تومان</td>
-                        <td>0</td>
                         <td>
                           1396/08/03 23:47:34
                         </td>
                       </tr>
-                      <tr>
+                      <tr className="cashout">
                         <th scope="row">13</th>
-                        <td>0</td>
+                        <td>برداشت</td>
                         <td>2,500,000 تومان</td>
                         <td>
                           1396/08/03 23:47:34
                         </td>
                       </tr>
-                      <tr>
+                      <tr className="cashout">
                         <th scope="row">14</th>
+                        <td>برداشت</td>
                         <td>2,500,000 تومان</td>
-                        <td>0</td>
                         <td>
                           1396/08/03 23:47:34
                         </td>
                       </tr>
-                      <tr>
+                      <tr className="cashin">
                         <th scope="row">15</th>
+                        <td>واریز</td>
                         <td>2,500,000 تومان</td>
-                        <td>0</td>
                         <td>
                           1396/08/03 23:47:34
                         </td>

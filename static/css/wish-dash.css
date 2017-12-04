@@ -415,6 +415,10 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     margin-bottom: 5px;
 }
 
+
+
+
+
 .dash-con h5 .fa,
 .dash-con h6 .fa {
     vertical-align: middle;
@@ -1288,4 +1292,12 @@ img {
 .send-btn .fa {
     position: relative;
     top: 10px;
+}
+
+
+.cashin{
+  color: #579B00;
+}
+.cashout{
+  color: #5A0370;
 }

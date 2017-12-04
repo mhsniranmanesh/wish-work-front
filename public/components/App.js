@@ -8,7 +8,7 @@ import Header from './common/Header.js';
 
 class App extends React.Component {
     constructor(props , context){
-        super(props);
+        super(props , context);
 
 
     }

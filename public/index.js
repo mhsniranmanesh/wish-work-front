@@ -1,4 +1,4 @@
-//import 'babel-polyfill';
+import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import "../static/css/bootstrap.min.css"
@@ -30,5 +30,5 @@ render((
         </Provider>
     )
     ,
-    document.getElementById('root2')
+    document.getElementById('root')
 );

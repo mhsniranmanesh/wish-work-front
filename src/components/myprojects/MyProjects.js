@@ -20,10 +20,23 @@ class MyProjects extends React.Component {
                                 </ul>
                             </div>
                             <div className="dash-con dash-new-project con-body mb-4">
-                                <div className="project-status mx-auto">
-                                    <label className="btn btn-primary btn-rec">در حال انجام <input type="checkbox" className="badgebox"/><span className="badge badge-light"><i className="fa fa-check"></i></span></label>
-                                    <label className="btn btn-success btn-rec">انجام شده <input type="checkbox" className="badgebox"/><span className="badge badge-light"><i className="fa fa-check"></i></span></label>
-                                    <label className="btn btn-danger btn-rec">کنسل شده <input type="checkbox" className="badgebox"/><span className="badge badge-light"><i className="fa fa-check"></i></span></label>
+                                <div className="project-status mx-auto row">
+                                  <span className=" boxes btn btn-primary btn-rec myproject-btn myproject-badge col-sm-4">
+                                    <input type="checkbox" className="badgebox" id="ongoing"/>
+                                    <label htmlFor="ongoing">در حال انجام</label>
+                                  </span>
+
+                                  <span className=" boxes btn btn-success btn-rec myproject-btn myproject-badge col-sm-4">
+                                    <input type="checkbox" className="badgebox" id="did"/>
+                                    <label htmlFor="did">انجام شده</label>
+                                  </span>
+
+
+                                  <span className=" boxes btn btn-danger btn-rec myproject-btn myproject-badge col-sm-4">
+                                    <input type="checkbox" className="badgebox" id="canceled"/>
+                                    <label htmlFor="canceled">کنسل شده</label>
+                                  </span>
+
                                 </div>
                             </div>
                             <div className="dash-con dash-new-project con-body mb-4">
@@ -32,7 +45,7 @@ class MyProjects extends React.Component {
                                     <span className="badge badge-primary">در حال انجام</span>
                                 </h6>
 
-                                <h6 className="dash-recom-item-discription">
+                                <h6 className="beauty-text dash-recom-item-discription">
                                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد ...
                                 </h6>
                                 <span className="sub-heading">
@@ -47,7 +60,7 @@ class MyProjects extends React.Component {
                                     <strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong>
                                     <span className="badge badge-success">انجام شده</span>
                                 </h6>
-                                <h6 className="dash-recom-item-discription">
+                                <h6 className="beauty-text dash-recom-item-discription">
                                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد ...
                                 </h6>
                                 <span className="sub-heading">
@@ -59,7 +72,7 @@ class MyProjects extends React.Component {
                                     <strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong>
                                     <span className="badge badge-danger">کنسل شده</span>
                                 </h6>
-                                <h6 className="dash-recom-item-discription">
+                                <h6 className="beauty-text dash-recom-item-discription">
                                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد ...
                                 </h6>
                                 <span className="sub-heading">

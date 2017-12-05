@@ -1301,3 +1301,67 @@ img {
 .cashout{
   color: #5A0370;
 }
+
+.dash-new-project .badge{
+  margin-right: 10px;
+}
+
+.beauty-text{
+  text-align: justify;
+}
+
+/*.myproject-btn{
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 20vw;
+}*/
+
+/*my project check box */
+
+
+
+.boxes input[type="checkbox"] {
+  display: none;
+ }
+
+
+ .boxes input[type="checkbox"] + label {
+   display: inline-block;
+   position: relative;
+   color: #ddd;
+   cursor: pointer;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+ }
+
+.boxes input[type="checkbox"] + label:last-child {
+  margin-bottom: 0;
+ }
+
+ .boxes input[type="checkbox"] + label:before {
+   content: '';
+   display: inline-block;
+   width: 20px;
+   height: 20px;
+   border: 2px solid #ddd;
+   border-radius: 10%;
+   position: relative;
+   right: 0;
+   top: 5px;
+   margin-left: 5px;
+   /*opacity: .6;*/
+   -webkit-transition: all .12s, border-color .08s;
+   transition: all .12s, border-color .08s;
+ }
+
+.boxes input[type="checkbox"]:checked + label:before {
+   width: 10px;
+   top: 2px;
+   right: -5px;
+   border-radius: 0;
+   border-top-color: transparent;
+   border-left-color: transparent;
+   -webkit-transform: rotate(45deg);
+   transform: rotate(45deg);
+ }

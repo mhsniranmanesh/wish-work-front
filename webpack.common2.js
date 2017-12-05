@@ -22,7 +22,7 @@ module.exports = {
                 query: {
                     presets: [
                         'es2015',
-                        'react'
+                        'react',
                     ],
                     plugins: []
                 },
@@ -69,7 +69,7 @@ module.exports = {
         }),
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            template: 'index.template.ejs',
+            template: 'index2.template.ejs',
             inject: 'body',
         }),
         // new webpack.optimize.CommonsChunkPlugin({

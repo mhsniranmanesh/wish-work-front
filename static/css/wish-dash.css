@@ -432,8 +432,8 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     border-top: 1px solid #e9ecef;
 }
 
-@media(min-width:768px) {
-    .dash-recom-item {
+@media(min-width:768px){
+  .dash-recom-item {
         border-bottom: 3px solid #D9DADB;
         display: inline-block;
         min-height: 20vh;
@@ -492,6 +492,140 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     }
 }
 
+
+
+/*/////////////////////////////for recomended projects////////////////////////////////*/
+
+@media(min-width:102px) {
+    .dash-recom-item {
+        border-bottom: 3px solid #D9DADB;
+        display: inline-block;
+        min-height: 20vh;
+        width: 100%;
+        margin-bottom: 0.75rem;
+    }
+    .recom .dollar {
+        float: right;
+        display: inline-block;
+        min-height: 20vh;
+        margin-left: 10px;
+    }
+    .recom  svg {
+          width: 5px;
+          height: 8vh;
+      }
+    .recom  svg rect {
+          padding-top: 2px;
+          width: 5px;
+          height: 8vh;
+      }
+}
+@media(width:1024px) {
+    .dash-recom-item {
+        border-bottom: 3px solid #D9DADB;
+        display: inline-block;
+        min-height: 10vh;
+        width: 100%;
+        margin-bottom: 0.75rem;
+    }
+    .recom .dollar {
+        float: right;
+        display: inline-block;
+        min-height: 10vh;
+        margin-left: 10px;
+    }
+    .recom  svg {
+          width: 5px;
+          height: 4.5vh;
+      }
+    .recom  svg rect {
+          padding-top: 2px;
+          width: 5px;
+          height: 4.5vh;
+      }
+}
+
+@media(min-width:767px) and (max-width:1023px){
+ .dash-recom-item {
+        border-bottom: 3px solid #D9DADB;
+        display: inline-block;
+        min-height: 10vh;
+        width: 100%;
+        margin-bottom: 0.25rem;
+    }
+    .recom .dollar {
+        float: right;
+        display: inline-block;
+        min-height: 10vh;
+        margin-left: 10px;
+    }
+    .recom  svg {
+          width: 5px;
+          height: 6vh;
+      }
+    .recom  svg rect {
+          padding-top: 2px;
+          width: 5px;
+          height: 6vh;
+      }
+}
+
+@media(min-width:426px) and (max-width:766px) {
+  .dash-recom-item {
+        border-bottom: 3px solid #D9DADB;
+        display: inline-block;
+        min-height: 10vh;
+        width: 100%;
+        margin-bottom: 0.75rem;
+    }
+  .recom  .dollar {
+        float: right;
+        display: inline-block;
+        min-height: 20vh;
+        margin-left: 10px;
+    }
+  .recom  svg {
+        width: 5px;
+        height: 8vh;
+    }
+  .recom  svg rect {
+          padding-top: 2px;
+          width: 5px;
+          height: 10vh;
+      }
+}
+
+@media(max-width:425px) {
+  .dash-recom-item {
+        border-bottom: 3px solid #D9DADB;
+        display: inline-block;
+        min-height: 20vh;
+        width: 100%;
+        margin-bottom: 0.75rem;
+    }
+  .recom  .dollar {
+        float: right;
+        display: inline-block;
+        min-height: 20vh;
+        margin-left: 10px;
+    }
+  .recom  svg {
+        width: 5px;
+        height: 8vh;
+    }
+  .recom  svg rect {
+          padding-top: 2px;
+          width: 5px;
+          height: 10vh;
+      }
+}
+
+
+
+
+
+
+/*///////////////////////////////////*/
 .content {
     vertical-align: middle;
     /*text-align: center;*/

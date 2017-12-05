@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 const ProjectTemplate = ({ProjectDetail}) =>{
     return(
         <div>
-            <div className="dash-recom-item price-fair">
-                <span className="prices">
+            <div className="dash-recom-item recom">
+                <span className="dollar">
                   <div>
-                    <svg width="5px" height="20vh">
-                      <rect className="price-good" width="5px" height="10vh" />
+                    <svg>
+                      <rect className="price-fair" />
                     </svg>
                   </div>
                   <div>
-                    <svg width="5px" height="8vh">
-                      <rect className="price-low" width="5px" height="8vh"/>
+                    <svg>
+                      <rect className="price-low" />
                     </svg>
                   </div>
                 </span>
@@ -33,7 +33,7 @@ const ProjectTemplate = ({ProjectDetail}) =>{
                     <i className="fa fa-clock-o"></i>{ProjectDetail.releaseTime}
                 </div>
             </div>
-          <div className="dash-divider"/>
+          {/*<div className="dash-divider"/>*/}
         </div>
 
 

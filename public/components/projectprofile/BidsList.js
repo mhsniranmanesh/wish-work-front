@@ -1,6 +1,7 @@
 import React from 'react';
+import BidTemplate from './BidTemplate';
 
-const BidList = ({props}) => {
+const BidsList = ({Bids}) => {
     return(
         <div>
             <h5 className="project-title">
@@ -16,6 +17,10 @@ const BidList = ({props}) => {
                 </div>
             </div>
             <div className="divider"/>
+            {Bids.map(Bid =>
+            <BidTemplate key={Bid.id} Bid={Bid}/>)}
         </div>
     )
 };
+
+export default BidsList ;

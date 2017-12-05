@@ -14,9 +14,13 @@ import {BrowserRouter} from 'react-router-dom';
 import App from './components/App.js';
 import {Provider} from 'react-redux';
 import configureStore from './store/configureStore.js';
-
+import {Bids} from './actions/Bids';
+import {ProjectsDone} from "./actions/ProjectsDone";
 
 const store = configureStore();
+
+store.dispatch(ProjectsDone());
+store.dispatch(Bids());
 
 if (process.env.NODE_ENV !== 'production') {
     console.log('Here We are!');

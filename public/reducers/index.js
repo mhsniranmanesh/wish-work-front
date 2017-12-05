@@ -1,9 +1,9 @@
-import test from './test';
+import Bids from './BidsReducer';
 import {combineReducers} from 'redux';
-
+import ProjectsDone from './ProjectsDoneReducer'
 
 const rootReducer = combineReducers({
-    test
+    Bids , ProjectsDone
 });
 
 export default rootReducer ;

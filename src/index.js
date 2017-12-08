@@ -50,7 +50,6 @@ Authentication().then(() => {
     // store.dispatch(projectSubmitLocalForDashboard())
     store.dispatch(recomendedProject());
     store.dispatch(Notifications());
-
     render((
             <Provider store={store}>
                 <BrowserRouter>

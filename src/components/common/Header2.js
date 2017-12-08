@@ -122,7 +122,7 @@ class Header2 extends React.Component {
                                     <span className="nav-link-text">حساب</span>
                                 </a>
                                 <ul className="sidenav-second-level collapse" id="accountComponents">
-                                    <li className="active">
+                                    <li>
                                         <NavLink to="/account/cash">واریز - برداشت</NavLink>
                                     </li>
                                     <li>

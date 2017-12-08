@@ -10,6 +10,8 @@ import NotificationsListForDashboard from "./NotificationsListForDashboard";
 import Notifications from '../../actions/Notifications';
 import ProfileInfoForDashboard from "./ProfileInfoForDashboard";
 // import * as x from '../../actions/projectSubmitLocalForDashboard';
+//import { withRouter } from 'react-router-dom';
+import deepEqual from 'deep-equal';
 
 
 const LANGUAGES = require('./Datas/Languages.js');
@@ -18,7 +20,7 @@ class Dashboard extends React.Component{
   constructor(props , context){
     super(props , context);
     this.state = { translationTo : "" , translationFrom : "" , projectSkillTag : "" , translationFatherTag : false ,
-        is_general: false , is_medical : false , is_technical : false , is_law : false };
+        is_general: false , is_medical : false , is_technical : false , is_law : false , profileInfo:Object.assign({} , props.profileInfo[0])};
 
         this.IsLaw = this.IsLaw.bind(this);
         this.IsMedical = this.IsMedical.bind(this);
@@ -103,6 +105,21 @@ class Dashboard extends React.Component{
         //     });
         // }, 500);
     }
+    // componentDidMount(){
+    //     this.setState({profileInfo:Object.assign({} , this.props.profileInfo[0])})
+    // }
+    //
+    // shouldComponentUpdate(nextProps){
+    //     console.log('update');
+    //     return !deepEqual( nextProps.profileInfo , this.props.profileInfo);
+    // }
+
+    componentWillReceiveProps(nextProps){
+        if(this.props.profileInfo != nextProps.profileInfo ) {
+            console.log(nextProps.profileInfo[0]);
+            this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[0])});
+        }
+    }
     gotoRecomendedProjects(event){
         event.preventDefault();
         this.context.router.history.push('/project/recommend');
@@ -137,7 +154,6 @@ class Dashboard extends React.Component{
             });
         }
     }
-
   render(){
     return(
       <div>
@@ -147,7 +163,7 @@ class Dashboard extends React.Component{
 
 
                     <div className="col-sm-5">
-                        <ProfileInfoForDashboard profileInfo={this.props.profileInfo} />
+                        <ProfileInfoForDashboard profileInfo={this.state.profileInfo} />
 
                         <DashboardProjectSubmission upVTF={this.updateValueTF} upVTT={this.updateValueTT}
                                                     translationFrom={this.state.translationFrom}
@@ -159,8 +175,6 @@ class Dashboard extends React.Component{
                                                     is_law={this.state.is_law} IsLaw={this.IsLaw}
                         />
                     </div>
-
-
                     <div className="col-sm-7">
                         <NotificationsListForDashboard Notifications={this.props.Notifications} myFunc={this.gotoNotifications}/>
                         <ProjectsListForDashboard Projects={this.props.recomendedProject} myFunc={this.gotoRecomendedProjects}/>
@@ -189,7 +203,9 @@ Dashboard.PropTypes = {
    // actions2 : PropTypes.object.isRequired,
 };
 
+
 function mapStateToProps(state , ownProps){
+
     return{
         profileInfo : state.profileInfo,
         recomendedProject : state.recomendedProject,

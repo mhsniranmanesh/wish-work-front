@@ -2,7 +2,7 @@ import React from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as projectSubmit from '../../actions/projectSubmit.js';
+import * as projectActions from '../../actions/projectSubmit.js';
 import Error from './Errors';
 import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Row , Col} from 'reactstrap';
 import Select from 'react-select';
@@ -42,7 +42,7 @@ class Projectsubmition extends React.Component{
             validTime: false,
             type: 0,
             category: 0
-        }
+        };
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
 
@@ -67,17 +67,42 @@ class Projectsubmition extends React.Component{
         this.submit = this.submit.bind(this);
         this.validatePrice = this.validatePrice.bind(this);
         this.validateTime = this.validateTime.bind(this);
+        this.persianToEnglish = this.persianToEnglish.bind(this);
+        this.redirect = this.redirect.bind(this);
     }
 
-
+    persianToEnglish(value) {
+        var newValue = "";
+        for (var i = 0; i < value.length; i++) {
+            var ch = value.charCodeAt(i);
+            if (ch >= 1776 && ch <= 1785) // For Persian digits.
+            {
+                var newChar = ch - 1728;
+                newValue = newValue + String.fromCharCode(newChar);
+            } else if (ch >= 1632 && ch <= 1641) // For Arabic & Unix digits.
+            {
+                var newChar = ch - 1584;
+                newValue = newValue + String.fromCharCode(newChar);
+            } else
+                newValue = newValue + String.fromCharCode(ch);
+        }
+        return newValue;
+    }
+    redirect(){
+        this.context.router.history.push('/dashboard');
+    }
 
     handleOnChange (value) {
   		const { multi } = this.state;
   		this.setState({ multiValue: value });
   	}
     submit(){
+        this.props.actions.projectSubmit(this.state).then(
+            () => this.redirect()
+            ).catch(error => {
+            console.log(error);
+        });
         alert('your project submited');
-        this.props.actions.projectSubmit(this.state)
     }
 
     IsTechnical(){
@@ -108,7 +133,8 @@ class Projectsubmition extends React.Component{
         return tm.test(time);
     }
     componentWillMount(){
-        if(this.props.location.search){
+       // console.log('this.props.location.search.length' , this.props.location.search.length);
+        if(this.props.location.search.length === 6){
             if(this.props.location.search[1] === '0'){
                 this.state.translationFrom = 'فارسی';
             }
@@ -172,6 +198,36 @@ class Projectsubmition extends React.Component{
                 this.state.translationFatherTag = true
             }
         }
+        if (this.props.location.search.length === 4){
+            if(this.props.location.search[3] === '1'){
+                this.state.is_general = true ;
+                this.state.is_law = false ;
+                this.state.is_medical = false;
+                this.state.is_technical = false;
+                this.state.translationFatherTag = true ;
+            }
+            if(this.props.location.search[3] === '2'){
+                this.state.is_general = false ;
+                this.state.is_law = true ;
+                this.state.is_medical = false;
+                this.state.is_technical = false;
+                this.state.translationFatherTag = true
+            }
+            if(this.props.location.search[3] === '3'){
+                this.state.is_general = false ;
+                this.state.is_law = false ;
+                this.state.is_medical = true;
+                this.state.is_technical = false;
+                this.state.translationFatherTag = true
+            }
+            if(this.props.location.search[3] === '4'){
+                this.state.is_general = false ;
+                this.state.is_law = false ;
+                this.state.is_medical = false;
+                this.state.is_technical = true;
+                this.state.translationFatherTag = true
+            }
+        }
     }
     updateValueTT (newValue) {
         console.log(this.props);
@@ -218,14 +274,16 @@ class Projectsubmition extends React.Component{
         this.setState({description: event.target.value});
     }
     submitProjectTimeState(event){
-        const time = event.target.value;
+        let time = event.target.value;
+        time = this.persianToEnglish(time);
         const trueOrFalseTimeValid = this.validateTime(time);
         this.setState({time_limit: event.target.value , validTime: trueOrFalseTimeValid});
         console.log('state:' ,this.state);
         console.log('length:' , this.state.translationFatherTag.length);
     }
     submitProjectPriceState(event){
-        const price = event.target.value;
+        let price = event.target.value;
+        price = this.persianToEnglish(price);
         const trueOrFalsePriceValid = this.validatePrice(price);
 
         this.setState({budget: price , validPrice : trueOrFalsePriceValid})
@@ -250,7 +308,6 @@ class Projectsubmition extends React.Component{
     roundProjectTime(event){
         let numb = Number(event.target.value);
         const trueOrFalseTimeValid2 = this.validateTime(numb);
-
         numb = Math.round(numb);
         if(isNaN(numb)){
             numb = "";
@@ -299,6 +356,7 @@ class Projectsubmition extends React.Component{
             this.setState({message:"لطفا مبلغ خود را صحیح وارد کنید"})
         }
         else if(!this.state.validTime && this.state.time_limit === ""){
+            console.log('this.state.validTime' , this.state.validTime , 'this.state.time_limit' , this.state.time_limit);
             this.setState({showError: true});
             this.setState({message:"لطفا زمان وارد کنید"})
 
@@ -546,20 +604,21 @@ Projectsubmition.contextTypes = {
 
 Projectsubmition.PropTypes = {
     actions : PropTypes.object.isRequired,
-    projectSubmit : PropTypes.func.isRequired,
-    kosnanat : PropTypes.object.isRequired,
-    //dashProjectSubmit : PropTypes.func.isRequired
+    projectActions : PropTypes.array.isRequired,
+    // kosnanat : PropTypes.object.isRequired,
+    // dashProjectSubmit : PropTypes.func.isRequired
     hint: PropTypes.string,
     label: PropTypes.string
 };
 
 function mapStateToProps(state , ownProps){
-    return{
+    return {
+
     };
 }
 function mapDispatchToProps(dispatch){
     return {
-            actions: bindActionCreators(projectSubmit, dispatch)
+            actions: bindActionCreators(projectActions, dispatch)
     };
 }
 

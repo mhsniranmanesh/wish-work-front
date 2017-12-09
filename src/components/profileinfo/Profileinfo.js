@@ -35,6 +35,7 @@ class Profileinfo extends React.Component{
         this.changeUniversityOnChange = this.changeUniversityOnChange.bind(this);
         this.submitChanges = this.submitChanges.bind(this);
         this.size = this.size.bind(this);
+
     }
     updateValueTT (newValue) {
     	this.setState({
@@ -46,9 +47,11 @@ class Profileinfo extends React.Component{
         selectValueTF: newValue
       });
     }
+
+
+
     changeBioInput(){
         this.setState(prevState => ({bioReadOnly: !prevState.bioReadOnly}))
-
     };
     changeJobInput(){
         this.setState(prevState => ({jobReadOnly: !prevState.jobReadOnly}))

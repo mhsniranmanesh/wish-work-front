@@ -2,7 +2,7 @@ export default {
     recomendedProject:[],
     profileInfo : [],
     Notifications : [],
-    projectOfMine : [],
+    projectSubmit : [],
     //PSD : [],
    // token : null
 };

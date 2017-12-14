@@ -2,7 +2,7 @@ import React from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as projectSubmit from '../../actions/projectSubmit.js';
+import * as projectActions from '../../actions/projectSubmit.js';
 import Error from './Errors';
 import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Row , Col} from 'reactstrap';
 import Select from 'react-select';
@@ -17,22 +17,32 @@ class Projectsubmition extends React.Component{
     constructor(props , contextc){
         super(props);
 
-        this.state={ value: undefined,options: [{ value: 'math', label: 'ریاضیات' },{ value: 'math1', label: 'ریاضی محض' },{ value: 'math2', label: 'ریاضی کاربردی' }
-                                                ,{ value: 'math3', label: 'ریاضی مالی' },{ value: 'CS', label: 'علوم کامپیوتر' },{ value: 'CS1', label: 'نظریهٔ محاسبه' }
-                                                ,{ value: 'CS2', label: 'هوش مصنوعی' },{ value: 'physics', label: 'فیزیک' },{ value: 'physics1', label: 'فیزیک حالت جامد'},{ value: 'physics2', label: 'فیزیک اتمی و مولکولی' },{ value: 'physics3', label: 'فیزیک هسته‌ای' }
-                                                ,{ value: 'physics4', label: 'فیزیک ذرات بنیادی' },{ value: 'physics5', label: 'فیزیک نجومی' }
-                                                ,{ value: 'chemistry', label: 'شیمی' },{ value: 'chemistry1', label: 'شیمی آلی' },{ value: 'chemistry2', label: 'شیمی معدنی' },{ value: 'chemistry3', label: 'شیمی تجزیه' },{ value: 'chemistry4', label: 'شیمی فیزیک' }
-                                                ,{ value: 'chemistry5', label: 'شیمی کاربردی' },{ value: 'chemistry6', label: 'شیمی پلیمر' },{ value: 'biology', label: 'زیست شناسی' },{ value: 'biology1', label: 'ژنتیک' },{ value: 'biology2', label: 'بیوشیمی' }
-                                                ,{ value: 'biology3', label: 'بیوشیمی' }
-                                                ,{ value: 'geology', label: 'زمین شناسی' },{ value: 'geology1', label: 'پترولوژی' },{ value: 'geology2', label: 'زمین شناسی اقتصادی' },{ value: 'geology2', label: 'زمین شناسی اقتصادی' }
-                                                ,{ value: 'elec', label: 'مهندسی برق' },{ value: 'elec1', label: 'مهندسی الکترونیک' },{ value: 'elec2', label: 'مهندسی مخابرات' },{ value: 'elec3', label: 'مهندسی کنترل' },{ value: 'elec4', label: 'مهندسی قدرت' }
-                                                ,{ value: 'elec5', label: 'مکاترونیک' },{ value: 'mech', label: 'مهندسی مکانیک' },{ value: 'mech1', label: 'ساخت و تولید' },{ value: 'mech2', label: 'طراحی کاربردی' },{ value: 'mech3', label: 'بیومکانیک' }
-                                                ,{ value: 'c', label: 'مهندسی کامپیوتر' },{ value: 'c1', label: 'نرم‌افزار' },{ value: 'c2', label: 'گرایش شبکه' },{ value: 'c3', label: 'معماری سیستم های کامپیوتری' }
-                                                ,{ value: 'civil', label: 'مهندسی عمران' },{ value: 'civil1', label: 'سازه' },{ value: 'civil2', label: 'زلزله' },{ value: 'civil3', label: 'حمل و نقل' },{ value: 'civil4', label: 'خاک و پی ' }
-                                                ,{ value: 'civil5', label: 'محیط زیست' },{ value: 'aero', label: 'محیط زیست' }], multiValue: [], multi: true,translationFatherTag:false , modal: false , is_general: false , is_medical : false , is_technical : false , is_law : false,translationFrom:"", translationTo:"" ,projectTitle:"" , projectDescription:"", submitProjectPrice:"" , submitProjectTime:"" , requiredTags:[] , response:[],
-                     message:"" , showError : false , validPrice : false , validTime : false
+        this.state= {
+            value: undefined,
+            options: [{value: 'R', label: 'Red'}, {value: 'G', label: 'Green'}, {value: 'B', label: 'Blue'}],
+            multiValue: [],
+            multi: true,
+            translationFatherTag: false,
+            modal: false,
+            is_general: false,
+            is_medical: false,
+            is_technical: false,
+            is_law: false,
+            translationFrom: "",
+            translationTo: "",
+            title: "",
+            description: "",
+            budget: "",
+            time_limit: "",
+            requiredTags: [],
+            response: [],
+            message: "",
+            showError: false,
+            validPrice: false,
+            validTime: false,
+            type: 0,
+            category: 0
         };
-
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
 
@@ -43,7 +53,6 @@ class Projectsubmition extends React.Component{
         this.IsMedical = this.IsMedical.bind(this);
         this.IsTechnical = this.IsTechnical.bind(this);
         this.IsGeneral = this.IsGeneral.bind(this);
-        this.getInitialState = this.getInitialState.bind(this);
         this.updateValueTF = this.updateValueTF.bind(this);
         this.toggle = this.toggle.bind(this);
         this.updateValueTT = this.updateValueTT.bind(this);
@@ -58,17 +67,42 @@ class Projectsubmition extends React.Component{
         this.submit = this.submit.bind(this);
         this.validatePrice = this.validatePrice.bind(this);
         this.validateTime = this.validateTime.bind(this);
+        this.persianToEnglish = this.persianToEnglish.bind(this);
+        this.redirect = this.redirect.bind(this);
     }
 
-
+    persianToEnglish(value) {
+        var newValue = "";
+        for (var i = 0; i < value.length; i++) {
+            var ch = value.charCodeAt(i);
+            if (ch >= 1776 && ch <= 1785) // For Persian digits.
+            {
+                var newChar = ch - 1728;
+                newValue = newValue + String.fromCharCode(newChar);
+            } else if (ch >= 1632 && ch <= 1641) // For Arabic & Unix digits.
+            {
+                var newChar = ch - 1584;
+                newValue = newValue + String.fromCharCode(newChar);
+            } else
+                newValue = newValue + String.fromCharCode(ch);
+        }
+        return newValue;
+    }
+    redirect(){
+        this.context.router.history.push('/dashboard');
+    }
 
     handleOnChange (value) {
   		const { multi } = this.state;
   		this.setState({ multiValue: value });
   	}
     submit(){
+        this.props.actions.projectSubmit(this.state).then(
+            () => this.redirect()
+            ).catch(error => {
+            console.log(error);
+        });
         alert('your project submited');
-        this.props.actions.projectSubmit(this.state)
     }
 
     IsTechnical(){
@@ -77,7 +111,7 @@ class Projectsubmition extends React.Component{
     }
 
     IsGeneral(){
-            this.setState({is_general: true , is_technical: false , is_medical: false , is_law: false , translationFatherTag : true});
+        this.setState({is_general: true , is_technical: false , is_medical: false , is_law: false , translationFatherTag : true});
     }
 
     IsMedical(){
@@ -98,20 +132,105 @@ class Projectsubmition extends React.Component{
         const tm = /^\d+$/;
         return tm.test(time);
     }
+    componentWillMount(){
+       // console.log('this.props.location.search.length' , this.props.location.search.length);
+        if(this.props.location.search.length === 6){
+            if(this.props.location.search[1] === '0'){
+                this.state.translationFrom = 'فارسی';
+            }
+            if(this.props.location.search[1] === '1') {
+                this.state.translationFrom = 'انگلیسی';
+            }
+            if(this.props.location.search[1] === '2') {
+                this.state.translationFrom = 'فرانسوی';
 
-    getInitialState(){
-      return {
-			multi: true,
-			multiValue: [],
-			options: [
-				{ value: 'R', label: 'Red' },
-				{ value: 'G', label: 'Green' },
-				{ value: 'B', label: 'Blue' }
-			],
-			value: undefined
-		  };
+            }
+            if(this.props.location.search[1] === '3') {
+                this.state.translationFrom = 'عربی';
+
+            }
+            if(this.props.location.search[1] === '4') {
+                this.state.translationFrom = 'اسپانیایی';
+            }
+            if(this.props.location.search[3] === '0'){
+                this.state.translationTo = 'فارسی';
+            }
+            if(this.props.location.search[3] === '1') {
+                this.state.translationTo = 'انگلیسی';
+            }
+            if(this.props.location.search[3] === '2') {
+                this.state.translationTo = 'فرانسوی';
+
+            }
+            if(this.props.location.search[3] === '3') {
+                this.state.translationTo = 'عربی';
+
+            }
+            if(this.props.location.search[3] === '4') {
+                this.state.translationTo = 'اسپانیایی';
+            }
+            if(this.props.location.search[5] === '1'){
+                this.state.is_general = true ;
+                this.state.is_law = false ;
+                this.state.is_medical = false;
+                this.state.is_technical = false;
+                this.state.translationFatherTag = true ;
+            }
+            if(this.props.location.search[5] === '2'){
+                this.state.is_general = false ;
+                this.state.is_law = true ;
+                this.state.is_medical = false;
+                this.state.is_technical = false;
+                this.state.translationFatherTag = true
+            }
+            if(this.props.location.search[5] === '3'){
+                this.state.is_general = false ;
+                this.state.is_law = false ;
+                this.state.is_medical = true;
+                this.state.is_technical = false;
+                this.state.translationFatherTag = true
+            }
+            if(this.props.location.search[5] === '4'){
+                this.state.is_general = false ;
+                this.state.is_law = false ;
+                this.state.is_medical = false;
+                this.state.is_technical = true;
+                this.state.translationFatherTag = true
+            }
+        }
+        if (this.props.location.search.length === 4){
+            if(this.props.location.search[3] === '1'){
+                this.state.is_general = true ;
+                this.state.is_law = false ;
+                this.state.is_medical = false;
+                this.state.is_technical = false;
+                this.state.translationFatherTag = true ;
+            }
+            if(this.props.location.search[3] === '2'){
+                this.state.is_general = false ;
+                this.state.is_law = true ;
+                this.state.is_medical = false;
+                this.state.is_technical = false;
+                this.state.translationFatherTag = true
+            }
+            if(this.props.location.search[3] === '3'){
+                this.state.is_general = false ;
+                this.state.is_law = false ;
+                this.state.is_medical = true;
+                this.state.is_technical = false;
+                this.state.translationFatherTag = true
+            }
+            if(this.props.location.search[3] === '4'){
+                this.state.is_general = false ;
+                this.state.is_law = false ;
+                this.state.is_medical = false;
+                this.state.is_technical = true;
+                this.state.translationFatherTag = true
+            }
+        }
     }
     updateValueTT (newValue) {
+        console.log(this.props);
         if(newValue === null){
             this.setState({
                 translationTo: ""
@@ -123,8 +242,9 @@ class Projectsubmition extends React.Component{
             });
         }
 	  }
+
+
     updateValueTF(newValue) {
-        console.log(this.props.kosnanat);
         if(newValue === null){
             this.setState({
                 translationFrom: ""
@@ -142,29 +262,34 @@ class Projectsubmition extends React.Component{
       });
     }
     dragDrop(event){
-        this.readFile(event);
-        event.target.value = null;
+        const data = new FormData();
+        // data.append('file', event.target.files[0]);
+        // data.append('name', 'some value user types');
+        // data.append('description', 'some value user types');
+        console.log(event.target.files[0]);
     }
 
 
     projectDescriptionState(event){
-        this.setState({projectDescription: event.target.value});
+        this.setState({description: event.target.value});
     }
     submitProjectTimeState(event){
-        const time = event.target.value;
+        let time = event.target.value;
+        time = this.persianToEnglish(time);
         const trueOrFalseTimeValid = this.validateTime(time);
-        this.setState({submitProjectTime: event.target.value , validTime: trueOrFalseTimeValid});
+        this.setState({time_limit: event.target.value , validTime: trueOrFalseTimeValid});
         console.log('state:' ,this.state);
         console.log('length:' , this.state.translationFatherTag.length);
     }
     submitProjectPriceState(event){
-        const price = event.target.value;
+        let price = event.target.value;
+        price = this.persianToEnglish(price);
         const trueOrFalsePriceValid = this.validatePrice(price);
 
-        this.setState({submitProjectPrice: price , validPrice : trueOrFalsePriceValid})
+        this.setState({budget: price , validPrice : trueOrFalsePriceValid})
     }
     projectTitleState(event){
-        this.setState({projectTitle: event.target.value});
+        this.setState({title: event.target.value});
     }
     roundProjectPrice(event){
         let numb = Number(event.target.value);
@@ -177,18 +302,17 @@ class Projectsubmition extends React.Component{
         if(isNaN(numb)){
             numb = "";
         }
-        this.setState({submitProjectPrice: numb , validPrice : trueOrFalsePriceValid2})
+        this.setState({budget: numb , validPrice : trueOrFalsePriceValid2})
 
     }
     roundProjectTime(event){
         let numb = Number(event.target.value);
         const trueOrFalseTimeValid2 = this.validateTime(numb);
-
         numb = Math.round(numb);
         if(isNaN(numb)){
             numb = "";
         }
-        this.setState({submitProjectTime: numb , validTime: trueOrFalseTimeValid2});
+        this.setState({time_limit: numb , validTime: trueOrFalseTimeValid2});
     }
 
 
@@ -196,7 +320,7 @@ class Projectsubmition extends React.Component{
         event.preventDefault();
         console.log('__TF__' , this.state.translationFrom);
             console.log('state is:' , this.state);
-        if(!this.state.projectTitle.length){
+        if(!this.state.title.length){
             this.setState({showError: true});
             this.setState({message:"لطفا عنوان پروژه ی خود را وارد کنید!"});
         }
@@ -218,12 +342,12 @@ class Projectsubmition extends React.Component{
             this.setState({message:"لطفا زبان مبدا و مقصد خود را متفاوت مشخص کنید"})
 
         }
-        else if(!this.state.projectDescription.length){
+        else if(!this.state.description.length){
             this.setState({showError: true});
             this.setState({message:"لطفا توضیحاتی در رابطه با پروژه ی خود ارائه دهید."});
         }
 
-        else if(!this.state.validPrice && this.state.submitProjectPrice === ""){
+        else if(!this.state.validPrice && this.state.budget === ""){
             this.setState({showError: true});
             this.setState({message:"لطفا مبلغ خود را وارد کنید"})
         }
@@ -231,7 +355,8 @@ class Projectsubmition extends React.Component{
             this.setState({showError: true});
             this.setState({message:"لطفا مبلغ خود را صحیح وارد کنید"})
         }
-        else if(!this.state.validTime && this.state.submitProjectTime === ""){
+        else if(!this.state.validTime && this.state.time_limit === ""){
+            console.log('this.state.validTime' , this.state.validTime , 'this.state.time_limit' , this.state.time_limit);
             this.setState({showError: true});
             this.setState({message:"لطفا زمان وارد کنید"})
 
@@ -241,10 +366,11 @@ class Projectsubmition extends React.Component{
              this.setState({message:"لطفا زمان خود را صحیح وارد کنید"})
          }
         else {
-            this.setState({showError: false});
-            this.setState({
-                modal: !this.state.modal
-            });
+            // this.setState({});
+            this.setState({showError: false, type : STATIC_DATAS.TYPE.NORMAL ,category : STATIC_DATAS.CATEGORY.TRANSLATION ,  modal: !this.state.modal});
+            // this.setState({
+            //     modal: !this.state.modal
+            // });
         }
 
         // else if(!this.state.translationTo.length){
@@ -261,11 +387,12 @@ class Projectsubmition extends React.Component{
 
 
   render(){
+        console.log(this.props.location.search[0]);
         //const showError = this.state.translationFatherTagError ;
         // const showErrorProjectTitle = this.state.projectTitleError;
         var options1 = STATIC_DATAS.AVAILABLETOLANGUAGES;
         var options2 = STATIC_DATAS.AVAILABLEFROMLANGUAGES;
-        const emailRegex = /^\S+@\S+\.\S+$/;
+       // const emailRegex = /^\S+@\S+\.\S+$/;
         const { multi, multiValue, options, value } = this.state;
 
 
@@ -282,7 +409,7 @@ class Projectsubmition extends React.Component{
                       <div className="dash-divider"/>
                       <form>
                         <div className="form-group">
-                          <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.projectTitle} onChange={this.projectTitleState}/>
+                          <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.title} onChange={this.projectTitleState}/>
                         </div>
                         <div className="input-group">
                               <legend>زمینه ترجمه تان را انتخاب کنید</legend>
@@ -351,7 +478,7 @@ class Projectsubmition extends React.Component{
                           </Col>
                         </Row>
                         <div className="form-group">
-                          <textarea type="text" className="form-control" id="" placeholder="توضیحاتی را در مورد پروژه بنویسید." value={this.state.projectDescription} onChange={this.projectDescriptionState}/>
+                          <textarea type="text" className="form-control" id="" placeholder="توضیحاتی را در مورد پروژه بنویسید." value={this.state.description} onChange={this.projectDescriptionState}/>
                         </div>
                         <div className="form-group">
 
@@ -394,7 +521,7 @@ class Projectsubmition extends React.Component{
                           <label htmlFor="" className="col-form-label">
                               بودجه ی خود را مشخص کنید.
                           </label>
-                          <input type="text" className="form-control" id="priceInput" value={this.state.submitProjectPrice} onChange={this.submitProjectPriceState} onBlur={this.roundProjectPrice}/>
+                          <input type="text" className="form-control" id="priceInput" value={this.state.budget} onChange={this.submitProjectPriceState} onBlur={this.roundProjectPrice}/>
                           <div id="price-range"/>
                           <span className="price-msg">
                               <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
@@ -405,7 +532,7 @@ class Projectsubmition extends React.Component{
                           <label htmlFor="" className="col-form-label">
                               زمان دلخواه خود را مشخص کنید.
                           </label>
-                          <input type="text" className="form-control" id="timeInput" value={this.state.submitProjectTime} onChange={this.submitProjectTimeState} onBlur={this.roundProjectTime}/>
+                          <input type="text" className="form-control" id="timeInput" value={this.state.time_limit} onChange={this.submitProjectTimeState} onBlur={this.roundProjectTime}/>
                           <div id="time-range"/>
                           <span className="time-msg">
                               <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
@@ -437,7 +564,7 @@ class Projectsubmition extends React.Component{
                                 </span>
                                 <div>
                                     <a href="#">
-                                        <h6><strong>{this.state.projectTitle}</strong></h6>
+                                        <h6><strong>{this.state.title}</strong></h6>
                                     </a>
                                     <span className="sub-heading">
                                         <a className="tag" href="#">#فارسی_به_انگلیسی</a>
@@ -448,7 +575,7 @@ class Projectsubmition extends React.Component{
                                       </span>
                                     <span className="sub-heading">
                                           <i className="fa fa-user"/> <a href="#">4/5</a>
-                                          <i className="fa fa-usd"/> {this.state.submitProjectPrice}
+                                          <i className="fa fa-usd"/> {this.state.budget}
                                           <i className="fa fa-clock-o"/>GetTime
                                       </span>
                                 </div>
@@ -477,20 +604,21 @@ Projectsubmition.contextTypes = {
 
 Projectsubmition.PropTypes = {
     actions : PropTypes.object.isRequired,
-    projectSubmit : PropTypes.func.isRequired,
-    kosnanat : PropTypes.object.isRequired,
-    //dashProjectSubmit : PropTypes.func.isRequired
+    projectActions : PropTypes.array.isRequired,
+    // kosnanat : PropTypes.object.isRequired,
+    // dashProjectSubmit : PropTypes.func.isRequired
     hint: PropTypes.string,
-		label: PropTypes.string
+    label: PropTypes.string
 };
 
 function mapStateToProps(state , ownProps){
-    return{
+    return {
+
     };
 }
 function mapDispatchToProps(dispatch){
     return {
-            actions: bindActionCreators(projectSubmit, dispatch)
+            actions: bindActionCreators(projectActions, dispatch)
     };
 }
 

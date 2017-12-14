@@ -1,0 +1,41 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import  {PropTypes} from 'prop-types';
+import {connect} from 'react-redux';
+
+
+class Header extends React.Component {
+
+    render() {
+        return (
+<nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <div className="container">
+        <a className="navbar-brand" href="http://wishwork.ir">
+            <img src={require('../../../static/img/nav-logo.png')} height="30"
+                 className="d-inline-block align-top" alt="nav-logo"/>
+            <img src={require('../../../static/img/wishworkFontLogo.jpg')} height="30"/>
+        </a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav navbar-right">
+                <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="http://example.com" id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img className="rounded-circle" src="http://via.placeholder.com/50x50" width="30" height="30"/>
+                            وحید علوی
+                    </a>
+                    <div className="dropdown-menu" aria-labelledby="navbarUserDropdown">
+                        <a className="dropdown-item" href="#">پنل کاربری</a>
+                        <a className="dropdown-item" href="#">خروج</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+            )
+    }
+}
+
+export default Header;

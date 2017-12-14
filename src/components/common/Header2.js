@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import NotifsListForHeader from './NotifsListForHeader';
 //import '../../src/styles.css';
 //className = 'active' show the side navbar active when you click on the object
+import FilterLink from './FilterLink';
 
 
 class Header2 extends React.Component {
@@ -93,7 +94,7 @@ class Header2 extends React.Component {
                                         <NavLink to="/project/control">کنترل پروژه</NavLink>
                                     </li>
                                     <li>
-                                        <a href="#">پروژه های من</a>
+                                        <NavLink to="/project/me">پروژه های من</NavLink>
                                     </li>
                                 </ul>
                             </li>
@@ -121,7 +122,7 @@ class Header2 extends React.Component {
                                     <span className="nav-link-text">حساب</span>
                                 </a>
                                 <ul className="sidenav-second-level collapse" id="accountComponents">
-                                    <li className="active">
+                                    <li>
                                         <NavLink to="/account/cash">واریز - برداشت</NavLink>
                                     </li>
                                     <li>

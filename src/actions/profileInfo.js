@@ -6,6 +6,9 @@ export function loadProfileInfoSuccess(profileInfo){
   return{type: types.LOAD_INFO_SUCCESS , profileInfo}
 }
 
+// export function projectSubmitLocalForDashboard(NewPSLFD) {
+//     return {type: types.PROJECT_SUBMIT_LOCAL_FOR_DASHBOARD , NewPSLFD}
+// }
 
 //
 // export function profileInfo(){
@@ -18,8 +21,14 @@ export function loadProfileInfoSuccess(profileInfo){
 //   };
 // }
 
-export function loadNewInfosSuccess(newInfos){
-    return{type: types.UPDATE_NEW_INFOS_SUCCESS , newInfos}
+// export function projectSubmitLocalForDashboard2(PSD2) {
+//     return {type: types.PROJECT_SUBMIT_LOCAL_FOR_DASHBOARD , PSD2}
+// }
+
+
+
+export function loadNewInfosSuccess(profileInfo){
+    return{type: types.UPDATE_NEW_INFOS_SUCCESS , profileInfo}
 }
 
 export function profileInfo(){
@@ -33,10 +42,10 @@ export function profileInfo(){
   };
 }
 //
-export function updateInformations(newInfos , getState){
+export function updateInformations(profileInfo , getState){
     return function (dispatch) {
-        return axios.post('/api/v1/profiles/update-infos/' , newInfos).then(newInfos =>{
-        dispatch(loadNewInfosSuccess(newInfos));
+        return axios.post('/api/v1/profiles/update-infos/' , profileInfo).then(profileInfo =>{
+        dispatch(loadNewInfosSuccess(profileInfo.data));
         }).catch(error => {
             throw (error);
         })

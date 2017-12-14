@@ -16,7 +16,7 @@ const Notifications =[
         descriptionFor:'سلام عزیزم!',
         ReleaseTime:'۱:۰۰'
     }
-]
+];
 
 function replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);

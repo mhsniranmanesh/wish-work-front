@@ -1,14 +1,10 @@
 import * as types from './actionTypes.js';
 
 
-export function projectSubmitLocalForDashboard(NewPSLFD){
-    return {type: types.PROJECT_SUBMIT_LOCAL_FOR_DASHBOARD , NewPSLFD}
+export function projectSubmitLocalForDashboard(PSD) {
+    return {type: types.PROJECT_SUBMIT_LOCAL_FOR_DASHBOARD , PSD}
 }
 
-
-export function PSLFD(NewPSLFD) {
-    return function(dispatch){
-        return NewPSLFD =>{dispatch(projectSubmitLocalForDashboard(NewPSLFD))}
-
-    };
+export function projectLocal() {
+    return 0 ;
 }

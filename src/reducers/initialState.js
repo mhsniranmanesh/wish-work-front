@@ -2,7 +2,7 @@ export default {
     recomendedProject:[],
     profileInfo : [],
     Notifications : [],
-    projectOfMine : [],
-    localProjectForDash : [],
-    token : null
+    projectSubmit : [],
+    //PSD : [],
+   // token : null
 };

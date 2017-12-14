@@ -1,7 +1,7 @@
 import React from 'react';
 import {PropTypes} from 'prop-types';
 import Select from 'react-select';
-import {Row , Col} from 'reactstrap';
+import {Row , Col ,Button} from 'reactstrap';
 const STATIC_DATAS = require('../../Datas/STATIC_DATAS.js');
 
 
@@ -21,13 +21,13 @@ const DashboardProjectSubmission = (props) =>{
                     <Row className= "fields">
                         <Col>
                             <label>
-                                <input className="btn-radio" type="radio" name="rb" id="rb1" />
+                                <input className="btn-radio" type="radio" name="rb" id="rb1" checked={props.is_general} onChange={props.IsGeneral}/>
                                 <span htmlFor="rb1" className="radio-text">عمومی</span>
                             </label>
                         </Col>
                         <Col>
                             <label>
-                                <input className="btn-radio" type="radio" name="rb" id="rb2" />
+                                <input className="btn-radio" type="radio" name="rb" id="rb2" checked={props.is_technical} onChange={props.IsTechnical}/>
                                 <span htmlFor="rb2" className="radio-text">فنی</span>
                             </label>
                         </Col>
@@ -35,13 +35,13 @@ const DashboardProjectSubmission = (props) =>{
                     <Row className="fields">
                         <Col>
                             <label>
-                                <input className="btn-radio" type="radio" name="rb" id="rb3" />
+                                <input className="btn-radio" type="radio" name="rb" id="rb3" checked={props.is_medical} onChange={props.IsMedical}/>
                                 <span htmlFor="rb3" className="radio-text">پزشکی</span>
                             </label>
                         </Col>
                         <Col>
                             <label>
-                                <input className="btn-radio" type="radio" name="rb" id="rb4" />
+                                <input className="btn-radio" type="radio" name="rb" id="rb4" checked={props.is_law} onChange={props.IsLaw}/>
                                 <span htmlFor="rb4" className="radio-text">حقوقی</span>
                             </label>
                         </Col>
@@ -59,7 +59,7 @@ const DashboardProjectSubmission = (props) =>{
                                     value={props.translationFrom}
                                     onChange={props.upVTF}
                                     labelKey="name"
-                                    valueKey="name"
+                                    valueKey="index"
                                 />
                             </div>
                         </Col>
@@ -74,49 +74,15 @@ const DashboardProjectSubmission = (props) =>{
                                 value={props.translationTo}
                                 onChange={props.upVTT}
                                 labelKey="name"
-                                valueKey="name"
+                                valueKey="index"
                             />
                         </Col>
                     </Row>
-                  {/*<row>*/}
-
-                      {/*<div className="section">*/}
-                            {/*<Select*/}
-                              {/*className="customPicker"*/}
-                              {/*placeholder="از زبان ..."*/}
-                              {/*options={options1}*/}
-                              {/*simpleValue*/}
-                              {/*clearable*/}
-                              {/*name="select-language"*/}
-                              {/*value={props.translationFrom}*/}
-                              {/*onChange={props.upVTF}*/}
-                              {/*searchable*/}
-                              {/*labelKey="name"*/}
-                              {/*valueKey="name"*/}
-                            {/*/>*/}
-                      {/*</div>*/}
-                      {/*</row>*/}
-                      {/*<row>*/}
-                            {/*<Select*/}
-                              {/*className="customPicker"*/}
-                              {/*placeholder="به زبان ..."*/}
-                              {/*options={options2}*/}
-                              {/*simpleValue*/}
-                              {/*clearable*/}
-                              {/*name="select-language"*/}
-                              {/*value={props.translationTo}*/}
-                              {/*onChange={props.upVTT}*/}
-                              {/*searchable*/}
-                              {/*labelKey="name"*/}
-                              {/*valueKey="name"*/}
-                            {/*/>*/}
-                      {/*</row>*/}
-                </form>
-                <form onSubmit={props.myFunc}>
-                    <button type="submit" className="btn btn-primary btn-rec">
+                    <Button type="submit" className="btn btn-primary btn-rec" onClick={props.myFunc}>
                         ایجاد پروژه
-                    </button>
+                    </Button>
                 </form>
+
             </div>
         );
     };
@@ -126,7 +92,15 @@ DashboardProjectSubmission.PropTypes = {
     upVTT : PropTypes.func.isRequired,
     upVTF : PropTypes.func.isRequired,
     translationTo : PropTypes.object.isRequired,
-    translationFrom : PropTypes.object.isRequired
+    translationFrom : PropTypes.object.isRequired,
+    is_law : PropTypes.object.isRequired,
+    is_technical : PropTypes.object.isRequired,
+    is_medical : PropTypes.object.isRequired,
+    is_general : PropTypes.object.isRequired,
+    IsGeneral : PropTypes.func.isRequired,
+    IsTechnical : PropTypes.func.isRequired,
+    IsMedical : PropTypes.func.isRequired,
+    IsLaw : PropTypes.func.isRequired,
 };
 
 

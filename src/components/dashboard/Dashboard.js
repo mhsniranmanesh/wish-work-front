@@ -117,8 +117,12 @@ class Dashboard extends React.Component{
     componentWillReceiveProps(nextProps){
         if(this.props.profileInfo != nextProps.profileInfo ) {
             console.log(nextProps.profileInfo[0]);
+            //inja az halate bler dar biad
             this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[0])});
         }
+    }
+    componentWillMount(){
+// aval bler bashe
     }
     gotoRecomendedProjects(event){
         event.preventDefault();

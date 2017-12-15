@@ -6,7 +6,6 @@ import * as projectActions from '../../actions/projectSubmit.js';
 import Error from './Errors';
 import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Row , Col} from 'reactstrap';
 import Select from 'react-select';
-import kosnanat from '../dashboard/Dashboard';
 
 const STATIC_DATAS = require('../../Datas/STATIC_DATAS.js');
 
@@ -19,7 +18,8 @@ class Projectsubmition extends React.Component{
 
         this.state= {
             value: undefined,
-            options: [{value: 'R', label: 'Red'}, {value: 'G', label: 'Green'}, {value: 'B', label: 'Blue'}],
+            options: [{value: 'R', label: 'Red'}, {value: 'G', label: 'Green'}, {value: 'B', label: 'Blue'} ,
+                {value: 'Q', label: 'YELLOW'}],
             multiValue: [],
             multi: true,
             translationFatherTag: false,
@@ -29,6 +29,8 @@ class Projectsubmition extends React.Component{
             is_technical: false,
             is_law: false,
             translationFrom: "",
+            from_language:"",
+            to_language:"",
             translationTo: "",
             title: "",
             description: "",
@@ -41,7 +43,9 @@ class Projectsubmition extends React.Component{
             validPrice: false,
             validTime: false,
             type: 0,
-            category: 0
+            category: 0,
+            bid_duration:2,
+            field:"",
         };
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
@@ -97,7 +101,10 @@ class Projectsubmition extends React.Component{
   		this.setState({ multiValue: value });
   	}
     submit(){
-        this.props.actions.projectSubmit(this.state).then(
+        console.log('from_language' , this.state.from_language);
+        console.log('this.state.translationFrom' , this.state.translationFrom);
+        console.log('STATE IS:' , this.state);
+            this.props.actions.projectSubmit(this.state , this.state).then(
             () => this.redirect()
             ).catch(error => {
             console.log(error);
@@ -106,21 +113,20 @@ class Projectsubmition extends React.Component{
     }
 
     IsTechnical(){
-            this.setState({is_technical: true , is_general : false , is_law: false , is_medical: false , translationFatherTag : true});
+            this.setState({is_technical: true , is_general : false , is_law: false , is_medical: false , translationFatherTag : true , field: STATIC_DATAS.PROJECT_SKILLS_TAG.TECHNICAL});
 
     }
 
     IsGeneral(){
-        this.setState({is_general: true , is_technical: false , is_medical: false , is_law: false , translationFatherTag : true});
+        this.setState({is_general: true , is_technical: false , is_medical: false , is_law: false , translationFatherTag : true , field: STATIC_DATAS.PROJECT_SKILLS_TAG.GENERAL});
     }
 
     IsMedical(){
-            this.setState({is_general: false , is_technical: false , is_medical: true , is_law: false , translationFatherTag : true});
-
+            this.setState({is_general: false , is_technical: false , is_medical: true , is_law: false , translationFatherTag : true , field: STATIC_DATAS.PROJECT_SKILLS_TAG.MEDICAL});
     }
 
     IsLaw(){
-            this.setState({is_general: false , is_technical: false , is_medical: false , is_law: true , translationFatherTag : true});
+            this.setState({is_general: false , is_technical: false , is_medical: false , is_law: true , translationFatherTag : true , field: STATIC_DATAS.PROJECT_SKILLS_TAG.LEGAL});
 
     }
 
@@ -135,39 +141,45 @@ class Projectsubmition extends React.Component{
     componentWillMount(){
        // console.log('this.props.location.search.length' , this.props.location.search.length);
         if(this.props.location.search.length === 6){
-            if(this.props.location.search[1] === '0'){
-                this.state.translationFrom = 'فارسی';
-            }
-            if(this.props.location.search[1] === '1') {
-                this.state.translationFrom = 'انگلیسی';
+            if(this.props.location.search[1] === '1'){
+                this.state.translationFrom = 1;
             }
             if(this.props.location.search[1] === '2') {
-                this.state.translationFrom = 'فرانسوی';
-
+                this.state.translationFrom = 2;
             }
             if(this.props.location.search[1] === '3') {
-                this.state.translationFrom = 'عربی';
+                this.state.translationFrom = 3;
 
             }
             if(this.props.location.search[1] === '4') {
-                this.state.translationFrom = 'اسپانیایی';
-            }
-            if(this.props.location.search[3] === '0'){
-                this.state.translationTo = 'فارسی';
-            }
-            if(this.props.location.search[3] === '1') {
-                this.state.translationTo = 'انگلیسی';
-            }
-            if(this.props.location.search[3] === '2') {
-                this.state.translationTo = 'فرانسوی';
+                this.state.translationFrom = 4;
 
             }
+            if(this.props.location.search[1] === '5') {
+                this.state.translationFrom = 5;
+            }
+            if(this.props.location.search[1] === '6') {
+                this.state.translationFrom = 6;
+            }
+            if(this.props.location.search[3] === '1'){
+                this.state.translationTo = 1;
+            }
+            if(this.props.location.search[3] === '2') {
+                this.state.translationTo = 2;
+            }
             if(this.props.location.search[3] === '3') {
-                this.state.translationTo = 'عربی';
+                this.state.translationTo = 3;
 
             }
             if(this.props.location.search[3] === '4') {
-                this.state.translationTo = 'اسپانیایی';
+                this.state.translationTo = 4;
+
+            }
+            if(this.props.location.search[3] === '5') {
+                this.state.translationTo = 5;
+            }
+            if(this.props.location.search[3] === '6') {
+                this.state.translationTo = 6;
             }
             if(this.props.location.search[5] === '1'){
                 this.state.is_general = true ;
@@ -278,8 +290,8 @@ class Projectsubmition extends React.Component{
         time = this.persianToEnglish(time);
         const trueOrFalseTimeValid = this.validateTime(time);
         this.setState({time_limit: event.target.value , validTime: trueOrFalseTimeValid});
-        console.log('state:' ,this.state);
-        console.log('length:' , this.state.translationFatherTag.length);
+        //console.log('state:' ,this.state);
+        //console.log('length:' , this.state.translationFatherTag.length);
     }
     submitProjectPriceState(event){
         let price = event.target.value;
@@ -317,9 +329,8 @@ class Projectsubmition extends React.Component{
 
 
     handleSubmit(event){
+        console.log(this.state.field);
         event.preventDefault();
-        console.log('__TF__' , this.state.translationFrom);
-            console.log('state is:' , this.state);
         if(!this.state.title.length){
             this.setState({showError: true});
             this.setState({message:"لطفا عنوان پروژه ی خود را وارد کنید!"});
@@ -329,11 +340,12 @@ class Projectsubmition extends React.Component{
             this.setState({showError : true});
             this.setState({message:"لطفا زمینه ی ترجمه ی خود را وارد کنید!"});
         }
-        else if(!this.state.translationFrom.length || this.state.translationFrom === null){
+        else if(!this.state.translationFrom || this.state.translationFrom === null){
             this.setState({showError: true});
+            //console.log(this.state.translationFrom);
             this.setState({message:"لطفا زبان مبدا ترجمه ی خود را مشخص کنید."})
         }
-        else if((!this.state.translationTo.length) || this.state.translationTo === null ){
+        else if((!this.state.translationTo) || this.state.translationTo === null ){
             this.setState({showError: true});
             this.setState({message:"لطفا زبان مقصد خود را مشخص کنید"})
         }
@@ -356,7 +368,7 @@ class Projectsubmition extends React.Component{
             this.setState({message:"لطفا مبلغ خود را صحیح وارد کنید"})
         }
         else if(!this.state.validTime && this.state.time_limit === ""){
-            console.log('this.state.validTime' , this.state.validTime , 'this.state.time_limit' , this.state.time_limit);
+            //console.log('this.state.validTime' , this.state.validTime , 'this.state.time_limit' , this.state.time_limit);
             this.setState({showError: true});
             this.setState({message:"لطفا زمان وارد کنید"})
 
@@ -368,6 +380,9 @@ class Projectsubmition extends React.Component{
         else {
             // this.setState({});
             this.setState({showError: false, type : STATIC_DATAS.TYPE.NORMAL ,category : STATIC_DATAS.CATEGORY.TRANSLATION ,  modal: !this.state.modal});
+            this.setState({from_language: this.state.translationFrom});
+            this.setState({to_language: this.state.translationTo});
+            // this.setState({field : this.state.translationFatherTag})
             // this.setState({
             //     modal: !this.state.modal
             // });
@@ -387,7 +402,7 @@ class Projectsubmition extends React.Component{
 
 
   render(){
-        console.log(this.props.location.search[0]);
+        //console.log(this.props.location.search[0]);
         //const showError = this.state.translationFatherTagError ;
         // const showErrorProjectTitle = this.state.projectTitleError;
         var options1 = STATIC_DATAS.AVAILABLETOLANGUAGES;
@@ -457,7 +472,7 @@ class Projectsubmition extends React.Component{
                                     value={this.state.translationFrom}
                                     onChange={this.updateValueTF}
                                     labelKey="name"
-                                    valueKey="name"
+                                    valueKey="index"
                                   />
                               </div>
                             </Col>
@@ -473,7 +488,7 @@ class Projectsubmition extends React.Component{
                                     value={this.state.translationTo}
                                     onChange={this.updateValueTT}
                                     labelKey="name"
-                                    valueKey="name"
+                                    valueKey="index"
                                   />
                           </Col>
                         </Row>
@@ -605,7 +620,6 @@ Projectsubmition.contextTypes = {
 Projectsubmition.PropTypes = {
     actions : PropTypes.object.isRequired,
     projectActions : PropTypes.array.isRequired,
-    // kosnanat : PropTypes.object.isRequired,
     // dashProjectSubmit : PropTypes.func.isRequired
     hint: PropTypes.string,
     label: PropTypes.string

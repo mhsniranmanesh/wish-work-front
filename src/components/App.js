@@ -16,7 +16,7 @@ class App extends React.Component {
   render(){
     return(
       <div>
-        <Header2 yourName={' ' + this.props.profileInfo.first_name + ' ' + this.props.profileInfo.last_name} />
+        <Header2/>
         <Main />
       </div>
       );

@@ -4,6 +4,7 @@ import  {PropTypes} from 'prop-types';
 import  Notifications from '../../actions/Notifications';
 import {connect} from 'react-redux';
 import NotifsListForHeader from './NotifsListForHeader';
+import * as profileInfo from '../../actions/profileInfo.js';
 //import '../../src/styles.css';
 //className = 'active' show the side navbar active when you click on the object
 import FilterLink from './FilterLink';
@@ -12,14 +13,20 @@ import FilterLink from './FilterLink';
 class Header2 extends React.Component {
     constructor(props){
         super(props);
-        this.state = {activeDashboard : true , activeProject : false , activeProfile: false , activeAccounting : false , activeMessage : false };
+        this.state = {activeDashboard : true , activeProject : false , activeProfile: false , activeAccounting : false , activeMessage : false,
+            profileInfo:Object.assign({} , props.profileInfo[0])};
         this.dashboardActive = this.dashboardActive.bind(this);
         this.projectActive = this.projectActive.bind(this);
         this.profileActive = this.profileActive.bind(this);
         this.accountingActive = this.accountingActive.bind(this);
         this.messageActive = this.messageActive.bind(this);
     }
-
+    componentWillReceiveProps(nextProps){
+        if(this.props.profileInfo != nextProps.profileInfo ) {
+            console.log(nextProps.profileInfo[0]);
+            this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[0])});
+        }
+    }
     dashboardActive (){
         if(!this.state.activeDashboard) {
             this.setState(prevState => ({activeDashboard: !prevState.activeDashboard}));
@@ -188,7 +195,7 @@ class Header2 extends React.Component {
                                    aria-expanded="false">
                                     <img className="rounded-circle" src="http://via.placeholder.com/50x50" width="30"
                                          height="30"/>
-                                    {this.props.yourName}
+                                    {this.state.profileInfo.first_name + ' ' + this.state.profileInfo.last_name}
                                 </a>
                                 <div id="profile" className="dropdown-menu" aria-labelledby="navbarUserDropdown">
                                     <a className="dropdown-item" href="#">خروج</a>
@@ -204,12 +211,14 @@ class Header2 extends React.Component {
 };
 Header2.PropTypes = {
   yourName : PropTypes.object.isRequired,
-  Notifications : PropTypes.object.isRequired
+  Notifications : PropTypes.object.isRequired,
+    profileInfo: PropTypes.array.isRequired,
 };
 
 function mapStateToProps(state , ownProps) {
     return {
-        Notifications: state.Notifications
+        Notifications: state.Notifications,
+        profileInfo : state.profileInfo
     }
 }
 

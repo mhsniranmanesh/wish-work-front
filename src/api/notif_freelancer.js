@@ -13,7 +13,7 @@ const Notifications =[
     {
         id: '2',
         Title: 'پیام' ,
-        descriptionFor:'سلام عزیزم!',
+        descriptionFor:'به خانواده ی ویش ورک خوش آمدید',
         ReleaseTime:'۱:۰۰'
     }
 ];

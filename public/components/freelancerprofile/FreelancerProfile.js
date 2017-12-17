@@ -14,7 +14,7 @@ class FreelancerProfile extends React.Component {
         this.state = {freelancerDetail: Object.assign({} , props.freelancerDetail)}
     }
     componentWillMount(){
-        console.log('this.props:' ,this.props.location.pathname.slice(10));
+        console.log('this.props.location:' ,this.props.location.pathname.slice(10));
         //this.setState({});
         this.props.actions.freelancerDetail(this.props.location.pathname.slice(10));
     }
@@ -32,7 +32,7 @@ class FreelancerProfile extends React.Component {
                     <div className="row">
                         <div className="col-sm-8">
 
-                            <FreelancerInfos/>
+                            <FreelancerInfos freelancerDetail={this.state.freelancerDetail}/>
                             <FreelancerSampleProjectsList ProjectsList={this.props.ProjectsDone}/>
 
                         </div>
@@ -57,7 +57,7 @@ function mapStateToProps(state , ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return{
-        actions : bindActionCreators(ProjectsDone ,freelancerActions , dispatch)
+        actions : bindActionCreators(freelancerActions , dispatch)
     }
 }
 

@@ -9,9 +9,9 @@ export function loadfreelancerDetailSuccess(freelancerDetail) {
 export function freelancerDetail(getState){
     return function(dispatch){
         console.log('getState' ,getState);
-        const slug =  getState + '/' ;
-        console.log('/api/v1/projects/get/' + slug);
-        return axios.get('/api/v1/projects/get/' + slug).then(freelancerDetail =>{
+        const username =  getState + '/' ;
+        console.log('/api/v1/profiles/get-pub-infos/' + username);
+        return axios.get('/api/v1/profiles/get-pub-infos/' + username).then(freelancerDetail =>{
             dispatch(loadfreelancerDetailSuccess(freelancerDetail))
         })
     };

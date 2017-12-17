@@ -9,8 +9,6 @@ import Header from './common/Header.js';
 class App extends React.Component {
     constructor(props , context){
         super(props , context);
-
-
     }
     render(){
         return(
@@ -25,6 +23,9 @@ class App extends React.Component {
 
 App.PropTypes = {
     routes: PropTypes.object.isRequired,
+};
+App.contextTypes = {
+    router: PropTypes.object.isRequired
 };
 
 

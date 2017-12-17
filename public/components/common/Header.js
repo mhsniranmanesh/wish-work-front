@@ -5,6 +5,19 @@ import {connect} from 'react-redux';
 
 
 class Header extends React.Component {
+constructor(props){
+    super(props);
+    this.state ={profile_picture: "http://via.placeholder.com/50x50"}
+}
+
+componentWillReceiveProps(nextProps){
+        if(this.props.profileInfo != nextProps.profileInfo ) {
+            //console.log(nextProps.profileDetail);
+            //inja az halate bler dar biad
+            this.setState({profile_picture: nextProps.profileInfo.profile_picture});
+        }
+}
+
 
     render() {
         return (
@@ -16,17 +29,17 @@ class Header extends React.Component {
             <img src={require('../../../static/img/wishworkFontLogo.jpg')} height="30"/>
         </a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"/>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav navbar-right">
                 <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" href="http://example.com" id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img className="rounded-circle" src="http://via.placeholder.com/50x50" width="30" height="30"/>
-                            وحید علوی
-                    </a>
+                        <img className="rounded-circle" src={this.state.profile_picture} width="30" height="30"/>
+                        {(this.props.profileInfo.first_name || '') + ' ' + (this.props.profileInfo.last_name || '')}
+                        </a>
                     <div className="dropdown-menu" aria-labelledby="navbarUserDropdown">
-                        <a className="dropdown-item" href="#">پنل کاربری</a>
+                        <NavLink className="dropdown-item" to='/dashboard'>پنل کاربری</NavLink>
                         <a className="dropdown-item" href="#">خروج</a>
                     </div>
                 </li>
@@ -38,4 +51,11 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+function mapStateToProps(state , ownProps) {
+    return {
+        profileInfo: state.profileInfo
+    }
+}
+
+
+export default connect(mapStateToProps)(Header);

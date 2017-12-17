@@ -1,17 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const FreelancerInfos = ({props}) =>{
+const FreelancerInfos = (props) =>{
+    let Image ;
+    if(props.freelancerDetail.profile_picture === null){
+        Image = "http://via.placeholder.com/125x125"
+    }
+    else{
+        Image = props.freelancerDetail.profile_picture
+    }
     return(
         <div>
             <div className="con fl-p mb-4">
                 <div className="media">
                     <img className="d-flex  ml-3 rounded-circle" src="http://via.placeholder.com/100x100" width="100" height="100"/>
                     <div className="media-body">
-                        <h5 className="name">محسن ایرانمنش</h5>
-                        <h6 className="s-discript">مترجم رسمی انگلیسی به فارسی و فارسی به انگلیسی</h6>
+                        <h5 className="name">{props.freelancerDetail.first_name + ' ' + props.freelancerDetail.last_name} </h5>
+                        <h6 className="s-discript">{props.freelancerDetail.title}</h6>
                         <div className="divider"/>
                         <span className="discript">
-                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
+                            {props.freelancerDetail.bio}
                             </span>
                         <div className="sub-heading">
                             <a className="tag" href="#">#فارسی_به_انگلیسی</a>
@@ -25,6 +33,10 @@ const FreelancerInfos = ({props}) =>{
             </div>
         </div>
     )
+};
+
+FreelancerInfos.PropTypes = {
+    freelancerDetail : PropTypes.object.isRequired
 };
 
 export default FreelancerInfos

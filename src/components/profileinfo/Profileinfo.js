@@ -145,7 +145,7 @@ class Profileinfo extends React.Component{
         if (this.props.profileInfo[size-1] != nextProps.profileInfo[size-1]) {
             console.log('nextProps.profileInfo[size-1]' ,nextProps.profileInfo[size-1]);
             this.setState({profileInfo: nextProps.profileInfo[size-1]});
-            this.setState({profilepicture: nextProps.profileInfo[0].profile_picture})
+            this.setState({profilepicture: nextProps.profileInfo[0].profile_picture});
             console.log('nextProps.profileInfo',nextProps.profileInfo);
             console.log('PRofileInfo' ,this.state.profileInfo);
         }
@@ -157,6 +157,7 @@ class Profileinfo extends React.Component{
         //console.log('componentWillMount PRofileInfo' , this.state.profileInfo);
         var x = this.size(this.props.profileInfo);
         if(x > 0) {
+            this.setState({profilepicture: this.props.profileInfo[0].profile_picture});
             this.setState({profileInfo: this.props.profileInfo[x - 1]});
             console.log('componentWillMount PRofileInfo' , this.state.profileInfo);
         }

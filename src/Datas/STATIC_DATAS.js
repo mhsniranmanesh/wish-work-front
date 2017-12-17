@@ -1,17 +1,21 @@
 import React from 'react';
 exports.AVAILABLETOLANGUAGES = [
-  {name: 'فارسی' , index: 0},
-  {name: 'انگلیسی' ,index: 1},
-  {name: 'فرانسوی' , index:2},
-  {name: 'عربی' , index:3},
-  {name: 'اسپانیایی' , index:4}
+  {name: 'فارسی' , index: 1},
+  {name: 'انگلیسی' ,index: 2},
+  {name: 'فرانسوی' , index:3},
+  {name: 'عربی' , index:4},
+  {name: 'اسپانیایی' , index:5},
+    {name: 'آلمانی' , index:6}
+
 ];
 exports.AVAILABLEFROMLANGUAGES = [
-  {name: 'فارسی' , index:0},
-  {name: 'انگلیسی' , index:1},
-  {name: 'فرانسوی' , index:2},
-  {name: 'عربی' , index:3},
-  {name: 'اسپانیایی' , index:4}
+  {name: 'فارسی' , index:1},
+  {name: 'انگلیسی' , index:2},
+  {name: 'فرانسوی' , index:3},
+  {name: 'عربی' , index:4},
+  {name: 'اسپانیایی' , index:5},
+  {name: 'آلمانی' , index:6}
+
 ];
 exports.CATEGORY = {
     TRANSLATION : 1

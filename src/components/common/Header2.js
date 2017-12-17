@@ -42,7 +42,7 @@ class Header2 extends React.Component {
     profileActive(){
         if(!this.state.activeProfile){
             this.setState(prevState => ({activeProfile: !prevState.activeProfile}));
-            this.setState({activeDashboard : false ,activeProject : false,activeAccounting:false, activeMessage : false })
+            this.setState({activeDashboard : false ,activeProject : false, activeAccounting:false, activeMessage : false })
 
         }
     }

@@ -187,27 +187,31 @@ class Projectsubmition extends React.Component{
                 this.state.is_medical = false;
                 this.state.is_technical = false;
                 this.state.translationFatherTag = true ;
+                this.state.field = 1;
             }
             if(this.props.location.search[5] === '2'){
                 this.state.is_general = false ;
                 this.state.is_law = true ;
                 this.state.is_medical = false;
                 this.state.is_technical = false;
-                this.state.translationFatherTag = true
+                this.state.translationFatherTag = true;
+                this.state.field = 2 ;
             }
             if(this.props.location.search[5] === '3'){
                 this.state.is_general = false ;
                 this.state.is_law = false ;
                 this.state.is_medical = true;
                 this.state.is_technical = false;
-                this.state.translationFatherTag = true
+                this.state.translationFatherTag = true;
+                this.state.field = 3 ;
             }
             if(this.props.location.search[5] === '4'){
                 this.state.is_general = false ;
                 this.state.is_law = false ;
                 this.state.is_medical = false;
                 this.state.is_technical = true;
-                this.state.translationFatherTag = true
+                this.state.translationFatherTag = true;
+                this.state.field = 4;
             }
         }
         if (this.props.location.search.length === 4){
@@ -217,27 +221,31 @@ class Projectsubmition extends React.Component{
                 this.state.is_medical = false;
                 this.state.is_technical = false;
                 this.state.translationFatherTag = true ;
+                this.state.field = 1;
             }
             if(this.props.location.search[3] === '2'){
                 this.state.is_general = false ;
                 this.state.is_law = true ;
                 this.state.is_medical = false;
                 this.state.is_technical = false;
-                this.state.translationFatherTag = true
+                this.state.translationFatherTag = true;
+                this.state.field = 2 ;
             }
             if(this.props.location.search[3] === '3'){
                 this.state.is_general = false ;
                 this.state.is_law = false ;
                 this.state.is_medical = true;
                 this.state.is_technical = false;
-                this.state.translationFatherTag = true
+                this.state.translationFatherTag = true;
+                this.state.field = 3 ;
             }
             if(this.props.location.search[3] === '4'){
                 this.state.is_general = false ;
                 this.state.is_law = false ;
                 this.state.is_medical = false;
                 this.state.is_technical = true;
-                this.state.translationFatherTag = true
+                this.state.translationFatherTag = true;
+                this.state.field = 4;
             }
         }
     }

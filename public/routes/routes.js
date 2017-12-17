@@ -16,6 +16,7 @@ const MainPublic = () => (
         <Switch>
             <Route path='/profiles' component={FreelancerProfile}/>
             <Route path='/projects' component={ProjectProfile}/>
+            <Route path='/projects/:id' component={ProjectProfile}/>
         </Switch>
     </main>
 );

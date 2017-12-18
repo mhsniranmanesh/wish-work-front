@@ -5,7 +5,7 @@ import FreelancerInviteFollow from './FreelancerInviteFollow';
 import FreelancerSampleProjectsList from './FreelancerSampleProjectsList';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
-import * as ProjectsDone from "../../actions/ProjectsDone";
+//import * as ProjectsDone from "../../actions/ProjectsDone";
 import * as freelancerActions from '../../actions/freelancerDetail';
 
 class FreelancerProfile extends React.Component {

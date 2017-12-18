@@ -6,6 +6,8 @@ export function loadProjectDetailSuccess(ProjectDetail) {
 }
 
 
+
+
 export function projectDetail(getState){
     return function(dispatch){
         console.log('getState' ,getState);

@@ -18,11 +18,11 @@ import {Bids} from './actions/Bids';
 import {ProjectsDone} from "./actions/ProjectsDone";
 import {profileInfo} from "./actions/profileInfo";
 import axios from 'axios';
+import {freelancerDetail} from "./actions/freelancerDetail";
 
 const store = configureStore();
 store.dispatch(ProjectsDone());
 store.dispatch(Bids());
-
 if (process.env.NODE_ENV !== 'production') {
     console.log('Here We are!');
 }
@@ -39,12 +39,13 @@ function Authentication() {
               delete axios.defaults.headers.common['Authorization'];
             */
             resolve();
+
         }
     });
-    // console.log('token is: ' , axios.defaults.headers.common['Authorization']);
 }
 
 Authentication().then(() => {
+    var a = axios.get('/api/v1/profiles/initial/');
     if(localStorage.getItem('current_login_token')) {
         store.dispatch(profileInfo());
         //show his profile!

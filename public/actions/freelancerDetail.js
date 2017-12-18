@@ -12,7 +12,10 @@ export function freelancerDetail(getState){
         const username =  getState + '/' ;
         console.log('/api/v1/profiles/get-pub-infos/' + username);
         return axios.get('/api/v1/profiles/get-pub-infos/' + username).then(freelancerDetail =>{
+            console.log('freelancerDetail' ,freelancerDetail);
             dispatch(loadfreelancerDetailSuccess(freelancerDetail))
+        }).catch(err =>{
+            console.log('fuck you!')
         })
     };
 }

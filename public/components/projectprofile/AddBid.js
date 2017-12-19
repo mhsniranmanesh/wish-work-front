@@ -1,6 +1,11 @@
 import React from 'react'
+import AddBidMileStones from './AddBidMileStones';
+import {Button} from 'reactstrap';
+import PropTypes from 'prop-types';
+import Errors from './Errors';
 
-const Addbid = ({props}) =>{
+const AddBid = (props) =>{
+
     return(
         <div className="col-sm-4">
                 <div className="con mb-4">
@@ -25,122 +30,80 @@ const Addbid = ({props}) =>{
                                     </button>
                                 </div>
                                 <div className="modal-body">
-                                    <form className="signup-form" action="javascript:gotonext2();">
+                                    <form className="signup-form" action='#'>
                                         <div className="form-group">
-                                            <input type="text" className="form-control form-control-danger" id="" placeholder="قیمت پیشنهادی (تومان)"/>
+                                            <input type="text"
+                                                   className="form-control form-control-danger"
+                                                   placeholder="قیمت پیشنهادی (تومان)"
+                                                   value={props.bid_price}
+                                                   onChange={props.BidPrice}
+                                            />
                                         </div>
                                         <div className="form-group">
-                                            <textarea type="text" className="form-control" id="" placeholder="توضیحات"/>
+                                            <textarea type="text"
+                                                      className="form-control"
+                                                      placeholder="توضیحات"
+                                                      value={props.bid_description}
+                                                      onChange={props.BidDescription}
+                                            />
                                         </div>
                                         <div className="form-group">
-                                            <input type="text" className="form-control" id="" placeholder="مهارت ها و ابزار هایی که قصد استفاده از آن ها را دارید."/>
+                                            <input type="text"
+                                                   className="form-control"
+                                                   placeholder="مهارت ها و ابزار هایی که قصد استفاده از آن ها را دارید."
+                                                   // value={props.skills}
+                                            />
                                         </div>
                                         <label htmlFor="skillType" className="col-form-label d-block">
                                             بازه های تحویل پروژه را انتخاب کنید
                                         </label>
                                         <div className="input-group mb-1">
-                                            <input type="number" className="form-control" id="" placeholder="تعداد موعدهای تحویل پروژه" value="5"/>
-                                                <button type="submit" className="btn btn-success btn-rec">انتخاب</button>
+                                            <input type="number" className="form-control"
+                                                   placeholder="تعداد موعدهای تحویل پروژه"
+                                                   onChange={props.valueOfMileStones}
+                                                   value={props.amountOfMileStones}/>
+                                                <Button type="submit" className="btn btn-success btn-rec" onClick={props.CheckLength} >انتخاب</Button>
 
                                         </div>
                                         <div className="row mb-3">
                                             <div className="col-sm-6 text-muted">
-                                                حداقل: <span className="badge badge-success">4</span>
+                                                حداقل: <span className="badge badge-success">2</span>
                                             </div>
                                             <div className="col-sm-6 text-muted">
-                                                حداکثر: <span className="badge badge-danger">6</span>
+                                                حداکثر: <span className="badge badge-danger">4</span>
                                             </div>
                                         </div>
                                     </form>
-
+                                    {props.showError ? <Errors message={props.message}/> : (true)}
+                                        <br/><br/>
 
                                     <div className="jumbotron">
                                         <div className="container">
                                             <div className="row">
                                                 <div className="timeline-centered">
-                                                    <article className="timeline-entry">
-                                                        <div className="timeline-entry-inner">
-                                                            <time className="timeline-time"><span>۲۴ آبان</span></time>
-                                                            <div className="timeline-icon bg-primary">
-                                                                <i className="entypo-feather"/>
-                                                            </div>
-                                                            <div className="timeline-label">
-                                                                <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
-                                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                                                            </div>
-                                                        </div>
-                                                    </article>
-                                                    <article className="timeline-entry left-aligned">
-                                                        <div className="timeline-entry-inner">
-                                                            <time className="timeline-time"><span>۲۴ آبان</span></time>
-                                                            <div className="timeline-icon bg-primary">
-                                                                <i className="entypo-suitcase"/>
-                                                            </div>
-                                                            <div className="timeline-label">
-                                                                <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
-                                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                                                            </div>
-                                                        </div>
-                                                    </article>
-                                                    <article className="timeline-entry">
-                                                        <div className="timeline-entry-inner">
-                                                            <time className="timeline-time"><span>۲۴ آبان</span></time>
-                                                            <div className="timeline-icon bg-primary">
-                                                                <i className="entypo-location"/>
-                                                            </div>
-                                                            <div className="timeline-label">
-                                                                <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
-                                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                                                            </div>
-                                                        </div>
-                                                    </article>
-                                                    <article className="timeline-entry left-aligned">
-                                                        <div className="timeline-entry-inner">
-                                                            <time className="timeline-time"><span>۲۴ آبان</span></time>
-                                                            <div className="timeline-icon bg-primary">
-                                                                <i className="entypo-location"/>
-                                                            </div>
-                                                            <div className="timeline-label">
-                                                                <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
-                                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
 
-                                                            </div>
-                                                        </div>
-                                                    </article>
-
-
-                                                    <article className="timeline-entry begin">
-
-                                                        <div className="timeline-entry-inner">
-                                                            <time className="timeline-time"><span>۲۴ آبان</span></time>
-
-                                                            <div className="timeline-icon bg-primary" style={{WebkitTransform : 'rotate(-90deg)', MozTransform: 'rotate(-90deg)'}}>
-                                                                <i className="entypo-flight"/>
-                                                            </div>
-
-                                                            <div className="timeline-label">
-                                                                <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
-                                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-
-                                                            </div>
-                                                        </div>
-
-                                                    </article>
-
+                                                    <AddBidMileStones Length={props.Length}/>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-primary btn-rec">ثبت پیشنهاد</button>
+                                    <button type="button"
+                                            className="btn btn-primary btn-rec"
+                                            // data-dismiss="modal"
+                                            data-dismiss={props.ModalState}
+                                            onClick={props.ModalSubmit}
+                                    >
+                                                         ثبت پیشنهاد
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="con mb-4">
-                    <button id="biddingBtn" type="submit" className="btn btn-primary btn-rec" data-toggle="modal" data-target="#biddingModal">
+                    <button  type="submit" className="btn btn-primary btn-rec" data-toggle="modal" data-target="#biddingModal">
                         پیشنهاد قیمت
                     </button>
                 </div>
@@ -148,4 +111,9 @@ const Addbid = ({props}) =>{
         )
     };
 
-export default Addbid;
+AddBid.PropTypes ={
+    amountOfMileStones: PropTypes.object.isRequired,
+    Length: PropTypes.element.isRequired
+};
+
+export default AddBid;

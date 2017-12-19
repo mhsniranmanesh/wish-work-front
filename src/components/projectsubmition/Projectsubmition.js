@@ -635,11 +635,7 @@ class Projectsubmition extends React.Component{
                               آبی: مقدار زمان طلب شده به نسبت اندازه ی پروژه مطلوب می باشد!
                           </span>
                         </div>
-                        {/* <button type="submit" className="btn btn-primary btn-rec" >
-                          ایجاد پروژه
-                        </button> */}
-                          {/*error show */}
-                          {/*{this.state.response ? <Error/> : (null || true)}*/}
+
                           {showError ? <Error message={this.state.message}/> : (true)}
                           <div>
                             <Button color="primary" className = "btn btn-rec btn-primary" onClick={this.handleSubmit}>ایجاد پروژه</Button>

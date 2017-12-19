@@ -462,26 +462,27 @@ class Projectsubmition extends React.Component{
           <div className="row">
               <div className="col-sm-6 d-block mx-auto">
                   <div className="dash-con dash-new-project con-body mb-4">
-                      <h5>ایجاد پروژه جدید</h5>
+                      <h5 className="form-title-fontsize">ایجاد پروژه جدید</h5>
                       <errorFatherTag/>
                       <div className="dash-divider"/>
                       <form>
                         <div className="form-group">
+                          <legend className="form-header-fontsize"> عنوان پروژه را مشخص کنید. </legend>
                           <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.title} onChange={this.projectTitleState}/>
                         </div>
                         <div className="input-group">
-                              <legend>زمینه ترجمه تان را انتخاب کنید</legend>
+                              <legend className="form-header-fontsize">زمینه ترجمه تان را انتخاب کنید.</legend>
                                 <Row className= "fields">
                                   <Col>
                                     <label>
                                       <input className="btn-radio" type="radio" name="rb" id="rb1" onChange={this.IsGeneral} checked={this.state.is_general}/>
-                                        <span htmlFor="rb1" className="radio-text">عمومی</span>
+                                        <span htmlFor="rb1" className="radio-text form-body-fontsize">عمومی</span>
                                     </label>
                                 </Col>
                                 <Col>
                                   <label>
                                     <input className="btn-radio" type="radio" name="rb" id="rb2" onChange={this.IsTechnical} checked={this.state.is_technical}/>
-                                    <span htmlFor="rb2" className="radio-text">فنی</span>
+                                    <span htmlFor="rb2" className="radio-text form-body-fontsize">فنی</span>
                                 </label>
                                 </Col>
                               </Row>
@@ -489,23 +490,25 @@ class Projectsubmition extends React.Component{
                                   <Col>
                                     <label>
                                       <input className="btn-radio" type="radio" name="rb" id="rb3" onChange={this.IsMedical} checked={this.state.is_medical}/>
-                                      <span htmlFor="rb3" className="radio-text">پزشکی</span>
+                                      <span htmlFor="rb3" className="radio-text form-body-fontsize">پزشکی</span>
                                     </label>
                                 </Col>
                                 <Col>
                                   <label>
                                     <input className="btn-radio" type="radio" name="rb" id="rb4" onChange={this.IsLaw} checked={this.state.is_law}/>
-                                    <span htmlFor="rb4" className="radio-text">حقوقی</span>
+                                    <span htmlFor="rb4" className="radio-text form-body-fontsize">حقوقی</span>
                                   </label>
                                 </Col>
                                 </Row>
                         </div>
 
+                        <div>
+                        <legend className="form-header-fontsize"> زبان مبد‌ا و مقصد را مشخص کنید. </legend>
                         <Row>
                           <Col>
                               <div className="section">
                                   <Select
-                                    className="customPicker"
+                                    className="customPicker form-body-fontsize"
                                     ref="fromLanguage"
                                     placeholder="از زبان ..."
                                     options={options1}
@@ -522,7 +525,7 @@ class Projectsubmition extends React.Component{
                             <Col>
                                   <Select
                                     placeholder="به زبان ..."
-                                    className="customPicker"
+                                    className="customPicker form-body-fontsize"
                                     ref="toLanguage"
                                     options={options2}
                                     simpleValue
@@ -535,7 +538,16 @@ class Projectsubmition extends React.Component{
                                   />
                           </Col>
                         </Row>
-                        <legend>
+                        </div>
+
+                        <div className="form-group drag-drop mt-2 mb-4 ">
+                            <label className="form-header-fontsize">فایل های مربوط به پروژه را آپلود کنید.</label>
+                            <input type="file" className="form-control-file form-body-fontsize" id="inputFile" onChange={this.dragDrop} data-title="فایل را بگیرید و اینجا رها کنید." multiple="" accept=
+                                "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*"/>
+                          </div>
+
+
+                        <legend className="form-header-fontsize">
                           <span>در مورد پروژه خود توضیح دهید.</span>
                           <span>
                             <Button id="Popover4" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverDesc} onMouseLeave={this.togglePopoverDesc}>
@@ -547,11 +559,11 @@ class Projectsubmition extends React.Component{
                           </span>
                         </legend>
                         <div className="form-group">
-                          <textarea type="text" className="form-control" id="" placeholder="توضیحاتی را در مورد پروژه بنویسید." value={this.state.description} onChange={this.projectDescriptionState}/>
+                          <textarea type="text" className="form-control form-body-fontsize" id="" placeholder="توضیحاتی را در مورد پروژه بنویسید." value={this.state.description} onChange={this.projectDescriptionState}/>
                         </div>
                         <div className="form-group">
-
-                          <div className="section">
+                      {/*
+                          <div className="section form-body-fontsize">
                             <Select.Creatable
                               placeholder='مهارتهای لازم فریلنسر'
                     					multi={multi}
@@ -577,18 +589,14 @@ class Projectsubmition extends React.Component{
                             <a className="tag" href="#">زیست شناسی</a>
                             <a className="tag" href="#">میکرو بیولوژی</a>
                           </span>
+                          */}
                         </div>
 
-            <div className="form-group drag-drop mt-2 mb-4">
-                <label className="col-form-label">فایل های مربوط به پروژه را آپلود کنید.</label>
-                <label className="sub-label"><i className="fa fa-quote-left" aria-hidden="true"/> برای این منظور تنها کافیست که فایل را بگیرید و در محل زیر رها کنید.</label>
-                <input type="file" className="form-control-file" id="inputFile" onChange={this.dragDrop} data-title="فایل را بگیرید و اینجا رها کنید." multiple="" accept=
-                    "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*"/>
-              </div>
+
 
                         <div className="form-group">
-                          <label htmlFor="" className="col-form-label">
-                                <span>بودجه ی خود را مشخص کنید.</span>
+                          <legend htmlFor="" className="col-form-label form-header-fontsize">
+                                <span className="form-header-fontsize">بودجه ی خود را مشخص کنید.</span>
 
                                 <span>
                                   <Button id="Popover1" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverPrice} onMouseLeave={this.togglePopoverPrice}>
@@ -601,11 +609,11 @@ class Projectsubmition extends React.Component{
 
 
 
-                          </label>
+                          </legend>
 
 
 
-                          <input type="text" className="form-control" id="priceInput" value={this.state.budget} onChange={this.submitProjectPriceState} onBlur={this.roundProjectPrice}/>
+                          <input type="text" className="form-control form-body-fontsize" id="priceInput" value={this.state.budget} onChange={this.submitProjectPriceState} onBlur={this.roundProjectPrice}/>
                           <div id="price-range"/>
                           <span className="price-msg">
                               <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
@@ -613,10 +621,10 @@ class Projectsubmition extends React.Component{
                           </span>
                         </div>
                         <div className="form-group">
-                          <label htmlFor="" className="col-form-label">
+                          <legend htmlFor="" className="col-form-label">
 
 
-                            <span>  زمان دلخواه خود را مشخص کنید. </span>
+                            <span className="form-header-fontsize">  زمان دلخواه خود را مشخص کنید. </span>
                             <span>
                               <Button id="Popover2" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverTime} onMouseLeave={this.togglePopoverTime}>
                                 ?
@@ -627,8 +635,8 @@ class Projectsubmition extends React.Component{
                             </span>
 
 
-                          </label>
-                          <input type="text" className="form-control" id="timeInput" value={this.state.time_limit} onChange={this.submitProjectTimeState} onBlur={this.roundProjectTime}/>
+                          </legend>
+                          <input type="text" className="form-control form-body-fontsize" id="timeInput" value={this.state.time_limit} onChange={this.submitProjectTimeState} onBlur={this.roundProjectTime}/>
                           <div id="time-range"/>
                           <span className="time-msg">
                               <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
@@ -643,7 +651,7 @@ class Projectsubmition extends React.Component{
 
 
                               <ModalHeader toggle={this.toggle}>
-                                  <span>  نحوه نمایش پروژه</span>
+                                  <span className="form-title-fontsize">  نحوه نمایش پروژه</span>
                                   <span>
                                     <Button id="Popover3" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverShow} onMouseLeave={this.togglePopoverShow}>
                                       ?
@@ -672,17 +680,17 @@ class Projectsubmition extends React.Component{
                                     <a href="#">
                                         <h6><strong>{this.state.title}</strong></h6>
                                     </a>
-                                    <span className="sub-heading">
+                                    {/*<span className="sub-heading">
                                         <a className="tag" href="#">#فارسی_به_انگلیسی</a>
                                         <a className="tag" href="#">#علمی</a>
                                         <a className="tag" href="#">#زیست_شناسی</a>
                                         <a className="tag" href="#">#میکرو_بیولوژی</a>
                                         <a className="tag" href="#">#فوری</a>
-                                      </span>
+                                      </span>*/}
                                     <span className="sub-heading">
-                                          <i className="fa fa-user"/> <a href="#">4/5</a>
-                                          <i className="fa fa-usd"/> {this.state.budget}
-                                          <i className="fa fa-clock-o"/>GetTime
+                                          <i className="fa fa-user" style={{paddingLeft:'2px'}}/>4/5
+                                          <i className="fa fa-usd" style={{marginRight:'10px', paddingLeft:'2px'}}/> {this.state.budget}
+                                          <i className="fa fa-clock-o" style={{marginRight:'10px' , paddingLeft:'2px'}}/>{this.state.time_limit}
                                       </span>
                                 </div>
                               </ModalBody>

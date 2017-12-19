@@ -498,7 +498,21 @@ a:hover {
 /*fonts*/
 .popover-fontsize{
   font-size: 10px;
+  font-weight: 300;
 }
+.form-title-fontsize{
+  font-size: 20px;
+  font-weight: 400;
+}
+.form-header-fontsize{
+  font-size: 17px;
+  font-weight: 500;
+}
+.form-body-fontsize{
+  font-size: 13px;
+  font-weight: 300;
+}
+
 
 
 /**/

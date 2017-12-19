@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as projectActions from '../../actions/projectSubmit.js';
 import Error from './Errors';
-import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Row , Col} from 'reactstrap';
+import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Row , Col , Popover, PopoverHeader, PopoverBody} from 'reactstrap';
 import Select from 'react-select';
 
 const STATIC_DATAS = require('../../Datas/STATIC_DATAS.js');
@@ -46,9 +46,19 @@ class Projectsubmition extends React.Component{
             category: 0,
             bid_duration:2,
             field:"",
+            popoverOpenPrice: false,
+            popoverOpenTime: false,
+            popoverOpenShow: false,
+            popoverOpenDesc: false,
+
         };
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
+
+        this.togglePopoverPrice = this.togglePopoverPrice.bind(this);
+        this.togglePopoverTime = this.togglePopoverTime.bind(this);
+        this.togglePopoverShow = this.togglePopoverShow.bind(this);
+        this.togglePopoverDesc = this.togglePopoverDesc.bind(this);
 
         this.handleOnChange = this.handleOnChange.bind(this);
         this.roundProjectPrice =this.roundProjectPrice.bind(this);
@@ -74,6 +84,31 @@ class Projectsubmition extends React.Component{
         this.persianToEnglish = this.persianToEnglish.bind(this);
         this.redirect = this.redirect.bind(this);
     }
+
+    togglePopoverPrice() {
+    this.setState({
+      popoverOpenPrice: !this.state.popoverOpenPrice
+    });
+  }
+  togglePopoverTime() {
+  this.setState({
+    popoverOpenTime: !this.state.popoverOpenTime
+    });
+  }
+
+  togglePopoverShow() {
+  this.setState({
+    popoverOpenShow: !this.state.popoverOpenShow
+    });
+  }
+
+  togglePopoverDesc() {
+  this.setState({
+    popoverOpenDesc: !this.state.popoverOpenDesc
+    });
+  }
+
+
 
     persianToEnglish(value) {
         var newValue = "";
@@ -500,6 +535,17 @@ class Projectsubmition extends React.Component{
                                   />
                           </Col>
                         </Row>
+                        <legend>
+                          <span>در مورد پروژه خود توضیح دهید.</span>
+                          <span>
+                            <Button id="Popover4" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverDesc} onMouseLeave={this.togglePopoverDesc}>
+                              ?
+                            </Button>
+                            <Popover placement="bottom" isOpen={this.state.popoverOpenDesc} target="Popover4" toggle={this.togglePopoverDesc}>
+                              <PopoverBody className="beauty-text"> لطفا صفحات مورد نظر خود و بخش ابتدایی و انتهایی فایل ترجمه خود را مشخص کنید. همچنین می توانید نمومنه ای از کیفیت مطلوبتان را وارد کنید </PopoverBody>
+                            </Popover>
+                          </span>
+                        </legend>
                         <div className="form-group">
                           <textarea type="text" className="form-control" id="" placeholder="توضیحاتی را در مورد پروژه بنویسید." value={this.state.description} onChange={this.projectDescriptionState}/>
                         </div>
@@ -542,8 +588,23 @@ class Projectsubmition extends React.Component{
 
                         <div className="form-group">
                           <label htmlFor="" className="col-form-label">
-                              بودجه ی خود را مشخص کنید.
+                                <span>بودجه ی خود را مشخص کنید.</span>
+
+                                <span>
+                                  <Button id="Popover1" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverPrice} onMouseLeave={this.togglePopoverPrice}>
+                                    ?
+                                  </Button>
+                                  <Popover placement="bottom" isOpen={this.state.popoverOpenPrice} target="Popover1" toggle={this.togglePopoverPrice}>
+                                    <PopoverBody className="beauty-text">ویش ورک با توجه به حجم پروژه و بودجه انتخابی شما یکی از رنگهای سبز(متناسب) یا نارنجی(متوسط) و یا قرمز(غیرمتناسب) رابه مبلغ انتخابی شما اختصاص می دهد. </PopoverBody>
+                                  </Popover>
+                                </span>
+
+
+
                           </label>
+
+
+
                           <input type="text" className="form-control" id="priceInput" value={this.state.budget} onChange={this.submitProjectPriceState} onBlur={this.roundProjectPrice}/>
                           <div id="price-range"/>
                           <span className="price-msg">
@@ -553,7 +614,19 @@ class Projectsubmition extends React.Component{
                         </div>
                         <div className="form-group">
                           <label htmlFor="" className="col-form-label">
-                              زمان دلخواه خود را مشخص کنید.
+
+
+                            <span>  زمان دلخواه خود را مشخص کنید. </span>
+                            <span>
+                              <Button id="Popover2" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverTime} onMouseLeave={this.togglePopoverTime}>
+                                ?
+                              </Button>
+                              <Popover placement="bottom" isOpen={this.state.popoverOpenTime} target="Popover2" toggle={this.togglePopoverTime}>
+                                <PopoverBody className="beauty-text"> شما پروژه را در چه مدتی می خواهید؟ ویش ورک با توجه به زمان انتخابی شما و با توجه به حجم پروژه یکی از رنگهای سبز(متناسب) یا نارنجی(متوسط) و یا قرمز(غیرمتناسب و فوری) را به زمان انتخابی شما اختصاص می دهد. </PopoverBody>
+                              </Popover>
+                            </span>
+
+
                           </label>
                           <input type="text" className="form-control" id="timeInput" value={this.state.time_limit} onChange={this.submitProjectTimeState} onBlur={this.roundProjectTime}/>
                           <div id="time-range"/>
@@ -571,7 +644,21 @@ class Projectsubmition extends React.Component{
                           <div>
                             <Button color="primary" className = "btn btn-rec btn-primary" onClick={this.handleSubmit}>ایجاد پروژه</Button>
                             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                              <ModalHeader toggle={this.toggle}>نحوه نمایش پروژه</ModalHeader>
+
+
+                              <ModalHeader toggle={this.toggle}>
+                                  <span>  نحوه نمایش پروژه</span>
+                                  <span>
+                                    <Button id="Popover3" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverShow} onMouseLeave={this.togglePopoverShow}>
+                                      ?
+                                    </Button>
+                                    <Popover placement="bottom" isOpen={this.state.popoverOpenShow} target="Popover3" toggle={this.togglePopoverShow}>
+                                      <PopoverBody className="beauty-text">پروژه شما به شکل زیر برای فریلنسرها نمایش داده می شود. رنگ بالا نمایانگر قیمت و رنگ پایین نشان دهنده زمان انتخابی شماست. </PopoverBody>
+                                    </Popover>
+                                  </span>
+                              </ModalHeader>
+
+
                               <ModalBody>
                                 <span className="prices">
                                   <div>

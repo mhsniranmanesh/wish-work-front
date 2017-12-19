@@ -678,7 +678,7 @@ class Projectsubmition extends React.Component{
                                 </span>
                                 <div>
                                     <a href="#">
-                                        <h6><strong>{this.state.title}</strong></h6>
+                                        <h6 className="form-header-fontsize"><strong>{this.state.title}</strong></h6>
                                     </a>
                                     {/*<span className="sub-heading">
                                         <a className="tag" href="#">#فارسی_به_انگلیسی</a>
@@ -688,9 +688,9 @@ class Projectsubmition extends React.Component{
                                         <a className="tag" href="#">#فوری</a>
                                       </span>*/}
                                     <span className="sub-heading">
-                                          <i className="fa fa-user" style={{paddingLeft:'2px'}}/>4/5
-                                          <i className="fa fa-usd" style={{marginRight:'10px', paddingLeft:'2px'}}/> {this.state.budget}
-                                          <i className="fa fa-clock-o" style={{marginRight:'10px' , paddingLeft:'2px'}}/>{this.state.time_limit}
+                                          <i className="fa fa-user form-body-fontsize" style={{paddingLeft:'2px'}}/>4/5
+                                          <i className="fa fa-usd form-body-fontsize" style={{marginRight:'10px', paddingLeft:'2px'}}/> {this.state.budget}
+                                          <i className="fa fa-clock-o form-body-fontsize" style={{marginRight:'10px' , paddingLeft:'2px'}}/>{this.state.time_limit}
                                       </span>
                                 </div>
                               </ModalBody>

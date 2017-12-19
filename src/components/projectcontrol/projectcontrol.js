@@ -8,10 +8,9 @@ class ProjectControl extends React.Component{
               <div className="row">
                   <div className="col-sm-8 d-block mx-auto">
                       <div className="dash-con dash-new-project con-body mb-4">
-                          <h5>کنترل پروژه</h5>
+                          <h5 className="form-title-fontsize">کنترل پروژه</h5>
                           <div className="dash-divider"></div>
-                          <label className="col-form-label">مایل‌استون‌های پروژه ی شما</label>
-                          <label className="sub-label mb-4"><i className="fa fa-quote-left" aria-hidden="true"></i> در زیر می توانید همه ی مایل استون های پروژه خود را ببینید.</label>
+                          <label className="col-form-label form-header-fontsize">زمان بندی پروژه شما</label>
                           <div className="container">
                               <div className="row">
                                   <div className="timeline-centered">
@@ -23,7 +22,7 @@ class ProjectControl extends React.Component{
                                               </div>
                                               <div className="timeline-label">
                                                   <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
-                                                  <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                                  <p className="form-body-fontsize beauty-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
                                                   <button type="submit" className="btn btn-primary btn-rec">
                                                       <i className="fa fa-download"></i>
                                                   </button>

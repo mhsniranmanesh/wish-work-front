@@ -4,9 +4,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as projectActions from '../../actions/projectSubmit.js';
 import Error from './Errors';
-import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Row , Col} from 'reactstrap';
+import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Row , Col , Popover, PopoverHeader, PopoverBody} from 'reactstrap';
 import Select from 'react-select';
-import kosnanat from '../dashboard/Dashboard';
 
 const STATIC_DATAS = require('../../Datas/STATIC_DATAS.js');
 
@@ -19,7 +18,8 @@ class Projectsubmition extends React.Component{
 
         this.state= {
             value: undefined,
-            options: [{value: 'R', label: 'Red'}, {value: 'G', label: 'Green'}, {value: 'B', label: 'Blue'}],
+            options: [{value: 'R', label: 'Red'}, {value: 'G', label: 'Green'}, {value: 'B', label: 'Blue'} ,
+                {value: 'Q', label: 'YELLOW'}],
             multiValue: [],
             multi: true,
             translationFatherTag: false,
@@ -29,6 +29,8 @@ class Projectsubmition extends React.Component{
             is_technical: false,
             is_law: false,
             translationFrom: "",
+            from_language:"",
+            to_language:"",
             translationTo: "",
             title: "",
             description: "",
@@ -41,10 +43,22 @@ class Projectsubmition extends React.Component{
             validPrice: false,
             validTime: false,
             type: 0,
-            category: 0
+            category: 0,
+            bid_duration:2,
+            field:"",
+            popoverOpenPrice: false,
+            popoverOpenTime: false,
+            popoverOpenShow: false,
+            popoverOpenDesc: false,
+
         };
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
+
+        this.togglePopoverPrice = this.togglePopoverPrice.bind(this);
+        this.togglePopoverTime = this.togglePopoverTime.bind(this);
+        this.togglePopoverShow = this.togglePopoverShow.bind(this);
+        this.togglePopoverDesc = this.togglePopoverDesc.bind(this);
 
         this.handleOnChange = this.handleOnChange.bind(this);
         this.roundProjectPrice =this.roundProjectPrice.bind(this);
@@ -70,6 +84,31 @@ class Projectsubmition extends React.Component{
         this.persianToEnglish = this.persianToEnglish.bind(this);
         this.redirect = this.redirect.bind(this);
     }
+
+    togglePopoverPrice() {
+    this.setState({
+      popoverOpenPrice: !this.state.popoverOpenPrice
+    });
+  }
+  togglePopoverTime() {
+  this.setState({
+    popoverOpenTime: !this.state.popoverOpenTime
+    });
+  }
+
+  togglePopoverShow() {
+  this.setState({
+    popoverOpenShow: !this.state.popoverOpenShow
+    });
+  }
+
+  togglePopoverDesc() {
+  this.setState({
+    popoverOpenDesc: !this.state.popoverOpenDesc
+    });
+  }
+
+
 
     persianToEnglish(value) {
         var newValue = "";
@@ -97,7 +136,10 @@ class Projectsubmition extends React.Component{
   		this.setState({ multiValue: value });
   	}
     submit(){
-        this.props.actions.projectSubmit(this.state).then(
+        console.log('from_language' , this.state.from_language);
+        console.log('this.state.translationFrom' , this.state.translationFrom);
+        console.log('STATE IS:' , this.state);
+            this.props.actions.projectSubmit(this.state , this.state).then(
             () => this.redirect()
             ).catch(error => {
             console.log(error);
@@ -106,21 +148,20 @@ class Projectsubmition extends React.Component{
     }
 
     IsTechnical(){
-            this.setState({is_technical: true , is_general : false , is_law: false , is_medical: false , translationFatherTag : true});
+            this.setState({is_technical: true , is_general : false , is_law: false , is_medical: false , translationFatherTag : true , field: STATIC_DATAS.PROJECT_SKILLS_TAG.TECHNICAL});
 
     }
 
     IsGeneral(){
-        this.setState({is_general: true , is_technical: false , is_medical: false , is_law: false , translationFatherTag : true});
+        this.setState({is_general: true , is_technical: false , is_medical: false , is_law: false , translationFatherTag : true , field: STATIC_DATAS.PROJECT_SKILLS_TAG.GENERAL});
     }
 
     IsMedical(){
-            this.setState({is_general: false , is_technical: false , is_medical: true , is_law: false , translationFatherTag : true});
-
+            this.setState({is_general: false , is_technical: false , is_medical: true , is_law: false , translationFatherTag : true , field: STATIC_DATAS.PROJECT_SKILLS_TAG.MEDICAL});
     }
 
     IsLaw(){
-            this.setState({is_general: false , is_technical: false , is_medical: false , is_law: true , translationFatherTag : true});
+            this.setState({is_general: false , is_technical: false , is_medical: false , is_law: true , translationFatherTag : true , field: STATIC_DATAS.PROJECT_SKILLS_TAG.LEGAL});
 
     }
 
@@ -135,39 +176,45 @@ class Projectsubmition extends React.Component{
     componentWillMount(){
        // console.log('this.props.location.search.length' , this.props.location.search.length);
         if(this.props.location.search.length === 6){
-            if(this.props.location.search[1] === '0'){
-                this.state.translationFrom = 'فارسی';
-            }
-            if(this.props.location.search[1] === '1') {
-                this.state.translationFrom = 'انگلیسی';
+            if(this.props.location.search[1] === '1'){
+                this.state.translationFrom = 1;
             }
             if(this.props.location.search[1] === '2') {
-                this.state.translationFrom = 'فرانسوی';
-
+                this.state.translationFrom = 2;
             }
             if(this.props.location.search[1] === '3') {
-                this.state.translationFrom = 'عربی';
+                this.state.translationFrom = 3;
 
             }
             if(this.props.location.search[1] === '4') {
-                this.state.translationFrom = 'اسپانیایی';
-            }
-            if(this.props.location.search[3] === '0'){
-                this.state.translationTo = 'فارسی';
-            }
-            if(this.props.location.search[3] === '1') {
-                this.state.translationTo = 'انگلیسی';
-            }
-            if(this.props.location.search[3] === '2') {
-                this.state.translationTo = 'فرانسوی';
+                this.state.translationFrom = 4;
 
             }
+            if(this.props.location.search[1] === '5') {
+                this.state.translationFrom = 5;
+            }
+            if(this.props.location.search[1] === '6') {
+                this.state.translationFrom = 6;
+            }
+            if(this.props.location.search[3] === '1'){
+                this.state.translationTo = 1;
+            }
+            if(this.props.location.search[3] === '2') {
+                this.state.translationTo = 2;
+            }
             if(this.props.location.search[3] === '3') {
-                this.state.translationTo = 'عربی';
+                this.state.translationTo = 3;
 
             }
             if(this.props.location.search[3] === '4') {
-                this.state.translationTo = 'اسپانیایی';
+                this.state.translationTo = 4;
+
+            }
+            if(this.props.location.search[3] === '5') {
+                this.state.translationTo = 5;
+            }
+            if(this.props.location.search[3] === '6') {
+                this.state.translationTo = 6;
             }
             if(this.props.location.search[5] === '1'){
                 this.state.is_general = true ;
@@ -175,27 +222,31 @@ class Projectsubmition extends React.Component{
                 this.state.is_medical = false;
                 this.state.is_technical = false;
                 this.state.translationFatherTag = true ;
+                this.state.field = 1;
             }
             if(this.props.location.search[5] === '2'){
                 this.state.is_general = false ;
                 this.state.is_law = true ;
                 this.state.is_medical = false;
                 this.state.is_technical = false;
-                this.state.translationFatherTag = true
+                this.state.translationFatherTag = true;
+                this.state.field = 2 ;
             }
             if(this.props.location.search[5] === '3'){
                 this.state.is_general = false ;
                 this.state.is_law = false ;
                 this.state.is_medical = true;
                 this.state.is_technical = false;
-                this.state.translationFatherTag = true
+                this.state.translationFatherTag = true;
+                this.state.field = 3 ;
             }
             if(this.props.location.search[5] === '4'){
                 this.state.is_general = false ;
                 this.state.is_law = false ;
                 this.state.is_medical = false;
                 this.state.is_technical = true;
-                this.state.translationFatherTag = true
+                this.state.translationFatherTag = true;
+                this.state.field = 4;
             }
         }
         if (this.props.location.search.length === 4){
@@ -205,27 +256,31 @@ class Projectsubmition extends React.Component{
                 this.state.is_medical = false;
                 this.state.is_technical = false;
                 this.state.translationFatherTag = true ;
+                this.state.field = 1;
             }
             if(this.props.location.search[3] === '2'){
                 this.state.is_general = false ;
                 this.state.is_law = true ;
                 this.state.is_medical = false;
                 this.state.is_technical = false;
-                this.state.translationFatherTag = true
+                this.state.translationFatherTag = true;
+                this.state.field = 2 ;
             }
             if(this.props.location.search[3] === '3'){
                 this.state.is_general = false ;
                 this.state.is_law = false ;
                 this.state.is_medical = true;
                 this.state.is_technical = false;
-                this.state.translationFatherTag = true
+                this.state.translationFatherTag = true;
+                this.state.field = 3 ;
             }
             if(this.props.location.search[3] === '4'){
                 this.state.is_general = false ;
                 this.state.is_law = false ;
                 this.state.is_medical = false;
                 this.state.is_technical = true;
-                this.state.translationFatherTag = true
+                this.state.translationFatherTag = true;
+                this.state.field = 4;
             }
         }
     }
@@ -278,8 +333,8 @@ class Projectsubmition extends React.Component{
         time = this.persianToEnglish(time);
         const trueOrFalseTimeValid = this.validateTime(time);
         this.setState({time_limit: event.target.value , validTime: trueOrFalseTimeValid});
-        console.log('state:' ,this.state);
-        console.log('length:' , this.state.translationFatherTag.length);
+        //console.log('state:' ,this.state);
+        //console.log('length:' , this.state.translationFatherTag.length);
     }
     submitProjectPriceState(event){
         let price = event.target.value;
@@ -317,9 +372,8 @@ class Projectsubmition extends React.Component{
 
 
     handleSubmit(event){
+        console.log(this.state.field);
         event.preventDefault();
-        console.log('__TF__' , this.state.translationFrom);
-            console.log('state is:' , this.state);
         if(!this.state.title.length){
             this.setState({showError: true});
             this.setState({message:"لطفا عنوان پروژه ی خود را وارد کنید!"});
@@ -329,11 +383,12 @@ class Projectsubmition extends React.Component{
             this.setState({showError : true});
             this.setState({message:"لطفا زمینه ی ترجمه ی خود را وارد کنید!"});
         }
-        else if(!this.state.translationFrom.length || this.state.translationFrom === null){
+        else if(!this.state.translationFrom || this.state.translationFrom === null){
             this.setState({showError: true});
+            //console.log(this.state.translationFrom);
             this.setState({message:"لطفا زبان مبدا ترجمه ی خود را مشخص کنید."})
         }
-        else if((!this.state.translationTo.length) || this.state.translationTo === null ){
+        else if((!this.state.translationTo) || this.state.translationTo === null ){
             this.setState({showError: true});
             this.setState({message:"لطفا زبان مقصد خود را مشخص کنید"})
         }
@@ -356,7 +411,7 @@ class Projectsubmition extends React.Component{
             this.setState({message:"لطفا مبلغ خود را صحیح وارد کنید"})
         }
         else if(!this.state.validTime && this.state.time_limit === ""){
-            console.log('this.state.validTime' , this.state.validTime , 'this.state.time_limit' , this.state.time_limit);
+            //console.log('this.state.validTime' , this.state.validTime , 'this.state.time_limit' , this.state.time_limit);
             this.setState({showError: true});
             this.setState({message:"لطفا زمان وارد کنید"})
 
@@ -368,6 +423,9 @@ class Projectsubmition extends React.Component{
         else {
             // this.setState({});
             this.setState({showError: false, type : STATIC_DATAS.TYPE.NORMAL ,category : STATIC_DATAS.CATEGORY.TRANSLATION ,  modal: !this.state.modal});
+            this.setState({from_language: this.state.translationFrom});
+            this.setState({to_language: this.state.translationTo});
+            // this.setState({field : this.state.translationFatherTag})
             // this.setState({
             //     modal: !this.state.modal
             // });
@@ -387,7 +445,7 @@ class Projectsubmition extends React.Component{
 
 
   render(){
-        console.log(this.props.location.search[0]);
+        //console.log(this.props.location.search[0]);
         //const showError = this.state.translationFatherTagError ;
         // const showErrorProjectTitle = this.state.projectTitleError;
         var options1 = STATIC_DATAS.AVAILABLETOLANGUAGES;
@@ -404,26 +462,27 @@ class Projectsubmition extends React.Component{
           <div className="row">
               <div className="col-sm-6 d-block mx-auto">
                   <div className="dash-con dash-new-project con-body mb-4">
-                      <h5>ایجاد پروژه جدید</h5>
+                      <h5 className="form-title-fontsize">ایجاد پروژه جدید</h5>
                       <errorFatherTag/>
                       <div className="dash-divider"/>
                       <form>
                         <div className="form-group">
+                          <legend className="form-header-fontsize"> عنوان پروژه را مشخص کنید. </legend>
                           <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.title} onChange={this.projectTitleState}/>
                         </div>
                         <div className="input-group">
-                              <legend>زمینه ترجمه تان را انتخاب کنید</legend>
+                              <legend className="form-header-fontsize">زمینه ترجمه تان را انتخاب کنید.</legend>
                                 <Row className= "fields">
                                   <Col>
                                     <label>
                                       <input className="btn-radio" type="radio" name="rb" id="rb1" onChange={this.IsGeneral} checked={this.state.is_general}/>
-                                        <span htmlFor="rb1" className="radio-text">عمومی</span>
+                                        <span htmlFor="rb1" className="radio-text form-body-fontsize">عمومی</span>
                                     </label>
                                 </Col>
                                 <Col>
                                   <label>
                                     <input className="btn-radio" type="radio" name="rb" id="rb2" onChange={this.IsTechnical} checked={this.state.is_technical}/>
-                                    <span htmlFor="rb2" className="radio-text">فنی</span>
+                                    <span htmlFor="rb2" className="radio-text form-body-fontsize">فنی</span>
                                 </label>
                                 </Col>
                               </Row>
@@ -431,23 +490,25 @@ class Projectsubmition extends React.Component{
                                   <Col>
                                     <label>
                                       <input className="btn-radio" type="radio" name="rb" id="rb3" onChange={this.IsMedical} checked={this.state.is_medical}/>
-                                      <span htmlFor="rb3" className="radio-text">پزشکی</span>
+                                      <span htmlFor="rb3" className="radio-text form-body-fontsize">پزشکی</span>
                                     </label>
                                 </Col>
                                 <Col>
                                   <label>
                                     <input className="btn-radio" type="radio" name="rb" id="rb4" onChange={this.IsLaw} checked={this.state.is_law}/>
-                                    <span htmlFor="rb4" className="radio-text">حقوقی</span>
+                                    <span htmlFor="rb4" className="radio-text form-body-fontsize">حقوقی</span>
                                   </label>
                                 </Col>
                                 </Row>
                         </div>
 
+                        <div>
+                        <legend className="form-header-fontsize"> زبان مبد‌ا و مقصد را مشخص کنید. </legend>
                         <Row>
                           <Col>
                               <div className="section">
                                   <Select
-                                    className="customPicker"
+                                    className="customPicker form-body-fontsize"
                                     ref="fromLanguage"
                                     placeholder="از زبان ..."
                                     options={options1}
@@ -457,14 +518,14 @@ class Projectsubmition extends React.Component{
                                     value={this.state.translationFrom}
                                     onChange={this.updateValueTF}
                                     labelKey="name"
-                                    valueKey="name"
+                                    valueKey="index"
                                   />
                               </div>
                             </Col>
                             <Col>
                                   <Select
                                     placeholder="به زبان ..."
-                                    className="customPicker"
+                                    className="customPicker form-body-fontsize"
                                     ref="toLanguage"
                                     options={options2}
                                     simpleValue
@@ -473,16 +534,36 @@ class Projectsubmition extends React.Component{
                                     value={this.state.translationTo}
                                     onChange={this.updateValueTT}
                                     labelKey="name"
-                                    valueKey="name"
+                                    valueKey="index"
                                   />
                           </Col>
                         </Row>
+                        </div>
+
+                        <div className="form-group drag-drop mt-2 mb-4 ">
+                            <label className="form-header-fontsize">فایل های مربوط به پروژه را آپلود کنید.</label>
+                            <input type="file" className="form-control-file form-body-fontsize" id="inputFile" onChange={this.dragDrop} data-title="فایل را بگیرید و اینجا رها کنید." multiple="" accept=
+                                "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*"/>
+                          </div>
+
+
+                        <legend className="form-header-fontsize">
+                          <span>در مورد پروژه خود توضیح دهید.</span>
+                          <span>
+                            <Button id="Popover4" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverDesc} onMouseLeave={this.togglePopoverDesc}>
+                              ?
+                            </Button>
+                            <Popover placement="bottom" isOpen={this.state.popoverOpenDesc} target="Popover4" toggle={this.togglePopoverDesc}>
+                              <PopoverBody className="beauty-text"> لطفا صفحات مورد نظر خود و بخش ابتدایی و انتهایی فایل ترجمه خود را مشخص کنید. همچنین می توانید نمومنه ای از کیفیت مطلوبتان را وارد کنید </PopoverBody>
+                            </Popover>
+                          </span>
+                        </legend>
                         <div className="form-group">
-                          <textarea type="text" className="form-control" id="" placeholder="توضیحاتی را در مورد پروژه بنویسید." value={this.state.description} onChange={this.projectDescriptionState}/>
+                          <textarea type="text" className="form-control form-body-fontsize" id="" placeholder="توضیحاتی را در مورد پروژه بنویسید." value={this.state.description} onChange={this.projectDescriptionState}/>
                         </div>
                         <div className="form-group">
-
-                          <div className="section">
+                      {/*
+                          <div className="section form-body-fontsize">
                             <Select.Creatable
                               placeholder='مهارتهای لازم فریلنسر'
                     					multi={multi}
@@ -508,20 +589,31 @@ class Projectsubmition extends React.Component{
                             <a className="tag" href="#">زیست شناسی</a>
                             <a className="tag" href="#">میکرو بیولوژی</a>
                           </span>
+                          */}
                         </div>
 
-            <div className="form-group drag-drop mt-2 mb-4">
-                <label className="col-form-label">فایل های مربوط به پروژه را آپلود کنید.</label>
-                <label className="sub-label"><i className="fa fa-quote-left" aria-hidden="true"/> برای این منظور تنها کافیست که فایل را بگیرید و در محل زیر رها کنید.</label>
-                <input type="file" className="form-control-file" id="inputFile" onChange={this.dragDrop} data-title="فایل را بگیرید و اینجا رها کنید." multiple="" accept=
-                    "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*"/>
-              </div>
+
 
                         <div className="form-group">
-                          <label htmlFor="" className="col-form-label">
-                              بودجه ی خود را مشخص کنید.
-                          </label>
-                          <input type="text" className="form-control" id="priceInput" value={this.state.budget} onChange={this.submitProjectPriceState} onBlur={this.roundProjectPrice}/>
+                          <legend htmlFor="" className="col-form-label form-header-fontsize">
+                                <span className="form-header-fontsize">بودجه ی خود را مشخص کنید.</span>
+
+                                <span>
+                                  <Button id="Popover1" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverPrice} onMouseLeave={this.togglePopoverPrice}>
+                                    ?
+                                  </Button>
+                                  <Popover placement="bottom" isOpen={this.state.popoverOpenPrice} target="Popover1" toggle={this.togglePopoverPrice}>
+                                    <PopoverBody className="beauty-text">ویش ورک با توجه به حجم پروژه و بودجه انتخابی شما یکی از رنگهای سبز(متناسب) یا نارنجی(متوسط) و یا قرمز(غیرمتناسب) رابه مبلغ انتخابی شما اختصاص می دهد. </PopoverBody>
+                                  </Popover>
+                                </span>
+
+
+
+                          </legend>
+
+
+
+                          <input type="text" className="form-control form-body-fontsize" id="priceInput" value={this.state.budget} onChange={this.submitProjectPriceState} onBlur={this.roundProjectPrice}/>
                           <div id="price-range"/>
                           <span className="price-msg">
                               <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
@@ -529,26 +621,48 @@ class Projectsubmition extends React.Component{
                           </span>
                         </div>
                         <div className="form-group">
-                          <label htmlFor="" className="col-form-label">
-                              زمان دلخواه خود را مشخص کنید.
-                          </label>
-                          <input type="text" className="form-control" id="timeInput" value={this.state.time_limit} onChange={this.submitProjectTimeState} onBlur={this.roundProjectTime}/>
+                          <legend htmlFor="" className="col-form-label">
+
+
+                            <span className="form-header-fontsize">  زمان دلخواه خود را مشخص کنید. </span>
+                            <span>
+                              <Button id="Popover2" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverTime} onMouseLeave={this.togglePopoverTime}>
+                                ?
+                              </Button>
+                              <Popover placement="bottom" isOpen={this.state.popoverOpenTime} target="Popover2" toggle={this.togglePopoverTime}>
+                                <PopoverBody className="beauty-text"> شما پروژه را در چه مدتی می خواهید؟ ویش ورک با توجه به زمان انتخابی شما و با توجه به حجم پروژه یکی از رنگهای سبز(متناسب) یا نارنجی(متوسط) و یا قرمز(غیرمتناسب و فوری) را به زمان انتخابی شما اختصاص می دهد. </PopoverBody>
+                              </Popover>
+                            </span>
+
+
+                          </legend>
+                          <input type="text" className="form-control form-body-fontsize" id="timeInput" value={this.state.time_limit} onChange={this.submitProjectTimeState} onBlur={this.roundProjectTime}/>
                           <div id="time-range"/>
                           <span className="time-msg">
                               <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
                               آبی: مقدار زمان طلب شده به نسبت اندازه ی پروژه مطلوب می باشد!
                           </span>
                         </div>
-                        {/* <button type="submit" className="btn btn-primary btn-rec" >
-                          ایجاد پروژه
-                        </button> */}
-                          {/*error show */}
-                          {/*{this.state.response ? <Error/> : (null || true)}*/}
+
                           {showError ? <Error message={this.state.message}/> : (true)}
                           <div>
                             <Button color="primary" className = "btn btn-rec btn-primary" onClick={this.handleSubmit}>ایجاد پروژه</Button>
                             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                              <ModalHeader toggle={this.toggle}>نحوه نمایش پروژه</ModalHeader>
+
+
+                              <ModalHeader toggle={this.toggle}>
+                                  <span className="form-title-fontsize">  نحوه نمایش پروژه</span>
+                                  <span>
+                                    <Button id="Popover3" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverShow} onMouseLeave={this.togglePopoverShow}>
+                                      ?
+                                    </Button>
+                                    <Popover placement="bottom" isOpen={this.state.popoverOpenShow} target="Popover3" toggle={this.togglePopoverShow}>
+                                      <PopoverBody className="beauty-text">پروژه شما به شکل زیر برای فریلنسرها نمایش داده می شود. رنگ بالا نمایانگر قیمت و رنگ پایین نشان دهنده زمان انتخابی شماست. </PopoverBody>
+                                    </Popover>
+                                  </span>
+                              </ModalHeader>
+
+
                               <ModalBody>
                                 <span className="prices">
                                   <div>
@@ -564,19 +678,19 @@ class Projectsubmition extends React.Component{
                                 </span>
                                 <div>
                                     <a href="#">
-                                        <h6><strong>{this.state.title}</strong></h6>
+                                        <h6 className="form-header-fontsize"><strong>{this.state.title}</strong></h6>
                                     </a>
-                                    <span className="sub-heading">
+                                    {/*<span className="sub-heading">
                                         <a className="tag" href="#">#فارسی_به_انگلیسی</a>
                                         <a className="tag" href="#">#علمی</a>
                                         <a className="tag" href="#">#زیست_شناسی</a>
                                         <a className="tag" href="#">#میکرو_بیولوژی</a>
                                         <a className="tag" href="#">#فوری</a>
-                                      </span>
+                                      </span>*/}
                                     <span className="sub-heading">
-                                          <i className="fa fa-user"/> <a href="#">4/5</a>
-                                          <i className="fa fa-usd"/> {this.state.budget}
-                                          <i className="fa fa-clock-o"/>GetTime
+                                          <i className="fa fa-user form-body-fontsize" style={{paddingLeft:'2px'}}/>4/5
+                                          <i className="fa fa-usd form-body-fontsize" style={{marginRight:'10px', paddingLeft:'2px'}}/> {this.state.budget}
+                                          <i className="fa fa-clock-o form-body-fontsize" style={{marginRight:'10px' , paddingLeft:'2px'}}/>{this.state.time_limit}
                                       </span>
                                 </div>
                               </ModalBody>
@@ -605,7 +719,6 @@ Projectsubmition.contextTypes = {
 Projectsubmition.PropTypes = {
     actions : PropTypes.object.isRequired,
     projectActions : PropTypes.array.isRequired,
-    // kosnanat : PropTypes.object.isRequired,
     // dashProjectSubmit : PropTypes.func.isRequired
     hint: PropTypes.string,
     label: PropTypes.string

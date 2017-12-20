@@ -1,4 +1,7 @@
 export default {
     Bids:[],
-    ProjectsDone:[]
+    ProjectsDone:[],
+    profileInfo:[],
+    projectDetail:[],
+    freelancerDetail:[]
 };

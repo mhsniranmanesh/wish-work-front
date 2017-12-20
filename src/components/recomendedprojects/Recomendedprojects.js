@@ -18,7 +18,7 @@ class Recomendedprojects extends React.Component{
               <div className="row">
                   <div className="col-sm-8 d-block mx-auto">
                       <div className="dash-con dash-new-project con-body mb-4">
-                          <h5>پروژه های پیشنهادی برای شما</h5>
+                          <h5 className="form-title-fontsize">پروژه های پیشنهادی برای شما</h5>
                           <div className="dash-divider"/>
                           <ProjectsList Projects={this.props.recomendedProject}/>
 

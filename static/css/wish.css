@@ -495,6 +495,28 @@ a:hover {
   transition: .25s all ease;
 }
 
+/*fonts*/
+.popover-fontsize{
+  font-size: 10px;
+  font-weight: 300;
+}
+.form-title-fontsize{
+  font-size: 20px;
+  font-weight: 400;
+}
+.form-header-fontsize{
+  font-size: 17px;
+  font-weight: 500;
+}
+.form-body-fontsize{
+  font-size: 13px;
+  font-weight: 300;
+}
+
+
+
+/**/
+
 
 .btn-rec-lg {
     border-radius: 22.5px;
@@ -506,6 +528,22 @@ a:hover {
     border-radius: 0;
     padding-right: 25px;
     padding-left: 25px;
+}
+
+.btn-round-primary {
+    color: #fff;
+    background-color: #018abe;
+    border-color: #018abe;
+    border-radius: 100%;
+    padding: 2.5px 5px;
+}
+
+.btn-round-primary:hover{
+  background-color: #018abe;
+  border-color: #018abe;
+}
+#Popover1, #Popover2, #Popover3, #Popover4{
+  margin: 0 5px 0 0;
 }
 
 .btn-rec-sm {

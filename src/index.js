@@ -11,6 +11,7 @@ import configureStore from './store/configureStore.js';
 import {profileInfo} from './actions/profileInfo.js';
 import {recomendedProject} from './actions/recomendedProjectForFreelancer';
 import {Notifications} from "./actions/Notifications";
+import {getSubmittedProjects} from "./actions/projectSubmit";
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import '../static/css/wish.css';
@@ -50,6 +51,7 @@ Authentication().then(() => {
     // store.dispatch(projectSubmitLocalForDashboard())
     store.dispatch(recomendedProject());
     store.dispatch(Notifications());
+    store.dispatch(getSubmittedProjects());
     render((
             <Provider store={store}>
                 <BrowserRouter>

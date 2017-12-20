@@ -18,19 +18,19 @@ const ProjectTemplate = ({ProjectDetail}) =>{
                   </div>
                 </span>
                 <a href="#">
-                    <h6><strong>{ProjectDetail.title}</strong></h6>
+                    <h6 ><strong className="form-header-fontsize">{ProjectDetail.title}</strong></h6>
                 </a>
                 <div id="wrap">
-                    <h6 className="dash-recom-item-discription">
+                    <h6  className="form-body-fontsize">
                         {ProjectDetail.description}                    </h6>
                 </div>
                 <div className="sub-heading">
                     <a className="tag" href="#">{ProjectDetail.tags}</a>
                 </div>
                 <div className="sub-heading">
-                    <i className="fa fa-user"></i> <a href="#">4/5</a>
-                    <i className="fa fa-usd"></i> {ProjectDetail.price}
-                    <i className="fa fa-clock-o"></i>{ProjectDetail.releaseTime}
+                    <i className="fa fa-user" style={{paddingLeft:'2px'}}></i> <a href="#">4/5</a>
+                    <i className="fa fa-usd" style={{marginRight:'10px', paddingLeft:'2px'}}></i> {ProjectDetail.price}
+                    <i className="fa fa-clock-o" style={{marginRight:'10px' , paddingLeft:'2px'}}></i>{ProjectDetail.releaseTime}
                 </div>
             </div>
           {/*<div className="dash-divider"/>*/}

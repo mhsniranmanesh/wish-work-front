@@ -7,7 +7,19 @@ import TagsRow from '../common/TagsRow';
 const ProjectTemplateForDashboard = ({ProjectDetail}) => {
     return (
             <div>
-                <div className="dash-recom-item price-fair">
+                <div className="dash-recom-item recom">
+                  <span className="dollar">
+                    <div>
+                      <svg>
+                        <rect className="price-fair" />
+                      </svg>
+                    </div>
+                    <div>
+                      <svg>
+                        <rect className="price-low" />
+                      </svg>
+                    </div>
+                  </span>
                     <a href="#">
                         <h6><strong>{ProjectDetail.title}</strong></h6>
                     </a>

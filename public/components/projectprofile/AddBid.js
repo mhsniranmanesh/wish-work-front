@@ -10,7 +10,7 @@ const AddBid = (props) =>{
         <div className="col-sm-4">
                 <div className="con mb-4">
                     <h5 className="project-title">
-                        درباره پروژه
+                                      درباره پروژه
                     </h5>
                     <div className="divider"/>
                     <div className="sub-heading">

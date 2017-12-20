@@ -29,6 +29,9 @@ class ProjectProfile extends React.Component {
         else if(this.state.bid_price ===''){
             this.setState({showError:true , message:"لطفا قیمت پیشنهادی خود را ارائه دهید."});
         }
+        else if(this.state.Length < 2){
+            this.setState({showError:true , message:"لطفا تعداد بازه های زمانی را بیشتر از ۲ انتخاب کنید!"});
+        }
         else {
             this.setState({showError:false , ModalState:'modal'});
         }
@@ -40,7 +43,16 @@ class ProjectProfile extends React.Component {
         this.setState({bid_price : event.target.value})
     }
     CheckLength(){
-        this.setState({Length: this.state.amountOfMileStones});
+        if(this.state.amountOfMileStones < 2){
+            this.setState({showError:true , message:"لطفا تعداد بازه های زمانی را بیشتر از ۲ انتخاب کنید!"});
+        }
+        else if(this.state.amountOfMileStones > 4){
+            this.setState({showError:true , message:"تعداد بازه های زمانی نباید بیشتر از ۴ باشد."});
+        }
+        else {
+
+            this.setState({showError:false , Length: this.state.amountOfMileStones});
+        }
     }
     valueOfMileStones(event){
         this.setState({amountOfMileStones : event.target.value})

@@ -30,7 +30,9 @@ export function loadProfileInfoSuccess(profileInfo){
 export function loadNewInfosSuccess(profileInfo){
     return{type: types.UPDATE_NEW_INFOS_SUCCESS , profileInfo}
 }
-
+export function loadNewSkillsSuccess(profileSkills) {
+    return{type: types.UPDATE_NEW_SKILLS_IN_INFOS_SUCCESS , profileSkills}
+}
 export function profileInfo(){
   return function(dispatch){
     return axios.get('/api/v1/profiles/initial/').then(
@@ -40,6 +42,15 @@ export function profileInfo(){
       throw (error);
     });
   };
+}
+export function updateSkills(profileSkills) {
+    return function (dispatch) {
+        return axios.post('/api/v1/profiles/update-infos/' , profileSkills).then(profileSkills =>{
+            dispatch(loadNewSkillsSuccess(profileSkills.data))
+        }).catch(error =>{
+            throw (error);
+        })
+    }
 }
 //
 export function updateInformations(profileInfo , getState){

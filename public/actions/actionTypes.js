@@ -8,3 +8,5 @@ export const LOAD_INFO_SUCCESS = 'LOAD_INFO_SUCCESS';
 export const LOAD_PROJECT_DETAIL_SUCCESS = 'LOAD_PROJECT_DETAIL_SUCCESS';
 //load freelancer detail
 export const LOAD_FREELANCER_DETAIL_SUCCESS = 'LOAD_FREELANCER_DETAIL_SUCCESS';
+//add bid to a project
+export const ADD_BID_SUCCESS = 'ADD_BID_SUCCESS';

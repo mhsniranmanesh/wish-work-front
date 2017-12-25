@@ -13,15 +13,34 @@ class ProjectProfile extends React.Component {
         super(props);
         this.state = {projectDetail:Object.assign({} , props.projectDetail),
                       amountOfMileStones:0 , Length:0, bid_description:'',
-                      bid_price:'' , ModalState:'' , showError:false
-        };
-
+                      bid_price:'' , ModalState:'' , showError:false , profileInfo :Object.assign({} , props.profileInfo),
+                      isLoggedIn:false , delivery_duration:10,
+                      };
+        // delivery_duration: Array [ "This field is required." ]
+        // number_of_milestones: Array [ "This field is required." ]
+        // price: Array [ "This field is required." ]
     this.valueOfMileStones = this.valueOfMileStones.bind(this);
     this.CheckLength = this.CheckLength.bind(this);
     this.BidPrice = this.BidPrice.bind(this);
     this.BidDescription = this.BidDescription.bind(this);
     this.ModalSubmit = this.ModalSubmit.bind(this);
+    this.FinalSubmitBid = this.FinalSubmitBid.bind(this);
     }
+
+    FinalSubmitBid(){
+        this.state.Length = Number(this.state.Length);
+        var senData = {
+            project_id : this.state.projectDetail.uuid,
+            number_of_milestones : this.state.Length,
+            price : this.state.bid_price,
+            delivery_duration : this.state.delivery_duration,
+            is_default_project_controller : false,
+        };
+        this.props.actions.addBidToProject(senData).then(
+            this.setState({showError:false , ModalState:'modal'})
+        )
+    }
+
     ModalSubmit(){
         if(this.state.bid_description === ''){
             this.setState({showError:true , message:"توضیحی در رابطه با پیشنهاد خود بدهید، این بخش برای مشتری بسیار تاثیر گذار است"});
@@ -33,7 +52,8 @@ class ProjectProfile extends React.Component {
             this.setState({showError:true , message:"لطفا تعداد بازه های زمانی را بیشتر از ۲ انتخاب کنید!"});
         }
         else {
-            this.setState({showError:false , ModalState:'modal'});
+            this.state.bid_price = Number(this.state.bid_price);
+            this.FinalSubmitBid()
         }
     }
     BidDescription(event){
@@ -71,8 +91,22 @@ class ProjectProfile extends React.Component {
         if(this.props.projectDetail != nextProps.projectDetail ) {
             console.log(nextProps.profileDetail);
             //inja az halate bler dar biad
+            if(this.props.profileInfo.username == nextProps.projectDetail.client){
+                this.setState({isLoggedIn : true});
+            }
             this.setState({projectDetail: Object.assign({}, nextProps.projectDetail)});
         }
+        if(this.props.profileInfo != nextProps.profileInfo) {
+
+            this.setState({profileInfo: Object.assign({} , nextProps.profileInfo)});
+            if(nextProps.profileInfo.username == this.props.projectDetail.client){
+                this.setState({isLoggedIn : true});
+
+            }
+        }
+
+    }
+    componentDidMount(){
     }
     render(){
 
@@ -83,7 +117,7 @@ class ProjectProfile extends React.Component {
                         <div className="col-sm-8">
                             <ProjectDetail Detail={this.state.projectDetail}/>
                             <div className="con mb-4">
-                                <BidsList Bids={this.props.Bids}/>
+                                <BidsList isLoggedIn={this.state.isLoggedIn} Bids={this.props.Bids}/>
                             </div>
                         </div>
                         <AddBid TimeLimit={this.state.projectDetail.time_limit}
@@ -112,7 +146,7 @@ ProjectProfile.contextTypes = {
 ProjectProfile.PropTypes = {
   Bids : PropTypes.object.isRequired  ,
   actions : PropTypes.object.isRequired,
-    projectActions : PropTypes.array.isRequired,
+  projectActions : PropTypes.array.isRequired,
 };
 
 function mapStateToProps(state , ownProps) {
@@ -120,7 +154,8 @@ function mapStateToProps(state , ownProps) {
     console.log('ownProps' , projectSlug);
     return {
         Bids: state.Bids,
-        projectDetail : state.projectDetail
+        projectDetail : state.projectDetail,
+        profileInfo : state.profileInfo
     }
 }
 

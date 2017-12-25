@@ -25,7 +25,8 @@ export function addSkills(id , allState) {
     return function (dispatch) {
         console.log('id:' , id , 'allState:' , allState );
         allState.project_id = id.data.id;
-        return axios.post('/api/v1/projects/add-skills/translation/' , allState).then(
+        console.log( allState , ' allState ');
+        return axios.post('/api/v1/projects/add-details/translation/' , allState).then(
             projectAddSkills =>{
                 dispatch(submitProjectSuccess(projectAddSkills));
             }).catch(error =>{
@@ -42,7 +43,7 @@ export function addSkills(id , allState) {
 
 export function projectSubmit(projectSubmit , getState){
     return function(dispatch){
-        return  axios.post('/api/v1/projects/submit/translation/' , projectSubmit).then(
+        return  axios.post('/api/v1/projects/translation/' , projectSubmit).then(
             projectSubmit =>{
                 // console.log(projectSubmit);
                 dispatch(addSkills(projectSubmit , getState));

@@ -7,7 +7,7 @@ import Greeting from './Greeting';
 class Header extends React.Component {
 constructor(props){
     super(props);
-    this.state ={profile_picture: "http://via.placeholder.com/50x50" , isLoggedIn:false }
+    this.state ={profile_picture: "http://via.placeholder.com/50x50" , isLoggedIn:false };
     this.SignUp = this.SignUp.bind(this);
     this.GoToDashboard = this.GoToDashboard.bind(this)
 }

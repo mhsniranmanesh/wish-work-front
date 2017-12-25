@@ -45,7 +45,7 @@ export function profileInfo(){
 }
 export function updateSkills(profileSkills) {
     return function (dispatch) {
-        return axios.post('/api/v1/profiles/update-infos/' , profileSkills).then(profileSkills =>{
+        return axios.post('/api/v1/skills/add/translation/' , profileSkills).then(profileSkills =>{
             dispatch(loadNewSkillsSuccess(profileSkills.data))
         }).catch(error =>{
             throw (error);

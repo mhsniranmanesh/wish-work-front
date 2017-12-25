@@ -110,7 +110,11 @@ class Profileinfo extends React.Component{
 
     submitSkillChanges(){
         var sendSkills = {
-            skills : this.state.skills
+            is_general : this.state.skills[0].translation_skill.is_general,
+            is_medical : this.state.skills[0].translation_skill.is_medical,
+            is_technical : this.state.skills[0].translation_skill.is_technical,
+            is_legal : this.state.skills[0].translation_skill.is_law,
+            language_set : this.state.skills[0].translation_skill.languages
         };
         console.log('sendSkills' ,sendSkills);
         this.props.actions.updateSkills(sendSkills).then(

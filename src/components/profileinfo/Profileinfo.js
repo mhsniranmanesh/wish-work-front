@@ -64,7 +64,7 @@ class Profileinfo extends React.Component{
 
     IsLaw(){
         this.setState({is_law: true });
-        this.state.skills[0].translation_skill.is_law = true ;
+        this.state.skills[0].translation_skill.is_legal = true ;
     }
 
 
@@ -113,7 +113,7 @@ class Profileinfo extends React.Component{
             is_general : this.state.skills[0].translation_skill.is_general,
             is_medical : this.state.skills[0].translation_skill.is_medical,
             is_technical : this.state.skills[0].translation_skill.is_technical,
-            is_legal : this.state.skills[0].translation_skill.is_law,
+            is_legal : this.state.skills[0].translation_skill.is_legal,
             language_set : this.state.skills[0].translation_skill.languages
         };
         console.log('sendSkills' ,sendSkills);

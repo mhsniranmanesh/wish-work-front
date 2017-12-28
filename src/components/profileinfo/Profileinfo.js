@@ -12,7 +12,7 @@ class Profileinfo extends React.Component{
         super(props);
         this.state = { bioReadOnly : true , jobReadOnly : true , degreeReadOnly : true, universityReadOnly : true ,
             profileInfo:"" , profilepicture: "" , selectValueTF :"" , selectValueTT : "" , saving : false,
-            translationFatherTag : false , is_general: false , is_medical : false , is_technical : false , is_law : false,
+            translationFatherTag : false , is_general: false , is_medical : false , is_technical : false , is_legal : false,
             skills:'' , showSkills:false
         };
 
@@ -35,6 +35,12 @@ class Profileinfo extends React.Component{
         this.IsTechnical = this.IsTechnical.bind(this);
         this.IsGeneral = this.IsGeneral.bind(this);
         this.submitSkillChanges = this.submitSkillChanges.bind(this);
+        this.showSkills = this.showSkills.bind(this);
+
+    }
+
+    showSkills(){
+        this.setState({showSkills: true});
 
     }
     updateValueTT (newValue) {
@@ -63,8 +69,8 @@ class Profileinfo extends React.Component{
     }
 
     IsLaw(){
-        this.setState({is_law: true });
-        this.state.skills[0].translation_skill.is_law = true ;
+        this.setState({is_legal: true });
+        this.state.skills[0].translation_skill.is_legal= true ;
     }
 
 
@@ -113,7 +119,7 @@ class Profileinfo extends React.Component{
             is_general : this.state.skills[0].translation_skill.is_general,
             is_medical : this.state.skills[0].translation_skill.is_medical,
             is_technical : this.state.skills[0].translation_skill.is_technical,
-            is_legal : this.state.skills[0].translation_skill.is_law,
+            is_legal : this.state.skills[0].translation_skill.is_legal,
             language_set : this.state.skills[0].translation_skill.languages
         };
         console.log('sendSkills' ,sendSkills);
@@ -162,27 +168,33 @@ class Profileinfo extends React.Component{
         var size = this.size(nextProps.profileInfo);
         console.log("size of profileInfo in nextProps" , size);
         if (this.props.profileInfo[size-1] != nextProps.profileInfo[size-1]) {
-            console.log('nextProps.profileInfo[size-1]' ,nextProps.profileInfo[size-1]);
-            this.setState({profileInfo: nextProps.profileInfo[size-1]});
-            this.setState({profilepicture: nextProps.profileInfo[0].profile_picture});
-            this.setState({skills : nextProps.profileInfo[size - 1].skills});
-                this.setState({showSkills : true});
-
-            console.log('nextProps.profileInfo',nextProps.profileInfo);
-            console.log('PRofileInfo' ,this.state.profileInfo);
+            console.log('nextProps.profileInfo[size-1]', nextProps.profileInfo[size - 1]);
+            this.setState({profileInfo: nextProps.profileInfo[size - 1]});
+            this.setState({profilepicture: nextProps.profileInfo[size-1].profile_picture});
+            this.setState({skills: nextProps.profileInfo[size - 1].skills});
+            this.setState({showSkills: true});
         }
-    }
+        if(this.state.skills){
+            this.setState({showSkills: true});
+        }
 
+    }
+    // componentDidMount(){
+    //     if(this.state.profileInfo) {
+    //         this.setState({showSkills: true});
+    //     }
+    // }
 
 
     componentWillMount(){
         //console.log('componentWillMount PRofileInfo' , this.state.profileInfo);
         var x = this.size(this.props.profileInfo);
         if(x > 0) {
-            this.setState({profilepicture: this.props.profileInfo[0].profile_picture});
+            this.setState({profilepicture: this.props.profileInfo[x - 1].profile_picture});
             this.setState({profileInfo: this.props.profileInfo[x - 1]});
             this.setState({skills : this.props.profileInfo[x - 1].skills});
             this.setState({showSkills : true});
+
 
           //  console.log('componentWillMount PRofileInfo' , this.state.profileInfo);
          //   console.log('STATIC_DATAS.AVAILABLEFROMLANGUAGES.index',STATIC_DATAS.AVAILABLEFROMLANGUAGES)
@@ -298,7 +310,7 @@ class Profileinfo extends React.Component{
                                        is_general={this.state.is_general}
                                        is_technical={this.state.is_technical}
                                        is_medical={this.state.is_medical}
-                                       is_law={this.state.is_law}
+                                       is_legal={this.state.is_legal}
                                        Skills={this.state.skills}
                                        formSubmitted={this.submitSkillChanges}
                         /> : null

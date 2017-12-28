@@ -30,7 +30,7 @@ const TranslationTags = (props) =>{
         if(props.Skills[0].translation_skill.is_technical){
             fatherTag.push(<TranslationFatherTagTemplate key={3} fatherTag={'فنی'}/>)
         }
-        if(props.Skills[0].translation_skill.is_law){
+        if(props.Skills[0].translation_skill.is_legal){
             fatherTag.push(<TranslationFatherTagTemplate key={4} fatherTag={'حقوقی'}/>)
         }
 

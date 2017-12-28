@@ -52,7 +52,7 @@ const ProfileSkills = (props) =>{
                               </Col>
                               <Col>
                                   <label>
-                                      <input className="btn-radio" type="checkbox" name="rb" id="rb4" checked={props.is_law} onChange={props.IsLaw}/>
+                                      <input className="btn-radio" type="checkbox" name="rb" id="rb4" checked={props.is_legal} onChange={props.IsLaw}/>
                                       <span htmlFor="rb4" className="checkbox-text">حقوقی</span>
                                   </label>
                               </Col>
@@ -130,7 +130,7 @@ const ProfileSkills = (props) =>{
 };
 
 ProfileSkills.PropTypes ={
-    is_law : PropTypes.object.isRequired,
+    is_legal : PropTypes.object.isRequired,
     is_technical : PropTypes.object.isRequired,
     is_medical : PropTypes.object.isRequired,
     is_general : PropTypes.object.isRequired,

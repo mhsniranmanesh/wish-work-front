@@ -4,11 +4,17 @@ import PropTypes from 'prop-types';
 
 const ProfileInfoForDashboard = ({profileInfo}) =>{
     let Image ;
-    if(profileInfo.profile_picture === null){
-        Image = "http://via.placeholder.com/125x125"
+    if((profileInfo.profile_picture != null) || (profileInfo.profile_picture != undefined)){
+        if(profileInfo.profile_picture == '/media/'){
+            Image = "http://via.placeholder.com/125x125";
+        }
+        else {
+            Image = profileInfo.profile_picture;
+            console.log("/media/", Image);
+        }
     }
     else{
-        Image = profileInfo.profile_picture
+        Image = "http://via.placeholder.com/125x125";
     }
     return(
         <div className="dash-con dash-profile mb-4">

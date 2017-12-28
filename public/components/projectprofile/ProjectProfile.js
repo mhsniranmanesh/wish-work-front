@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 //import {Bids} from '../../actions/Bids';
 import * as projectActions from '../../actions/projectDetail';
+import Button from './Button';
 
 class ProjectProfile extends React.Component {
     constructor(props){
@@ -14,7 +15,7 @@ class ProjectProfile extends React.Component {
         this.state = {projectDetail:Object.assign({} , props.projectDetail),
                       amountOfMileStones:0 , Length:0, bid_description:'',
                       bid_price:'' , ModalState:'' , showError:false , profileInfo :Object.assign({} , props.profileInfo),
-                      isLoggedIn:false , delivery_duration:10,
+                      isLoggedIn:false , delivery_duration:10, ownerOfProject : false
                       };
         // delivery_duration: Array [ "This field is required." ]
         // number_of_milestones: Array [ "This field is required." ]
@@ -29,14 +30,15 @@ class ProjectProfile extends React.Component {
 
     FinalSubmitBid(){
         this.state.Length = Number(this.state.Length);
-        var senData = {
+        console.log('this.state.projectDetail.uuid' , this.state.projectDetail.uuid);
+        var sendData = {
             project_id : this.state.projectDetail.uuid,
             number_of_milestones : this.state.Length,
             price : this.state.bid_price,
             delivery_duration : this.state.delivery_duration,
             is_default_project_controller : false,
         };
-        this.props.actions.addBidToProject(senData).then(
+        this.props.actions.addBidToProject(sendData).then(
             this.setState({showError:false , ModalState:'modal'})
         )
     }
@@ -92,7 +94,10 @@ class ProjectProfile extends React.Component {
             console.log(nextProps.profileDetail);
             //inja az halate bler dar biad
             if(this.props.profileInfo.username == nextProps.projectDetail.client){
+                console.log('profileInfo.username' , this.props.profileInfo.username ,'projectDetail.client' , nextProps.projectDetail.client);
                 this.setState({isLoggedIn : true});
+                this.setState({ownerOfProject : true});
+                console.log(this.state.ownerOfProject);
             }
             this.setState({projectDetail: Object.assign({}, nextProps.projectDetail)});
         }
@@ -101,6 +106,7 @@ class ProjectProfile extends React.Component {
             this.setState({profileInfo: Object.assign({} , nextProps.profileInfo)});
             if(nextProps.profileInfo.username == this.props.projectDetail.client){
                 this.setState({isLoggedIn : true});
+                this.setState({ownerOfProject : true});
 
             }
         }
@@ -120,18 +126,28 @@ class ProjectProfile extends React.Component {
                                 <BidsList isLoggedIn={this.state.isLoggedIn} Bids={this.props.Bids}/>
                             </div>
                         </div>
-                        <AddBid TimeLimit={this.state.projectDetail.time_limit}
-                                amountOfMileStones={this.state.amountOfMileStones}
-                                valueOfMileStones={this.valueOfMileStones}
-                                Length={this.state.Length}
-                                CheckLength={this.CheckLength}
-                                ModalState={this.state.ModalState}
-                                BidDescription={this.BidDescription}
-                                BidPrice={this.BidPrice}
-                                ModalSubmit={this.ModalSubmit}
-                                message={this.state.message}
-                                showError={this.state.showError}
-                        />
+                        {this.state.ownerOfProject ?
+                        < Button
+                        myFunc=""
+                        name="hi"
+                        budget={this.state.projectDetail.budget}
+                        TimeLimit={this.state.projectDetail.time_limit}
+                        /> :
+                        < AddBid
+                            TimeLimit={this.state.projectDetail.time_limit}
+                            amountOfMileStones={this.state.amountOfMileStones}
+                            valueOfMileStones={this.valueOfMileStones}
+                            Length={this.state.Length}
+                            CheckLength={this.CheckLength}
+                            ModalState={this.state.ModalState}
+                            BidDescription={this.BidDescription}
+                            BidPrice={this.BidPrice}
+                            ModalSubmit={this.ModalSubmit}
+                            message={this.state.message}
+                            showError={this.state.showError}
+                            budget={this.state.projectDetail.budget}
+                            />
+                        }
                     </div>
                 </div>
             </section>

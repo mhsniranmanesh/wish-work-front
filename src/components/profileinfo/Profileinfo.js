@@ -71,6 +71,7 @@ class Profileinfo extends React.Component{
     IsLaw(){
         this.setState({is_legal: true });
         this.state.skills[0].translation_skill.is_legal= true ;
+        this.state.skills[0].translation_skill.is_legal = true ;
     }
 
 

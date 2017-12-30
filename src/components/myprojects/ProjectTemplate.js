@@ -3,6 +3,10 @@ import React from 'react';
 const ProjectTemplate = ({ProjectSubmitted , onClick}) => {
 
     return (
+
+
+
+    <div>
         <div className="dash-con dash-new-project con-body mb-4">
             <h6>
                 {/*<strong>{ProjectSubmitted.title}</strong>*/}
@@ -30,6 +34,7 @@ const ProjectTemplate = ({ProjectSubmitted , onClick}) => {
                 کنترل پروژه
             </button>
         </div>
+    </div>
     )
 };
 

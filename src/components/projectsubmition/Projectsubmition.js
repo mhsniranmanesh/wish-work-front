@@ -50,10 +50,12 @@ class Projectsubmition extends React.Component{
             popoverOpenTime: false,
             popoverOpenShow: false,
             popoverOpenDesc: false,
-
+            PopoverOpenSubject: false,
         };
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
+
+        this.togglePopoverSubject = this.togglePopoverSubject.bind(this);
 
         this.togglePopoverPrice = this.togglePopoverPrice.bind(this);
         this.togglePopoverTime = this.togglePopoverTime.bind(this);
@@ -87,26 +89,57 @@ class Projectsubmition extends React.Component{
 
     togglePopoverPrice() {
     this.setState({
-      popoverOpenPrice: !this.state.popoverOpenPrice
-    });
-  }
-  togglePopoverTime() {
-  this.setState({
-    popoverOpenTime: !this.state.popoverOpenTime
+      popoverOpenPrice: !this.state.popoverOpenPrice,
+      popoverOpenTime: false,
+      popoverOpenShow: false,
+      popoverOpenDesc: false,
+      PopoverOpenSubject: false,
+
     });
   }
 
   togglePopoverShow() {
   this.setState({
-    popoverOpenShow: !this.state.popoverOpenShow
+    popoverOpenShow: !this.state.popoverOpenShow,
+    popoverOpenPrice: false,
+    popoverOpenTime: false,
+    popoverOpenDesc: false,
+    PopoverOpenSubject: false,
+
     });
   }
 
   togglePopoverDesc() {
   this.setState({
-    popoverOpenDesc: !this.state.popoverOpenDesc
+    popoverOpenDesc: !this.state.popoverOpenDesc,
+    popoverOpenPrice: false,
+    popoverOpenTime: false,
+    popoverOpenShow: false,
+    PopoverOpenSubject: false,
+
     });
   }
+  togglePopoverTime() {
+  this.setState({
+    popoverOpenTime: !this.state.popoverOpenTime,
+    popoverOpenPrice: false,
+    popoverOpenShow: false,
+    popoverOpenDesc: false,
+    PopoverOpenSubject: false,
+
+    });
+  }
+  togglePopoverSubject(){
+    this.setState({
+      popoverOpenSubject: !this.state.popoverOpenSubject,
+      popoverOpenPrice: false,
+      popoverOpenShow: false,
+      popoverOpenDesc: false,
+      popoverOpenTime: false,
+
+      });
+  }
+
 
 
 
@@ -326,13 +359,13 @@ class Projectsubmition extends React.Component{
 
 
     projectDescriptionState(event){
-        this.setState({description: event.target.value});
+        this.setState({description: event.target.value,popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
     }
     submitProjectTimeState(event){
         let time = event.target.value;
         time = this.persianToEnglish(time);
         const trueOrFalseTimeValid = this.validateTime(time);
-        this.setState({time_limit: event.target.value , validTime: trueOrFalseTimeValid});
+        this.setState({time_limit: event.target.value , validTime: trueOrFalseTimeValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
         //console.log('state:' ,this.state);
         //console.log('length:' , this.state.translationFatherTag.length);
     }
@@ -341,10 +374,10 @@ class Projectsubmition extends React.Component{
         price = this.persianToEnglish(price);
         const trueOrFalsePriceValid = this.validatePrice(price);
 
-        this.setState({budget: price , validPrice : trueOrFalsePriceValid})
+        this.setState({budget: price , validPrice : trueOrFalsePriceValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,})
     }
     projectTitleState(event){
-        this.setState({title: event.target.value});
+        this.setState({title: event.target.value,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
     }
     roundProjectPrice(event){
         let numb = Number(event.target.value);
@@ -361,13 +394,14 @@ class Projectsubmition extends React.Component{
 
     }
     roundProjectTime(event){
+
         let numb = Number(event.target.value);
         const trueOrFalseTimeValid2 = this.validateTime(numb);
         numb = Math.round(numb);
         if(isNaN(numb)){
             numb = "";
         }
-        this.setState({time_limit: numb , validTime: trueOrFalseTimeValid2});
+        this.setState({time_limit: numb , validTime: trueOrFalseTimeValid2,});
     }
 
 
@@ -468,7 +502,11 @@ class Projectsubmition extends React.Component{
                       <form>
                         <div className="form-group">
                           <legend className="form-header-fontsize"> عنوان پروژه را مشخص کنید. </legend>
-                          <input type="text" className="form-control" id="" placeholder="عنوان پروژه" value={this.state.title} onChange={this.projectTitleState}/>
+                          <input type="text" className="form-control" id="subject" placeholder="عنوان پروژه" value={this.state.title} onChange={this.projectTitleState} onFocus={this.togglePopoverSubject}/>
+                          <Popover placement="right" isOpen={this.state.popoverOpenSubject} target="subject" toggle={this.togglePopoverSubject}>
+                            <PopoverBody className="beauty-text popover-beauty">عنوان پروژه بخش مهمی از کیفیت پیشنهادهای شما را تعیین می کند. محدودیت برای عنوان پروژه شما 200 حرف است. </PopoverBody>
+                          </Popover>
+
                         </div>
                         <div className="input-group">
                               <legend className="form-header-fontsize">زمینه ترجمه تان را انتخاب کنید.</legend>
@@ -546,20 +584,25 @@ class Projectsubmition extends React.Component{
                                 "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*"/>
                           </div>
 
+                          <legend htmlFor="" className="col-form-label form-header-fontsize">
+                                <span className="form-header-fontsize">تعداد صفحات پروژه خود را مشخص کنید</span>
+
+                          </legend>
+
+
+                        
+                            <input type="text" className="form-control form-body-fontsize" id="priceInput" />
+
 
                         <legend className="form-header-fontsize">
                           <span>در مورد پروژه خود توضیح دهید.</span>
-                          <span>
-                            <Button id="Popover4" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverDesc} onMouseLeave={this.togglePopoverDesc}>
-                              ?
-                            </Button>
-                            <Popover placement="bottom" isOpen={this.state.popoverOpenDesc} target="Popover4" toggle={this.togglePopoverDesc}>
-                              <PopoverBody className="beauty-text"> لطفا صفحات مورد نظر خود و بخش ابتدایی و انتهایی فایل ترجمه خود را مشخص کنید. همچنین می توانید نمومنه ای از کیفیت مطلوبتان را وارد کنید </PopoverBody>
-                            </Popover>
-                          </span>
+
                         </legend>
                         <div className="form-group">
-                          <textarea type="text" className="form-control form-body-fontsize" id="" placeholder="توضیحاتی را در مورد پروژه بنویسید." value={this.state.description} onChange={this.projectDescriptionState}/>
+                          <textarea type="text" className="form-control form-body-fontsize" id="Popover4" placeholder="توضیحاتی را در مورد پروژه بنویسید." value={this.state.description} onChange={this.projectDescriptionState} onFocus={this.togglePopoverDesc}/>
+                          <Popover placement="right" isOpen={this.state.popoverOpenDesc} target="Popover4" toggle={this.togglePopoverDesc}>
+                            <PopoverBody className="beauty-text popover-beauty"> شما می توانید نمونه ای از ترجمه مورد نظرتان را در این بخش وارد کنید</PopoverBody>
+                          </Popover>
                         </div>
                         <div className="form-group">
                       {/*
@@ -598,25 +641,19 @@ class Projectsubmition extends React.Component{
                           <legend htmlFor="" className="col-form-label form-header-fontsize">
                                 <span className="form-header-fontsize">بودجه ی خود را مشخص کنید.</span>
 
-                                <span>
-                                  <Button id="Popover1" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverPrice} onMouseLeave={this.togglePopoverPrice}>
-                                    ?
-                                  </Button>
-                                  <Popover placement="bottom" isOpen={this.state.popoverOpenPrice} target="Popover1" toggle={this.togglePopoverPrice}>
-                                    <PopoverBody className="beauty-text">ویش ورک با توجه به حجم پروژه و بودجه انتخابی شما یکی از رنگهای سبز(متناسب) یا نارنجی(متوسط) و یا قرمز(غیرمتناسب) رابه مبلغ انتخابی شما اختصاص می دهد. </PopoverBody>
-                                  </Popover>
-                                </span>
-
-
-
                           </legend>
 
 
 
-                          <input type="text" className="form-control form-body-fontsize" id="priceInput" value={this.state.budget} onChange={this.submitProjectPriceState} onBlur={this.roundProjectPrice}/>
-                          <div id="price-range"/>
+                          <input type="text" className="form-control form-body-fontsize" id="priceInput" value={this.state.budget} onChange={this.submitProjectPriceState} onBlur={this.roundProjectPrice} onFocus={this.togglePopoverPrice}/>
+                          <Popover placement="right" isOpen={this.state.popoverOpenPrice} target="priceInput" toggle={this.togglePopoverPrice}>
+                            <PopoverBody className="beauty-text popover-beauty">قیمت مورد نظرتان را به تومان وارد کنید </PopoverBody>
+                          </Popover>
+
+
+                          <div id="price-range" style={{display:"none"}}/>
                           <span className="price-msg">
-                              <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
+                              <i className="fa fa-exclamation-triangle" aria-hidden="true" />
                               نارنجی: بودجه تعیین شده به نسبت ارزش پروژه کمتر است! ویش ورک پیشنهاد می کند که برای بالا بردن شانس انجام پروژه ی با کیفیت، کف بودجه را افزایش دهید.
                           </span>
                         </div>
@@ -625,18 +662,14 @@ class Projectsubmition extends React.Component{
 
 
                             <span className="form-header-fontsize">  زمان دلخواه خود را مشخص کنید. </span>
-                            <span>
-                              <Button id="Popover2" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverTime} onMouseLeave={this.togglePopoverTime}>
-                                ?
-                              </Button>
-                              <Popover placement="bottom" isOpen={this.state.popoverOpenTime} target="Popover2" toggle={this.togglePopoverTime}>
-                                <PopoverBody className="beauty-text"> شما پروژه را در چه مدتی می خواهید؟ ویش ورک با توجه به زمان انتخابی شما و با توجه به حجم پروژه یکی از رنگهای سبز(متناسب) یا نارنجی(متوسط) و یا قرمز(غیرمتناسب و فوری) را به زمان انتخابی شما اختصاص می دهد. </PopoverBody>
-                              </Popover>
-                            </span>
 
 
                           </legend>
-                          <input type="text" className="form-control form-body-fontsize" id="timeInput" value={this.state.time_limit} onChange={this.submitProjectTimeState} onBlur={this.roundProjectTime}/>
+                          <input type="text" className="form-control form-body-fontsize" id="timeInput" value={this.state.time_limit} onChange={this.submitProjectTimeState} onBlur={this.roundProjectTime} onFocus={this.togglePopoverTime} />
+                          <Popover placement="right" isOpen={this.state.popoverOpenTime} target="timeInput" toggle={this.togglePopoverTime}>
+                            <PopoverBody className="beauty-text popover-beauty">زمان مورد نظرتان را به روز وارد کنید </PopoverBody>
+                          </Popover>
+
                           <div id="time-range"/>
                           <span className="time-msg">
                               <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
@@ -653,10 +686,8 @@ class Projectsubmition extends React.Component{
                               <ModalHeader toggle={this.toggle}>
                                   <span className="form-title-fontsize">  نحوه نمایش پروژه</span>
                                   <span>
-                                    <Button id="Popover3" className="btn-round-primary popover-fontsize" onMouseEnter={this.togglePopoverShow} onMouseLeave={this.togglePopoverShow}>
-                                      ?
-                                    </Button>
-                                    <Popover placement="bottom" isOpen={this.state.popoverOpenShow} target="Popover3" toggle={this.togglePopoverShow}>
+
+                                    <Popover placement="right" isOpen={this.state.popoverOpenShow} target="Popover3" toggle={this.togglePopoverShow}>
                                       <PopoverBody className="beauty-text">پروژه شما به شکل زیر برای فریلنسرها نمایش داده می شود. رنگ بالا نمایانگر قیمت و رنگ پایین نشان دهنده زمان انتخابی شماست. </PopoverBody>
                                     </Popover>
                                   </span>
@@ -664,7 +695,7 @@ class Projectsubmition extends React.Component{
 
 
                               <ModalBody>
-                                <span className="prices">
+                                {/*}<span className="prices">
                                   <div>
                                     <svg width="5px" height="8vh">
                                       <rect className="price-good" width="5px" height="8vh" />
@@ -675,7 +706,7 @@ class Projectsubmition extends React.Component{
                                       <rect className="price-low" width="5px" height="8vh"/>
                                     </svg>
                                   </div>
-                                </span>
+                                </span>*/}
                                 <div>
                                     <a href="#">
                                         <h6 className="form-header-fontsize"><strong>{this.state.title}</strong></h6>

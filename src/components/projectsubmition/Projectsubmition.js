@@ -50,7 +50,11 @@ class Projectsubmition extends React.Component{
             popoverOpenTime: false,
             popoverOpenShow: false,
             popoverOpenDesc: false,
+<<<<<<< HEAD
             PopoverOpenSubject: false,
+=======
+            number_of_pages : 2,
+>>>>>>> 7c1f5ecdbd57f70455d59559f13f12c4626fea81
         };
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
@@ -485,7 +489,7 @@ class Projectsubmition extends React.Component{
         var options1 = STATIC_DATAS.AVAILABLETOLANGUAGES;
         var options2 = STATIC_DATAS.AVAILABLEFROMLANGUAGES;
        // const emailRegex = /^\S+@\S+\.\S+$/;
-        const { multi, multiValue, options, value } = this.state;
+       //  const { multi, multiValue, options, value } = this.state;
 
 
       const showError = this.state.showError;

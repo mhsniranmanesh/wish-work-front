@@ -2,15 +2,17 @@ import React from 'react';
 import {connect} from 'react-redux';
 import AsFreelancerOrClient from './AsFreelancerOrClient';
 import Filter from './Filter';
-import ProjectTemplate from './ProjectTemplate';
+//import ProjectTemplate from './ProjectTemplate';
 import PropTypes from 'prop-types';
+import ProjectsList from './ProjectsList';
 
 class MyProjects extends React.Component {
     constructor(props){
         super(props);
-        this.state={};
+        this.state={ClientProjects:"" };
         this.size = this.size.bind(this);
         this.onClick = this.onClick.bind(this);
+        this.goToProjectAuctionPage = this.goToProjectAuctionPage.bind(this);
     }
     size (obj) {
         let x = 0, key;
@@ -19,13 +21,29 @@ class MyProjects extends React.Component {
         }
         return x;
     };
-
+    componentWillReceiveProps(nextProps) {
+        var size = this.size(nextProps.profileInfo);
+        if(this.props.profileInfo[size-1] != nextProps.profileInfo[size-1]){
+            this.setState({ClientProjects : nextProps.profileInfo[size-1].client_projects});
+        }
+    }
+    goToProjectAuctionPage(slug){
+        this.context.router.history.push('projects/' + slug)
+    }
+    componentWillMount(){
+        var x = this.size(this.props.profileInfo);
+        if(x > 0) {
+            this.setState({ClientProjects: this.props.profileInfo[x - 1].client_projects});
+        }
+        //console.log('HI PF' , this.state.ClientProjects)
+    }
     onClick(event){
         event.preventDefault();
         this.context.router.history.push('/project/control');
     };
 
     render(){
+        var ClickableFunc = this.state.ClickableFunc;
         return(
             <div className="content-wrapper py-3">
                 <div className="container-fluid">
@@ -33,47 +51,11 @@ class MyProjects extends React.Component {
                         <div className="col-sm-8 d-block mx-auto nav-pills">
                             <AsFreelancerOrClient/>
                             <Filter/>
-                            <ProjectTemplate onClick={this.onClick}/>
-                            {/*<div className="dash-con dash-new-project con-body mb-4">*/}
-                                {/*<h6>*/}
-                                    {/*<strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong>*/}
-                                    {/*<span className="badge badge-primary">در حال انجام</span>*/}
-                                {/*</h6>*/}
+                             <ProjectsList ClientProjects={this.state.ClientProjects}
+                                          onClick={this.onClick}
+                                        //  goToProjectAuctionPage={this.goToProjectAuctionPage}
+                             />
 
-                                {/*<h6 className="beauty-text dash-recom-item-discription">*/}
-                                    {/*لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد ...*/}
-                                {/*</h6>*/}
-                                {/*<span className="sub-heading">*/}
-                            {/*<i className="fa fa-calendar"/> ۱۳۹۶/۵/۹*/}
-                        {/*</span>*/}
-                                {/*<button type="submit" className="btn btn-primary btn-rec">*/}
-                                    {/*کنترل پروژه*/}
-                                {/*</button>*/}
-                            {/*</div>*/}
-                            {/*<div className="dash-con dash-new-project con-body mb-4">*/}
-                                {/*<h6>*/}
-                                    {/*<strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong>*/}
-                                    {/*<span className="badge badge-success">انجام شده</span>*/}
-                                {/*</h6>*/}
-                                {/*<h6 className="beauty-text dash-recom-item-discription">*/}
-                                    {/*لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد ...*/}
-                                {/*</h6>*/}
-                                {/*<span className="sub-heading">*/}
-                            {/*<i className="fa fa-calendar"/> ۱۳۹۶/۵/۹*/}
-                        {/*</span>*/}
-                            {/*</div>*/}
-                            {/*<div className="dash-con dash-new-project con-body mb-4">*/}
-                                {/*<h6>*/}
-                                    {/*<strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong>*/}
-                                    {/*<span className="badge badge-danger">کنسل شده</span>*/}
-                                {/*</h6>*/}
-                                {/*<h6 className="beauty-text dash-recom-item-discription">*/}
-                                    {/*لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد ...*/}
-                                {/*</h6>*/}
-                                {/*<span className="sub-heading">*/}
-                            {/*<i className="fa fa-calendar"/> ۱۳۹۶/۵/۹*/}
-                        {/*</span>*/}
-                            {/*</div>*/}
                         </div>
                     </div>
                 </div>
@@ -90,7 +72,7 @@ MyProjects.contextTypes = {
 
 function mapStateToProps(state , ownProps) {
     return{
-        projectSubmit : state.projectSubmit
+        profileInfo : state.profileInfo
     }
 }
 
@@ -101,3 +83,5 @@ function mapDispatchToProps() {
 }
 
 export default connect(mapStateToProps , mapDispatchToProps )(MyProjects);
+
+//TODO pass function to component for change route !

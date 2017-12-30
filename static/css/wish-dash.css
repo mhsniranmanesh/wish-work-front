@@ -2052,3 +2052,21 @@ img {
 .project-status .btn-rec {
     padding: 10px;
 }
+.tags {
+    background: none repeat scroll 0 0 #fff;
+    display: inline;
+    padding: 0.5em;
+    width: 100%;
+}
+.tags li.tagAdd, .tags li.addedTag {
+    float: right;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+}
+.tags li.addedTag {
+    background: none repeat scroll 0 0 #019f86;
+    font-size: 15px;
+    border-radius: 2px;
+    color: #fff;
+    padding: 0.25em;
+}

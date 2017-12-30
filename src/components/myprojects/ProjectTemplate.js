@@ -1,7 +1,38 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const ProjectTemplate = ({ProjectSubmitted , onClick}) => {
+const ProjectTemplate = (props ) => {
+    var x = "" ;
+    var XClass = "";
+    var XButtonName = "";
+    var XHref = "#";
+    if(props.ClientProjects.is_banned){
+        x="مصدود شده";
+        XClass = "badge badge-primary"
+    }
+    else {
+        if(!props.ClientProjects.is_verified){
+            x = "در انتظار تایید";
+            XClass = "badge badge-primary";
+        }
+        else if ((!props.ClientProjects.is_started) && props.ClientProjects.is_verified) {
+            x = "در حال مناقصه";
+            XClass = "badge badge-primary";
+            XButtonName = "صفحه ی مناقصه";
 
+        }
+        else if (props.ClientProjects.is_started && (!props.ClientProjects.is_completed)) {
+            x = "در حال انجام";
+            XClass = "badge badge-primary";
+            XButtonName = "کنترل پروژه"
+        }
+        else if(props.ClientProjects.is_completed){
+            x = "انجام شده";
+            XClass = "badge badge-primary";
+            XButtonName = "مشاهده فایل ها"
+        }
+
+            }
     return (
 
 
@@ -10,8 +41,8 @@ const ProjectTemplate = ({ProjectSubmitted , onClick}) => {
         <div className="dash-con dash-new-project con-body mb-4">
             <h6>
                 {/*<strong>{ProjectSubmitted.title}</strong>*/}
-                <strong>متن آکادمیک فوری، در حوزه ی زیست شناسی</strong>
-                <span className="badge badge-primary">در حال انجام</span>
+                <strong>{props.ClientProjects.title}</strong>
+                <span className={XClass}>{x}</span>
                 {/*<span>{ProjectSubmitted.badge}</span>*/}
             </h6>
 
@@ -30,12 +61,15 @@ const ProjectTemplate = ({ProjectSubmitted , onClick}) => {
             {/*<button type="submit" className="btn btn-primary btn-rec">*/}
                 {/*کنترل پروژه*/}
             {/*</button>*/}
-            <button type="submit" className="btn btn-primary btn-rec" onClick={onClick}>
-                کنترل پروژه
-            </button>
+
+            <button type="submit" className="btn btn-primary btn-rec">
+                {XButtonName}            </button>
         </div>
     </div>
     )
+};
+ProjectTemplate.PropTypes = {
+    goToProjectAuctionPage : PropTypes.func.isRequired
 };
 
 export default ProjectTemplate;

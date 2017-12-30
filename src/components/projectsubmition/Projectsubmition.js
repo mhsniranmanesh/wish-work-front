@@ -589,9 +589,7 @@ class Projectsubmition extends React.Component{
 
                           </legend>
 
-
-
-                            <input type="text" className="form-control form-body-fontsize" id="priceInput" />
+                            <input type="text" className="form-control form-body-fontsize" id="pageNumber" />
 
 
                         <legend className="form-header-fontsize">

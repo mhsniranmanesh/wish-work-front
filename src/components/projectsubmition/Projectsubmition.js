@@ -50,11 +50,7 @@ class Projectsubmition extends React.Component{
             popoverOpenTime: false,
             popoverOpenShow: false,
             popoverOpenDesc: false,
-<<<<<<< HEAD
-            PopoverOpenSubject: false,
-=======
             number_of_pages : 2,
->>>>>>> 7c1f5ecdbd57f70455d59559f13f12c4626fea81
         };
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
@@ -594,7 +590,7 @@ class Projectsubmition extends React.Component{
                           </legend>
 
 
-                        
+
                             <input type="text" className="form-control form-body-fontsize" id="priceInput" />
 
 

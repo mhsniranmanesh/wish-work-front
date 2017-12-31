@@ -8,7 +8,7 @@ const ProjectTemplateForDashboard = ({ProjectDetail}) => {
     return (
             <div>
                 <div className="dash-recom-item recom">
-                  <span className="dollar">
+              {/*    <span className="dollar">
                     <div>
                       <svg>
                         <rect className="price-fair" />
@@ -19,7 +19,7 @@ const ProjectTemplateForDashboard = ({ProjectDetail}) => {
                         <rect className="price-low" />
                       </svg>
                     </div>
-                  </span>
+                  </span> */}
                     <a href="#">
                         <h6><strong>{ProjectDetail.title}</strong></h6>
                     </a>

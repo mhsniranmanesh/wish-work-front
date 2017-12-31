@@ -546,6 +546,13 @@ a:hover {
   margin: 0 5px 0 0;
 }
 
+.popover-beauty{
+  font-family: iransans;
+  
+  /*background-color: #fff;
+  color: white;*/
+}
+
 .btn-rec-sm {
     border-radius: 15px;
     padding-right: 25px;

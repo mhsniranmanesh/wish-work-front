@@ -1,6 +1,16 @@
 import React from 'react';
+import MileStonesHorizentalTemplate from './MileStonesHorizentalTemplate';
 
 const AddedBidsMileStone = (props) =>{
+    var mileStones = [];
+    var mileStonX = [];
+    var x = (props.delivery_duration)/(props.number_of_milestones) ;
+    for(var i = 0 ; i < props.number_of_milestones  ;i++){
+        console.log(props.number_of_milestones , 'props.number_of_milestones');
+        console.log(mileStones , 'mileStones');
+        x = (props.delivery_duration)/(props.number_of_milestones) + (i*(props.delivery_duration)/(props.number_of_milestones));
+        mileStones.push(<MileStonesHorizentalTemplate i={i} key={i} x={x}/>)
+    }
     return(
         <div className="modal fade" id="accBiddingModal" tabIndex="-1" role="dialog" aria-hidden="true">
             <div className="modal-dialog" role="document">
@@ -16,75 +26,7 @@ const AddedBidsMileStone = (props) =>{
                             <div className="container">
                                 <div className="row">
                                     <div className="timeline-centered">
-                                        <article className="timeline-entry">
-                                            <div className="timeline-entry-inner">
-                                                <time className="timeline-time"><span>۲۴ آبان</span></time>
-                                                <div className="timeline-icon bg-primary">
-                                                    <i className="entypo-feather"/>
-                                                </div>
-                                                <div className="timeline-label">
-                                                    <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
-                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                                                </div>
-                                            </div>
-                                        </article>
-                                        <article className="timeline-entry left-aligned">
-                                            <div className="timeline-entry-inner">
-                                                <time className="timeline-time"><span>۲۴ آبان</span></time>
-                                                <div className="timeline-icon bg-primary">
-                                                    <i className="entypo-suitcase"/>
-                                                </div>
-                                                <div className="timeline-label">
-                                                    <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
-                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                                                </div>
-                                            </div>
-                                        </article>
-                                        <article className="timeline-entry">
-                                            <div className="timeline-entry-inner">
-                                                <time className="timeline-time"><span>۲۴ آبان</span></time>
-                                                <div className="timeline-icon bg-primary">
-                                                    <i className="entypo-location"/>
-                                                </div>
-                                                <div className="timeline-label">
-                                                    <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
-                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                                                </div>
-                                            </div>
-                                        </article>
-                                        <article className="timeline-entry left-aligned">
-                                            <div className="timeline-entry-inner">
-                                                <time className="timeline-time"><span>۲۴ آبان</span></time>
-                                                <div className="timeline-icon bg-primary">
-                                                    <i className="entypo-location"/>
-                                                </div>
-                                                <div className="timeline-label">
-                                                    <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
-                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-
-                                                </div>
-                                            </div>
-                                        </article>
-
-
-                                        <article className="timeline-entry begin">
-
-                                            <div className="timeline-entry-inner">
-                                                <time className="timeline-time"><span>۲۴ آبان</span></time>
-
-                                                <div className="timeline-icon bg-primary" style={{WebkitTransform: 'rotate(-90)', MozTransform: 'rotate(-90)'}}>
-                                                    <i className="entypo-flight"/>
-                                                </div>
-
-                                                <div className="timeline-label">
-                                                    <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
-                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-
-                                                </div>
-                                            </div>
-
-                                        </article>
-
+                                        {mileStones}
                                     </div>
                                 </div>
                             </div>

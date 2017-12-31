@@ -1,7 +1,16 @@
 import React from 'react';
 import BidTemplate from './BidTemplate';
 
-const BidsList = ({Bids , isLoggedIn}) => {
+const BidsList = ({Bids , isLoggedIn , ownerOfProject}) => {
+    var BidT = [] ;
+    for(var i = 0 ; i < Bids.length ; i++){
+        BidT.push(<BidTemplate key={Bids[i].uuid}
+                               Bid={Bids[i]}
+                               ownerOfProject={ownerOfProject}
+                               isLoggedIn={isLoggedIn}
+        />);
+        console.log(Bids[i] , 'Bids[i]');
+    }
         return (
             <div>
                 <h5 className="project-title">
@@ -21,8 +30,9 @@ const BidsList = ({Bids , isLoggedIn}) => {
                     </div>
                 </div>
                 <div className="divider"/>
-                {Bids.map(Bid =>
-                    <BidTemplate key={Bid.id} Bid={Bid} isLoggedIn={isLoggedIn}/>)}
+                {/*{Bids.map(Bid =>*/}
+                    {/*<BidTemplate key={Bid.uuid || Bid.id} Bid={Bid} ownerOfProject={ownerOfProject} isLoggedIn={isLoggedIn}/>)}*/}
+                {BidT}
             </div>
         )
 

@@ -96,9 +96,9 @@ const ProfileSkills = (props) =>{
                           </Col>
                       </Row>
                       <div className="form-group">
-                          <button type="submit" className="btn btn-success btn-rec">
+                          <Button color="primary" className="btn btn-success btn-rec" onClick={props.addSkills}>
                               <i className="fa fa-plus"/>افزودن
-                          </button>
+                          </Button>
                       </div>
                       <label htmlFor="" className="col-form-label sub-label">
                           <i className="fa fa-quote-left" aria-hidden="true"/> برای حذف موارد انتخاب شده روی آن ها کلیک کنید.
@@ -129,7 +129,7 @@ const ProfileSkills = (props) =>{
   )
 };
 
-ProfileSkills.PropTypes ={
+ProfileSkills.PropTypes = {
     is_legal : PropTypes.object.isRequired,
     is_technical : PropTypes.object.isRequired,
     is_medical : PropTypes.object.isRequired,

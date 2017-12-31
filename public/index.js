@@ -14,7 +14,6 @@ import {BrowserRouter} from 'react-router-dom';
 import App from './components/App.js';
 import {Provider} from 'react-redux';
 import configureStore from './store/configureStore.js';
-import {Bids} from './actions/Bids';
 import {ProjectsDone} from "./actions/ProjectsDone";
 import {profileInfo} from "./actions/profileInfo";
 import axios from 'axios';
@@ -22,7 +21,6 @@ import {freelancerDetail} from "./actions/freelancerDetail";
 
 const store = configureStore();
 store.dispatch(ProjectsDone());
-store.dispatch(Bids());
 if (process.env.NODE_ENV !== 'production') {
     console.log('Here We are!');
 }
@@ -35,8 +33,8 @@ function Authentication() {
         }
         else {
             axios.defaults.headers.common['Authorization'] = null;
-            /*if setting null does not remove `Authorization` header then try
-              delete axios.defaults.headers.common['Authorization'];
+            /* if setting null does not remove `Authorization` header then try
+               delete axios.defaults.headers.common['Authorization'];
             */
             resolve();
 

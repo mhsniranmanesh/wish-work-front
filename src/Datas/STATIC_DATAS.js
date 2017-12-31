@@ -39,4 +39,3 @@ exports.PROJECT_SKILLS = {
 };
 
 
-//TODO index must start from 1 !

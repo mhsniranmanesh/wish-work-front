@@ -66,9 +66,8 @@ class Header2 extends React.Component {
             <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
                 <div className="container">
                     <a className="navbar-brand" href="#">
-                        <img src={require('../../../static/img/nav-logo.png')} height="30"
+                        <img src={require('../../../static/img/IMG_2665.jpg')} height="30"
                              className="d-inline-block align-top" alt="nav-logo"/>
-                        <img src={require('../../../static/img/wishworkFontLogo.jpg')} height="30"/>
                     </a>
                     <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"

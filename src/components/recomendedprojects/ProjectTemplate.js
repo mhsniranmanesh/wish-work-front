@@ -5,7 +5,7 @@ const ProjectTemplate = ({ProjectDetail}) =>{
     return(
         <div>
             <div className="dash-recom-item recom">
-                <span className="dollar">
+              {/* <span className="dollar">
                   <div>
                     <svg>
                       <rect className="price-fair" />
@@ -16,7 +16,7 @@ const ProjectTemplate = ({ProjectDetail}) =>{
                       <rect className="price-low" />
                     </svg>
                   </div>
-                </span>
+                </span>*/}
                 <a href="#">
                     <h6 ><strong className="form-header-fontsize">{ProjectDetail.title}</strong></h6>
                 </a>

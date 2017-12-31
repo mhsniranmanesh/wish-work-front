@@ -2,10 +2,12 @@
 import * as types from './actionTypes.js';
 import axios from 'axios'
 
-export function submitProjectSuccess(projectSubmit){
-    return{type: types.SUBMIT_PROJECT_SUCCESS , projectSubmit}
+// export function submitProjectSuccess(projectSubmit){
+//     return{type: types.SUBMIT_PROJECT_SUCCESS , projectSubmit}
+// }
+export function loadNewInfosSuccess(profileInfo){
+    return{type: types.UPDATE_NEW_INFOS_SUCCESS , profileInfo}
 }
-
 export function loadSubmittedProjectsSuccess(submittedProjects) {
     return{type : types.LOAD_SUBMITTED_PROJECTS_SUCCESS , submittedProjects}
 }
@@ -20,17 +22,27 @@ export function getSubmittedProjects() {
         });
     };
 }
-
+export function profileInfo(){
+    return function(dispatch){
+        return axios.get('/api/v1/profiles/initial/').then(
+            response =>{
+                dispatch(loadNewInfosSuccess(response.data));
+            }).catch(error =>{
+            throw (error);
+        });
+    };
+}
 export function addSkills(id , allState) {
     return function (dispatch) {
         console.log('id:' , id , 'allState:' , allState );
         allState.project_id = id.data.id;
-        return axios.post('/api/v1/projects/add-skills/translation/' , allState).then(
-            projectAddSkills =>{
-                dispatch(submitProjectSuccess(projectAddSkills));
+        console.log( allState , ' allState ');
+        return axios.post('/api/v1/projects/add-details/translation/' , allState).then(
+            () =>{
+                dispatch(profileInfo());
             }).catch(error =>{
             //throw (error);
-            console.log('Fuck error' , error)
+            console.log('Fuck error' , error);
         })
     }
 }
@@ -42,7 +54,7 @@ export function addSkills(id , allState) {
 
 export function projectSubmit(projectSubmit , getState){
     return function(dispatch){
-        return  axios.post('/api/v1/projects/submit/translation/' , projectSubmit).then(
+        return  axios.post('/api/v1/projects/translation/' , projectSubmit).then(
             projectSubmit =>{
                 // console.log(projectSubmit);
                 dispatch(addSkills(projectSubmit , getState));

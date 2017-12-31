@@ -3,28 +3,23 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as profileInfo from '../../actions/profileInfo.js';
-import {Input,Row,Col,InputGroupAddon , Button} from 'reactstrap';
-import Select from 'react-select';
-const LANGUAGES = require('./Datas/Languages.js');
-import deepEqual from 'deep-equal';
+import {Input, Button} from 'reactstrap';
+import ProfileSkills from './ProfileSkills';
+
 
 class Profileinfo extends React.Component{
     constructor(props){
         super(props);
-        this.state = { bioReadOnly : true , jobReadOnly : true , degreeReadOnly : true, universityReadOnly : true , profileInfo:"" , profilepicture: "" ,
-             selectValueTF :"" , selectValueTT : "" , saving : false };
+        this.state = { bioReadOnly : true , jobReadOnly : true , degreeReadOnly : true, universityReadOnly : true ,
+            profileInfo:"" , profilepicture: "" , selectValueTF :"" , selectValueTT : "" , saving : false,
+            translationFatherTag : false , is_general: false , is_medical : false , is_technical : false , is_legal : false,
+            skills:'' , showSkills:false , language_set:{}
+        };
 
-        // bio: props.profileInfo.bio , job:props.profileInfo.job , degree:props.profileInfo.degree,
-        //     university:props.profileInfo.university,
 
         this.updateValueTF = this.updateValueTF.bind(this);
         this.updateValueTT = this.updateValueTT.bind(this);
         this.redirect = this.redirect.bind(this);
-         //this.state.bio = this.props.profileInfo.bio;
-        // this.state.job = this.props.profileInfo.job;
-        // this.state.profile_picture = this.props.profile_picture ;
-        // this.state.degree = this.props.profileInfo.degree;
-        // this.state.university = this.props.profileInfo.university;
         this.changeBioInput = this.changeBioInput.bind(this);
         this.changeJobInput = this.changeJobInput.bind(this);
         this.changeDegreeInput = this.changeDegreeInput.bind(this);
@@ -35,6 +30,24 @@ class Profileinfo extends React.Component{
         this.changeUniversityOnChange = this.changeUniversityOnChange.bind(this);
         this.submitChanges = this.submitChanges.bind(this);
         this.size = this.size.bind(this);
+        this.IsLaw = this.IsLaw.bind(this);
+        this.IsMedical = this.IsMedical.bind(this);
+        this.IsTechnical = this.IsTechnical.bind(this);
+        this.IsGeneral = this.IsGeneral.bind(this);
+        this.submitSkillChanges = this.submitSkillChanges.bind(this);
+        this.showSkills = this.showSkills.bind(this);
+        this.addSkills = this.addSkills.bind(this);
+
+    }
+
+    addSkills(){
+        var from_language = this.state.selectValueTF;
+        var to_language = this.state.selectValueTT;
+        this.setState({language_set:{from_language , to_language}});
+    }
+
+    showSkills(){
+        this.setState({showSkills: true});
 
     }
     updateValueTT (newValue) {
@@ -47,7 +60,26 @@ class Profileinfo extends React.Component{
         selectValueTF: newValue
       });
     }
+    IsTechnical(){
+        this.setState({is_technical: true });
+        this.state.skills[0].translation_skill.is_technical = true ;
+    }
 
+    IsGeneral(){
+        this.setState({is_general: true });
+        this.state.skills[0].translation_skill.is_general = true ;
+    }
+
+    IsMedical(){
+        this.setState({is_medical: true });
+        this.state.skills[0].translation_skill.is_medical = true ;
+    }
+
+    IsLaw(){
+        this.setState({is_legal: true });
+        this.state.skills[0].translation_skill.is_legal= true;
+        this.state.skills[0].translation_skill.is_legal = true;
+    }
 
 
     changeBioInput(){
@@ -83,42 +115,45 @@ class Profileinfo extends React.Component{
         let profileInfo = Object.assign({} , this.state.profileInfo);
         profileInfo.university = event.target.value;
         this.setState({profileInfo});
-
     }
 
     // shouldComponentUpdate(nextProps){
     //     return deepEqual( nextProps , this.props)
     // }
 
+    submitSkillChanges(){
+        console.log('this.state.language_set' , this.state.language_set);
+        this.state.skills[0].translation_skill.languages.push(this.state.language_set);
+        var sendSkills = {
+            is_general : this.state.skills[0].translation_skill.is_general,
+            is_medical : this.state.skills[0].translation_skill.is_medical,
+            is_technical : this.state.skills[0].translation_skill.is_technical,
+            is_legal : this.state.skills[0].translation_skill.is_legal,
+            language_set : this.state.skills[0].translation_skill.language_set
+        };
+        console.log('sendSkills' ,sendSkills);
+        this.props.actions.updateSkills(sendSkills).then(
+            () => this.redirect())
+            .catch(error => {
+                console.log(error);
+                this.setState({saving: false});
+            })
+
+    }
     submitChanges(){
         //action from redux
 
-        var sendData = {
+        var sendDataInfos = {
             bio: this.state.profileInfo.bio,
             degree: this.state.profileInfo.degree,
             email: this.state.profileInfo.email,
             job: this.state.profileInfo.job,
             title: this.state.profileInfo.title,
-            university: this.state.profileInfo.university,
-            // client_rate: this.state.profileInfo.client_rate,
-            // client_score: this.state.profileInfo.client_score,
-            // date_joined: this.state.profileInfo.date_joined,
-            // first_name: this.state.profileInfo.first_name,
-            // freelancer_rate: this.state.profileInfo.freelancer_rate,
-            // freelancer_score: this.state.profileInfo.freelancer_score,
-            // is_active: this.state.profileInfo.is_active,
-            // is_email_verified: this.state.profileInfo.is_email_verified,
-            // last_name: this.state.profileInfo.last_name,
-            // phone_number: this.state.profileInfo.phone_number,
-            // profile_picture: this.state.profileInfo.profile_picture,
-            // username: this.state.profileInfo.username,
-            // uuid: this.state.profileInfo.uuid,
-            // wish_coins: this.state.profileInfo.wish_coins
+            university: this.state.profileInfo.university
         };
         console.log(this.state.profileInfo);
-        console.log(sendData);
         this.setState({bioReadOnly : true , jobReadOnly : true , degreeReadOnly: true , universityReadOnly: true});
-        this.props.actions.updateInformations(sendData).then(
+        this.props.actions.updateInformations(sendDataInfos).then(
             () => this.redirect())
             .catch(error => {
                 console.log(error);
@@ -137,42 +172,46 @@ class Profileinfo extends React.Component{
         }
         return x;
     };
-    //age safhe ro refresh konim doros ejra mishe vali moghe taghir mirine tu khodesh!!!!!!!
     componentWillReceiveProps(nextProps) {
         console.log('nextProps' ,nextProps);
         var size = this.size(nextProps.profileInfo);
         console.log("size of profileInfo in nextProps" , size);
         if (this.props.profileInfo[size-1] != nextProps.profileInfo[size-1]) {
-            console.log('nextProps.profileInfo[size-1]' ,nextProps.profileInfo[size-1]);
-            this.setState({profileInfo: nextProps.profileInfo[size-1]});
-            this.setState({profilepicture: nextProps.profileInfo[0].profile_picture});
-            console.log('nextProps.profileInfo',nextProps.profileInfo);
-            console.log('PRofileInfo' ,this.state.profileInfo);
+            console.log('nextProps.profileInfo[size-1]', nextProps.profileInfo[size - 1]);
+            this.setState({profileInfo: nextProps.profileInfo[size - 1]});
+            this.setState({profilepicture: nextProps.profileInfo[size-1].profile_picture});
+            this.setState({skills: nextProps.profileInfo[size - 1].skills});
+            this.setState({showSkills: true});
         }
-    }
+        if(this.state.skills){
+            this.setState({showSkills: true});
+        }
 
+    }
+    // componentDidMount(){
+    //     if(this.state.profileInfo) {
+    //         this.setState({showSkills: true});
+    //     }
+    // }
 
 
     componentWillMount(){
         //console.log('componentWillMount PRofileInfo' , this.state.profileInfo);
         var x = this.size(this.props.profileInfo);
         if(x > 0) {
-            this.setState({profilepicture: this.props.profileInfo[0].profile_picture});
+            this.setState({profilepicture: this.props.profileInfo[x - 1].profile_picture});
             this.setState({profileInfo: this.props.profileInfo[x - 1]});
-            console.log('componentWillMount PRofileInfo' , this.state.profileInfo);
+            this.setState({skills : this.props.profileInfo[x - 1].skills});
+            this.setState({showSkills : true});
+
+
+          //  console.log('componentWillMount PRofileInfo' , this.state.profileInfo);
+         //   console.log('STATIC_DATAS.AVAILABLEFROMLANGUAGES.index',STATIC_DATAS.AVAILABLEFROMLANGUAGES)
         }
     }
-    // componentWillReceiveProps(nextProps){
-    //         console.log(this.props);
-    //         console.log(nextProps);
-    //     if(this.props != nextProps){
-    //         this.setState({job : nextProps.job});
-    //         console.log(nextProps);
-    //     }
-    // }
+
     render(){
-        var options1 = LANGUAGES.AVAILABLETOLANGUAGES;
-    var options2 = LANGUAGES.AVAILABLEFROMLANGUAGES;
+
     return (
       <div>
       <div className="content-wrapper py-3">
@@ -268,117 +307,24 @@ class Profileinfo extends React.Component{
                             </Button>
                         </form>
                     </div>
-                    <div className="dash-con dash-profile-info con-body mb-4">
-
-
-                      <span className="projectinfo">
-                        <i className="fa fa-wrench" aria-hidden="true"/>
-
-                        <h5 style={{display:'inline'}}>تغییر تخصص ها</h5>
-                      </span>
-                        <div className="dash-divider"/>
-                        <form className="">
-                            <div className="input-group">
-
-                                <div className="input-group">
-                                      <legend>
-                                        <label htmlFor="skillType" className="col-form-label">
-                                            <h6>در چه رشته هایی از ترجمه تخصص دارید؟</h6>
-                                        </label>
-                                      </legend>
-                                        <Row className= "fields">
-                                          <Col>
-                                            <label>
-                                              <input className="btn-radio" type="checkbox" name="rb" id="rb1" />
-                                                <span htmlFor="rb1" className="checkbox-text">عمومی</span>
-                                            </label>
-                                        </Col>
-                                        <Col>
-                                          <label>
-                                            <input className="btn-radio" type="checkbox" name="rb" id="rb2" />
-                                            <span htmlFor="rb2" className="checkbox-text">فنی</span>
-                                        </label>
-                                        </Col>
-                                      </Row>
-                                        <Row className="fields">
-                                          <Col>
-                                            <label>
-                                              <input className="btn-radio" type="checkbox" name="rb" id="rb3" />
-                                              <span htmlFor="rb3" className="checkbox-text">پزشکی</span>
-                                            </label>
-                                        </Col>
-                                        <Col>
-                                          <label>
-                                            <input className="btn-radio" type="checkbox" name="rb" id="rb4" />
-                                            <span htmlFor="rb4" className="checkbox-text">حقوقی</span>
-                                          </label>
-                                        </Col>
-                                        </Row>
-                                </div>
-                            </div>
-                            <div className="input-group">
-                                <label htmlFor="skillLangs" className="col-form-label">
-                                    توانایی ترجمه ی چه زبان هایی را دارید؟
-                                </label>
-                                <Row>
-                                  <Col>
-                                      <div className="section">
-                                          <Select
-                                            className="customPicker"
-                                            ref="fromLanguage"
-                                            placeholder="از زبان ..."
-                                            options={options1}
-                                            name="select-language"
-                                            value={this.state.selectValueTF}
-                                            onChange={this.updateValueTF}
-                                            labelKey="name"
-                                            valueKey="name"
-                                          />
-                                      </div>
-                                    </Col>
-                                    <Col>
-                                          <Select
-                                            placeholder="به زبان ..."
-                                            className="customPicker section"
-                                            ref="toLanguage"
-                                            options={options2}
-                                            simpleValue
-                                            clearable
-                                            name="select-language"
-                                            value={this.state.selectValueTT}
-                                            onChange={this.updateValueTT}
-                                            searchable
-                                            labelKey="name"
-                                            valueKey="name"
-                                          />
-                                  </Col>
-                                </Row>
-                                <div className="form-group">
-                                    <button type="submit" className="btn btn-success btn-rec">
-                                        <i className="fa fa-plus"/>افزودن
-                                    </button>
-                                </div>
-                                <label htmlFor="" className="col-form-label sub-label">
-                                    <i className="fa fa-quote-left" aria-hidden="true"/> برای حذف موارد انتخاب شده روی آن ها کلیک کنید.
-                                </label>
-                                <div className="sub-heading" >
-                                    <a className="tag" href="#">علمی</a>
-                                    <a className="tag" href="#">زیست شناسی</a>
-                                    <a className="tag" href="#">میکرو بیولوژی</a>
-                                    <a className="tag" href="#">فوری</a>
-                                    <a className="tag" href="#">علمی</a>
-                                    <a className="tag" href="#">زیست شناسی</a>
-                                    <a className="tag" href="#">میکرو بیولوژی</a>
-                                </div>
-                                <div className="form-group">
-                                    <button type="submit" className="btn btn-primary btn-rec">
-                                        <i className="fa fa-check"/>ثبت تغییرات
-                                    </button>
-                                </div>
-                                </div>
-                            </form>
-                        </div>
-
+                    { this.state.showSkills ?
+                        <ProfileSkills updateValueTT={this.updateValueTT}
+                                       updateValueTF={this.updateValueTF}
+                                       selectValueTF={this.state.selectValueTF}
+                                       selectValueTT={this.state.selectValueTT}
+                                       IsTechnical={this.IsTechnical}
+                                       IsGeneral={this.IsGeneral}
+                                       IsLaw={this.IsLaw}
+                                       IsMedical={this.IsMedical}
+                                       is_general={this.state.is_general}
+                                       is_technical={this.state.is_technical}
+                                       is_medical={this.state.is_medical}
+                                       is_legal={this.state.is_legal}
+                                       Skills={this.state.skills}
+                                       formSubmitted={this.submitSkillChanges}
+                                       addSkills={this.addSkills}
+                        /> : null
+                    }
                     <div className="dash-con dash-profile-info con-body mb-4">
 
                       <span className="projectinfo">
@@ -397,9 +343,9 @@ class Profileinfo extends React.Component{
                             <div id="" className="form-group">
                                 <input type="password" className="form-control form-control-danger" id="" placeholder="رمز عبور جدید"/>
                             </div>
-                            <button type="submit" className="btn btn-primary btn-rec">
-                                <i className="fa fa-check"/>ثبت تغییر
-                            </button>
+                            <Button color="primary" className="btn btn-primary btn-rec" >
+                                <i className="fa fa-check" />ثبت تغییرات
+                            </Button>
                         </form>
                     </div>
                 </div>

@@ -10,13 +10,13 @@ const AddBid = (props) =>{
         <div className="col-sm-4">
                 <div className="con mb-4">
                     <h5 className="project-title">
-                        درباره پروژه
+                                      درباره پروژه
                     </h5>
                     <div className="divider"/>
                     <div className="sub-heading">
                         <span className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></span>
-                        <span className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> 2,000,000 تومان</span>
-                        <span className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> 3 ماه</span>
+                        <span className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</span>
+                        <span className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</span>
                         <span className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> دو ساعت قبل</span>
                     </div>
 

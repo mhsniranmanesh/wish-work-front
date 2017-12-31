@@ -7,6 +7,7 @@ const Greeting = (props) => {
         return(
             <ProfileInfoForHeader profileInfo={props.profileInfo}
                                   profilePic={props.profilePic}
+                                  GoToDashboard={props.GoToDashboard}
             />
         )
     }

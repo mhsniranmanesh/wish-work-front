@@ -78,7 +78,7 @@ const DashboardProjectSubmission = (props) =>{
                             />
                         </Col>
                     </Row>
-                    <Button type="submit" className="btn btn-primary btn-rec" onClick={props.myFunc}>
+                    <Button color="primary" type="submit" className="btn btn-primary btn-rec" onClick={props.myFunc}>
                         ایجاد پروژه
                     </Button>
                 </form>

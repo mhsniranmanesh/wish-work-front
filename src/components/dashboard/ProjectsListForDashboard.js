@@ -9,6 +9,7 @@ const ProjectsListForDashboard = ({Projects , myFunc}) =>{
             <div className="dash-divider"/>
             {Projects.map(ProjectDetail =>
                 <ProjectTemplateForDashboard key={ProjectDetail.id} ProjectDetail = {ProjectDetail}/>
+                
             )}
             <form onSubmit={myFunc}>
 

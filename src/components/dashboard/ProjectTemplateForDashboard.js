@@ -21,7 +21,7 @@ const ProjectTemplateForDashboard = ({ProjectDetail}) => {
                     </div>
                   </span> */}
                     <a href="#">
-                        <h6><strong>{ProjectDetail.title}</strong></h6>
+                        <h6 className="form-header-fontsize">{ProjectDetail.title}</h6>
                     </a>
                     <span className="sub-heading">
 
@@ -36,11 +36,11 @@ const ProjectTemplateForDashboard = ({ProjectDetail}) => {
                             {/*<a className="tag" href="#">#فوری</a>*/}
                         <a className="tag" href="#">{ProjectDetail.tags}</a>
                           </span>
-                    <div className="sub-heading">
-                        <i className="fa fa-user"/> <a href="#">4/5</a>
-                        {'  '}<i className="fa fa-usd"/> {' ' + ProjectDetail.price}
-                        {'  '}<i className="fa fa-clock-o"/> {' ' + ProjectDetail.releaseTime}
-                    </div>
+                    <ul className="sub-heading">
+                        <li><i className="fa fa-user"/> <span>4/5</span></li>
+                        <li><i className="fa fa-usd"/> <span>{ProjectDetail.price}</span></li>
+                        <li><i className="fa fa-clock-o"/> <span>{ProjectDetail.releaseTime}</span></li>
+                    </ul>
                 </div>
             </div>
     )

@@ -14,6 +14,7 @@ class MyProjects extends React.Component {
         this.onClick = this.onClick.bind(this);
         this.goToProjectAuctionPage = this.goToProjectAuctionPage.bind(this);
     }
+    
     size (obj) {
         let x = 0, key;
         for (key in obj) {

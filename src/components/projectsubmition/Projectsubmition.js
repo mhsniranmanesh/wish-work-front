@@ -42,6 +42,7 @@ class Projectsubmition extends React.Component{
             showError: false,
             validPrice: false,
             validTime: false,
+            validPage: false,
             type: 0,
             category: 0,
             bid_duration:2,
@@ -454,6 +455,10 @@ class Projectsubmition extends React.Component{
              this.setState({showError: true});
              this.setState({message:"لطفا زمان خود را صحیح وارد کنید"})
          }
+         else if(!this.state.validPage){
+             this.setState({showError: true});
+             this.setState({message:"لطفا تعداد صفحات ترجمه خود را وارد کنید"})
+         }
         else {
             // this.setState({});
             this.setState({showError: false, type : STATIC_DATAS.TYPE.NORMAL ,category : STATIC_DATAS.CATEGORY.TRANSLATION ,  modal: !this.state.modal});
@@ -584,7 +589,7 @@ class Projectsubmition extends React.Component{
                                 "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*"/>
                           </div>
 
-                          <legend htmlFor="" className="col-form-label form-header-fontsize">
+                          <legend htmlFor="" className="col-form-label form-header-fontsize" value={htis.state.pageNumber}>
                                 <span className="form-header-fontsize">تعداد صفحات پروژه خود را مشخص کنید</span>
 
                           </legend>

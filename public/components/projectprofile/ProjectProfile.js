@@ -15,7 +15,7 @@ class ProjectProfile extends React.Component {
         this.state = {projectDetail:Object.assign({} , props.projectDetail),
                       amountOfMileStones:0 , Length:0, bid_description:'',
                       bid_price:'' , ModalState:'' , showError:false , profileInfo :Object.assign({} , props.profileInfo),
-                      isLoggedIn:false , delivery_duration:10, ownerOfProject : false
+                      isLoggedIn:false , delivery_duration:4, ownerOfProject : false
                       };
         // delivery_duration: Array [ "This field is required." ]
         // number_of_milestones: Array [ "This field is required." ]

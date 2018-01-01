@@ -13,7 +13,7 @@ class Profileinfo extends React.Component{
         this.state = { bioReadOnly : true , jobReadOnly : true , degreeReadOnly : true, universityReadOnly : true ,
             profileInfo:"" , profilepicture: "" , selectValueTF :"" , selectValueTT : "" , saving : false,
             translationFatherTag : false , is_general: false , is_medical : false , is_technical : false , is_legal : false,
-            skills:'' , showSkills:false
+            skills:'' , showSkills:false , language_set:{}
         };
 
 
@@ -36,7 +36,14 @@ class Profileinfo extends React.Component{
         this.IsGeneral = this.IsGeneral.bind(this);
         this.submitSkillChanges = this.submitSkillChanges.bind(this);
         this.showSkills = this.showSkills.bind(this);
+        this.addSkills = this.addSkills.bind(this);
 
+    }
+
+    addSkills(){
+        var from_language = this.state.selectValueTF;
+        var to_language = this.state.selectValueTT;
+        this.setState({language_set:{from_language , to_language}});
     }
 
     showSkills(){
@@ -70,8 +77,8 @@ class Profileinfo extends React.Component{
 
     IsLaw(){
         this.setState({is_legal: true });
-        this.state.skills[0].translation_skill.is_legal= true ;
-        this.state.skills[0].translation_skill.is_legal = true ;
+        this.state.skills[0].translation_skill.is_legal= true;
+        this.state.skills[0].translation_skill.is_legal = true;
     }
 
 
@@ -108,7 +115,6 @@ class Profileinfo extends React.Component{
         let profileInfo = Object.assign({} , this.state.profileInfo);
         profileInfo.university = event.target.value;
         this.setState({profileInfo});
-
     }
 
     // shouldComponentUpdate(nextProps){
@@ -116,12 +122,14 @@ class Profileinfo extends React.Component{
     // }
 
     submitSkillChanges(){
+        console.log('this.state.language_set' , this.state.language_set);
+        this.state.skills[0].translation_skill.languages.push(this.state.language_set);
         var sendSkills = {
             is_general : this.state.skills[0].translation_skill.is_general,
             is_medical : this.state.skills[0].translation_skill.is_medical,
             is_technical : this.state.skills[0].translation_skill.is_technical,
             is_legal : this.state.skills[0].translation_skill.is_legal,
-            language_set : this.state.skills[0].translation_skill.languages
+            language_set : this.state.skills[0].translation_skill.language_set
         };
         console.log('sendSkills' ,sendSkills);
         this.props.actions.updateSkills(sendSkills).then(
@@ -314,6 +322,7 @@ class Profileinfo extends React.Component{
                                        is_legal={this.state.is_legal}
                                        Skills={this.state.skills}
                                        formSubmitted={this.submitSkillChanges}
+                                       addSkills={this.addSkills}
                         /> : null
                     }
                     <div className="dash-con dash-profile-info con-body mb-4">

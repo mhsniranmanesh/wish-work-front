@@ -7,11 +7,11 @@ const TranslationTags = (props) =>{
     var skills = [];
     var fatherTag = [];
     //console.log('props.Skills[0].translation_skill.languages[0]' , props.Skills[0].translation_skill.languages[0]);
-            for (var x = 0; x < props.Skills[0].translation_skill.languages.length; x++) {
+            for (var x = 0; x < props.Skills[0].translation_skill.language_set.length; x++) {
                 for (var y = 1; y<7; y++) {
-                    if(STATIC_DATAS.AVAILABLEFROMLANGUAGES[y-1].index == props.Skills[0].translation_skill.languages[x].from_language) {
+                    if(STATIC_DATAS.AVAILABLEFROMLANGUAGES[y-1].index == props.Skills[0].translation_skill.language_set[x].from_language) {
                         for (var z = 1; z<7; z++) {
-                            if (STATIC_DATAS.AVAILABLETOLANGUAGES[z-1].index == props.Skills[0].translation_skill.languages[x].to_language) {
+                            if (STATIC_DATAS.AVAILABLETOLANGUAGES[z-1].index == props.Skills[0].translation_skill.language_set[x].to_language) {
                                 skills.push(<TranslationTagTemplate
                                     fromLanguage={STATIC_DATAS.AVAILABLEFROMLANGUAGES[y-1].name}
                                     toLanguage={STATIC_DATAS.AVAILABLETOLANGUAGES[z-1].name}

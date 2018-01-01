@@ -34,6 +34,10 @@ const ProjectTemplate = (props ) => {
 
             }
     return (
+
+
+
+    <div>
         <div className="dash-con dash-new-project con-body mb-4">
             <h6>
                 {/*<strong>{ProjectSubmitted.title}</strong>*/}
@@ -61,6 +65,7 @@ const ProjectTemplate = (props ) => {
             <button type="submit" className="btn btn-primary btn-rec">
                 {XButtonName}            </button>
         </div>
+    </div>
     )
 };
 ProjectTemplate.PropTypes = {

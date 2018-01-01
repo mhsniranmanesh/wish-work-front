@@ -17,7 +17,7 @@ const DashboardProjectSubmission = (props) =>{
                 <h5>ایجاد پروژه جدید</h5>
                 <div className="dash-divider"/>
                 <form className="">
-                    <legend>زمینه ترجمه تان را انتخاب کنید</legend>
+                    <legend className="form-header-fontsize pt-2">زمینه ترجمه تان را انتخاب کنید</legend>
                     <Row className= "fields">
                         <Col>
                             <label>
@@ -78,7 +78,7 @@ const DashboardProjectSubmission = (props) =>{
                             />
                         </Col>
                     </Row>
-                    <Button type="submit" className="btn btn-primary btn-rec" onClick={props.myFunc}>
+                    <Button color="primary" type="submit" className="btn btn-primary btn-rec" onClick={props.myFunc}>
                         ایجاد پروژه
                     </Button>
                 </form>

@@ -31,6 +31,7 @@ export function loadNewInfosSuccess(profileInfo){
     return{type: types.UPDATE_NEW_INFOS_SUCCESS , profileInfo}
 }
 export function loadNewSkillsSuccess(profileSkills) {
+    debugger;
     return{type: types.UPDATE_NEW_SKILLS_IN_INFOS_SUCCESS , profileSkills}
 }
 export function profileInfo(){

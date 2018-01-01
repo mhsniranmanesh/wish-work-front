@@ -8,7 +8,7 @@ const AddBidMileStones = (props) => {
     for (var i = 0; i < a ; i++) {
         // note: we add a key prop here to allow react to uniquely identify each
         // element in this array. see: https://reactjs.org/docs/lists-and-keys.html
-        rows.push(<MileStonesHorizentalTemplate key={i}/>);
+        rows.push(<MileStonesHorizentalTemplate i={i} key={i}/>);
     }
     return <div>{rows}</div>;
 }

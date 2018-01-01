@@ -35,6 +35,7 @@ class Projectsubmition extends React.Component{
             title: "",
             description: "",
             budget: "",
+            pageNumber: "",
             time_limit: "",
             requiredTags: [],
             response: [],
@@ -405,6 +406,14 @@ class Projectsubmition extends React.Component{
         this.setState({time_limit: numb , validTime: trueOrFalseTimeValid2,});
     }
 
+    isInt (value){
+      if(isNaN(value)){
+        validPage
+      }
+      var x = parseFloat(value);
+      return isNaN(value) && (x | 0) === x;
+    }
+
 
     handleSubmit(event){
         console.log(this.state.field);
@@ -455,9 +464,13 @@ class Projectsubmition extends React.Component{
              this.setState({showError: true});
              this.setState({message:"لطفا زمان خود را صحیح وارد کنید"})
          }
-         else if(!this.state.validPage){
+         else if(!this.state.validPage && this.state.pageNumber ===""){
              this.setState({showError: true});
              this.setState({message:"لطفا تعداد صفحات ترجمه خود را وارد کنید"})
+         }
+         else if(!this.state.validPage){
+           this.setState({showError: true});
+           this.setState({message:"لطفا برای تعداد صفحات عدد صحیح وارد کنید"})
          }
         else {
             // this.setState({});
@@ -589,12 +602,27 @@ class Projectsubmition extends React.Component{
                                 "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*"/>
                           </div>
 
-                          <legend htmlFor="" className="col-form-label form-header-fontsize" value={htis.state.pageNumber}>
+                      <Row>
+                        <Col>
+
+                          <legend htmlFor="" className="col-form-label form-header-fontsize">
                                 <span className="form-header-fontsize">تعداد صفحات پروژه خود را مشخص کنید</span>
 
                           </legend>
 
                             <input type="text" className="form-control form-body-fontsize" id="pageNumber" />
+
+                        </Col>
+                        <Col>
+                          <legend htmlFor="" className="col-form-label form-header-fontsize">
+
+                                  <span className="form-header-fontsize">مدت برقراری مناقصه را مشخص کنید</span>
+
+                          </legend>
+
+                          <input type="text" className="form-control form-body-fontsize" id="bidDuration" />
+                          </Col>
+                          </Row>
 
 
                         <legend className="form-header-fontsize">

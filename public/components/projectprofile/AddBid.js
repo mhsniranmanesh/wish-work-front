@@ -103,7 +103,7 @@ const AddBid = (props) =>{
                     </div>
                 </div>
                 <div className="con mb-4">
-                    <button  type="submit" className="btn btn-primary btn-rec" data-toggle="modal" data-target="#biddingModal">
+                    <button  type="submit" className="btn btn-primary btn-rec btn-block" data-toggle="modal" data-target="#biddingModal">
                         پیشنهاد قیمت
                     </button>
                 </div>

@@ -135,6 +135,9 @@ class Header2 extends React.Component {
                                         <NavLink to='/account/manage'>مدیریت مالی</NavLink>
                                     </li>
                                     <li>
+                                        <NavLink to='/account/wishcoin'>ویش‌کوین</NavLink>
+                                    </li>
+                                    <li>
                                         <NavLink to="/account/bill">صورت حساب</NavLink>
                                     </li>
                                 </ul>

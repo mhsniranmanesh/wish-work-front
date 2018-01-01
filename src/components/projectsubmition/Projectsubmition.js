@@ -605,7 +605,7 @@ class Projectsubmition extends React.Component{
                       <Row>
                         <Col>
 
-                          <legend htmlFor="" className="col-form-label form-header-fontsize">
+                          <legend htmlFor="" className="col-form-label form-header-fontsize" value={this.state.pageNumber}>
                                 <span className="form-header-fontsize">تعداد صفحات پروژه خود را مشخص کنید</span>
 
                           </legend>

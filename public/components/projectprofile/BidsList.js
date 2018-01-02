@@ -1,15 +1,21 @@
 import React from 'react';
 import BidTemplate from './BidTemplate';
+import PropTypes from 'prop-types';
 
-const BidsList = ({Bids , isLoggedIn , ownerOfProject}) => {
+const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash}) => {
     var BidT = [] ;
+    var mileStoneX = {};
     for(var i = 0 ; i < Bids.length ; i++){
         BidT.push(<BidTemplate key={Bids[i].uuid}
                                Bid={Bids[i]}
                                ownerOfProject={ownerOfProject}
                                isLoggedIn={isLoggedIn}
+                               number={i}
+                               mileStoneX={mileStoneX}
+                               priceForCash={priceForCash}
+                               goToCash={goToCash}
         />);
-        console.log(Bids[i] , 'Bids[i]');
+        console.log(BidT , 'BidT');
     }
         return (
             <div>
@@ -36,6 +42,9 @@ const BidsList = ({Bids , isLoggedIn , ownerOfProject}) => {
             </div>
         )
 
+};
+BidsList.PropTypes ={
+  goToCash : PropTypes.func.isRequired
 };
 
 export default BidsList ;

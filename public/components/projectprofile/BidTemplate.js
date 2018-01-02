@@ -1,7 +1,8 @@
 import React from 'react';
 import AddedBidsMileStone from './AddedBidsMileStone';
+import PropTypes from 'prop-types';
 
-const BidTemplate = ({Bid , isLoggedIn , ownerOfProject}) => {
+const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX , goToCash , priceForCash}) => {
     console.log(ownerOfProject , 'ownerOfProject2');
     if(isLoggedIn) {
 
@@ -18,7 +19,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject}) => {
                                 <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
                                 <span className="bidding-price">{Bid.price} تومان</span>
                                 <button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"
-                                        data-toggle="modal" data-target="#accBiddingModal">
+                                        data-toggle="modal" data-target={"#" + (number*10) }>
                                     <i className="fa fa-handshake-o"/>
                                 </button>
 
@@ -35,7 +36,14 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject}) => {
                         </div>
                     </div>
                     <AddedBidsMileStone number_of_milestones={Bid.number_of_milestones}
-                                        delivery_duration={Bid.delivery_duration} />
+                                        delivery_duration={Bid.delivery_duration}
+                                        price_of_bid={Bid.price}
+                                        key={Bid.uuid}
+                                        number={number}
+                                        mileStoneX={mileStoneX}
+                                        goToCash={goToCash}
+                                        priceForCash={priceForCash}
+                    />
                     <div className="divider"/>
                 </div>
             )
@@ -104,6 +112,8 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject}) => {
         )
     }
 };
+
+
 
 export default BidTemplate;
 

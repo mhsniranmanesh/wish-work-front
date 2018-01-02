@@ -7,7 +7,7 @@ const MileStonesHorizentalTemplate = (props) =>{
             <div>
                 <article className="timeline-entry">
                     <div className="timeline-entry-inner">
-                        <time className="timeline-time"><span>تا {props.x}</span></time>
+                        <time className="timeline-time"><span>تا {props.x} روز دیگر</span></time>
                         <div className="timeline-icon bg-primary">
                             <i className="entypo-feather"/>
                         </div>

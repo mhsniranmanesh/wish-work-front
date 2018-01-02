@@ -2,7 +2,8 @@ body {
     background: #343a40;
 }
 
-body.fixed-nav {
+
+/* body.fixed-nav {
     padding-top: 54px;
 }
 
@@ -10,9 +11,10 @@ body.fixed-nav {
     body.fixed-nav {
         padding-top: 56px;
     }
-}
-.tolang{
-  width: 50vh;
+} */
+
+.tolang {
+    width: 50vh;
 }
 
 .scroll-to-top {
@@ -64,6 +66,7 @@ body.fixed-nav {
     right: -25px;
     font-size: 5rem;
     -webkit-transform: rotate(15deg);
+    -moz-transform: rotate(15deg);
     -ms-transform: rotate(15deg);
     transform: rotate(15deg);
 }
@@ -110,6 +113,7 @@ body.fixed-nav {
 #mainNav .navbar-collapse .navbar-sidenav .sidenav-second-level,
 #mainNav .navbar-collapse .navbar-sidenav .sidenav-third-level {
     padding-left: 0;
+    font-size: 14px;
     list-style: none;
 }
 
@@ -197,6 +201,7 @@ body.fixed-nav {
         overflow-x: hidden;
         overflow-y: auto;
         -webkit-flex-direction: column;
+        -moz-flex-direction: column;
         -ms-flex-direction: column;
         flex-direction: column;
         margin-top: 62px;
@@ -208,6 +213,7 @@ body.fixed-nav {
     }
     #mainNav .navbar-collapse .navbar-sidenav>.nav-item>.nav-link {
         padding: 1em;
+        font-size: 15px;
     }
     #mainNav .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level,
     #mainNav .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level {
@@ -264,6 +270,7 @@ body.fixed-nav {
         overflow-x: hidden;
         overflow-y: auto;
         -webkit-flex-direction: column;
+        -moz-flex-direction: column;
         -ms-flex-direction: column;
         flex-direction: column;
         margin-top: calc(100vh - 56px);
@@ -322,7 +329,7 @@ body.sidenav-toggled #mainNav.static-top #sidenavToggler i {
 .content-wrapper {
     overflow-x: hidden;
     background: #f1f1f1;
-    margin-top: 3px;
+    margin-top: 63px;
     color: #555;
 }
 
@@ -410,14 +417,10 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     padding-top: 10px;
 }
 
-.content-wrapper h6 {
+.content- h6 {
     font-weight: 300;
     margin-bottom: 5px;
 }
-
-
-
-
 
 .dash-con h5 .fa,
 .dash-con h6 .fa {
@@ -427,205 +430,33 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 .dash-divider {
     display: block;
     height: 0;
-    margin: 0.75rem 0;
+    /* margin: 0.75rem 0; */
     overflow: hidden;
     border-top: 1px solid #e9ecef;
 }
 
-@media(min-width:768px){
-  .dash-recom-item {
-        border-bottom: 3px solid #D9DADB;
-        display: inline-block;
-        min-height: 20vh;
-        width: 100%;
-        margin-bottom: 0.75rem;
-    }
-    .prices {
-        float: right;
-        display: inline-block;
-        min-height: 20vh;
-        margin-left: 10px;
-    }
-    svg {
-        width: 5px;
-        height: 8vh;
-    }
+.dash-recom-item {
+    border-bottom: 1px solid #D9DADB;
+    display: inline-block;
+    width: 100%;
+    padding: 0.5rem;
 }
 
-@media(min-width:426px) {
-    .dash-recom-item {
-        border-bottom: 3px solid #D9DADB;
-        display: inline-block;
-        min-height: 10vh;
-        width: 100%;
-        margin-bottom: 0.75rem;
-    }
-    .prices {
-        float: right;
-        display: inline-block;
-        min-height: 10vh;
-        margin-left: 10px;
-    }
-    svg {
-        width: 5px;
-        height: 5vh;
-    }
+.prices {
+    float: right;
+    display: inline-block;
+    min-height: 20vh;
+    margin-left: 10px;
 }
 
-@media(max-width:425px) {
-    .dash-recom-item {
-        border-bottom: 3px solid #D9DADB;
-        display: inline-block;
-        min-height: 20vh;
-        width: 100%;
-        margin-bottom: 0.75rem;
-    }
-    .prices {
-        float: right;
-        display: inline-block;
-        min-height: 20vh;
-        margin-left: 10px;
-    }
-    svg {
-        width: 5px;
-        height: 8vh;
-    }
+svg {
+    width: 5px;
+    height: 8vh;
 }
-
-
-
-/*/////////////////////////////for recomended projects////////////////////////////////*/
-
-@media(min-width:102px) {
-    .dash-recom-item {
-        border-bottom: 3px solid #D9DADB;
-        display: inline-block;
-        min-height: 20vh;
-        width: 100%;
-        margin-bottom: 0.75rem;
-    }
-    .recom .dollar {
-        float: right;
-        display: inline-block;
-        min-height: 20vh;
-        margin-left: 10px;
-    }
-    .recom  svg {
-          width: 5px;
-          height: 8vh;
-      }
-    .recom  svg rect {
-          padding-top: 2px;
-          width: 5px;
-          height: 8vh;
-      }
-}
-@media(width:1024px) {
-    .dash-recom-item {
-        border-bottom: 3px solid #D9DADB;
-        display: inline-block;
-        min-height: 10vh;
-        width: 100%;
-        margin-bottom: 0.75rem;
-    }
-    .recom .dollar {
-        float: right;
-        display: inline-block;
-        min-height: 10vh;
-        margin-left: 10px;
-    }
-    .recom  svg {
-          width: 5px;
-          height: 4.5vh;
-      }
-    .recom  svg rect {
-          padding-top: 2px;
-          width: 5px;
-          height: 4.5vh;
-      }
-}
-
-@media(min-width:767px) and (max-width:1023px){
- .dash-recom-item {
-        border-bottom: 3px solid #D9DADB;
-        display: inline-block;
-        min-height: 10vh;
-        width: 100%;
-        margin-bottom: 0.25rem;
-    }
-    .recom .dollar {
-        float: right;
-        display: inline-block;
-        min-height: 10vh;
-        margin-left: 10px;
-    }
-    .recom  svg {
-          width: 5px;
-          height: 6vh;
-      }
-    .recom  svg rect {
-          padding-top: 2px;
-          width: 5px;
-          height: 6vh;
-      }
-}
-
-@media(min-width:426px) and (max-width:766px) {
-  .dash-recom-item {
-        border-bottom: 3px solid #D9DADB;
-        display: inline-block;
-        min-height: 10vh;
-        width: 100%;
-        margin-bottom: 0.75rem;
-    }
-  .recom  .dollar {
-        float: right;
-        display: inline-block;
-        min-height: 20vh;
-        margin-left: 10px;
-    }
-  .recom  svg {
-        width: 5px;
-        height: 8vh;
-    }
-  .recom  svg rect {
-          padding-top: 2px;
-          width: 5px;
-          height: 10vh;
-      }
-}
-
-@media(max-width:425px) {
-  .dash-recom-item {
-        border-bottom: 3px solid #D9DADB;
-        display: inline-block;
-        min-height: 20vh;
-        width: 100%;
-        margin-bottom: 0.75rem;
-    }
-  .recom  .dollar {
-        float: right;
-        display: inline-block;
-        min-height: 20vh;
-        margin-left: 10px;
-    }
-  .recom  svg {
-        width: 5px;
-        height: 8vh;
-    }
-  .recom  svg rect {
-          padding-top: 2px;
-          width: 5px;
-          height: 10vh;
-      }
-}
-
-
-
-
 
 
 /*///////////////////////////////////*/
+
 .content {
     vertical-align: middle;
     /*text-align: center;*/
@@ -687,7 +518,8 @@ h6.dash-profile-stars {
 }
 
 .navbar-light .navbar-sidenav .nav-link:focus,
-.navbar-light .navbar-sidenav .nav-link:hover {
+.navbar-light .navbar-sidenav .nav-link:hover,
+.navbar-light .navbar-sidenav .nav-link:active {
     color: #e0e0e0;
 }
 
@@ -798,6 +630,7 @@ span.time-msg {
     font-weight: 300;
     color: #212529;
     font-size: 15px;
+    padding: 0.5rem;
     border: 0;
 }
 
@@ -1217,6 +1050,7 @@ img {
     color: #fff;
     font-weight: 400;
 }
+
 .contacts-section {
     height: calc(100vh - 59px);
     background: #00141B;
@@ -1428,21 +1262,22 @@ img {
     top: 10px;
 }
 
-
-.cashin{
-  color: #579B00;
-}
-.cashout{
-  color: #5A0370;
+.cashin {
+    color: #579B00;
 }
 
-.dash-new-project .badge{
-  margin-right: 10px;
+.cashout {
+    color: #5A0370;
 }
 
-.beauty-text{
-  text-align: justify;
+.dash-new-project .badge {
+    margin-right: 10px;
 }
+
+.beauty-text {
+    text-align: justify;
+}
+
 
 /*.myproject-btn{
   margin-left: 10px;
@@ -1450,9 +1285,42 @@ img {
   width: 20vw;
 }*/
 
+
 /*my project check box */
 
+.boxes input[type="checkbox"] {
+    display: none;
+}
 
+.boxes input[type="checkbox"]+label {
+    display: inline-block;
+    position: relative;
+    color: #ddd;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.boxes input[type="checkbox"]+label:last-child {
+    margin-bottom: 0;
+}
+
+.boxes input[type="checkbox"]+label:before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10%;
+    position: relative;
+    right: 0;
+    top: 5px;
+    margin-left: 5px;
+    /*opacity: .6;*/
+    -webkit-transition: all .12s, border-color .08s;
+    transition: all .12s, border-color .08s;
+}
 
 .boxes input[type="checkbox"] {
   display: none;
@@ -2025,7 +1893,6 @@ img {
 }
 
 .badge {
-    border-radius: 0;
     font-size: 90%;
 }
 
@@ -2056,17 +1923,21 @@ img {
 .project-status .btn-rec {
     padding: 10px;
 }
+
 .tags {
     background: none repeat scroll 0 0 #fff;
     display: inline;
     padding: 0.5em;
     width: 100%;
 }
-.tags li.tagAdd, .tags li.addedTag {
+
+.tags li.tagAdd,
+.tags li.addedTag {
     float: right;
     margin-left: 0.25em;
     margin-right: 0.25em;
 }
+
 .tags li.addedTag {
     background: none repeat scroll 0 0 #019f86;
     font-size: 15px;

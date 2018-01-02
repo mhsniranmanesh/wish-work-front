@@ -7,8 +7,8 @@ const ProjectTemplate = (props ) => {
     var XButtonName = "";
     var XHref = "#";
     if(props.ClientProjects.is_banned){
-        x="مصدود شده";
-        XClass = "badge badge-primary"
+        x="مسدود شده";
+        XClass = "badge badge-danger"
     }
     else {
         if(!props.ClientProjects.is_verified){
@@ -33,6 +33,7 @@ const ProjectTemplate = (props ) => {
         }
 
             }
+
     return (
 
 
@@ -54,7 +55,7 @@ const ProjectTemplate = (props ) => {
             {/*</h6>*/}
             <span className="sub-heading">
                             <i className="fa fa-calendar"/> ۱۳۹۶/۵/۹
-                        </span>
+            </span>
             {/*<span className="sub-heading">*/}
                             {/*<i className="fa fa-calendar"/> {ProjectSubmitted.ReleaseTime}*/}
                         {/*</span>*/}

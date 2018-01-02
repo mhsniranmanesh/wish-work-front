@@ -5,8 +5,8 @@ const ProjectDetail = (props) =>{
 
   return(
           <div className="con mb-4">
-              <span className="price-badge"><i className="fa fa-usd"/></span>
-              <span className="time-badge"><i className="fa fa-calendar-o"/></span>
+              {/* <span className="price-badge"><i className="fa fa-usd"/></span>
+              <span className="time-badge"><i className="fa fa-calendar-o"/></span> */}
               <h5 className="project-title">
                   {props.Detail.title}
               </h5>

@@ -12,6 +12,7 @@ import Button from './Button';
 class ProjectProfile extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             projectDetail: "",
             amountOfMileStones: 0, Length: 0, bid_description: '',

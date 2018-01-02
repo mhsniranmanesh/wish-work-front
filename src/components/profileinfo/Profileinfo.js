@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import * as profileInfo from '../../actions/profileInfo.js';
 import {Input, Button} from 'reactstrap';
 import ProfileSkills from './ProfileSkills';
-
+import ProfilePic from './ProfilePic';
 
 class Profileinfo extends React.Component{
     constructor(props){
@@ -37,7 +37,12 @@ class Profileinfo extends React.Component{
         this.submitSkillChanges = this.submitSkillChanges.bind(this);
         this.showSkills = this.showSkills.bind(this);
         this.addSkills = this.addSkills.bind(this);
+        this.picUploader = this.picUploader.bind(this);
 
+    }
+
+    picUploader(event){
+        console.log(event.target.files[0]);
     }
 
     addSkills(){
@@ -173,11 +178,11 @@ class Profileinfo extends React.Component{
         return x;
     };
     componentWillReceiveProps(nextProps) {
-        console.log('nextProps' ,nextProps);
+       // console.log('nextProps' ,nextProps);
         var size = this.size(nextProps.profileInfo);
-        console.log("size of profileInfo in nextProps" , size);
+       // console.log("size of profileInfo in nextProps" , size);
         if (this.props.profileInfo[size-1] != nextProps.profileInfo[size-1]) {
-            console.log('nextProps.profileInfo[size-1]', nextProps.profileInfo[size - 1]);
+          //  console.log('nextProps.profileInfo[size-1]', nextProps.profileInfo[size - 1]);
             this.setState({profileInfo: nextProps.profileInfo[size - 1]});
             this.setState({profilepicture: nextProps.profileInfo[size-1].profile_picture});
             this.setState({skills: nextProps.profileInfo[size - 1].skills});
@@ -220,38 +225,39 @@ class Profileinfo extends React.Component{
         <div className="container-fluid">
             <div className="row">
                 <div className="col-sm-6 d-block mx-auto">
-                    <div className="dash-con dash-profile-info con-body mb-4">
 
-                        <span className="projectinfo">
-                          <i className="fa fa-camera" aria-hidden="true"/>
-                        </span>
-                        <span className="projectinfo">
-                          <h5 style={{display:'inline'}}>تغییر عکس پروفایل</h5>
-                        </span>
+                    {/*<div className="dash-con dash-profile-info con-body mb-4">*/}
 
-                        <div className="dash-divider"/>
-                        <form className="">
-                            <div className="media">
-                                <a href="#" className="">
-                                    <img className="rounded-circle d-flex ml-3" src={this.state.profilepicture}  style={ {height:125 , width:125} }/>
-                                    <i className="fa fa-camera"/>
-                                </a>
-                                <div className="media-body">
-                                    <label htmlFor="" className="col-form-label">
-                                            برای تغییر عکس پروفایل، روی عکس خود کلیک کنید.
-                                    </label>
-                                    <label htmlFor="" className="col-form-label sub-label">
-                                        <span className="quote justify">
-                                          <i className="fa fa-quote-left" aria-hidden="true"/> فریلنسر هایی که برای خود عکسی با ظاهری دوستانه و حرفه ای انتخاب می کنند، تا 5 برابر شانس بیشتری برای پروژه انجام دادن دارند.
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <button type="submit" className="btn btn-primary btn-rec">
-                                <i className="fa fa-check"/>آپلود عکس
-                            </button>
-                        </form>
-                    </div>
+                        {/*<span className="projectinfo">*/}
+                          {/*<i className="fa fa-camera" aria-hidden="true"/>*/}
+                        {/*</span>*/}
+                        {/*<span className="projectinfo">*/}
+                          {/*<h5 style={{display:'inline'}}>تغییر عکس پروفایل</h5>*/}
+                        {/*</span>*/}
+                    <ProfilePic Picture={this.state.profilepicture}/>
+                        {/*<div className="dash-divider"/>*/}
+                        {/*<form className="">*/}
+                            {/*<div className="media">*/}
+                                {/*<a href="#" className="">*/}
+                                    {/*<img className="rounded-circle d-flex ml-3" src={this.state.profilepicture}  style={ {height:125 , width:125} }/>*/}
+                                    {/*<i className="fa fa-camera"/>*/}
+                                {/*</a>*/}
+                                {/*<div className="media-body">*/}
+                                    {/*<label htmlFor="" className="col-form-label">*/}
+                                            {/*برای تغییر عکس پروفایل، روی عکس خود کلیک کنید.*/}
+                                    {/*</label>*/}
+                                    {/*<label htmlFor="" className="col-form-label sub-label">*/}
+                                        {/*<span className="quote justify">*/}
+                                          {/*<i className="fa fa-quote-left" aria-hidden="true"/> فریلنسر هایی که برای خود عکسی با ظاهری دوستانه و حرفه ای انتخاب می کنند، تا 5 برابر شانس بیشتری برای پروژه انجام دادن دارند.*/}
+                                        {/*</span>*/}
+                                    {/*</label>*/}
+                                {/*</div>*/}
+                            {/*</div>*/}
+                            {/*<button type="submit" className="btn btn-primary btn-rec">*/}
+                                {/*<i className="fa fa-check"/>آپلود عکس*/}
+                            {/*</button>*/}
+                        {/*</form>*/}
+                    {/*</div>*/}
                     <div className="dash-con dash-profile-info con-body mb-4">
 
                       <span className="projectinfo">

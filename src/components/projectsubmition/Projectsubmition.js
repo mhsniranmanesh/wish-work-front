@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -678,8 +678,10 @@ class Projectsubmition extends React.Component{
 
                         <div className="form-group drag-drop mt-2 mb-4 ">
                             <label className="form-header-fontsize">فایل های مربوط به پروژه را آپلود کنید.</label>
-                            <input type="file" className="form-control-file form-body-fontsize" id="inputFile" onChange={this.dragDrop} data-title="فایل را بگیرید و اینجا رها کنید." multiple="" accept=
+                            <div className="container form-control-file">
+                                <input type="file" className="form-body-fontsize" id="inputFile" onChange={this.dragDrop} data-title="فایل را بگیرید و اینجا رها کنید." multiple="" accept=
                                 "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*"/>
+                            </div>
                           </div>
 
                       <Row>

@@ -707,8 +707,8 @@ span.notif-cat {
     box-shadow: 0 0 5px solid currentColor;
 }
 
-.drag-drop .form-control-file:before {
-    content: attr(data-title);
+.drag-drop .form-control-file::before {
+    content: "فایل را بگیرید و اینجا رها کنید";
     position: absolute;
     top: 0.5em;
     left: 0;

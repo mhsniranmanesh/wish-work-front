@@ -36,6 +36,7 @@ class Projectsubmition extends React.Component{
             description: "",
             budget: "",
             pageNumber: "",
+            auctionTime: "",
             time_limit: "",
             requiredTags: [],
             response: [],
@@ -44,15 +45,17 @@ class Projectsubmition extends React.Component{
             validPrice: false,
             validTime: false,
             validPage: false,
+            validAuction: false,
+            validAuctionLimit: false,
             type: 0,
             category: 0,
-            bid_duration:2,
+            bid_duration:0,
             field:"",
             popoverOpenPrice: false,
             popoverOpenTime: false,
             popoverOpenShow: false,
             popoverOpenDesc: false,
-            number_of_pages : 2,
+            number_of_pages : 0,
         };
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
@@ -65,7 +68,9 @@ class Projectsubmition extends React.Component{
         this.togglePopoverDesc = this.togglePopoverDesc.bind(this);
 
         this.handleOnChange = this.handleOnChange.bind(this);
+        this.roundProjectAuctionTime = this.roundProjectAuctionTime.bind(this);
         this.roundProjectPrice =this.roundProjectPrice.bind(this);
+        this.roundProjectPage = this.roundProjectPage.bind(this);
         this.roundProjectTime = this.roundProjectTime.bind(this);
         this.IsLaw = this.IsLaw.bind(this);
         this.IsMedical = this.IsMedical.bind(this);
@@ -84,8 +89,11 @@ class Projectsubmition extends React.Component{
         this.dragDrop = this.dragDrop.bind(this);
         this.submit = this.submit.bind(this);
         this.validatePrice = this.validatePrice.bind(this);
+        this.validateAuction = this.validateAuction.bind(this);
         this.validateTime = this.validateTime.bind(this);
         this.persianToEnglish = this.persianToEnglish.bind(this);
+        this.submitProjectPageState = this.submitProjectPageState.bind(this);
+        this.submitProjectAuctionState = this.submitProjectAuctionState.bind(this);
         this.redirect = this.redirect.bind(this);
     }
 
@@ -141,7 +149,6 @@ class Projectsubmition extends React.Component{
 
       });
   }
-
 
 
 
@@ -208,6 +215,16 @@ class Projectsubmition extends React.Component{
         const tm = /^\d+$/;
         return tm.test(time);
     }
+    validatePage(page){
+      const pg = /^\d+$/;
+      return pg.test(page);
+    }
+    validateAuction(aucTime){
+      const aucT = /^\d+$/;
+      return aucT.test(aucTime);
+
+    }
+
     componentWillMount(){
        // console.log('this.props.location.search.length' , this.props.location.search.length);
         if(this.props.location.search.length === 6){
@@ -371,6 +388,24 @@ class Projectsubmition extends React.Component{
         //console.log('state:' ,this.state);
         //console.log('length:' , this.state.translationFatherTag.length);
     }
+
+
+    submitProjectAuctionState(event){
+      let auction = event.target.value;
+      const trueOrFalseAuctionValid = this.validateAuction(auction);
+      this.setState({auctionTime: event.target.value , validAuction: trueOrFalseAuctionValid})
+    }
+
+
+    submitProjectPageState(event){
+
+      let page = event.target.value;
+      const trueOrFalsePageValid = this.validatePage(page);
+      this.setState({pageNumber: event.target.value , validPage: trueOrFalsePageValid  })
+
+    }
+
+
     submitProjectPriceState(event){
         let price = event.target.value;
         price = this.persianToEnglish(price);
@@ -395,6 +430,47 @@ class Projectsubmition extends React.Component{
         this.setState({budget: numb , validPrice : trueOrFalsePriceValid2})
 
     }
+
+    roundProjectAuctionTime(event){
+      let numb = Number(event.target.value);
+      numb = (Math.ceil(numb));
+      const trueOrFalseAuctionValid2 = this.validateAuction(numb);
+
+
+
+      if(isNaN(numb)){
+          numb = "";
+      }
+      else if( (numb>=2) && (numb<=7) ){
+        this.setState({ validAuctionLimit: true })
+      }
+      else{
+        this.setState({ validAuctionLimit: false })
+
+      }
+
+      event.target.value = numb;
+      this.setState({auctionTime: numb , validAuction: trueOrFalseAuctionValid2});
+    }
+
+
+
+    roundProjectPage(event){
+      let numb = Number(event.target.value);
+      numb = (Math.ceil(numb));
+      const trueOrFalsePageValid2 = this.validatePage(numb);
+
+      if(isNaN(numb)){
+          numb = "";
+      }
+
+      event.target.value = numb;
+      this.setState({pageNumber: numb, validPage : trueOrFalsePageValid2});
+
+    }
+
+
+
     roundProjectTime(event){
 
         let numb = Number(event.target.value);
@@ -406,13 +482,7 @@ class Projectsubmition extends React.Component{
         this.setState({time_limit: numb , validTime: trueOrFalseTimeValid2,});
     }
 
-    isInt (value){
-      if(isNaN(value)){
-        validPage
-      }
-      var x = parseFloat(value);
-      return isNaN(value) && (x | 0) === x;
-    }
+
 
 
     handleSubmit(event){
@@ -472,11 +542,21 @@ class Projectsubmition extends React.Component{
            this.setState({showError: true});
            this.setState({message:"لطفا برای تعداد صفحات عدد صحیح وارد کنید"})
          }
+         else if(!this.state.validAuction && this.state.auctionTime ===""){
+             this.setState({showError: true});
+             this.setState({message:"لطفا زمان مناقصه را مشخص کنید"})
+         }
+         else if(!this.state.validAuctionLimit && this.state.auctionTime !==""){
+           this.setState({showError: true});
+           this.setState({message:"لطفا زمان مناقصه را بین ۲ تا ۷ روز انتخاب کنید"})
+         }
         else {
             // this.setState({});
             this.setState({showError: false, type : STATIC_DATAS.TYPE.NORMAL ,category : STATIC_DATAS.CATEGORY.TRANSLATION ,  modal: !this.state.modal});
             this.setState({from_language: this.state.translationFrom});
             this.setState({to_language: this.state.translationTo});
+            this.setState({number_of_pages: this.state.pageNumber});
+            this.setState({bid_duration: this.state.auctionTime});
             // this.setState({field : this.state.translationFatherTag})
             // this.setState({
             //     modal: !this.state.modal
@@ -605,12 +685,12 @@ class Projectsubmition extends React.Component{
                       <Row>
                         <Col>
 
-                          <legend htmlFor="" className="col-form-label form-header-fontsize" value={this.state.pageNumber}>
+                          <legend htmlFor="" className="col-form-label form-header-fontsize">
                                 <span className="form-header-fontsize">تعداد صفحات پروژه خود را مشخص کنید</span>
 
                           </legend>
 
-                            <input type="text" className="form-control form-body-fontsize" id="pageNumber" />
+                          <input type="text" className="form-control form-body-fontsize" id="pageInput" value={this.state.pageNumber} onChange={this.submitProjectPageState} onBlur={this.roundProjectPage}/>
 
                         </Col>
                         <Col>
@@ -620,7 +700,7 @@ class Projectsubmition extends React.Component{
 
                           </legend>
 
-                          <input type="text" className="form-control form-body-fontsize" id="bidDuration" />
+                          <input type="text" className="form-control form-body-fontsize" id="auctionInput" value={this.state.auctionTime} onChange={this.submitProjectAuctionState} onBlur={this.roundProjectAuctionTime}/>
                           </Col>
                           </Row>
 

@@ -678,13 +678,14 @@ class Projectsubmition extends React.Component{
 
                         <div className="form-group drag-drop mt-2 mb-4 ">
                             <label className="form-header-fontsize">فایل های مربوط به پروژه را آپلود کنید.</label>
-                            <div className="container form-control-file">
-                                <input type="file" className="form-body-fontsize" id="inputFile" onChange={this.dragDrop} data-title="فایل را بگیرید و اینجا رها کنید." multiple="" accept=
+                            <label className="container form-control-file " htmlFor="inputFile">
+                        </label>
+                                <input type="file" className="form-control-box form-body-fontsize" id="inputFile" onChange={this.dragDrop} data-title="فایل را بگیرید و اینجا رها کنید." multiple="" accept=
                                 "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*"/>
-                            </div>
-                          </div>
 
-                      <Row>
+                        </div>
+
+                      <Row className="page-auction">
                         <Col>
 
                           <legend htmlFor="" className="col-form-label form-header-fontsize">
@@ -704,7 +705,7 @@ class Projectsubmition extends React.Component{
 
                           <input type="text" className="form-control form-body-fontsize" id="auctionInput" value={this.state.auctionTime} onChange={this.submitProjectAuctionState} onBlur={this.roundProjectAuctionTime}/>
                           </Col>
-                          </Row>
+                      </Row>
 
 
                         <legend className="form-header-fontsize">

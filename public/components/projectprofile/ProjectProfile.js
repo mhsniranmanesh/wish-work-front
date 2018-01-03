@@ -12,12 +12,25 @@ import Button from './Button';
 class ProjectProfile extends React.Component {
     constructor(props) {
         super(props);
+<<<<<<< HEAD
         this.state = {projectDetail:Object.assign({} , props.projectDetail),
                       amountOfMileStones:0 , Length:0, bid_description:'',
                       bid_price:'' , ModalState:'' , showError:false , profileInfo :Object.assign({} , props.profileInfo),
                       isLoggedIn:false , delivery_duration:4, ownerOfProject : false
                       };
 
+=======
+
+        this.state = {
+            projectDetail: "",
+            amountOfMileStones: 0, Length: 0, bid_description: '',
+            bid_price: '', ModalState: '', showError: false,
+            profileInfo: Object.assign({}, props.profileInfo),
+            isLoggedIn: false, delivery_duration: 10,
+            ownerOfProject: false, showBidsList: false ,
+            priceForCash : "" ,
+        };
+>>>>>>> 29328689c4e07e92862cc52b51e990d7dfe925bb
         // delivery_duration: Array [ "This field is required." ]
         // number_of_milestones: Array [ "This field is required." ]
         // price: Array [ "This field is required." ]
@@ -31,10 +44,17 @@ class ProjectProfile extends React.Component {
         this.clicksubmit = this.clicksubmit.bind(this);
         this.goToCash = this.goToCash.bind(this);
     }
-    goToCash(){
+
+    goToCash(y){
+        //this.setState({priceForCash : x});
+        console.log(y , 'y');
+        let price = y.toString();
+        console.log(price , 'this is price');
+        console.log(this.state.priceForCash , 'price of freelancer');
+        //console.log(bid_price , 'bid_price')
         this.context.router.history.push({
-            pathname:'/project/submit',
-            search : '1'
+            pathname:'/account/cash',
+            search : price
         });
     }
     clicksubmit(){
@@ -164,7 +184,10 @@ class ProjectProfile extends React.Component {
                             <div className="con mb-4">
                                 {this.state.showBidsList ? <BidsList isLoggedIn={this.state.isLoggedIn}
                                                                      ownerOfProject={this.state.ownerOfProject}
-                                                                     Bids={this.state.projectDetail.project_bids}/> : null}
+                                                                     Bids={this.state.projectDetail.project_bids}
+                                                                     priceForCash={this.state.priceForCash}
+                                                                     goToCash={this.goToCash}
+                                /> : null}
                             </div>
                         </div>
                         {this.state.ownerOfProject ?

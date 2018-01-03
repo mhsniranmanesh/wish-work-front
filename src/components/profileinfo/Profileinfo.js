@@ -13,7 +13,7 @@ class Profileinfo extends React.Component{
         this.state = { bioReadOnly : true , jobReadOnly : true , degreeReadOnly : true, universityReadOnly : true ,
             profileInfo:"" , profilepicture: "" , selectValueTF :"" , selectValueTT : "" , saving : false,
             translationFatherTag : false , is_general: false , is_medical : false , is_technical : false , is_legal : false,
-            skills:'' , showSkills:false , language_set:{}
+            skills:'' , showSkills:true , language_set:{}
         };
 
 
@@ -182,10 +182,12 @@ class Profileinfo extends React.Component{
             this.setState({profilepicture: nextProps.profileInfo[size-1].profile_picture});
             this.setState({skills: nextProps.profileInfo[size - 1].skills});
             this.setState({showSkills: true});
+
         }
         if(this.state.skills){
             this.setState({showSkills: true});
         }
+        // else if(this.state.profileInfo.is_freelancer )
 
     }
     // componentDidMount(){

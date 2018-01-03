@@ -4,7 +4,7 @@ import MainPublic from '../routes/routes.js';
 import Header from './common/Header.js';
 import Footer from './common/Footer.js'
 // import {connect} from 'react-redux';
-// import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 
 class App extends React.Component {
@@ -32,5 +32,5 @@ App.contextTypes = {
 
 
 
+export default withRouter(App);
 
-export default App;

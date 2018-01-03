@@ -168,4 +168,4 @@ class AccountBill extends React.Component {
   }
 }
 
-module.exports = AccountBill ;
+export default AccountBill ;

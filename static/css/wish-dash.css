@@ -739,6 +739,10 @@ span.notif-cat {
     border: 0.2em solid rgba(0, 0, 0, .15);
 }
 
+.deposit-tab{
+  margin-top: 15px;
+}
+
 .nav {
     padding-right: 0;
     background: #002533;

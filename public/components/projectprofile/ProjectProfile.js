@@ -12,20 +12,12 @@ import Button from './Button';
 class ProjectProfile extends React.Component {
     constructor(props) {
         super(props);
-<<<<<<< HEAD
         this.state = {projectDetail:Object.assign({} , props.projectDetail),
                       amountOfMileStones:0 , Length:0, bid_description:'',
                       bid_price:'' , ModalState:'' , showError:false , profileInfo :Object.assign({} , props.profileInfo),
                       isLoggedIn:false , delivery_duration:4, ownerOfProject : false
                       };
-=======
-        this.state = {
-            projectDetail: "",
-            amountOfMileStones: 0, Length: 0, bid_description: '',
-            bid_price: '', ModalState: '', showError: false, profileInfo: Object.assign({}, props.profileInfo),
-            isLoggedIn: false, delivery_duration: 10, ownerOfProject: false, showBidsList: false
-        };
->>>>>>> 60af63893fccc5dacc90408cbcc7029f41fcfc9a
+
         // delivery_duration: Array [ "This field is required." ]
         // number_of_milestones: Array [ "This field is required." ]
         // price: Array [ "This field is required." ]

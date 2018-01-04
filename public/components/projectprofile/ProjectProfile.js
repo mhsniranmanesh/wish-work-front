@@ -28,6 +28,7 @@ class ProjectProfile extends React.Component {
         showBidsList: false,
         priceForCash: "",
         validPrice: false,
+        validTime: false,
       };
       // delivery_duration: Array [ "This field is required." ]
       // number_of_milestones: Array [ "This field is required." ]
@@ -45,6 +46,9 @@ class ProjectProfile extends React.Component {
       this.validateBidAmount = this.validateBidAmount.bind(this);
       this.persianToEnglish = this.persianToEnglish.bind(this);
       this.roundBidAmount = this.roundBidAmount.bind(this);
+      this.validateDeliveryTime = this.validateDeliveryTime.bind(this);
+      this.DeliveryTime = this.DeliveryTime.bind(this);
+      this.roundDeliveryTime = this.roundDeliveryTime.bind(this);
     }
 
     persianToEnglish(value){
@@ -65,9 +69,15 @@ class ProjectProfile extends React.Component {
       }
       return newValue;
     }
+  /////////////////////////////////////////////////////////////////////////////////////////////////////
      validateBidAmount(price){
       const pr = /^\d+$/;
       return pr.test(price);
+    }
+
+    validateDeliveryTime(time){
+      const tm = /^\d+$/;
+      return tm.test(time);
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -133,6 +143,12 @@ class ProjectProfile extends React.Component {
           message: "لطفا زمان پیشنهادی خود را مشخص کنید"
         });
         }
+        else if(this.state.delivery_duration !=='' && !this.state.validTime){
+          this.setState({
+            showError: true,
+            message: "لطفا زمان پیشنهادی را به عدد وارد کنید"
+          });
+        }
        else if (this.state.Length < 2) {
         this.setState({
           showError: true,
@@ -151,6 +167,8 @@ class ProjectProfile extends React.Component {
       })
     }
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
     BidPrice(event) {
       let price = event.target.value;
       price = this.persianToEnglish(price);
@@ -158,7 +176,7 @@ class ProjectProfile extends React.Component {
       this.setState({
         bid_price: price , validPrice: trueOrFalsePriceValid
       })
-      
+
     }
 
     roundBidAmount(event){
@@ -173,12 +191,37 @@ class ProjectProfile extends React.Component {
       this.setState({bid_price: numb , validPrice: trueOrFalsePriceValid2})
 
     }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
     DeliveryTime(event) {
+      let time = event.target.value;
+      console.log(time,'time 1')
+      time = this.persianToEnglish(time);
+      console.log(time,'time 2')
+      const trueOrFalseTimeValid = this.validateDeliveryTime(time);
+      console.log(trueOrFalseTimeValid,'TorF 1')
       this.setState({
-        delivery_duration: event.target.value
-      })
+        delivery_duration: time , validTime: trueOrFalseTimeValid
+      });
+      console.log(this.state.delivery_duration,'delivery_duration 1')
     }
+
+    roundDeliveryTime(event){
+      let numb = Number(this.state.delivery_duration);
+      console.log(numb,'numb 1')
+      numb = (Math.ceil(numb));
+      console.log(numb,'numb 2')
+      const trueOrFalseTimeValid2 = this.validateDeliveryTime(numb);
+      if(isNaN(numb)){
+        numb = '';
+      }
+      event.target.value = numb;
+      this.setState({
+        delivery_duration: numb , validTime: trueOrFalseTimeValid2
+      });
+      console.log(this.state.delivery_duration,'delivery_duration 2')
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////
 
     CheckLength() {
       if (this.state.amountOfMileStones < 2) {
@@ -344,6 +387,9 @@ class ProjectProfile extends React.Component {
             }
             DeliveryTime = {
               this.DeliveryTime
+            }
+            roundDeliveryTime = {
+              this.roundDeliveryTime
             }
             ModalSubmit = {
               this.ModalSubmit

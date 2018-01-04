@@ -2,13 +2,9 @@ import React from 'react';
 import ProjectDetail from './ProjectDetail'
 import AddBid from './AddBid'
 import BidsList from './BidsList';
-import PropTypes from 'prop-types';
-import {
-  connect
-} from 'react-redux';
-import {
-  bindActionCreators
-} from 'redux';
+import {PropTypes} from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 //import {Bids} from '../../actions/Bids';
 import * as projectActions from '../../actions/projectDetail';
 import Button from './Button';
@@ -27,10 +23,11 @@ class ProjectProfile extends React.Component {
         showError: false,
         profileInfo: Object.assign({}, props.profileInfo),
         isLoggedIn: false,
-        delivery_duration: 10,
+        delivery_duration: '',
         ownerOfProject: false,
         showBidsList: false,
         priceForCash: "",
+        validPrice: false,
       };
       // delivery_duration: Array [ "This field is required." ]
       // number_of_milestones: Array [ "This field is required." ]
@@ -38,13 +35,42 @@ class ProjectProfile extends React.Component {
       this.valueOfMileStones = this.valueOfMileStones.bind(this);
       this.CheckLength = this.CheckLength.bind(this);
       this.BidPrice = this.BidPrice.bind(this);
+      this.DeliveryTime = this.DeliveryTime.bind(this);
       this.BidDescription = this.BidDescription.bind(this);
       this.ModalSubmit = this.ModalSubmit.bind(this);
       this.FinalSubmitBid = this.FinalSubmitBid.bind(this);
       this.size = this.size.bind(this);
       this.clicksubmit = this.clicksubmit.bind(this);
       this.goToCash = this.goToCash.bind(this);
+      this.validateBidAmount = this.validateBidAmount.bind(this);
+      this.persianToEnglish = this.persianToEnglish.bind(this);
+      this.roundBidAmount = this.roundBidAmount.bind(this);
     }
+
+    persianToEnglish(value){
+      var newValue = "";
+      for(var i=0; i<value.length; i++){
+        var char = value.charCodeAt(i);
+        if(char >= 1776 && char <= 1785){ //for persian digits
+          var newChar = char - 1728;
+          newValue = newValue + String.fromCharCode(newChar);
+        }
+        else if(char >= 1632 && char <= 1641){ // for arabic and unix digits
+          var newChar = char - 1584;
+          newValue = newValue + String.fromCharCode(newChar);
+        }
+        else{
+          newValue = newValue + String.fromCharCode(char);
+        }
+      }
+      return newValue;
+    }
+     validateBidAmount(price){
+      const pr = /^\d+$/;
+      return pr.test(price);
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     goToCash(y) {
       //this.setState({priceForCash : x});
@@ -94,13 +120,27 @@ class ProjectProfile extends React.Component {
           showError: true,
           message: "لطفا قیمت پیشنهادی خود را ارائه دهید."
         });
-      } else if (this.state.Length < 2) {
+      }
+      else if(this.state.bid_price !=='' && !this.state.validPrice){
+        this.setState({
+          showError: true,
+          message: "لطفا مبلغ خود را به عدد وارد کنید"
+        });
+      }
+        else if (this.state.delivery_duration ===''){
+          this.setState({
+          showError: true,
+          message: "لطفا زمان پیشنهادی خود را مشخص کنید"
+        });
+        }
+       else if (this.state.Length < 2) {
         this.setState({
           showError: true,
           message: "لطفا تعداد بازه های زمانی را بیشتر از ۲ انتخاب کنید!"
         });
       } else {
         this.state.bid_price = Number(this.state.bid_price);
+        this.state.delivery_duration = Number(this.state.delivery_duration);
         this.FinalSubmitBid()
       }
     }
@@ -112,8 +152,31 @@ class ProjectProfile extends React.Component {
     }
 
     BidPrice(event) {
+      let price = event.target.value;
+      price = this.persianToEnglish(price);
+      const trueOrFalsePriceValid = this.validateBidAmount(price);
       this.setState({
-        bid_price: event.target.value
+        bid_price: price , validPrice: trueOrFalsePriceValid
+      })
+      
+    }
+
+    roundBidAmount(event){
+      let numb = Number(this.state.bid_price);
+      numb = (Math.ceil(numb));
+      const trueOrFalsePriceValid2 = this.validateBidAmount(numb);
+
+      if(isNaN(numb)){
+        numb = '';
+      }
+      event.target.value = numb;
+      this.setState({bid_price: numb , validPrice: trueOrFalsePriceValid2})
+
+    }
+
+    DeliveryTime(event) {
+      this.setState({
+        delivery_duration: event.target.value
       })
     }
 
@@ -212,21 +275,16 @@ class ProjectProfile extends React.Component {
     componentDidMount() {}
 
     render() {
-      return ( <
-        section className = "profile" >
-        <
-        div className = "container" >
-        <
-        div className = "row" >
-        <
-        div className = "col-sm-8" >
-        <
-        ProjectDetail Detail = {
+      return (
+        <section className = "profile" >
+        <div className = "container" >
+        <div className = "row" >
+        <div className = "col-sm-8" >
+        <ProjectDetail Detail = {
           this.state.projectDetail
-        }
-        /> <
-        div className = "con mb-4" > {
-          this.state.showBidsList ? < BidsList isLoggedIn = {
+        }/>
+        <div className = "con mb-4" > {
+          this.state.showBidsList ? <BidsList isLoggedIn = {
             this.state.isLoggedIn
           }
           ownerOfProject = {
@@ -240,13 +298,12 @@ class ProjectProfile extends React.Component {
           }
           goToCash = {
             this.goToCash
-          }
-          /> : null} <
-          /div> <
-          /div> {
-            this.state.ownerOfProject ?
-              <
-              Button
+          }/>
+          : null}
+        </div>
+          </div>
+           {this.state.ownerOfProject ?
+              <Button
             myFunc = ""
             name = "hi"
             budget = {
@@ -255,8 +312,9 @@ class ProjectProfile extends React.Component {
             TimeLimit = {
               this.state.projectDetail.time_limit
             }
-            /> : <
-            AddBid
+            />
+            :
+            <AddBid
             TimeLimit = {
               this.state.projectDetail.time_limit
             }
@@ -281,6 +339,12 @@ class ProjectProfile extends React.Component {
             BidPrice = {
               this.BidPrice
             }
+            roundBidAmount = {
+              this.roundBidAmount
+            }
+            DeliveryTime = {
+              this.DeliveryTime
+            }
             ModalSubmit = {
               this.ModalSubmit
             }
@@ -292,12 +356,11 @@ class ProjectProfile extends React.Component {
             }
             budget = {
               this.state.projectDetail.budget
-            }
-            />
-          } <
-          /div> <
-          /div> <
-          /section>
+            } />
+          }
+        </div>
+      </div>
+    </section>
         )
       }
     }

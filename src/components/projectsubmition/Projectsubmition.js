@@ -34,7 +34,7 @@ class Projectsubmition extends React.Component{
             translationTo: "",
             title: "",
             description: "",
-            budget: "",
+            vlaid: "",
             pageNumber: "",
             auctionTime: "",
             time_limit: "",
@@ -91,6 +91,7 @@ class Projectsubmition extends React.Component{
         this.validatePrice = this.validatePrice.bind(this);
         this.validateAuction = this.validateAuction.bind(this);
         this.validateTime = this.validateTime.bind(this);
+        this.validatePage = this.validatePage.bind(this);
         this.persianToEnglish = this.persianToEnglish.bind(this);
         this.submitProjectPageState = this.submitProjectPageState.bind(this);
         this.submitProjectAuctionState = this.submitProjectAuctionState.bind(this);
@@ -382,9 +383,11 @@ class Projectsubmition extends React.Component{
     }
     submitProjectTimeState(event){
         let time = event.target.value;
+        console.log(time , 'time 1')
         time = this.persianToEnglish(time);
+        console.log(time , 'time 2')
         const trueOrFalseTimeValid = this.validateTime(time);
-        this.setState({time_limit: event.target.value , validTime: trueOrFalseTimeValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
+        this.setState({time_limit: time , validTime: trueOrFalseTimeValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
         //console.log('state:' ,this.state);
         //console.log('length:' , this.state.translationFatherTag.length);
     }
@@ -392,25 +395,28 @@ class Projectsubmition extends React.Component{
 
     submitProjectAuctionState(event){
       let auction = event.target.value;
+      auction = this.persianToEnglish(auction);
       const trueOrFalseAuctionValid = this.validateAuction(auction);
-      this.setState({auctionTime: event.target.value , validAuction: trueOrFalseAuctionValid})
+      this.setState({auctionTime: auction , validAuction: trueOrFalseAuctionValid})
     }
 
 
     submitProjectPageState(event){
 
       let page = event.target.value;
+      page = this.persianToEnglish(page);
       const trueOrFalsePageValid = this.validatePage(page);
-      this.setState({pageNumber: event.target.value , validPage: trueOrFalsePageValid  })
+      this.setState({pageNumber: page , validPage: trueOrFalsePageValid  })
 
     }
 
 
     submitProjectPriceState(event){
         let price = event.target.value;
+        console.log(price,'price 1')
         price = this.persianToEnglish(price);
+        console.log(price,'price 2')
         const trueOrFalsePriceValid = this.validatePrice(price);
-
         this.setState({budget: price , validPrice : trueOrFalsePriceValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,})
     }
     projectTitleState(event){

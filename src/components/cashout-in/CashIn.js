@@ -1,5 +1,7 @@
 import React from 'react';
 import {Button} from 'reactstrap';
+
+
 const CashIn = (props) => {
     var x ;
     var priceForSend;

@@ -6,23 +6,34 @@ import CashOut from './CashOut';
 class CashOutIn extends React.Component{
     constructor(props){
         super(props);
-        this.state={priceForCashIn:"" , showCashIn:true , priceForSend:""};
+        this.state={priceForCashIn:"" , showCashIn:true , priceForSend:"" , priceForCashOut:"" , priceForWithdraw:""};
         this.ChangeToCashIn = this.ChangeToCashIn.bind(this);
         this.ChangeToCashOut = this.ChangeToCashOut.bind(this);
         this.onChangeCashIn = this.onChangeCashIn.bind(this);
+        this.onChangeCashOut = this.onChangeCashOut.bind(this);
         this.sendToServerCashInRequest = this.sendToServerCashInRequest.bind(this);
+        this.sendToServerCashOutRequest = this.sendToServerCashOutRequest.bind(this);
     }
     onChangeCashIn(event){
         this.setState({priceForCashIn : event.target.value});
         this.setState({priceForSend: event.target.value});
     }
+    onChangeCashOut(event){
+        this.setState({priceForCashOut: event.target.value});
+        this.setState({priceForWithdraw: event.target.value});
+    }
     ChangeToCashIn(){
+      // console.log(this.state.showCashIn , "showCashin 1 State");
+
         this.setState({showCashIn: true});
+
         //console.log(this.state)
     }
     ChangeToCashOut(){
+      // console.log(this.state.showCashIn , "showCashOut 3 State");
+
         this.setState({showCashIn: false});
-        //console.log(this.state)
+        console.log(this.state.showCashIn , "showCashOut 4 State");
     }
     componentWillMount(){
         if(this.props.location.search){
@@ -36,6 +47,10 @@ class CashOutIn extends React.Component{
         this.setState({priceForSend: this.state.priceForCashIn});
         console.log(this.state);
     }
+    sendToServerCashOutRequest(){
+        this.setState({priceForWithdraw: this.state.priceForCashOut});
+        console.log(this.state);
+    }
   render(){
     return(
       <div>
@@ -46,13 +61,15 @@ class CashOutIn extends React.Component{
                 <div className="dash-con dash-new-project con-body mb-4">
                     <ul className="nav justify-content-center mx-auto" id="depositTab" role="tablist">
                         <li className="nav-item">
-                            <a className="nav-link active" id="deposit-tab"
+                            <btn className="nav-link active" id="deposit-tab"
                                data-toggle="tab"  role="tab" aria-controls="deposit"
-                                onClick={this.ChangeToCashIn}>واریز</a>
+                                onClick={this.ChangeToCashIn}>واریز</btn>
+
                         </li>
+
                         <li className="nav-item">
-                            <a className="nav-link" id="draw-tab" data-toggle="tab"
-                               role="tab" aria-controls="draw"  onClick={this.ChangeToCashOut}>برداشت</a>
+                            <btn className="nav-link" id="draw-tab" data-toggle="tab"
+                               role="tab" aria-controls="draw"  onClick={this.ChangeToCashOut}>برداشت</btn>
                         </li>
                     </ul>
                     <div className="tab-content" id="depositContent" >
@@ -63,7 +80,12 @@ class CashOutIn extends React.Component{
                                 priceForSend={this.state.priceForSend}
                             />
                             :
-                            <CashOut/>}
+                            <CashOut
+                              price={this.state.priceForCashOut}
+                              onChangeCashin={this.state.onChangeCashOut}
+                              sendToServerCashinRequest={this.sendToServerCashOutRequest}
+                              priceForSend={this.state.priceForWithdraw}
+                            />}
                     </div>
                 </div>
             </div>

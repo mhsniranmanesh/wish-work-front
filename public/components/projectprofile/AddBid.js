@@ -37,6 +37,15 @@ const AddBid = (props) =>{
                                                    placeholder="قیمت پیشنهادی (تومان)"
                                                    value={props.bid_price}
                                                    onChange={props.BidPrice}
+                                                   onBlur={props.roundBidAmount}
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <input type="text"
+                                                   className="form-control form-control-danger"
+                                                   placeholder="زمان پیشنادی (روز)"
+                                                   value={props.delivery_time}
+                                                   onChange={props.DeliveryTime}
                                             />
                                         </div>
                                         <div className="form-group">

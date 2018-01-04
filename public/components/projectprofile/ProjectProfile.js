@@ -194,22 +194,16 @@ class ProjectProfile extends React.Component {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     DeliveryTime(event) {
       let time = event.target.value;
-      console.log(time,'time 1')
       time = this.persianToEnglish(time);
-      console.log(time,'time 2')
       const trueOrFalseTimeValid = this.validateDeliveryTime(time);
-      console.log(trueOrFalseTimeValid,'TorF 1')
       this.setState({
         delivery_duration: time , validTime: trueOrFalseTimeValid
       });
-      console.log(this.state.delivery_duration,'delivery_duration 1')
     }
 
     roundDeliveryTime(event){
       let numb = Number(this.state.delivery_duration);
-      console.log(numb,'numb 1')
       numb = (Math.ceil(numb));
-      console.log(numb,'numb 2')
       const trueOrFalseTimeValid2 = this.validateDeliveryTime(numb);
       if(isNaN(numb)){
         numb = '';
@@ -218,7 +212,6 @@ class ProjectProfile extends React.Component {
       this.setState({
         delivery_duration: numb , validTime: trueOrFalseTimeValid2
       });
-      console.log(this.state.delivery_duration,'delivery_duration 2')
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////

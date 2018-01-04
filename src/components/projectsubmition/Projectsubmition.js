@@ -55,17 +55,20 @@ class Projectsubmition extends React.Component{
             popoverOpenTime: false,
             popoverOpenShow: false,
             popoverOpenDesc: false,
+            popoverOpenPage: false,
+            popoverOpenAuctionInterval: false,
             number_of_pages : 0,
         };
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
 
         this.togglePopoverSubject = this.togglePopoverSubject.bind(this);
-
+        this.togglePopoverPage = this.togglePopoverPage.bind(this);
         this.togglePopoverPrice = this.togglePopoverPrice.bind(this);
         this.togglePopoverTime = this.togglePopoverTime.bind(this);
         this.togglePopoverShow = this.togglePopoverShow.bind(this);
         this.togglePopoverDesc = this.togglePopoverDesc.bind(this);
+        this.togglePopoverAuctionInterval = this.togglePopoverAuctionInterval.bind(this);
 
         this.handleOnChange = this.handleOnChange.bind(this);
         this.roundProjectAuctionTime = this.roundProjectAuctionTime.bind(this);
@@ -98,6 +101,30 @@ class Projectsubmition extends React.Component{
         this.redirect = this.redirect.bind(this);
     }
 
+    togglePopoverAuctionInterval(){
+      this.setState({
+        popoverOpenAuctionInterval: !this.state.popoverOpenAuctionInterval,
+        popoverOpenPage: false,
+        popoverOpenPrice: false,
+        popoverOpenTime: false,
+        popoverOpenShow: false,
+        popoverOpenDesc: false,
+        PopoverOpenSubject: false,
+      });
+    }
+
+    togglePopoverPage(){
+      this.setState({
+        popoverOpenPage: !this.state.popoverOpenPage,
+        popoverOpenAuctionInterval: false,
+        popoverOpenPrice: false,
+        popoverOpenTime: false,
+        popoverOpenShow: false,
+        popoverOpenDesc: false,
+        PopoverOpenSubject: false,
+      });
+    }
+
     togglePopoverPrice() {
     this.setState({
       popoverOpenPrice: !this.state.popoverOpenPrice,
@@ -105,7 +132,8 @@ class Projectsubmition extends React.Component{
       popoverOpenShow: false,
       popoverOpenDesc: false,
       PopoverOpenSubject: false,
-
+      popoverOpenPage: false,
+      popoverOpenAuctionInterval: false,
     });
   }
 
@@ -116,7 +144,8 @@ class Projectsubmition extends React.Component{
     popoverOpenTime: false,
     popoverOpenDesc: false,
     PopoverOpenSubject: false,
-
+    popoverOpenPage: false,
+    popoverOpenAuctionInterval: false,
     });
   }
 
@@ -127,7 +156,8 @@ class Projectsubmition extends React.Component{
     popoverOpenTime: false,
     popoverOpenShow: false,
     PopoverOpenSubject: false,
-
+    popoverOpenPage: false,
+    popoverOpenAuctionInterval: false,
     });
   }
   togglePopoverTime() {
@@ -137,7 +167,8 @@ class Projectsubmition extends React.Component{
     popoverOpenShow: false,
     popoverOpenDesc: false,
     PopoverOpenSubject: false,
-
+    popoverOpenPage: false,
+    popoverOpenAuctionInterval: false,
     });
   }
   togglePopoverSubject(){
@@ -147,7 +178,8 @@ class Projectsubmition extends React.Component{
       popoverOpenShow: false,
       popoverOpenDesc: false,
       popoverOpenTime: false,
-
+      popoverOpenPage: false,
+      popoverOpenAuctionInterval: false,
       });
   }
 
@@ -413,9 +445,7 @@ class Projectsubmition extends React.Component{
 
     submitProjectPriceState(event){
         let price = event.target.value;
-        console.log(price,'price 1')
         price = this.persianToEnglish(price);
-        console.log(price,'price 2')
         const trueOrFalsePriceValid = this.validatePrice(price);
         this.setState({budget: price , validPrice : trueOrFalsePriceValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,})
     }
@@ -696,20 +726,20 @@ class Projectsubmition extends React.Component{
 
                           <legend htmlFor="" className="col-form-label form-header-fontsize">
                                 <span className="form-header-fontsize">تعداد صفحات پروژه خود را مشخص کنید</span>
-
                           </legend>
-
-                          <input type="text" className="form-control form-body-fontsize" id="pageInput" value={this.state.pageNumber} onChange={this.submitProjectPageState} onBlur={this.roundProjectPage}/>
-
+                          <input type="text" className="form-control form-body-fontsize" id="pageInput" value={this.state.pageNumber} onChange={this.submitProjectPageState} onBlur={this.roundProjectPage} onFocus={this.togglePopoverPage}/>
+                            <Popover placement="right" isOpen={this.state.popoverOpenPage} target="pageInput" toggle={this.togglePopoverpage}>
+                              <PopoverBody className="beauty-text popover-beauty">لطفا در این بخش تعداد صفحات ترجمه خود را به بالا رند کنید و وارد نمایید</PopoverBody>
+                            </Popover>
                         </Col>
                         <Col>
                           <legend htmlFor="" className="col-form-label form-header-fontsize">
-
                                   <span className="form-header-fontsize">مدت برقراری مناقصه را مشخص کنید</span>
-
                           </legend>
-
-                          <input type="text" className="form-control form-body-fontsize" id="auctionInput" value={this.state.auctionTime} onChange={this.submitProjectAuctionState} onBlur={this.roundProjectAuctionTime}/>
+                          <input type="text" className="form-control form-body-fontsize" id="auctionInput" value={this.state.auctionTime} onChange={this.submitProjectAuctionState} onBlur={this.roundProjectAuctionTime} onFocus={this.togglePopoverAuctionInterval}/>
+                            <Popover placement="left" isOpen={this.state.popoverOpenAuctionInterval} target="auctionInput" toggle={this.togglePopoverAuctionInterval}>
+                              <PopoverBody className="beauty-text popover-beauty">لطفا مدت برقراری مناقصه را بین ۲ تا ۷ روز وارد نمایید</PopoverBody>
+                            </Popover>
                           </Col>
                       </Row>
 

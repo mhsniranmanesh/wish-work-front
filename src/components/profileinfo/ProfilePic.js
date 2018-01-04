@@ -1,21 +1,27 @@
 import React from 'react';
-import {Button} from 'reactstrap';
+import {Button , Row , Col} from 'reactstrap';
+import PropTypes from 'prop-types';
+import Error from './Error';
 
 const ProfilePic = (props) =>{
     var Image ;
-    if((props.Picture != null) || (props.Picture != undefined)) {
-
-        if (props.Picture == '/media/') {
-            Image = "http://via.placeholder.com/125x125";
-            //console.log('Hello', Image);
+    if(props.imagePreviewUrl === "") {
+        if ((props.Picture != null) || (props.Picture != undefined)) {
+            if (props.Picture == '/media/') {
+                Image = "http://via.placeholder.com/125x125";
+               // console.log('Hello', Image);
+            }
+            else {
+                Image = props.Picture;
+                 //console.log('Hi', Image);
+            }
         }
         else {
-            Image = props.Picture;
-           // console.log('Hi', Image);
+            Image = "http://via.placeholder.com/125x125";
         }
     }
     else {
-        Image = "http://via.placeholder.com/125x125";
+        Image = props.imagePreviewUrl
     }
     return(
         <div className="dash-con dash-profile-info con-body mb-4">
@@ -32,6 +38,7 @@ const ProfilePic = (props) =>{
                 <div className="media">
                     <a href="#" className="">
                         <img className="rounded-circle d-flex ml-3" src={Image}  style={ {height:125 , width:125} }/>
+
                         <i className="fa fa-camera"/>
                     </a>
                     <div className="media-body">
@@ -45,12 +52,22 @@ const ProfilePic = (props) =>{
                         </label>
                     </div>
                 </div>
+                <input type="file" className="btn btn-primary btn-rec" onChange={(e)=>props.picUploader(e)} />
+                <Row>
+                    <Col>
                 <Button type="submit" className="btn btn-primary btn-rec" >
                     <i className="fa fa-check"/>آپلود عکس
                 </Button>
+                    </Col>
+                </Row>
+                {props.imageSizeValidation ? <Error message="اندازه ی عکس باید کمتر از ۱ مگابایت باشد"/> : (null)}
+                {props.showError ? <Error message="لطفا فایل خود را عکس انتخاب کنید!"/> : (null)}
             </form>
         </div>
     )
 };
+ProfilePic.PropTypes ={
+    picUploader : PropTypes.func.isRequired
+}
 
 export default ProfilePic;

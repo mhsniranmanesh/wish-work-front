@@ -11,9 +11,9 @@ class Profileinfo extends React.Component{
     constructor(props){
         super(props);
         this.state = { bioReadOnly : true , jobReadOnly : true , degreeReadOnly : true, universityReadOnly : true ,
-            profileInfo:"" , profilepicture: "" , selectValueTF :"" , selectValueTT : "" , saving : false,
+            profileInfo:"" , profilepicture: null , selectValueTF :"" , selectValueTT : "" , saving : false,
             translationFatherTag : false , is_general: false , is_medical : false , is_technical : false , is_legal : false,
-            skills:'' , showSkills:true , language_set:{}
+            skills:'' , showSkills:true , language_set:{} , file:"" , imagePreviewUrl:"" , showError:false , imageSizeValidation: false
         };
 
 
@@ -41,8 +41,33 @@ class Profileinfo extends React.Component{
 
     }
 
-    picUploader(event){
-        console.log(event.target.files[0]);
+    picUploader(e){
+        e.preventDefault();
+
+        let reader = new FileReader();
+        let file = e.target.files[0];
+        console.log(file);
+        reader.onloadend = () => {
+            this.setState({
+                file: file,
+                imagePreviewUrl: reader.result
+            });
+        };
+
+        reader.readAsDataURL(file);
+        console.log(file.type);
+        if(e.target.files[0].type.includes("image") === true){
+            this.setState({showError : false})
+        }
+        if (e.target.files[0].size <= 1000000) {
+            this.setState({imageSizeValidation : false})
+        }
+        if (e.target.files[0].size > 1000000) {
+            this.setState({imageSizeValidation : true})
+        }
+        if(e.target.files[0].type.includes("image") === false) {
+            this.setState({showError: true})
+        }
     }
 
     addSkills(){
@@ -234,7 +259,12 @@ class Profileinfo extends React.Component{
                         {/*<span className="projectinfo">*/}
                           {/*<h5 style={{display:'inline'}}>تغییر عکس پروفایل</h5>*/}
                         {/*</span>*/}
-                    <ProfilePic Picture={this.state.profilepicture}/>
+                    <ProfilePic Picture={this.state.profilepicture}
+                                picUploader={this.picUploader}
+                                imagePreviewUrl={this.state.imagePreviewUrl}
+                                showError={this.state.showError}
+                                imageSizeValidation = {this.state.imageSizeValidation}
+                    />
                         {/*<div className="dash-divider"/>*/}
                         {/*<form className="">*/}
                             {/*<div className="media">*/}

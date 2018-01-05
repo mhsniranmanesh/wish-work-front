@@ -62,7 +62,6 @@ class Header2 extends React.Component {
 
     render() {
         return (
-
             <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
                 <div className="container">
                     <a className="navbar-brand" href="#">

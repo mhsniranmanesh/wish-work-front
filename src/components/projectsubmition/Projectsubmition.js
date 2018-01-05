@@ -34,7 +34,7 @@ class Projectsubmition extends React.Component{
             translationTo: "",
             title: "",
             description: "",
-            budget: "",
+            vlaid: "",
             pageNumber: "",
             auctionTime: "",
             time_limit: "",
@@ -55,17 +55,20 @@ class Projectsubmition extends React.Component{
             popoverOpenTime: false,
             popoverOpenShow: false,
             popoverOpenDesc: false,
+            popoverOpenPage: false,
+            popoverOpenAuctionInterval: false,
             number_of_pages : 0,
         };
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
 
         this.togglePopoverSubject = this.togglePopoverSubject.bind(this);
-
+        this.togglePopoverPage = this.togglePopoverPage.bind(this);
         this.togglePopoverPrice = this.togglePopoverPrice.bind(this);
         this.togglePopoverTime = this.togglePopoverTime.bind(this);
         this.togglePopoverShow = this.togglePopoverShow.bind(this);
         this.togglePopoverDesc = this.togglePopoverDesc.bind(this);
+        this.togglePopoverAuctionInterval = this.togglePopoverAuctionInterval.bind(this);
 
         this.handleOnChange = this.handleOnChange.bind(this);
         this.roundProjectAuctionTime = this.roundProjectAuctionTime.bind(this);
@@ -91,10 +94,35 @@ class Projectsubmition extends React.Component{
         this.validatePrice = this.validatePrice.bind(this);
         this.validateAuction = this.validateAuction.bind(this);
         this.validateTime = this.validateTime.bind(this);
+        this.validatePage = this.validatePage.bind(this);
         this.persianToEnglish = this.persianToEnglish.bind(this);
         this.submitProjectPageState = this.submitProjectPageState.bind(this);
         this.submitProjectAuctionState = this.submitProjectAuctionState.bind(this);
         this.redirect = this.redirect.bind(this);
+    }
+
+    togglePopoverAuctionInterval(){
+      this.setState({
+        popoverOpenAuctionInterval: !this.state.popoverOpenAuctionInterval,
+        popoverOpenPage: false,
+        popoverOpenPrice: false,
+        popoverOpenTime: false,
+        popoverOpenShow: false,
+        popoverOpenDesc: false,
+        PopoverOpenSubject: false,
+      });
+    }
+
+    togglePopoverPage(){
+      this.setState({
+        popoverOpenPage: !this.state.popoverOpenPage,
+        popoverOpenAuctionInterval: false,
+        popoverOpenPrice: false,
+        popoverOpenTime: false,
+        popoverOpenShow: false,
+        popoverOpenDesc: false,
+        PopoverOpenSubject: false,
+      });
     }
 
     togglePopoverPrice() {
@@ -104,7 +132,8 @@ class Projectsubmition extends React.Component{
       popoverOpenShow: false,
       popoverOpenDesc: false,
       PopoverOpenSubject: false,
-
+      popoverOpenPage: false,
+      popoverOpenAuctionInterval: false,
     });
   }
 
@@ -115,7 +144,8 @@ class Projectsubmition extends React.Component{
     popoverOpenTime: false,
     popoverOpenDesc: false,
     PopoverOpenSubject: false,
-
+    popoverOpenPage: false,
+    popoverOpenAuctionInterval: false,
     });
   }
 
@@ -126,7 +156,8 @@ class Projectsubmition extends React.Component{
     popoverOpenTime: false,
     popoverOpenShow: false,
     PopoverOpenSubject: false,
-
+    popoverOpenPage: false,
+    popoverOpenAuctionInterval: false,
     });
   }
   togglePopoverTime() {
@@ -136,7 +167,8 @@ class Projectsubmition extends React.Component{
     popoverOpenShow: false,
     popoverOpenDesc: false,
     PopoverOpenSubject: false,
-
+    popoverOpenPage: false,
+    popoverOpenAuctionInterval: false,
     });
   }
   togglePopoverSubject(){
@@ -146,7 +178,8 @@ class Projectsubmition extends React.Component{
       popoverOpenShow: false,
       popoverOpenDesc: false,
       popoverOpenTime: false,
-
+      popoverOpenPage: false,
+      popoverOpenAuctionInterval: false,
       });
   }
 
@@ -382,9 +415,11 @@ class Projectsubmition extends React.Component{
     }
     submitProjectTimeState(event){
         let time = event.target.value;
+        console.log(time , 'time 1')
         time = this.persianToEnglish(time);
+        console.log(time , 'time 2')
         const trueOrFalseTimeValid = this.validateTime(time);
-        this.setState({time_limit: event.target.value , validTime: trueOrFalseTimeValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
+        this.setState({time_limit: time , validTime: trueOrFalseTimeValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
         //console.log('state:' ,this.state);
         //console.log('length:' , this.state.translationFatherTag.length);
     }
@@ -392,16 +427,18 @@ class Projectsubmition extends React.Component{
 
     submitProjectAuctionState(event){
       let auction = event.target.value;
+      auction = this.persianToEnglish(auction);
       const trueOrFalseAuctionValid = this.validateAuction(auction);
-      this.setState({auctionTime: event.target.value , validAuction: trueOrFalseAuctionValid})
+      this.setState({auctionTime: auction , validAuction: trueOrFalseAuctionValid})
     }
 
 
     submitProjectPageState(event){
 
       let page = event.target.value;
+      page = this.persianToEnglish(page);
       const trueOrFalsePageValid = this.validatePage(page);
-      this.setState({pageNumber: event.target.value , validPage: trueOrFalsePageValid  })
+      this.setState({pageNumber: page , validPage: trueOrFalsePageValid  })
 
     }
 
@@ -410,7 +447,6 @@ class Projectsubmition extends React.Component{
         let price = event.target.value;
         price = this.persianToEnglish(price);
         const trueOrFalsePriceValid = this.validatePrice(price);
-
         this.setState({budget: price , validPrice : trueOrFalsePriceValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,})
     }
     projectTitleState(event){
@@ -690,20 +726,20 @@ class Projectsubmition extends React.Component{
 
                           <legend htmlFor="" className="col-form-label form-header-fontsize">
                                 <span className="form-header-fontsize">تعداد صفحات پروژه خود را مشخص کنید</span>
-
                           </legend>
-
-                          <input type="text" className="form-control form-body-fontsize" id="pageInput" value={this.state.pageNumber} onChange={this.submitProjectPageState} onBlur={this.roundProjectPage}/>
-
+                          <input type="text" className="form-control form-body-fontsize" id="pageInput" value={this.state.pageNumber} onChange={this.submitProjectPageState} onBlur={this.roundProjectPage} onFocus={this.togglePopoverPage}/>
+                            <Popover placement="right" isOpen={this.state.popoverOpenPage} target="pageInput" toggle={this.togglePopoverpage}>
+                              <PopoverBody className="beauty-text popover-beauty">لطفا در این بخش تعداد صفحات ترجمه خود را به بالا رند کنید و وارد نمایید</PopoverBody>
+                            </Popover>
                         </Col>
                         <Col>
                           <legend htmlFor="" className="col-form-label form-header-fontsize">
-
                                   <span className="form-header-fontsize">مدت برقراری مناقصه را مشخص کنید</span>
-
                           </legend>
-
-                          <input type="text" className="form-control form-body-fontsize" id="auctionInput" value={this.state.auctionTime} onChange={this.submitProjectAuctionState} onBlur={this.roundProjectAuctionTime}/>
+                          <input type="text" className="form-control form-body-fontsize" id="auctionInput" value={this.state.auctionTime} onChange={this.submitProjectAuctionState} onBlur={this.roundProjectAuctionTime} onFocus={this.togglePopoverAuctionInterval}/>
+                            <Popover placement="left" isOpen={this.state.popoverOpenAuctionInterval} target="auctionInput" toggle={this.togglePopoverAuctionInterval}>
+                              <PopoverBody className="beauty-text popover-beauty">لطفا مدت برقراری مناقصه را بین ۲ تا ۷ روز وارد نمایید</PopoverBody>
+                            </Popover>
                           </Col>
                       </Row>
 

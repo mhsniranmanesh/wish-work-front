@@ -5,7 +5,7 @@ const ProjectTemplate = (props ) => {
     var x = "" ;
     var XClass = "";
     var XButtonName = "";
-    var XHref = "#";
+    var XHref = props.ClientProjects;
     if(props.ClientProjects.is_banned){
         x="مسدود شده";
         XClass = "badge badge-danger"

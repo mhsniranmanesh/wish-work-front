@@ -58,6 +58,9 @@ class Projectsubmition extends React.Component{
             popoverOpenPage: false,
             popoverOpenAuctionInterval: false,
             number_of_pages : 0,
+            fileIsUpload : false,
+            inputTitle: 'فایل را بگیرید و اینجا رها کنید.',
+            file:""
         };
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
@@ -101,6 +104,11 @@ class Projectsubmition extends React.Component{
         this.redirect = this.redirect.bind(this);
     }
 
+    // componentDidMount(){
+    // // if(this.state.fileIsUpload){
+    // //     this.setState({inputTitle : 'فایل شما آپلود شد' })
+    // //     }
+    // }
     togglePopoverAuctionInterval(){
       this.setState({
         popoverOpenAuctionInterval: !this.state.popoverOpenAuctionInterval,
@@ -211,10 +219,15 @@ class Projectsubmition extends React.Component{
   		this.setState({ multiValue: value });
   	}
     submit(){
+        var Send2 = JSON.parse(JSON.stringify(this.state));
+        var Send1 = JSON.parse(JSON.stringify(this.state));
+        var Send3  = {file: this.state.file};
+        delete Send1.file;
+        delete Send2.file;
         console.log('from_language' , this.state.from_language);
         console.log('this.state.translationFrom' , this.state.translationFrom);
-        console.log('STATE IS:' , this.state);
-            this.props.actions.projectSubmit(this.state , this.state).then(
+        console.log('STATE IS:' , Send3);
+            this.props.actions.projectSubmit(Send1 , Send2, Send3).then(
             () => this.redirect()
             ).catch(error => {
             console.log(error);
@@ -401,12 +414,24 @@ class Projectsubmition extends React.Component{
       modal: !this.state.modal
       });
     }
-    dragDrop(event){
-        const data = new FormData();
+    dragDrop(e){
+        e.preventDefault();
+        this.setState({fileIsUpload : true});
+        let reader = new FileReader();
+        let file = e.target.files[0];
+        this.setState({file : file});
+        console.log(file);
+        console.log(this.state);
+        // reader.onloadend = () => {
+        //     this.setState({
+        //         file: file,
+        //         imagePreviewUrl: reader.result
+        //     });
+        // };
         // data.append('file', event.target.files[0]);
         // data.append('name', 'some value user types');
         // data.append('description', 'some value user types');
-        console.log(event.target.files[0]);
+        //console.log(event.target.files[0]);
     }
 
 
@@ -715,9 +740,13 @@ class Projectsubmition extends React.Component{
                         <div className="form-group drag-drop mt-2 mb-4 ">
                             <label className="form-header-fontsize">فایل های مربوط به پروژه را آپلود کنید.</label>
                             <label className="container form-control-file " htmlFor="inputFile">
+
+                                {this.state.fileIsUpload ? <p className="uploaded-project">فایل شما انتخاب شد ، برای تغییر فایل خود روی <strong> اینجا</strong> کلیک کنید</p>
+                                    : <p className="upload-project">فایل را بگیرید و اینجا رها کنید(یا بر روی <strong> اینجا</strong> کلیک کنید)</p> }
                         </label>
-                                <input type="file" className="form-control-box form-body-fontsize" id="inputFile" onChange={this.dragDrop} data-title="فایل را بگیرید و اینجا رها کنید." multiple="" accept=
-                                "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*"/>
+                            <input type="file" className="form-control-box form-body-fontsize"
+                                id="inputFile" onChange={this.dragDrop} multiple=""/>
+
 
                         </div>
 

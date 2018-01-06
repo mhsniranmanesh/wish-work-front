@@ -34,7 +34,7 @@ const ProfilePic = (props) =>{
                         </span>
 
             <div className="dash-divider"/>
-            <form className="" onSubmit={props.picUploader}>
+            <form className="" >
                 <div className="media">
                     <a href="#" className="">
                         <img className="rounded-circle d-flex ml-3" src={Image}  style={ {height:125 , width:125} }/>
@@ -55,8 +55,8 @@ const ProfilePic = (props) =>{
                 <input type="file" className="btn btn-primary btn-rec" onChange={(e)=>props.picUploader(e)} />
                 <Row>
                     <Col>
-                <Button type="submit" className="btn btn-primary btn-rec" >
-                    <i className="fa fa-check"/>آپلود عکس
+                <Button color={'#00a651'} className="btn btn-primary btn-rec" onClick={props.sendPicToServer}>
+                    <i className="fa fa-check" />آپلود عکس
                 </Button>
                     </Col>
                 </Row>

@@ -22,6 +22,7 @@ import axios from 'axios';
 //import {Authentication} from './promises/authentication';
 
 
+
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');
 }

@@ -715,8 +715,8 @@ span.notif-cat {
   margin-bottom: 20px;
 }
 
-.drag-drop .form-control-file:before{
-    content: "فایل را بگیرید و اینجا رها کنید";
+.drag-drop .form-control-file::after{
+    content: "";
     position:absolute;
     top: 0.5em;
     bottom: 0.5em;
@@ -728,7 +728,7 @@ span.notif-cat {
     opacity: 1;
     visibility: visible;
     text-align: center;
-    -webkit-transitio/n: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     border: 0.1em dashed rgba(0, 0, 0, .15);
     -moz-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -1957,4 +1957,6 @@ img {
     border-radius: 2px;
     color: #fff;
     padding: 0.25em;
+    margin-bottom: 2px;
+    margin-top: 2px;
 }

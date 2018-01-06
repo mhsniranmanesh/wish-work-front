@@ -32,14 +32,31 @@ export function profileInfo(){
         });
     };
 }
-export function addSkills(id , allState) {
+
+export function attachFileToProject(allState,stateForFile) {
     return function (dispatch) {
-        console.log('id:' , id , 'allState:' , allState );
-        allState.project_id = id.data.id;
-        console.log( allState , ' allState ');
-        return axios.post('/api/v1/projects/add-details/translation/' , allState).then(
+        var newState = {
+            project_id : allState.project_id,
+            file: stateForFile.file
+        };
+        console.log(newState , 'newState');
+        return axios.post('/api/v1/projects/files/' , newState).then(
             () =>{
                 dispatch(profileInfo());
+            }).catch(err =>{
+                console.log(err);
+        })
+    }
+}
+
+export function addSkills(id , allState , stateForFile) {
+    return function (dispatch) {
+        //console.log('id:' , id , 'allState:' , allState );
+        allState.project_id = id.data.id;
+        //console.log( allState , ' allState ');
+        return axios.post('/api/v1/projects/add-details/translation/' , allState).then(
+            () =>{
+                dispatch(attachFileToProject(allState , stateForFile));
             }).catch(error =>{
             //throw (error);
             console.log('Fuck error' , error);
@@ -52,12 +69,12 @@ export function addSkills(id , allState) {
 // }
 
 
-export function projectSubmit(projectSubmit , getState){
+export function projectSubmit(projectSubmit , getState , stateForFile){
     return function(dispatch){
         return  axios.post('/api/v1/projects/translation/' , projectSubmit).then(
             projectSubmit =>{
                 // console.log(projectSubmit);
-                dispatch(addSkills(projectSubmit , getState));
+                dispatch(addSkills(projectSubmit , getState , stateForFile));
             // console.log(projectSubmit);
         }).catch(error =>{
             throw (error);

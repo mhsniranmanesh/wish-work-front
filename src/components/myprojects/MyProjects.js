@@ -2,9 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import AsFreelancerOrClient from './AsFreelancerOrClient';
 import Filter from './Filter';
-//import ProjectTemplate from './ProjectTemplate';
 import PropTypes from 'prop-types';
 import ProjectsList from './ProjectsList';
+//import ProjectTemplate from './ProjectTemplate';
+
 
 class MyProjects extends React.Component {
     constructor(props){

@@ -1675,3 +1675,28 @@ ul.social-button li a:hover {
 ul.social-button li.copyright {
     display: block;
 }
+
+.upload-project {
+    text-align: center;
+    top: 0.5em;
+    bottom: 0.5em;
+    left: 0;
+    width: 100%;
+    min-height: 6em;
+    line-height: 2em;
+    padding-top: 1.5em;
+    opacity: 1;
+}
+.uploaded-project {
+    text-align: center;
+    top: 0.5em;
+    bottom: 0.5em;
+    left: 0;
+    width: 100%;
+    min-height: 6em;
+    line-height: 2em;
+    padding-top: 1.5em;
+    opacity: 1;
+    color: #00a651;
+}
+

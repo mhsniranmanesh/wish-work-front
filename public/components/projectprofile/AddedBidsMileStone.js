@@ -38,8 +38,11 @@ const AddedBidsMileStone = (props) => {
                                 </div>
                             </div>
                             <div className="modal-footer">
-                              <Button color="primary" className="btn btn-primary btn-rec"
-                                        onClick={(event)=>{ props.goToCash(y);}}>قبول پیشنهاد</Button>
+                              {/*<Button color="primary" className="btn btn-primary btn-rec"
+                                        onClick={(event)=>{ props.goToCash(y);}}>قبول پیشنهاد</Button>*/}
+                                <Button color="primary" className="btn btn-primary btn-rec" on
+
+                                </Button>
                             </div>
                         </div>
                     </div>

@@ -23,6 +23,7 @@ class ProjectProfile extends React.Component {
         showError: false,
         profileInfo: Object.assign({}, props.profileInfo),
         isLoggedIn: false,
+        modalState: false,
         delivery_duration: '',
         ownerOfProject: false,
         showBidsList: false,
@@ -430,4 +431,3 @@ class ProjectProfile extends React.Component {
     }
 
 export default connect(mapStateToProps , mapDispatchToProps)(ProjectProfile);
-

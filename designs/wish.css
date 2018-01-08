@@ -25,6 +25,9 @@ a:hover {
     padding-right: 25px;
     padding-left: 25px;
 }
+.btn-upload {
+    color: #00a651;
+}
 
 .btn-rec-sm {
     border-radius: 15px;

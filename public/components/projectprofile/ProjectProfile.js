@@ -109,7 +109,7 @@ class ProjectProfile extends React.Component {
         number_of_milestones: this.state.Length,
         price: this.state.bid_price,
         delivery_duration: this.state.delivery_duration,
-        is_default_project_controller: false,
+        has_default_bid_controller: false,
       };
       this.props.actions.addBidToProject(sendData)
         .then(

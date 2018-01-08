@@ -2,9 +2,11 @@ import React from 'react';
 import MileStonesHorizentalTemplate from './MileStonesHorizentalTemplate';
 import {Button} from 'reactstrap';
 import PropTypes from 'prop-types';
+import ModalCashin from './ModalCashin';
 
 const AddedBidsMileStone = (props) => {
     var mileStones = [];
+
     var x = (props.delivery_duration) / (props.number_of_milestones);
     for (var i = 0; i < props.number_of_milestones; i++) {
         x = (props.delivery_duration) / (props.number_of_milestones) + (i * (props.delivery_duration) / (props.number_of_milestones));
@@ -36,7 +38,7 @@ const AddedBidsMileStone = (props) => {
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <Button color="primary" className="btn btn-primary btn-rec"
+                              <Button color="primary" className="btn btn-primary btn-rec"
                                         onClick={(event)=>{ props.goToCash(y);}}>قبول پیشنهاد</Button>
                             </div>
                         </div>

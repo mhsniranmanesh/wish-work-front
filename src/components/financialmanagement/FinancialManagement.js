@@ -136,4 +136,4 @@ class financialManagement extends React.Component{
 }
 
 
-module.exports = financialManagement ;
+export default financialManagement ;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import CashOutIn from '../components/cashout-in/cashout-in.js';
-import financialManagement from '../components/financialmanagement/financialManagement.js';
+import CashOutIn from '../components/cashout-in/CashInOut.js';
+import financialManagement from '../components/financialmanagement/FinancialManagement.js';
 import AccountBill from '../components/accountbill/AccountBill.js';
 import WishCoin from '../components/wishcoin/WishCoin.js';
 

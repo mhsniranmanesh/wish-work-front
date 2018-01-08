@@ -1026,8 +1026,8 @@ span.error-msg {
 }
 
 .input-group .form-control {
-    <<<<<<< HEAD=======/*margin-bottom: 10px;*/
-    >>>>>>>d4a80e413f1998f021b02def367ae8871a494ecb width: 100%;
+/*margin-bottom: 10px;*/
+  width: 100%;
 }
 
 section.signin .con-body .sub-label {
@@ -1674,4 +1674,67 @@ ul.social-button li a:hover {
 
 ul.social-button li.copyright {
     display: block;
+}
+
+.upload-project {
+    text-align: center;
+    top: 0.5em;
+    bottom: 0.5em;
+    left: 0;
+    width: 100%;
+    min-height: 6em;
+    line-height: 2em;
+    padding-top: 1.5em;
+    opacity: 1;
+}
+.uploaded-project {
+    text-align: center;
+    top: 0.5em;
+    bottom: 0.5em;
+    left: 0;
+    width: 100%;
+    min-height: 6em;
+    line-height: 2em;
+    padding-top: 1.5em;
+    opacity: 1;
+    color: #00a651;
+}
+
+/*wish coin modal enough*/
+ #enough-approve-button{
+   margin-left: auto;
+ }
+ #enough-cancel-button{
+   margin-left: 0;
+}
+
+.enough-project-price{
+  color: orangered;
+}
+.enough-modalbody1{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.enough-modalbody2{
+  text-align: center;
+}
+
+/*wish coin modal not enough*/
+#notenough-cashin-button{
+  margin-left: auto;
+}
+
+#notenouhg-cancel-button{
+  margin-left: 0;
+}
+
+.notenough-project-price{
+ color: orangered;
+}
+.notenough-modalbody1{
+ text-align: center;
+ margin-bottom: 10px;
+}
+.notenough-modalbody2{
+ text-align: center;
 }

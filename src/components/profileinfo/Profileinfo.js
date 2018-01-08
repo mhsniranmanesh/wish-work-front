@@ -5,17 +5,17 @@ import {bindActionCreators} from 'redux';
 import * as profileInfo from '../../actions/profileInfo.js';
 import {Input, Button} from 'reactstrap';
 import ProfileSkills from './ProfileSkills';
-
+import ProfilePic from './ProfilePic';
+import ResetPassword from './ResetPassword';
 
 class Profileinfo extends React.Component{
     constructor(props){
         super(props);
         this.state = { bioReadOnly : true , jobReadOnly : true , degreeReadOnly : true, universityReadOnly : true ,
-            profileInfo:"" , profilepicture: "" , selectValueTF :"" , selectValueTT : "" , saving : false,
+            profileInfo:"" , profilepicture: null , selectValueTF :"" , selectValueTT : "" , saving : false,
             translationFatherTag : false , is_general: false , is_medical : false , is_technical : false , is_legal : false,
-            skills:'' , showSkills:false , language_set:{}
+            skills:'' , showSkills:false , language_set:{} , file:"" , imagePreviewUrl:"" , showError:false , imageSizeValidation: false , TTSkills:[]
         };
-
 
         this.updateValueTF = this.updateValueTF.bind(this);
         this.updateValueTT = this.updateValueTT.bind(this);
@@ -37,15 +37,76 @@ class Profileinfo extends React.Component{
         this.submitSkillChanges = this.submitSkillChanges.bind(this);
         this.showSkills = this.showSkills.bind(this);
         this.addSkills = this.addSkills.bind(this);
+        this.picUploader = this.picUploader.bind(this);
+        this.sendPicToServer = this.sendPicToServer.bind(this);
+        this.deleteSkills = this.deleteSkills.bind(this);
+        this.add = this.add.bind(this);
 
+    }
+
+    deleteSkills(id){
+        console.log("Hi");
+        delete this.state.skills[0].translation_skill.language_set[id];
+        this.state.skills[0].translation_skill.language_set.map(function( i,item){
+            // if(i>=id){
+            //     this.state.skills[0].translation_skill.language_set[i-1] = this.state.skills[0].translation_skill.language_set[i]
+            // }
+            console.log(item , 'item');
+        });
+        console.log(this.state.skills[0].translation_skill.language_set);
+        console.log('id', id);
+        console.log(this.state.TTSkills , 'props.TTSkills');
+        //delete this.state.TTSkills[id];
+        // this.state.skills[0].translation_skill.language_set.length = this.state.skills[0].translation_skill.language_set.length - 1
+
+    }
+    sendPicToServer(){
+        var SendData = {
+          profile_picture : this.state.imagePreviewUrl
+        };
+        this.props.actions.updateInformations(SendData)
+    }
+
+    picUploader(e){
+        e.preventDefault();
+
+        let reader = new FileReader();
+        let file = e.target.files[0];
+        console.log(file);
+        reader.onloadend = () => {
+            this.setState({
+                file: file,
+                imagePreviewUrl: reader.result
+            });
+        };
+
+        reader.readAsDataURL(file);
+        console.log(file.type);
+        if(e.target.files[0].type.includes("image") === true){
+            this.setState({showError : false})
+        }
+        if (e.target.files[0].size <= 1000000) {
+            this.setState({imageSizeValidation : false})
+        }
+        if (e.target.files[0].size > 1000000) {
+            this.setState({imageSizeValidation : true})
+        }
+        if(e.target.files[0].type.includes("image") === false) {
+            this.setState({showError: true})
+        }
     }
 
     addSkills(){
-        var from_language = this.state.selectValueTF;
-        var to_language = this.state.selectValueTT;
-        this.setState({language_set:{from_language , to_language}});
-    }
+        let from_language = this.state.selectValueTF;
+        let to_language = this.state.selectValueTT;
+        this.setState({language_set:{from_language , to_language}}, this.add);
 
+
+    }
+    add(){
+        this.state.skills[0].translation_skill.language_set.push(this.state.language_set);
+
+    }
     showSkills(){
         this.setState({showSkills: true});
 
@@ -73,12 +134,12 @@ class Profileinfo extends React.Component{
     IsMedical(){
         this.setState({is_medical: true });
         this.state.skills[0].translation_skill.is_medical = true ;
+        console.log(this.state.skills)
     }
 
     IsLaw(){
         this.setState({is_legal: true });
         this.state.skills[0].translation_skill.is_legal= true;
-        this.state.skills[0].translation_skill.is_legal = true;
     }
 
 
@@ -122,8 +183,11 @@ class Profileinfo extends React.Component{
     // }
 
     submitSkillChanges(){
-        console.log('this.state.language_set' , this.state.language_set);
-        this.state.skills[0].translation_skill.languages.push(this.state.language_set);
+        console.log('this.state.language_set' , this.state.language_set.from_language);
+        console.log(this.state.skills);
+        // if(this.state.language_set.from_language != undefined) {
+        //     console.log('!!!!');
+        // }
         var sendSkills = {
             is_general : this.state.skills[0].translation_skill.is_general,
             is_medical : this.state.skills[0].translation_skill.is_medical,
@@ -173,19 +237,41 @@ class Profileinfo extends React.Component{
         return x;
     };
     componentWillReceiveProps(nextProps) {
-        console.log('nextProps' ,nextProps);
+       // console.log('nextProps' ,nextProps);
         var size = this.size(nextProps.profileInfo);
-        console.log("size of profileInfo in nextProps" , size);
+       // console.log("size of profileInfo in nextProps" , size);
         if (this.props.profileInfo[size-1] != nextProps.profileInfo[size-1]) {
-            console.log('nextProps.profileInfo[size-1]', nextProps.profileInfo[size - 1]);
+          //  console.log('nextProps.profileInfo[size-1]', nextProps.profileInfo[size - 1]);
             this.setState({profileInfo: nextProps.profileInfo[size - 1]});
             this.setState({profilepicture: nextProps.profileInfo[size-1].profile_picture});
-            this.setState({skills: nextProps.profileInfo[size - 1].skills});
-            this.setState({showSkills: true});
+            if(nextProps.profileInfo[size-1].skills[0]) {
+                this.setState({skills: nextProps.profileInfo[size - 1].skills});
+                this.setState({showSkills: true});
+            }
+            console.log('this.state.skills',this.state.skills);
+            if(!nextProps.profileInfo[size-1].skills[0]){
+                //console.log('HIBITCH!');
+              var translation_skills = {
+                  translation_skill: {
+                      is_general: false,
+                      is_medical: false,
+                      is_technical: false,
+                      is_legal: false,
+                      language_set: []
+
+                  }
+            };
+              var newSkills = {
+                  0 :  translation_skills
+              };
+                this.setState({skills: newSkills});
+                this.setState({showSkills: true});
+            }
         }
         if(this.state.skills){
             this.setState({showSkills: true});
         }
+        // else if(this.state.profileInfo.is_freelancer )
 
     }
     // componentDidMount(){
@@ -218,38 +304,16 @@ class Profileinfo extends React.Component{
         <div className="container-fluid">
             <div className="row">
                 <div className="col-sm-6 d-block mx-auto">
-                    <div className="dash-con dash-profile-info con-body mb-4">
 
-                        <span className="projectinfo">
-                          <i className="fa fa-camera" aria-hidden="true"/>
-                        </span>
-                        <span className="projectinfo">
-                          <h5 style={{display:'inline'}}>تغییر عکس پروفایل</h5>
-                        </span>
 
-                        <div className="dash-divider"/>
-                        <form className="">
-                            <div className="media">
-                                <a href="#" className="">
-                                    <img className="rounded-circle d-flex ml-3" src={this.state.profilepicture}  style={ {height:125 , width:125} }/>
-                                    <i className="fa fa-camera"/>
-                                </a>
-                                <div className="media-body">
-                                    <label htmlFor="" className="col-form-label">
-                                            برای تغییر عکس پروفایل، روی عکس خود کلیک کنید.
-                                    </label>
-                                    <label htmlFor="" className="col-form-label sub-label">
-                                        <span className="quote justify">
-                                          <i className="fa fa-quote-left" aria-hidden="true"/> فریلنسر هایی که برای خود عکسی با ظاهری دوستانه و حرفه ای انتخاب می کنند، تا 5 برابر شانس بیشتری برای پروژه انجام دادن دارند.
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <button type="submit" className="btn btn-primary btn-rec">
-                                <i className="fa fa-check"/>آپلود عکس
-                            </button>
-                        </form>
-                    </div>
+                    <ProfilePic Picture={this.state.profileInfo.profile_picture}
+                                picUploader={this.picUploader}
+                                imagePreviewUrl={this.state.imagePreviewUrl}
+                                showError={this.state.showError}
+                                imageSizeValidation = {this.state.imageSizeValidation}
+                                sendPicToServer={this.sendPicToServer}
+                    />
+
                     <div className="dash-con dash-profile-info con-body mb-4">
 
                       <span className="projectinfo">
@@ -323,31 +387,11 @@ class Profileinfo extends React.Component{
                                        Skills={this.state.skills}
                                        formSubmitted={this.submitSkillChanges}
                                        addSkills={this.addSkills}
-                        /> : null
+                                       deleteSkills={this.deleteSkills}
+                                       TTSkills={this.state.TTSkills}
+                        /> : (null)
                     }
-                    <div className="dash-con dash-profile-info con-body mb-4">
-
-                      <span className="projectinfo">
-                        <i className="fa fa-unlock-alt" aria-hidden="true"/>
-                      </span>
-                      <span className="projectinfo">
-                      <h5 style={{display:'inline'}}>تغییر رمز عبور</h5>
-
-                      </span>
-                        <div className="dash-divider"/>
-                        <form className="">
-                            <div id="" className="form-group">
-                                <input type="password" className="form-control form-control-danger" id="" placeholder="رمز عبور فعلی"/>
-                                <div id="form-control-feedback-username" className="form-control-feedback" >رمز عبور فعلی صحیح نمیباشد!</div>
-                            </div>
-                            <div id="" className="form-group">
-                                <input type="password" className="form-control form-control-danger" id="" placeholder="رمز عبور جدید"/>
-                            </div>
-                            <Button color="primary" className="btn btn-primary btn-rec" >
-                                <i className="fa fa-check" />ثبت تغییرات
-                            </Button>
-                        </form>
-                    </div>
+                    <ResetPassword/>
                 </div>
             </div>
         </div>

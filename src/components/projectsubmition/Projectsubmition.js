@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -34,7 +34,9 @@ class Projectsubmition extends React.Component{
             translationTo: "",
             title: "",
             description: "",
-            budget: "",
+            vlaid: "",
+            pageNumber: "",
+            auctionTime: "",
             time_limit: "",
             requiredTags: [],
             response: [],
@@ -42,28 +44,39 @@ class Projectsubmition extends React.Component{
             showError: false,
             validPrice: false,
             validTime: false,
+            validPage: false,
+            validAuction: false,
+            validAuctionLimit: false,
             type: 0,
             category: 0,
-            bid_duration:2,
+            bid_duration:0,
             field:"",
             popoverOpenPrice: false,
             popoverOpenTime: false,
             popoverOpenShow: false,
             popoverOpenDesc: false,
-            number_of_pages : 2,
+            popoverOpenPage: false,
+            popoverOpenAuctionInterval: false,
+            number_of_pages : 0,
+            fileIsUpload : false,
+            inputTitle: 'فایل را بگیرید و اینجا رها کنید.',
+            file:""
         };
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
 
         this.togglePopoverSubject = this.togglePopoverSubject.bind(this);
-
+        this.togglePopoverPage = this.togglePopoverPage.bind(this);
         this.togglePopoverPrice = this.togglePopoverPrice.bind(this);
         this.togglePopoverTime = this.togglePopoverTime.bind(this);
         this.togglePopoverShow = this.togglePopoverShow.bind(this);
         this.togglePopoverDesc = this.togglePopoverDesc.bind(this);
+        this.togglePopoverAuctionInterval = this.togglePopoverAuctionInterval.bind(this);
 
         this.handleOnChange = this.handleOnChange.bind(this);
+        this.roundProjectAuctionTime = this.roundProjectAuctionTime.bind(this);
         this.roundProjectPrice =this.roundProjectPrice.bind(this);
+        this.roundProjectPage = this.roundProjectPage.bind(this);
         this.roundProjectTime = this.roundProjectTime.bind(this);
         this.IsLaw = this.IsLaw.bind(this);
         this.IsMedical = this.IsMedical.bind(this);
@@ -82,9 +95,42 @@ class Projectsubmition extends React.Component{
         this.dragDrop = this.dragDrop.bind(this);
         this.submit = this.submit.bind(this);
         this.validatePrice = this.validatePrice.bind(this);
+        this.validateAuction = this.validateAuction.bind(this);
         this.validateTime = this.validateTime.bind(this);
+        this.validatePage = this.validatePage.bind(this);
         this.persianToEnglish = this.persianToEnglish.bind(this);
+        this.submitProjectPageState = this.submitProjectPageState.bind(this);
+        this.submitProjectAuctionState = this.submitProjectAuctionState.bind(this);
         this.redirect = this.redirect.bind(this);
+    }
+
+    // componentDidMount(){
+    // // if(this.state.fileIsUpload){
+    // //     this.setState({inputTitle : 'فایل شما آپلود شد' })
+    // //     }
+    // }
+    togglePopoverAuctionInterval(){
+      this.setState({
+        popoverOpenAuctionInterval: !this.state.popoverOpenAuctionInterval,
+        popoverOpenPage: false,
+        popoverOpenPrice: false,
+        popoverOpenTime: false,
+        popoverOpenShow: false,
+        popoverOpenDesc: false,
+        PopoverOpenSubject: false,
+      });
+    }
+
+    togglePopoverPage(){
+      this.setState({
+        popoverOpenPage: !this.state.popoverOpenPage,
+        popoverOpenAuctionInterval: false,
+        popoverOpenPrice: false,
+        popoverOpenTime: false,
+        popoverOpenShow: false,
+        popoverOpenDesc: false,
+        PopoverOpenSubject: false,
+      });
     }
 
     togglePopoverPrice() {
@@ -94,7 +140,8 @@ class Projectsubmition extends React.Component{
       popoverOpenShow: false,
       popoverOpenDesc: false,
       PopoverOpenSubject: false,
-
+      popoverOpenPage: false,
+      popoverOpenAuctionInterval: false,
     });
   }
 
@@ -105,7 +152,8 @@ class Projectsubmition extends React.Component{
     popoverOpenTime: false,
     popoverOpenDesc: false,
     PopoverOpenSubject: false,
-
+    popoverOpenPage: false,
+    popoverOpenAuctionInterval: false,
     });
   }
 
@@ -116,7 +164,8 @@ class Projectsubmition extends React.Component{
     popoverOpenTime: false,
     popoverOpenShow: false,
     PopoverOpenSubject: false,
-
+    popoverOpenPage: false,
+    popoverOpenAuctionInterval: false,
     });
   }
   togglePopoverTime() {
@@ -126,7 +175,8 @@ class Projectsubmition extends React.Component{
     popoverOpenShow: false,
     popoverOpenDesc: false,
     PopoverOpenSubject: false,
-
+    popoverOpenPage: false,
+    popoverOpenAuctionInterval: false,
     });
   }
   togglePopoverSubject(){
@@ -136,10 +186,10 @@ class Projectsubmition extends React.Component{
       popoverOpenShow: false,
       popoverOpenDesc: false,
       popoverOpenTime: false,
-
+      popoverOpenPage: false,
+      popoverOpenAuctionInterval: false,
       });
   }
-
 
 
 
@@ -169,10 +219,15 @@ class Projectsubmition extends React.Component{
   		this.setState({ multiValue: value });
   	}
     submit(){
+        var Send2 = JSON.parse(JSON.stringify(this.state));
+        var Send1 = JSON.parse(JSON.stringify(this.state));
+        var Send3  = {file: this.state.file};
+        delete Send1.file;
+        delete Send2.file;
         console.log('from_language' , this.state.from_language);
         console.log('this.state.translationFrom' , this.state.translationFrom);
-        console.log('STATE IS:' , this.state);
-            this.props.actions.projectSubmit(this.state , this.state).then(
+        console.log('STATE IS:' , Send3);
+            this.props.actions.projectSubmit(Send1 , Send2, Send3).then(
             () => this.redirect()
             ).catch(error => {
             console.log(error);
@@ -206,6 +261,16 @@ class Projectsubmition extends React.Component{
         const tm = /^\d+$/;
         return tm.test(time);
     }
+    validatePage(page){
+      const pg = /^\d+$/;
+      return pg.test(page);
+    }
+    validateAuction(aucTime){
+      const aucT = /^\d+$/;
+      return aucT.test(aucTime);
+
+    }
+
     componentWillMount(){
        // console.log('this.props.location.search.length' , this.props.location.search.length);
         if(this.props.location.search.length === 6){
@@ -349,12 +414,24 @@ class Projectsubmition extends React.Component{
       modal: !this.state.modal
       });
     }
-    dragDrop(event){
-        const data = new FormData();
+    dragDrop(e){
+        e.preventDefault();
+        this.setState({fileIsUpload : true});
+        let reader = new FileReader();
+        let file = e.target.files[0];
+        this.setState({file : file});
+        console.log(file);
+        console.log(this.state);
+        // reader.onloadend = () => {
+        //     this.setState({
+        //         file: file,
+        //         imagePreviewUrl: reader.result
+        //     });
+        // };
         // data.append('file', event.target.files[0]);
         // data.append('name', 'some value user types');
         // data.append('description', 'some value user types');
-        console.log(event.target.files[0]);
+        //console.log(event.target.files[0]);
     }
 
 
@@ -363,17 +440,38 @@ class Projectsubmition extends React.Component{
     }
     submitProjectTimeState(event){
         let time = event.target.value;
+        console.log(time , 'time 1')
         time = this.persianToEnglish(time);
+        console.log(time , 'time 2')
         const trueOrFalseTimeValid = this.validateTime(time);
-        this.setState({time_limit: event.target.value , validTime: trueOrFalseTimeValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
+        this.setState({time_limit: time , validTime: trueOrFalseTimeValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
         //console.log('state:' ,this.state);
         //console.log('length:' , this.state.translationFatherTag.length);
     }
+
+
+    submitProjectAuctionState(event){
+      let auction = event.target.value;
+      auction = this.persianToEnglish(auction);
+      const trueOrFalseAuctionValid = this.validateAuction(auction);
+      this.setState({auctionTime: auction , validAuction: trueOrFalseAuctionValid})
+    }
+
+
+    submitProjectPageState(event){
+
+      let page = event.target.value;
+      page = this.persianToEnglish(page);
+      const trueOrFalsePageValid = this.validatePage(page);
+      this.setState({pageNumber: page , validPage: trueOrFalsePageValid  })
+
+    }
+
+
     submitProjectPriceState(event){
         let price = event.target.value;
         price = this.persianToEnglish(price);
         const trueOrFalsePriceValid = this.validatePrice(price);
-
         this.setState({budget: price , validPrice : trueOrFalsePriceValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,})
     }
     projectTitleState(event){
@@ -393,6 +491,47 @@ class Projectsubmition extends React.Component{
         this.setState({budget: numb , validPrice : trueOrFalsePriceValid2})
 
     }
+
+    roundProjectAuctionTime(event){
+      let numb = Number(event.target.value);
+      numb = (Math.ceil(numb));
+      const trueOrFalseAuctionValid2 = this.validateAuction(numb);
+
+
+
+      if(isNaN(numb)){
+          numb = "";
+      }
+      else if( (numb>=2) && (numb<=7) ){
+        this.setState({ validAuctionLimit: true })
+      }
+      else{
+        this.setState({ validAuctionLimit: false })
+
+      }
+
+      event.target.value = numb;
+      this.setState({auctionTime: numb , validAuction: trueOrFalseAuctionValid2});
+    }
+
+
+
+    roundProjectPage(event){
+      let numb = Number(event.target.value);
+      numb = (Math.ceil(numb));
+      const trueOrFalsePageValid2 = this.validatePage(numb);
+
+      if(isNaN(numb)){
+          numb = "";
+      }
+
+      event.target.value = numb;
+      this.setState({pageNumber: numb, validPage : trueOrFalsePageValid2});
+
+    }
+
+
+
     roundProjectTime(event){
 
         let numb = Number(event.target.value);
@@ -403,6 +542,8 @@ class Projectsubmition extends React.Component{
         }
         this.setState({time_limit: numb , validTime: trueOrFalseTimeValid2,});
     }
+
+
 
 
     handleSubmit(event){
@@ -454,11 +595,29 @@ class Projectsubmition extends React.Component{
              this.setState({showError: true});
              this.setState({message:"لطفا زمان خود را صحیح وارد کنید"})
          }
+         else if(!this.state.validPage && this.state.pageNumber ===""){
+             this.setState({showError: true});
+             this.setState({message:"لطفا تعداد صفحات ترجمه خود را وارد کنید"})
+         }
+         else if(!this.state.validPage){
+           this.setState({showError: true});
+           this.setState({message:"لطفا برای تعداد صفحات عدد صحیح وارد کنید"})
+         }
+         else if(!this.state.validAuction && this.state.auctionTime ===""){
+             this.setState({showError: true});
+             this.setState({message:"لطفا زمان مناقصه را مشخص کنید"})
+         }
+         else if(!this.state.validAuctionLimit && this.state.auctionTime !==""){
+           this.setState({showError: true});
+           this.setState({message:"لطفا زمان مناقصه را بین ۲ تا ۷ روز انتخاب کنید"})
+         }
         else {
             // this.setState({});
             this.setState({showError: false, type : STATIC_DATAS.TYPE.NORMAL ,category : STATIC_DATAS.CATEGORY.TRANSLATION ,  modal: !this.state.modal});
             this.setState({from_language: this.state.translationFrom});
             this.setState({to_language: this.state.translationTo});
+            this.setState({number_of_pages: this.state.pageNumber});
+            this.setState({bid_duration: this.state.auctionTime});
             // this.setState({field : this.state.translationFatherTag})
             // this.setState({
             //     modal: !this.state.modal
@@ -580,18 +739,38 @@ class Projectsubmition extends React.Component{
 
                         <div className="form-group drag-drop mt-2 mb-4 ">
                             <label className="form-header-fontsize">فایل های مربوط به پروژه را آپلود کنید.</label>
-                            <input type="file" className="form-control-file form-body-fontsize" id="inputFile" onChange={this.dragDrop} data-title="فایل را بگیرید و اینجا رها کنید." multiple="" accept=
-                                "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*"/>
-                          </div>
+                            <label className="container form-control-file " htmlFor="inputFile">
+
+                                {this.state.fileIsUpload ? <p className="uploaded-project">فایل شما انتخاب شد ، برای تغییر فایل خود روی <strong> اینجا</strong> کلیک کنید</p>
+                                    : <p className="upload-project">فایل را بگیرید و اینجا رها کنید(یا بر روی <strong> اینجا</strong> کلیک کنید)</p> }
+                        </label>
+                            <input type="file" className="form-control-box form-body-fontsize"
+                                id="inputFile" onChange={this.dragDrop} multiple=""/>
+
+
+                        </div>
+
+                      <Row className="page-auction">
+                        <Col>
 
                           <legend htmlFor="" className="col-form-label form-header-fontsize">
                                 <span className="form-header-fontsize">تعداد صفحات پروژه خود را مشخص کنید</span>
-
                           </legend>
-
-
-
-                            <input type="text" className="form-control form-body-fontsize" id="priceInput" />
+                          <input type="text" className="form-control form-body-fontsize" id="pageInput" value={this.state.pageNumber} onChange={this.submitProjectPageState} onBlur={this.roundProjectPage} onFocus={this.togglePopoverPage}/>
+                            <Popover placement="right" isOpen={this.state.popoverOpenPage} target="pageInput" toggle={this.togglePopoverpage}>
+                              <PopoverBody className="beauty-text popover-beauty">لطفا در این بخش تعداد صفحات ترجمه خود را به بالا رند کنید و وارد نمایید</PopoverBody>
+                            </Popover>
+                        </Col>
+                        <Col>
+                          <legend htmlFor="" className="col-form-label form-header-fontsize">
+                                  <span className="form-header-fontsize">مدت برقراری مناقصه را مشخص کنید</span>
+                          </legend>
+                          <input type="text" className="form-control form-body-fontsize" id="auctionInput" value={this.state.auctionTime} onChange={this.submitProjectAuctionState} onBlur={this.roundProjectAuctionTime} onFocus={this.togglePopoverAuctionInterval}/>
+                            <Popover placement="left" isOpen={this.state.popoverOpenAuctionInterval} target="auctionInput" toggle={this.togglePopoverAuctionInterval}>
+                              <PopoverBody className="beauty-text popover-beauty">لطفا مدت برقراری مناقصه را بین ۲ تا ۷ روز وارد نمایید</PopoverBody>
+                            </Popover>
+                          </Col>
+                      </Row>
 
 
                         <legend className="form-header-fontsize">

@@ -1,11 +1,14 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import {Button} from 'reactstrap';
 import PropTypes from 'prop-types';
 
 const ModalCashin = (props) => {
+
+console.log(props.cashinModalState,'modal cash in TorF')
+
   return(
-    <Modal isOpen={this.state.cashNotEnough} toggle={this.modalCashNotEnough}>
+
+    <Modal isOpen={props.cashinModalState} toggle={props.modalCashEnough}>
       <ModalBody>
         <div className="enough-modalbody1">
           برای شروع پروژه باید مبلغ <span className="enough-project-price">۲۵۰۰۰۰ تومان</span>  بپردازید.
@@ -15,11 +18,18 @@ const ModalCashin = (props) => {
         </div>
       </ModalBody>
       <ModalFooter>
-        <btn onClick={this.modalCashNotEnough} id="enough-approve-button" className="btn btn-rec btn-primary">تأیید</btn>
-        <btn onClick={this.modalCashNotEnough} id="enough-cancel-button" className="btn btn-rec btn-secondary">انصراف</btn>
+        <btn onClick={props.modalCashEnough} id="enough-approve-button" className="btn btn-rec btn-primary">تأیید</btn>
+        <btn onClick={props.modalCashEnough} id="enough-cancel-button" className="btn btn-rec btn-secondary">انصراف</btn>
       </ModalFooter>
     </Modal>
   )
+
+
+
 };
+
+ModalCashin.PropTypes ={
+  modalCashEnough: PropTypes.func.isRequired
+}
 
 export default ModalCashin;

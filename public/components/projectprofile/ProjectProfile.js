@@ -23,14 +23,16 @@ class ProjectProfile extends React.Component {
         showError: false,
         profileInfo: Object.assign({}, props.profileInfo),
         isLoggedIn: false,
-        modalState: false,
         delivery_duration: '',
         ownerOfProject: false,
         showBidsList: false,
         priceForCash: "",
         validPrice: false,
         validTime: false,
+        cashinModalState: false,
       };
+
+      console.log(this.state.cashinModalState,'modalstate')
       // delivery_duration: Array [ "This field is required." ]
       // number_of_milestones: Array [ "This field is required." ]
       // price: Array [ "This field is required." ]
@@ -50,6 +52,13 @@ class ProjectProfile extends React.Component {
       this.validateDeliveryTime = this.validateDeliveryTime.bind(this);
       this.DeliveryTime = this.DeliveryTime.bind(this);
       this.roundDeliveryTime = this.roundDeliveryTime.bind(this);
+      this.modalCashEnough = this.modalCashEnough.bind(this);
+    }
+
+    modalCashEnough(){
+      this.setState({
+        cashinModalState: !this.state.cashinModalState,
+      });
     }
 
     persianToEnglish(value){
@@ -335,6 +344,12 @@ class ProjectProfile extends React.Component {
           }
           goToCash = {
             this.goToCash
+          }
+          cashinModalState={
+            this.state.cashinModalState
+          }
+          modalCashEnough={
+            this.modalCashEnough
           }/>
           : null}
         </div>

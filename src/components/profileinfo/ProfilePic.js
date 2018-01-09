@@ -52,7 +52,7 @@ const ProfilePic = (props) =>{
                         </label>
                     </div>
                 </div>
-                <input type="file" className="btn btn-primary btn-rec" onChange={(e)=>props.picUploader(e)} />
+                <input type="file" enctype="multipart/form-data" className="btn btn-primary btn-rec" onChange={(e)=>props.picUploader(e)} />
                 <Row>
                     <Col>
                 <Button color={'#00a651'} className="btn btn-primary btn-rec" onClick={props.sendPicToServer}>

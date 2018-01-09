@@ -62,7 +62,7 @@ class Profileinfo extends React.Component{
     }
     sendPicToServer(){
         var SendData = {
-          profile_picture : this.state.imagePreviewUrl
+          profile_picture : this.state.file
         };
         this.props.actions.updateInformations(SendData)
     }

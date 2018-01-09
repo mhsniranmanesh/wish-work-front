@@ -874,7 +874,7 @@ class Projectsubmition extends React.Component{
 
 
                               <ModalBody>
-                                {/*}<span className="prices">
+                                {/*<span className="prices">
                                   <div>
                                     <svg width="5px" height="8vh">
                                       <rect className="price-good" width="5px" height="8vh" />

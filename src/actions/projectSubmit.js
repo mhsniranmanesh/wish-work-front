@@ -35,14 +35,13 @@ export function profileInfo(){
 
 export function attachFileToProject(allState,stateForFile) {
     return function (dispatch) {
-        var header = {'Content-Type':'multipart/form-data'};
-        var newState = {
-            project_id : allState.project_id,
-            file: stateForFile.file
-        };
-        console.log(newState , 'newState');
-        console.log(newState , 'newState');
-        return axios.post('/api/v1/projects/files/' , newState , header).then(
+        var fileFormData = new FormData();
+        fileFormData.append('project_id', allState.project_id);
+        fileFormData.append('file', stateForFile.file);
+        return axios.post('/api/v1/projects/files/' , fileFormData ,
+          {
+            headers: { 'Content-Type': 'multipart/form-data'}
+          }).then(
             () =>{
                 dispatch(profileInfo());
             }).catch(err =>{

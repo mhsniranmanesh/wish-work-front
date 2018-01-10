@@ -26,7 +26,7 @@ class CashOutIn extends React.Component{
       // console.log(this.state.showCashIn , "showCashin 1 State");
 
         this.setState({showCashIn: true});
-
+        console.log(this.state.showCashIn, 'showCashin TorF')
         //console.log(this.state)
     }
     ChangeToCashOut(){

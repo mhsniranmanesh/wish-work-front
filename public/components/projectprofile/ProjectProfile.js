@@ -113,7 +113,7 @@ class ProjectProfile extends React.Component {
     FinalSubmitBid() {
       this.state.Length = Number(this.state.Length);
       console.log('this.state.projectDetail.uuid', this.state.projectDetail.uuid);
-      console.log(this.state.projectDetail, 'complete project detail')
+      console.log(this.state.projectDetail.project_attachments[0].file, 'complete project detail')
       var sendData = {
         project_id: this.state.projectDetail.uuid,
         number_of_milestones: this.state.Length,

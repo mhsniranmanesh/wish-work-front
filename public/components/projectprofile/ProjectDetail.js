@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 const ProjectDetail = (props) =>{
 
+
+console.log(props.Detail,'Detail')
   return(
           <div className="con mb-4">
               {/* <span className="price-badge"><i className="fa fa-usd"/></span>
@@ -14,7 +16,7 @@ const ProjectDetail = (props) =>{
               <div className="divider"/>
               <h6 className="project-discript">
                   {props.Detail.description}
-                  {props.Detail.start_date}
+                  {props.Detail.project_attachments}
               </h6>
               <div className="sub-heading">
                   <a className="tag" href="#">#فارسی_به_انگلیسی</a>

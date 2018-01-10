@@ -17,7 +17,7 @@ const CashOut = (props) =>{
 
 
     return(
-        <div className="tab-pane fade text-center py-4" id="draw" role="tabpanel" aria-labelledby="draw-tab">
+      <div class="tab-pane fade text-center py-4" id="draw" role="tabpanel" aria-labelledby="draw-tab">
             <h5 className="">موجودی قابل برداشت:</h5>
             <h4 className="py-2">۲۳/۴۵۶/۰۹۸ ریال</h4>
             <form className="">

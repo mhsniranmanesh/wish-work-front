@@ -19,7 +19,7 @@ class ProjectProfile extends React.Component {
         Length: 0,
         bid_description: '',
         bid_price: '',
-        ModalState: '',
+        ModalState: 'modal',
         showError: false,
         profileInfo: Object.assign({}, props.profileInfo),
         isLoggedIn: false,
@@ -52,8 +52,12 @@ class ProjectProfile extends React.Component {
       this.DeliveryTime = this.DeliveryTime.bind(this);
       this.roundDeliveryTime = this.roundDeliveryTime.bind(this);
       this.modalCashEnough = this.modalCashEnough.bind(this);
+      this.returnFalse = this.returnFalse.bind(this)
     }
-
+    returnFalse(e){
+      e.preventDefault();
+      return false
+    }
     modalCashEnough(){
       this.setState({
         cashinModalState: !this.state.cashinModalState,
@@ -93,10 +97,10 @@ class ProjectProfile extends React.Component {
 
     goToCash(y) {
       //this.setState({priceForCash : x});
-      console.log(y, 'y');
+      //console.log(y, 'y');
       let price = y.toString();
-      console.log(price, 'this is price');
-      console.log(this.state.priceForCash, 'price of freelancer');
+      // console.log(price, 'this is price');
+      // console.log(this.state.priceForCash, 'price of freelancer');
       //console.log(bid_price , 'bid_price')
       this.context.router.history.push({
         pathname: '/account/cash',
@@ -112,8 +116,8 @@ class ProjectProfile extends React.Component {
     }
     FinalSubmitBid() {
       this.state.Length = Number(this.state.Length);
-      console.log('this.state.projectDetail.uuid', this.state.projectDetail.uuid);
-      console.log(this.state.projectDetail.project_attachments[0].file, 'complete project detail')
+      // console.log('this.state.projectDetail.uuid', this.state.projectDetail.uuid);
+      // console.log(this.state.projectDetail, 'complete project detail')
       var sendData = {
         project_id: this.state.projectDetail.uuid,
         number_of_milestones: this.state.Length,
@@ -267,7 +271,7 @@ class ProjectProfile extends React.Component {
     };
 
     componentWillMount() {
-      console.log('this.props:', this.props.location.pathname.slice(10));
+      //console.log('this.props:', this.props.location.pathname.slice(10));
 
       this.props.actions.projectDetail(this.props.location.pathname.slice(10));
     }
@@ -275,8 +279,8 @@ class ProjectProfile extends React.Component {
     componentWillReceiveProps(nextProps) {
       var sizeD = this.size(nextProps.projectDetail);
       if (this.props.projectDetail[sizeD - 1] != nextProps.projectDetail[sizeD - 1]) {
-        console.log(nextProps.profileDetail);
-        console.log(sizeD, 'sizeD');
+        // console.log(nextProps.profileDetail);
+        // console.log(sizeD, 'sizeD');
         //inja az halate bler dar biad
         this.setState({
           projectDetail: Object.assign({}, nextProps.projectDetail[sizeD - 1])
@@ -292,7 +296,7 @@ class ProjectProfile extends React.Component {
           this.setState({
             isLoggedIn: true
           });
-          console.log(this.state.ownerOfProject);
+          // console.log(this.state.ownerOfProject);
         }
         this.setState({
           projectDetail: Object.assign({}, nextProps.projectDetail[sizeD - 1])
@@ -301,6 +305,9 @@ class ProjectProfile extends React.Component {
       if (this.props.profileInfo != nextProps.profileInfo) {
         this.setState({
           profileInfo: Object.assign({}, nextProps.profileInfo)
+        });
+        this.setState({
+              isLoggedIn: true
         });
         if (sizeD > 0) {
           if (nextProps.profileInfo.username == this.props.projectDetail[sizeD - 1].client) {
@@ -354,65 +361,71 @@ class ProjectProfile extends React.Component {
           : null}
         </div>
           </div>
-           {this.state.ownerOfProject ?
-              <Button
-            myFunc = ""
-            name = "hi"
-            budget = {
-              this.state.projectDetail.budget
+                {this.state.ownerOfProject ?
+                    <Button
+                        myFunc=""
+                        name="hi"
+                        budget={
+                            this.state.projectDetail.budget
+                        }
+                        TimeLimit={
+                            this.state.projectDetail.time_limit
+                        }
+                    />
+                    :
+                    <AddBid
+                        returnFalse={this.returnFalse}
+                        isLoggedIn={this.state.isLoggedIn}
+                        TimeLimit={
+                            this.state.projectDetail.time_limit
+                        }
+                        amountOfMileStones={
+                            this.state.amountOfMileStones
+                        }
+                        valueOfMileStones={
+                            this.valueOfMileStones
+                        }
+                        Length={
+                            this.state.Length
+                        }
+                        CheckLength={
+                            this.CheckLength
+                        }
+                        ModalState={
+                            this.state.ModalState
+                        }
+                        BidDescription={
+                            this.BidDescription
+                        }
+                        BidPrice={
+                            this.BidPrice
+                        }
+                        roundBidAmount={
+                            this.roundBidAmount
+                        }
+                        DeliveryTime={
+                            this.DeliveryTime
+                        }
+                        roundDeliveryTime={
+                            this.roundDeliveryTime
+                        }
+                        ModalSubmit={
+                            this.ModalSubmit
+                        }
+                        message={
+                            this.state.message
+                        }
+                        showError={
+                            this.state.showError
+                        }
+                        budget={
+                            this.state.projectDetail.budget
+                        }
+                        delivery_duration={
+                            this.state.delivery_duration
+                        }/>
             }
-            TimeLimit = {
-              this.state.projectDetail.time_limit
-            }
-            />
-            :
-            <AddBid
-            TimeLimit = {
-              this.state.projectDetail.time_limit
-            }
-            amountOfMileStones = {
-              this.state.amountOfMileStones
-            }
-            valueOfMileStones = {
-              this.valueOfMileStones
-            }
-            Length = {
-              this.state.Length
-            }
-            CheckLength = {
-              this.CheckLength
-            }
-            ModalState = {
-              this.state.ModalState
-            }
-            BidDescription = {
-              this.BidDescription
-            }
-            BidPrice = {
-              this.BidPrice
-            }
-            roundBidAmount = {
-              this.roundBidAmount
-            }
-            DeliveryTime = {
-              this.DeliveryTime
-            }
-            roundDeliveryTime = {
-              this.roundDeliveryTime
-            }
-            ModalSubmit = {
-              this.ModalSubmit
-            }
-            message = {
-              this.state.message
-            }
-            showError = {
-              this.state.showError
-            }
-            budget = {
-              this.state.projectDetail.budget
-            } />
-          }
+
         </div>
       </div>
     </section>

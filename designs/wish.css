@@ -40,7 +40,6 @@ a:hover {
     background-color: #009942;
     border-color: #009942;
 }
-
 .btn-success:hover {
     color: #fff;
     background-color: #007031;
@@ -608,3 +607,9 @@ h4.card-title {
 }
 
 h4.card-title a {}
+
+.SubmittedPr {
+    text-align: center;
+    color: #fff;
+    background-color: #868e96;
+}

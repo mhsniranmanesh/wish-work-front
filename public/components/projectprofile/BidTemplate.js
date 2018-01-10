@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 
 const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX , goToCash , priceForCash, cashinModalState, modalCashEnough}) => {
     console.log(ownerOfProject , 'ownerOfProject2');
-
     if(isLoggedIn) {
+        var freelancerFirstName = Bid.freelancer.first_name;
+        var freelancerLastName = Bid.freelancer.last_name;
+
 
         //console.log(Bid , 'Bid Bid Bid :D');
         if(ownerOfProject){

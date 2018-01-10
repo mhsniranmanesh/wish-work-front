@@ -158,22 +158,23 @@ class Header2 extends React.Component {
                         </ul>
 
                         <ul className="navbar-nav navbar-right">
-                            <form className="form-inline">
-                                <div className="input-group">
-                                    <input type="text" className="form-control" placeholder="جستجو..." aria-label=""/>
-                                        <div className="input-group-btn">
-                                            <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i className="fa fa-search"/>
-                                            </button>
-                                            <div className="dropdown-menu dropdown-menu-left">
-                                                <a className="dropdown-item" href="#">در فریلنسر ها</a>
-                                                <a className="dropdown-item" href="#">در پروژه ها</a>
-                                                <div role="separator" className="dropdown-divider"/>
-                                                <a className="dropdown-item" href="#">همه</a>
-                                            </div>
-                                        </div>
-                                </div>
-                            </form>
+                            {/*   SEARCH BAR    */}
+                            {/*<form className="form-inline">*/}
+                                {/*<div className="input-group">*/}
+                                    {/*<input type="text" className="form-control" placeholder="جستجو..." aria-label=""/>*/}
+                                        {/*<div className="input-group-btn">*/}
+                                            {/*<button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">*/}
+                                                {/*<i className="fa fa-search"/>*/}
+                                            {/*</button>*/}
+                                            {/*<div className="dropdown-menu dropdown-menu-left">*/}
+                                                {/*<a className="dropdown-item" href="#">در فریلنسر ها</a>*/}
+                                                {/*<a className="dropdown-item" href="#">در پروژه ها</a>*/}
+                                                {/*<div role="separator" className="dropdown-divider"/>*/}
+                                                {/*<a className="dropdown-item" href="#">همه</a>*/}
+                                            {/*</div>*/}
+                                        {/*</div>*/}
+                                {/*</div>*/}
+                            {/*</form>*/}
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle mr-lg-2" href="#" id="alertsDropdown"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

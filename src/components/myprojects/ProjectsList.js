@@ -10,7 +10,7 @@ const ProjectsList = (props) =>{
             <div>
                 {props.ClientProjects.map(
                     ClientProjects =>
-                        <ProjectTemplate key={ClientProjects.uuid} ClientProjects={ClientProjects} />
+                        <ProjectTemplate key={ClientProjects.uuid} ClientProjects={ClientProjects} goToTender={props.goToTender}/>
                 )}
             </div>
         )
@@ -22,7 +22,8 @@ const ProjectsList = (props) =>{
     }
 };
 ProjectsList.PropTypes = {
-    ClientProjects: PropTypes.object.isRequired
+    ClientProjects: PropTypes.object.isRequired,
+    goToCash : PropTypes.func.isRequired
 };
 
 export default ProjectsList;

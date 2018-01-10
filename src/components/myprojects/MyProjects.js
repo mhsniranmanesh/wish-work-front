@@ -14,8 +14,14 @@ class MyProjects extends React.Component {
         this.size = this.size.bind(this);
         this.onClick = this.onClick.bind(this);
         this.goToProjectAuctionPage = this.goToProjectAuctionPage.bind(this);
+        this.goToTender = this.goToTender.bind(this);
     }
-    
+    goToTender(y){
+        let slug = y.toString();
+        this.context.router.history.push({
+            pathname: '/projects/' + slug,
+        });
+    }
     size (obj) {
         let x = 0, key;
         for (key in obj) {
@@ -54,8 +60,8 @@ class MyProjects extends React.Component {
                             <AsFreelancerOrClient/>
                             <Filter/>
                              <ProjectsList ClientProjects={this.state.ClientProjects}
-                                          onClick={this.onClick}
-                                        //  goToProjectAuctionPage={this.goToProjectAuctionPage}
+                                           onClick={this.onClick}
+                                           goToTender={this.goToTender}
                              />
 
                         </div>

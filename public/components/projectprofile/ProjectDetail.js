@@ -14,7 +14,6 @@ const ProjectDetail = (props) =>{
               <div className="divider"/>
               <h6 className="project-discript">
                   {props.Detail.description}
-                  {props.Detail.start_date}
               </h6>
               <div className="sub-heading">
                   <a className="tag" href="#">#فارسی_به_انگلیسی</a>

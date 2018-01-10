@@ -4,19 +4,22 @@ import {Button} from 'reactstrap';
 import PropTypes from 'prop-types';
 import Errors from './Errors';
 
-const AddBid = (props) =>{
-
-    return(
-        <div className="col-sm-4">
+const AddBid = (props) => {
+    if (props.isLoggedIn) {
+        return (
+            <div className="col-sm-4">
                 <div className="con mb-4">
                     <h5 className="project-title">
-                                      درباره پروژه
+                        درباره پروژه
                     </h5>
                     <div className="divider"/>
                     <div className="sub-heading">
-                        <span className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></span>
-                        <span className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</span>
-                        <span className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</span>
+                        <span className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a
+                            href="#">4/5</a></span>
+                        <span className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget}
+                            تومان</span>
+                        <span className="not-inline"><i
+                            className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</span>
                         <span className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> دو ساعت قبل</span>
                     </div>
 
@@ -30,7 +33,7 @@ const AddBid = (props) =>{
                                     </button>
                                 </div>
                                 <div className="modal-body">
-                                    <form className="signup-form" action='#'>
+                                    <form className="signup-form" onSubmit={(event)=> props.returnFalse(event)}>
                                         <div className="form-group">
                                             <input type="text"
                                                    className="form-control form-control-danger"
@@ -44,7 +47,7 @@ const AddBid = (props) =>{
                                             <input type="text"
                                                    className="form-control form-control-danger"
                                                    placeholder="زمان پیشنهادی (روز)"
-                                                   value={props.delivery_time}
+                                                   value={props.delivery_duration}
                                                    onChange={props.DeliveryTime}
                                                    onBlur={props.roundDeliveryTime}
                                             />
@@ -61,7 +64,7 @@ const AddBid = (props) =>{
                                             <input type="text"
                                                    className="form-control"
                                                    placeholder="مهارت ها و ابزار هایی که قصد استفاده از آن ها را دارید."
-                                                   // value={props.skills}
+                                                // value={props.skills}
                                             />
                                         </div>
                                         <label htmlFor="skillType" className="col-form-label d-block">
@@ -72,7 +75,8 @@ const AddBid = (props) =>{
                                                    placeholder="تعداد موعدهای تحویل پروژه"
                                                    onChange={props.valueOfMileStones}
                                                    value={props.amountOfMileStones}/>
-                                                <Button type="submit" className="btn btn-success btn-rec" onClick={props.CheckLength} >انتخاب</Button>
+                                            <Button type="submit" className="btn btn-success btn-rec"
+                                                    onClick={props.CheckLength}>انتخاب</Button>
 
                                         </div>
                                         <div className="row mb-3">
@@ -85,14 +89,16 @@ const AddBid = (props) =>{
                                         </div>
                                     </form>
                                     {props.showError ? <Errors message={props.message}/> : (true)}
-                                        <br/><br/>
+                                    <br/><br/>
 
                                     <div className="jumbotron">
                                         <div className="container">
                                             <div className="row">
                                                 <div className="timeline-centered">
 
-                                                    <AddBidMileStones Length={props.Length}/>
+                                                    <AddBidMileStones number_of_milestones={props.amountOfMileStones}
+                                                                      delivery_duration={props.delivery_duration}
+                                                                      Length={props.Length}/>
                                                 </div>
                                             </div>
                                         </div>
@@ -101,11 +107,11 @@ const AddBid = (props) =>{
                                 <div className="modal-footer">
                                     <button type="button"
                                             className="btn btn-primary btn-rec"
-                                            // data-dismiss="modal"
+                                        // data-dismiss="modal"
                                             data-dismiss={props.ModalState}
                                             onClick={props.ModalSubmit}
                                     >
-                                                         ثبت پیشنهاد
+                                        ثبت پیشنهاد
                                     </button>
                                 </div>
                             </div>
@@ -113,13 +119,39 @@ const AddBid = (props) =>{
                     </div>
                 </div>
                 <div className="con mb-4">
-                    <button  type="submit" className="btn btn-primary btn-rec btn-block" data-toggle="modal" data-target="#biddingModal">
+                    <button type="submit" className="btn btn-primary btn-rec btn-block" data-toggle="modal"
+                            data-target="#biddingModal">
                         پیشنهاد قیمت
                     </button>
                 </div>
             </div>
         )
-    };
+    }
+
+else {
+    return(
+        <div className="col-sm-4">
+            <div className="con mb-4">
+                <h5 className="project-title">
+                    درباره پروژه
+                </h5>
+                <div className="divider"/>
+                <div className="sub-heading">
+                    <span className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></span>
+                    <span className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</span>
+                    <span className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</span>
+                    <span className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> دو ساعت قبل</span>
+                </div>
+            </div>
+            <div className="con mb-4">
+                <button  type="submit" className="btn btn-primary btn-rec btn-block" >
+                   ثبت نام کنید                   </button>
+            </div>
+        </div>
+
+    )
+}
+};
 
 AddBid.PropTypes ={
     amountOfMileStones: PropTypes.object.isRequired,

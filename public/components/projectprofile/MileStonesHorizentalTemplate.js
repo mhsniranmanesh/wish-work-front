@@ -4,7 +4,7 @@ const MileStonesHorizentalTemplate = (props) =>{
    // for(var x=0 ; x< props.number_of_milestones x++)
     if(props.i % 2 === 0) {
         return (
-            <div>
+            <div className="milestone">
                 <article className="timeline-entry">
                     <div className="timeline-entry-inner">
                         <time className="timeline-time"><span>تا {props.x} روز دیگر</span></time>
@@ -25,7 +25,7 @@ const MileStonesHorizentalTemplate = (props) =>{
         <div>
             <article className="timeline-entry left-aligned">
                 <div className="timeline-entry-inner">
-                    <time className="timeline-time"><span>تا {props.x}</span></time>
+                    <time className="timeline-time"><span>تا {props.x} روز دیگر </span></time>
                     <div className="timeline-icon bg-primary">
                         <i className="entypo-suitcase"/>
                     </div>

@@ -1863,3 +1863,6 @@ span.sup {
     opacity: 1;
     color: #00a651;
 }
+.milestone {
+    margin: auto;
+}

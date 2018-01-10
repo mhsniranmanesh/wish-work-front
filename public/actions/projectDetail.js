@@ -5,16 +5,18 @@ export function loadProjectDetailSuccess(ProjectDetail) {
     return{type: types.LOAD_PROJECT_DETAIL_SUCCESS , ProjectDetail}
 }
 
-export function addBidSuccess(addedBid) {
-    return{type: types.ADD_BID_SUCCESS , addedBid}
+export function addBidSuccess(addedBid , profileInfo) {
+    const newAddedBid = Object.assign(addedBid, profileInfo);
+    return{type: types.ADD_BID_SUCCESS , newAddedBid}
 }
 
 
-export function addBidToProject(getState) {
-    return function (dispatch) {
-        console.log('getState' , getState);
-        return axios.post('/api/v1/projects/translation/bid/' , getState).then(addedBid =>{
-            dispatch(addBidSuccess(addedBid))
+export function addBidToProject(getStateX) {
+    return function (dispatch , getState) {
+        console.log('getState' , getStateX);
+        const profileInfo = getState().profileInfo;
+        return axios.post('/api/v1/projects/translation/bid/' , getStateX).then(addedBid =>{
+            dispatch(addBidSuccess(addedBid , profileInfo))
         }).catch(error =>{
             throw (error)
         })

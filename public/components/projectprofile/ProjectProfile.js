@@ -29,7 +29,9 @@ class ProjectProfile extends React.Component {
         priceForCash: "",
         validPrice: false,
         validTime: false,
+        cashinModalState: false,
       };
+
       // delivery_duration: Array [ "This field is required." ]
       // number_of_milestones: Array [ "This field is required." ]
       // price: Array [ "This field is required." ]
@@ -49,6 +51,13 @@ class ProjectProfile extends React.Component {
       this.validateDeliveryTime = this.validateDeliveryTime.bind(this);
       this.DeliveryTime = this.DeliveryTime.bind(this);
       this.roundDeliveryTime = this.roundDeliveryTime.bind(this);
+      this.modalCashEnough = this.modalCashEnough.bind(this);
+    }
+
+    modalCashEnough(){
+      this.setState({
+        cashinModalState: !this.state.cashinModalState,
+      });
     }
 
     persianToEnglish(value){
@@ -104,12 +113,13 @@ class ProjectProfile extends React.Component {
     FinalSubmitBid() {
       this.state.Length = Number(this.state.Length);
       console.log('this.state.projectDetail.uuid', this.state.projectDetail.uuid);
+      console.log(this.state.projectDetail, 'complete project detail')
       var sendData = {
         project_id: this.state.projectDetail.uuid,
         number_of_milestones: this.state.Length,
         price: this.state.bid_price,
         delivery_duration: this.state.delivery_duration,
-        is_default_project_controller: false,
+        has_default_bid_controller: false,
       };
       this.props.actions.addBidToProject(sendData)
         .then(
@@ -334,6 +344,12 @@ class ProjectProfile extends React.Component {
           }
           goToCash = {
             this.goToCash
+          }
+          cashinModalState={
+            this.state.cashinModalState
+          }
+          modalCashEnough={
+            this.modalCashEnough
           }/>
           : null}
         </div>
@@ -429,8 +445,4 @@ class ProjectProfile extends React.Component {
       }
     }
 
-
-
-
-
-    export default connect(mapStateToProps, mapDispatchToProps)(ProjectProfile);
+export default connect(mapStateToProps , mapDispatchToProps)(ProjectProfile);

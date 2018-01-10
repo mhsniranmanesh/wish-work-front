@@ -2,8 +2,9 @@ import React from 'react';
 import AddedBidsMileStone from './AddedBidsMileStone';
 import PropTypes from 'prop-types';
 
-const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX , goToCash , priceForCash}) => {
+const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX , goToCash , priceForCash, cashinModalState, modalCashEnough}) => {
     console.log(ownerOfProject , 'ownerOfProject2');
+
     if(isLoggedIn) {
 
         //console.log(Bid , 'Bid Bid Bid :D');
@@ -43,7 +44,12 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX , g
                                         mileStoneX={mileStoneX}
                                         goToCash={goToCash}
                                         priceForCash={priceForCash}
+                                        cashinModalState={cashinModalState}
+                                        modalCashEnough={modalCashEnough}
+
                     />
+
+
                     <div className="divider"/>
                 </div>
             )

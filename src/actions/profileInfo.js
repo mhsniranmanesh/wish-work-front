@@ -56,7 +56,14 @@ export function updateSkills(profileSkills) {
 //
 export function updateInformations(profileInfo , getState){
     return function (dispatch) {
-        return axios.post('/api/v1/profiles/update-infos/' , profileInfo).then(profileInfo =>{
+        var profileData = new FormData();
+        profileData.append('profile_picture', profileInfo.profile_picture);
+
+      return axios.post('/api/v1/profiles/update-infos/' , profileData,
+        {
+          headers: { 'Content-Type': 'multipart/form-data'}
+        }
+        ).then(profileInfo =>{
         dispatch(loadNewInfosSuccess(profileInfo.data));
         }).catch(error => {
             throw (error);

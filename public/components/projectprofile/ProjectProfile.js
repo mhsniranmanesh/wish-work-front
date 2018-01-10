@@ -336,31 +336,32 @@ class ProjectProfile extends React.Component {
         <ProjectDetail Detail = {
           this.state.projectDetail
         }/>
-        <div className = "con mb-4" > {
-          this.state.showBidsList ? <BidsList isLoggedIn = {
-            this.state.isLoggedIn
-          }
-          ownerOfProject = {
-            this.state.ownerOfProject
-          }
-          Bids = {
-            this.state.projectDetail.project_bids
-          }
-          priceForCash = {
-            this.state.priceForCash
-          }
-          goToCash = {
-            this.goToCash
-          }
-          cashinModalState={
-            this.state.cashinModalState
-          }
-          modalCashEnough={
-            this.modalCashEnough
-          }/>
-          : null}
+            <div className = "con mb-4" > {
+              this.state.showBidsList ? <BidsList isLoggedIn = {
+                this.state.isLoggedIn
+              }
+              ownerOfProject = {
+                this.state.ownerOfProject
+              }
+              Bids = {
+                this.state.projectDetail.project_bids
+              }
+              priceForCash = {
+                this.state.priceForCash
+              }
+              goToCash = {
+                this.goToCash
+              }
+              cashinModalState={
+                this.state.cashinModalState
+              }
+              modalCashEnough={
+                this.modalCashEnough
+              }/>
+              : null}
+            </div>
         </div>
-          </div>
+        <div className="col-sm-4">
                 {this.state.ownerOfProject ?
                     <Button
                         myFunc=""
@@ -373,6 +374,7 @@ class ProjectProfile extends React.Component {
                         }
                     />
                     :
+                    
                     <AddBid
                         returnFalse={this.returnFalse}
                         isLoggedIn={this.state.isLoggedIn}
@@ -425,7 +427,7 @@ class ProjectProfile extends React.Component {
                             this.state.delivery_duration
                         }/>
             }
-
+            </div>
         </div>
       </div>
     </section>

@@ -19,7 +19,6 @@ const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash,
         />);
         console.log(BidT , 'BidT');
     }
-    console.log(cashinModalState,'modal state 2')
         return (
             <div>
                 <h5 className="project-title">

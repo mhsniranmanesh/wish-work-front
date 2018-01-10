@@ -32,7 +32,6 @@ class ProjectProfile extends React.Component {
         cashinModalState: false,
       };
 
-      console.log(this.state.cashinModalState,'modalstate')
       // delivery_duration: Array [ "This field is required." ]
       // number_of_milestones: Array [ "This field is required." ]
       // price: Array [ "This field is required." ]
@@ -114,6 +113,7 @@ class ProjectProfile extends React.Component {
     FinalSubmitBid() {
       this.state.Length = Number(this.state.Length);
       console.log('this.state.projectDetail.uuid', this.state.projectDetail.uuid);
+      console.log(this.state.projectDetail, 'complete project detail')
       var sendData = {
         project_id: this.state.projectDetail.uuid,
         number_of_milestones: this.state.Length,

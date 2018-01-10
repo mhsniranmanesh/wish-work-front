@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import ModalCashin from './ModalCashin';
 
 const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_bid, key, number, mileStoneX, goToCash, priceForCash, modalCashEnough, cashinModalState}) => {
-  console.log(cashinModalState,'final')
     var mileStones = [];
 
     var x = (delivery_duration) / (number_of_milestones);

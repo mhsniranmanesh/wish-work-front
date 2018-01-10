@@ -420,8 +420,8 @@ class Projectsubmition extends React.Component{
         let reader = new FileReader();
         let file = e.target.files[0];
         this.setState({file : file});
-        console.log(file);
-        console.log(this.state);
+        console.log(file , 'file');
+        console.log(this.state , 'this.state dragdrop');
         // reader.onloadend = () => {
         //     this.setState({
         //         file: file,

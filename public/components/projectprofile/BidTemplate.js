@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX , goToCash , priceForCash, cashinModalState, modalCashEnough}) => {
     console.log(ownerOfProject , 'ownerOfProject2');
-    console.log(cashinModalState,'modalstate n')
 
     if(isLoggedIn) {
 

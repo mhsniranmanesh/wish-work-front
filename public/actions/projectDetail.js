@@ -9,7 +9,25 @@ export function addBidSuccess(addedBid , profileInfo) {
     const newAddedBid = Object.assign(addedBid, profileInfo);
     return{type: types.ADD_BID_SUCCESS , newAddedBid}
 }
+export function deleteBidSuccess(Success) {
+    debugger;
+    return{type: types.DELETE_BID_SUCCESS , Success}
+}
 
+export function deleteBid(bidId) {
+    return function (dispatch) {
+
+        console.log(bidId);
+        return axios.delete('/api/v1/projects/translation/bid/' ,{data: {bid_id : bidId}}).then(Success=>{
+            dispatch(deleteBidSuccess(Success))
+            }
+
+        ).catch(err =>{
+            throw (err)
+        })
+    }
+
+}
 
 export function addBidToProject(getStateX) {
     return function (dispatch , getState) {

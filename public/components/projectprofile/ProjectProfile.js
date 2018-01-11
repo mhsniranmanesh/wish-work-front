@@ -52,8 +52,18 @@ class ProjectProfile extends React.Component {
       this.DeliveryTime = this.DeliveryTime.bind(this);
       this.roundDeliveryTime = this.roundDeliveryTime.bind(this);
       this.modalCashEnough = this.modalCashEnough.bind(this);
-      this.returnFalse = this.returnFalse.bind(this)
+      this.returnFalse = this.returnFalse.bind(this);
+      this.deleteBid = this.deleteBid.bind(this);
     }
+    deleteBid(x){
+    console.log('x' , x);
+    this.props.actions.deleteBid(x).then(
+        console.log('Delete')
+    ).catch(err => {
+        console.log(err)
+    })
+    }
+
     returnFalse(e){
       e.preventDefault();
       return false
@@ -337,7 +347,14 @@ class ProjectProfile extends React.Component {
           this.state.projectDetail
         }/>
         <div className = "con mb-4" > {
-          this.state.showBidsList ? <BidsList isLoggedIn = {
+          this.state.showBidsList ? <BidsList
+          deleteBid={
+              this.deleteBid
+          }
+          profileInfo={
+              this.props.profileInfo
+          }
+          isLoggedIn = {
             this.state.isLoggedIn
           }
           ownerOfProject = {

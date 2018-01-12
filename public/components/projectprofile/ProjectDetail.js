@@ -19,20 +19,20 @@ const ProjectDetail = (props) =>{
                   {props.Detail.description}
               </h6>
 
-              <div className="download-file">
-                <span  id="download-symbol"><a href="#"> <i className="fa fa-download " aria-hidden="true"></i> </a></span>
-                <span  ><a href="#" id="file-name"> فایل۱ - پروژه به شدت جالب و دانشی  </a></span>
-              </div>
+                <div className="download-file">
+                  <span  id="download-symbol"><a href="#"> <i className="fa fa-download " aria-hidden="true"></i> </a></span>
+                  <span  ><a href="#" id="file-name"> فایل۱ - پروژه به شدت جالب و دانشی  </a></span>
+                </div>
 
-              <div className="download-file">
-                <span  id="download-symbol"><a href="#"> <i className="fa fa-download " aria-hidden="true"></i> </a></span>
-                <span  ><a href="#" id="file-name"> فایل۲ - پروژه به شدت ازدواجی آروین  </a></span>
-              </div>
+                <div className="download-file">
+                  <span  id="download-symbol"><a href="#"> <i className="fa fa-download " aria-hidden="true"></i> </a></span>
+                  <span  ><a href="#" id="file-name"> فایل۲ - پروژه به شدت ازدواجی آروین  </a></span>
+                </div>
 
-              <div className="download-file">
-                <span  id="download-symbol"><a href="#"> <i className="fa fa-download " aria-hidden="true"></i> </a></span>
-                <span  ><a href="#" id="file-name"> فایل۳ - پروژه زیبا در جهت تأمین منافع و شخصیتهای بزرگ علمی   </a></span>
-              </div>
+                <div className="download-file">
+                  <span  id="download-symbol"><a href="#"> <i className="fa fa-download " aria-hidden="true"></i> </a></span>
+                  <span  ><a href="#" id="file-name"> فایل۳ - پروژه زیبا در جهت تأمین منافع و شخصیتهای بزرگ علمی   </a></span>
+                </div>
 
               <div className="sub-heading">
                   <a className="tag" href="#">#فارسی_به_انگلیسی</a>

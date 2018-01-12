@@ -1870,10 +1870,14 @@ span.sup {
 }
 
 
+.download-block{
+  display: inline-block;
+}
 .download-file{
-    display: block;
+  display: inline-block;
     padding: 2px 0 0 5px;
     margin-bottom: 5px;
+    margin-right: 10px;
     border: 1px solid #018abe;
     border-radius: 5%;
 }

@@ -117,7 +117,7 @@ class ProjectProfile extends React.Component {
     FinalSubmitBid() {
       this.state.Length = Number(this.state.Length);
       // console.log('this.state.projectDetail.uuid', this.state.projectDetail.uuid);
-      // console.log(this.state.projectDetail, 'complete project detail')
+      console.log(this.state.projectDetail, 'complete project detail')
       var sendData = {
         project_id: this.state.projectDetail.uuid,
         number_of_milestones: this.state.Length,
@@ -280,7 +280,7 @@ class ProjectProfile extends React.Component {
       var sizeD = this.size(nextProps.projectDetail);
       if (this.props.projectDetail[sizeD - 1] != nextProps.projectDetail[sizeD - 1]) {
         // console.log(nextProps.profileDetail);
-        // console.log(sizeD, 'sizeD');
+        console.log(sizeD, 'sizeD');
         //inja az halate bler dar biad
         this.setState({
           projectDetail: Object.assign({}, nextProps.projectDetail[sizeD - 1])
@@ -294,7 +294,7 @@ class ProjectProfile extends React.Component {
             ownerOfProject: true
           });
           this.setState({
-            isLoggedIn: true
+            isLoggedIn: true,
           });
           // console.log(this.state.ownerOfProject);
         }
@@ -335,6 +335,9 @@ class ProjectProfile extends React.Component {
         <div className = "col-sm-8" >
         <ProjectDetail Detail = {
           this.state.projectDetail
+        }
+        release={
+          this.state.projectDetail.release_date
         }/>
             <div className = "con mb-4" > {
               this.state.showBidsList ? <BidsList isLoggedIn = {
@@ -342,6 +345,9 @@ class ProjectProfile extends React.Component {
               }
               ownerOfProject = {
                 this.state.ownerOfProject
+              }
+              release={
+                this.state.projectDetail.release_date
               }
               Bids = {
                 this.state.projectDetail.project_bids
@@ -372,12 +378,22 @@ class ProjectProfile extends React.Component {
                         TimeLimit={
                             this.state.projectDetail.time_limit
                         }
+                        release={
+                          this.state.projectDetail.release_date
+                        }
                     />
                     :
-                    
+
                     <AddBid
-                        returnFalse={this.returnFalse}
-                        isLoggedIn={this.state.isLoggedIn}
+                        release={
+                          this.state.projectDetail.release_date
+                        }
+                        returnFalse={
+                          this.returnFalse
+                        }
+                        isLoggedIn={
+                          this.state.isLoggedIn
+                        }
                         TimeLimit={
                             this.state.projectDetail.time_limit
                         }

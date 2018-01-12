@@ -3,8 +3,20 @@ import AddBidMileStones from './AddBidMileStones';
 import {Button, Row, Col} from 'reactstrap';
 import PropTypes from 'prop-types';
 import Errors from './Errors';
+import moment from 'moment-jalaali';
+
+
 
 const AddBid = (props) => {
+
+
+console.log(props.release,'release')
+console.log(props.budget,'budget')
+console.log(props.TimeLimit,'time limit')
+
+
+
+
     if (props.isLoggedIn) {
         return (
             <div>
@@ -19,7 +31,7 @@ const AddBid = (props) => {
                       <div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div>
                       <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</div>
                       <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</div>
-                      <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> دو ساعت قبل</div>
+                      <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong>  </div>
 
                     </div>
                     </div>
@@ -141,7 +153,7 @@ else {
                     <div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div>
                     <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</div>
                     <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</div>
-                    <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> دو ساعت قبل</div>
+                    <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong>  </div>
                 </div>
             </div>
             <div className="con mb-4">
@@ -156,7 +168,8 @@ else {
 
 AddBid.PropTypes ={
     amountOfMileStones: PropTypes.object.isRequired,
-    Length: PropTypes.element.isRequired
+    Length: PropTypes.element.isRequired,
+    release: PropTypes.string.isRequired,
 };
 
 export default AddBid;

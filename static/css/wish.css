@@ -1133,7 +1133,7 @@ section.profile {
 
 .project-discript {
     font-weight: 300;
-    line-height: 1.5rem;
+    line-height: 1.3rem;
 }
 
 #biddingBtn {
@@ -1867,4 +1867,30 @@ span.sup {
 }
 .milestone {
     margin: auto;
+}
+
+
+.download-file{
+    display: inline-block;
+    padding: 2px 0 0 5px;
+    margin-bottom: 5px;
+    border: 1px solid #018abe;
+    border-radius: 5%;
+}
+
+.fa-download{
+  color:#fff;
+  padding-right: 5px;
+  text-align: center;
+}
+
+#download-symbol{
+  background-color: #018abe;
+  padding-left: 2px;
+}
+
+#file-name{
+  color:#555;
+  padding-right: 5px;
+  font-size: 12px
 }

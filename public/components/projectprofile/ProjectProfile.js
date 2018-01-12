@@ -401,7 +401,7 @@ class ProjectProfile extends React.Component {
                         }
                     />
                     :
-                    
+
                     <AddBid
 
                         returnFalse={this.returnFalse}

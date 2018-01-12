@@ -6,7 +6,23 @@ import Errors from './Errors';
 const CountDown = (props) => {
   return(
     <div className="con mb-4">
-      <time id="count-down" dateTime="2014-01-06T00:00:00"></time>
+
+      <span className="counter-circle">
+          <div className="counter-numb">00</div>
+          <div className="counter-char">دقیقه</div>
+      </span>
+
+      <span className="counter-circle">
+          <div className="counter-numb">00</div>
+          <div className="counter-char">ساعت</div>
+      </span>
+
+      <span className="counter-circle">
+
+          <div className="counter-numb">00</div>
+          <div className="counter-char">روز</div>
+      </span>
+
     </div>
   )
 };

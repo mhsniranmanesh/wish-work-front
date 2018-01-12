@@ -1870,7 +1870,7 @@ span.sup {
 }
 .mybid {
     background-color: #08b0f0;
-
+}
 
 .download-file{
   display: inline-block;
@@ -1899,4 +1899,31 @@ span.sup {
 }
 
 
-/**/
+/*count down*/
+.counter-circle {
+    margin-right: 30px;
+    display: inline-block;
+    background-color: #4caf50;
+    padding: 15px;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    /*border-radius: 50%;*/
+    border: 2px solid #4caf50;
+}
+
+.counter-numb{
+  font-size: 20px;
+  margin: 0;
+  line-height: 1;
+  color: #fff;
+
+}
+
+.counter-char{
+  font-size: 10px;
+  margin: 0;
+  line-height: 1.5;
+  color: #fff;
+
+}

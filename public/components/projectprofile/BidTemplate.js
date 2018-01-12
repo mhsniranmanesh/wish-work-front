@@ -2,13 +2,14 @@ import React from 'react';
 import AddedBidsMileStone from './AddedBidsMileStone';
 import PropTypes from 'prop-types';
 
-const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX , goToCash , priceForCash, cashinModalState, modalCashEnough}) => {
+const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
+                         goToCash , priceForCash, cashinModalState, modalCashEnough , profileInfo , deleteBid , prices}) => {
     console.log(ownerOfProject , 'ownerOfProject2');
+    var bidOfFreelancer = false;
     if(isLoggedIn) {
-        var freelancerFirstName = Bid.freelancer.first_name;
-        var freelancerLastName = Bid.freelancer.last_name;
-
-
+        if((profileInfo.first_name == Bid.freelancer.first_name) && (Bid.freelancer.last_name == profileInfo.last_name)){
+            bidOfFreelancer = true;
+        }
         //console.log(Bid , 'Bid Bid Bid :D');
         if(ownerOfProject){
             return (
@@ -48,6 +49,8 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX , g
                                         priceForCash={priceForCash}
                                         cashinModalState={cashinModalState}
                                         modalCashEnough={modalCashEnough}
+                                        balance={profileInfo.balance}
+                                        prices={prices}
 
                     />
 
@@ -57,35 +60,73 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX , g
             )
         }
         else {
-            return (
-                <div>
-                    <div className="fl-list">
-                        <div className="fl-wrap media">
-                            <img className="d-flex  ml-3 rounded-circle" src="http://via.placeholder.com/50x50" width="40"
-                                 height="40"/>
-                            <div className="media-body">
-                                <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
-                                <span className="bidding-price">{Bid.price}</span>
-                                {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
-                                {/*data-toggle="modal" data-target="#accBiddingModal">*/}
-                                {/*<i className="fa fa-handshake-o"/>*/}
-                                {/*</button>*/}
+            if(bidOfFreelancer){
+                return (
+                    <div>
+                        <div className="fl-list">
+                            <div className="fl-wrap media">
+                                <i className="fa fa-times" aria-hidden="true" onClick={(event)=>{deleteBid(Bid.uuid)}}/>
+                                <img className="d-flex  ml-3 rounded-circle" src="http://via.placeholder.com/50x50" width="40"
+                                     height="40"/>
+                                <div className="media-body ">
+                                    <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
+                                    <span className="bidding-price">{Bid.price}</span>
+                                    {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
+                                    {/*data-toggle="modal" data-target="#accBiddingModal">*/}
+                                    {/*<i className="fa fa-handshake-o"/>*/}
+                                    {/*</button>*/}
 
-                                <span className="fl-discript">{Bid.Describtion} <a href="#"
-                                                                                   className="more">بیشتر...</a></span>
-                                <div className="sub-heading">
-                                    <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                                    <a className="tag" href="#">#علمی</a>
-                                    <a className="tag" href="#">#زیست_شناسی</a>
-                                    <a className="tag" href="#">#میکرو_بیولوژی</a>
-                                    <a className="tag" href="#">#فوری</a>
+                                    <span className="fl-discript">{Bid.Describtion} <a href="#"
+                                                                                       className="more">بیشتر...</a></span>
+                                    <div className="sub-heading">
+                                        <a className="tag" href="#">#فارسی_به_انگلیسی</a>
+                                        <a className="tag" href="#">#علمی</a>
+                                        <a className="tag" href="#">#زیست_شناسی</a>
+                                        <a className="tag" href="#">#میکرو_بیولوژی</a>
+                                        <a className="tag" href="#">#فوری</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div className="divider"/>
                     </div>
-                    <div className="divider"/>
-                </div>
-            )
+                )
+            }
+            else {
+
+
+                return (
+                    <div>
+                        <div className="fl-list">
+                            <div className="fl-wrap media">
+                                <img className="d-flex  ml-3 rounded-circle" src="http://via.placeholder.com/50x50"
+                                     width="40"
+                                     height="40"/>
+                                <div className="media-body ">
+                                    <a href="#"
+                                       className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
+                                    <span className="bidding-price">{Bid.price}</span>
+                                    {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
+                                    {/*data-toggle="modal" data-target="#accBiddingModal">*/}
+                                    {/*<i className="fa fa-handshake-o"/>*/}
+                                    {/*</button>*/}
+
+                                    <span className="fl-discript">{Bid.Describtion} <a href="#"
+                                                                                       className="more">بیشتر...</a></span>
+                                    <div className="sub-heading">
+                                        <a className="tag" href="#">#فارسی_به_انگلیسی</a>
+                                        <a className="tag" href="#">#علمی</a>
+                                        <a className="tag" href="#">#زیست_شناسی</a>
+                                        <a className="tag" href="#">#میکرو_بیولوژی</a>
+                                        <a className="tag" href="#">#فوری</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="divider"/>
+                    </div>
+                )
+            }
         }
     }
     else {

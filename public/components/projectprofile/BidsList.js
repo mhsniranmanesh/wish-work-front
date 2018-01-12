@@ -2,8 +2,9 @@ import React from 'react';
 import BidTemplate from './BidTemplate';
 import PropTypes from 'prop-types';
 
-const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash, cashinModalState, modalCashEnough }) => {
+const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash, cashinModalState, modalCashEnough , profileInfo ,deleteBid }) => {
     var BidT = [] ;
+    var prices = [];
     var mileStoneX = {};
     for(var i = 0 ; i < Bids.length ; i++){
         BidT.push(<BidTemplate key={Bids[i].uuid}
@@ -16,14 +17,16 @@ const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash,
                                goToCash={goToCash}
                                cashinModalState={cashinModalState}
                                modalCashEnough={modalCashEnough}
+                               profileInfo={profileInfo}
+                               deleteBid={deleteBid}
+                               prices={prices}
         />);
         console.log(BidT , 'BidT');
     }
         return (
             <div>
                 <h5 className="project-title">
-                    فریلنسرها
-                </h5>
+پیشنهاد ها                </h5>
                 <div className="dropdown float-left">
                     <button className="btn btn-secondary btn-rec btn-small dropdown-toggle"
                             id="sortingBtn"
@@ -47,7 +50,8 @@ const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash,
 };
 BidsList.PropTypes ={
   goToCash : PropTypes.func.isRequired,
-  modalCashEnough : PropTypes.func.isRequired
+  modalCashEnough : PropTypes.func.isRequired,
+  deleteBid : PropTypes.func.isRequired
 };
 
 export default BidsList ;

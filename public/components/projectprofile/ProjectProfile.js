@@ -53,8 +53,19 @@ class ProjectProfile extends React.Component {
       this.DeliveryTime = this.DeliveryTime.bind(this);
       this.roundDeliveryTime = this.roundDeliveryTime.bind(this);
       this.modalCashEnough = this.modalCashEnough.bind(this);
-      this.returnFalse = this.returnFalse.bind(this)
+      this.returnFalse = this.returnFalse.bind(this);
+      this.deleteBid = this.deleteBid.bind(this);
+      this.goToRegister = this.goToRegister.bind(this);
     }
+    deleteBid(x){
+    console.log('x' , x);
+    this.props.actions.deleteBid(x).then(
+        console.log('Delete')
+    ).catch(err => {
+        console.log(err)
+    })
+    }
+
     returnFalse(e){
       e.preventDefault();
       return false
@@ -108,6 +119,12 @@ class ProjectProfile extends React.Component {
         search: price
       });
     }
+    goToRegister(){
+        this.context.router.history.push({
+            pathname: '/account/cash'
+        });
+    }
+
     clicksubmit() {
       this.setState({
         showError: false,
@@ -118,7 +135,7 @@ class ProjectProfile extends React.Component {
     FinalSubmitBid() {
       this.state.Length = Number(this.state.Length);
       // console.log('this.state.projectDetail.uuid', this.state.projectDetail.uuid);
-      console.log(this.state.projectDetail, 'complete project detail')
+      // console.log(this.state.projectDetail, 'complete project detail')
       var sendData = {
         project_id: this.state.projectDetail.uuid,
         number_of_milestones: this.state.Length,
@@ -281,7 +298,7 @@ class ProjectProfile extends React.Component {
       var sizeD = this.size(nextProps.projectDetail);
       if (this.props.projectDetail[sizeD - 1] != nextProps.projectDetail[sizeD - 1]) {
         // console.log(nextProps.profileDetail);
-        console.log(sizeD, 'sizeD');
+        // console.log(sizeD, 'sizeD');
         //inja az halate bler dar biad
         this.setState({
           projectDetail: Object.assign({}, nextProps.projectDetail[sizeD - 1])
@@ -295,7 +312,7 @@ class ProjectProfile extends React.Component {
             ownerOfProject: true
           });
           this.setState({
-            isLoggedIn: true,
+            isLoggedIn: true
           });
           // console.log(this.state.ownerOfProject);
         }
@@ -336,36 +353,40 @@ class ProjectProfile extends React.Component {
         <div className = "col-sm-8" >
         <ProjectDetail Detail = {
           this.state.projectDetail
-        }
-        release={
-          this.state.projectDetail.release_date
         }/>
-            <div className = "con mb-4" > {
-              this.state.showBidsList ? <BidsList isLoggedIn = {
+
+<div className = "con mb-4" > {
+    this.state.showBidsList ? <BidsList
+            goToRegister={this.goToRegister
+            }
+            deleteBid={
+                this.deleteBid
+            }
+            profileInfo={
+                this.props.profileInfo
+            }
+            isLoggedIn = {
                 this.state.isLoggedIn
-              }
-              ownerOfProject = {
+            }
+            ownerOfProject = {
                 this.state.ownerOfProject
-              }
-              release={
-                this.state.projectDetail.release_date
-              }
-              Bids = {
+            }
+            Bids = {
                 this.state.projectDetail.project_bids
-              }
-              priceForCash = {
+            }
+            priceForCash = {
                 this.state.priceForCash
-              }
-              goToCash = {
+            }
+            goToCash = {
                 this.goToCash
-              }
-              cashinModalState={
+            }
+            cashinModalState={
                 this.state.cashinModalState
-              }
-              modalCashEnough={
+            }
+            modalCashEnough={
                 this.modalCashEnough
-              }/>
-              : null}
+            }/>
+        : null}
             </div>
         </div>
         <div className="col-sm-4">
@@ -381,24 +402,15 @@ class ProjectProfile extends React.Component {
                         TimeLimit={
                             this.state.projectDetail.time_limit
                         }
-                        release={
-                          this.state.projectDetail.release_date
-                        }
                     />
                   </div>
                     :
                   <div>
                     <CountDown />
                     <AddBid
-                        release={
-                          this.state.projectDetail.release_date
-                        }
-                        returnFalse={
-                          this.returnFalse
-                        }
-                        isLoggedIn={
-                          this.state.isLoggedIn
-                        }
+
+                        returnFalse={this.returnFalse}
+                        isLoggedIn={this.state.isLoggedIn}
                         TimeLimit={
                             this.state.projectDetail.time_limit
                         }
@@ -446,9 +458,10 @@ class ProjectProfile extends React.Component {
                         }
                         delivery_duration={
                             this.state.delivery_duration
-                        }/>
-                    </div>
-
+                        }
+                        release_date={this.state.projectDetail.release_date}
+                    />
+                </div>
             }
             </div>
         </div>

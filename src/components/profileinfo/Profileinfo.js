@@ -287,14 +287,43 @@ class Profileinfo extends React.Component{
         if(x > 0) {
             this.setState({profilepicture: this.props.profileInfo[x - 1].profile_picture});
             this.setState({profileInfo: this.props.profileInfo[x - 1]});
-            this.setState({skills : this.props.profileInfo[x - 1].skills});
+            //this.setState({skills : this.props.profileInfo[x - 1].skills});
             this.setState({showSkills : true});
+            if(this.props.profileInfo[x-1].skills[0]) {
+                this.setState({skills: this.props.profileInfo[size - 1].skills});
+                this.setState({showSkills: true});
+            }
+            console.log('this.state.skills',this.state.skills);
+            if(!this.props.profileInfo[x-1].skills[0]){
+                var translation_skills = {
+                    translation_skill: {
+                        is_general: false,
+                        is_medical: false,
+                        is_technical: false,
+                        is_legal: false,
+                        language_set: []
+
+                    }
+                };
+                var newSkills = {
+                    0 :  translation_skills
+                };
+                this.setState({skills: newSkills});
+                this.setState({showSkills: true});
+            }
+            if(this.state.skills){
+                this.setState({showSkills: true});
+            }
+            console.log('this.state.skills',this.state.skills);
+        }
 
 
           //  console.log('componentWillMount PRofileInfo' , this.state.profileInfo);
          //   console.log('STATIC_DATAS.AVAILABLEFROMLANGUAGES.index',STATIC_DATAS.AVAILABLEFROMLANGUAGES)
         }
-    }
+
+
+
 
     render(){
 

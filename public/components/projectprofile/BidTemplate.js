@@ -2,14 +2,14 @@ import React from 'react';
 import AddedBidsMileStone from './AddedBidsMileStone';
 import PropTypes from 'prop-types';
 
-const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX , goToCash , priceForCash, cashinModalState, modalCashEnough , profileInfo , deleteBid}) => {
+const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
+                         goToCash , priceForCash, cashinModalState, modalCashEnough , profileInfo , deleteBid , prices}) => {
     console.log(ownerOfProject , 'ownerOfProject2');
     var bidOfFreelancer = false;
     if(isLoggedIn) {
         if((profileInfo.first_name == Bid.freelancer.first_name) && (Bid.freelancer.last_name == profileInfo.last_name)){
             bidOfFreelancer = true;
         }
-
         //console.log(Bid , 'Bid Bid Bid :D');
         if(ownerOfProject){
             return (
@@ -49,6 +49,8 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX , g
                                         priceForCash={priceForCash}
                                         cashinModalState={cashinModalState}
                                         modalCashEnough={modalCashEnough}
+                                        balance={profileInfo.balance}
+                                        prices={prices}
 
                     />
 

@@ -1067,8 +1067,9 @@ textarea.form-control {
     vertical-align: middle;
 }
 
+
 .sub-heading {
-    display: inline-flex;
+    display: block;
     line-height: 1.75rem;
     font-size: 13px;
     padding-top: 2px;
@@ -1149,6 +1150,7 @@ section.profile {
 
 .not-inline {
     display: block;
+    margin-bottom: 10px;
 }
 
 .fl-wrap {}

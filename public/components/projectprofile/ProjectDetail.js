@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 const ProjectDetail = (props) =>{
 
+
+console.log(props.Detail,'Detail')
   return(
           <div className="con mb-4">
               {/* <span className="price-badge"><i className="fa fa-usd"/></span>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment-jalaali';
 import {Button , Badge , Alert} from 'reactstrap';
 
-const ProjectTemplate = (props ) => {
+const ProjectTemplate = (props) => {
     var x = "";
     moment.loadPersian({usePersianDigits: true});
     var m = moment(props.ClientProjects.release_date, 'YYYY-M-D HH:mm:ss').format('jYYYY/jM/jD HH:mm:ss');

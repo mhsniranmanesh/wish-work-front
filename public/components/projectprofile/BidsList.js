@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash, cashinModalState, modalCashEnough , profileInfo ,deleteBid }) => {
     var BidT = [] ;
+    var prices = [];
     var mileStoneX = {};
     for(var i = 0 ; i < Bids.length ; i++){
         BidT.push(<BidTemplate key={Bids[i].uuid}
@@ -18,6 +19,7 @@ const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash,
                                modalCashEnough={modalCashEnough}
                                profileInfo={profileInfo}
                                deleteBid={deleteBid}
+                               prices={prices}
         />);
         console.log(BidT , 'BidT');
     }

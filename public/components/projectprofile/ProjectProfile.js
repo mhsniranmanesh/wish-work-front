@@ -54,6 +54,7 @@ class ProjectProfile extends React.Component {
       this.modalCashEnough = this.modalCashEnough.bind(this);
       this.returnFalse = this.returnFalse.bind(this);
       this.deleteBid = this.deleteBid.bind(this);
+      this.goToRegister = this.goToRegister.bind(this);
     }
     deleteBid(x){
     console.log('x' , x);
@@ -117,6 +118,12 @@ class ProjectProfile extends React.Component {
         search: price
       });
     }
+    goToRegister(){
+        this.context.router.history.push({
+            pathname: '/account/cash'
+        });
+    }
+
     clicksubmit() {
       this.setState({
         showError: false,
@@ -346,38 +353,42 @@ class ProjectProfile extends React.Component {
         <ProjectDetail Detail = {
           this.state.projectDetail
         }/>
-        <div className = "con mb-4" > {
-          this.state.showBidsList ? <BidsList
-          deleteBid={
-              this.deleteBid
-          }
-          profileInfo={
-              this.props.profileInfo
-          }
-          isLoggedIn = {
-            this.state.isLoggedIn
-          }
-          ownerOfProject = {
-            this.state.ownerOfProject
-          }
-          Bids = {
-            this.state.projectDetail.project_bids
-          }
-          priceForCash = {
-            this.state.priceForCash
-          }
-          goToCash = {
-            this.goToCash
-          }
-          cashinModalState={
-            this.state.cashinModalState
-          }
-          modalCashEnough={
-            this.modalCashEnough
-          }/>
-          : null}
+
+<div className = "con mb-4" > {
+    this.state.showBidsList ? <BidsList
+            goToRegister={this.goToRegister
+            }
+            deleteBid={
+                this.deleteBid
+            }
+            profileInfo={
+                this.props.profileInfo
+            }
+            isLoggedIn = {
+                this.state.isLoggedIn
+            }
+            ownerOfProject = {
+                this.state.ownerOfProject
+            }
+            Bids = {
+                this.state.projectDetail.project_bids
+            }
+            priceForCash = {
+                this.state.priceForCash
+            }
+            goToCash = {
+                this.goToCash
+            }
+            cashinModalState={
+                this.state.cashinModalState
+            }
+            modalCashEnough={
+                this.modalCashEnough
+            }/>
+        : null}
+            </div>
         </div>
-          </div>
+        <div className="col-sm-4">
                 {this.state.ownerOfProject ?
                     <Button
                         myFunc=""
@@ -390,7 +401,9 @@ class ProjectProfile extends React.Component {
                         }
                     />
                     :
+                    
                     <AddBid
+
                         returnFalse={this.returnFalse}
                         isLoggedIn={this.state.isLoggedIn}
                         TimeLimit={
@@ -440,9 +453,11 @@ class ProjectProfile extends React.Component {
                         }
                         delivery_duration={
                             this.state.delivery_duration
-                        }/>
+                        }
+                        release_date={this.state.projectDetail.release_date}
+                    />
             }
-
+            </div>
         </div>
       </div>
     </section>

@@ -8,6 +8,7 @@ import {bindActionCreators} from 'redux';
 //import {Bids} from '../../actions/Bids';
 import * as projectActions from '../../actions/projectDetail';
 import Button from './Button';
+import CountDown from './CountDown';
 
 class ProjectProfile extends React.Component {
     constructor(props) {
@@ -390,6 +391,8 @@ class ProjectProfile extends React.Component {
         </div>
         <div className="col-sm-4">
                 {this.state.ownerOfProject ?
+                  <div>
+                    <CountDown />
                     <Button
                         myFunc=""
                         name="hi"
@@ -400,8 +403,10 @@ class ProjectProfile extends React.Component {
                             this.state.projectDetail.time_limit
                         }
                     />
+                  </div>
                     :
-
+                  <div>
+                    <CountDown />
                     <AddBid
 
                         returnFalse={this.returnFalse}
@@ -456,6 +461,7 @@ class ProjectProfile extends React.Component {
                         }
                         release_date={this.state.projectDetail.release_date}
                     />
+                </div>
             }
             </div>
         </div>

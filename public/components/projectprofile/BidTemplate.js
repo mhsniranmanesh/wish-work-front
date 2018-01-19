@@ -70,7 +70,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                      height="40"/>
                                 <div className="media-body ">
                                     <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
-                                    <span className="bidding-price">{Bid.price}</span>
+                                    <span className="bidding-price">{Bid.price} تومان</span>
                                     {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
                                     {/*data-toggle="modal" data-target="#accBiddingModal">*/}
                                     {/*<i className="fa fa-handshake-o"/>*/}
@@ -105,7 +105,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                 <div className="media-body ">
                                     <a href="#"
                                        className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
-                                    <span className="bidding-price">{Bid.price}</span>
+                                     <span className="bidding-price">{Bid.price} تومان</span>
                                     {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
                                     {/*data-toggle="modal" data-target="#accBiddingModal">*/}
                                     {/*<i className="fa fa-handshake-o"/>*/}
@@ -138,7 +138,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                          height="40"/>
                     <div className="media-body">
                         <a href="#" className="fl-name">{Bid.freelancer.first_name}</a>
-                        <span className="badge badge-orange">{Bid.price} تومان</span>
+                        <span className="badge badge-orange bidding-price">{Bid.price} تومان</span>
                         {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
                                 {/*data-toggle="modal" data-target="#accBiddingModal">*/}
                             {/*<i className="fa fa-handshake-o"/>*/}

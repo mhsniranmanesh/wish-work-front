@@ -915,6 +915,7 @@ span.error-msg {
 .con {
     padding: 25px;
     background: #fff;
+    box-shadow: 1px 1px 8px #cacaca;
 }
 
 @media (min-width:1200) {
@@ -1067,9 +1068,20 @@ textarea.form-control {
     vertical-align: middle;
 }
 
+.about-sub-heading{
+  display: block;
+  line-height: 1.75rem;
+  font-size: 13px;
+  padding-top: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #777;
+  font-weight: 300;
+}
 
 .sub-heading {
-    display: block;
+    display: inline-flex;
     line-height: 1.75rem;
     font-size: 13px;
     padding-top: 2px;
@@ -1177,9 +1189,10 @@ section.profile {
 
 .bidding-price {
     background: #D77000;
-    padding: 0 5px;
+    padding: 2px 5px 0 5px;
     color: #fff;
     font-weight: 500;
+    border-radius: 5px;
 }
 
 .price-badge {
@@ -1873,9 +1886,10 @@ span.sup {
 }
 
 .download-file{
-    display: block;
+  display: inline-block;
     padding: 2px 0 0 5px;
     margin-bottom: 5px;
+    margin-right: 10px;
     border: 1px solid #018abe;
     border-radius: 5%;
 }
@@ -1895,4 +1909,34 @@ span.sup {
   color:#555;
   padding-right: 5px;
   font-size: 12px
+}
+
+
+/*count down*/
+.counter-circle {
+    margin-right: 30px;
+    display: inline-block;
+    background-color: #4caf50;
+    padding: 15px;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    /*border-radius: 50%;*/
+    border: 2px solid #4caf50;
+}
+
+.counter-numb{
+  font-size: 20px;
+  margin: 0;
+  line-height: 1;
+  color: #fff;
+
+}
+
+.counter-char{
+  font-size: 10px;
+  margin: 0;
+  line-height: 1.5;
+  color: #fff;
+
 }

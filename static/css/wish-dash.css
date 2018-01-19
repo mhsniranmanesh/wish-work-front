@@ -256,6 +256,9 @@ body {
 
 #mainNav.fixed-top .sidenav-toggler {
     display: none;
+    box-shadow: 1px 1px 8px #cacaca;
+
+
 }
 
 @media (min-width: 992px) {
@@ -282,6 +285,7 @@ body {
     }
     #mainNav.fixed-top .sidenav-toggler>.nav-item>.nav-link {
         padding: 1em;
+
     }
 }
 
@@ -379,6 +383,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 
 .navbar-nav {
     padding-right: 0;
+
 }
 
 .nav-icon {
@@ -410,6 +415,8 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     border: none;
     background: #fff;
     padding: 15px;
+    box-shadow: 1px 1px 8px #cacaca;
+
 }
 
 .content-wrapper h5 {
@@ -515,6 +522,7 @@ h6.dash-profile-stars {
 .navbar-light .navbar-sidenav .nav-link {
     font-weight: 300;
     color: #a9a9a9;
+
 }
 
 .navbar-light .navbar-sidenav .nav-link:focus,

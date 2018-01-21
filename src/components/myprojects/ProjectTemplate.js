@@ -6,7 +6,7 @@ import {Button , Badge , Alert} from 'reactstrap';
 
 const ProjectTemplate = (props) => {
     var x = "";
-    console.log(props.ClientProjects.release_date,'release date')
+    console.log(props.ClientProjects.release_date,'release date');
     moment.loadPersian({usePersianDigits: true});
     var date = moment(props.ClientProjects.release_date, 'YYYY-M-D HH:mm:ss').format('jYYYY/jM/jD HH:mm:ss');
     console.log(date , 'date');
@@ -65,7 +65,7 @@ const ProjectTemplate = (props) => {
                         </p>
                     </div>
                     <span className="sub-heading">
-                            <i className="fa fa-calendar"/>  ثبت شده در {m}
+                            <i className="fa fa-calendar"/>  ثبت شده در {date}
             </span>
                     {/*<span className="sub-heading">*/}
                     {/*<i className="fa fa-calendar"/> {ProjectSubmitted.ReleaseTime}*/}
@@ -119,7 +119,7 @@ const ProjectTemplate = (props) => {
                     <h6>
                         {/*<strong>{ProjectSubmitted.title}</strong>*/}
                         <strong>{props.ClientProjects.title}</strong>
-                        <span className={XClass}>{x}</span>
+                        <Badge color="success" pill>{x}</Badge>
                         {/*<span>{ProjectSubmitted.badge}</span>*/}
                     </h6>
 

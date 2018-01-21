@@ -351,7 +351,9 @@ class ProjectProfile extends React.Component {
         <div className = "container" >
         <div className = "row" >
         <div className = "col-sm-8" >
-        <ProjectDetail Detail = {
+        <ProjectDetail
+            Files={this.state.projectDetail.project_attachments}
+            Detail = {
           this.state.projectDetail
         }/>
 
@@ -368,6 +370,7 @@ class ProjectProfile extends React.Component {
             isLoggedIn = {
                 this.state.isLoggedIn
             }
+
             ownerOfProject = {
                 this.state.ownerOfProject
             }
@@ -392,7 +395,10 @@ class ProjectProfile extends React.Component {
         <div className="col-sm-4">
                 {this.state.ownerOfProject ?
                   <div>
-                    <CountDown />
+                    <CountDown  release_date={this.state.projectDetail.release_date}
+                                BidDuration={this.state.projectDetail.bid_duration}
+                                start_date={this.state.projectDetail.start_date}
+                    />
                     <Button
                         myFunc=""
                         name="hi"
@@ -406,7 +412,11 @@ class ProjectProfile extends React.Component {
                   </div>
                     :
                   <div>
-                    <CountDown />
+                    <CountDown
+                        release_date={this.state.projectDetail.release_date}
+                        BidDuration={this.state.projectDetail.bid_duration}
+                        start_date={this.state.projectDetail.start_date}
+                    />
                     <AddBid
 
                         returnFalse={this.returnFalse}

@@ -283,8 +283,8 @@ class Profileinfo extends React.Component{
 
     componentWillMount(){
         //console.log('componentWillMount PRofileInfo' , this.state.profileInfo);
-        var x = this.size(this.props.profileInfo);
         if(x > 0) {
+            var x = this.size(this.props.profileInfo);
             this.setState({profilepicture: this.props.profileInfo[x - 1].profile_picture});
             this.setState({profileInfo: this.props.profileInfo[x - 1]});
             //this.setState({skills : this.props.profileInfo[x - 1].skills});

@@ -46,15 +46,25 @@ export function profileInfo(){
 }
 export function updateSkills(profileSkills) {
     return function (dispatch) {
-        return axios.post('/api/v1/skills/add/translation/' , profileSkills).then(profileSkills =>{
-            dispatch(loadNewSkillsSuccess(profileSkills.data))
+        return axios.post('/api/v1/skills/add/translation/' , profileSkills).then(profileskills =>{
+            dispatch(loadNewSkillsSuccess(profileskills.data))
         }).catch(error =>{
             throw (error);
         })
     }
 }
 //
-export function updateInformations(profileInfo , getState){
+export function updateInformations(sendData) {
+    return function (dispatch) {
+
+        return axios.post('/api/v1/profiles/update-infos/' , sendData).then(profileInfo =>{
+            dispatch(loadNewInfosSuccess(profileInfo.data));
+        }).catch(error => {
+            throw (error);
+        })
+    }
+}
+export function updateInformationsPic(profileInfo , getState){
     return function (dispatch) {
         var profileData = new FormData();
         profileData.append('profile_picture', profileInfo.profile_picture);

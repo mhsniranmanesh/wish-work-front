@@ -56,6 +56,22 @@ class ProjectProfile extends React.Component {
       this.returnFalse = this.returnFalse.bind(this);
       this.deleteBid = this.deleteBid.bind(this);
       this.goToRegister = this.goToRegister.bind(this);
+      this.SignUp = this.SignUp.bind(this);
+      this.acceptBid = this.acceptBid.bind(this);
+      this.goToFreelancerProfile=this.goToFreelancerProfile.bind(this);
+      this.redirect = this.redirect.bind(this);
+    }
+    goToFreelancerProfile(slug){
+        this.context.router.history.push({
+            pathname: '/profiles/' + slug,
+        });
+    }
+    redirect(){
+        alert('Congratulation, your project is started now!');
+        this.context.router.history.push({
+            pathname: '/project/cp',
+        });
+
     }
     deleteBid(x){
     console.log('x' , x);
@@ -65,7 +81,13 @@ class ProjectProfile extends React.Component {
         console.log(err)
     })
     }
-
+    acceptBid(id){
+        this.props.actions.selectBid(id).then(
+            () => this.redirect)
+            .catch(err => {
+                console.log(err)
+            })
+    }
     returnFalse(e){
       e.preventDefault();
       return false
@@ -267,7 +289,10 @@ class ProjectProfile extends React.Component {
         });
       }
     }
-
+    SignUp(event){
+        event.preventDefault();
+        this.context.router.history.push('/signup');
+    }
     valueOfMileStones(event) {
       this.setState({
         amountOfMileStones: event.target.value
@@ -359,6 +384,8 @@ class ProjectProfile extends React.Component {
 
 <div className = "con mb-4" > {
     this.state.showBidsList ? <BidsList
+            acceptBid={this.acceptBid}
+            goToFreelancerProfile={this.goToFreelancerProfile}
             goToRegister={this.goToRegister
             }
             deleteBid={
@@ -470,6 +497,7 @@ class ProjectProfile extends React.Component {
                             this.state.delivery_duration
                         }
                         release_date={this.state.projectDetail.release_date}
+                        signUp={this.SignUp}
                     />
                 </div>
             }

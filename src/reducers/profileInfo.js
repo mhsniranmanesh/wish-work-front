@@ -14,10 +14,14 @@ export default function profileInfo(state= initialState.profileInfo , action){
       case types.UPDATE_NEW_SKILLS_IN_INFOS_SUCCESS :
           debugger;
           var translation_skill = action.profileSkills;
-          var skills = {
-              0 : translation_skill
+          var translation_skills = {translation_skill};
+          var skills ={
+              0: translation_skills ,
+              length: 1
           };
-           return [...state , Object.assign({} ,state[0], skills)];
+          skills[0] = translation_skills;
+          console.log(skills , 'skills');
+           return [...state , Object.assign({} ,state[0].skills, skills)];
       // case types.SUBMIT_PROJECT_SUCCESS:
       //     return [...state , Object.assign({} , state , action.projectSubmit)];
     default:

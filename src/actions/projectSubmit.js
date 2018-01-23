@@ -33,11 +33,13 @@ export function profileInfo(){
     };
 }
 
-export function attachFileToProject(allState,stateForFile) {
+export function attachFileToProject(id,stateForFile) {
+    debugger;
     return function (dispatch) {
         var fileFormData = new FormData();
-        fileFormData.append('project_id', allState.project_id);
+        fileFormData.append('project_id', id.data.id);
         fileFormData.append('file', stateForFile.file);
+        console.log(fileFormData , 'fileFormData');
         return axios.post('/api/v1/projects/files/' , fileFormData ,
           {
             headers: { 'Content-Type': 'multipart/form-data'}
@@ -50,32 +52,32 @@ export function attachFileToProject(allState,stateForFile) {
     }
 }
 
-export function addSkills(id , allState , stateForFile) {
-    return function (dispatch) {
-        //console.log('id:' , id , 'allState:' , allState );
-        allState.project_id = id.data.id;
-        //console.log( allState , ' allState ');
-        return axios.post('/api/v1/projects/add-details/translation/' , allState).then(
-            () =>{
-                dispatch(attachFileToProject(allState , stateForFile));
-            }).catch(error =>{
-            //throw (error);
-            console.log('Fuck error' , error);
-        })
-    }
-}
+// export function addSkills(id , allState , stateForFile) {
+//     return function (dispatch) {
+//         //console.log('id:' , id , 'allState:' , allState );
+//         allState.project_id = id.data.id;
+//         //console.log( allState , ' allState ');
+//         return axios.post('/api/v1/projects/submit/translation/' , allState).then(
+//             () =>{
+//                 dispatch(attachFileToProject(allState , stateForFile));
+//             }).catch(error =>{
+//             //throw (error);
+//             console.log('Fuck error' , error);
+//         })
+//     }
+// }
 
 // export function addDetail(projectSubmit) {
 //     return axios.post('/api/v1/projects/translation/add-skills/' , projectSubmit);
 // }
 
 
-export function projectSubmit(projectSubmit , getState , stateForFile){
+export function projectSubmit(projectSubmit , stateForFile){
     return function(dispatch){
-        return  axios.post('/api/v1/projects/translation/' , projectSubmit).then(
-            projectSubmit =>{
+        return  axios.post('/api/v1/projects/submit/translation/' , projectSubmit).then(
                 // console.log(projectSubmit);
-                dispatch(addSkills(projectSubmit , getState , stateForFile));
+                x =>{
+                dispatch(attachFileToProject(x , stateForFile));
             // console.log(projectSubmit);
         }).catch(error =>{
             throw (error);

@@ -440,9 +440,9 @@ class Projectsubmition extends React.Component{
     }
     submitProjectTimeState(event){
         let time = event.target.value;
-        console.log(time , 'time 1')
+        console.log(time , 'time 1');
         time = this.persianToEnglish(time);
-        console.log(time , 'time 2')
+        console.log(time , 'time 2');
         const trueOrFalseTimeValid = this.validateTime(time);
         this.setState({time_limit: time , validTime: trueOrFalseTimeValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
         //console.log('state:' ,this.state);

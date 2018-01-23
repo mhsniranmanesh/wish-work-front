@@ -1,15 +1,11 @@
 import React from 'react';
 
-const FreelancerInviteFollow = ({props}) =>{
+const FreelancerInviteFollow = (props) =>{
     return(
         <div className="col-sm-4">
             <div className="con mb-4">
-                <button id="inviteBtn" type="submit" className="btn btn-primary btn-rec mb-3">
-                    دعوت به همکاری
-                </button>
-                <button id="followBtn" type="submit" className="btn btn-success btn-rec mb-3">
-                    دنبال کردن
-                </button>
+                <button id="inviteBtn" type="submit" className="btn btn-success btn-rec mb-3" onClick={(event)=>{props.checkExistOrLengthOfProjectDetail();}}>
+                    <i className="fa fa-undo" aria-hidden="true"/> بازگشت به صفحه ی پروژه                </button>
             </div>
             <div className="con mb-4">
                 <h5 className="project-title">

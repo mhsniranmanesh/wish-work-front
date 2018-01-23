@@ -3,9 +3,20 @@ import AddedBidsMileStone from './AddedBidsMileStone';
 import PropTypes from 'prop-types';
 
 const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
-                         goToCash , priceForCash, cashinModalState, modalCashEnough , profileInfo , deleteBid , prices}) => {
+                         goToCash , priceForCash, cashinModalState, modalCashEnough,
+                         acceptBid, profileInfo , deleteBid , prices , goToFreelancerProfile}) => {
     console.log(ownerOfProject , 'ownerOfProject2');
     var bidOfFreelancer = false;
+    let Image ;
+    if ((Bid.freelancer.profile_picture != null) || (Bid.freelancer.profile_picture != undefined)) {
+        Image = Bid.freelancer.profile_picture;
+         console.log('Hello', Image);
+    }
+    else {
+        Image = "http://via.placeholder.com/125x125";
+        console.log('Hi', Image);
+        console.log('Bid.profile_picture', Bid.freelancer.profile_picture);
+    }
     if(isLoggedIn) {
         if((profileInfo.first_name == Bid.freelancer.first_name) && (Bid.freelancer.last_name == profileInfo.last_name)){
             bidOfFreelancer = true;
@@ -16,9 +27,8 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                 <div>
                     <div className="fl-list">
                         <div className="fl-wrap media">
-                            <img className="d-flex  ml-3 rounded-circle" src="http://via.placeholder.com/50x50"
-                                 width="40"
-                                 height="40"/>
+                            <img className="d-flex  ml-3 rounded-circle" src={Image}
+                                 style={ {height:60 , width:60} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
                             <div className="media-body">
                                 <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
                                 <span className="bidding-price">{Bid.price} تومان</span>
@@ -51,6 +61,8 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                         modalCashEnough={modalCashEnough}
                                         balance={profileInfo.balance}
                                         prices={prices}
+                                        acceptBid={acceptBid}
+                                        id={Bid.uuid}
 
                     />
 
@@ -99,9 +111,8 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                     <div>
                         <div className="fl-list">
                             <div className="fl-wrap media">
-                                <img className="d-flex  ml-3 rounded-circle" src="http://via.placeholder.com/50x50"
-                                     width="40"
-                                     height="40"/>
+                                <img className="d-flex  ml-3 rounded-circle" src={Image}
+                                     style={ {height:60 , width:60} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
                                 <div className="media-body ">
                                     <a href="#"
                                        className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
@@ -134,8 +145,8 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
         <div>
             <div className="fl-list">
                 <div className="fl-wrap media">
-                    <img className="d-flex  ml-3 rounded-circle" src="http://via.placeholder.com/50x50" width="40"
-                         height="40"/>
+                    <img className="d-flex  ml-3 rounded-circle" src={Image}
+                         style={ {height:60 , width:60} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
                     <div className="media-body">
                         <a href="#" className="fl-name">{Bid.freelancer.first_name}</a>
                         <span className="badge badge-orange bidding-price">{Bid.price} تومان</span>
@@ -161,7 +172,9 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
         )
     }
 };
-
+BidTemplate.PropTypes = {
+    Bid : PropTypes.object.isRequired
+};
 
 
 export default BidTemplate;

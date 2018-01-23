@@ -1,6 +1,6 @@
 import React from 'react';
 const LANGUAGES = require('../../Datas/STATIC_DATAS');
-import {Row,Col , Button} from 'reactstrap';
+import {Row,Col , Button , Badge} from 'reactstrap';
 import Select from 'react-select';
 import PropTypes from 'prop-types';
 import TranslationTagTemplate from './TranslationTagTemplate';
@@ -104,11 +104,13 @@ const ProfileSkills = (props) =>{
                                     <i className="fa fa-plus"/>افزودن
                                 </Button>
                             </div>
+                            <Badge color="info" pill>{props.comment}</Badge>
                             <label htmlFor="" className="col-form-label sub-label">
                                 <i className="fa fa-quote-left" aria-hidden="true"/> برای حذف موارد انتخاب شده روی آن ها
                                 کلیک کنید.
                             </label>
-                            <TranslationTags deleteSkills={props.deleteSkills} Skills={props.Skills} TTSkills={props.TTSkills}/>
+                            <TranslationTags deleteFatherTag={props.deleteFatherTag} deleteSkills={props.deleteSkills} Skills={props.Skills} TTSkills={props.TTSkills}/>
+
                             {/*<div className="tags" >*/}
                             {/*<li className='addedTag'>*/}
                             {/*<i className='fa fa-times-circle' aria-hidden={true}/> فارسی به انگلیسی*/}

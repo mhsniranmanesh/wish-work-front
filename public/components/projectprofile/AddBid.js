@@ -1,6 +1,6 @@
 import React from 'react'
 import AddBidMileStones from './AddBidMileStones';
-import {Button, Row, Col} from 'reactstrap';
+import {Button} from 'reactstrap';
 import PropTypes from 'prop-types';
 import Errors from './Errors';
 import moment from 'moment-jalaali';
@@ -151,7 +151,7 @@ else {
                 </div>
             </div>
             <div className="con mb-4">
-                <button  color="primary" className="btn btn-primary btn-rec btn-block" onClick={props.goToRegister}>
+                <button  color="primary" className="btn btn-primary btn-rec btn-block" onClick={props.signUp}>
                    ثبت نام کنید                   </button>
             </div>
         </div>

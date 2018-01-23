@@ -23,6 +23,8 @@ export default function projectDetail(state= initialState.projectDetail  , actio
             project_bids.project_bids[i].freelancer.last_name = action.newAddedBid.last_name;
 
             return [...state , Object.assign({} ,state[0] , project_bids)];
+        case types.SELECT_BID_SUCCESS:
+            return state;
         default :
             return state;
     }

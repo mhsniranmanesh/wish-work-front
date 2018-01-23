@@ -11,8 +11,31 @@ import * as freelancerActions from '../../actions/freelancerDetail';
 class FreelancerProfile extends React.Component {
     constructor(props){
         super(props);
-        this.state = {freelancerDetail: Object.assign({} , props.freelancerDetail)}
+        this.state = {freelancerDetail: Object.assign({} , props.freelancerDetail) , projectDetail:""};
+        this.goToProjectProfile = this.goToProjectProfile.bind(this);
+        this.size = this.size.bind(this);
+        this.checkExistOrLengthOfProjectDetail = this.checkExistOrLengthOfProjectDetail.bind(this);
     }
+    size(obj) {
+        let x = 0,
+            key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) x++;
+        }
+        return x;
+    };
+    checkExistOrLengthOfProjectDetail(){
+        let x = this.size(this.props.projectDetail);
+        if(x>0){
+            this.setState({projectDetail: Object.assign({} , this.props.projectDetail[x-1])} , () => {this.goToProjectProfile()})
+        }
+    }
+    goToProjectProfile(){
+            this.context.router.history.push({
+                pathname: '/projects/' + this.state.projectDetail.slug,
+            });
+        }
+
     componentWillMount(){
         console.log('this.props.location:' ,this.props.location.pathname.slice(10));
         //this.setState({});
@@ -36,13 +59,18 @@ class FreelancerProfile extends React.Component {
                             <FreelancerSampleProjectsList ProjectsList={this.props.ProjectsDone}/>
 
                         </div>
-                        <FreelancerInviteFollow/>
+                        <FreelancerInviteFollow checkExistOrLengthOfProjectDetail={this.checkExistOrLengthOfProjectDetail}/>
                     </div>
                 </div>
             </section>
         )
     }
 }
+
+FreelancerProfile.contextTypes = {
+    router: PropTypes.object.isRequired
+};
+
 FreelancerProfile.PropTypes = {
     actions: PropTypes.object.isRequired,
     ProjectsDone: PropTypes.object.isRequired
@@ -51,7 +79,8 @@ FreelancerProfile.PropTypes = {
 function mapStateToProps(state , ownProps) {
     return {
         ProjectsDone: state.ProjectsDone,
-        freelancerDetail : state.freelancerDetail
+        freelancerDetail : state.freelancerDetail,
+        projectDetail : state.projectDetail
     }
 }
 

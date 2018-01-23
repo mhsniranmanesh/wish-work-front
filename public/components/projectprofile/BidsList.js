@@ -2,7 +2,8 @@ import React from 'react';
 import BidTemplate from './BidTemplate';
 import PropTypes from 'prop-types';
 
-const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash, cashinModalState, modalCashEnough , profileInfo ,deleteBid }) => {
+const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash, cashinModalState, modalCashEnough ,
+                      profileInfo ,deleteBid , goToFreelancerProfile, acceptBid}) => {
     var BidT = [] ;
     var prices = [];
     var mileStoneX = {};
@@ -20,6 +21,8 @@ const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash,
                                profileInfo={profileInfo}
                                deleteBid={deleteBid}
                                prices={prices}
+                               goToFreelancerProfile={goToFreelancerProfile}
+                               acceptBid={acceptBid}
         />);
         console.log(BidT , 'BidT');
     }
@@ -52,7 +55,8 @@ const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash,
 BidsList.PropTypes ={
   goToCash : PropTypes.func.isRequired,
   modalCashEnough : PropTypes.func.isRequired,
-  deleteBid : PropTypes.func.isRequired
+  deleteBid : PropTypes.func.isRequired,
+  goToFreelancerProfile : PropTypes.func.isRequired
 };
 
 export default BidsList ;

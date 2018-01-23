@@ -16,8 +16,8 @@ const Button = (props) =>{
                 </div>
             </div>
                 <div className="con mb-4">
-                    <button  type="submit" className="btn btn-primary btn-rec btn-block" >
-دیدن اطلاعات پیشنهادات                   </button>
+                    <button className="btn btn-primary btn-rec btn-block" >
+صفحه ی پروژه ی شما                   </button>
                 </div>
             </div>
 

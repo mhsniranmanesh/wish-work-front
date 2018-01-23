@@ -28,16 +28,16 @@ const TranslationTags = (props) =>{
             }
         }
         if (props.Skills[0].translation_skill.is_general) {
-            fatherTag.push(<TranslationFatherTagTemplate key={1} fatherTag={'عمومی'}/>)
+            fatherTag.push(<TranslationFatherTagTemplate key={1} deleteFatherTag={props.deleteFatherTag} id={1} fatherTag={'عمومی'}/>)
         }
         if (props.Skills[0].translation_skill.is_medical) {
-            fatherTag.push(<TranslationFatherTagTemplate key={2} fatherTag={'پزشکی'}/>)
+            fatherTag.push(<TranslationFatherTagTemplate key={2} deleteFatherTag={props.deleteFatherTag} id={2} fatherTag={'پزشکی'}/>)
         }
         if (props.Skills[0].translation_skill.is_technical) {
-            fatherTag.push(<TranslationFatherTagTemplate key={3} fatherTag={'فنی'}/>)
+            fatherTag.push(<TranslationFatherTagTemplate key={3} deleteFatherTag={props.deleteFatherTag} id={3} fatherTag={'فنی'}/>)
         }
         if (props.Skills[0].translation_skill.is_legal) {
-            fatherTag.push(<TranslationFatherTagTemplate key={4} fatherTag={'حقوقی'}/>);
+            fatherTag.push(<TranslationFatherTagTemplate key={4} deleteFatherTag={props.deleteFatherTag} id={4} fatherTag={'حقوقی'}/>);
         }
     }
 

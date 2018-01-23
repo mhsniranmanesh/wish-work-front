@@ -7,6 +7,7 @@ import {Input, Button} from 'reactstrap';
 import ProfileSkills from './ProfileSkills';
 import ProfilePic from './ProfilePic';
 import ResetPassword from './ResetPassword';
+import update from 'react-addons-update';
 
 class Profileinfo extends React.Component{
     constructor(props){
@@ -14,7 +15,8 @@ class Profileinfo extends React.Component{
         this.state = { bioReadOnly : true , jobReadOnly : true , degreeReadOnly : true, universityReadOnly : true ,
             profileInfo:"" , profilepicture: null , selectValueTF :"" , selectValueTT : "" , saving : false,
             translationFatherTag : false , is_general: false , is_medical : false , is_technical : false , is_legal : false,
-            skills:'' , showSkills:false , language_set:{} , file:"" , imagePreviewUrl:"" , showError:false , imageSizeValidation: false , TTSkills:[]
+            skills:'' , showSkills:false , language_set:{} , file:"" , imagePreviewUrl:"" ,
+            showError:false , imageSizeValidation: false , TTSkills:[] , comment:"" , ClickedOnAdd : false
         };
 
         this.updateValueTF = this.updateValueTF.bind(this);
@@ -41,12 +43,37 @@ class Profileinfo extends React.Component{
         this.sendPicToServer = this.sendPicToServer.bind(this);
         this.deleteSkills = this.deleteSkills.bind(this);
         this.add = this.add.bind(this);
+        this.deleteFatherTag = this.deleteFatherTag.bind(this);
 
     }
-
+    deleteFatherTag(key){
+        let stateCopy = Object.assign({} , this.state);
+        if(key === 1){
+            stateCopy.skills[0].translation_skill.is_general = false;
+            this.setState({stateCopy});
+        }
+        else if(key === 2){
+            stateCopy.skills[0].translation_skill.is_medical = false;
+            this.setState({stateCopy});
+        }
+        else if(key === 3){
+            stateCopy.skills[0].translation_skill.is_technical = false;
+            this.setState({stateCopy});
+        }
+        else if(key === 4){
+            stateCopy.skills[0].translation_skill.is_legal = false;
+            this.setState({stateCopy});
+        }
+    }
     deleteSkills(id){
         console.log("Hi");
-        delete this.state.skills[0].translation_skill.language_set[id];
+        let stateCopy = Object.assign({} , this.state);
+        stateCopy.skills[0].translation_skill.language_set.splice(id, 1);
+        this.setState({stateCopy});
+       // delete this.state.skills[0].translation_skill.language_set[id];
+        //ziri baes mishe ke nafahme state avaz shode va dar natije props avaz shode va dar natije avaz nemikone!!!
+        //==> ino migam ==> this.state.skills[0].translation_skill.language_set.splice(id, 1);
+        this.setState({comment: 'تگ مورد نظر حذف شد، لطفا برای ثب تغییر بر روی ثبت تغییرات کلیک کنید'});
         this.state.skills[0].translation_skill.language_set.map(function( i,item){
             // if(i>=id){
             //     this.state.skills[0].translation_skill.language_set[i-1] = this.state.skills[0].translation_skill.language_set[i]
@@ -64,7 +91,7 @@ class Profileinfo extends React.Component{
         var SendData = {
           profile_picture : this.state.file
         };
-        this.props.actions.updateInformations(SendData)
+        this.props.actions.updateInformationsPic(SendData)
     }
 
     picUploader(e){
@@ -99,12 +126,16 @@ class Profileinfo extends React.Component{
     addSkills(){
         let from_language = this.state.selectValueTF;
         let to_language = this.state.selectValueTT;
+        let newState = Object.assign({} , this.state);
+        newState.language_set = {from_language , to_language} ;
+        newState.ClickedOnAdd = true;
         this.setState({language_set:{from_language , to_language}}, this.add);
-
-
+        this.setState({comment : "تگ شما افزوده شد، برای قبت تغییر بروی ثبت تغییرات کلیک کنید"})
     }
     add(){
-        this.state.skills[0].translation_skill.language_set.push(this.state.language_set);
+        let newState = Object.assign({} , this.state);
+        newState.skills[0].translation_skill.language_set.push(this.state.language_set);
+        this.setState({newState})
 
     }
     showSkills(){
@@ -163,7 +194,7 @@ class Profileinfo extends React.Component{
     changeJobOnChange(event){
         let profileInfo = Object.assign({} , this.state.profileInfo);
         profileInfo.job = event.target.value;
-        this.setState({profileInfo});
+        this.setState({profileInfo : profileInfo});
 
     }
     changeDegreeOnChange(event){
@@ -185,9 +216,13 @@ class Profileinfo extends React.Component{
     submitSkillChanges(){
         console.log('this.state.language_set' , this.state.language_set.from_language);
         console.log(this.state.skills);
+        let copyState = Object.assign({} , this.state);
+        copyState.profileInfo.skills = copyState.skills;
+        this.setState({copyState});
         // if(this.state.language_set.from_language != undefined) {
         //     console.log('!!!!');
         // }
+
         var sendSkills = {
             is_general : this.state.skills[0].translation_skill.is_general,
             is_medical : this.state.skills[0].translation_skill.is_medical,
@@ -195,10 +230,12 @@ class Profileinfo extends React.Component{
             is_legal : this.state.skills[0].translation_skill.is_legal,
             language_set : this.state.skills[0].translation_skill.language_set
         };
+        this.setState({comment : "تغییرات با موفقیت اعمال شد"});
         console.log('sendSkills' ,sendSkills);
         this.props.actions.updateSkills(sendSkills).then(
             () => this.redirect())
             .catch(error => {
+                this.setState({comment : "خطا در اتصال، لطفا مجدد تلاش کنید"});
                 console.log(error);
                 this.setState({saving: false});
             })
@@ -206,7 +243,6 @@ class Profileinfo extends React.Component{
     }
     submitChanges(){
         //action from redux
-
         var sendDataInfos = {
             bio: this.state.profileInfo.bio,
             degree: this.state.profileInfo.degree,
@@ -283,14 +319,14 @@ class Profileinfo extends React.Component{
 
     componentWillMount(){
         //console.log('componentWillMount PRofileInfo' , this.state.profileInfo);
+        var x = this.size(this.props.profileInfo);
         if(x > 0) {
-            var x = this.size(this.props.profileInfo);
             this.setState({profilepicture: this.props.profileInfo[x - 1].profile_picture});
             this.setState({profileInfo: this.props.profileInfo[x - 1]});
             //this.setState({skills : this.props.profileInfo[x - 1].skills});
             this.setState({showSkills : true});
             if(this.props.profileInfo[x-1].skills[0]) {
-                this.setState({skills: this.props.profileInfo[size - 1].skills});
+                this.setState({skills: this.props.profileInfo[x - 1].skills});
                 this.setState({showSkills: true});
             }
             console.log('this.state.skills',this.state.skills);
@@ -333,8 +369,6 @@ class Profileinfo extends React.Component{
         <div className="container-fluid">
             <div className="row">
                 <div className="col-sm-6 d-block mx-auto">
-
-
                     <ProfilePic Picture={this.state.profileInfo.profile_picture}
                                 picUploader={this.picUploader}
                                 imagePreviewUrl={this.state.imagePreviewUrl}
@@ -418,6 +452,8 @@ class Profileinfo extends React.Component{
                                        addSkills={this.addSkills}
                                        deleteSkills={this.deleteSkills}
                                        TTSkills={this.state.TTSkills}
+                                       comment={this.state.comment}
+                                       deleteFatherTag={this.deleteFatherTag}
                         /> : (null)
                     }
                     <ResetPassword/>
@@ -439,7 +475,7 @@ Profileinfo.PropTypes = {
     profileInfo: PropTypes.array.isRequired,
     actions : PropTypes.object.isRequired,
     //action for changing information :
-    updateInformations : PropTypes.func.isRequired
+    updateInformationsPic : PropTypes.func.isRequired
 };
 
 function mapStateToProps(state , ownProps){

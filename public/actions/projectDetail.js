@@ -13,6 +13,10 @@ export function deleteBidSuccess(Success) {
     debugger;
     return{type: types.DELETE_BID_SUCCESS , Success}
 }
+export function selectBidSuccess(Success) {
+    return{type: types.SELECT_BID_SUCCESS , Success}
+
+}
 
 export function deleteBid(bidId) {
     return function (dispatch) {
@@ -29,6 +33,16 @@ export function deleteBid(bidId) {
 
 }
 
+export function selectBid(selectedBid) {
+    console.log(selectedBid);
+    return function (dispatch) {
+        return axios.post('api/v1/projects/bid/select/', selectedBid).then(select => {
+            dispatch(selectBidSuccess(select)).catch(err => {
+                throw (err)
+            })
+        })
+    }
+}
 export function addBidToProject(getStateX) {
     return function (dispatch , getState) {
         console.log('getState' , getStateX);

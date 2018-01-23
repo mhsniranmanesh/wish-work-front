@@ -7,24 +7,26 @@ const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash,
     var BidT = [] ;
     var prices = [];
     var mileStoneX = {};
-    for(var i = 0 ; i < Bids.length ; i++){
-        BidT.push(<BidTemplate key={Bids[i].uuid}
-                               Bid={Bids[i]}
-                               ownerOfProject={ownerOfProject}
-                               isLoggedIn={isLoggedIn}
-                               number={i}
-                               mileStoneX={mileStoneX}
-                               priceForCash={priceForCash}
-                               goToCash={goToCash}
-                               cashinModalState={cashinModalState}
-                               modalCashEnough={modalCashEnough}
-                               profileInfo={profileInfo}
-                               deleteBid={deleteBid}
-                               prices={prices}
-                               goToFreelancerProfile={goToFreelancerProfile}
-                               acceptBid={acceptBid}
-        />);
-        console.log(BidT , 'BidT');
+    if(Bids) {
+        for (var i = 0; i < Bids.length; i++) {
+            BidT.push(<BidTemplate key={Bids[i].uuid}
+                                   Bid={Bids[i]}
+                                   ownerOfProject={ownerOfProject}
+                                   isLoggedIn={isLoggedIn}
+                                   number={i}
+                                   mileStoneX={mileStoneX}
+                                   priceForCash={priceForCash}
+                                   goToCash={goToCash}
+                                   cashinModalState={cashinModalState}
+                                   modalCashEnough={modalCashEnough}
+                                   profileInfo={profileInfo}
+                                   deleteBid={deleteBid}
+                                   prices={prices}
+                                   goToFreelancerProfile={goToFreelancerProfile}
+                                   acceptBid={acceptBid}
+            />);
+            console.log(BidT, 'BidT');
+        }
     }
         return (
             <div>

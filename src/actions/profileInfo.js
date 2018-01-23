@@ -67,6 +67,7 @@ export function updateInformations(sendData) {
 export function updateInformationsPic(profileInfo , getState){
     return function (dispatch) {
         var profileData = new FormData();
+      console.log('profile_picture:', profileInfo.profile_picture);
         profileData.append('profile_picture', profileInfo.profile_picture);
 
       return axios.post('/api/v1/profiles/update-infos/' , profileData,

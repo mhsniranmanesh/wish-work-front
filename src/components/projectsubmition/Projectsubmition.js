@@ -227,7 +227,7 @@ class Projectsubmition extends React.Component{
         console.log('from_language' , this.state.from_language);
         console.log('this.state.translationFrom' , this.state.translationFrom);
         console.log('STATE IS:' , Send3);
-            this.props.actions.projectSubmit(Send1 , Send2, Send3).then(
+            this.props.actions.projectSubmit(Send1 , Send3).then(
             () => this.redirect()
             ).catch(error => {
             console.log(error);
@@ -744,8 +744,7 @@ class Projectsubmition extends React.Component{
                                 {this.state.fileIsUpload ? <p className="uploaded-project">فایل شما انتخاب شد ، برای تغییر فایل خود روی <strong> اینجا</strong> کلیک کنید</p>
                                     : <p className="upload-project">فایل را بگیرید و اینجا رها کنید(یا بر روی <strong> اینجا</strong> کلیک کنید)</p> }
                         </label>
-                            <input type="file" className="form-control-box form-body-fontsize"
-                                id="inputFile" onChange={this.dragDrop} multiple=""/>
+                            <input type="file" encType="multipart/form-data" className="form-control-box form-body-fontsize" id="inputFile" onChange={this.dragDrop} />
 
 
                         </div>

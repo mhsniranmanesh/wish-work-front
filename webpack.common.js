@@ -6,7 +6,7 @@ const webpack = require('webpack');
 module.exports = {
   entry: {
       app: './src/index.js',
-      //app2: './public/index.js'
+      // app2: './public/index.js'
   },
   module: {
     rules: [{
@@ -80,7 +80,7 @@ module.exports = {
     filename: '[name].bundle.js',
     chunkFilename: '[name].[chunkhash].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-      publicPath: '/'
+    publicPath: '/'
   }
 
 };

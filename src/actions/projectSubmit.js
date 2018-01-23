@@ -37,9 +37,10 @@ export function attachFileToProject(id,stateForFile) {
     debugger;
     return function (dispatch) {
         var fileFormData = new FormData();
+        console.log('Project_id:', id.data.id)
+        console.log('Project File:', stateForFile.file )
         fileFormData.append('project_id', id.data.id);
         fileFormData.append('file', stateForFile.file);
-        console.log(fileFormData , 'fileFormData');
         return axios.post('/api/v1/projects/files/' , fileFormData ,
           {
             headers: { 'Content-Type': 'multipart/form-data'}

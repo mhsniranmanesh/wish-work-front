@@ -5,17 +5,17 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-      app: './src/index.js',
-      // app2: './public/index.js'
+    app: './src/index.js',
+    //app2: './public/index.js'
   },
   module: {
     rules: [{
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      },
+      test: /\.css$/,
+      use: [
+        'style-loader',
+        'css-loader'
+      ]
+    },
       {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
@@ -28,7 +28,7 @@ module.exports = {
         },
         include: [
           path.resolve(__dirname, 'src'),
-           //path.resolve(__dirname, 'public')
+          //path.resolve(__dirname, 'public')
         ]
       },
       {
@@ -69,8 +69,8 @@ module.exports = {
     }),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-        template: 'index.template.ejs',
-        inject: 'body',
+      template: 'index.template.ejs',
+      inject: 'body',
     }),
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'common' // Specify the common bundle's name.

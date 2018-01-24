@@ -455,6 +455,7 @@ class ProjectProfile extends React.Component {
                         start_date={this.state.projectDetail.start_date}
                     />
                     <AddBid
+                        profileInfo={this.props.profileInfo}
                         numberOfPages={this.state.projectAdditional.number_of_pages}
                         returnFalse={this.returnFalse}
                         isLoggedIn={this.state.isLoggedIn}
@@ -508,6 +509,7 @@ class ProjectProfile extends React.Component {
                         }
                         release_date={this.state.projectDetail.release_date}
                         signUp={this.SignUp}
+                        Bids={this.state.projectDetail.project_bids}
                     />
                 </div>
             }

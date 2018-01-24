@@ -48,7 +48,7 @@ const ProjectDetail = (props) => {
         }
         else if (props.FromLanguage === 4) {
             fromLanguageCode = 'SA';
-            from = 'عرب'
+            from = 'عربی'
         }
         else if (props.FromLanguage === 5) {
             fromLanguageCode = 'ES';

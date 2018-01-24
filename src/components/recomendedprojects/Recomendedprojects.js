@@ -7,9 +7,37 @@ import ProjectsList from './ProjectsList';
 class Recomendedprojects extends React.Component{
     constructor(props){
         super(props);
+        this.state = {profileInfo:""};
+        this.goToProjectProfile = this.goToProjectProfile.bind(this);
+        this.size = this.size.bind(this)
+
     }
-
-
+    size (obj) {
+        let x = 0, key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) x++;
+        }
+        return x;
+    };
+    goToProjectProfile(slug){
+        this.context.router.history.push({
+            pathname:'/projects/' + slug,
+        });
+    }
+    componentWillMount(){
+        var x = this.size(this.props.profileInfo);
+        if (x > 0) {
+            // this.setState({loading: false});
+            this.setState({profileInfo: this.props.profileInfo[x - 1]});
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        if (this.props.profileInfo != nextProps.profileInfo) {
+            console.log(nextProps.profileInfo[0]);
+            //inja az halate bler dar biad
+            this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[0])});
+        }
+    }
   render(){
     return(
       <div>
@@ -20,7 +48,9 @@ class Recomendedprojects extends React.Component{
                       <div className="dash-con dash-new-project con-body mb-4">
                           <h5 className="form-title-fontsize">پروژه های پیشنهادی برای شما</h5>
                           <div className="dash-divider"/>
-                          <ProjectsList Projects={this.props.recomendedProject}/>
+                          <ProjectsList
+                              goToProjectProfile={this.goToProjectProfile}
+                              Projects={this.state.profileInfo.suggested_projects}/>
 
                           <button type="submit" className="btn btn-primary btn-rec">
                               تمام پروژه ها
@@ -40,7 +70,8 @@ Recomendedprojects.PropTypes = {
 };
 function mapStateToProps(state, ownProps) {
     return {
-        recomendedProject: state.recomendedProject
+        recomendedProject: state.recomendedProject,
+        profileInfo : state.profileInfo
     }
 }
 

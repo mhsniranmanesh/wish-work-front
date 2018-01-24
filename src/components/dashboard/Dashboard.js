@@ -34,8 +34,22 @@ class Dashboard extends React.Component{
         this.updateValueTT = this.updateValueTT.bind(this);
         this.updateValueTF = this.updateValueTF.bind(this);
         this.getOptions = this.getOptions.bind(this);
-  }
+        this.goToProjectProfile = this.goToProjectProfile.bind(this);
+        this.size = this.size.bind(this);
 
+  }
+    size (obj) {
+        let x = 0, key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) x++;
+        }
+        return x;
+    };
+    goToProjectProfile(slug){
+        this.context.router.history.push({
+            pathname:'/projects/' + slug,
+        });
+    }
     submitProject(){
         // console.log(this.props.actions2);
         //this.props.actions2.projectSubmitLocalForDashboard(this.state);
@@ -125,10 +139,20 @@ class Dashboard extends React.Component{
             this.setState({loading: false})
         }
     }
-    componentWillMount(){
+    componentWillMount() {
 // aval bler bashe
-        if(this.props.profileInfo[0]){
-            this.setState({loading: false})
+        var x = this.size(this.props.profileInfo);
+        if (x > 0) {
+            this.setState({loading: false});
+            this.setState({profileInfo: this.props.profileInfo[x - 1]});
+            // this.setState({profilepicture: this.props.profileInfo[x - 1].profile_picture});
+            //this.setState({skills : this.props.profileInfo[x - 1].skills});
+            // this.setState({showSkills: true});
+            // if (this.props.profileInfo[x - 1].skills[0]) {
+            //     this.setState({skills: this.props.profileInfo[x - 1].skills});
+            //     this.setState({showSkills: true});
+            //
+            // }
         }
     }
     gotoRecomendedProjects(event){
@@ -203,7 +227,9 @@ class Dashboard extends React.Component{
                     </div>
                     <div className="col-sm-7">
                         <NotificationsListForDashboard Notifications={this.props.Notifications} myFunc={this.gotoNotifications}/>
-                        <ProjectsListForDashboard Projects={this.state.profileInfo.suggested_projects} myFunc={this.gotoRecomendedProjects}/>
+                        <ProjectsListForDashboard Projects={this.state.profileInfo.suggested_projects}
+                                                  goToProjectProfile={this.goToProjectProfile}
+                                                  myFunc={this.gotoRecomendedProjects}/>
                     </div>
 
 

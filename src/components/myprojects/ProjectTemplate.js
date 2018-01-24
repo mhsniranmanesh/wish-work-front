@@ -115,6 +115,33 @@ const ProjectTemplate = (props) => {
             </div>
         )
     }
+    else if(props.ClientProjects.is_completed){
+        return(
+            <div>
+                <div className="dash-con dash-new-project con-body mb-4">
+                    <h6>
+                        <i className="fa fa-trash-o" aria-hidden="true"/>
+                        <strong>{props.ClientProjects.title}</strong>
+                        <Badge color="primary" pill>{x}</Badge>
+                    </h6>
+
+
+
+                    <span className="sub-heading">
+                            <i className="fa fa-calendar"/> {date}
+            </span>
+
+
+                    <Button color="primary" className="btn btn-primary btn-rec" onClick={(event) => {
+                        props.goToTender(y);
+                    }}>
+                        {XButtonName}
+                    </Button>
+                </div>
+            </div>
+        )
+
+    }
 };
 
 

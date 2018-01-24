@@ -10,7 +10,8 @@ const ProjectsList = (props) =>{
             <div>
                 {props.ClientProjects.map(
                     ClientProjects =>
-                        <ProjectTemplate key={ClientProjects.uuid} ClientProjects={ClientProjects} goToTender={props.goToTender}/>
+                        <ProjectTemplate key={ClientProjects.uuid} deleteProject={props.deleteProject}
+                                         ClientProjects={ClientProjects} goToTender={props.goToTender} />
                 )}
             </div>
         )

@@ -4,7 +4,7 @@ const Filter = ({props}) =>{
   return(
       <div className="dash-con dash-new-project con-body mb-4">
           <div className="project-status mx-auto row">
-                                  <span className=" boxes btn btn-primary btn-rec myproject-btn myproject-badge col-sm-4">
+              <span className=" boxes btn btn-primary btn-rec myproject-btn myproject-badge col-sm-4">
                                     <input type="checkbox" className="badgebox" id="ongoing"/>
                                     <label htmlFor="ongoing">در حال انجام</label>
                                   </span>

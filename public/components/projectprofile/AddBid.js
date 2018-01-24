@@ -103,7 +103,9 @@ const AddBid = (props) => {
                                             <div className="row">
                                                 <div className="timeline-centered">
 
-                                                    <AddBidMileStones number_of_milestones={props.amountOfMileStones}
+                                                    <AddBidMileStones
+                                                                      numberOfPages={props.numberOfPages}
+                                                                      number_of_milestones={props.amountOfMileStones}
                                                                       delivery_duration={props.delivery_duration}
                                                                       Length={props.Length}/>
                                                 </div>

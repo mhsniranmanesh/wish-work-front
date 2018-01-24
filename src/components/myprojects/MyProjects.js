@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 import AsFreelancerOrClient from './AsFreelancerOrClient';
 import Filter from './Filter';
 import PropTypes from 'prop-types';
+import {bindActionCreators} from 'redux';
 import ProjectsList from './ProjectsList';
+import * as projectActions from '../../actions/projectSubmit.js';
 //import ProjectTemplate from './ProjectTemplate';
 
 
@@ -15,6 +17,10 @@ class MyProjects extends React.Component {
         this.onClick = this.onClick.bind(this);
         this.goToProjectAuctionPage = this.goToProjectAuctionPage.bind(this);
         this.goToTender = this.goToTender.bind(this);
+        this.deleteProject = this.deleteProject.bind(this);
+    }
+    deleteProject(id){
+        this.props.actions.deleteProject(id);
     }
     goToTender(y){
         let slug = y.toString();
@@ -62,6 +68,7 @@ class MyProjects extends React.Component {
                              <ProjectsList ClientProjects={this.state.ClientProjects}
                                            onClick={this.onClick}
                                            goToTender={this.goToTender}
+                                           deleteProject={this.deleteProject}
                              />
 
                         </div>
@@ -84,8 +91,9 @@ function mapStateToProps(state , ownProps) {
     }
 }
 
-function mapDispatchToProps() {
+function mapDispatchToProps(dispatch) {
     return{
+        actions: bindActionCreators(projectActions, dispatch)
 
     }
 }

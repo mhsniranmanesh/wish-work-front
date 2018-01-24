@@ -19,8 +19,10 @@ const LANGUAGES = require('./Datas/Languages.js');
 class Dashboard extends React.Component{
   constructor(props , context){
     super(props , context);
-    this.state = { translationTo : "" , translationFrom : "" , projectSkillTag : "" , translationFatherTag : false ,
-        is_general: false , is_medical : false , is_technical : false , is_law : false , profileInfo:Object.assign({} , props.profileInfo[0])};
+    this.state = { translationTo : "" , translationFrom : "" ,
+        projectSkillTag : "" , translationFatherTag : false ,
+        is_general: false , is_medical : false , is_technical : false , is_law : false ,
+        profileInfo:Object.assign({} , props.profileInfo[0]) , loading:true};
 
         this.IsLaw = this.IsLaw.bind(this);
         this.IsMedical = this.IsMedical.bind(this);
@@ -105,10 +107,11 @@ class Dashboard extends React.Component{
         //     });
         // }, 500);
     }
-    // componentDidMount(){
-    //     this.setState({profileInfo:Object.assign({} , this.props.profileInfo[0])})
-    // }
-    //
+    componentDidMount() {
+        // if(this.props.profileInfo[0]){
+        //     this.setState({loading: false})
+        // }
+    }
     // shouldComponentUpdate(nextProps){
     //     console.log('update');
     //     return !deepEqual( nextProps.profileInfo , this.props.profileInfo);
@@ -119,10 +122,14 @@ class Dashboard extends React.Component{
             console.log(nextProps.profileInfo[0]);
             //inja az halate bler dar biad
             this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[0])});
+            this.setState({loading: false})
         }
     }
     componentWillMount(){
 // aval bler bashe
+        if(this.props.profileInfo[0]){
+            this.setState({loading: false})
+        }
     }
     gotoRecomendedProjects(event){
         event.preventDefault();
@@ -159,6 +166,21 @@ class Dashboard extends React.Component{
         }
     }
   render(){
+        if(this.state.loading){
+            return (
+                <div className="content-wrapper py-3">
+                    <div className="container-fluid">
+                            <div className="center-loading">
+
+                            </div>
+                            <div className="load-4">
+                                <div className="ring-1">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
     return(
       <div>
         <div className="content-wrapper py-3">
@@ -181,7 +203,7 @@ class Dashboard extends React.Component{
                     </div>
                     <div className="col-sm-7">
                         <NotificationsListForDashboard Notifications={this.props.Notifications} myFunc={this.gotoNotifications}/>
-                        <ProjectsListForDashboard Projects={this.props.recomendedProject} myFunc={this.gotoRecomendedProjects}/>
+                        <ProjectsListForDashboard Projects={this.state.profileInfo.suggested_projects} myFunc={this.gotoRecomendedProjects}/>
                     </div>
 
 

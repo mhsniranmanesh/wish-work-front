@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//import Moment from 'react-moment';
 import moment from 'moment-jalaali';
 import {Button , Badge , Alert} from 'reactstrap';
+//import Moment from 'react-moment';
 
 const ProjectTemplate = (props) => {
     var x = "";
@@ -10,8 +10,6 @@ const ProjectTemplate = (props) => {
     moment.loadPersian({usePersianDigits: true});
     var date = moment(props.ClientProjects.release_date, 'YYYY-M-D HH:mm:ss').format('jYYYY/jM/jD HH:mm:ss');
     console.log(date , 'date');
-
-
     var XClass = "";
     var XButtonName = "";
     var XHref = props.ClientProjects;
@@ -30,7 +28,6 @@ const ProjectTemplate = (props) => {
             x = "در حال مناقصه";
             XClass = "badge badge-primary";
             XButtonName = "صفحه ی مناقصه";
-
         }
         else if (props.ClientProjects.is_started && (!props.ClientProjects.is_completed)) {
             x = "در حال انجام";
@@ -49,36 +46,20 @@ const ProjectTemplate = (props) => {
             <div>
                 <div className="dash-con dash-new-project con-body mb-4">
                     <h6>
-                        {/*<strong>{ProjectSubmitted.title}</strong>*/}
                         <strong>{props.ClientProjects.title}</strong>
                         <Badge color="secondary" pill>{x}</Badge>
-                        {/*<span>{ProjectSubmitted.badge}</span>*/}
                     </h6>
-
-
-                    {/*<h6 className="beauty-text dash-recom-item-discription">*/}
-                    {/*{ProjectSubmitted.description}*/}
-                    {/*</h6>*/}
                     <div className="SubmittedPr">
                         <p >
                             لطفا منتظر تایید پروژه باشید.
                         </p>
                     </div>
+                    <span className="sub-heading delete-project">
+                        <i className="fa fa-trash-o" onClick={(event)=>{props.deleteProject(props.ClientProjects.uuid);}}><a> پاک کردن پروژه</a></i>
+</span>
                     <span className="sub-heading">
                             <i className="fa fa-calendar"/>  ثبت شده در {date}
             </span>
-                    {/*<span className="sub-heading">*/}
-                    {/*<i className="fa fa-calendar"/> {ProjectSubmitted.ReleaseTime}*/}
-                    {/*</span>*/}
-                    {/*<button type="submit" className="btn btn-primary btn-rec">*/}
-                    {/*کنترل پروژه*/}
-                    {/*</button>*/}
-
-                    {/*<Button color="primary" className="btn btn-primary btn-rec" onClick={(event) => {*/}
-                        {/*props.goToTender(y);*/}
-                    {/*}}>*/}
-                        {/*{XButtonName}*/}
-                    {/*</Button>*/}
                 </div>
             </div>
         )
@@ -88,17 +69,13 @@ const ProjectTemplate = (props) => {
             <div>
                 <div className="dash-con dash-new-project con-body mb-4">
                     <h6>
-                        {/*<strong>{ProjectSubmitted.title}</strong>*/}
                         <strong>{props.ClientProjects.title}</strong>
                         <Badge color="info" pill>{x}</Badge>
-                        {/*<span>{ProjectSubmitted.badge}</span>*/}
+
                     </h6>
 
-
-                    {/*<h6 className="beauty-text dash-recom-item-discription">*/}
-                    {/*{ProjectSubmitted.description}*/}
-                    {/*</h6>*/}
                     <span className="sub-heading">
+                         {/*<i className="fa fa-trash-o"/>*/}
                             <i className="fa fa-calendar"/> ثبت شده در {date}
             </span>
 
@@ -117,10 +94,9 @@ const ProjectTemplate = (props) => {
             <div>
                 <div className="dash-con dash-new-project con-body mb-4">
                     <h6>
-                        {/*<strong>{ProjectSubmitted.title}</strong>*/}
+                        <i className="fa fa-trash-o" aria-hidden="true"/>
                         <strong>{props.ClientProjects.title}</strong>
                         <Badge color="success" pill>{x}</Badge>
-                        {/*<span>{ProjectSubmitted.badge}</span>*/}
                     </h6>
 
 

@@ -31,6 +31,7 @@ class ProjectProfile extends React.Component {
         validPrice: false,
         validTime: false,
         cashinModalState: false,
+        projectAdditional:""
       };
 
       // delivery_duration: Array [ "This field is required." ]
@@ -326,13 +327,16 @@ class ProjectProfile extends React.Component {
         // console.log(sizeD, 'sizeD');
         //inja az halate bler dar biad
         this.setState({
-          projectDetail: Object.assign({}, nextProps.projectDetail[sizeD - 1])
+          projectDetail: Object.assign({}, nextProps.projectDetail[sizeD - 1].general)
+        });
+        this.setState({
+            projectAdditional: Object.assign({}, nextProps.projectDetail[sizeD -1].additional_info)
         });
         this.setState({
           showBidsList: true
         });
-        if (this.props.profileInfo.username == nextProps.projectDetail[sizeD - 1].client) {
-          console.log('profileInfo.username', this.props.profileInfo.username, 'projectDetail.client', nextProps.projectDetail[sizeD - 1].client);
+        if (this.props.profileInfo.username == nextProps.projectDetail[sizeD - 1].general.client) {
+          console.log('profileInfo.username', this.props.profileInfo.username, 'projectDetail.client', nextProps.projectDetail[sizeD - 1].general.client);
           this.setState({
             ownerOfProject: true
           });
@@ -342,8 +346,11 @@ class ProjectProfile extends React.Component {
           // console.log(this.state.ownerOfProject);
         }
         this.setState({
-          projectDetail: Object.assign({}, nextProps.projectDetail[sizeD - 1])
+          projectDetail: Object.assign({}, nextProps.projectDetail[sizeD - 1].general)
         });
+          this.setState({
+              projectAdditional: Object.assign({}, nextProps.projectDetail[sizeD -1].additional_info)
+          });
       }
       if (this.props.profileInfo != nextProps.profileInfo) {
         this.setState({
@@ -353,7 +360,7 @@ class ProjectProfile extends React.Component {
               isLoggedIn: true
         });
         if (sizeD > 0) {
-          if (nextProps.profileInfo.username == this.props.projectDetail[sizeD - 1].client) {
+          if (nextProps.profileInfo.username == this.props.projectDetail[sizeD - 1].general.client) {
             this.setState({
               isLoggedIn: true
             });
@@ -377,10 +384,12 @@ class ProjectProfile extends React.Component {
         <div className = "row" >
         <div className = "col-sm-8" >
         <ProjectDetail
+            Field={this.state.projectAdditional.field}
+            FromLanguage={this.state.projectAdditional.from_language}
+            ToLanguage={this.state.projectAdditional.to_language}
             Files={this.state.projectDetail.project_attachments}
-            Detail = {
-          this.state.projectDetail
-        }/>
+            Detail = {this.state.projectDetail}
+        />
 
 <div className = "con mb-4" > {
     this.state.showBidsList ? <BidsList
@@ -445,7 +454,7 @@ class ProjectProfile extends React.Component {
                         start_date={this.state.projectDetail.start_date}
                     />
                     <AddBid
-
+                        numberOfPages={this.state.projectAdditional.number_of_pages}
                         returnFalse={this.returnFalse}
                         isLoggedIn={this.state.isLoggedIn}
                         TimeLimit={

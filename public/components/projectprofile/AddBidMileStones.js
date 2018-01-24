@@ -6,10 +6,23 @@ const AddBidMileStones = (props) => {
     var rows = [];
     var a = props.Length;
     for (var i = 0; i < a ; i++) {
-       var x = (props.delivery_duration) / (props.number_of_milestones) + (i * (props.delivery_duration) / (props.number_of_milestones));
-        // note: we add a key prop here to allow react to uniquely identify each
-        // element in this array. see: https://reactjs.org/docs/lists-and-keys.html
-        rows.push(<MileStonesHorizentalTemplate i={i} key={i} x={x}/>);
+        if(i < (a-1)) {
+           var  x = Math.floor((props.delivery_duration) / (props.number_of_milestones) + (i * (props.delivery_duration) / (props.number_of_milestones)));
+            // note: we add a key prop here to allow react to uniquely identify each
+            // element in this array. see: https://reactjs.org/docs/lists-and-keys.html
+           var page = Math.floor((props.numberOfPages) / (props.number_of_milestones) + (i * (props.numberOfPages) / (props.number_of_milestones)));
+            rows.push(<MileStonesHorizentalTemplate i={i} key={i} numberOfMileStones={props.number_of_milestones}
+                                                    x={x} page={page}/>);
+            console.log(i , x , 'i0 , x0')
+        }
+        else {
+            var y = props.delivery_duration;
+            var page1 = props.numberOfPages;
+            console.log(i , y , 'i1 , x1');
+            rows.push(<MileStonesHorizentalTemplate i={i} key={i} numberOfMileStones={props.number_of_milestones}
+                                                    x={y} page={page1} numberOfPages={props.numberOfPages}/>);
+
+        }
     }
     return <div>{rows}</div>;
 }

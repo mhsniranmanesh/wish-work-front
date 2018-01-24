@@ -37,8 +37,8 @@ export function attachFileToProject(id,stateForFile) {
     debugger;
     return function (dispatch) {
         var fileFormData = new FormData();
-        console.log('Project_id:', id.data.id)
-        console.log('Project File:', stateForFile.file )
+        console.log('Project_id:', id.data.id);
+        console.log('Project File:', stateForFile.file );
         fileFormData.append('project_id', id.data.id);
         fileFormData.append('file', stateForFile.file);
         return axios.post('/api/v1/projects/files/' , fileFormData ,
@@ -52,27 +52,17 @@ export function attachFileToProject(id,stateForFile) {
         })
     }
 }
-
-// export function addSkills(id , allState , stateForFile) {
-//     return function (dispatch) {
-//         //console.log('id:' , id , 'allState:' , allState );
-//         allState.project_id = id.data.id;
-//         //console.log( allState , ' allState ');
-//         return axios.post('/api/v1/projects/submit/translation/' , allState).then(
-//             () =>{
-//                 dispatch(attachFileToProject(allState , stateForFile));
-//             }).catch(error =>{
-//             //throw (error);
-//             console.log('Fuck error' , error);
-//         })
-//     }
-// }
-
-// export function addDetail(projectSubmit) {
-//     return axios.post('/api/v1/projects/translation/add-skills/' , projectSubmit);
-// }
-
-
+export function deleteProject(id) {
+    console.log(id , 'id');
+    return function (dispatch) {
+        return axios.delete('/api/v1/projects/delete/', {data: {project_id : id}}).then(
+            success =>{
+                dispatch(profileInfo());
+            }).catch(err => {
+                console.log(err)
+        })
+    }
+}
 export function projectSubmit(projectSubmit , stateForFile){
     return function(dispatch){
         return  axios.post('/api/v1/projects/submit/translation/' , projectSubmit).then(

@@ -7,8 +7,8 @@ const ProjectsListForDashboard = ({Projects , myFunc}) =>{
         <div className="dash-con dash-recoms mb-4">
             <h5>پروژه های پیشنهادی</h5>
             <div className="dash-divider"/>
-            {Projects.map(ProjectDetail =>
-                <ProjectTemplateForDashboard key={ProjectDetail.id} ProjectDetail = {ProjectDetail}/>
+            {Projects.map((ProjectDetail , index) =>
+                <ProjectTemplateForDashboard key={index} ProjectDetail = {ProjectDetail}/>
                 
             )}
             <form onSubmit={myFunc}>

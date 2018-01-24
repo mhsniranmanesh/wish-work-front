@@ -64,18 +64,18 @@ export function updateInformations(sendData) {
         })
     }
 }
-export function updateInformationsPic(profileInfo , getState){
+export function updateInformationsPic(profileinfo , getState){
     return function (dispatch) {
         var profileData = new FormData();
-      console.log('profile_picture:', profileInfo.profile_picture);
-        profileData.append('profile_picture', profileInfo.profile_picture);
+      console.log('profile_picture:', profileinfo.profile_picture);
+        profileData.append('profile_picture', profileinfo.profile_picture);
 
       return axios.post('/api/v1/profiles/update-infos/' , profileData,
         {
           headers: { 'Content-Type': 'multipart/form-data'}
         }
-        ).then(profileInfo =>{
-        dispatch(loadNewInfosSuccess(profileInfo.data));
+        ).then(() =>{
+        dispatch(profileInfo());
         }).catch(error => {
             throw (error);
         })

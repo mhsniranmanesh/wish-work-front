@@ -2,6 +2,7 @@ import React from 'react';
 
 const MileStonesHorizentalTemplate = (props) =>{
    // for(var x=0 ; x< props.number_of_milestones x++)
+    // var numberDivided = Math.floor(numberDivided/)
     if(props.i % 2 === 0) {
         return (
             <div className="milestone">
@@ -12,7 +13,7 @@ const MileStonesHorizentalTemplate = (props) =>{
                             <i className="entypo-feather"/>
                         </div>
                         <div className="timeline-label">
-                            <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
+                            <h2><a href="#"><span>صفحات </span>{props.page}</a></h2>
                             <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
                         </div>
                     </div>
@@ -30,7 +31,7 @@ const MileStonesHorizentalTemplate = (props) =>{
                         <i className="entypo-suitcase"/>
                     </div>
                     <div className="timeline-label">
-                        <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
+                        <h2><a href="#"><span>صفحات </span>{props.page}</a></h2>
                         <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
                     </div>
                 </div>

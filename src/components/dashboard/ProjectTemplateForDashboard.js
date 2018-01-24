@@ -23,8 +23,9 @@ const ProjectTemplateForDashboard = ({ProjectDetail}) => {
                     <a href="#">
                         <h6 className="form-header-fontsize">{ProjectDetail.title}</h6>
                     </a>
-                    <span className="sub-heading">
+                    {ProjectDetail.description}
 
+                    <span className="sub-heading">
                         {/*{ProjectDetail.tags.map(Tag =>*/}
                             {/*<TagsRow Tag = {Tag} />*/}
                         {/*)}*/}

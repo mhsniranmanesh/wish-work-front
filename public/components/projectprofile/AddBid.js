@@ -6,12 +6,22 @@ import Errors from './Errors';
 import moment from 'moment-jalaali';
 
 const AddBid = (props) => {
+    var userHasBid = false ;
+    if(props.Bids) {
+        console.log(props.Bids , 'props.Bids');
+        for (var i = 0; i < props.Bids.length; i++) {
+            console.log(props.Bids[i].username , 'props.Bids[i].username' , props.profileInfo.username , 'props.profileInfo.username');
+            if (props.Bids[i].freelancer.username === props.profileInfo.username) {
+                userHasBid = true;
+            }
+        }
+    }
     if(props.release_date) {
         moment.loadPersian({usePersianDigits: true});
         var m = moment(props.release_date, 'YYYY-M-D HH:mm:ss').format('jYYYY/jM/jD HH:mm:ss');
         console.log(props.isLoggedIn , 'props.isLoggedIn')
     }
-    if (props.isLoggedIn) {
+    if (props.isLoggedIn && (userHasBid === false)) {
         return (
             <div>
                 <div className="con mb-4">
@@ -136,7 +146,29 @@ const AddBid = (props) => {
             </div>
         )
     }
+    if (props.isLoggedIn && (userHasBid === true)){
+        return(
+            <div>
+                <div className="con mb-4">
+                    <h5 className="project-title">
+                        درباره پروژه
+                    </h5>
+                    <div className="divider"/>
+                    <div className="sub-heading">
+                        <div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div>
+                        <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</div>
+                        <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</div>
+                        <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m}</div>
+                    </div>
+                </div>
+                <div className="con mb-4">
+                    <button  color="primary" className="btn btn-primary btn-rec btn-block">
+                        شما در این مناقصه شرکت کرده اید.                   </button>
+                </div>
+            </div>
 
+        )
+    }
 else {
     return(
         <div>

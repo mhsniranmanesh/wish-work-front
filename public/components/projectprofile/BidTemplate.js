@@ -82,7 +82,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                 <div className="media-body ">
                                     <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
                                     <span className="bidding-price">{Bid.price} تومان</span>
-                                    <i className="fa fa-trash-o delete-self-bid" aria-hidden="true"/>
+                                    <i className="fa fa-trash-o delete-self-bid" aria-hidden="true" onClick={(event)=>{deleteBid(Bid.uuid)}}/>
 
                                     {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
                                     {/*data-toggle="modal" data-target="#accBiddingModal">*/}

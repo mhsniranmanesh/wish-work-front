@@ -2009,4 +2009,5 @@ a.delete-project:hover:after {
   font-size: 20px;
   color:red;
   margin-left: 20px;
+  cursor: pointer;
 }

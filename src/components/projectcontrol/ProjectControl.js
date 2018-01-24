@@ -1,5 +1,6 @@
 import React from 'react';
-import MileStones from './MileStones'
+import MileStones from './MileStones';
+
 class ProjectControl extends React.Component{
   render(){
     return(

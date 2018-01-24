@@ -22,7 +22,7 @@ export function deleteBid(bidId) {
     return function (dispatch) {
 
         console.log(bidId);
-        return axios.delete('/api/v1/projects/translation/bid/' ,{data: {bid_id : bidId}}).then(Success=>{
+        return axios.delete('api/v1/projects/bid/delete/' ,{data: {bid_id : bidId}}).then(Success=>{
             dispatch(deleteBidSuccess(Success))
             }
 
@@ -47,7 +47,7 @@ export function addBidToProject(getStateX) {
     return function (dispatch , getState) {
         console.log('getState' , getStateX);
         const profileInfo = getState().profileInfo;
-        return axios.post('/api/v1/projects/translation/bid/' , getStateX).then(addedBid =>{
+        return axios.post('api/v1/projects/bid/translation/' , getStateX).then(addedBid =>{
             dispatch(addBidSuccess(addedBid , profileInfo))
         }).catch(error =>{
             throw (error)

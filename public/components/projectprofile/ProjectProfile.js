@@ -160,6 +160,7 @@ class ProjectProfile extends React.Component {
       // console.log('this.state.projectDetail.uuid', this.state.projectDetail.uuid);
       // console.log(this.state.projectDetail, 'complete project detail')
       var sendData = {
+          description : this.state.bid_description,
         project_id: this.state.projectDetail.uuid,
         number_of_milestones: this.state.Length,
         price: this.state.bid_price,

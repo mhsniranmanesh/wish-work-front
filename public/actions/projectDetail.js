@@ -10,7 +10,6 @@ export function addBidSuccess(addedBid , profileInfo) {
     return{type: types.ADD_BID_SUCCESS , newAddedBid}
 }
 export function deleteBidSuccess(Success) {
-    debugger;
     return{type: types.DELETE_BID_SUCCESS , Success}
 }
 export function selectBidSuccess(Success) {

@@ -53,11 +53,10 @@ export default function projectDetail(state= initialState.projectDetail  , actio
             console.log(obj , 'obj');
             var z = Array.find(obj , (element) => element.uuid === action.Success.data.bid_id);
             console.log(z , 'z');
-            var index = obj.findIndex(x => x.uuid === z);
+            var index = obj.findIndex(x => x.uuid === z.uuid);
             console.log('index' , index);
             console.log(project_bids2 , 'project_bids2');
             project_bids2.project_bids.splice(index , 1);
-            debugger;
             console.log(index, 'index');
                 return [...state, Object.assign({}, state[t2 - 1], {
                     general: Object.assign({}, state[t2 - 1].general, project_bids2)

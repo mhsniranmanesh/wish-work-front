@@ -7,11 +7,12 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
 //import * as ProjectsDone from "../../actions/ProjectsDone";
 import * as freelancerActions from '../../actions/freelancerDetail';
+import NameOfFreelancer from './NameOfFreelancer';
 
 class FreelancerProfile extends React.Component {
     constructor(props){
         super(props);
-        this.state = {freelancerDetail: Object.assign({} , props.freelancerDetail) , projectDetail:""};
+        this.state = {freelancerDetail: Object.assign({} , props.freelancerDetail) , projectDetail:"" , showNameOrReturn:true};
         this.goToProjectProfile = this.goToProjectProfile.bind(this);
         this.size = this.size.bind(this);
         this.checkExistOrLengthOfProjectDetail = this.checkExistOrLengthOfProjectDetail.bind(this);
@@ -40,6 +41,11 @@ class FreelancerProfile extends React.Component {
         console.log('this.props.location:' ,this.props.location.pathname.slice(10));
         //this.setState({});
         this.props.actions.freelancerDetail(this.props.location.pathname.slice(10));
+        var Size = this.size(this.props.projectDetail);
+        if(Size > 0){
+            console.log(this.state.showNameOrReturn);
+            this.setState({showNameOrReturn : false});
+        }
     }
     componentWillReceiveProps(nextProps){
         if(this.props.freelancerDetail != nextProps.freelancerDetail ) {
@@ -59,7 +65,11 @@ class FreelancerProfile extends React.Component {
                             <FreelancerSampleProjectsList ProjectsList={this.props.ProjectsDone}/>
 
                         </div>
-                        <FreelancerInviteFollow checkExistOrLengthOfProjectDetail={this.checkExistOrLengthOfProjectDetail}/>
+                        {this.state.showNameOrReturn ?
+                            <NameOfFreelancer/> :
+                            <FreelancerInviteFollow
+                                checkExistOrLengthOfProjectDetail={this.checkExistOrLengthOfProjectDetail}/>
+                        }
                     </div>
                 </div>
             </section>

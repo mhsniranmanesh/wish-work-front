@@ -1167,6 +1167,20 @@ section.profile {
 
 .fl-wrap {}
 
+.fl-wrap-self-bid{
+  padding: 20px 5px;
+  border-radius: 15px;
+  border: 2px dashed #adadad;
+  transition: all 1s;
+  -webkit-transition: border 1s;
+  -moz-transition: border 1s;
+}
+
+.fl-wrap-self-bid:hover{
+  border: 2px solid  #adadad;
+}
+
+
 .fl-discript {
     display: block;
     font-weight: 300;
@@ -1989,3 +2003,11 @@ a.delete-project:hover:after {
 }
 .load-4 .ring-1 {animation: loadingD 1.5s .3s cubic-bezier(.17,.37,.43,.67) infinite;}
 
+
+.delete-self-bid{
+  float: left;
+  font-size: 20px;
+  color:red;
+  margin-left: 20px;
+  cursor: pointer;
+}

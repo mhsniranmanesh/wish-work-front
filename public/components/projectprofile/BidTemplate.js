@@ -76,13 +76,14 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                 return (
                     <div>
                         <div className="fl-list">
-                            <div className="fl-wrap media">
-                                <i className="fa fa-times" aria-hidden="true" onClick={(event)=>{deleteBid(Bid.uuid)}}/>
-                                <img className="d-flex  ml-3 rounded-circle" src="http://via.placeholder.com/50x50" width="40"
-                                     height="40"/>
+                            <div className="fl-wrap media fl-wrap-self-bid">
+                                <img className="d-flex  ml-3 rounded-circle" src="http://via.placeholder.com/50x50" width="60"
+                                     height="60"/>
                                 <div className="media-body ">
                                     <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
                                     <span className="bidding-price">{Bid.price} تومان</span>
+                                    <i className="fa fa-trash-o delete-self-bid" aria-hidden="true" onClick={(event)=>{deleteBid(Bid.uuid)}}/>
+
                                     {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
                                     {/*data-toggle="modal" data-target="#accBiddingModal">*/}
                                     {/*<i className="fa fa-handshake-o"/>*/}

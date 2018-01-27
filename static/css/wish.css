@@ -661,6 +661,10 @@ a:hover {
     border-color: #014762;
 }
 
+.public-btn{
+  padding-right: 10px;
+}
+
 .bg-light {
     background-color: #fff !important;
 }
@@ -1052,6 +1056,16 @@ textarea.form-control {
     background-color: #00cd59;
 }
 
+.badge-info{
+  color: #efeff0;
+    background-color: #018abe;
+    font-weight: 300;
+    /* border: 1px solid #018abe; */
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 5px;
+}
+
 .tooltip {
     font-family: iransans;
     font-weight: 300;
@@ -1068,7 +1082,19 @@ textarea.form-control {
     vertical-align: middle;
 }
 
-.about-sub-heading{
+.about-sub-heading .fa-usd{
+  color: #fe7541;
+}
+
+.about-sub-heading .fa-calendar-o{
+  color: #fe7541;
+}
+
+.btn-handshake{
+  border-radius: 2px;
+}
+
+.con .about-sub-heading{
   display: block;
   line-height: 1.75rem;
   font-size: 13px;
@@ -1076,7 +1102,7 @@ textarea.form-control {
   list-style: none;
   margin: 0;
   padding: 0;
-  color: #777;
+  color: #018abe;
   font-weight: 300;
 }
 
@@ -1139,13 +1165,19 @@ section.profile {
 }
 
 .modal-content {
-    border-radius: 0;
-    border: 0;
+  padding: 20px;
+  border: 3px solid #ff7600;
+  border-radius: 20px;
+  margin-top: 27%;
+  background-color: #ffffff;;
 }
 
 .project-discript {
-    font-weight: 300;
-    line-height: 1.3rem;
+  font-weight: 300;
+  line-height: 1.3rem;
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 #biddingBtn {
@@ -1188,6 +1220,10 @@ section.profile {
     margin: 5px 0 3px 0;
 }
 
+.fl-discript-not-owner{
+  overflow: hidden;
+}
+
 .fl-wrap .btn-rec .fa {
     padding: 0;
 }
@@ -1202,12 +1238,31 @@ section.profile {
 }
 
 .bidding-price {
-    background: #D77000;
-    padding: 2px 5px 0 5px;
-    color: #fff;
-    font-weight: 500;
-    border-radius: 5px;
+  background: #efefef;
+  padding: 3px 6px;
+  font-weight: 400;
+  border-radius: 5px;
+  display: inline-block;
+  /* margin-right: 0px; */
+  text-align: center;
+  font-size: 13px;
+  color: #018abe;
+  border: 1px solid #adadad;
 }
+
+.owner-bidding-price {
+  background: #efefef;
+  padding: 3px 0px;
+  font-weight: 400;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 0 39px;
+  text-align: center;
+  font-size: 13px;
+  color: #018abe;
+  border: 1px solid #adadad;
+}
+
 
 .price-badge {
     background: #D77000;
@@ -1928,22 +1983,23 @@ span.sup {
 
 /*count down*/
 .counter-circle {
-    margin-right: 30px;
-    display: inline-block;
-    background-color: #4caf50;
-    padding: 15px;
-    text-align: center;
-    width: 60px;
-    height: 60px;
-    /*border-radius: 50%;*/
-    border: 2px solid #4caf50;
+  margin-right: 30px;
+  display: inline-block;
+  background-color: #efeff0;
+  padding: 15px;
+  text-align: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  margin: 10px 20px;
+  border: 1px solid #018abe;
 }
 
 .counter-numb{
   font-size: 20px;
   margin: 0;
   line-height: 1;
-  color: #fff;
+  color: #018abe;
 
 }
 
@@ -1951,7 +2007,7 @@ span.sup {
   font-size: 10px;
   margin: 0;
   line-height: 1.5;
-  color: #fff;
+  color: #018abe;
 
 }
 .flag{
@@ -2007,7 +2063,7 @@ a.delete-project:hover:after {
 .delete-self-bid{
   float: left;
   font-size: 20px;
-  color:red;
+  color: #fe7541;
   margin-left: 20px;
   cursor: pointer;
 }
@@ -2018,4 +2074,15 @@ a.delete-project:hover:after {
     float: left;
     padding: 8px 35px;
     font-size: 10px;
+}
+
+.media-body{
+  display: block;
+}
+
+
+.bid-subject{
+  margin-top: 15px;
+  display: block;
+  width: 100%;
 }

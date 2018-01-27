@@ -30,14 +30,14 @@ const AddBid = (props) => {
                         درباره پروژه
                     </h5>
                     <div className="divider"/>
-                    <div className="about-sub-heading">
+                      <div className="about-sub-heading">
 
-                      <div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div>
-                      <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</div>
-                      <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</div>
-                      <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m} </div>
+                        <div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div>
+                        <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</div>
+                        <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</div>
+                        <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m} </div>
 
-                    </div>
+                      </div>
                     </div>
 
                     <div className="modal fade" id="biddingModal" tabIndex="-1" role="dialog" aria-hidden="true">
@@ -125,7 +125,7 @@ const AddBid = (props) => {
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button"
-                                            className="btn btn-primary btn-rec"
+                                            className="btn btn-primary btn-rec "
                                         // data-dismiss="modal"
                                             data-dismiss={props.ModalState}
                                             onClick={props.ModalSubmit}
@@ -138,7 +138,7 @@ const AddBid = (props) => {
                     </div>
                 </div>
                 <div className="con mb-4">
-                    <button type="submit" className="btn btn-primary btn-rec btn-block" data-toggle="modal"
+                    <button type="submit" className="btn btn-primary btn-rec btn-block public-btn" data-toggle="modal"
                             data-target="#biddingModal">
                         پیشنهاد قیمت
                     </button>
@@ -162,7 +162,7 @@ const AddBid = (props) => {
                     </div>
                 </div>
                 <div className="con mb-4">
-                    <button  color="primary" className="btn btn-primary btn-rec btn-block">
+                    <button  color="primary" className="btn btn-primary btn-rec btn-block public-btn">
                         شما در این مناقصه شرکت کرده اید.                   </button>
                 </div>
             </div>
@@ -185,7 +185,7 @@ else {
                 </div>
             </div>
             <div className="con mb-4">
-                <button  color="primary" className="btn btn-primary btn-rec btn-block" onClick={props.signUp}>
+                <button  color="primary" className="btn btn-primary btn-rec btn-block public-btn" onClick={props.signUp}>
                    ثبت نام کنید                   </button>
             </div>
         </div>

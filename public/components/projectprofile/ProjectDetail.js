@@ -113,7 +113,6 @@ const ProjectDetail = (props) => {
               </span>
 
 
-                <br/>
                 {badge}
                 <div className="divider"/>
 
@@ -154,7 +153,6 @@ const ProjectDetail = (props) => {
                                                                                              {/*height="16"/>)*/}
 
                 {/*</h5>*/}
-                <br/>
                 {badge}
                 <div className="divider"/>
 

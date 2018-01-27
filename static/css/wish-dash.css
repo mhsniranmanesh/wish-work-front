@@ -1997,7 +1997,8 @@ div #bg-primary-left {
     font-size: 15px;
     border-radius: 2px;
     color: #fff;
-    padding: 0.25em;
+    padding: 0.5em;
     margin-bottom: 2px;
     margin-top: 2px;
+    display: inline-block;
 }

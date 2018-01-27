@@ -22,6 +22,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
             console.log(mileStoneX[number], 'props.mileStoneX[props.number]', number, 'props.number');
             if (balance >= prices[number]) {
                 return (
+                <div>
                     <div className="modal fade" id={number * 10} tabIndex="-1" role="dialog" aria-hidden="true">
                         <div className="modal-dialog" role="document">
                             <div className="modal-content">
@@ -51,9 +52,10 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                         پیشنهاد</Button>
 
                                 </div>
+
                                 <div>
                                     <div className="modal fade" id={number * 20 + 1} tabIndex="-1" role="dialog"
-                                         aria-hidden="true" data-dismiss="modal">
+                                         aria-hidden="true" data-dismiss="modal" data-keyboard="false" data-backdrop="static">
                                         <div className="modal-dialog" role="document">
                                             <div className="modal-content">
                                                 <div className="enough-modalbody1">
@@ -67,20 +69,22 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                                     شروع می شود
                                                 </div>
                                                 <btn onClick={(event)=>{acceptBid(id)}} id="enough-approve-button"
-                                                     className="btn btn-rec btn-primary">
+                                                     className="btn btn-rec btn-primary" data-dismiss="modal">
                                                     تأیید
                                                 </btn>
                                                 <btn onClick={modalCashEnough} id="enough-cancel-button"
-                                                     className="btn btn-rec btn-secondary">
+                                                     className="btn btn-rec btn-secondary" data-dismiss="modal">
                                                     انصراف
                                                 </btn>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                              </div>
                             </div>
-                        </div>
-                    </div>
+                          </div>
+                      </div>
+
                 )
             }
 
@@ -112,7 +116,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                         {/*<Button color="primary" className="btn btn-primary btn-rec"
                                         onClick={(event)=>{ props.goToCash(y);}}>قبول پیشنهاد</Button>*/}
                                         <Button color="primary" className="btn btn-rec btn-primary" data-toggle="modal"
-                                                data-target={"#" + (number * 20 + 1)} onClick={disMiss}>انتخاب
+                                                data-target={"#" + (number * 20 + 1)} onClick={(event)=>{disMiss}}>انتخاب
                                             پیشنهاد</Button>
 
                                     </div>
@@ -136,7 +140,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                                         افزایش موجودی
                                                     </btn>
                                                     <btn onClick={modalCashEnough} id="enough-cancel-button"
-                                                         className="btn btn-rec btn-secondary">
+                                                         className="btn btn-rec btn-secondary" data-dismiss="modal">
                                                         انصراف
                                                     </btn>
                                                 </div>

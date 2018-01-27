@@ -48,10 +48,13 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                     {/*<Button color="primary" className="btn btn-primary btn-rec"
                                         onClick={(event)=>{ props.goToCash(y);}}>قبول پیشنهاد</Button>*/}
                                     <Button color="primary" className="btn btn-rec btn-primary" data-toggle="modal"
-                                            data-target={"#" + (number * 20 + 1)} onClick={disMiss}>انتخاب
+                                            data-target={"#" + (number * 20 + 1)} onClick={disMiss}  data-dismiss="modal">انتخاب
                                         پیشنهاد</Button>
 
                                 </div>
+                              </div>
+                            </div>
+                          </div>
 
                                 <div>
                                     <div className="modal fade" id={number * 20 + 1} tabIndex="-1" role="dialog"
@@ -68,21 +71,25 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                                     در صورت تأیید این مبلغ از موجودی شما کسر شده و پروژه به صورت خودکار
                                                     شروع می شود
                                                 </div>
-                                                <btn onClick={(event)=>{acceptBid(id)}} id="enough-approve-button"
-                                                     className="btn btn-rec btn-primary" data-dismiss="modal">
-                                                    تأیید
-                                                </btn>
-                                                <btn onClick={modalCashEnough} id="enough-cancel-button"
-                                                     className="btn btn-rec btn-secondary" data-dismiss="modal">
-                                                    انصراف
-                                                </btn>
+                                                <div className="modal-footer">
+
+                                                    <btn onClick={(event)=>{acceptBid(id)}} id="enough-approve-button"
+                                                         className="btn btn-rec btn-primary" data-dismiss="modal">
+                                                        تأیید
+                                                    </btn>
+
+
+                                                    <btn onClick={modalCashEnough} id="enough-cancel-button"
+                                                         className="btn btn-rec btn-secondary" data-dismiss="modal">
+                                                        انصراف
+                                                    </btn>
+                                                  
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                              </div>
-                            </div>
-                          </div>
+
                       </div>
 
                 )

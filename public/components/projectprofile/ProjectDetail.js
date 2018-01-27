@@ -101,11 +101,18 @@ const ProjectDetail = (props) => {
             <div className="con mb-4">
                 {/* <span className="price-badge"><i className="fa fa-usd"/></span>
               <span className="time-badge"><i className="fa fa-calendar-o"/></span> */}
-                <h5 className="project-title">
-                    {props.Detail.title} (<Flag code={toLanguageCode} height="12"/> به <Flag code={fromLanguageCode}
-                                                                                             height="12"/>)
+              <span>
+                <h5 className="project-title"> </h5>
+              </span>
+              <span>
+                  <span>  {props.Detail.title} </span>
+                  <span className="project-header-flag">
+                    <span> <Flag code={toLanguageCode} height="12"/> </span>
+                    <span> <Flag code={fromLanguageCode} height="12"/> </span>
+                  </span>
+              </span>
 
-                </h5>
+
                 <br/>
                 {badge}
                 <div className="divider"/>

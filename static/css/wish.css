@@ -1147,8 +1147,11 @@ section.profile {
 }
 
 .project-discript {
-    font-weight: 300;
-    line-height: 1.3rem;
+  font-weight: 300;
+  line-height: 1.3rem;
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 #biddingBtn {
@@ -1191,6 +1194,10 @@ section.profile {
     margin: 5px 0 3px 0;
 }
 
+.fl-discript-not-owner{
+  overflow: hidden;
+}
+
 .fl-wrap .btn-rec .fa {
     padding: 0;
 }
@@ -1211,6 +1218,20 @@ section.profile {
     font-weight: 500;
     border-radius: 5px;
 }
+
+.owner-bidding-price {
+  background: #efefef;
+  padding: 3px 0px;
+  font-weight: 400;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 0 39px;
+  text-align: center;
+  font-size: 13px;
+  color: #018abe;
+  border: 1px solid #adadad;
+}
+
 
 .price-badge {
     background: #D77000;
@@ -2016,4 +2037,15 @@ a.delete-project:hover:after {
 }
 .clickable-img{
     cursor: pointer
+}
+
+.media-body{
+  display: block;
+}
+
+
+.bid-subject{
+  margin-top: 15px;
+  display: block;
+  width: 100%;
 }

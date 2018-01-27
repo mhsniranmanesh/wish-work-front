@@ -31,7 +31,7 @@ const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash,
         return (
             <div>
                 <h5 className="project-title">
-                    پیشنهاد ها
+                    پیشنهادها
                   </h5>
                 <div className="dropdown float-left">
                     <button className="btn btn-secondary btn-rec btn-small dropdown-toggle"

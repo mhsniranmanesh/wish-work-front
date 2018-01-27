@@ -777,6 +777,14 @@ img {
     vertical-align: middle;
 }
 
+.project-header-flag{
+  float: left;
+}
+
+span .project-header-flag span{
+  margin-right: 5px;
+}
+
 .img-responsive {
     display: block;
     height: auto;
@@ -1993,12 +2001,13 @@ div #bg-primary-left {
 }
 
 .tags li.addedTag {
-    background: none repeat scroll 0 0 #019f86;
-    font-size: 15px;
-    border-radius: 2px;
-    color: #fff;
-    padding: 0.5em;
-    margin-bottom: 2px;
-    margin-top: 2px;
-    display: inline-block;
+  background: none repeat scroll 0 0 #e1e1e1;
+  font-size: 13px;
+  border-radius: 5px;
+  color: #363636;
+  padding: 3px 7px;
+  margin-bottom: 2px;
+  margin-top: 18px;
+  display: inline-block;
+  margin-left: 10px;
 }

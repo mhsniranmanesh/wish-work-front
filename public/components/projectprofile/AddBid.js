@@ -6,16 +6,16 @@ import Errors from './Errors';
 import moment from 'moment-jalaali';
 
 const AddBid = (props) => {
-    var userHasBid = false ;
-    if(props.Bids) {
-        console.log(props.Bids , 'props.Bids');
-        for (var i = 0; i < props.Bids.length; i++) {
-            console.log(props.Bids[i].username , 'props.Bids[i].username' , props.profileInfo.username , 'props.profileInfo.username');
-            if (props.Bids[i].freelancer.username === props.profileInfo.username) {
-                userHasBid = true;
-            }
-        }
-    }
+    var userHasBid = props.userHasBid ;
+    // if(props.Bids) {
+    //     console.log(props.Bids , 'props.Bids');
+    //     for (var i = 0; i < props.Bids.length; i++) {
+    //         console.log(props.Bids[i].username , 'props.Bids[i].username' , props.profileInfo.username , 'props.profileInfo.username');
+    //         if (props.Bids[i].freelancer.username === props.profileInfo.username) {
+    //             userHasBid = true;
+    //         }
+    //     }
+    // }
     if(props.release_date) {
         moment.loadPersian({usePersianDigits: true});
         var m = moment(props.release_date, 'YYYY-M-D HH:mm:ss').format('jYYYY/jM/jD HH:mm:ss');

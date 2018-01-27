@@ -9,296 +9,323 @@ import {bindActionCreators} from 'redux';
 import * as projectActions from '../../actions/projectDetail';
 import Button from './Button';
 import CountDown from './CountDown';
+import {Modal , ModalHeader, ModalBody} from 'reactstrap';
+import Progress from 'react-progressbar'
 
 class ProjectProfile extends React.Component {
     constructor(props) {
-      super(props);
+        super(props);
 
-      this.state = {
-        projectDetail: "",
-        amountOfMileStones: 0,
-        Length: 0,
-        bid_description: '',
-        bid_price: '',
-        ModalState: 'modal',
-        showError: false,
-        profileInfo: Object.assign({}, props.profileInfo),
-        isLoggedIn: false,
-        delivery_duration: '',
-        ownerOfProject: false,
-        showBidsList: false,
-        priceForCash: "",
-        validPrice: false,
-        validTime: false,
-        cashinModalState: false,
-        projectAdditional:""
-      };
+        this.state = {
+            projectDetail: "",
+            amountOfMileStones: 0,
+            Length: 0,
+            bid_description: '',
+            bid_price: '',
+            ModalState: 'modal',
+            showError: false,
+            profileInfo: Object.assign({}, props.profileInfo),
+            isLoggedIn: false,
+            delivery_duration: '',
+            ownerOfProject: false,
+            showBidsList: false,
+            priceForCash: "",
+            validPrice: false,
+            validTime: false,
+            cashinModalState: false,
+            projectAdditional: "",
+            progressNumber: 10,
+            loading: false,
+            intervalId: 0,
+            userHasBid: false
+        };
 
-      // delivery_duration: Array [ "This field is required." ]
-      // number_of_milestones: Array [ "This field is required." ]
-      // price: Array [ "This field is required." ]
-      this.valueOfMileStones = this.valueOfMileStones.bind(this);
-      this.CheckLength = this.CheckLength.bind(this);
-      this.BidPrice = this.BidPrice.bind(this);
-      this.DeliveryTime = this.DeliveryTime.bind(this);
-      this.BidDescription = this.BidDescription.bind(this);
-      this.ModalSubmit = this.ModalSubmit.bind(this);
-      this.FinalSubmitBid = this.FinalSubmitBid.bind(this);
-      this.size = this.size.bind(this);
-      this.clicksubmit = this.clicksubmit.bind(this);
-      this.goToCash = this.goToCash.bind(this);
-      this.validateBidAmount = this.validateBidAmount.bind(this);
-      this.persianToEnglish = this.persianToEnglish.bind(this);
-      this.roundBidAmount = this.roundBidAmount.bind(this);
-      this.validateDeliveryTime = this.validateDeliveryTime.bind(this);
-      this.DeliveryTime = this.DeliveryTime.bind(this);
-      this.roundDeliveryTime = this.roundDeliveryTime.bind(this);
-      this.modalCashEnough = this.modalCashEnough.bind(this);
-      this.returnFalse = this.returnFalse.bind(this);
-      this.deleteBid = this.deleteBid.bind(this);
-      this.goToRegister = this.goToRegister.bind(this);
-      this.SignUp = this.SignUp.bind(this);
-      this.acceptBid = this.acceptBid.bind(this);
-      this.goToFreelancerProfile=this.goToFreelancerProfile.bind(this);
-      this.redirect = this.redirect.bind(this);
+        // delivery_duration: Array [ "This field is required." ]
+        // number_of_milestones: Array [ "This field is required." ]
+        // price: Array [ "This field is required." ]
+        this.valueOfMileStones = this.valueOfMileStones.bind(this);
+        this.CheckLength = this.CheckLength.bind(this);
+        this.BidPrice = this.BidPrice.bind(this);
+        this.DeliveryTime = this.DeliveryTime.bind(this);
+        this.BidDescription = this.BidDescription.bind(this);
+        this.ModalSubmit = this.ModalSubmit.bind(this);
+        this.FinalSubmitBid = this.FinalSubmitBid.bind(this);
+        this.size = this.size.bind(this);
+        this.clicksubmit = this.clicksubmit.bind(this);
+        this.goToCash = this.goToCash.bind(this);
+        this.validateBidAmount = this.validateBidAmount.bind(this);
+        this.persianToEnglish = this.persianToEnglish.bind(this);
+        this.roundBidAmount = this.roundBidAmount.bind(this);
+        this.validateDeliveryTime = this.validateDeliveryTime.bind(this);
+        this.DeliveryTime = this.DeliveryTime.bind(this);
+        this.roundDeliveryTime = this.roundDeliveryTime.bind(this);
+        this.modalCashEnough = this.modalCashEnough.bind(this);
+        this.returnFalse = this.returnFalse.bind(this);
+        this.deleteBid = this.deleteBid.bind(this);
+        this.goToRegister = this.goToRegister.bind(this);
+        this.SignUp = this.SignUp.bind(this);
+        this.acceptBid = this.acceptBid.bind(this);
+        this.goToFreelancerProfile = this.goToFreelancerProfile.bind(this);
+        this.redirect = this.redirect.bind(this);
+        this.progressNumber = this.progressNumber.bind(this);
+        //this.counter = this.counter.bind(this);
     }
-    goToFreelancerProfile(slug){
+
+    goToFreelancerProfile(slug) {
         this.context.router.history.push({
             pathname: '/profiles/' + slug,
         });
     }
-    redirect(){
+
+    redirect() {
         alert('Congratulation, your project is started now!');
         this.context.router.history.push({
             pathname: '/project/cp',
         });
 
     }
-    deleteBid(x){
-    console.log('x' , x);
-    this.props.actions.deleteBid(x).then(
-        console.log('Delete')
-    ).catch(err => {
-        console.log(err)
-    })
+
+    deleteBid(x) {
+        console.log('x', x);
+        this.props.actions.deleteBid(x).then(
+            console.log('Delete')
+        ).catch(err => {
+            console.log(err)
+        })
     }
-    acceptBid(id){
+
+    acceptBid(id) {
         this.props.actions.selectBid(id).then(
             () => this.redirect)
             .catch(err => {
                 console.log(err)
             })
     }
-    returnFalse(e){
-      e.preventDefault();
-      return false
-    }
-    modalCashEnough(){
-      this.setState({
-        cashinModalState: !this.state.cashinModalState,
-      });
+
+    returnFalse(e) {
+        e.preventDefault();
+        return false
     }
 
-    persianToEnglish(value){
-      var newValue = "";
-      for(var i=0; i<value.length; i++){
-        var char = value.charCodeAt(i);
-        if(char >= 1776 && char <= 1785){ //for persian digits
-          var newChar = char - 1728;
-          newValue = newValue + String.fromCharCode(newChar);
-        }
-        else if(char >= 1632 && char <= 1641){ // for arabic and unix digits
-          var newChar = char - 1584;
-          newValue = newValue + String.fromCharCode(newChar);
-        }
-        else{
-          newValue = newValue + String.fromCharCode(char);
-        }
-      }
-      return newValue;
-    }
-  /////////////////////////////////////////////////////////////////////////////////////////////////////
-     validateBidAmount(price){
-      const pr = /^\d+$/;
-      return pr.test(price);
+    modalCashEnough() {
+        this.setState({
+            cashinModalState: !this.state.cashinModalState,
+        });
     }
 
-    validateDeliveryTime(time){
-      const tm = /^\d+$/;
-      return tm.test(time);
+    persianToEnglish(value) {
+        var newValue = "";
+        for (var i = 0; i < value.length; i++) {
+            var char = value.charCodeAt(i);
+            if (char >= 1776 && char <= 1785) { //for persian digits
+                var newChar = char - 1728;
+                newValue = newValue + String.fromCharCode(newChar);
+            }
+            else if (char >= 1632 && char <= 1641) { // for arabic and unix digits
+                var newChar = char - 1584;
+                newValue = newValue + String.fromCharCode(newChar);
+            }
+            else {
+                newValue = newValue + String.fromCharCode(char);
+            }
+        }
+        return newValue;
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    validateBidAmount(price) {
+        const pr = /^\d+$/;
+        return pr.test(price);
+    }
+
+    validateDeliveryTime(time) {
+        const tm = /^\d+$/;
+        return tm.test(time);
+    }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     goToCash(y) {
-      //this.setState({priceForCash : x});
-      //console.log(y, 'y');
-      let price = y.toString();
-      // console.log(price, 'this is price');
-      // console.log(this.state.priceForCash, 'price of freelancer');
-      //console.log(bid_price , 'bid_price')
-      this.context.router.history.push({
-        pathname: '/account/cash',
-        search: price
-      });
+        //this.setState({priceForCash : x});
+        //console.log(y, 'y');
+        let price = y.toString();
+        // console.log(price, 'this is price');
+        // console.log(this.state.priceForCash, 'price of freelancer');
+        //console.log(bid_price , 'bid_price')
+        this.context.router.history.push({
+            pathname: '/account/cash',
+            search: price
+        });
     }
-    goToRegister(){
+
+    goToRegister() {
         this.context.router.history.push({
             pathname: '/account/cash'
         });
     }
 
     clicksubmit() {
-      this.setState({
-        showError: false,
-        ModalState: 'modal'
-      });
-      alert('your bid submit')
+        this.setState({
+            progressNumber: 100,
+            showError: false,
+            ModalState: 'modal',
+            loading: false
+        });
+
     }
+
     FinalSubmitBid() {
-      this.state.Length = Number(this.state.Length);
-      // console.log('this.state.projectDetail.uuid', this.state.projectDetail.uuid);
-      // console.log(this.state.projectDetail, 'complete project detail')
-      var sendData = {
-          description : this.state.bid_description,
-        project_id: this.state.projectDetail.uuid,
-        number_of_milestones: this.state.Length,
-        price: this.state.bid_price,
-        delivery_duration: this.state.delivery_duration,
-        has_default_bid_controller: false,
-      };
-      this.props.actions.addBidToProject(sendData)
-        .then(
-          () => this.clicksubmit())
-        .catch(err => {
-          console.log(err)
-        })
+        this.state.Length = Number(this.state.Length);
+        // console.log('this.state.projectDetail.uuid', this.state.projectDetail.uuid);
+        // console.log(this.state.projectDetail, 'complete project detail')
+        var sendData = {
+            description: this.state.bid_description,
+            project_id: this.state.projectDetail.uuid,
+            number_of_milestones: this.state.Length,
+            price: this.state.bid_price,
+            delivery_duration: this.state.delivery_duration,
+            has_default_bid_controller: false,
+        };
+        this.setState({loading: true});
+        this.props.actions.addBidToProject(sendData)
+            .then(
+                () => this.progressNumber()).then(
+            () => this.clicksubmit()
+        )
+            .catch(err => {
+                console.log(err)
+            });
+
     }
 
     ModalSubmit() {
-      if (this.state.bid_description === '') {
-        this.setState({
-          showError: true,
-          message: "توضیحی در رابطه با پیشنهاد خود بدهید، این بخش برای مشتری بسیار تاثیر گذار است"
-        });
-      } else if (this.state.bid_price === '') {
-        this.setState({
-          showError: true,
-          message: "لطفا قیمت پیشنهادی خود را ارائه دهید."
-        });
-      }
-      else if(this.state.bid_price !=='' && !this.state.validPrice){
-        this.setState({
-          showError: true,
-          message: "لطفا مبلغ خود را به عدد وارد کنید"
-        });
-      }
-        else if (this.state.delivery_duration ===''){
-          this.setState({
-          showError: true,
-          message: "لطفا زمان پیشنهادی خود را مشخص کنید"
-        });
+        if (this.state.bid_description === '') {
+            this.setState({
+                showError: true,
+                message: "توضیحی در رابطه با پیشنهاد خود بدهید، این بخش برای مشتری بسیار تاثیر گذار است"
+            });
+        } else if (this.state.bid_price === '') {
+            this.setState({
+                showError: true,
+                message: "لطفا قیمت پیشنهادی خود را ارائه دهید."
+            });
         }
-        else if(this.state.delivery_duration !=='' && !this.state.validTime){
-          this.setState({
-            showError: true,
-            message: "لطفا زمان پیشنهادی را به عدد وارد کنید"
-          });
+        else if (this.state.bid_price !== '' && !this.state.validPrice) {
+            this.setState({
+                showError: true,
+                message: "لطفا مبلغ خود را به عدد وارد کنید"
+            });
         }
-       else if (this.state.Length < 2) {
-        this.setState({
-          showError: true,
-          message: "لطفا تعداد بازه های زمانی را بیشتر از ۲ انتخاب کنید!"
-        });
-      } else {
-        this.state.bid_price = Number(this.state.bid_price);
-        this.state.delivery_duration = Number(this.state.delivery_duration);
-        this.FinalSubmitBid()
-      }
+        else if (this.state.delivery_duration === '') {
+            this.setState({
+                showError: true,
+                message: "لطفا زمان پیشنهادی خود را مشخص کنید"
+            });
+        }
+        else if (this.state.delivery_duration !== '' && !this.state.validTime) {
+            this.setState({
+                showError: true,
+                message: "لطفا زمان پیشنهادی را به عدد وارد کنید"
+            });
+        }
+        else if (this.state.Length < 2) {
+            this.setState({
+                showError: true,
+                message: "لطفا تعداد بازه های زمانی را بیشتر از ۲ انتخاب کنید!"
+            });
+        } else {
+            this.state.bid_price = Number(this.state.bid_price);
+            this.state.delivery_duration = Number(this.state.delivery_duration);
+            this.FinalSubmitBid()
+        }
     }
 
     BidDescription(event) {
-      this.setState({
-        bid_description: event.target.value
-      })
+        this.setState({
+            bid_description: event.target.value
+        })
     }
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
     BidPrice(event) {
-      let price = event.target.value;
-      price = this.persianToEnglish(price);
-      const trueOrFalsePriceValid = this.validateBidAmount(price);
-      this.setState({
-        bid_price: price , validPrice: trueOrFalsePriceValid
-      })
+        let price = event.target.value;
+        price = this.persianToEnglish(price);
+        const trueOrFalsePriceValid = this.validateBidAmount(price);
+        this.setState({
+            bid_price: price, validPrice: trueOrFalsePriceValid
+        })
 
     }
 
-    roundBidAmount(event){
-      let numb = Number(this.state.bid_price);
-      numb = (Math.ceil(numb));
-      const trueOrFalsePriceValid2 = this.validateBidAmount(numb);
+    roundBidAmount(event) {
+        let numb = Number(this.state.bid_price);
+        numb = (Math.ceil(numb));
+        const trueOrFalsePriceValid2 = this.validateBidAmount(numb);
 
-      if(isNaN(numb)){
-        numb = '';
-      }
-      event.target.value = numb;
-      this.setState({bid_price: numb , validPrice: trueOrFalsePriceValid2})
+        if (isNaN(numb)) {
+            numb = '';
+        }
+        event.target.value = numb;
+        this.setState({bid_price: numb, validPrice: trueOrFalsePriceValid2})
 
     }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     DeliveryTime(event) {
-      let time = event.target.value;
-      time = this.persianToEnglish(time);
-      const trueOrFalseTimeValid = this.validateDeliveryTime(time);
-      this.setState({
-        delivery_duration: time , validTime: trueOrFalseTimeValid
-      });
+        let time = event.target.value;
+        time = this.persianToEnglish(time);
+        const trueOrFalseTimeValid = this.validateDeliveryTime(time);
+        this.setState({
+            delivery_duration: time, validTime: trueOrFalseTimeValid
+        });
     }
 
-    roundDeliveryTime(event){
-      let numb = Number(this.state.delivery_duration);
-      numb = (Math.ceil(numb));
-      const trueOrFalseTimeValid2 = this.validateDeliveryTime(numb);
-      if(isNaN(numb)){
-        numb = '';
-      }
-      event.target.value = numb;
-      this.setState({
-        delivery_duration: numb , validTime: trueOrFalseTimeValid2
-      });
+    roundDeliveryTime(event) {
+        let numb = Number(this.state.delivery_duration);
+        numb = (Math.ceil(numb));
+        const trueOrFalseTimeValid2 = this.validateDeliveryTime(numb);
+        if (isNaN(numb)) {
+            numb = '';
+        }
+        event.target.value = numb;
+        this.setState({
+            delivery_duration: numb, validTime: trueOrFalseTimeValid2
+        });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
     CheckLength() {
-      if (this.state.amountOfMileStones < 2) {
-        this.setState({
-          showError: true,
-          message: "لطفا تعداد بازه های زمانی را بیشتر از ۲ انتخاب کنید!"
-        });
-      } else if (this.state.amountOfMileStones > 4) {
-        this.setState({
-          showError: true,
-          message: "تعداد بازه های زمانی نباید بیشتر از ۴ باشد."
-        });
-      } else {
+        if (this.state.amountOfMileStones < 2) {
+            this.setState({
+                showError: true,
+                message: "لطفا تعداد بازه های زمانی را بیشتر از ۲ انتخاب کنید!"
+            });
+        } else if (this.state.amountOfMileStones > 4) {
+            this.setState({
+                showError: true,
+                message: "تعداد بازه های زمانی نباید بیشتر از ۴ باشد."
+            });
+        } else {
 
-        this.setState({
-          showError: false,
-          Length: this.state.amountOfMileStones
-        });
-      }
+            this.setState({
+                showError: false,
+                Length: this.state.amountOfMileStones
+            });
+        }
     }
-    SignUp(event){
+
+    SignUp(event) {
         event.preventDefault();
         this.context.router.history.push('/signup');
     }
+
     valueOfMileStones(event) {
-      this.setState({
-        amountOfMileStones: event.target.value
-      })
+        this.setState({
+            amountOfMileStones: event.target.value
+        })
     }
 
     // componentDidUpdate(prevProps, prevState) {
@@ -307,83 +334,137 @@ class ProjectProfile extends React.Component {
     //     }
     // }
     size(obj) {
-      let x = 0,
-        key;
-      for (key in obj) {
-        if (obj.hasOwnProperty(key)) x++;
-      }
-      return x;
+        let x = 0,
+            key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) x++;
+        }
+        return x;
     };
 
     componentWillMount() {
-      //console.log('this.props:', this.props.location.pathname.slice(10));
-
-      this.props.actions.projectDetail(this.props.location.pathname.slice(10));
+        //console.log('this.props:', this.props.location.pathname.slice(10));
+        if (this.state.loading) {
+            clearInterval(this.state.intervalId);
+        }
+        // var x= this.size()
+        // if()
+        // this.setState({})
+        this.props.actions.projectDetail(this.props.location.pathname.slice(10));
+        var sIze = this.size(this.props.projectDetail);
+        if(sIze>0 && this.props.profileInfo.username) {
+            for (var i = 0; i < this.props.projectDetail[sIze-1].general.project_bids.length; i++) {
+                // console.log(props.this.state.projectDetail.project_bids[i].username , 'props.Bids[i].username' , props.profileInfo.username , 'props.profileInfo.username');
+                if (this.props.projectDetail[sIze-1].general.project_bids[i].freelancer.username === this.props.profileInfo.username) {
+                    this.setState({userHasBid:true});
+                    this.setState({isLoggedIn:true});
+                }
+            }
+        }
     }
 
     componentWillReceiveProps(nextProps) {
-      var sizeD = this.size(nextProps.projectDetail);
-      if (this.props.projectDetail[sizeD - 1] != nextProps.projectDetail[sizeD - 1]) {
-        // console.log(nextProps.profileDetail);
-        // console.log(sizeD, 'sizeD');
-        //inja az halate bler dar biad
-        this.setState({
-          projectDetail: Object.assign({}, nextProps.projectDetail[sizeD - 1].general)
-        });
-        this.setState({
-            projectAdditional: Object.assign({}, nextProps.projectDetail[sizeD -1].additional_info)
-        });
-        this.setState({
-          showBidsList: true
-        });
-        if (this.props.profileInfo.username == nextProps.projectDetail[sizeD - 1].general.client) {
-          console.log('profileInfo.username', this.props.profileInfo.username, 'projectDetail.client', nextProps.projectDetail[sizeD - 1].general.client);
-          this.setState({
-            ownerOfProject: true
-          });
-          this.setState({
-            isLoggedIn: true
-          });
-          // console.log(this.state.ownerOfProject);
-        }
-        this.setState({
-          projectDetail: Object.assign({}, nextProps.projectDetail[sizeD - 1].general)
-        });
-          this.setState({
-              projectAdditional: Object.assign({}, nextProps.projectDetail[sizeD -1].additional_info)
-          });
-      }
-      if (this.props.profileInfo != nextProps.profileInfo) {
-        this.setState({
-          profileInfo: Object.assign({}, nextProps.profileInfo)
-        });
-        this.setState({
-              isLoggedIn: true
-        });
-        if (sizeD > 0) {
-          if (nextProps.profileInfo.username == this.props.projectDetail[sizeD - 1].general.client) {
+        var sizeD = this.size(nextProps.projectDetail);
+        if (this.props.projectDetail[sizeD - 1] != nextProps.projectDetail[sizeD - 1]) {
+            // console.log(nextProps.profileDetail);
+            // console.log(sizeD, 'sizeD');
+            //inja az halate bler dar biad
             this.setState({
-              isLoggedIn: true
+                projectDetail: Object.assign({}, nextProps.projectDetail[sizeD - 1].general)
             });
             this.setState({
-              ownerOfProject: true
+                projectAdditional: Object.assign({}, nextProps.projectDetail[sizeD - 1].additional_info)
             });
-          }
+            this.setState({
+                showBidsList: true
+            });
+            for (var i = 0; i < nextProps.projectDetail[sizeD-1].general.project_bids.length; i++) {
+                if (nextProps.projectDetail[sizeD - 1].general.project_bids[i].freelancer.username === this.props.profileInfo.username) {
+                    this.setState({userHasBid : true})
+                }
+            }
 
+            if (this.props.profileInfo.username == nextProps.projectDetail[sizeD - 1].general.client) {
+                console.log('profileInfo.username', this.props.profileInfo.username, 'projectDetail.client', nextProps.projectDetail[sizeD - 1].general.client);
+                this.setState({
+                    ownerOfProject: true
+                });
+                this.setState({
+                    isLoggedIn: true
+                });
+                // console.log(this.state.ownerOfProject);
+            }
+            this.setState({
+                projectDetail: Object.assign({}, nextProps.projectDetail[sizeD - 1].general)
+            });
+            this.setState({
+                projectAdditional: Object.assign({}, nextProps.projectDetail[sizeD - 1].additional_info)
+            });
         }
+        if (this.props.profileInfo != nextProps.profileInfo) {
+            this.setState({
+                profileInfo: Object.assign({}, nextProps.profileInfo)
+            });
+            this.setState({
+                isLoggedIn: true
+            });
+            if (sizeD > 0) {
+                for (var y = 0; y < this.props.projectDetail[sizeD-1].general.project_bids.length; y++) {
+                    if (this.props.projectDetail[sizeD - 1].general.project_bids[y].freelancer.username === nextProps.profileInfo.username) {
+                        this.setState({userHasBid : true})
+                    }
+                }
+                if (nextProps.profileInfo.username == this.props.projectDetail[sizeD - 1].general.client) {
+                    this.setState({
+                        isLoggedIn: true
+                    });
+                    this.setState({
+                        ownerOfProject: true
+                    });
+                }
 
-
-      }
+            }
+        }
+        // if(nextProps.projectDetail) {
+        //     for (var i = 0; i < nextProps.projectDetail[sizeD-1].project_bids.length; i++) {
+        //         // console.log(props.this.state.projectDetail.project_bids[i].username , 'props.Bids[i].username' , props.profileInfo.username , 'props.profileInfo.username');
+        //         if (nextProps.projectDetail[sizeD - 1].project_bids[i].freelancer.username === this.props.profileInfo.username) {
+        //             this.setState({userHasBid : true})
+        //         }
+        //     }
+        // }
     }
 
-    componentDidMount() {}
-
+    //
+    // componentDidMount() {
+    //     if(this.state.loading) {
+    //         var intervalId = setInterval(this.progressNumber, 10000);
+    //         this.setState({intervalId: intervalId});
+    //     }
+    // }
+    progressNumber() {
+        setTimeout( () => {
+            var i = this.state.progressNumber + 20;
+                                                                        //  call a 3s setTimeout when the loop is called
+            this.setState({progressNumber: this.state.progressNumber +20});
+                      console.log(this.state.progressNumber , 'progressNumber');                                                          //  increment the counter
+            if (i < 100) {                                                      //  if the counter < 100, call the loop function
+                this.progressNumber();                                           //  ..  again which will trigger another
+            }                        //  ..  setTimeout()
+        }, 7000)
+    }
     render() {
       return (
         <section className = "profile" >
         <div className = "container" >
         <div className = "row" >
         <div className = "col-sm-8" >
+            <Modal isOpen={this.state.loading}>
+                <ModalHeader >لطفا منتظر بمانید</ModalHeader>
+                <ModalBody>
+                    <Progress completed={this.state.progressNumber}/>
+                </ModalBody>
+            </Modal>
         <ProjectDetail
             Field={this.state.projectAdditional.field}
             FromLanguage={this.state.projectAdditional.from_language}
@@ -456,6 +537,7 @@ class ProjectProfile extends React.Component {
                     />
                     <AddBid
                         profileInfo={this.props.profileInfo}
+                        userHasBid={this.state.userHasBid}
                         numberOfPages={this.state.projectAdditional.number_of_pages}
                         returnFalse={this.returnFalse}
                         isLoggedIn={this.state.isLoggedIn}

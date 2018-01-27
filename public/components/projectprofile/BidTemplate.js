@@ -27,7 +27,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                 <div>
                     <div className="fl-list">
                         <div className="fl-wrap media">
-                            <img className="d-flex  ml-3 rounded-circle" src={Image}
+                            <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
                                  style={ {height:60 , width:60} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
                             <div className="media-body">
                                 <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
@@ -37,15 +37,15 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                     <i className="fa fa-handshake-o"/>
                                 </button>
 
-                                <span className="fl-discript"> <a href="#"
+                                <span className="fl-discript"> {Bid.description}<a href="#"
                                                                   className="more">بیشتر...</a></span>
-                                <div className="sub-heading">
-                                    <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                                    <a className="tag" href="#">#علمی</a>
-                                    <a className="tag" href="#">#زیست_شناسی</a>
-                                    <a className="tag" href="#">#میکرو_بیولوژی</a>
-                                    <a className="tag" href="#">#فوری</a>
-                                </div>
+                                {/*<div className="sub-heading">*/}
+                                    {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
+                                    {/*<a className="tag" href="#">#علمی</a>*/}
+                                    {/*<a className="tag" href="#">#زیست_شناسی</a>*/}
+                                    {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
+                                    {/*<a className="tag" href="#">#فوری</a>*/}
+                                {/*</div>*/}
                             </div>
                         </div>
                     </div>
@@ -77,8 +77,8 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                     <div>
                         <div className="fl-list">
                             <div className="fl-wrap media fl-wrap-self-bid">
-                                <img className="d-flex  ml-3 rounded-circle" src="http://via.placeholder.com/50x50" width="60"
-                                     height="60"/>
+                                <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
+                                     style={ {height:60 , width:60} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
                                 <div className="media-body ">
                                     <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
                                     <span className="bidding-price">{Bid.price} تومان</span>
@@ -89,15 +89,15 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                     {/*<i className="fa fa-handshake-o"/>*/}
                                     {/*</button>*/}
 
-                                    <span className="fl-discript">{Bid.Describtion} <a href="#"
+                                    <span className="fl-discript">{Bid.description} <a href="#"
                                                                                        className="more">بیشتر...</a></span>
-                                    <div className="sub-heading">
-                                        <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                                        <a className="tag" href="#">#علمی</a>
-                                        <a className="tag" href="#">#زیست_شناسی</a>
-                                        <a className="tag" href="#">#میکرو_بیولوژی</a>
-                                        <a className="tag" href="#">#فوری</a>
-                                    </div>
+                                    {/*<div className="sub-heading">*/}
+                                        {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
+                                        {/*<a className="tag" href="#">#علمی</a>*/}
+                                        {/*<a className="tag" href="#">#زیست_شناسی</a>*/}
+                                        {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
+                                        {/*<a className="tag" href="#">#فوری</a>*/}
+                                    {/*</div>*/}
                                 </div>
                             </div>
                         </div>
@@ -112,7 +112,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                     <div>
                         <div className="fl-list">
                             <div className="fl-wrap media">
-                                <img className="d-flex  ml-3 rounded-circle" src={Image}
+                                <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
                                      style={ {height:60 , width:60} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
                                 <div className="media-body ">
                                     <a href="#"
@@ -123,15 +123,15 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                     {/*<i className="fa fa-handshake-o"/>*/}
                                     {/*</button>*/}
 
-                                    <span className="fl-discript">{Bid.Describtion} <a href="#"
+                                    <span className="fl-discript">{Bid.description} <a href="#"
                                                                                        className="more">بیشتر...</a></span>
-                                    <div className="sub-heading">
-                                        <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                                        <a className="tag" href="#">#علمی</a>
-                                        <a className="tag" href="#">#زیست_شناسی</a>
-                                        <a className="tag" href="#">#میکرو_بیولوژی</a>
-                                        <a className="tag" href="#">#فوری</a>
-                                    </div>
+                                    {/*<div className="sub-heading">*/}
+                                        {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
+                                        {/*<a className="tag" href="#">#علمی</a>*/}
+                                        {/*<a className="tag" href="#">#زیست_شناسی</a>*/}
+                                        {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
+                                        {/*<a className="tag" href="#">#فوری</a>*/}
+                                    {/*</div>*/}
                                 </div>
                             </div>
                         </div>
@@ -146,7 +146,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
         <div>
             <div className="fl-list">
                 <div className="fl-wrap media">
-                    <img className="d-flex  ml-3 rounded-circle" src={Image}
+                    <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
                          style={ {height:60 , width:60} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
                     <div className="media-body">
                         <a href="#" className="fl-name">{Bid.freelancer.first_name}</a>
@@ -156,15 +156,15 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                             {/*<i className="fa fa-handshake-o"/>*/}
                         {/*</button>*/}
 
-                        <span className="fl-discript">{Bid.Describtion} <a href="#"
+                        <span className="fl-discript">{Bid.description} <a href="#"
                                                                            className="more">بیشتر...</a></span>
-                        <div className="sub-heading">
-                            <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                            <a className="tag" href="#">#علمی</a>
-                            <a className="tag" href="#">#زیست_شناسی</a>
-                            <a className="tag" href="#">#میکرو_بیولوژی</a>
-                            <a className="tag" href="#">#فوری</a>
-                        </div>
+                        {/*<div className="sub-heading">*/}
+                            {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
+                            {/*<a className="tag" href="#">#علمی</a>*/}
+                            {/*<a className="tag" href="#">#زیست_شناسی</a>*/}
+                            {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
+                            {/*<a className="tag" href="#">#فوری</a>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
             </div>

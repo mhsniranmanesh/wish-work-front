@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux';
 import * as recomendedProject from '../../actions/recomendedProjectForFreelancer.js';
 import DashboardProjectSubmission from "./DashboardProjectSubmisson";
 import ProjectsListForDashboard from './ProjectsListForDashboard';
-import NotificationsListForDashboard from "./NotificationsListForDashboard";
+import NotificationsListForDashboard from "./MyProjectsListForDashboard";
 import Notifications from '../../actions/Notifications';
 import ProfileInfoForDashboard from "./ProfileInfoForDashboard";
 // import * as x from '../../actions/projectSubmitLocalForDashboard';
@@ -29,15 +29,26 @@ class Dashboard extends React.Component{
         this.IsTechnical = this.IsTechnical.bind(this);
         this.IsGeneral = this.IsGeneral.bind(this);
         this.submitProject = this.submitProject.bind(this);
-        this.gotoNotifications = this.gotoNotifications.bind(this);
+        this.gotoMyProjects = this.gotoMyProjects.bind(this);
         this.gotoRecomendedProjects = this.gotoRecomendedProjects.bind(this);
         this.updateValueTT = this.updateValueTT.bind(this);
         this.updateValueTF = this.updateValueTF.bind(this);
         this.getOptions = this.getOptions.bind(this);
         this.goToProjectProfile = this.goToProjectProfile.bind(this);
         this.size = this.size.bind(this);
+        this.WordCount = this.WordCount.bind(this);
+        this.goToMyProjectPublic = this.goToMyProjectPublic.bind(this);
 
   }
+    goToMyProjectPublic(y){
+        this.context.router.history.push({
+            pathname:'/projects/' + y,
+        });
+    }
+    WordCount(str) {
+        return str.split(" ").length;
+    }
+
     size (obj) {
         let x = 0, key;
         for (key in obj) {
@@ -160,9 +171,9 @@ class Dashboard extends React.Component{
         this.context.router.history.push('/project/recommend');
     }
 
-    gotoNotifications(event){
+    gotoMyProjects(event){
         event.preventDefault();
-        this.context.router.history.push('/profile/notif');
+        this.context.router.history.push('/project/me');
     }
 
     updateValueTT (newValue) {
@@ -226,10 +237,15 @@ class Dashboard extends React.Component{
                         />
                     </div>
                     <div className="col-sm-7">
-                        <NotificationsListForDashboard Notifications={this.props.Notifications} myFunc={this.gotoNotifications}/>
+                        <NotificationsListForDashboard profileInfo={this.state.profileInfo} myFunc={this.gotoMyProjects}
+                                                       size={this.size}
+                                                       goToMyProjectPublic={this.goToMyProjectPublic}
+                        />
                         <ProjectsListForDashboard Projects={this.state.profileInfo.suggested_projects}
                                                   goToProjectProfile={this.goToProjectProfile}
-                                                  myFunc={this.gotoRecomendedProjects}/>
+                                                  myFunc={this.gotoRecomendedProjects}
+                                                  WordCount={this.WordCount}
+                        />
                     </div>
 
 

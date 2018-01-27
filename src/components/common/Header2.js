@@ -114,9 +114,9 @@ class Header2 extends React.Component {
                                     <li>
                                         <NavLink to="/profile/edit">ویرایش اطلاعات</NavLink>
                                     </li>
-                                    <li>
-                                        <NavLink to="/profile/notif">اطلاعیه ها</NavLink>
-                                    </li>
+                                    {/*<li>*/}
+                                        {/*<NavLink to="/profile/notif">اطلاعیه ها</NavLink>*/}
+                                    {/*</li>*/}
                                 </ul>
                             </li>
                             <li className={this.state.activeAccounting ? "nav-item active" : "nav-item"} data-toggle="tooltip" data-placement="right" title="حساب"
@@ -130,24 +130,24 @@ class Header2 extends React.Component {
                                     <li>
                                         <NavLink to="/account/cash">واریز - برداشت</NavLink>
                                     </li>
-                                    <li>
-                                        <NavLink to='/account/manage'>مدیریت مالی</NavLink>
-                                    </li>
+                                    {/*<li>*/}
+                                        {/*<NavLink to='/account/manage'>مدیریت مالی</NavLink>*/}
+                                    {/*</li>*/}
                                     <li>
                                         <NavLink to='/account/wishcoin'>ویش‌کوین</NavLink>
                                     </li>
-                                    <li>
-                                        <NavLink to="/account/bill">صورت حساب</NavLink>
-                                    </li>
+                                    {/*<li>*/}
+                                        {/*<NavLink to="/account/bill">صورت حساب</NavLink>*/}
+                                    {/*</li>*/}
                                 </ul>
                             </li>
-                            <li className={this.state.activeMessage ? "nav-item active" : "nav-item"} data-toggle="tooltip" data-placement="right" title="پیام‌رسان"
-                                 onClick={this.messageActive}>
-                                <NavLink className="nav-link" to='/messages'>
-                                    <i className="fa fa-fw fa-comments"/>
-                                    <span className="nav-link-text">پیام‌رسان</span>
-                                </NavLink>
-                            </li>
+                            {/*<li className={this.state.activeMessage ? "nav-item active" : "nav-item"} data-toggle="tooltip" data-placement="right" title="پیام‌رسان"*/}
+                                 {/*onClick={this.messageActive}>*/}
+                                {/*<NavLink className="nav-link" to='/messages'>*/}
+                                    {/*<i className="fa fa-fw fa-comments"/>*/}
+                                    {/*<span className="nav-link-text">پیام‌رسان</span>*/}
+                                {/*</NavLink>*/}
+                            {/*</li>*/}
                         </ul>
                         <ul className="navbar-nav navbar-sidenav sidenav-toggler">
                             <li className="nav-item">

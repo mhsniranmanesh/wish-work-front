@@ -7,6 +7,13 @@ import moment from 'moment-jalaali';
 
 const AddBid = (props) => {
     var userHasBid = props.userHasBid ;
+    var today = new Date().getTime();
+    var releaseDate = new Date(props.start_date).getTime();
+    var timeDiff = releaseDate - today;
+    var diffSec = Math.floor(timeDiff / 1000);
+    var diffMinutes = Math.floor(diffSec / 60) % 60;
+    var diffHours = Math.floor(diffSec / 3600) % 24;
+    var diffDays = Math.floor(diffSec / (3600 * 24));
     // if(props.Bids) {
     //     console.log(props.Bids , 'props.Bids');
     //     for (var i = 0; i < props.Bids.length; i++) {
@@ -21,7 +28,25 @@ const AddBid = (props) => {
         var m = moment(props.release_date, 'YYYY-M-D HH:mm:ss').format('jYYYY/jM/jD HH:mm:ss');
         console.log(props.isLoggedIn , 'props.isLoggedIn')
     }
-    if (props.isLoggedIn && (userHasBid === false)) {
+    if(diffMinutes < 0){
+        return(
+            <div>
+            <div className="con mb-4">
+                <h5 className="project-title">
+                    درباره پروژه
+                </h5>
+                <div className="divider"/>
+                <div className="sub-heading">
+                    <div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div>
+                    <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</div>
+                    <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</div>
+                    <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m}</div>
+                </div>
+            </div>
+        </div>
+        )
+    }
+    else if (props.isLoggedIn && (userHasBid === false)) {
         return (
             <div>
                 <div className="con mb-4">
@@ -77,13 +102,13 @@ const AddBid = (props) => {
                                                       onChange={props.BidDescription}
                                             />
                                         </div>
-                                        <div className="form-group">
-                                            <input type="text"
-                                                   className="form-control"
-                                                   placeholder="مهارت ها و ابزار هایی که قصد استفاده از آن ها را دارید."
-                                                // value={props.skills}
-                                            />
-                                        </div>
+                                        {/*<div className="form-group">*/}
+                                            {/*<input type="text"*/}
+                                                   {/*className="form-control"*/}
+                                                   {/*placeholder="مهارت ها و ابزار هایی که قصد استفاده از آن ها را دارید."*/}
+                                                {/*// value={props.skills}*/}
+                                            {/*/>*/}
+                                        {/*</div>*/}
                                         <label htmlFor="skillType" className="col-form-label d-block">
                                             بازه های تحویل پروژه را انتخاب کنید
                                         </label>
@@ -146,7 +171,7 @@ const AddBid = (props) => {
             </div>
         )
     }
-    if (props.isLoggedIn && (userHasBid === true)){
+    else if (props.isLoggedIn && (userHasBid === true)){
         return(
             <div>
                 <div className="con mb-4">

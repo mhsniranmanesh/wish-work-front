@@ -24,13 +24,14 @@ const ProfileInfoForDashboard = ({profileInfo}) =>{
                     <img src={Image} className="rounded-circle" style={ {height:125 , width:125} }/>
                     <br/>
                     <h5> {profileInfo.first_name + ' ' + profileInfo.last_name} </h5>
-                    <h6 className="dash-profile-stars">
-                        <i className="fa fa-star shine-on"/>
-                        <i className="fa fa-star shine-on"/>
-                        <i className="fa fa-star shine-on"/>
-                        <i className="fa fa-star-o shine-on"/>
-                        <i className="fa fa-star-o shine-on"/>
-                    </h6>
+                    <h6>موجودی:   {profileInfo.balance}</h6>
+                    {/*<h6 className="dash-profile-stars">*/}
+                        {/*<i className="fa fa-star shine-on"/>*/}
+                        {/*<i className="fa fa-star shine-on"/>*/}
+                        {/*<i className="fa fa-star shine-on"/>*/}
+                        {/*<i className="fa fa-star-o shine-on"/>*/}
+                        {/*<i className="fa fa-star-o shine-on"/>*/}
+                    {/*</h6>*/}
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import moment from 'moment-jalaali';
 const CountDown = (props) => {
-    if(props.start_date) {
+    if (props.start_date) {
         // var year = props.release_date.split().map(function(item) {
         //     return parseInt(item, 10);
         // });
@@ -23,11 +23,11 @@ const CountDown = (props) => {
         var today = new Date().getTime();
         var releaseDate = new Date(props.start_date).getTime();
         var timeDiff = releaseDate - today;
-        var diffSec = Math.floor(timeDiff / 1000 );
-        var diffMinutes = Math.floor(diffSec/60) % 60;
-        var diffHours = Math.floor(diffSec/3600) % 24;
-        var diffDays = Math.floor(diffSec/(3600*24));
-        console.log(diffHours , 'diffHours');
+        var diffSec = Math.floor(timeDiff / 1000);
+        var diffMinutes = Math.floor(diffSec / 60) % 60;
+        var diffHours = Math.floor(diffSec / 3600) % 24;
+        var diffDays = Math.floor(diffSec / (3600 * 24));
+        console.log(diffHours, 'diffHours');
         // var date = releaseDate.getDate(),
         //      minutes = releaseDate.getMinutes(),
         //      hours = releaseDate.getHours();
@@ -51,28 +51,40 @@ const CountDown = (props) => {
         // console.log(m, 'This is just m');
         // console.log(m+1, 'This is m +1')
     }
-
-  return(
-    <div className="con mb-4">
+    if (diffMinutes >= 0) {
+        return (
+            <div className="con mb-4">
 
       <span className="counter-circle">
           <div className="counter-numb">{diffMinutes}</div>
           <div className="counter-char">دقیقه</div>
       </span>
 
-      <span className="counter-circle">
+                <span className="counter-circle">
           <div className="counter-numb">{diffHours}</div>
           <div className="counter-char">ساعت</div>
       </span>
 
-      <span className="counter-circle">
+                <span className="counter-circle">
 
           <div className="counter-numb">{diffDays}</div>
           <div className="counter-char">روز</div>
       </span>
 
-    </div>
-  )
-};
+            </div>
+        )
+    }
+    else {
+        return(
+            <div className="con mb-4">
+                <button className="btn btn-primary btn-rec btn-block" >مهلت شرکت در مناقصه ی این پروژه به اتمام رسیده است                   </button>
+
+
+
+            </div>
+        )
+    }
+}
+
 
 export default CountDown;

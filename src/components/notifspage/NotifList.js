@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import NotificationsTemplate from './notificationsTemplate';
+import NotificationsTemplate from './MyProjectsTemplateDashboard';
 
 const NotifList = ({Notifications}) => {
     return (

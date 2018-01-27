@@ -382,6 +382,10 @@ class ProjectProfile extends React.Component {
                 if (nextProps.projectDetail[sizeD - 1].general.project_bids[i].freelancer.username === this.props.profileInfo.username) {
                     this.setState({userHasBid : true})
                 }
+                else {
+                    this.setState({userHasBid : false})
+
+                }
             }
 
             if (this.props.profileInfo.username == nextProps.projectDetail[sizeD - 1].general.client) {
@@ -401,6 +405,7 @@ class ProjectProfile extends React.Component {
                 projectAdditional: Object.assign({}, nextProps.projectDetail[sizeD - 1].additional_info)
             });
         }
+
         if (this.props.profileInfo != nextProps.profileInfo) {
             this.setState({
                 profileInfo: Object.assign({}, nextProps.profileInfo)
@@ -592,6 +597,7 @@ class ProjectProfile extends React.Component {
                         release_date={this.state.projectDetail.release_date}
                         signUp={this.SignUp}
                         Bids={this.state.projectDetail.project_bids}
+                        start_date={this.state.projectDetail.start_date}
                     />
                 </div>
             }

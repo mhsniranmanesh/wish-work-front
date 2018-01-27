@@ -2014,3 +2014,8 @@ a.delete-project:hover:after {
 .clickable-img{
     cursor: pointer
 }
+.dashboard-my-projects{
+    float: left;
+    padding: 8px 35px;
+    font-size: 10px;
+}

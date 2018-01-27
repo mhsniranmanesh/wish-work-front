@@ -5,12 +5,20 @@ import Flag from 'react-world-flags'
 
 //TODO tags maping !
 
-const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile}) => {
+const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordCount}) => {
     var from_languageCode,
         from,
         to,
         to_languageCode;
+    var newDescription;
+    var descript = (ProjectDetail.description);
 
+    var lengthOfDescription = WordCount(descript);
+
+    if(ProjectDetail.description.length >= 180){
+        newDescription = ProjectDetail.description.substring(0,181);
+        console.log(newDescription , 'newDescription');
+    }
     if (ProjectDetail.from_language) {
         if (ProjectDetail.from_language === 1) {
             from_languageCode = 'IRN';
@@ -63,11 +71,13 @@ const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile}) => {
             to = 'آلمانی'
         }
     }
-
+    if(ProjectDetail.description.length < 180) {
         return (
             <div>
-                <div className="dash-recom-item recom" onClick={(event) => {goToProjectProfile(ProjectDetail.slug)}}>
-              {/*    <span className="dollar">
+                <div className="dash-recom-item recom" onClick={(event) => {
+                    goToProjectProfile(ProjectDetail.slug)
+                }}>
+                    {/*    <span className="dollar">
                     <div>
                       <svg>
                         <rect className="price-fair" />
@@ -80,31 +90,83 @@ const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile}) => {
                     </div>
                   </span> */}
                     <a href="#">
-                        <h6 className="form-header-fontsize">{ProjectDetail.title} (<Flag code={to_languageCode} height="10"/> به <Flag code={from_languageCode}
-                                                                                                                                        height="12"/>)</h6>
+                        <h6 className="form-header-fontsize">{ProjectDetail.title} (<Flag code={to_languageCode}
+                                                                                          height="10"/> به <Flag
+                            code={from_languageCode}
+                            height="12"/>)</h6>
                     </a>
                     {ProjectDetail.description}
-
-                    <span className="sub-heading">
+                    <br/>
+                    {/*<span className="sub-heading">*/}
                         {/*{ProjectDetail.tags.map(Tag =>*/}
-                            {/*<TagsRow Tag = {Tag} />*/}
+                        {/*<TagsRow Tag = {Tag} />*/}
                         {/*)}*/}
-                            {/*/!*list for tag*!/*/}
-                            {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
-                            {/*<a className="tag" href="#">#علمی</a>*/}
-                            {/*<a className="tag" href="#">#زیست_شناسی</a>*/}
-                            {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
-                            {/*<a className="tag" href="#">#فوری</a>*/}
-                        <a className="tag" href="#">{ProjectDetail.tags}</a>
-                          </span>
+                        {/*/!*list for tag*!/*/}
+                        {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
+                        {/*<a className="tag" href="#">#علمی</a>*/}
+                        {/*<a className="tag" href="#">#زیست_شناسی</a>*/}
+                        {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
+                        {/*<a className="tag" href="#">#فوری</a>*/}
+                        {/*<a className="tag" href="#">{ProjectDetail.tags}</a>*/}
+                          {/*</span>*/}
                     <ul className="sub-heading">
                         <li><i className="fa fa-user"/> <span>4/5</span></li>
-                        <li><i className="fa fa-usd"/> <span>{ProjectDetail.price}</span></li>
-                        <li><i className="fa fa-clock-o"/> <span>{ProjectDetail.releaseTime}</span></li>
+                        <li><i className="fa fa-usd"/> <span>{ProjectDetail.budget}</span></li>
+                        <li><i className="fa fa-clock-o"/> <span>{ProjectDetail.time_limit}</span></li>
                     </ul>
                 </div>
             </div>
-    )
+        )
+    }
+    else{
+        return(
+            <div>
+                <div className="dash-recom-item recom" onClick={(event) => {
+                    goToProjectProfile(ProjectDetail.slug)
+                }}>
+                    {/*    <span className="dollar">
+                    <div>
+                      <svg>
+                        <rect className="price-fair" />
+                      </svg>
+                    </div>
+                    <div>
+                      <svg>
+                        <rect className="price-low" />
+                      </svg>
+                    </div>
+                  </span> */}
+                    <a href="#">
+                        <h6 className="form-header-fontsize">{ProjectDetail.title} (<Flag code={to_languageCode}
+                                                                                          height="10"/> به <Flag
+                            code={from_languageCode}
+                            height="12"/>)</h6>
+                    </a>
+                    {newDescription} ...
+                    <br/>
+
+                    {/*<span className="sub-heading">*/}
+                        {/*{ProjectDetail.tags.map(Tag =>*/}
+                        {/*<TagsRow Tag = {Tag} />*/}
+                        {/*)}*/}
+                        {/*/!*list for tag*!/*/}
+                        {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
+                        {/*<a className="tag" href="#">#علمی</a>*/}
+                        {/*<a className="tag" href="#">#زیست_شناسی</a>*/}
+                        {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
+                        {/*<a className="tag" href="#">#فوری</a>*/}
+                        {/*<a className="tag" href="#">{ProjectDetail.tags}</a>*/}
+                          {/*</span>*/}
+                    <ul className="sub-heading">
+                        {/*<li><i className="fa fa-user"/> <span>4/5</span></li>*/}
+                        <li><i className="fa fa-usd"/> <span>{ProjectDetail.budget}</span></li>
+                        <li><i className="fa fa-clock-o"/> <span>{ProjectDetail.time_limit}</span></li>
+                    </ul>
+                </div>
+            </div>
+        )
+
+    }
 };
 
 ProjectTemplateForDashboard.PropTypes ={

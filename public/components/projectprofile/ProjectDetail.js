@@ -174,13 +174,13 @@ const ProjectDetail = (props) => {
                     {/*<br/>*/}
                     {/*<br/>*/}
                 {/*</div>*/}
-                <div className="sub-heading">
-                    <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                    <a className="tag" href="#">#علمی</a>
-                    <a className="tag" href="#">#زیست_شناسی</a>
-                    <a className="tag" href="#">#میکرو_بیولوژی</a>
-                    <a className="tag" href="#">#فوری</a>
-                </div>
+                {/*<div className="sub-heading">*/}
+                    {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
+                    {/*<a className="tag" href="#">#علمی</a>*/}
+                    {/*<a className="tag" href="#">#زیست_شناسی</a>*/}
+                    {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
+                    {/*<a className="tag" href="#">#فوری</a>*/}
+                {/*</div>*/}
             </div>
         )
     }

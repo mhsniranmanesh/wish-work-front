@@ -24,6 +24,7 @@ class ProjectProfile extends React.Component {
             bid_price: '',
             ModalState: 'modal',
             showError: false,
+            showWarnings: false,
             profileInfo: Object.assign({}, props.profileInfo),
             isLoggedIn: false,
             delivery_duration: '',
@@ -229,12 +230,48 @@ class ProjectProfile extends React.Component {
                 message: "لطفا زمان پیشنهادی را به عدد وارد کنید"
             });
         }
-        else if (this.state.Length < 2) {
+        else if(((this.state.delivery_duration - 2)/this.state.amountOfMileStones ) <4){
             this.setState({
                 showError: true,
-                message: "لطفا تعداد بازه های زمانی را بیشتر از ۲ انتخاب کنید!"
+                message: "فاصله ی بین بازه های زمانی باید بیشتر از ۴ روز باشد!(دو روز مهلت اعمال تغییرات است.)"
             });
-        } else {
+        }
+        else if (((this.state.delivery_duration - 2)/this.state.Length ) <4){
+            this.setState({
+                showError: true,
+                message: "فاصله ی بین بازه های زمانی باید بیشتر از ۴ روز باشد!(دو روز مهلت اعمال تغییرات است.)"
+            });
+        }
+        else if (this.state.amountOfMileStones < 1) {
+            this.setState({
+                showError: true,
+                message: "لطفا تعداد بازه های زمانی را بیشتر از ۱ انتخاب کنید!"
+            });
+        }
+        else if(this.state.amountOfMileStones > 4){
+            this.setState({
+                showError: true,
+                message: "لطفا تعداد بازه های زمانی را  کمتر از ۴ انتخاب کنید!"
+            });
+        }
+        else if (this.state.Length < 1) {
+            this.setState({
+                showError: true,
+                message: "لطفا تعداد بازه های زمانی را بیشتر از ۱ انتخاب کنید!"
+            });
+        }
+        else if(this.state.Length > 4){
+            this.setState({
+                showError: true,
+                message: "لطفا تعداد بازه های زمانی را  کمتر از ۴ انتخاب کنید!"
+            });
+        }
+        else if((((this.state.delivery_duration -2)/this.state.amountOfMileStones ) <4) && (this.state.delivery_duration<7)){
+            this.setState({showWarnings:true,
+                message: "فعلا نمیتوان پیشنهاد زیر ۷ روز را به ثبت رساند"
+            })
+        }
+        else {
             this.state.bid_price = Number(this.state.bid_price);
             this.state.delivery_duration = Number(this.state.delivery_duration);
             this.FinalSubmitBid()
@@ -298,18 +335,36 @@ class ProjectProfile extends React.Component {
 //////////////////////////////////////////////////////////////////////////////////////////////
 
     CheckLength() {
-        if (this.state.amountOfMileStones < 2) {
+        if(this.state.delivery_duration === ''){
             this.setState({
                 showError: true,
-                message: "لطفا تعداد بازه های زمانی را بیشتر از ۲ انتخاب کنید!"
+                message: "لطفا ابتدا زمان پیشنهادی خود را انتخاب کنید!"
             });
-        } else if (this.state.amountOfMileStones > 4) {
+        }
+        else if (this.state.amountOfMileStones < 1) {
+            this.setState({
+                showError: true,
+                message: "لطفا تعداد بازه های زمانی را بیشتر از ۱ انتخاب کنید!"
+            });
+        }
+        else if (this.state.amountOfMileStones > 4) {
             this.setState({
                 showError: true,
                 message: "تعداد بازه های زمانی نباید بیشتر از ۴ باشد."
             });
-        } else {
-
+        }
+        else if ((((this.state.delivery_duration -2)/this.state.amountOfMileStones ) <4) && (this.state.delivery_duration>=7)){
+            this.setState({
+                showError: true,
+                message: "فاصله ی بین بازه های زمانی باید بیشتر از ۴ روز باشد!(دو روز مهلت اعمال تغییرات است.)"
+            });
+        }
+        else if((((this.state.delivery_duration -2)/this.state.amountOfMileStones ) <4) && (this.state.delivery_duration<7)){
+                this.setState({showWarnings:true,
+                               message: "فعلا نمیتوان پیشنهاد زیر ۷ روز را به ثبت رساند"
+                })
+        }
+        else {
             this.setState({
                 showError: false,
                 Length: this.state.amountOfMileStones
@@ -378,14 +433,20 @@ class ProjectProfile extends React.Component {
             this.setState({
                 showBidsList: true
             });
-            for (var i = 0; i < nextProps.projectDetail[sizeD-1].general.project_bids.length; i++) {
-                if (nextProps.projectDetail[sizeD - 1].general.project_bids[i].freelancer.username === this.props.profileInfo.username) {
-                    this.setState({userHasBid : true})
-                }
-                else {
-                    this.setState({userHasBid : false})
+            if(nextProps.projectDetail[sizeD-1].general.project_bids.length>0) {
+                for (var i = 0; i < nextProps.projectDetail[sizeD - 1].general.project_bids.length; i++) {
+                    if (nextProps.projectDetail[sizeD - 1].general.project_bids[i].freelancer.username === this.props.profileInfo.username) {
+                        this.setState({userHasBid: true})
+                    }
+                    else {
+                        this.setState({userHasBid: false})
 
+                    }
                 }
+            }
+            if(nextProps.projectDetail[sizeD-1].general.project_bids.length === 0){
+                this.setState({userHasBid: false})
+
             }
 
             if (this.props.profileInfo.username == nextProps.projectDetail[sizeD - 1].general.client) {
@@ -414,10 +475,19 @@ class ProjectProfile extends React.Component {
                 isLoggedIn: true
             });
             if (sizeD > 0) {
-                for (var y = 0; y < this.props.projectDetail[sizeD-1].general.project_bids.length; y++) {
-                    if (this.props.projectDetail[sizeD - 1].general.project_bids[y].freelancer.username === nextProps.profileInfo.username) {
-                        this.setState({userHasBid : true})
+                if(this.props.projectDetail[sizeD-1].general.project_bids.length >0) {
+                    for (var y = 0; y < this.props.projectDetail[sizeD - 1].general.project_bids.length; y++) {
+                        if (this.props.projectDetail[sizeD - 1].general.project_bids[y].freelancer.username === nextProps.profileInfo.username) {
+                            this.setState({userHasBid: true})
+                        }
+                        else {
+                            this.setState({userHasBid: false})
+                        }
                     }
+                }
+                if(this.props.projectDetail[sizeD-1].general.project_bids.length === 0){
+                    this.setState({userHasBid: false})
+
                 }
                 if (nextProps.profileInfo.username == this.props.projectDetail[sizeD - 1].general.client) {
                     this.setState({
@@ -584,6 +654,9 @@ class ProjectProfile extends React.Component {
                         }
                         message={
                             this.state.message
+                        }
+                        showWarnings={
+                            this.state.showWarnings
                         }
                         showError={
                             this.state.showError

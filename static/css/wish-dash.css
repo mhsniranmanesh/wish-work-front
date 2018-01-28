@@ -798,6 +798,10 @@ span .project-header-flag span{
   margin-right: 5px;
 }
 
+.project-header-title{
+  display: inline-block;
+}
+
 .img-responsive {
     display: block;
     height: auto;
@@ -2034,4 +2038,56 @@ div #bg-primary-left {
 .sheba-numb{
   margin-top: 5px;
   font-size: 13px;
+}
+
+
+.radio-text{
+  font-size: 13px;
+}
+
+.Select-placeholder, .Select--single>.Select-control .Select-value{
+  font-size: 13px;
+}
+
+.project-prop {
+  background: #efefef;
+  padding: 5px 10px;
+  font-weight: 300;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  color: #018abe;
+  border: 1px solid #adadad;
+}
+
+.project-prop-money{
+  margin-right: 150px;
+}
+
+.project-prop-time{
+  float: left;
+  margin-left: 150px;
+
+}
+
+.project-prop .fa{
+  margin-left: 5px;
+}
+
+
+.dash-balance{
+  font-size: 13px;
+  text-align: center;
+}
+
+.dash-client-name{
+  text-align: center;
+  font-size: 20px;
+}
+
+.dash-coin{
+  font-size: 13px;
+  text-align: center;
 }

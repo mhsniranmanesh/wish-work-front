@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TagsRow from '../common/TagsRow';
-import Flag from 'react-world-flags'
+import Flag from 'react-world-flags';
+import {Row , Col} from 'reactstrap';
+
 
 //TODO tags maping !
 
@@ -89,13 +91,16 @@ const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordC
                       </svg>
                     </div>
                   </span> */}
-                    <a href="#">
-                        <h6 className="form-header-fontsize">{ProjectDetail.title} (<Flag code={to_languageCode}
-                                                                                          height="10"/> به <Flag
-                            code={from_languageCode}
-                            height="12"/>)</h6>
-                    </a>
-                    {ProjectDetail.description}
+                    <span className="prject-title">
+                          {ProjectDetail.title}
+                    </span>
+                    <span className="project-header-flag">
+                          <span> <Flag code={to_languageCode} height="12"/> </span>
+                          <span> <Flag code={from_languageCode} height="12"/> </span>
+                    </span>
+                    <div className="project-discript">
+                      {ProjectDetail.description}
+                    </div>
                     <br/>
                     {/*<span className="sub-heading">*/}
                         {/*{ProjectDetail.tags.map(Tag =>*/}
@@ -110,9 +115,19 @@ const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordC
                         {/*<a className="tag" href="#">{ProjectDetail.tags}</a>*/}
                           {/*</span>*/}
                     <ul className="sub-heading">
-                        <li><i className="fa fa-user"/> <span>4/5</span></li>
-                        <li><i className="fa fa-usd"/> <span>{ProjectDetail.budget}</span></li>
-                        <li><i className="fa fa-clock-o"/> <span>{ProjectDetail.time_limit}</span></li>
+                    {/*  <li className="project-prop">
+                          <i className="fa fa-user"/>
+                          4/5
+                      </li>*/}
+
+                      <li className="project-prop project-prop-money">
+                        <span>  <i className="fa fa-usd"/>
+                          {ProjectDetail.budget} </span>
+                      </li>
+                      <li className="project-prop project-prop-time">
+                          <i className="fa fa-clock-o"/>
+                          {ProjectDetail.time_limit}
+                       </li>
                     </ul>
                 </div>
             </div>
@@ -158,9 +173,19 @@ const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordC
                         {/*<a className="tag" href="#">{ProjectDetail.tags}</a>*/}
                           {/*</span>*/}
                     <ul className="sub-heading">
-                        {/*<li><i className="fa fa-user"/> <span>4/5</span></li>*/}
-                        <li><i className="fa fa-usd"/> <span>{ProjectDetail.budget}</span></li>
-                        <li><i className="fa fa-clock-o"/> <span>{ProjectDetail.time_limit}</span></li>
+                    {/*  <li className="project-prop">
+                          <i className="fa fa-user"/>
+                          4/5
+                      </li>*/}
+
+                      <li className="project-prop project-prop-money">
+                          <i className="fa fa-usd"/>
+                          {ProjectDetail.budget}
+                      </li>
+                      <li className="project-prop project-prop-time">
+                          <i className="fa fa-clock-o"/>
+                          {ProjectDetail.time_limit}
+                       </li>
                     </ul>
                 </div>
             </div>

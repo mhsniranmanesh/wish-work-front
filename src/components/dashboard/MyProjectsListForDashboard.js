@@ -17,8 +17,8 @@ if(Size<3 && Size>0) {
             {props.profileInfo.client_projects.map((projects , index) =>
                 <MyProjectsTemplateDashboard key={index} Detail={projects}  goToMyProjectPublic={props.goToMyProjectPublic}/>
             )}
-            <Button color="primary" className="btn btn-primary btn-rec" onClick={props.myFunc}> <i
-                className="fa fa-angle-right" aria-hidden="true"/> بیشتر</Button>
+            <button className="btn btn-primary btn-rec" onClick={props.myFunc}> <i
+                className="fa fa-angle-right" aria-hidden="true"/> بیشتر</button>
         </div>
     )
 }
@@ -30,8 +30,8 @@ else if(Size>3){
                 {x.map((projects , index) =>
                     <MyProjectsTemplateDashboard key={index} Detail={projects} goToMyProjectPublic={props.goToMyProjectPublic}/>
                 )}
-                <Button color="primary" className="btn btn-primary btn-rec" onClick={props.myFunc}> <i
-                    className="fa fa-angle-right" aria-hidden="true"/> بیشتر</Button>
+                <button className="btn btn-primary btn-rec" onClick={props.myFunc}> <i
+                    className="fa fa-angle-right" aria-hidden="true"/> بیشتر</button>
             </div>
         )
 }

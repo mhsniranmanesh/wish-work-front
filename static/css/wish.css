@@ -1116,8 +1116,7 @@ textarea.form-control {
 }
 
 .sub-heading {
-    display: inline-flex;
-    line-height: 1.75rem;
+    display: inline-block;
     font-size: 13px;
     padding-top: 2px;
     list-style: none;
@@ -1125,11 +1124,12 @@ textarea.form-control {
     padding: 0;
     color: #777;
     font-weight: 300;
+    width:100%;
 }
 
-.sub-heading li {
+/*.sub-heading li {
     margin-left: 10px;
-}
+}*/
 
 .sub-heading li .fa {
     margin-left: 1px;
@@ -1148,6 +1148,10 @@ textarea.form-control {
     background-color: #727b84;
     border-color: #6c757d;
     transition: all .15s ease-in-out;
+}
+
+.sub-heading .fa{
+  display: inline-block;
 }
 
 section.profile {
@@ -1187,6 +1191,7 @@ section.profile {
   margin-top: 5px;
   font-size: 14px;
   line-height: 1.7;
+  display: block;
 }
 
 #biddingBtn {

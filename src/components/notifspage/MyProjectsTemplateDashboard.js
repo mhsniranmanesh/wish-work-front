@@ -7,10 +7,13 @@ var y = props.Detail.slug;
     return(
         <div onClick={(event)=>{props.goToMyProjectPublic(y);}}>
             <a className="notif" >
-                <Badge color="primary">پروژه ثبت شده توسط شما</Badge>
-                <div className="notif-txt"> {props.Detail.title }
-                    <Button className="dashboard-my-projects">رفتن به صفحه ی پروژه</Button>
-                </div>
+                <Badge color="primary" className="badge-client" > کارفرما</Badge>
+                <span className="notif-txt">
+                   {props.Detail.title }
+                 </span>
+                <span>
+                    <Button className="dashboard-my-projects" id="dashboard-my-projects">رفتن به صفحه ی پروژه</Button>
+                </span>
             </a>
 
             <div className="dash-divider"/>

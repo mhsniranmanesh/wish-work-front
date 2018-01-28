@@ -654,7 +654,20 @@ span.notif-cat {
 }
 
 .notif-txt {
-    display: inline;
+    display: inline-block;
+    font-size: 13px;
+    margin: 0 5px;
+}
+
+.dashboard-my-projects{
+    float: left;
+    padding: 5px 10px;
+    font-size: 13px;
+    margin: 0;
+}
+
+#dashboard-my-projects{
+  margin-top: 0;
 }
 
 .notif-project {
@@ -2010,4 +2023,15 @@ div #bg-primary-left {
   margin-top: 18px;
   display: inline-block;
   margin-left: 10px;
+}
+
+
+.cashout-title{
+  text-align: center;
+  margin-top: 10px;
+}
+
+.sheba-numb{
+  margin-top: 5px;
+  font-size: 13px;
 }

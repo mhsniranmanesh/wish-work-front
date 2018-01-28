@@ -1081,6 +1081,15 @@ textarea.form-control {
     padding: 5px;
 }
 
+.badge-client{
+    color: #efeff0;
+    background-color: #018abe;
+    font-weight: 300;
+    /* border: 1px solid #018abe; */
+    padding: 5px;
+}
+
+
 .tooltip {
     font-family: iransans;
     font-weight: 300;
@@ -2085,11 +2094,7 @@ a.delete-project:hover:after {
 .clickable-img{
     cursor: pointer
 }
-.dashboard-my-projects{
-    float: left;
-    padding: 8px 35px;
-    font-size: 10px;
-}
+
 
 .media-body{
   display: block;

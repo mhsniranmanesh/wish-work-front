@@ -854,6 +854,17 @@ span.error-msg {
     margin-top: 15px;
     text-align: center;
 }
+span.warning-msg {
+    display: block;
+    background: #fff;
+    padding: 5px 10px;
+    border-radius: 0;
+    border: 3px solid #D77000;
+    color: #D77000;
+    font-weight: 500;
+    margin-top: 15px;
+    text-align: center;
+}
 
 .con-body .email i {
     font-size: 100px;
@@ -1026,6 +1037,10 @@ span.error-msg {
 
 .btn-rec .fa,
 .error-msg .fa {
+    vertical-align: middle;
+    padding-left: 5px;
+}
+.warning-msg .fa {
     vertical-align: middle;
     padding-left: 5px;
 }

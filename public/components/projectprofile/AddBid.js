@@ -4,6 +4,7 @@ import {Button} from 'reactstrap';
 import PropTypes from 'prop-types';
 import Errors from './Errors';
 import moment from 'moment-jalaali';
+import Warnings from './Warnings';
 
 const AddBid = (props) => {
     var userHasBid = props.userHasBid ;
@@ -14,6 +15,7 @@ const AddBid = (props) => {
     var diffMinutes = Math.floor(diffSec / 60) % 60;
     var diffHours = Math.floor(diffSec / 3600) % 24;
     var diffDays = Math.floor(diffSec / (3600 * 24));
+    console.log(userHasBid , 'userHasBid');
     // if(props.Bids) {
     //     console.log(props.Bids , 'props.Bids');
     //     for (var i = 0; i < props.Bids.length; i++) {
@@ -46,7 +48,7 @@ const AddBid = (props) => {
         </div>
         )
     }
-    else if (props.isLoggedIn && (userHasBid === false)) {
+     if (diffMinutes>=0 && props.isLoggedIn && (userHasBid === false)) {
         return (
             <div>
                 <div className="con mb-4">
@@ -131,6 +133,7 @@ const AddBid = (props) => {
                                         </div>
                                     </form>
                                     {props.showError ? <Errors message={props.message}/> : (true)}
+                                    {props.showWarnings ? <Warnings message={props.message}/> : (true)}
                                     <br/><br/>
 
                                     <div className="jumbotron">
@@ -171,7 +174,7 @@ const AddBid = (props) => {
             </div>
         )
     }
-    else if (props.isLoggedIn && (userHasBid === true)){
+   if (diffMinutes>=0 && props.isLoggedIn && (userHasBid === true)){
         return(
             <div>
                 <div className="con mb-4">

@@ -38,7 +38,8 @@ class ProjectProfile extends React.Component {
             progressNumber: 10,
             loading: false,
             intervalId: 0,
-            userHasBid: false
+            userHasBid: false,
+            freelancerIsSelected: false
         };
 
         // delivery_duration: Array [ "This field is required." ]
@@ -69,9 +70,25 @@ class ProjectProfile extends React.Component {
         this.goToFreelancerProfile = this.goToFreelancerProfile.bind(this);
         this.redirect = this.redirect.bind(this);
         this.progressNumber = this.progressNumber.bind(this);
+        this.acceptBidFromFreelancer =this.acceptBidFromFreelancer.bind(this);
+        this.rejectBidFromFreelancer = this.rejectBidFromFreelancer.bind(this);
         //this.counter = this.counter.bind(this);
     }
+    acceptBidFromFreelancer(){
+        this.props.actions.acceptBidFromFreelancer(this.state.projectDetail.uuid).then(
+            console.log('Me!')
+        ).catch(err =>{
+            console.log(err)
+        })
+    }
+    rejectBidFromFreelancer(){
+        this.props.actions.rejectBidFromFreelancer(this.state.projectDetail.uuid).then(
+            console.log('Me!')
+        ).catch(err =>{
+            console.log(err)
+        })
 
+    }
     goToFreelancerProfile(slug) {
         this.context.router.history.push({
             pathname: '/profiles/' + slug,
@@ -459,6 +476,11 @@ class ProjectProfile extends React.Component {
                 });
                 // console.log(this.state.ownerOfProject);
             }
+            if(this.props.profileInfo.username == nextProps.projectDetail[sizeD - 1].general.selected_freelancer){
+                this.setState({
+                    freelancerIsSelected:true
+                })
+            }
             this.setState({
                 projectDetail: Object.assign({}, nextProps.projectDetail[sizeD - 1].general)
             });
@@ -496,6 +518,11 @@ class ProjectProfile extends React.Component {
                     this.setState({
                         ownerOfProject: true
                     });
+                }
+                if(nextProps.profileInfo.username == this.props.projectDetail[sizeD - 1].general.selected_freelancer){
+                    this.setState({
+                        freelancerIsSelected:true
+                    })
                 }
 
             }
@@ -540,6 +567,11 @@ class ProjectProfile extends React.Component {
                     <Progress completed={this.state.progressNumber}/>
                 </ModalBody>
             </Modal>
+            <Modal isOpen={this.state.freelancerIsSelected && (!this.state.projectDetail.is_started)}>
+                <ModalBody >تبریک! شما برای این پروژه انتخاب شده اید. برای تایید برروی «تایید» کلیک کنید</ModalBody>
+                <button onClick={this.acceptBidFromFreelancer}> تایید</button>
+                <button onClick={this.rejectBidFromFreelancer}>انصراف</button>
+            </Modal>
         <ProjectDetail
             Field={this.state.projectAdditional.field}
             FromLanguage={this.state.projectAdditional.from_language}
@@ -550,6 +582,7 @@ class ProjectProfile extends React.Component {
 
 <div className = "con mb-4" > {
     this.state.showBidsList ? <BidsList
+            freelancerIsSelected={this.state.freelancerIsSelected}
             acceptBid={this.acceptBid}
             goToFreelancerProfile={this.goToFreelancerProfile}
             goToRegister={this.goToRegister
@@ -590,11 +623,12 @@ class ProjectProfile extends React.Component {
                   <div>
                     <CountDown  release_date={this.state.projectDetail.release_date}
                                 BidDuration={this.state.projectDetail.bid_duration}
-                                start_date={this.state.projectDetail.start_date}
+                                bidding_deadline={this.state.projectDetail.bidding_deadline}
                     />
                     <Button
                         myFunc=""
                         name="hi"
+                        is_freelancer_selected={this.state.projectDetail.is_freelancer_selected}
                         budget={
                             this.state.projectDetail.budget
                         }
@@ -608,9 +642,11 @@ class ProjectProfile extends React.Component {
                     <CountDown
                         release_date={this.state.projectDetail.release_date}
                         BidDuration={this.state.projectDetail.bid_duration}
-                        start_date={this.state.projectDetail.start_date}
+                        bidding_deadline={this.state.projectDetail.bidding_deadline}
                     />
                     <AddBid
+                        is_freelancer_selected={this.state.projectDetail.is_freelancer_selected}
+                        bidding_deadline={this.state.projectDetail.bidding_deadline}
                         profileInfo={this.props.profileInfo}
                         userHasBid={this.state.userHasBid}
                         numberOfPages={this.state.projectAdditional.number_of_pages}

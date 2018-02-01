@@ -44,11 +44,19 @@ function Authentication() {
 
     // console.log('token is: ' , axios.defaults.headers.common['Authorization']);
 }
+function goToSignIn(err) {
+    if(err){
+        window.location.href = '/signin/'
+    }
+}
 
 Authentication().then(() => {
     console.log('ok' , axios.defaults.headers.common['Authorization'] );
     const store = configureStore();
-    store.dispatch(profileInfo());
+    store.dispatch(profileInfo()).then().catch(
+        err => {goToSignIn(err)}
+    )
+    ;
     // store.dispatch(projectSubmitLocalForDashboard())
     store.dispatch(recomendedProject());
     store.dispatch(Notifications());

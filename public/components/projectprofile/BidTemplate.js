@@ -5,8 +5,8 @@ import {Row , Col} from 'reactstrap';
 
 
 const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
-                         goToCash , priceForCash, cashinModalState, modalCashEnough,
-                         acceptBid, profileInfo , deleteBid , prices , goToFreelancerProfile}) => {
+                         goToCash , priceForCash, cashinModalState, modalCashEnough, priceOfMileStoneForCash,
+                         acceptBid, profileInfo , deleteBid , prices , goToFreelancerProfile , numberOfMileStonesOfEachFreelancer}) => {
     console.log(ownerOfProject , 'ownerOfProject2');
     var bidOfFreelancer = false;
     let Image ;
@@ -74,6 +74,8 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                         prices={prices}
                                         acceptBid={acceptBid}
                                         id={Bid.uuid}
+                                        numberOfMileStonesOfEachFreelancer={numberOfMileStonesOfEachFreelancer}
+                                        priceOfMileStoneForCash={priceOfMileStoneForCash}
 
                     />
 

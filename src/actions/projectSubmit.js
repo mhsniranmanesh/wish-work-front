@@ -34,7 +34,6 @@ export function profileInfo(){
 }
 
 export function attachFileToProject(id,stateForFile) {
-    debugger;
     return function (dispatch) {
         var fileFormData = new FormData();
         console.log('Project_id:', id.data.id);

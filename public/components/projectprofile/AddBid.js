@@ -9,7 +9,7 @@ import Warnings from './Warnings';
 const AddBid = (props) => {
     var userHasBid = props.userHasBid ;
     var today = new Date().getTime();
-    var releaseDate = new Date(props.start_date).getTime();
+    var releaseDate = new Date(props.bidding_deadline).getTime();
     var timeDiff = releaseDate - today;
     var diffSec = Math.floor(timeDiff / 1000);
     var diffMinutes = Math.floor(diffSec / 60) % 60;

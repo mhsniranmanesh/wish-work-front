@@ -16,12 +16,33 @@ export function selectBidSuccess(Success) {
     return{type: types.SELECT_BID_SUCCESS , Success}
 
 }
+export function rejectBidFromFreelancer(project_id) {
+    var projectId2 = { project_id : project_id};
+    return function (dispatch) {
+        return axios.post('/api/v1/projects/reject/' , projectId2).then().catch(
+            err => {
+                throw (err)
+            }
+        )
+    }
+}
+
+export function acceptBidFromFreelancer(project_id) {
+    var projectId = { project_id : project_id};
+    return function (dispatch) {
+        return axios.post('/api/v1/projects/accept/' , projectId).then().catch(
+            err => {
+                throw (err)
+            }
+        )
+    }
+}
 
 export function deleteBid(bidId) {
     return function (dispatch) {
 
         console.log(bidId);
-        return axios.delete('/api/v1/projects/bid/delete/' ,{data: {bid_id : bidId}}).then(Success=>{
+        return axios.post('/api/v1/projects/bid/delete/' ,{data: {bid_id : bidId}}).then(Success=>{
             dispatch(deleteBidSuccess(Success))
             }
 
@@ -35,7 +56,7 @@ export function deleteBid(bidId) {
 export function selectBid(selectedBid) {
     console.log(selectedBid);
     return function (dispatch) {
-        return axios.post('/api/v1/projects/bid/select/', selectedBid).then(select => {
+        return axios.post('/api/v1/projects/bid/select/', {bid_id: selectedBid}).then(select => {
             dispatch(selectBidSuccess(select)).catch(err => {
                 throw (err)
             })

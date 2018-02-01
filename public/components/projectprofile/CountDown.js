@@ -3,7 +3,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import moment from 'moment-jalaali';
 const CountDown = (props) => {
-    if (props.start_date) {
+    if (props.bidding_deadline) {
         // var year = props.release_date.split().map(function(item) {
         //     return parseInt(item, 10);
         // });
@@ -21,7 +21,7 @@ const CountDown = (props) => {
         // });
 
         var today = new Date().getTime();
-        var releaseDate = new Date(props.start_date).getTime();
+        var releaseDate = new Date(props.bidding_deadline).getTime();
         var timeDiff = releaseDate - today;
         var diffSec = Math.floor(timeDiff / 1000);
         var diffMinutes = Math.floor(diffSec / 60) % 60;

@@ -9,9 +9,8 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                 cashinModalState , balance,prices, acceptBid , id ,numberOfMileStonesOfEachFreelancer}) => {
     var mileStones = [];
     console.log(price_of_bid , 'price_of_bid');
-    var x = (delivery_duration) / (number_of_milestones);
     for (var i = 0; i < number_of_milestones; i++) {
-        x = (delivery_duration) / (number_of_milestones) + (i * (delivery_duration) / (number_of_milestones));
+        var  x = Math.floor((delivery_duration) / (number_of_milestones) + (i * (delivery_duration) / (number_of_milestones)));
         mileStones.push(<MileStonesHorizentalTemplate i={i} key={i} x={x}/>);
     }
     numberOfMileStonesOfEachFreelancer[number] = number_of_milestones;

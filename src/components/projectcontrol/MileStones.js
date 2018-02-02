@@ -1,6 +1,7 @@
 import React from 'react';
 
 const MileStones = (props)=>{
+    console.log(props.AsClientProject , 'AsClientProject');
     return(
         <div className="container">
             <div className="row">
@@ -80,7 +81,6 @@ const MileStones = (props)=>{
 
 
                     <article className="timeline-entry begin">
-
                         <div className="timeline-entry-inner">
                             <div className="timeline-icon" style={{WebkitTransform: 'rotate(-90deg)',MozTransform: 'rotate(-90deg)'}}>
                                 <i className="entypo-flight"/>

@@ -11,9 +11,14 @@ const ProjectsList = (props) =>{
                 {props.ClientProjects.map(
                     ClientProjects =>
                         <ProjectTemplate key={ClientProjects.uuid} deleteProject={props.deleteProject}
-                                         ClientProjects={ClientProjects} goToTender={props.goToTender} />
+                                         ClientProjects={ClientProjects} goToTender={props.goToTender} goToCP={props.goToCP}/>
                 )}
             </div>
+        )
+    }
+    else if(props.FreelancerProjects) {
+        return(
+            <div></div>
         )
     }
     else {

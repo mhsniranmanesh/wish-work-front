@@ -6,7 +6,9 @@ import {Button} from 'reactstrap';
 const MyProjectsListForDashboard = (props) =>{
     var Size = props.size(props.profileInfo.client_projects);
     var x;
-    if(Size > 3){
+    console.log(props.profileInfo.client_projects , 'props.profileInfo.client_projects');
+    console.log(Size , 'Size');
+    if(Size >= 3){
         x =  props.profileInfo.client_projects.slice(0,3);
     }
 if(Size<3 && Size>0) {
@@ -22,7 +24,7 @@ if(Size<3 && Size>0) {
         </div>
     )
 }
-else if(Size>3){
+else if(Size>=3){
         return(
             <div className="dash-con con-body dash-notif mb-4">
                 <h5>پروژه های من</h5>

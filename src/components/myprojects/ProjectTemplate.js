@@ -94,7 +94,6 @@ const ProjectTemplate = (props) => {
             <div>
                 <div className="dash-con dash-new-project con-body mb-4">
                     <h6>
-                        <i className="fa fa-trash-o" aria-hidden="true"/>
                         <strong>{props.ClientProjects.title}</strong>
                         <Badge color="success" pill>{x}</Badge>
                     </h6>
@@ -106,9 +105,7 @@ const ProjectTemplate = (props) => {
             </span>
 
 
-                    <Button color="primary" className="btn btn-primary btn-rec" onClick={(event) => {
-                        props.goToTender(y);
-                    }}>
+                    <Button color="primary" className="btn btn-primary btn-rec" onClick={props.goToCP}>
                         {XButtonName}
                     </Button>
                 </div>

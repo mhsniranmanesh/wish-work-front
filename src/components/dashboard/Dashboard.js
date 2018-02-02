@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux';
 import * as recomendedProject from '../../actions/recomendedProjectForFreelancer.js';
 import DashboardProjectSubmission from "./DashboardProjectSubmisson";
 import ProjectsListForDashboard from './ProjectsListForDashboard';
-import NotificationsListForDashboard from "./MyProjectsListForDashboard";
+import MyProjectsListForDashboard from "./MyProjectsListForDashboard";
 import Notifications from '../../actions/Notifications';
 import ProfileInfoForDashboard from "./ProfileInfoForDashboard";
 // import * as x from '../../actions/projectSubmitLocalForDashboard';
@@ -22,7 +22,7 @@ class Dashboard extends React.Component{
     this.state = { translationTo : "" , translationFrom : "" ,
         projectSkillTag : "" , translationFatherTag : false ,
         is_general: false , is_medical : false , is_technical : false , is_law : false ,
-        profileInfo:Object.assign({} , props.profileInfo[0]) , loading:true};
+        profileInfo:Object.assign({} , props.profileInfo[0]) , loading:true , suggestedProject:""};
 
         this.IsLaw = this.IsLaw.bind(this);
         this.IsMedical = this.IsMedical.bind(this);
@@ -143,10 +143,11 @@ class Dashboard extends React.Component{
     // }
 
     componentWillReceiveProps(nextProps){
+        var size = this.size(nextProps.profileInfo);
         if(this.props.profileInfo != nextProps.profileInfo ) {
-            console.log(nextProps.profileInfo[0]);
+            // console.log(nextProps.profileInfo[0]);
             //inja az halate bler dar biad
-            this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[0])});
+            this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[size-1])});
             this.setState({loading: false})
         }
     }
@@ -237,10 +238,11 @@ class Dashboard extends React.Component{
                         />
                     </div>
                     <div className="col-sm-7">
-                        <NotificationsListForDashboard profileInfo={this.state.profileInfo} myFunc={this.gotoMyProjects}
+                        <MyProjectsListForDashboard profileInfo={this.state.profileInfo} myFunc={this.gotoMyProjects}
                                                        size={this.size}
                                                        goToMyProjectPublic={this.goToMyProjectPublic}
                         />
+
                         <ProjectsListForDashboard Projects={this.state.profileInfo.suggested_projects}
                                                   goToProjectProfile={this.goToProjectProfile}
                                                   myFunc={this.gotoRecomendedProjects}

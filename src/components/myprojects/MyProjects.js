@@ -12,12 +12,23 @@ import * as projectActions from '../../actions/projectSubmit.js';
 class MyProjects extends React.Component {
     constructor(props){
         super(props);
-        this.state={ClientProjects:"" };
+        this.state={ClientProjects:"" , showClient:true , FreelancerProjects:""};
         this.size = this.size.bind(this);
         this.onClick = this.onClick.bind(this);
         this.goToProjectAuctionPage = this.goToProjectAuctionPage.bind(this);
         this.goToTender = this.goToTender.bind(this);
         this.deleteProject = this.deleteProject.bind(this);
+        this.changeToFreelancerOrClientProjects = this.changeToFreelancerOrClientProjects.bind(this);
+        this.goToCP = this.goToCP.bind(this);
+    }
+
+    goToCP(){
+        this.context.router.history.push({
+            pathname: '/project/control',
+        });
+    }
+    changeToFreelancerOrClientProjects(){
+        this.setState(prevState => ({showClient:!prevState.showClient}))
     }
     deleteProject(id){
         this.props.actions.deleteProject(id);
@@ -39,6 +50,7 @@ class MyProjects extends React.Component {
         var size = this.size(nextProps.profileInfo);
         if(this.props.profileInfo[size-1] != nextProps.profileInfo[size-1]){
             this.setState({ClientProjects : nextProps.profileInfo[size-1].client_projects});
+            this.setState({FreelancerProjects: nextProps.profileInfo[size-1].freelancer_projects})
         }
     }
     goToProjectAuctionPage(slug){
@@ -48,6 +60,8 @@ class MyProjects extends React.Component {
         var x = this.size(this.props.profileInfo);
         if(x > 0) {
             this.setState({ClientProjects: this.props.profileInfo[x - 1].client_projects});
+            this.setState({FreelancerProjects: this.props.profileInfo[x-1].freelancer_projects})
+
         }
         //console.log('HI PF' , this.state.ClientProjects)
     }
@@ -63,13 +77,18 @@ class MyProjects extends React.Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-8 d-block mx-auto nav-pills">
-                            <AsFreelancerOrClient/>
+                            <AsFreelancerOrClient changeToFreelancerOrClientProjects={this.changeToFreelancerOrClientProjects}/>
                             <Filter/>
-                             <ProjectsList ClientProjects={this.state.ClientProjects}
-                                           onClick={this.onClick}
-                                           goToTender={this.goToTender}
-                                           deleteProject={this.deleteProject}
-                             />
+                            { this.state.showClient ?
+                                <ProjectsList ClientProjects={this.state.ClientProjects}
+                                              onClick={this.onClick}
+                                              goToTender={this.goToTender}
+                                              deleteProject={this.deleteProject}
+                                              goToCP={this.goToCP}
+
+                                /> : <ProjectsList FreelancerProjects={this.state.FreelancerProjects}
+                                                   />
+                            }
 
                         </div>
                     </div>

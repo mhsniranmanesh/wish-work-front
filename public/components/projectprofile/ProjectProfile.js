@@ -476,7 +476,8 @@ class ProjectProfile extends React.Component {
                 });
                 // console.log(this.state.ownerOfProject);
             }
-            if(this.props.profileInfo.username == nextProps.projectDetail[sizeD - 1].general.selected_freelancer){
+            if((this.props.profileInfo.username == nextProps.projectDetail[sizeD - 1].general.selected_freelancer) &&
+                (nextProps.projectDetail[sizeD - 1].general.selected_freelancer!=null)){
                 this.setState({
                     freelancerIsSelected:true
                 })
@@ -519,7 +520,8 @@ class ProjectProfile extends React.Component {
                         ownerOfProject: true
                     });
                 }
-                if(nextProps.profileInfo.username == this.props.projectDetail[sizeD - 1].general.selected_freelancer){
+                if((nextProps.profileInfo.username == this.props.projectDetail[sizeD - 1].general.selected_freelancer) &&
+                    (this.props.projectDetail[sizeD - 1].general.selected_freelancer!=null)){
                     this.setState({
                         freelancerIsSelected:true
                     })

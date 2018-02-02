@@ -9,15 +9,37 @@ import * as ProfileInfoActions from '../../actions/profileInfo';
 class ProjectControl extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            number_of_milestones: 3
-        };
-    }
-    componentWillMount(){
+        this.state = {AsFreelancerProject:"" , AsClientProject:""};
+        this.size = this.size.bind(this);
 
+    }
+    size (obj) {
+        let x = 0, key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) x++;
+        }
+        return x;
+    };
+    componentWillMount(){
+        var x = this.size(this.props.profileInfo);
+        if(x>0){
+            for(var i=0 ; i<this.props.profileInfo[x-1].client_projects.length ; i++){
+                if(this.props.profileInfo[x-1].client_projects[i].is_started){
+                    this.setState({AsClientProject : Object.assign({},this.props.profileInfo[x-1].client_projects[i] )})
+                }
+            }
+        }
     }
     componentWillReceiveProps(nextProps){
-
+        var size = this.size(nextProps.profileInfo);
+        if(this.props.profileInfo != nextProps.profileInfo) {
+            for(var i=0 ; i<nextProps.profileInfo[size-1].client_projects.length ; i++){
+                if(nextProps.profileInfo[size-1].client_projects[i].is_started){
+                    this.setState({AsClientProject : Object.assign({},nextProps.profileInfo[size-1].client_projects[i] )})
+                }
+            }
+            console.log(this.state.AsClientProject , 'AsClientProject');
+        }
     }
   render(){
     return(
@@ -29,7 +51,9 @@ class ProjectControl extends React.Component{
                           <h5 className="form-title-fontsize">کنترل پروژه</h5>
                           <div className="dash-divider"/>
                           <label className="col-form-label form-header-fontsize">زمان بندی پروژه شما</label>
-                          <MileStones number={this.state.number_of_milestones}/>
+                          <MileStones number={this.state.number_of_milestones}
+                                      AsClientProject={this.state.AsClientProject}
+                          />
                       </div>
                   </div>
               </div>
@@ -41,7 +65,6 @@ class ProjectControl extends React.Component{
 
 function mapStateToProps(state, ownProps) {
     return {
-        projectDetail: state.projectDetail,
         profileInfo: state.profileInfo
     }
 }

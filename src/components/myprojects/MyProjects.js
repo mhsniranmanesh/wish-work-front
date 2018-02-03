@@ -87,7 +87,8 @@ class MyProjects extends React.Component {
                                               goToCP={this.goToCP}
 
                                 /> : <ProjectsList FreelancerProjects={this.state.FreelancerProjects}
-                                                   />
+                                                   goToCP={this.goToCP}
+                                />
                             }
 
                         </div>

@@ -3,7 +3,7 @@ import BidTemplate from './BidTemplate';
 import PropTypes from 'prop-types';
 
 const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash, cashinModalState, modalCashEnough ,
-                      profileInfo ,deleteBid , goToFreelancerProfile, acceptBid , freelancerIsSelected}) => {
+                      profileInfo ,deleteBid , goToFreelancerProfile, acceptBid , freelancerIsSelected , numberOfPages}) => {
     var BidT = [] ;
     var prices = [];
     var mileStoneX = {};
@@ -29,8 +29,8 @@ const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash,
                                    numberOfMileStonesOfEachFreelancer={numberOfMileStonesOfEachFreelancer}
                                    priceOfMileStoneForCash={priceOfMileStoneForCash}
                                    freelancerIsSelected={freelancerIsSelected}
+                                   numberOfPages={numberOfPages}
             />);
-            console.log(BidT, 'BidT');
         }
     }
         return (

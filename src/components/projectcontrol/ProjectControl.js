@@ -9,7 +9,7 @@ import * as ProfileInfoActions from '../../actions/profileInfo';
 class ProjectControl extends React.Component{
     constructor(props){
         super(props);
-        this.state = {AsFreelancerProject:"" , AsClientProject:""};
+        this.state = {AsFreelancerProject:"" , AsClientProject:"" , loadSuccess:false};
         this.size = this.size.bind(this);
 
     }
@@ -22,22 +22,42 @@ class ProjectControl extends React.Component{
     };
     componentWillMount(){
         var x = this.size(this.props.profileInfo);
-        if(x>0){
-            for(var i=0 ; i<this.props.profileInfo[x-1].client_projects.length ; i++){
-                if(this.props.profileInfo[x-1].client_projects[i].is_started){
-                    this.setState({AsClientProject : Object.assign({},this.props.profileInfo[x-1].client_projects[i] )})
+        if(x>0) {
+            for (var i = 0; i < this.props.profileInfo[x - 1].client_projects.length; i++) {
+                if (this.props.profileInfo[x - 1].client_projects[i].is_started) {
+                    this.setState({AsClientProject: Object.assign({}, this.props.profileInfo[x - 1].client_projects[i])})
+                }
+
+            }
+            for (var j = 0; j < this.props.profileInfo[x - 1].freelancer_projects.length; j++) {
+
+                if (this.props.profileInfo[x - 1].freelancer_projects[j].is_started) {
+                    this.setState({AsFreelancerProject: Object.assign({}, this.props.profileInfo[x - 1].freelancer_projects[j])})
                 }
             }
+            this.setState({loadSuccess: true});
         }
     }
     componentWillReceiveProps(nextProps){
         var size = this.size(nextProps.profileInfo);
+        var clientp = [],
+            freelancerp = [];
         if(this.props.profileInfo != nextProps.profileInfo) {
-            for(var i=0 ; i<nextProps.profileInfo[size-1].client_projects.length ; i++){
+            for(var i=0,t=0 ; i<nextProps.profileInfo[size-1].client_projects.length ;i++){
                 if(nextProps.profileInfo[size-1].client_projects[i].is_started){
-                    this.setState({AsClientProject : Object.assign({},nextProps.profileInfo[size-1].client_projects[i] )})
+                    clientp[t] = nextProps.profileInfo[size-1].client_projects[i];
+                    this.setState({AsClientProject : clientp});
+                    t++;
                 }
             }
+            for (var j = 0,z=0; j < nextProps.profileInfo[size - 1].freelancer_projects.length; j++) {
+                if(nextProps.profileInfo[size-1].freelancer_projects[j].is_started){
+                    freelancerp[z] = nextProps.profileInfo[size-1].freelancer_projects[j];
+                    this.setState({AsFreelancerProject : freelancerp});
+                    z++;
+                }
+            }
+            this.setState({loadSuccess: true});
             console.log(this.state.AsClientProject , 'AsClientProject');
         }
     }
@@ -51,9 +71,11 @@ class ProjectControl extends React.Component{
                           <h5 className="form-title-fontsize">کنترل پروژه</h5>
                           <div className="dash-divider"/>
                           <label className="col-form-label form-header-fontsize">زمان بندی پروژه شما</label>
-                          <MileStones number={this.state.number_of_milestones}
+                          {this.state.loadSuccess? <MileStones
                                       AsClientProject={this.state.AsClientProject}
-                          />
+                                      AsFreelancerProject={this.state.AsFreelancerProject}
+
+                          />:(null)}
                       </div>
                   </div>
               </div>

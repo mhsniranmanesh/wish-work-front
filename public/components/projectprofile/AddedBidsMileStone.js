@@ -5,13 +5,14 @@ import PropTypes from 'prop-types';
 import ModalCashin from './ModalCashin';
 
 const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_bid, priceOfMileStoneForCash,
-                                number, mileStoneX, goToCash, priceForCash, modalCashEnough,
+                                number, mileStoneX, goToCash, priceForCash, modalCashEnough,numberOfPages,
                                 cashinModalState , balance,prices, acceptBid , id ,numberOfMileStonesOfEachFreelancer}) => {
     var mileStones = [];
     console.log(price_of_bid , 'price_of_bid');
     for (var i = 0; i < number_of_milestones; i++) {
         var  x = Math.floor((delivery_duration) / (number_of_milestones) + (i * (delivery_duration) / (number_of_milestones)));
-        mileStones.push(<MileStonesHorizentalTemplate i={i} key={i} x={x}/>);
+        var page = Math.floor((numberOfPages) / (number_of_milestones) + (i * (numberOfPages) / (number_of_milestones)));
+        mileStones.push(<MileStonesHorizentalTemplate i={i} key={i} x={x} page={page}/>);
     }
     numberOfMileStonesOfEachFreelancer[number] = number_of_milestones;
     prices[number] = price_of_bid;
@@ -21,7 +22,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
         if ((mileStoneX[number] !== undefined)) {
             var y = price_of_bid;
             console.log(mileStoneX[number], 'props.mileStoneX[props.number]', number, 'props.number');
-            if (balance >= prices[number]) {
+            if (balance >= priceOfMileStoneForCash[number]) {
                 return (
                 <div>
                     <div className="modal fade" id={number * 10} tabIndex="-1" role="dialog" aria-hidden="true">
@@ -136,7 +137,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                                     <div className="enough-modalbody1">
                                                         <p>موجودی حساب شما {balance / 10}تومان می باشد </p>
                                                         برای شروع پروژه باید مبلغ <span
-                                                        className="enough-project-price">{priceOfMileStoneForCash[number_of_milestones]}</span>تومان
+                                                        className="enough-project-price">{priceOfMileStoneForCash[number]}</span>تومان
                                                         بپردازید.
                                                     </div>
                                                     <div className="enough-modalbody2">

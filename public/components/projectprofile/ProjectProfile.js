@@ -39,7 +39,11 @@ class ProjectProfile extends React.Component {
             loading: false,
             intervalId: 0,
             userHasBid: false,
-            freelancerIsSelected: false
+            freelancerIsSelected: false,
+            isStartedModal:true,
+            modalAcceptOrReject:true,
+            toggleSecondModal:true,
+            modalCM :""
         };
 
         // delivery_duration: Array [ "This field is required." ]
@@ -72,20 +76,45 @@ class ProjectProfile extends React.Component {
         this.progressNumber = this.progressNumber.bind(this);
         this.acceptBidFromFreelancer =this.acceptBidFromFreelancer.bind(this);
         this.rejectBidFromFreelancer = this.rejectBidFromFreelancer.bind(this);
+        this.toggle = this.toggle.bind(this);
+        this.ModalAccept = this.ModalAccept.bind(this);
+        this.ModalError = this.ModalError.bind(this);
+        this.ModalReject = this.ModalReject.bind(this);
+        this.toggleSecondModal = this.toggleSecondModal.bind(this);
         //this.counter = this.counter.bind(this);
+    }
+    toggleSecondModal(){
+        this.setState({toggleSecondModal: false})
+    }
+    ModalReject(){
+        this.setState({modalAcceptOrReject:false});
+        this.setState({modalCM: "پیشنهاد شما کنسل شد، ۱۰ ویش کوین بابت انصراف از شما کم شد"})
+    }
+    ModalError(){
+
+    }
+    ModalAccept(){
+        this.setState({modalAcceptOrReject:false});
+        this.setState({modalCM:"پروژه ی شما شروع شد، برای دسترسی به پروژه در قسمت داشبورد خود در قسمت پروژه بر روی کنترل پروژه کلیک کنید."})
+    }
+    toggle(){
+        this.setState({
+            isStartedModal: !this.state.isStartedModal
+        });
     }
     acceptBidFromFreelancer(){
         this.props.actions.acceptBidFromFreelancer(this.state.projectDetail.uuid).then(
-            console.log('Me!')
+            () => this.ModalAccept()
         ).catch(err =>{
-            console.log(err)
+            this.ModalError()
         })
     }
+
     rejectBidFromFreelancer(){
         this.props.actions.rejectBidFromFreelancer(this.state.projectDetail.uuid).then(
-            console.log('Me!')
+            () => this.ModalReject()
         ).catch(err =>{
-            console.log(err)
+            this.ModalError()
         })
 
     }
@@ -569,10 +598,18 @@ class ProjectProfile extends React.Component {
                     <Progress completed={this.state.progressNumber}/>
                 </ModalBody>
             </Modal>
-            <Modal isOpen={this.state.freelancerIsSelected && (!this.state.projectDetail.is_started)}>
+            <Modal isOpen={this.state.freelancerIsSelected && (!this.state.projectDetail.is_started) && this.state.modalAcceptOrReject}>
                 <ModalBody >تبریک! شما برای این پروژه انتخاب شده اید. برای تایید برروی «تایید» کلیک کنید</ModalBody>
                 <button onClick={this.acceptBidFromFreelancer}> تایید</button>
                 <button onClick={this.rejectBidFromFreelancer}>انصراف</button>
+            </Modal>
+            <Modal isOpen={(!this.state.modalAcceptOrReject) && (this.state.toggleSecondModal)}>
+                <ModalBody >{this.state.modalCM}</ModalBody>
+                <button onClick={this.toggleSecondModal}>باشه</button>
+            </Modal>
+            <Modal isOpen={this.state.projectDetail.is_started && this.state.isStartedModal} toggle={this.toggle}>
+                <ModalBody >مناقصه ی این پروژه به پایان رسیده است</ModalBody>
+
             </Modal>
         <ProjectDetail
             Field={this.state.projectAdditional.field}
@@ -584,6 +621,7 @@ class ProjectProfile extends React.Component {
 
 <div className = "con mb-4" > {
     this.state.showBidsList ? <BidsList
+            numberOfPages={this.state.projectAdditional.number_of_pages}
             freelancerIsSelected={this.state.freelancerIsSelected}
             acceptBid={this.acceptBid}
             goToFreelancerProfile={this.goToFreelancerProfile}

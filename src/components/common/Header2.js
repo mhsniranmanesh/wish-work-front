@@ -175,22 +175,22 @@ class Header2 extends React.Component {
                                         {/*</div>*/}
                                 {/*</div>*/}
                             {/*</form>*/}
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle mr-lg-2" href="#" id="alertsDropdown"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i className="fa fa-fw fa-bell nav-icon"/>
-                                    <span className="d-lg-none">پیغام ها
-                          <span className="badge badge-pill badge-success">6</span>
-                        </span>
-                                    <span className="new-indicator d-none d-lg-block">
-                          <i className="fa fa-fw fa-circle"/>
-                          <span className="number">12</span>
-                        </span>
-                                </a>
+                            {/*<li className="nav-item dropdown">*/}
+                                {/*<a className="nav-link dropdown-toggle mr-lg-2" href="#" id="alertsDropdown"*/}
+                                   {/*data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">*/}
+                                    {/*<i className="fa fa-fw fa-bell nav-icon"/>*/}
+                                    {/*<span className="d-lg-none">پیغام ها*/}
+                          {/*<span className="badge badge-pill badge-success">6</span>*/}
+                        {/*</span>*/}
+                                    {/*<span className="new-indicator d-none d-lg-block">*/}
+                          {/*<i className="fa fa-fw fa-circle"/>*/}
+                          {/*<span className="number">12</span>*/}
+                        {/*</span>*/}
+                                {/*</a>*/}
 
-                                <NotifsListForHeader Notifications={this.props.Notifications}/>
+                                {/*<NotifsListForHeader Notifications={this.props.Notifications}/>*/}
 
-                            </li>
+                            {/*</li>*/}
                             <li id="tool" className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="http://example.com"
                                    id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true"

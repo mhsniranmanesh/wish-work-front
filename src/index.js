@@ -53,11 +53,12 @@ function goToSignIn(err) {
 Authentication().then(() => {
     console.log('ok' , axios.defaults.headers.common['Authorization'] );
     const store = configureStore();
-    store.dispatch(profileInfo()).then().catch(
-        err => {goToSignIn(err)}
-    )
+    // store.dispatch(profileInfo()).then().catch(
+    //     err => {goToSignIn(err)}
+    // )
     ;
     // store.dispatch(projectSubmitLocalForDashboard())
+    store.dispatch(profileInfo());
     store.dispatch(recomendedProject());
     store.dispatch(Notifications());
     store.dispatch(getSubmittedProjects());

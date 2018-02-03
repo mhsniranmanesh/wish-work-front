@@ -1,6 +1,7 @@
 import React from 'react';
 import ProjectTemplate from './ProjectTemplate';
 import PropTypes from 'prop-types';
+import ProjectTemplateForFreelancer from './ProjectTemplateForFreelancer';
 
 const ProjectsList = (props) =>{
     //console.log('ClientProjectsK' , props.ClientProjects);
@@ -18,8 +19,13 @@ const ProjectsList = (props) =>{
     }
     else if(props.FreelancerProjects) {
         return(
-            <div></div>
+            <div>
+            {props.FreelancerProjects.map(FreelancerProject =>
+                <ProjectTemplateForFreelancer key={FreelancerProject.uuid} goToCP={props.goToCP} FreelancerProject={FreelancerProject}/>
+            )}
+            </div>
         )
+
     }
     else {
         return(

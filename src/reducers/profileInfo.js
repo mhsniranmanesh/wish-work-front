@@ -22,18 +22,20 @@ export default function profileInfo(state= initialState.profileInfo , action){
       case types.PROJECT_SUBMIT_LOCAL_FOR_DASHBOARD:
           return [...state , Object.assign({}, action.PSD)];
       case types.UPDATE_NEW_SKILLS_IN_INFOS_SUCCESS :
-          debugger;
           var size2 = size(state);
-          var translation_skill = action.profileSkills;
-          var translation_skills = {translation_skill};
-          var skills ={
-              0: translation_skills ,
-              length: 1
-          };
-          skills[0] = translation_skills;
-          console.log(skills , 'skills');
-           return [...state , Object.assign({} ,state[size2 - 1].skills, skills)];
-      // case types.SUBMIT_PROJECT_SUCCESS:
+          // var translation_skill = action.profileSkills;
+          // var translation_skills = {translation_skill};
+          // var skills ={
+          //     0: translation_skills ,
+          //     length: 1
+          // };
+          // console.log(skills , 'skills');
+          debugger;
+          return [...state , Object.assign({} ,state[size2 - 1] , {
+              skills : Object.assign({} , state[size2 - 1].skills , {
+                  translation_skill : Object.assign({} , state[size2 -1].skills[0].translation_skill , action.profileSkills)
+              })
+          })]    ;  // case types.SUBMIT_PROJECT_SUCCESS:
       //     return [...state , Object.assign({} , state , action.projectSubmit)];
     default:
         return state;

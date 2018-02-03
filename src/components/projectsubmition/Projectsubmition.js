@@ -829,6 +829,11 @@ class Projectsubmition extends React.Component{
                           </Popover>
 
 
+                        <div id="price-range" style={{display:"none"}}/>
+                          {/*<span className="price-msg">
+                              <i className="fa fa-exclamation-triangle" aria-hidden="true" />
+                              نارنجی: بودجه تعیین شده به نسبت ارزش پروژه کمتر است! ویش ورک پیشنهاد می کند که برای بالا بردن شانس انجام پروژه ی با کیفیت، کف بودجه را افزایش دهید.
+                          </span>*/}
                           <div id="price-range" style={{display:"none"}}/>
                           {/*<span className="price-msg">*/}
                               {/*<i className="fa fa-exclamation-triangle" aria-hidden="true" />*/}
@@ -847,6 +852,10 @@ class Projectsubmition extends React.Component{
                           </Popover>
 
                           <div id="time-range"/>
+                          {/*<span className="time-msg">
+                              <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
+                              آبی: مقدار زمان طلب شده به نسبت اندازه ی پروژه مطلوب می باشد!
+                          </span>*/}
                           {/*<span className="time-msg">*/}
                               {/*<i className="fa fa-exclamation-triangle" aria-hidden="true"/>*/}
                               {/*آبی: مقدار زمان طلب شده به نسبت اندازه ی پروژه مطلوب می باشد!*/}

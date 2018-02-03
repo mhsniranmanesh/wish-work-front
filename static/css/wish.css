@@ -574,8 +574,10 @@ a:hover {
 }
 
 .form-header-fontsize {
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 400;
+    margin: 5px 0;
+
 }
 
 .form-body-fontsize {
@@ -1963,6 +1965,7 @@ span.sup {
     line-height: 2em;
     padding-top: 1.5em;
     opacity: 1;
+    font-size: 13px;
 }
 .uploaded-project {
     text-align: center;
@@ -1986,8 +1989,7 @@ span.sup {
 .download-file{
   display: inline-block;
     padding: 2px 0 0 5px;
-    margin-bottom: 5px;
-    margin-right: 10px;
+    margin: 0;
     border: 1px solid #018abe;
     border-radius: 5%;
 }
@@ -2110,4 +2112,35 @@ a.delete-project:hover:after {
   margin-top: 15px;
   display: block;
   width: 100%;
+}
+
+.cp-circle{
+  border: 2px solid #018abe;
+  border-radius: 50%;
+  height:30px;
+  max-width: 30px;
+  margin: 40px 0 0 0;
+  display: inherit;
+  background-color: #e1e1e1;
+
+}
+
+.cp-connector{
+  border: 2px dashed #e1e1e1;
+  background-color: #e1e1e1;
+  display: block;
+  width: 100%;
+  margin-top: -15px;
+  margin-right: 30px;
+}
+
+.cp-start-fa, .cp-finish-fa{
+  margin: 7px 7px 0 0px;
+  font-size: 13px;
+  color: #018abe;
+}
+
+.file-subject{
+  font-size: 13px;
+  margin-right: 5px;
 }

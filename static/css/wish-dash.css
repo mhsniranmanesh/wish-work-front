@@ -2014,7 +2014,7 @@ div #bg-primary-left {
 .tags li.addedTag {
     float: right;
     margin-left: 0.25em;
-    margin-right: 0.25em;
+    margin-right: 0;
 }
 
 .tags li.addedTag {
@@ -2090,4 +2090,8 @@ div #bg-primary-left {
 .dash-coin{
   font-size: 13px;
   text-align: center;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link{
+  color: #a9a9a9;
 }

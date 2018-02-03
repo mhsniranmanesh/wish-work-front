@@ -1,4 +1,4 @@
-import * as types from './actionTypes';
+ import * as types from './actionTypes';
 import axios from 'axios';
 
 export function loadProjectDetailSuccess(ProjectDetail) {
@@ -42,7 +42,7 @@ export function deleteBid(bidId) {
     return function (dispatch) {
 
         console.log(bidId);
-        return axios.post('/api/v1/projects/bid/delete/' ,{data: {bid_id : bidId}}).then(Success=>{
+        return axios.delete('/api/v1/projects/bid/delete/' ,{data: {bid_id : bidId}}).then(Success=>{
             dispatch(deleteBidSuccess(Success))
             }
 

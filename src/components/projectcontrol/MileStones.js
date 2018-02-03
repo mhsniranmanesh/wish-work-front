@@ -9,6 +9,10 @@ const MileStones = (props)=> {
         for (var i = 0; i < props.AsFreelancerProject.length; i++) {
             FreelancerProject.push(<MileStoneFatherForFreelancer key={i}
                                                                  project_controller={props.AsFreelancerProject[i].project_controller}
+                                                                 uploadFile={props.uploadFile}
+                                                                 fileIsUpload={props.fileIsUpload}
+                                                                 mileStoneid={props.mileStoneid}
+                                                                 sendUploadedFileByFreelancer={props.sendUploadedFileByFreelancer}
             />)
         }
     }
@@ -16,6 +20,8 @@ const MileStones = (props)=> {
         for (var j = 0; j < props.AsClientProject.length; j++) {
             ClientProject.push(<MileStoneFatherForClient key={j}
                                                          project_controller={props.AsClientProject[j].project_controller}
+                                                         fileIsUpload={props.fileIsUpload}
+                                                         mileStoneid={props.mileStoneid}
             />)
         }
     }

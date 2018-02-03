@@ -3,10 +3,26 @@ import MileStoneTemplate from './MileStoneTemplate';
 import PropTypes from 'prop-types';
 const MileStoneFatherForFreelancer = (props) =>{
     var m = [];
+    var uploadSendToServerButton = true;
     console.log(props.project_controller.project_controller_elements , 'props.project_controller.project_controller_elements');
     if(props.project_controller.project_controller_elements.length) {
         for (var i = 0; i < props.project_controller.project_controller_elements.length; i++) {
-            m.push(<MileStoneTemplate key={i} CP={props.project_controller.project_controller_elements[i]}/>)
+            if(props.mileStoneid === props.project_controller.project_controller_elements[i].uuid ){
+                uploadSendToServerButton = true;
+                m.push(<MileStoneTemplate key={i}
+                                          CP={props.project_controller.project_controller_elements[i]}
+                                          uploadFile={props.uploadFile}
+                                          uploadSendToServerButton={uploadSendToServerButton}
+                                          sendUploadedFileByFreelancer={props.sendUploadedFileByFreelancer}
+                />)
+            }
+            else {
+                m.push(<MileStoneTemplate key={i}
+                                          CP={props.project_controller.project_controller_elements[i]}
+                                          uploadFile={props.uploadFile}
+                                          uploadSendToServerButton={false}
+                />)
+            }
         }
         if (i > 0) {
             console.log(m , 'm');
@@ -25,7 +41,14 @@ const MileStoneFatherForFreelancer = (props) =>{
     }
     else {
         return(
-            <div></div>
+            <div>
+                <div className="container">
+                    <div className="row">
+                        <div className="timeline-centered">
+                        </div>
+                    </div>
+                </div>
+            </div>
         )
     }
 };

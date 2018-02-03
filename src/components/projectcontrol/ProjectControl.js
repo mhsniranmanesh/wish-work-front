@@ -1,7 +1,7 @@
 import React from 'react';
 import MileStones from './MileStones';
 import {connect} from 'react-redux';
-import {PropTypes} from 'prop-types';
+import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import * as ControlProjectActions from '../../actions/mileStoneActions';
 import * as ProfileInfoActions from '../../actions/profileInfo';
@@ -9,9 +9,32 @@ import * as ProfileInfoActions from '../../actions/profileInfo';
 class ProjectControl extends React.Component{
     constructor(props){
         super(props);
-        this.state = {AsFreelancerProject:"" , AsClientProject:"" , loadSuccess:false};
+        this.state = {AsFreelancerProject:"" , AsClientProject:"", fileIsUpload:false,
+            loadSuccess:false , file:"" , mileStoneId:"" , milestone_id:""};
         this.size = this.size.bind(this);
+        this.uploadFile = this.uploadFile.bind(this);
+        this.sendUploadedFileByFreelancer = this.sendUploadedFileByFreelancer.bind(this);
 
+    }
+    sendUploadedFileByFreelancer(){
+        console.log(this.state.milestone_id , 'mileStoneIdmileStoneId');
+        var sendData = {
+            file : this.state.file,
+            milestone_id: this.state.milestone_id
+        };
+        this.props.actions.sendUploadedFileByFreelancerAction(sendData).then().catch(
+            err=>{
+                throw (err)
+            }
+        )
+    }
+    uploadFile(e , id){
+        e.preventDefault();
+        this.setState({fileIsUpload : true});
+        let reader = new FileReader();
+        let file = e.target.files[0];
+        this.setState({file : file , mileStoneid: id});
+        this.setState({milestone_id: id});
     }
     size (obj) {
         let x = 0, key;
@@ -74,6 +97,10 @@ class ProjectControl extends React.Component{
                           {this.state.loadSuccess? <MileStones
                                       AsClientProject={this.state.AsClientProject}
                                       AsFreelancerProject={this.state.AsFreelancerProject}
+                                      uploadFile={this.uploadFile}
+                                      fileIsUpload={this.state.fileIsUpload}
+                                      mileStoneid={this.state.mileStoneid}
+                                      sendUploadedFileByFreelancer={this.sendUploadedFileByFreelancer}
 
                           />:(null)}
                       </div>
@@ -84,6 +111,10 @@ class ProjectControl extends React.Component{
     )
   }
 }
+ProjectControl.PropTypes = {
+    sendUploadedFileByFreelancerAction: PropTypes.func.isRequired,
+    actions : PropTypes.func.isRequired,
+};
 
 function mapStateToProps(state, ownProps) {
     return {
@@ -92,7 +123,7 @@ function mapStateToProps(state, ownProps) {
 }
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(ProfileInfoActions ,ControlProjectActions, dispatch)
+        actions: bindActionCreators(ControlProjectActions, dispatch)
 
     }
 }

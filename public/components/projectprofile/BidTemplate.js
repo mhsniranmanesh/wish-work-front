@@ -5,8 +5,9 @@ import {Row , Col} from 'reactstrap';
 
 
 const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
-                         goToCash , priceForCash, cashinModalState, modalCashEnough,
-                         acceptBid, profileInfo , deleteBid , prices , goToFreelancerProfile}) => {
+                         goToCash , priceForCash, cashinModalState, modalCashEnough, priceOfMileStoneForCash,
+                         acceptBid, profileInfo , deleteBid , prices , goToFreelancerProfile ,
+                         numberOfMileStonesOfEachFreelancer ,freelancerIsSelected , numberOfPages}) => {
     console.log(ownerOfProject , 'ownerOfProject2');
     var bidOfFreelancer = false;
     let Image ;
@@ -23,6 +24,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
         if((profileInfo.first_name == Bid.freelancer.first_name) && (Bid.freelancer.last_name == profileInfo.last_name)){
             bidOfFreelancer = true;
         }
+
         //console.log(Bid , 'Bid Bid Bid :D');
         if(ownerOfProject){
             return (
@@ -74,6 +76,9 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                         prices={prices}
                                         acceptBid={acceptBid}
                                         id={Bid.uuid}
+                                        numberOfMileStonesOfEachFreelancer={numberOfMileStonesOfEachFreelancer}
+                                        priceOfMileStoneForCash={priceOfMileStoneForCash}
+                                        numberOfPages={numberOfPages}
 
                     />
 
@@ -93,7 +98,12 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                    <div className="bid-subject">
                                     <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
                                     <span className="bidding-price">{Bid.price} تومان</span>
-                                    <i className="fa fa-trash-o delete-self-bid" aria-hidden="true" onClick={(event)=>{deleteBid(Bid.uuid)}}/>
+                                       {freelancerIsSelected ? (null) :
+                                           <i className="fa fa-trash-o delete-self-bid" aria-hidden="true"
+                                              onClick={(event) => {
+                                                  deleteBid(Bid.uuid)
+                                              }}/>
+                                       }
 
                                     {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
                                     {/*data-toggle="modal" data-target="#accBiddingModal">*/}

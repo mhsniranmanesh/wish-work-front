@@ -12,11 +12,11 @@ import update from 'react-addons-update';
 class Profileinfo extends React.Component{
     constructor(props){
         super(props);
-        this.state = { bioReadOnly : true , jobReadOnly : true , degreeReadOnly : true, universityReadOnly : true ,
+        this.state = { bioReadOnly : true , jobReadOnly : true , degreeReadOnly : true, universityReadOnly : true , titleReadOnly:true,
             profileInfo:"" , profilepicture: null , selectValueTF :"" , selectValueTT : "" , saving : false,
             translationFatherTag : false , is_general: false , is_medical : false , is_technical : false , is_legal : false,
             skills:'' , showSkills:false , language_set:{} , file:"" , imagePreviewUrl:"" ,
-            showError:false , imageSizeValidation: false , TTSkills:[] , comment:"" , ClickedOnAdd : false
+            showError:false , imageSizeValidation: false , TTSkills:[] , comment:"" , ClickedOnAdd : false ,
         };
 
         this.updateValueTF = this.updateValueTF.bind(this);
@@ -24,10 +24,12 @@ class Profileinfo extends React.Component{
         this.redirect = this.redirect.bind(this);
         this.changeBioInput = this.changeBioInput.bind(this);
         this.changeJobInput = this.changeJobInput.bind(this);
+        this.changeTitleInput = this.changeTitleInput.bind(this);
         this.changeDegreeInput = this.changeDegreeInput.bind(this);
         this.changeUniversityInput = this.changeUniversityInput.bind(this);
         this.changeBioOnChange = this.changeBioOnChange.bind(this);
         this.changeJobOnChange = this.changeJobOnChange.bind(this);
+        this.changeTitleOnChange = this.changeTitleOnChange.bind(this);
         this.changeDegreeOnChange = this.changeDegreeOnChange.bind(this);
         this.changeUniversityOnChange = this.changeUniversityOnChange.bind(this);
         this.submitChanges = this.submitChanges.bind(this);
@@ -154,26 +156,36 @@ class Profileinfo extends React.Component{
     }
     IsTechnical(){
         this.setState({is_technical: true });
-        this.state.skills[0].translation_skill.is_technical = true ;
+        let newState = Object.assign({} , this.state);
+        newState.skills[0].translation_skill.is_technical = true ;
+        this.setState({newState})
+
     }
 
     IsGeneral(){
         this.setState({is_general: true });
-        this.state.skills[0].translation_skill.is_general = true ;
+        let newState = Object.assign({} , this.state);
+        newState.skills[0].translation_skill.is_general = true ;
+        this.setState({newState});
     }
 
     IsMedical(){
         this.setState({is_medical: true });
-        this.state.skills[0].translation_skill.is_medical = true ;
-        console.log(this.state.skills)
+        let newState = Object.assign({} , this.state);
+        newState.skills[0].translation_skill.is_medical = true ;
+        this.setState({newState});
     }
 
     IsLaw(){
         this.setState({is_legal: true });
-        this.state.skills[0].translation_skill.is_legal= true;
+        let newState = Object.assign({} , this.state);
+        newState.skills[0].translation_skill.is_legal= true;
+        this.setState({newState});
     }
 
-
+    changeTitleInput(){
+        this.setState(prevState => ({titleReadOnly: !prevState.titleReadOnly}))
+    }
     changeBioInput(){
         this.setState(prevState => ({bioReadOnly: !prevState.bioReadOnly}))
     };
@@ -185,6 +197,11 @@ class Profileinfo extends React.Component{
     }
     changeUniversityInput(){
         this.setState(prevState => ({universityReadOnly : !prevState.universityReadOnly}))
+    }
+    changeTitleOnChange(event){
+        let profileInfo = Object.assign({} , this.state.profileInfo);
+        profileInfo.title = event.target.value;
+        this.setState({profileInfo});
     }
     changeBioOnChange(event) {
         let profileInfo = Object.assign({} , this.state.profileInfo);
@@ -400,7 +417,7 @@ class Profileinfo extends React.Component{
                                     عنوان حرفه ای کوتاه
                                 </label>
                               </div>
-                                <input type="text" className="form-control form-control-danger" id="" value="مترجم رسمی فارسی به انگلیسی" readOnly />
+                                <input type="text" className="form-control form-control-danger" value={this.state.profileInfo.title || ''} onDoubleClick={this.changeTitleInput} onChange={this.changeTitleOnChange} readOnly={this.state.titleReadOnly} />
                             </div>
                             <div className="form-group">
                               <div>

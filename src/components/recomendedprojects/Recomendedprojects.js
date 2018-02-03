@@ -9,7 +9,7 @@ class Recomendedprojects extends React.Component{
         super(props);
         this.state = {profileInfo:""};
         this.goToProjectProfile = this.goToProjectProfile.bind(this);
-        this.size = this.size.bind(this)
+        this.size = this.size.bind(this);
 
     }
     size (obj) {
@@ -32,10 +32,11 @@ class Recomendedprojects extends React.Component{
         }
     }
     componentWillReceiveProps(nextProps) {
+        var size = this.size(nextProps.profileInfo);
         if (this.props.profileInfo != nextProps.profileInfo) {
             console.log(nextProps.profileInfo[0]);
             //inja az halate bler dar biad
-            this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[0])});
+            this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[size - 1])});
         }
     }
   render(){
@@ -64,6 +65,9 @@ class Recomendedprojects extends React.Component{
     );
   }
 }
+Recomendedprojects.contextTypes = {
+    router: PropTypes.object.isRequired
+};
 
 Recomendedprojects.PropTypes = {
   recomendedProject : PropTypes.object.isRequired,

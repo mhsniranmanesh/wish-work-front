@@ -829,16 +829,22 @@ class Projectsubmition extends React.Component{
                           </Popover>
 
 
+<<<<<<< HEAD
                         <div id="price-range" style={{display:"none"}}/>
                           {/*<span className="price-msg">
                               <i className="fa fa-exclamation-triangle" aria-hidden="true" />
                               نارنجی: بودجه تعیین شده به نسبت ارزش پروژه کمتر است! ویش ورک پیشنهاد می کند که برای بالا بردن شانس انجام پروژه ی با کیفیت، کف بودجه را افزایش دهید.
                           </span>*/}
+=======
+                          <div id="price-range" style={{display:"none"}}/>
+                          {/*<span className="price-msg">*/}
+                              {/*<i className="fa fa-exclamation-triangle" aria-hidden="true" />*/}
+                              {/*نارنجی: بودجه تعیین شده به نسبت ارزش پروژه کمتر است! ویش ورک پیشنهاد می کند که برای بالا بردن شانس انجام پروژه ی با کیفیت، کف بودجه را افزایش دهید.*/}
+                          {/*</span>*/}
+>>>>>>> 1f00c1f42ce8cf4ed5a66a97433971e64745a835
                         </div>
                         <div className="form-group">
                           <legend htmlFor="" className="col-form-label">
-
-
                             <span className="form-header-fontsize">  زمان دلخواه خود را مشخص کنید. </span>
 
 
@@ -849,15 +855,25 @@ class Projectsubmition extends React.Component{
                           </Popover>
 
                           <div id="time-range"/>
+<<<<<<< HEAD
                           {/*<span className="time-msg">
                               <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
                               آبی: مقدار زمان طلب شده به نسبت اندازه ی پروژه مطلوب می باشد!
                           </span>*/}
+=======
+                          {/*<span className="time-msg">*/}
+                              {/*<i className="fa fa-exclamation-triangle" aria-hidden="true"/>*/}
+                              {/*آبی: مقدار زمان طلب شده به نسبت اندازه ی پروژه مطلوب می باشد!*/}
+                          {/*</span>*/}
+>>>>>>> 1f00c1f42ce8cf4ed5a66a97433971e64745a835
                         </div>
 
                           {showError ? <Error message={this.state.message}/> : (true)}
                           <div>
+                            <span>
                             <Button color="primary" className = "btn btn-rec btn-primary" onClick={this.handleSubmit}>ایجاد پروژه</Button>
+                                <p>۵۰ ویش کوین</p>
+                            </span>
                             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
 
 
@@ -866,7 +882,7 @@ class Projectsubmition extends React.Component{
                                   <span>
 
                                     <Popover placement="right" isOpen={this.state.popoverOpenShow} target="Popover3" toggle={this.togglePopoverShow}>
-                                      <PopoverBody className="beauty-text">پروژه شما به شکل زیر برای فریلنسرها نمایش داده می شود. رنگ بالا نمایانگر قیمت و رنگ پایین نشان دهنده زمان انتخابی شماست. </PopoverBody>
+                                      <PopoverBody className="beauty-text">پروژه شما به شکل زیر برای فریلنسرها نمایش داده می شود. </PopoverBody>
                                     </Popover>
                                   </span>
                               </ModalHeader>

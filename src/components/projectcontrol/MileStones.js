@@ -1,129 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-
-const MileStones = (props)=>{
-
-    return(
-        <div className="container">
-          {/*  <div className="row">
-                <div className="timeline-centered">
-                    <article className="timeline-entry">
-                        <div className="timeline-entry-inner">
-                            <time className="timeline-time"><span>۲۴ آبان</span> <span className="text-muted">تحویل و تایید شد</span></time>
-                            <div className="timeline-icon bg-primary">
-                                <i className="entypo-feather"/>
-                            </div>
-                            <div className="timeline-label">
-                                <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
-                                <p className="form-body-fontsize beauty-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                                <button type="submit" className="btn btn-primary btn-rec">
-                                    <i className="fa fa-download"/>
-                                </button>
-                                <button type="submit" className="btn btn-secondary btn-rec" disabled>
-                                    تایید شده
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-                    <article className="timeline-entry left-aligned">
-                        <div className="timeline-entry-inner">
-                            <time className="timeline-time"><span>۲۴ آبان</span> <span className="text-muted">تحویل در انتظار تایید</span></time>
-                            <div className="timeline-icon bg-success">
-                                <i className="entypo-suitcase"/>
-                            </div>
-                            <div className="timeline-label">
-                                <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                                <button type="submit" className="btn btn-primary btn-rec">
-                                    <i className="fa fa-download"/>
-                                </button>
-                                <button type="submit" className="btn btn-primary btn-rec">
-                                    تایید؟
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-                    <article className="timeline-entry">
-                        <div className="timeline-entry-inner">
-                            <time className="timeline-time"><span>۲۴ آبان</span> <span className="text-muted">هنوز نرسیده</span></time>
-                            <div className="timeline-icon bg-secondary">
-                                <i className="entypo-location"/>
-                            </div>
-                            <div className="timeline-label">
-                                <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                                <button type="submit" className="btn btn-secondary btn-rec" disabled>
-                                    <i className="fa fa-download"/>
-                                </button>
-                                <button type="submit" className="btn btn-secondary btn-rec" disabled>
-                                    نرسیده
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-                    <article className="timeline-entry left-aligned">
-                        <div className="timeline-entry-inner">
-                            <time className="timeline-time"><span>۲۴ آبان</span> <span className="text-muted">هنوز نرسیده</span></time>
-                            <div className="timeline-icon bg-secondary">
-                                <i className="entypo-location"/>
-                            </div>
-                            <div className="timeline-label">
-                                <h2><a href="#"><span>صفحات </span>۱ تا ۲۵</a></h2>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                                <button type="submit" className="btn btn-secondary btn-rec" disabled>
-                                    <i className="fa fa-download"/>
-                                </button>
-                                <button type="submit" className="btn btn-secondary btn-rec" disabled>
-                                    نرسیده
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-
-                    <article className="timeline-entry begin">
-
-                        <div className="timeline-entry-inner">
-                            <div className="timeline-icon" style={{WebkitTransform: 'rotate(-90deg)',MozTransform: 'rotate(-90deg)'}}>
-                                <i className="entypo-flight"/>
-                            </div>
-                        </div>
-
-                    </article>
-
-                </div>
-            </div> */}
-            <div> پروژه مجلسی </div>
-            <div className="row">
-              <div className="col-sm-2">
-              <span className="cp-circle">
-                <i className="fa fa-stop cp-finish-fa" aria-hidden="true"></i>
-              </span>
-              <span className="cp-connector"></span>
-              </div>
-
-              <div className="col-sm-2">
-                <span className=" cp-circle"></span>
-                <span className="cp-connector"></span>
-              </div>
-              <div className="col-sm-2">
-                <span className=" cp-circle"></span>
-                <span className="cp-connector"></span>
-              </div>
-              <div className="col-sm-2">
-                <span className=" cp-circle"></span>
-                <span className="cp-connector"></span>
-              </div>
-              <div className="col-sm-2">
-                <span className=" cp-circle"></span>
-                <span className="cp-connector"></span>
-              </div>
-              <div className="col-sm-2">
-                <span className=" cp-circle">
-                  <i className="fa fa-play cp-start-fa" aria-hidden="true"></i>
-                </span>
-              </div>
-=======
 import MileStoneFatherForFreelancer from './MileStoneFatherForFreelancer';
 import MileStoneFatherForClient from './MileStoneFatherForClient'
 const MileStones = (props)=> {
@@ -151,7 +26,6 @@ const MileStones = (props)=> {
         return (
             <div>
                 {FreelancerProject}
->>>>>>> 1f00c1f42ce8cf4ed5a66a97433971e64745a835
             </div>
         )
     }
@@ -163,9 +37,6 @@ const MileStones = (props)=> {
 };
 export default MileStones;
 
-<<<<<<< HEAD
-export default MileStones
-=======
 // <div className="container">
 //     <div className="row">
 //     <div className="timeline-centered">
@@ -255,4 +126,3 @@ export default MileStones
 // </div>
 // </div>
 // </div>
->>>>>>> 1f00c1f42ce8cf4ed5a66a97433971e64745a835

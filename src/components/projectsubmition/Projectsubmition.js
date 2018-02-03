@@ -829,19 +829,16 @@ class Projectsubmition extends React.Component{
                           </Popover>
 
 
-<<<<<<< HEAD
                         <div id="price-range" style={{display:"none"}}/>
                           {/*<span className="price-msg">
                               <i className="fa fa-exclamation-triangle" aria-hidden="true" />
                               نارنجی: بودجه تعیین شده به نسبت ارزش پروژه کمتر است! ویش ورک پیشنهاد می کند که برای بالا بردن شانس انجام پروژه ی با کیفیت، کف بودجه را افزایش دهید.
                           </span>*/}
-=======
                           <div id="price-range" style={{display:"none"}}/>
                           {/*<span className="price-msg">*/}
                               {/*<i className="fa fa-exclamation-triangle" aria-hidden="true" />*/}
                               {/*نارنجی: بودجه تعیین شده به نسبت ارزش پروژه کمتر است! ویش ورک پیشنهاد می کند که برای بالا بردن شانس انجام پروژه ی با کیفیت، کف بودجه را افزایش دهید.*/}
                           {/*</span>*/}
->>>>>>> 1f00c1f42ce8cf4ed5a66a97433971e64745a835
                         </div>
                         <div className="form-group">
                           <legend htmlFor="" className="col-form-label">
@@ -855,17 +852,14 @@ class Projectsubmition extends React.Component{
                           </Popover>
 
                           <div id="time-range"/>
-<<<<<<< HEAD
                           {/*<span className="time-msg">
                               <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
                               آبی: مقدار زمان طلب شده به نسبت اندازه ی پروژه مطلوب می باشد!
                           </span>*/}
-=======
                           {/*<span className="time-msg">*/}
                               {/*<i className="fa fa-exclamation-triangle" aria-hidden="true"/>*/}
                               {/*آبی: مقدار زمان طلب شده به نسبت اندازه ی پروژه مطلوب می باشد!*/}
                           {/*</span>*/}
->>>>>>> 1f00c1f42ce8cf4ed5a66a97433971e64745a835
                         </div>
 
                           {showError ? <Error message={this.state.message}/> : (true)}

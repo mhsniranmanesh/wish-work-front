@@ -4,8 +4,8 @@ const DownloadTemplate = (props) =>{
     return(
         <div className="download-file">
             <a download="wish-work-file" href={props.fileATC.file} target="_blank">
-            <span  id="download-symbol"> <i className="fa fa-download " aria-hidden="true"/> </span>
-            <span> فایل۱ - {props.Describtion}  </span>
+              <span  id="download-symbol"> <i className="fa fa-download " aria-hidden="true"/> </span>
+              <span className="file-subject"> فایل۱ - {props.Describtion}  </span>
             </a>
         </div>
     )

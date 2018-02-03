@@ -1,9 +1,10 @@
 import React from 'react';
 
 const MileStones = (props)=>{
+
     return(
         <div className="container">
-            <div className="row">
+          {/*  <div className="row">
                 <div className="timeline-centered">
                     <article className="timeline-entry">
                         <div className="timeline-entry-inner">
@@ -90,6 +91,37 @@ const MileStones = (props)=>{
                     </article>
 
                 </div>
+            </div> */}
+            <div> پروژه مجلسی </div>
+            <div className="row">
+              <div className="col-sm-2">
+              <span className="cp-circle">
+                <i className="fa fa-stop cp-finish-fa" aria-hidden="true"></i>
+              </span>
+              <span className="cp-connector"></span>
+              </div>
+
+              <div className="col-sm-2">
+                <span className=" cp-circle"></span>
+                <span className="cp-connector"></span>
+              </div>
+              <div className="col-sm-2">
+                <span className=" cp-circle"></span>
+                <span className="cp-connector"></span>
+              </div>
+              <div className="col-sm-2">
+                <span className=" cp-circle"></span>
+                <span className="cp-connector"></span>
+              </div>
+              <div className="col-sm-2">
+                <span className=" cp-circle"></span>
+                <span className="cp-connector"></span>
+              </div>
+              <div className="col-sm-2">
+                <span className=" cp-circle">
+                  <i className="fa fa-play cp-start-fa" aria-hidden="true"></i>
+                </span>
+              </div>
             </div>
         </div>
     )

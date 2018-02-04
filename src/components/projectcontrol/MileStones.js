@@ -35,6 +35,13 @@ const MileStones = (props)=> {
             </div>
         )
     }
+    else if(props.AsClientProject.length){
+        return(
+            <div>
+                {ClientProject}
+            </div>
+        )
+    }
     else {
         return(
             <div></div>

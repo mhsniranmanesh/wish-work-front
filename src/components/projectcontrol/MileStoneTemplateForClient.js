@@ -12,19 +12,20 @@ const MileStoneTemplateForClient = ({CPClient})=>{
         if(CPClient.is_submitted){
             if(CPClient.is_revised){
                 return (
-                    <div>
+                    <div className="row">
                         <article className="timeline-entry">
                             <div className="timeline-entry-inner">
-                                <time className="timeline-time"><span>
-                            </span> <span className="text-muted">بازنگری شده</span></time>
+                                <time className="timeline-time">
+                                  <span className="text-muted">بازنگری شده</span>
+                                </time>
                                 <div className="timeline-icon bg-success">
                                     <i className="entypo-location"/>
                                 </div>
                                 <div className="timeline-label">
                                     <h2><a href="#">{CPClient.description}</a></h2>
-                                     <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
-                                        <i className="fa fa-download"/>
-                                    </Button>
+                                      <button type="submit" class="btn btn-primary btn-rec">
+                                          <i class="fa fa-download fa-download-dash-cp-success"></i>
+                                      </button>
                                     <input type="file" color="secondary" className="btn btn-secondary btn-rec" placeholder="آپلود کنید"/>
                                 </div>
                             </div>
@@ -35,25 +36,27 @@ const MileStoneTemplateForClient = ({CPClient})=>{
             else if(diffSecFromRevison>0){
                 //mohlat vase emal nazar dare
                 return (
-                    <div>
+                    <div className="row">
                         <article className="timeline-entry">
-                            <div className="timeline-entry-inner">
-                                <time className="timeline-time"><span>
-                            </span> <span className="text-muted">فایل خود را دانلود کنید ، اگر پیشنهاد و یا انتقادی به ترجمه دارید میتوانید اینجا بفرستید،
+                              <div className="timeline-entry-inner">
+                                <div className="timeline-time">
+                                  <span className="text-muted">فایل خود را دانلود کنید ، اگر پیشنهاد و یا انتقادی به ترجمه دارید میتوانید اینجا بفرستید،
                                     در غیر این صورت بر روی تایید کلیک کنید</span>
-                                </time>
-                                <div className="timeline-icon bg-warning">
-                                    <i className="entypo-location"/>
                                 </div>
-                                <div className="timeline-label">
-                                    <h2><a href="#">{CPClient.description}</a></h2>
-                                    <textarea type="text" className="form-control form-body-fontsize" id="Popover4" placeholder="انتقادات و پیشنهادات خود را در این بخش بنویسید"/>
-                                    <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
-                                        <i className="fa fa-download"/>
-                                    </Button>
+
+                                  <div className="timeline-icon bg-warning">
+                                      <i className="entypo-location"/>
+                                  </div>
+
+                                  <div className="timeline-label">
+                                      <h2><a href="#">{CPClient.description}</a></h2>
+                                      <textarea type="text" className="form-control form-body-fontsize" id="Popover4" placeholder="انتقادات و پیشنهادات خود را در این بخش بنویسید"/>
+                                      <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
+                                          <i className="fa fa-download fa-download-dash-cp-now"/>
+                                      </Button>
+                                  </div>
                                 </div>
-                            </div>
-                        </article>
+                         </article>
                     </div>
                 )
             }
@@ -71,7 +74,7 @@ const MileStoneTemplateForClient = ({CPClient})=>{
                                 <div className="timeline-label">
                                     <h2><a href="#">{CPClient.description}</a></h2>
                                     <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
-                                        <i className="fa fa-download"/>
+                                        <i className="fa fa-download fa-download-dash-cp-notyet"/>
                                     </Button>
                                     <input type="file" color="secondary" className="btn btn-secondary btn-rec" placeholder="آپلود کنید"/>
                                 </div>
@@ -97,7 +100,7 @@ const MileStoneTemplateForClient = ({CPClient})=>{
                                 <div className="timeline-label">
                                     <h2><a href="#">{CPClient.description}</a></h2>
                                     <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
-                                        <i className="fa fa-download"/>
+                                        <i className="fa fa-download fa-download-dash-cp-notyet"/>
                                     </Button>
                                 </div>
                             </div>
@@ -118,7 +121,7 @@ const MileStoneTemplateForClient = ({CPClient})=>{
                                 <div className="timeline-label">
                                     <h2><a href="#">{CPClient.description}</a></h2>
                                     <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
-                                        <i className="fa fa-download"/>
+                                        <i className="fa fa-download fa-download-dash-cp-notyet"/>
                                     </Button>
                                 </div>
                             </div>
@@ -143,7 +146,7 @@ const MileStoneTemplateForClient = ({CPClient})=>{
                         <div className="timeline-label">
                             <h2><a href="#">{CPClient.description}</a></h2>
                             <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
-                                <i className="fa fa-download"/>
+                                <i className="fa fa-download fa-download-dash-cp-notyet"/>
                             </Button>
                         </div>
                     </div>

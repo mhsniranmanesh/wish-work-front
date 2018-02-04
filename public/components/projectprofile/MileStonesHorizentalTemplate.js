@@ -4,188 +4,232 @@ import {Row , Col} from 'reactstrap';
 const MileStonesHorizentalTemplate = (props) =>{
    // for(var x=0 ; x< props.number_of_milestones x++)
     // var numberDivided = Math.floor(numberDivided/)
+    console.log(props.a , "length")
     var end = props.a -1;
-    if(props.i === 0 && end === 0) {
-        return (
-            <div>
-                <div className="milestone">
-                    <article className="timeline-entry">
-                        <Row>
-                            <div className="timeline-entry-inner">
-                                <Col>
-                                    <time className="timeline-time"><span className="cp-deadline-left">شروع!</span>
-                                    </time>
-                                </Col>
-                                <Col id="badge-margin">
-                                    <div className="timeline-icon bg-success" id="bg-primary-right">
-                                        <i className="entypo-feather"/>
-                                    </div>
-                                </Col>
-                                <Col>
-                                    <div className="timeline-label ">
-                                        <h2><a href="#">
-                                            <div></div>
-                                        </a></h2>
-                                    </div>
-                                </Col>
-                            </div>
-                        </Row>
-                    </article>
+    var interval = props.a;
+    console.log(interval,"interval")
+        if(interval == 1){
+          return(
+            <div className="col-sm-12">
+                <div className="col-sm-10">
+                    <span className="cp-circle">
+                      <i className="fa fa-stop cp-finish-fa" aria-hidden="true"></i>
+                    </span>
+                    <span className="cp-connector-2"></span>
                 </div>
-                <div className="milestone">
-                    <article className="timeline-entry">
-                        <Row>
-                            <div className="timeline-entry-inner">
-                                <Col>
-                                    <time className="timeline-time"><span className="cp-deadline-left">تا {props.x} روز دیگر</span>
-                                    </time>
-                                </Col>
-                                <Col id="badge-margin">
-                                    <div className="timeline-icon bg-danger" id="bg-primary-right">
-                                        <i className="entypo-feather"/>
-                                    </div>
-                                </Col>
-                                <Col>
-                                    <div className="timeline-label ">
-                                        <h2><a href="#">
-                                            <div>تا صفحه {props.page}</div>
-                                        </a></h2>
-                                    </div>
-                                </Col>
-                            </div>
-                        </Row>
-                    </article>
+                <div className="col-sm-2">
+                      <span className=" cp-circle">
+                        <i className="fa fa-play cp-start-fa" aria-hidden="true"></i>
+                      </span>
                 </div>
             </div>
-
-
         );
-    }
-    else if(props.i === 0){
-        return (
-            <div className="milestone">
-                <article className="timeline-entry">
-                    <Row>
-                        <div className="timeline-entry-inner">
-                            <Col>
-                                <time className="timeline-time"><span className="cp-deadline-left">شروع!</span></time>
-                            </Col>
-                            <Col id="badge-margin">
-                                <div className="timeline-icon bg-success" id="bg-primary-right">
-                                    <i className="entypo-feather"/>
-                                </div>
-                            </Col>
-                            <Col>
-                                <div className="timeline-label ">
-                                    <h2><a href="#"><div></div></a></h2>
-                                </div>
-                            </Col>
-                        </div>
-                    </Row>
-                </article>
-                <div>
-                    <article className="timeline-entry left-aligned">
-                        <Row>
-                            <div className="timeline-entry-inner">
-                                <Col>
-                                    <time className="timeline-time"><span className="cp-deadline-right">تا {props.x} روز دیگر </span></time>
-                                </Col>
-                                <Col>
-                                    <div className="timeline-icon bg-primary" id="bg-primary-left">
-                                        <i className="entypo-suitcase"/>
-                                    </div>
-                                </Col>
-                                <Col>
-                                    <div className="timeline-label">
-                                        <h2><a href="#"><div>تا صفحه {props.page}</div></a></h2>
-                                    </div>
-                                </Col>
+
+        }
+        else{
+              if(props.i === 0){
+                    if(interval == 2){
+                      return(
+                        <div className="col-sm-6">
+                            <div className="col-sm-5">
+                                <span className="cp-circle">
+                                  <i className="fa fa-stop cp-finish-fa" aria-hidden="true"></i>
+                                </span>
+                                <span className="cp-connector-2"></span>
                             </div>
-                        </Row>
-                    </article>
-                </div>
-            </div>
+                            <div className="col-sm-7">
+                              <span className="cp-public-text"> تا {props.x} روز </span>
+                              <span className=" cp-circle"></span>
+                              <span className="cp-connector"></span>
+                              <span className="cp-public-text"> تا صفحه {props.page}</span>
 
-
-        )
-    }
-    else if(props.i === end){
-        return(
-            <div className="milestone">
-                <article className="timeline-entry">
-                    <Row>
-                        <div className="timeline-entry-inner">
-                            <Col>
-                                <time className="timeline-time"><span className="cp-deadline-left">تا {props.x} روز دیگر</span></time>
-                            </Col>
-                            <Col id="badge-margin">
-                                <div className="timeline-icon bg-danger" id="bg-primary-right">
-                                    <i className="entypo-feather"/>
-                                </div>
-                            </Col>
-                            <Col>
-                                <div className="timeline-label ">
-                                    <h2><a href="#"><div>تا صفحه {props.page}</div></a></h2>
-                                </div>
-                            </Col>
-                        </div>
-                    </Row>
-                </article>
-            </div>
-        )
-    }
-    else if((props.i % 2 !== 0) && (props.i !== end)) {
-        return (
-            <div className="milestone">
-                <article className="timeline-entry">
-                  <Row>
-                        <div className="timeline-entry-inner">
-                          <Col>
-                            <time className="timeline-time"><span className="cp-deadline-left">تا {props.x} روز دیگر</span></time>
-                          </Col>
-                          <Col id="badge-margin">
-                            <div className="timeline-icon bg-primary" id="bg-primary-right">
-                                <i className="entypo-feather"/>
                             </div>
-                          </Col>
-                          <Col>
-                            <div className="timeline-label ">
-                                <h2><a href="#"><div>تا صفحه {props.page}</div></a></h2>
-                            </div>
-                          </Col>
                         </div>
-                  </Row>
-                </article>
-            </div>
-        )
-    }
 
-    else {
-        return(
-        <div>
-            <article className="timeline-entry left-aligned">
-              <Row>
-                  <div className="timeline-entry-inner">
-                    <Col>
-                      <time className="timeline-time"><span className="cp-deadline-right">تا {props.x} روز دیگر </span></time>
-                    </Col>
-                    <Col>
-                      <div className="timeline-icon bg-primary" id="bg-primary-left">
-                          <i className="entypo-suitcase"/>
-                      </div>
-                    </Col>
-                    <Col>
-                      <div className="timeline-label">
-                          <h2><a href="#"><div>تا صفحه {props.page}</div></a></h2>
-                      </div>
-                    </Col>
-                  </div>
-              </Row>
-            </article>
-        </div>
-        )
+                      )
+                    }
+                    else if(interval == 3){
+                      return(
+                        <div className="col-sm-5">
+                            <div className="col-sm-5">
+                                <span className="cp-circle">
+                                  <i className="fa fa-stop cp-finish-fa" aria-hidden="true"></i>
+                                </span>
+                                <span className="cp-connector"></span>
+                            </div>
+                            <div className="col-sm-7">
+                              <span className="cp-public-text"> تا {props.x} روز </span>
+                              <span className=" cp-circle"></span>
+                              <span className="cp-connector"></span>
+                              <span className="cp-public-text"> تا صفحه {props.page}</span>
+                            </div>
+                        </div>
+                      )
+                    }
+                    else if(interval == 4){
+                      return(
+                        <div className="col-sm-4">
+                            <div className="col-sm-5">
+                                <span className="cp-circle">
+                                  <i className="fa fa-stop cp-finish-fa" aria-hidden="true"></i>
+                                </span>
+                                <span className="cp-connector"></span>
+                            </div>
+                            <div className="col-sm-7">
+                              <span className="cp-public-text"> تا {props.x} روز </span>
+                              <span className=" cp-circle"></span>
+                              <span className="cp-connector"></span>
+                              <span className="cp-public-text"> تا صفحه {props.page}</span>
+                            </div>
+                        </div>
+                      )
+                    }
+                    else{
+                      return(
+                        <div></div>
+                      )
+                    }
 
-    }
-};
+              }
+              else if(props.i === end){
+                    if(interval == 2){
+                      return(
+                        <div className="col-sm-10">
+                            <div className="col-sm-7">
+                              <span className="cp-public-text"> تا {props.x} روز </span>
+                              <span className=" cp-circle"></span>
+                              <span className="cp-connector-2"></span>
+                              <span className="cp-public-text"> تا صفحه {props.page}</span>
+                            </div>
+                            <div className="col-sm-5">
+                              <span className=" cp-circle">
+                                <i className="fa fa-play cp-start-fa" aria-hidden="true"></i>
+                              </span>
+                            </div>
+                         </div>
+                      )
+                    }
+                    else if(interval == 3){
+                      return(
+                          <div className="col-sm-5">
+                              <div className="col-sm-7">
+                                <span className="cp-public-text"> تا {props.x} روز </span>
+                                <span className=" cp-circle"></span>
+                                <span className="cp-connector"></span>
+                                <span className="cp-public-text"> تا صفحه {props.page}</span>
+                              </div>
+                              <div className="col-sm-5">
+                                <span className=" cp-circle">
+                                  <i className="fa fa-play cp-start-fa" aria-hidden="true"></i>
+                                </span>
+                              </div>
+                           </div>
+                      )
+                    }
+                    else if( interval == 4 ){
+                      return(
+                          <div className="col-sm-4">
+                              <div className="col-sm-5">
+                                <span className="cp-public-text"> تا {props.x} روز </span>
+                                <span className=" cp-circle"></span>
+                                <span className="cp-connector"></span>
+                                <span className="cp-public-text"> تا صفحه {props.page}</span>
+                              </div>
+                              <div className="col-sm-7">
+                                <span className=" cp-circle">
+                                  <i className="fa fa-play cp-start-fa" aria-hidden="true"></i>
+                                </span>
+                              </div>
+                           </div>
+                         )
+                    }
+                    else{
+                      return(
+                        <div></div>
+                      )
+                    }
+              }
+              else if((props.i % 2 !== 0) && (props.i !== end)){
+                    if(interval == 2){
+                      return(
+                          <div className="col-sm-3">
+                            <span className="cp-public-text"> تا {props.x} روز </span>
+                            <span className=" cp-circle"></span>
+                            <span className="cp-connector-2"></span>
+                            <span className="cp-public-text"> تا صفحه {props.page}</span>
+                          </div>
+                      )
+                    }
+                    else if(interval == 3){
+                      return(
+                          <div className="col-sm-2">
+                            <span className="cp-public-text"> تا {props.x} روز </span>
+                            <span className=" cp-circle"></span>
+                            <span className="cp-connector"></span>
+                            <span className="cp-public-text"> تا صفحه {props.page}</span>
+                          </div>
+                      )
+                    }
+                    else if(interval == 4){
+                      return(
+                        <div className="col-sm-2">
+                          <span className="cp-public-text"> تا {props.x} روز </span>
+                          <span className=" cp-circle"></span>
+                          <span className="cp-connector"></span>
+                          <span className="cp-public-text"> تا صفحه {props.page}</span>
+                        </div>
+                      )
+                    }
+                    else{
+                      return(
+                        <div></div>
+                      )
+                    }
+              }
+              else{
+                    if(interval == 2){
+                      return(
+                          <div className="col-sm-3">
+                            <span className="cp-public-text"> تا {props.x} روز </span>
+                            <span className=" cp-circle"></span>
+                            <span className="cp-connector-2"></span>
+                            <span className="cp-public-text"> تا صفحه {props.page}</span>
+                          </div>
+                      )
+                    }
+                    else if(interval == 3){
+                      return(
+                          <div className="col-sm-2">
+                            <span className="cp-public-text"> تا {props.x} روز </span>
+                            <span className=" cp-circle"></span>
+                            <span className="cp-connector"></span>
+                            <span className="cp-public-text"> تا صفحه {props.page}</span>
+                          </div>
+                      )
+                    }
+                    else if(interval == 4){
+                      return(
+                        <div className="col-sm-2">
+                          <span className="cp-public-text"> تا {props.x} روز </span>
+                          <span className=" cp-circle"></span>
+                          <span className="cp-connector"></span>
+                          <span className="cp-public-text"> تا صفحه {props.page}</span>
+                        </div>
+                      )
+                    }
+                    else {
+                      return(
+                        <div></div>
+                      )
+                    }
 
-export default MileStonesHorizentalTemplate;
+              }
+        }
+
+
+
+
+
+  };
+
+    export default MileStonesHorizentalTemplate;

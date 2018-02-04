@@ -27,12 +27,21 @@ const AddBidMileStones = (props) => {
             var y = props.delivery_duration;
             var page1 = props.numberOfPages;
             console.log(i , y , 'i1 , x1');
-            rows.push(<MileStonesHorizentalTemplate i={i} a={a} key={i} numberOfMileStones={props.number_of_milestones}
+            rows.push(<MileStonesHorizentalTemplate i={i} a={a} key={i*10} numberOfMileStones={props.number_of_milestones}
                                                     x={y} page={page1} numberOfPages={props.numberOfPages}/>);
 
         }
     }
-    return <div>{rows}</div>;
+
+
+    
+    return (
+    <div className="row cp-box">
+
+      {rows}
+
+    </div>
+  );
 }
 
 AddBidMileStones.PropTypes ={

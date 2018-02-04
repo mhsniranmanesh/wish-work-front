@@ -858,7 +858,7 @@ span .project-header-flag span{
     clear: both;
 }
 
-.timeline-centered:before {
+/*.timeline-centered:before {
     content: '';
     position: absolute;
     display: block;
@@ -869,7 +869,7 @@ span .project-header-flag span{
     bottom: 20px;
     margin-left: -4px;
     box-shadow: 1px 1px 8px #cacaca;
-}
+}*/
 
 .timeline-centered .timeline-entry {
     position: relative;
@@ -1866,63 +1866,7 @@ div #bg-primary-left {
     height: 50px;
 }
 
-.contact-list {
-    padding: 0;
-    margin: 0;
-    color: #fff;
-    list-style: none;
-}
 
-.contact-list li.contact:hover {
-    background: #002533;
-}
-
-.contact-list li.contact {
-    position: relative;
-    padding: 10px 0 0 0;
-    font-size: 0.9em;
-    cursor: pointer;
-}
-
-.contact-list li.contact .wrap {
-    width: 95%;
-    margin: 0 auto;
-    position: relative;
-}
-
-.contact-list li.contact .wrap img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 5px;
-}
-
-.contact-list li.contact .wrap .meta {
-    padding: 5px 15px 15px 0;
-    width: 100%;
-    border-bottom: 1px solid #002533;
-}
-
-.contact-list li.contact .wrap .meta .name {
-    font-weight: 400;
-    margin: 0;
-    float: right;
-}
-
-.contact-list li.contact .wrap .meta .time {
-    font-weight: 400;
-    margin: 0;
-    text-align: left;
-}
-
-.contact-list li.contact .wrap .meta .preview {
-    margin: 5px 0 0 0;
-    padding: 0 0 1px;
-    font-weight: 300;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 
 .search-holder .input-group-addon:first-child {
     border-left: 0;
@@ -1942,15 +1886,7 @@ div #bg-primary-left {
     overflow: hidden;
 }
 
-.contact-list .active {
-    background-color: #002533;
-}
 
-.contact-list .badge {
-    float: right;
-    margin-right: 5px;
-    font-weight: 400;
-}
 
 .send-btn {
     background: #018abe;

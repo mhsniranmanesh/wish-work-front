@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import * as ControlProjectActions from '../../actions/mileStoneActions';
 import * as ProfileInfoActions from '../../actions/profileInfo';
+import ProjectsList from './projectsList';
 
 class ProjectControl extends React.Component{
     constructor(props){
@@ -89,7 +90,7 @@ class ProjectControl extends React.Component{
       <div className="content-wrapper py-3">
           <div className="container-fluid">
               <div className="row">
-                  <div className="col-sm-8 d-block mx-auto">
+                  <div className="col-sm-8 d-block">
                       <div className="dash-con dash-new-project con-body mb-4">
                           <h5 className="form-title-fontsize">کنترل پروژه</h5>
                           <div className="dash-divider"/>
@@ -104,6 +105,14 @@ class ProjectControl extends React.Component{
 
                           />:(null)}
                       </div>
+                  </div>
+                  <div className="col-sm-4 contacts-section">
+                      {this.state.loadSuccess? <ProjectsList
+                          AsClientProject={this.state.AsClientProject}
+                          AsFreelancerProject={this.state.AsFreelancerProject}
+                        />
+                      :(null)
+                       }
                   </div>
               </div>
           </div>

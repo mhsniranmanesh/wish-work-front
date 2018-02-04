@@ -136,7 +136,7 @@ const AddBid = (props) => {
                                     {props.showWarnings ? <Warnings message={props.message}/> : (true)}
                                     <br/><br/>
 
-                                    <div className="jumbotron">
+                                    <div>
                                         <div className="container">
                                             <div className="row">
                                                 <div className="timeline-centered">

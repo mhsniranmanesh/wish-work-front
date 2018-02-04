@@ -21,7 +21,7 @@ const MileStoneTemplateForClient = ({CPClient})=>{
                                     <i className="entypo-location"/>
                                 </div>
                                 <div className="timeline-label">
-                                    <h2><a href="#">{CP.description}</a></h2>
+                                    <h2><a href="#">{CPClient.description}</a></h2>
                                      <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
                                         <i className="fa fa-download"/>
                                     </Button>
@@ -39,14 +39,15 @@ const MileStoneTemplateForClient = ({CPClient})=>{
                         <article className="timeline-entry">
                             <div className="timeline-entry-inner">
                                 <time className="timeline-time"><span>
-                            </span> <span className="text-muted">اگر پیشنهاد و یا انتقادی به ترجمه دارید میتوانید اینجا بفرستید،
+                            </span> <span className="text-muted">فایل خود را دانلود کنید ، اگر پیشنهاد و یا انتقادی به ترجمه دارید میتوانید اینجا بفرستید،
                                     در غیر این صورت بر روی تایید کلیک کنید</span>
                                 </time>
                                 <div className="timeline-icon bg-warning">
                                     <i className="entypo-location"/>
                                 </div>
                                 <div className="timeline-label">
-                                    <h2><a href="#">{CP.description}</a></h2>
+                                    <h2><a href="#">{CPClient.description}</a></h2>
+                                    <textarea type="text" className="form-control form-body-fontsize" id="Popover4" placeholder="انتقادات و پیشنهادات خود را در این بخش بنویسید"/>
                                     <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
                                         <i className="fa fa-download"/>
                                     </Button>
@@ -63,12 +64,12 @@ const MileStoneTemplateForClient = ({CPClient})=>{
                         <article className="timeline-entry">
                             <div className="timeline-entry-inner">
                                 <time className="timeline-time"><span>
-                            </span> <span className="text-muted">پروژه از طرف شما به علت نپرداختن کنسل شد.</span></time>
+                            </span> <span className="text-muted">پروژه از طرف شما به علت نپرداختن وجه کنسل شد.</span></time>
                                 <div className="timeline-icon bg-danger">
                                     <i className="entypo-location"/>
                                 </div>
                                 <div className="timeline-label">
-                                    <h2><a href="#">{CP.description}</a></h2>
+                                    <h2><a href="#">{CPClient.description}</a></h2>
                                     <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
                                         <i className="fa fa-download"/>
                                     </Button>
@@ -94,7 +95,7 @@ const MileStoneTemplateForClient = ({CPClient})=>{
                                     <i className="entypo-location"/>
                                 </div>
                                 <div className="timeline-label">
-                                    <h2><a href="#">{CP.description}</a></h2>
+                                    <h2><a href="#">{CPClient.description}</a></h2>
                                     <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
                                         <i className="fa fa-download"/>
                                     </Button>
@@ -110,12 +111,12 @@ const MileStoneTemplateForClient = ({CPClient})=>{
                         <article className="timeline-entry">
                             <div className="timeline-entry-inner">
                                 <time className="timeline-time"><span>
-                            </span> <span className="text-muted">فریلنسر شما پروژه را انجام نداد و پروژه به صورت خودکار کنسل شد، وجه شما طی دوروز آینده به حسابتان واریز می شود</span></time>
+                            </span> <span className="text-muted">فریلنسر شما پروژه را انجام نداده و پروژه به صورت خودکار کنسل شد، وجه شما طی دوروز آینده به حسابتان واریز می شود</span></time>
                                 <div className="timeline-icon bg-warning">
                                     <i className="entypo-location"/>
                                 </div>
                                 <div className="timeline-label">
-                                    <h2><a href="#">{CP.description}</a></h2>
+                                    <h2><a href="#">{CPClient.description}</a></h2>
                                     <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
                                         <i className="fa fa-download"/>
                                     </Button>
@@ -140,7 +141,7 @@ const MileStoneTemplateForClient = ({CPClient})=>{
                             <i className="entypo-location"/>
                         </div>
                         <div className="timeline-label">
-                            <h2><a href="#">{CP.description}</a></h2>
+                            <h2><a href="#">{CPClient.description}</a></h2>
                             <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
                                 <i className="fa fa-download"/>
                             </Button>

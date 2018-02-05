@@ -2131,6 +2131,7 @@ a.delete-project:hover:after {
   width: 155%;
   margin-top: -15px;
   margin-right: 30px;
+  margin-bottom: 10px;
 }
 
 .cp-connector-2{
@@ -2140,6 +2141,22 @@ a.delete-project:hover:after {
   width: 100%;
   margin-top: -15px;
   margin-right: 30px;
+  margin-bottom: 10px;
+}
+
+
+.cp-beside-start{
+  margin-top: -21px;
+}
+.cp-beside-finish{
+  margin-top: -22px
+}
+.cp-between{
+  margin-top: -21px;
+}
+
+.cp-start{
+  margin-top: 3px;
 }
 
 .cp-box{
@@ -2152,9 +2169,19 @@ a.delete-project:hover:after {
   font-size: 10px;
 }
 
-.cp-start-fa, .cp-finish-fa{
-  margin: 7px 7px 0 0px;
-  font-size: 13px;
+.cp-public-text-4{
+  font-size: 8px;
+}
+
+.cp-finish-fa{
+  margin: 7px 8px 0 0px;
+  font-size: 12px;
+  color: #018abe;
+}
+
+.cp-start-fa{
+  margin: 1px 10px 0 0px;
+  font-size: 25px;
   color: #018abe;
 }
 

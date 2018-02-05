@@ -8,7 +8,6 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                 number, mileStoneX, goToCash, priceForCash, modalCashEnough,numberOfPages,
                                 cashinModalState , balance,prices, acceptBid , id ,numberOfMileStonesOfEachFreelancer}) => {
     var mileStones = [];
-    console.log(price_of_bid , 'price_of_bid');
     for (var i = 0; i < number_of_milestones; i++) {
         var  x = Math.floor((delivery_duration) / (number_of_milestones) + (i * (delivery_duration) / (number_of_milestones)));
         var page = Math.floor((numberOfPages) / (number_of_milestones) + (i * (numberOfPages) / (number_of_milestones)));
@@ -16,12 +15,10 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
     }
     numberOfMileStonesOfEachFreelancer[number] = number_of_milestones;
     prices[number] = price_of_bid;
-    console.log(prices);
     priceOfMileStoneForCash[number] = prices[number]/numberOfMileStonesOfEachFreelancer[number];
     mileStoneX[number] = mileStones;
         if ((mileStoneX[number] !== undefined)) {
             var y = price_of_bid;
-            console.log(mileStoneX[number], 'props.mileStoneX[props.number]', number, 'props.number');
             if (balance >= priceOfMileStoneForCash[number]) {
                 return (
                 <div>
@@ -85,7 +82,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                                          className="btn btn-rec btn-secondary" data-dismiss="modal">
                                                         انصراف
                                                     </btn>
-                                                  
+
                                                 </div>
                                             </div>
                                         </div>

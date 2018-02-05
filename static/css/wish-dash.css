@@ -1497,17 +1497,21 @@ div #bg-primary-left {
     clear: both;
 }
 
+
+
 .timeline-centered:before {
     content: '';
     position: absolute;
     display: block;
-    width: 4px;
+    width: 0;
     background: #f5f5f6;
     left: 50%;
     top: 20px;
     bottom: 20px;
     margin-left: -4px;
 }
+
+
 
 .timeline-centered .timeline-entry {
     position: relative;

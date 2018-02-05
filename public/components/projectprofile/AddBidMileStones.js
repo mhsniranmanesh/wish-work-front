@@ -5,15 +5,29 @@ import PropTypes from 'prop-types';
 const AddBidMileStones = (props) => {
     var rows = [];
     var a = props.Length;
+var dayNew = 0;
+var pageNew = 0;
+
     for (var i = 0; i < a ; i++) {
+      var dayRemain;
+      var pageRemain;
+      var pageOld;
+      var dayOld;
         if(i < (a-1)) {
            var  x = Math.floor((props.delivery_duration) / (props.number_of_milestones) + (i * (props.delivery_duration) / (props.number_of_milestones)));
+           dayOld = dayNew;
+           dayNew = x;
+           dayRemain = dayNew - dayOld;
             // note: we add a key prop here to allow react to uniquely identify each
             // element in this array. see: https://reactjs.org/docs/lists-and-keys.html
            var page = Math.floor((props.numberOfPages) / (props.number_of_milestones) + (i * (props.numberOfPages) / (props.number_of_milestones)));
+           pageOld = pageNew;
+           pageNew = page;
+           pageRemain = pageNew - pageOld;
             rows.push(<MileStonesHorizentalTemplate i={i} a={a} key={i} numberOfMileStones={props.number_of_milestones}
-                                                    x={x} page={page}/>);
+                                                    x={x} page={page} dayRemain = {dayRemain} pageRemain={pageRemain}/>);
             console.log(i , x , 'i0 , x0')
+
         }
         // else if(i === a-2){
         //     var  t = Math.floor((props.delivery_duration) / (props.number_of_milestones) + (i * (props.delivery_duration) / (props.number_of_milestones)));
@@ -26,15 +40,18 @@ const AddBidMileStones = (props) => {
         else {
             var y = props.delivery_duration;
             var page1 = props.numberOfPages;
-            console.log(i , y , 'i1 , x1');
+            pageRemain = page1 - pageNew;
+            dayRemain = y - dayNew;
+            console.log(pageRemain , 'premain');
+            console.log(dayRemain , 'dremain');
             rows.push(<MileStonesHorizentalTemplate i={i} a={a} key={i*10} numberOfMileStones={props.number_of_milestones}
-                                                    x={y} page={page1} numberOfPages={props.numberOfPages}/>);
+                                                    x={y} page={page1} numberOfPages={props.numberOfPages} pageRemain={pageRemain} dayRemain={dayRemain}/>);
 
         }
     }
 
 
-    
+
     return (
     <div className="row cp-box">
 

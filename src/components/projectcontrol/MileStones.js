@@ -5,40 +5,47 @@ const MileStones = (props)=> {
     let FreelancerProject = [];
     let ClientProject = [];
     console.log(props.AsFreelancerProject, 'AsFreelancerProject');
+    console.log(props.AsClientProject, 'AsClientProject');
+
     if(props.AsFreelancerProject.length) {
         for (var i = 0; i < props.AsFreelancerProject.length; i++) {
-            FreelancerProject.push(<MileStoneFatherForFreelancer key={i}
+            FreelancerProject[2*i]=<MileStoneFatherForFreelancer key={i}
                                                                  project_controller={props.AsFreelancerProject[i].project_controller}
                                                                  uploadFile={props.uploadFile}
                                                                  fileIsUpload={props.fileIsUpload}
                                                                  mileStoneid={props.mileStoneid}
                                                                  sendUploadedFileByFreelancer={props.sendUploadedFileByFreelancer}
-            />)
+
+            />
         }
     }
     if(props.AsClientProject.length) {
         for (var j = 0; j < props.AsClientProject.length; j++) {
-            ClientProject.push(<MileStoneFatherForClient key={j}
+            ClientProject[2*j+1]=<MileStoneFatherForClient key={j}
                                                          project_controller={props.AsClientProject[j].project_controller}
                                                          fileIsUpload={props.fileIsUpload}
                                                          mileStoneid={props.mileStoneid}
-            />)
+                                                         downloadFileModal={props.downloadFileModal}
+                                                         reviseOnChange={props.reviseOnChange}
+                                                         reviseValue={props.reviseValue}
+                                                         submitFeedBack={props.submitFeedBack}
+            />
         }
     }
     //yek myfunc tuye toolbar tarif kon ke az babae miad , badesh ru un ke click mikone ye chi tu state avaz mishe ke un inja ham hast va baes mishe inja
     //ham avaz she
     // tuye tul bar yeja be onvane freelancer va client dare ;)
-    if(props.AsFreelancerProject.length) {
+    if(props.AsFreelancerProject.length && (props.numberSee%2 === 0)) {
         return (
             <div>
-                {FreelancerProject}
+                {FreelancerProject[props.numberSee]}
             </div>
         )
     }
-    else if(props.AsClientProject.length){
+    else if(props.AsClientProject.length && (props.numberSee %2 === 1)){
         return(
             <div>
-                {ClientProject}
+                {ClientProject[props.numberSee]}
             </div>
         )
     }

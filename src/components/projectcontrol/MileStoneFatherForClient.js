@@ -5,7 +5,25 @@ const MileStoneFatherForClient = (props)=>{
     var clientcp = [];
     if(props.project_controller.project_controller_elements.length) {
         for (var i = 0; i < props.project_controller.project_controller_elements.length; i++) {
-            clientcp.push(<MileStoneTemplateForClient key={i} CPClient={props.project_controller.project_controller_elements[i]}/>)
+            if (i < (props.project_controller.project_controller_elements.length - 1)) {
+                clientcp.push(<MileStoneTemplateForClient key={i}
+                                                          CPClient={props.project_controller.project_controller_elements[i]}
+                                                          downloadFileModal={props.downloadFileModal}
+                                                          priceForCashIn={props.project_controller.project_controller_elements[i+1].price}
+                                                          reviseOnChange={props.reviseOnChange}
+                                                          reviseValue={props.reviseValue}
+                                                          submitFeedBack={props.submitFeedBack}
+                />)
+            }
+            else {
+                clientcp.push(<MileStoneTemplateForClient key={i}
+                                                          CPClient={props.project_controller.project_controller_elements[i]}
+                                                          downloadFileModal={props.downloadFileModal}
+                                                          reviseOnChange={props.reviseOnChange}
+                                                          reviseValue={props.reviseValue}
+                                                          submitFeedBack={props.submitFeedBack}
+                />)
+            }
         }
         if (i > 0) {
             console.log(clientcp , 'clientcp');

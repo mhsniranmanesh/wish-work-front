@@ -86,6 +86,8 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                                     </div>
                                     <div className="timeline-label">
                                         <h2><a href="#">{CP.description}</a></h2>
+                                        <p>خواسته ی کارفرما از شما برای مایل استون بعدی</p>
+                                        <p>{CP.project_controller_element_attachments[0].client_feedback}</p>
                                         {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
                                         {/*<i className="fa fa-download"/>*/}
                                         {/*</button>*/}
@@ -139,7 +141,7 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                     <article className="timeline-entry">
                         <div className="timeline-entry-inner">
                             <time className="timeline-time"><span>  </span> <span
-                                className="text-muted">پایان یافته</span></time>
+                                className="text-muted">شروع نشده</span></time>
                             <div className="timeline-icon bg-secondary">
                                 <i className="entypo-location"/>
                             </div>

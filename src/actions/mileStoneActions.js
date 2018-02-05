@@ -20,6 +20,18 @@ export function profileInfo(){
     };
 }
 
+export function sendFeedBack(send) {
+    return function (dispatch) {
+        return axios.post('/api/v1/projects/milestone/revise/' , send).then(
+            ()=>{
+                dispatch(profileInfo());
+            }
+        ).catch(err =>{
+            throw (err);
+        });
+    }
+}
+
 export function sendUploadedFileByFreelancerAction(sendData) {
     return function (dispatch) {
         var fileData = new FormData();

@@ -20,6 +20,13 @@ class Header2 extends React.Component {
         this.profileActive = this.profileActive.bind(this);
         this.accountingActive = this.accountingActive.bind(this);
         this.messageActive = this.messageActive.bind(this);
+        this.exit = this.exit.bind(this);
+    }
+    exit(){
+        localStorage.removeItem('current_login_token');
+        this.context.router.history.push({
+            pathname:'/signin/'
+        });
     }
     componentWillReceiveProps(nextProps){
         if(this.props.profileInfo != nextProps.profileInfo ) {
@@ -199,7 +206,7 @@ class Header2 extends React.Component {
                                          height="30"/>
                                     {this.state.profileInfo.first_name + ' ' + this.state.profileInfo.last_name}
                                 </a>
-                                <div id="profile" className="dropdown-menu" aria-labelledby="navbarUserDropdown">
+                                <div id="profile" className="dropdown-menu" aria-labelledby="navbarUserDropdown" onClick={this.exit}>
                                     <a className="dropdown-item" href="#">خروج</a>
                                 </div>
                             </li>
@@ -210,6 +217,9 @@ class Header2 extends React.Component {
 
         );
     }
+}
+Header2.contextTypes = {
+    router: PropTypes.object.isRequired
 };
 Header2.PropTypes = {
   yourName : PropTypes.object.isRequired,

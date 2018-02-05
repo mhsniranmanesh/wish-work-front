@@ -48,7 +48,8 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                         <div>
                             <article className="timeline-entry">
                                 <div className="timeline-entry-inner">
-                                    <time className="timeline-time"><span>آپلود شده</span> <span className="text-muted">در انتظار نظر کارفرما  </span>
+                                    <time className="timeline-time">
+                                      <span>آپلود شده</span> <span className="text-muted">در انتظار نظر کارفرما  </span>
                                     </time>
                                     <div className="timeline-icon bg-warning">
                                         <i className="entypo-location"/>

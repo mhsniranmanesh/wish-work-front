@@ -241,6 +241,7 @@ class Dashboard extends React.Component{
                         <MyProjectsListForDashboard profileInfo={this.state.profileInfo} myFunc={this.gotoMyProjects}
                                                        size={this.size}
                                                        goToMyProjectPublic={this.goToMyProjectPublic}
+                                                    submitProject={this.submitProject}
                         />
 
                         <ProjectsListForDashboard Projects={this.state.profileInfo.suggested_projects}

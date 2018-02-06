@@ -43,7 +43,8 @@ class ProjectProfile extends React.Component {
             isStartedModal:true,
             modalAcceptOrReject:true,
             toggleSecondModal:true,
-            modalCM :""
+            modalCM :"",
+            notVerified:true
         };
 
         // delivery_duration: Array [ "This field is required." ]
@@ -81,7 +82,13 @@ class ProjectProfile extends React.Component {
         this.ModalError = this.ModalError.bind(this);
         this.ModalReject = this.ModalReject.bind(this);
         this.toggleSecondModal = this.toggleSecondModal.bind(this);
+        this.toggleNotVerify = this.toggleNotVerify.bind(this);
         //this.counter = this.counter.bind(this);
+    }
+    toggleNotVerify(){
+        this.setState({
+            notVerified : !this.state.notVerified
+        })
     }
     toggleSecondModal(){
         this.setState({toggleSecondModal: false})
@@ -592,6 +599,9 @@ class ProjectProfile extends React.Component {
         <div className = "container" >
         <div className = "row" >
         <div className = "col-sm-8" >
+            <Modal isOpen={!this.state.projectDetail.is_verified && this.state.notVerified} toggle={this.toggleNotVerify}>
+                <ModalBody>این پروژه هنوز به تایید نرسیده است، لطفا منتظر بمانید</ModalBody>
+            </Modal>
             <Modal isOpen={this.state.loading}>
                 <ModalHeader >لطفا منتظر بمانید</ModalHeader>
                 <ModalBody>

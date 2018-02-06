@@ -13,7 +13,7 @@ class ProjectControl extends React.Component{
         super(props);
         this.state = {AsFreelancerProject:"" , AsClientProject:"", fileIsUpload:false, profileInfo:"",
             loadSuccess:false , file:"" , mileStoneId:"" , milestone_id:"" , dontHaveEnoughCash:false , haveEnoughCash:false
-            , downloadFile:false, attachmentId:"" , priceForCashIn:0 , reviseValue:"" ,numberSee:0};
+            , downloadFile:false, attachmentId:"" , priceForCashIn:0 , reviseValue:"" ,numberSee:0, activeProjectList : 0};
         this.size = this.size.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
         this.sendUploadedFileByFreelancer = this.sendUploadedFileByFreelancer.bind(this);
@@ -29,7 +29,8 @@ class ProjectControl extends React.Component{
 
     }
     changeView(number){
-        this.setState({numberSee: number})
+        this.setState({numberSee: number});
+        this.setState({activeProjectList: number});
     }
     submitFeedBack(id){
         var Send = {
@@ -191,6 +192,8 @@ class ProjectControl extends React.Component{
                           AsClientProject={this.state.AsClientProject}
                           AsFreelancerProject={this.state.AsFreelancerProject}
                           changeView={this.changeView}
+                          activeProjectList={this.state.activeProjectList}
+                          numberSee={this.state.numberSee}
                         />
                       :(null)
                        }

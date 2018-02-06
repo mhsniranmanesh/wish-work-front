@@ -6,8 +6,10 @@ import * as projectActions from '../../actions/projectSubmit.js';
 import Error from './Errors';
 import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Row , Col , Popover, PopoverHeader, PopoverBody} from 'reactstrap';
 import Select from 'react-select';
+import Progress from 'react-progressbar'
+//TODO loading bar after submit + context router to public page of project
 
-const STATIC_DATAS = require('../../Datas/STATIC_DATAS.js');
+ const STATIC_DATAS = require('../../Datas/STATIC_DATAS.js');
 
 
 

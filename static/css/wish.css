@@ -1360,10 +1360,13 @@ section.profile {
 p.card-text {
     font-weight: 300;
 }
-
+.translation-pencil-public{
+    color: #0056b3;
+}
 h4.card-title {
     font-weight: 500;
     font-size: 1.25rem;
+    color: #0056b3;
 }
 
 h4.card-title a {}

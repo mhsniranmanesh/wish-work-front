@@ -6,7 +6,7 @@ import * as projectActions from '../../actions/projectSubmit.js';
 import Error from './Errors';
 import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Row , Col , Popover, PopoverHeader, PopoverBody} from 'reactstrap';
 import Select from 'react-select';
-import Progress from 'react-progressbar'
+import Progress from 'react-progressbar';
 //TODO loading bar after submit + context router to public page of project
 
  const STATIC_DATAS = require('../../Datas/STATIC_DATAS.js');
@@ -62,11 +62,13 @@ class Projectsubmition extends React.Component{
             number_of_pages : 0,
             fileIsUpload : false,
             inputTitle: 'فایل را بگیرید و اینجا رها کنید.',
-            file:""
+            file:"",
+            loading: false,
+            progressNumber: 10,
         };
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
-
+        this.progressNumber = this.progressNumber.bind(this);
         this.togglePopoverSubject = this.togglePopoverSubject.bind(this);
         this.togglePopoverPage = this.togglePopoverPage.bind(this);
         this.togglePopoverPrice = this.togglePopoverPrice.bind(this);
@@ -111,6 +113,18 @@ class Projectsubmition extends React.Component{
     // //     this.setState({inputTitle : 'فایل شما آپلود شد' })
     // //     }
     // }
+    progressNumber() {
+        setTimeout( () => {
+            var i = this.state.progressNumber + 20;
+            //  call a 3s setTimeout when the loop is called
+            this.setState({progressNumber: i});
+            console.log(this.state.progressNumber , 'progressNumber');                                                          //  increment the counter
+            if (i < 100) {                                                      //  if the counter < 100, call the loop function
+                this.progressNumber();                                           //  ..  again which will trigger another
+            }                        //  ..  setTimeout()
+        }, 2000)
+    }
+
     togglePopoverAuctionInterval(){
       this.setState({
         popoverOpenAuctionInterval: !this.state.popoverOpenAuctionInterval,
@@ -213,7 +227,10 @@ class Projectsubmition extends React.Component{
         return newValue;
     }
     redirect(){
-        this.context.router.history.push('/dashboard');
+        setTimeout( () => {
+            this.context.router.history.push('/dashboard');
+        } , 5000
+        )
     }
 
     handleOnChange (value) {
@@ -229,12 +246,12 @@ class Projectsubmition extends React.Component{
         console.log('from_language' , this.state.from_language);
         console.log('this.state.translationFrom' , this.state.translationFrom);
         console.log('STATE IS:' , Send3);
-            this.props.actions.projectSubmit(Send1 , Send3).then(
-            () => this.redirect()
-            ).catch(error => {
+        this.setState({loading: true});
+        this.props.actions.projectSubmit(Send1 , Send3).then(
+            () => this.progressNumber()
+            ).then(() => this.redirect()).catch(error => {
             console.log(error);
         });
-        alert('your project submited');
     }
 
     IsTechnical(){
@@ -881,7 +898,12 @@ class Projectsubmition extends React.Component{
                             <Button color="primary" className = "btn btn-rec btn-primary" onClick={this.handleSubmit}>ایجاد پروژه</Button>
                                 <p>۵۰ ویش کوین</p>
                             </span>
-                            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                              <Modal isOpen={this.state.loading}>
+                                  <ModalBody>
+                                    <Progress completed={this.state.progressNumber}/>
+                                  </ModalBody>
+                              </Modal>
+                            <Modal isOpen={this.state.modal && !this.state.loading} toggle={this.toggle} className={this.props.className}>
 
 
                               <ModalHeader toggle={this.toggle}>
@@ -920,7 +942,7 @@ class Projectsubmition extends React.Component{
                                         <a className="tag" href="#">#فوری</a>
                                       </span>*/}
                                     <span className="sub-heading">
-                                          <i className="fa fa-user form-body-fontsize" style={{paddingLeft:'2px'}}/>4/5
+                                          {/*<i className="fa fa-user form-body-fontsize" style={{paddingLeft:'2px'}}/>4/5*/}
                                           <i className="fa fa-usd form-body-fontsize" style={{marginRight:'10px', paddingLeft:'2px'}}/> {this.state.budget}
                                           <i className="fa fa-clock-o form-body-fontsize" style={{marginRight:'10px' , paddingLeft:'2px'}}/>{this.state.time_limit}
                                       </span>

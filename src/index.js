@@ -19,6 +19,7 @@ import '../static/css/wish-dash.css';
 import {BrowserRouter} from 'react-router-dom';
 import App from './components/App.js';
 import axios from 'axios';
+import { syncHistoryWithStore } from 'react-router-redux'
 //import {Authentication} from './promises/authentication';
 
 

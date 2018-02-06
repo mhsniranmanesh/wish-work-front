@@ -248,6 +248,7 @@ class Dashboard extends React.Component{
                                                   goToProjectProfile={this.goToProjectProfile}
                                                   myFunc={this.gotoRecomendedProjects}
                                                   WordCount={this.WordCount}
+                                                  size={this.size}
                         />
                     </div>
 

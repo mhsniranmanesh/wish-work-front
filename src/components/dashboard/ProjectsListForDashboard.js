@@ -3,13 +3,18 @@ import PropTypes from 'prop-types';
 import ProjectTemplateForDashboard from './ProjectTemplateForDashboard';
 
 
-const ProjectsListForDashboard = ({Projects , myFunc , goToProjectProfile , WordCount}) =>{
+const ProjectsListForDashboard = ({Projects , myFunc , goToProjectProfile , WordCount , size}) =>{
     if(Projects !== []) {
+        var ProjectsArr = Projects;
+        var Size = size(Projects);
+        if(Size >=3){
+            ProjectsArr =  Projects.slice(0,3);
+        }
         return (
             <div className="dash-con dash-recoms mb-4">
                 <h5>پروژه های پیشنهادی</h5>
                 <div className="dash-divider"/>
-                {Projects.map((ProjectDetail, index) =>
+                {ProjectsArr.map((ProjectDetail, index) =>
                     <ProjectTemplateForDashboard key={index} ProjectDetail={ProjectDetail}
                                                  goToProjectProfile={goToProjectProfile} WordCount={WordCount}/>
                 )}

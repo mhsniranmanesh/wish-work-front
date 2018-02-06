@@ -11,7 +11,6 @@ export function loadNewInfosSuccess(profileInfo){
 export function loadSubmittedProjectsSuccess(submittedProjects) {
     return{type : types.LOAD_SUBMITTED_PROJECTS_SUCCESS , submittedProjects}
 }
-
 export function getSubmittedProjects() {
     return function (dispatch) {
         return axios.get().then(
@@ -22,12 +21,15 @@ export function getSubmittedProjects() {
         });
     };
 }
+function routeActions() {
+
+}
 export function profileInfo(){
     return function(dispatch){
         return axios.get('/api/v1/profiles/initial/').then(
             response =>{
                 dispatch(loadNewInfosSuccess(response.data));
-            }).catch(error =>{
+            } , dispatch({type:'urlChange', url:'/some/url'})).catch(error =>{
             throw (error);
         });
     };

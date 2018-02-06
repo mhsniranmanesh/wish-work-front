@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import Tags from './TranslationTags';
 const FreelancerInfos = (props) =>{
     let Image ;
     if(props.freelancerDetail.profile_picture != null){
@@ -22,15 +22,13 @@ const FreelancerInfos = (props) =>{
                         <span className="discript">
                                 {props.freelancerDetail.bio}
                         </span>
-                        <div className="sub-heading">
-                            <a className="tag" href="#">#فارسی_به_انگلیسی</a>
-                            <a className="tag" href="#">#علمی</a>
-                            <a className="tag" href="#">#زیست_شناسی</a>
-                            <a className="tag" href="#">#میکرو_بیولوژی</a>
-                            <a className="tag" href="#">#فوری</a>
-                        </div>
+
                     </div>
                 </div>
+
+                 تحصیلات : {props.freelancerDetail.university}
+
+                {props.showSkills ?<Tags Skills={props.Skills}/> : (null)}
             </div>
         </div>
     )

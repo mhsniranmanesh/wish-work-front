@@ -574,17 +574,25 @@ a:hover {
 }
 
 .form-header-fontsize {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
     margin: 5px 0;
 
 }
+
 
 .form-body-fontsize {
     font-size: 13px;
     font-weight: 300;
 }
 
+.submission-day-input{
+  margin-right: -28px;
+}
+
+.submission-price-input{
+  margin-right: -28px;
+}
 
 /**/
 
@@ -2188,4 +2196,18 @@ a.delete-project:hover:after {
 .file-subject{
   font-size: 13px;
   margin-right: 5px;
+}
+
+.rounded-circle{
+  margin-left: 5px;
+}
+
+.user-inform{
+  color: #018abe;
+  margin: 0 5px;
+  font-size: 14px;
+}
+
+.fa-question-circle{
+  /*padding-top: 5px;*/
 }

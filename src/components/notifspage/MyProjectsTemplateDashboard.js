@@ -12,7 +12,7 @@ var y = props.Detail.slug;
                    {props.Detail.title }
                  </span>
                 <span>
-                    <Button className="dashboard-my-projects" id="dashboard-my-projects">رفتن به صفحه ی پروژه</Button>
+                    <Button className="dashboard-my-projects" id="dashboard-my-projects">   صفحه ی پروژه</Button>
                 </span>
             </a>
 

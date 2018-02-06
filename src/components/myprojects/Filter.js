@@ -2,7 +2,8 @@ import React from 'react';
 
 const Filter = ({props}) =>{
   return(
-      <div className="dash-con dash-new-project con-body mb-4">
+    <div>
+      {/* <div className="dash-con dash-new-project con-body mb-4">
           <div className="project-status mx-auto row">
               <span className=" boxes btn btn-secondary btn-rec myproject-btn myproject-badge col-sm-4">
                                     <input type="checkbox" className="badgebox" id="ongoing"/>
@@ -20,7 +21,8 @@ const Filter = ({props}) =>{
                                     <label htmlFor="canceled">در حال انجام</label>
                                   </span>
           </div>
-      </div>
+      </div>*/}
+    </div>
   )
 };
 

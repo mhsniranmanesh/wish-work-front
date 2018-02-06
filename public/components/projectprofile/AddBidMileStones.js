@@ -26,7 +26,6 @@ var pageNew = 0;
            pageRemain = pageNew - pageOld;
             rows.push(<MileStonesHorizentalTemplate i={i} a={a} key={i} numberOfMileStones={props.number_of_milestones}
                                                     x={x} page={page} dayRemain = {dayRemain} pageRemain={pageRemain}/>);
-            console.log(i , x , 'i0 , x0')
 
         }
         // else if(i === a-2){
@@ -42,8 +41,6 @@ var pageNew = 0;
             var page1 = props.numberOfPages;
             pageRemain = page1 - pageNew;
             dayRemain = y - dayNew;
-            console.log(pageRemain , 'premain');
-            console.log(dayRemain , 'dremain');
             rows.push(<MileStonesHorizentalTemplate i={i} a={a} key={i*10} numberOfMileStones={props.number_of_milestones}
                                                     x={y} page={page1} numberOfPages={props.numberOfPages} pageRemain={pageRemain} dayRemain={dayRemain}/>);
 

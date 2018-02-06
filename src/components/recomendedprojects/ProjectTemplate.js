@@ -88,8 +88,8 @@ const ProjectTemplate = ({ProjectDetail , goToProjectProfile}) =>{
                 </div>
                 <div className="sub-heading">
                     <i className="fa fa-user" style={{paddingLeft:'2px'}}></i> <a href="#">4/5</a>
-                    <i className="fa fa-usd" style={{marginRight:'10px', paddingLeft:'2px'}}></i> {ProjectDetail.price}
-                    <i className="fa fa-clock-o" style={{marginRight:'10px' , paddingLeft:'2px'}}></i>{ProjectDetail.releaseTime}
+                    <i className="fa fa-usd" style={{marginRight:'10px', paddingLeft:'2px'}}></i> {ProjectDetail.budget}
+                    <i className="fa fa-clock-o" style={{marginRight:'10px' , paddingLeft:'2px'}}></i>{ProjectDetail.time_limit}
                 </div>
             </div>
           {/*<div className="dash-divider"/>*/}

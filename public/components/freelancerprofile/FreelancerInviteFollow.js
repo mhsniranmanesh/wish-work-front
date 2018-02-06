@@ -13,8 +13,8 @@ const FreelancerInviteFollow = (props) =>{
                 </h5>
                 <div className="divider"/>
                 <div className="sub-heading">
-                    <span className="not-inline"> <strong>تعداد پروژه ها:</strong> <a href="#">12</a></span>
-                    <span className="not-inline"> <strong>درآمد:</strong> 3,500,000 تومان</span>
+                    <span className="not-inline"> <strong>تعداد پروژه ها:</strong> <a href="#">{props.numberOfProjects}</a></span>
+                    {/*<span className="not-inline"> <strong>درآمد:</strong> 3,500,000 تومان</span>*/}
                 </div>
             </div>
         </div>

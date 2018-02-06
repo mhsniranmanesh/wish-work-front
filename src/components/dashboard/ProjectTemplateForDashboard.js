@@ -95,8 +95,8 @@ const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordC
                           {ProjectDetail.title}
                     </span>
                     <span className="project-header-flag">
-                          <span> <Flag code={to_languageCode} height="12"/> </span>
-                          <span> <Flag code={from_languageCode} height="12"/> </span>
+                          <span> <Flag code={from_languageCode} height="12"/> به </span>
+                          <span> <Flag code={to_languageCode}  height="12"/> </span>
                     </span>
                     <div className="project-discript">
                       {ProjectDetail.description}
@@ -151,13 +151,22 @@ const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordC
                       </svg>
                     </div>
                   </span> */}
-                    <a href="#">
-                        <h6 className="form-header-fontsize">{ProjectDetail.title} (<Flag code={to_languageCode}
-                                                                                          height="10"/> به <Flag
-                            code={from_languageCode}
-                            height="12"/>)</h6>
-                    </a>
+                    {/*<a href="#">*/}
+                        {/*<h6 className="form-header-fontsize">{ProjectDetail.title} (<Flag code={to_languageCode}*/}
+                                                                                          {/*height="10"/> به <Flag*/}
+                            {/*code={from_languageCode}*/}
+                            {/*height="12"/>)</h6>*/}
+                    {/*</a>*/}
+                    <span className="prject-title">
+                          {ProjectDetail.title}
+                    </span>
+                    <span className="project-header-flag">
+                          <span> <Flag code={from_languageCode} height="12"/> به </span>
+                          <span> <Flag code={to_languageCode}  height="12"/> </span>
+                    </span>
+                    <div className="project-discript">
                     {newDescription} ...
+                    </div>
                     <br/>
 
                     {/*<span className="sub-heading">*/}

@@ -594,178 +594,191 @@ class ProjectProfile extends React.Component {
         }, 7000)
     }
     render() {
-      return (
-        <section className = "profile" >
-        <div className = "container" >
-        <div className = "row" >
-        <div className = "col-sm-8" >
-            <Modal isOpen={!this.state.projectDetail.is_verified && this.state.notVerified} toggle={this.toggleNotVerify}>
-                <ModalBody>این پروژه هنوز به تایید نرسیده است، لطفا منتظر بمانید</ModalBody>
-            </Modal>
-            <Modal isOpen={this.state.loading}>
-                <ModalHeader >لطفا منتظر بمانید</ModalHeader>
-                <ModalBody>
-                    <Progress completed={this.state.progressNumber}/>
-                </ModalBody>
-            </Modal>
-            <Modal isOpen={this.state.freelancerIsSelected && (!this.state.projectDetail.is_started) && this.state.modalAcceptOrReject}>
-                <ModalBody >تبریک! شما برای این پروژه انتخاب شده اید. برای تایید برروی «تایید» کلیک کنید</ModalBody>
-                <button onClick={this.acceptBidFromFreelancer}> تایید</button>
-                <button onClick={this.rejectBidFromFreelancer}>انصراف</button>
-            </Modal>
-            <Modal isOpen={(!this.state.modalAcceptOrReject) && (this.state.toggleSecondModal)}>
-                <ModalBody >{this.state.modalCM}</ModalBody>
-                <button onClick={this.toggleSecondModal}>باشه</button>
-            </Modal>
-            <Modal isOpen={this.state.projectDetail.is_started && this.state.isStartedModal} toggle={this.toggle}>
-                <ModalBody >مناقصه ی این پروژه به پایان رسیده است</ModalBody>
+        if (this.state.showBidsList) {
+            return (
+                <section className="profile">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm-8">
+                                {this.state.showBidsList ?
+                                    <Modal isOpen={!this.state.projectDetail.is_verified && this.state.notVerified}
+                                           toggle={this.toggleNotVerify}>
+                                        <ModalBody>این پروژه هنوز به تایید نرسیده است، لطفا منتظر بمانید</ModalBody>
+                                    </Modal> : (null)}
+                                <Modal isOpen={this.state.loading}>
+                                    <ModalHeader>لطفا منتظر بمانید</ModalHeader>
+                                    <ModalBody>
+                                        <Progress completed={this.state.progressNumber}/>
+                                    </ModalBody>
+                                </Modal>
+                                <Modal
+                                    isOpen={this.state.freelancerIsSelected && (!this.state.projectDetail.is_started) && this.state.modalAcceptOrReject}>
+                                    <ModalBody>تبریک! شما برای این پروژه انتخاب شده اید. برای تایید برروی «تایید» کلیک
+                                        کنید</ModalBody>
+                                    <button onClick={this.acceptBidFromFreelancer}> تایید</button>
+                                    <button onClick={this.rejectBidFromFreelancer}>انصراف</button>
+                                </Modal>
+                                <Modal isOpen={(!this.state.modalAcceptOrReject) && (this.state.toggleSecondModal)}>
+                                    <ModalBody>{this.state.modalCM}</ModalBody>
+                                    <button onClick={this.toggleSecondModal}>باشه</button>
+                                </Modal>
+                                <Modal isOpen={this.state.projectDetail.is_started && this.state.isStartedModal}
+                                       toggle={this.toggle}>
+                                    <ModalBody>مناقصه ی این پروژه به پایان رسیده است</ModalBody>
 
-            </Modal>
-        <ProjectDetail
-            Field={this.state.projectAdditional.field}
-            FromLanguage={this.state.projectAdditional.from_language}
-            ToLanguage={this.state.projectAdditional.to_language}
-            Files={this.state.projectDetail.project_attachments}
-            Detail = {this.state.projectDetail}
-        />
+                                </Modal>
+                                {this.state.showBidsList ? <ProjectDetail
+                                    Field={this.state.projectAdditional.field}
+                                    FromLanguage={this.state.projectAdditional.from_language}
+                                    ToLanguage={this.state.projectAdditional.to_language}
+                                    Files={this.state.projectDetail.project_attachments}
+                                    Detail={this.state.projectDetail}
+                                /> : (null)}
 
-<div className = "con mb-4" > {
-    this.state.showBidsList ? <BidsList
-            numberOfPages={this.state.projectAdditional.number_of_pages}
-            freelancerIsSelected={this.state.freelancerIsSelected}
-            acceptBid={this.acceptBid}
-            goToFreelancerProfile={this.goToFreelancerProfile}
-            goToRegister={this.goToRegister
-            }
-            deleteBid={
-                this.deleteBid
-            }
-            profileInfo={
-                this.props.profileInfo
-            }
-            isLoggedIn = {
-                this.state.isLoggedIn
-            }
+                                <div className="con mb-4"> {
+                                    this.state.showBidsList ? <BidsList
+                                            numberOfPages={this.state.projectAdditional.number_of_pages}
+                                            freelancerIsSelected={this.state.freelancerIsSelected}
+                                            acceptBid={this.acceptBid}
+                                            goToFreelancerProfile={this.goToFreelancerProfile}
+                                            goToRegister={this.goToRegister
+                                            }
+                                            deleteBid={
+                                                this.deleteBid
+                                            }
+                                            profileInfo={
+                                                this.props.profileInfo
+                                            }
+                                            isLoggedIn={
+                                                this.state.isLoggedIn
+                                            }
 
-            ownerOfProject = {
-                this.state.ownerOfProject
-            }
-            Bids = {
-                this.state.projectDetail.project_bids
-            }
-            priceForCash = {
-                this.state.priceForCash
-            }
-            goToCash = {
-                this.goToCash
-            }
-            cashinModalState={
-                this.state.cashinModalState
-            }
-            modalCashEnough={
-                this.modalCashEnough
-            }/>
-        : null}
-            </div>
-        </div>
-        <div className="col-sm-4">
-                {this.state.ownerOfProject ?
-                  <div>
-                    <CountDown  release_date={this.state.projectDetail.release_date}
-                                BidDuration={this.state.projectDetail.bid_duration}
-                                bidding_deadline={this.state.projectDetail.bidding_deadline}
-                    />
-                    <Button
-                        myFunc=""
-                        name="hi"
-                        is_freelancer_selected={this.state.projectDetail.is_freelancer_selected}
-                        budget={
-                            this.state.projectDetail.budget
-                        }
-                        TimeLimit={
-                            this.state.projectDetail.time_limit
-                        }
-                    />
-                  </div>
-                    :
-                  <div>
-                    <CountDown
-                        release_date={this.state.projectDetail.release_date}
-                        BidDuration={this.state.projectDetail.bid_duration}
-                        bidding_deadline={this.state.projectDetail.bidding_deadline}
-                    />
-                    <AddBid
-                        is_freelancer_selected={this.state.projectDetail.is_freelancer_selected}
-                        bidding_deadline={this.state.projectDetail.bidding_deadline}
-                        profileInfo={this.props.profileInfo}
-                        userHasBid={this.state.userHasBid}
-                        numberOfPages={this.state.projectAdditional.number_of_pages}
-                        returnFalse={this.returnFalse}
-                        isLoggedIn={this.state.isLoggedIn}
-                        TimeLimit={
-                            this.state.projectDetail.time_limit
-                        }
-                        amountOfMileStones={
-                            this.state.amountOfMileStones
-                        }
-                        valueOfMileStones={
-                            this.valueOfMileStones
-                        }
-                        Length={
-                            this.state.Length
-                        }
-                        CheckLength={
-                            this.CheckLength
-                        }
-                        ModalState={
-                            this.state.ModalState
-                        }
-                        BidDescription={
-                            this.BidDescription
-                        }
-                        BidPrice={
-                            this.BidPrice
-                        }
-                        roundBidAmount={
-                            this.roundBidAmount
-                        }
-                        DeliveryTime={
-                            this.DeliveryTime
-                        }
-                        roundDeliveryTime={
-                            this.roundDeliveryTime
-                        }
-                        ModalSubmit={
-                            this.ModalSubmit
-                        }
-                        message={
-                            this.state.message
-                        }
-                        showWarnings={
-                            this.state.showWarnings
-                        }
-                        showError={
-                            this.state.showError
-                        }
-                        budget={
-                            this.state.projectDetail.budget
-                        }
-                        delivery_duration={
-                            this.state.delivery_duration
-                        }
-                        release_date={this.state.projectDetail.release_date}
-                        signUp={this.SignUp}
-                        Bids={this.state.projectDetail.project_bids}
-                        start_date={this.state.projectDetail.start_date}
-                    />
-                </div>
-            }
-            </div>
-        </div>
-      </div>
-    </section>
-        )
-      }
+                                            ownerOfProject={
+                                                this.state.ownerOfProject
+                                            }
+                                            Bids={
+                                                this.state.projectDetail.project_bids
+                                            }
+                                            priceForCash={
+                                                this.state.priceForCash
+                                            }
+                                            goToCash={
+                                                this.goToCash
+                                            }
+                                            cashinModalState={
+                                                this.state.cashinModalState
+                                            }
+                                            modalCashEnough={
+                                                this.modalCashEnough
+                                            }/>
+                                        : null}
+                                </div>
+                            </div>
+                            <div className="col-sm-4">
+                                {this.state.ownerOfProject ?
+                                    <div>
+                                        <CountDown release_date={this.state.projectDetail.release_date}
+                                                   BidDuration={this.state.projectDetail.bid_duration}
+                                                   bidding_deadline={this.state.projectDetail.bidding_deadline}
+                                        />
+                                        <Button
+                                            myFunc=""
+                                            name="hi"
+                                            is_freelancer_selected={this.state.projectDetail.is_freelancer_selected}
+                                            budget={
+                                                this.state.projectDetail.budget
+                                            }
+                                            TimeLimit={
+                                                this.state.projectDetail.time_limit
+                                            }
+                                        />
+                                    </div>
+                                    :
+                                    <div>
+                                        <CountDown
+                                            release_date={this.state.projectDetail.release_date}
+                                            BidDuration={this.state.projectDetail.bid_duration}
+                                            bidding_deadline={this.state.projectDetail.bidding_deadline}
+                                        />
+                                        <AddBid
+                                            is_freelancer_selected={this.state.projectDetail.is_freelancer_selected}
+                                            bidding_deadline={this.state.projectDetail.bidding_deadline}
+                                            profileInfo={this.props.profileInfo}
+                                            userHasBid={this.state.userHasBid}
+                                            numberOfPages={this.state.projectAdditional.number_of_pages}
+                                            returnFalse={this.returnFalse}
+                                            isLoggedIn={this.state.isLoggedIn}
+                                            TimeLimit={
+                                                this.state.projectDetail.time_limit
+                                            }
+                                            amountOfMileStones={
+                                                this.state.amountOfMileStones
+                                            }
+                                            valueOfMileStones={
+                                                this.valueOfMileStones
+                                            }
+                                            Length={
+                                                this.state.Length
+                                            }
+                                            CheckLength={
+                                                this.CheckLength
+                                            }
+                                            ModalState={
+                                                this.state.ModalState
+                                            }
+                                            BidDescription={
+                                                this.BidDescription
+                                            }
+                                            BidPrice={
+                                                this.BidPrice
+                                            }
+                                            roundBidAmount={
+                                                this.roundBidAmount
+                                            }
+                                            DeliveryTime={
+                                                this.DeliveryTime
+                                            }
+                                            roundDeliveryTime={
+                                                this.roundDeliveryTime
+                                            }
+                                            ModalSubmit={
+                                                this.ModalSubmit
+                                            }
+                                            message={
+                                                this.state.message
+                                            }
+                                            showWarnings={
+                                                this.state.showWarnings
+                                            }
+                                            showError={
+                                                this.state.showError
+                                            }
+                                            budget={
+                                                this.state.projectDetail.budget
+                                            }
+                                            delivery_duration={
+                                                this.state.delivery_duration
+                                            }
+                                            release_date={this.state.projectDetail.release_date}
+                                            signUp={this.SignUp}
+                                            Bids={this.state.projectDetail.project_bids}
+                                            start_date={this.state.projectDetail.start_date}
+                                        />
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            )
+        }
+        else {
+            return (
+                <div></div>
+            )
+        }
+    }
+
     }
 
 

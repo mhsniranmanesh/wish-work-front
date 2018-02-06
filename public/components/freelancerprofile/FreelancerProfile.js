@@ -12,7 +12,8 @@ import NameOfFreelancer from './NameOfFreelancer';
 class FreelancerProfile extends React.Component {
     constructor(props){
         super(props);
-        this.state = {freelancerDetail: Object.assign({} , props.freelancerDetail) , projectDetail:"" , showNameOrReturn:true};
+        this.state = {freelancerDetail: "" ,
+            projectDetail:"" , showNameOrReturn:true , skills:"" , showSkills:false , numberOfProjects:0};
         this.goToProjectProfile = this.goToProjectProfile.bind(this);
         this.size = this.size.bind(this);
         this.checkExistOrLengthOfProjectDetail = this.checkExistOrLengthOfProjectDetail.bind(this);
@@ -28,7 +29,7 @@ class FreelancerProfile extends React.Component {
     checkExistOrLengthOfProjectDetail(){
         let x = this.size(this.props.projectDetail);
         if(x>0){
-            this.setState({projectDetail: Object.assign({} , this.props.projectDetail[x-1])} , () => {this.goToProjectProfile()})
+            this.setState({projectDetail: Object.assign({} , this.props.projectDetail[x-1].general)} , () => {this.goToProjectProfile()})
         }
     }
     goToProjectProfile(){
@@ -51,7 +52,13 @@ class FreelancerProfile extends React.Component {
         if(this.props.freelancerDetail != nextProps.freelancerDetail ) {
             console.log(nextProps.freelancerDetail);
             //inja az halate bler dar biad
+            this.setState({skills: nextProps.freelancerDetail.skills});
             this.setState({freelancerDetail: Object.assign({}, nextProps.freelancerDetail)});
+            this.setState({showSkills : true});
+            var numberOfProjects = this.size(nextProps.freelancerDetail.freelancer_projects)
+            if(numberOfProjects > 0){
+                this.setState({numberOfProjects: numberOfProjects })
+            }
         }
     }
     render(){
@@ -61,13 +68,17 @@ class FreelancerProfile extends React.Component {
                     <div className="row">
                         <div className="col-sm-8">
 
-                            <FreelancerInfos freelancerDetail={this.state.freelancerDetail}/>
-                            <FreelancerSampleProjectsList ProjectsList={this.props.ProjectsDone}/>
+                            <FreelancerInfos freelancerDetail={this.state.freelancerDetail}
+                                             Skills={this.state.skills} showSkills={this.state.showSkills}
+                            />
+                            <FreelancerSampleProjectsList ProjectsList={this.state.freelancerDetail.freelancer_projects}/>
 
                         </div>
                         {this.state.showNameOrReturn ?
-                            <NameOfFreelancer/> :
+                            <NameOfFreelancer numberOfProjects={this.state.numberOfProjects}
+                            /> :
                             <FreelancerInviteFollow
+                                numberOfProjects={this.state.numberOfProjects}
                                 checkExistOrLengthOfProjectDetail={this.checkExistOrLengthOfProjectDetail}/>
                         }
                     </div>

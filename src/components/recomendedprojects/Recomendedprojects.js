@@ -39,6 +39,7 @@ class Recomendedprojects extends React.Component{
             this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[size - 1])});
         }
     }
+    //TODO button more for more suggested projects
   render(){
     return(
       <div>
@@ -52,10 +53,10 @@ class Recomendedprojects extends React.Component{
                           <ProjectsList
                               goToProjectProfile={this.goToProjectProfile}
                               Projects={this.state.profileInfo.suggested_projects}/>
-
-                          <button type="submit" className="btn btn-primary btn-rec">
-                              تمام پروژه ها
-                          </button>
+                          {/**/}
+                          {/*<button type="submit" className="btn btn-primary btn-rec">*/}
+                              {/*تمام پروژه ها*/}
+                          {/*</button>*/}
                       </div>
                   </div>
               </div>

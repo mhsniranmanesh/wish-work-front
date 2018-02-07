@@ -83,14 +83,29 @@ const ProjectTemplate = ({ProjectDetail , goToProjectProfile}) =>{
                     <h6  className="form-body-fontsize">
                         {ProjectDetail.description}                    </h6>
                 </div>
-                <div className="sub-heading">
-                    <a className="tag" href="#">{ProjectDetail.tags}</a>
-                </div>
-                <div className="sub-heading">
-                    <i className="fa fa-user" style={{paddingLeft:'2px'}}></i> <a href="#">4/5</a>
-                    <i className="fa fa-usd" style={{marginRight:'10px', paddingLeft:'2px'}}></i> {ProjectDetail.price}
-                    <i className="fa fa-clock-o" style={{marginRight:'10px' , paddingLeft:'2px'}}></i>{ProjectDetail.releaseTime}
-                </div>
+                {/*<div className="sub-heading">*/}
+                    {/*<a className="tag" href="#">{ProjectDetail.tags}</a>*/}
+                {/*</div>*/}
+                {/*<div className="sub-heading">*/}
+                    {/*<i className="fa fa-user" style={{paddingLeft:'2px'}}/> <a href="#">4/5</a>*/}
+                    {/*<i className="fa fa-usd" style={{marginRight:'10px', paddingLeft:'2px'}}/> {ProjectDetail.price}*/}
+                    {/*<i className="fa fa-clock-o" style={{marginRight:'10px' , paddingLeft:'2px'}}/>{ProjectDetail.releaseTime}*/}
+                {/*</div>*/}
+                <ul className="sub-heading">
+                    {/*  <li className="project-prop">
+                          <i className="fa fa-user"/>
+                          4/5
+                      </li>*/}
+
+                    <li className="project-prop project-prop-money">
+                        <i className="fa fa-usd"/>
+                        {ProjectDetail.budget}
+                    </li>
+                    <li className="project-prop project-prop-time">
+                        <i className="fa fa-clock-o"/>
+                        {ProjectDetail.time_limit}
+                    </li>
+                </ul>
             </div>
           {/*<div className="dash-divider"/>*/}
         </div>

@@ -3,6 +3,7 @@ export default {
     profileInfo : [],
     Notifications : [],
     projectSubmit : [],
+    payLink : []
     //PSD : [],
    // token : null
 };

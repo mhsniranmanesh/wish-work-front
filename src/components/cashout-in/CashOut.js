@@ -27,7 +27,7 @@ const CashOut = (props) =>{
                                onChange={(event) => {
                                    props.onChangeCashOut(event)
                                }}
-                               placeholder="مبلغ قابل برداشت تا سقف ۵۰۰.۰۰۰ تومان"
+                               placeholder="مبلغ قابل برداشت تا سقف ۱.۰۰۰.۰۰۰ تومان"
                                value={priceForWithdraw}
 
                         />

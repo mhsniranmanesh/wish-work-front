@@ -24,7 +24,7 @@ const ProfileInfoForDashboard = ({profileInfo}) =>{
                     <img src={Image} className="rounded-circle" style={ {height:125 , width:125} }/>
                     <br/>
                     <div className="dash-client-name mb-2"> {profileInfo.first_name + ' ' + profileInfo.last_name} </div>
-                    <div className="dash-balance mb-2">موجودی:   {profileInfo.balance}</div>
+                    <div className="dash-balance mb-2">موجودی:   {profileInfo.balance * 1000}</div>
                     <div className="dash-coin"><span className="user-inform"><i className="fa fa-question-circle fa-question-circle-dash-info "/></span><span>ویش کوین: {profileInfo.wish_coins}</span></div>
                     {/*<h6 className="dash-profile-stars">*/}
                         {/*<i className="fa fa-star shine-on"/>*/}

@@ -18,6 +18,7 @@ class CashOutIn extends React.Component{
         this.sendToServerCashInRequest = this.sendToServerCashInRequest.bind(this);
         this.sendToServerCashOutRequest = this.sendToServerCashOutRequest.bind(this);
         this.size = this.size.bind(this);
+        this.redirectToPaymentPage = this.redirectToPaymentPage.bind(this);
     }
     size (obj) {
         let x = 0, key;
@@ -51,7 +52,8 @@ class CashOutIn extends React.Component{
         if(this.props.location.search){
             let cash = Number(this.props.location.search.slice(1));
             //console.log(cash , 'cash');
-            this.state.priceForCashIn = cash ;
+            this.setState({priceForCashIn : cash}) ;
+            this.setState({priceForSend : cash});
 
         }
         var x = this.size(this.props.profileInfo);
@@ -65,8 +67,17 @@ class CashOutIn extends React.Component{
             this.setState({profileInfo: nextProps.profileInfo[Size - 1]})
         }
     }
+    redirectToPaymentPage(){
+        console.log(this.props.payLink);
+        window.location.assign(this.props.payLink.payment_url);
+
+    }
     sendToServerCashInRequest(){
         this.setState({priceForSend: this.state.priceForCashIn});
+        this.props.actions.transActionPerform(this.state.priceForSend * 10).then(
+            () =>{ this.redirectToPaymentPage()
+            }
+            ).catch(err => { throw (err)});
         console.log(this.state);
     }
     sendToServerCashOutRequest(){
@@ -121,7 +132,8 @@ class CashOutIn extends React.Component{
 }
 function mapStateToProps(state , ownProps) {
     return{
-        profileInfo : state.profileInfo
+        profileInfo : state.profileInfo,
+        payLink : state.payLink
     }
 }
 function mapDispatchToProps(dispatch) {

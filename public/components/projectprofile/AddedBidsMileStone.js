@@ -14,12 +14,12 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
         mileStones.push(<MileStonesHorizentalTemplate i={i} key={i} x={x} page={page}/>);
     }
     numberOfMileStonesOfEachFreelancer[number] = number_of_milestones;
-    prices[number] = price_of_bid;
+    prices[number] = price_of_bid * 1000;
     priceOfMileStoneForCash[number] = prices[number]/numberOfMileStonesOfEachFreelancer[number];
     mileStoneX[number] = mileStones;
         if ((mileStoneX[number] !== undefined)) {
-            var y = price_of_bid;
-            if (balance >= priceOfMileStoneForCash[number]) {
+            var y = price_of_bid * 1000;
+            if ((balance*1000) >= priceOfMileStoneForCash[number]) {
                 return (
                 <div>
                     <div className="modal fade" id={number * 10} tabIndex="-1" role="dialog" aria-hidden="true">
@@ -61,7 +61,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                         <div className="modal-dialog" role="document">
                                             <div className="modal-content">
                                                 <div className="enough-modalbody1">
-                                                    <p>موجودی حساب شما {balance / 10}تومان می باشد </p>
+                                                    <p>موجودی حساب شما {balance *1000}تومان می باشد </p>
                                                     برای شروع پروژه باید مبلغ <span
                                                     className="enough-project-price">{priceOfMileStoneForCash[number]}</span>تومان
                                                     بپردازید.
@@ -94,7 +94,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                 )
             }
 
-            else if (balance < prices[number]) {
+            else if ((balance*1000) < priceOfMileStoneForCash[number]) {
                 return (
                     <div>
                         <div className="modal fade" id={number * 10} tabIndex="-1" role="dialog" aria-hidden="true">
@@ -132,7 +132,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                             <div className="modal-dialog" role="document">
                                                 <div className="modal-content">
                                                     <div className="enough-modalbody1">
-                                                        <p>موجودی حساب شما {balance / 10}تومان می باشد </p>
+                                                        <p>موجودی حساب شما {balance * 1000}تومان می باشد </p>
                                                         برای شروع پروژه باید مبلغ <span
                                                         className="enough-project-price">{priceOfMileStoneForCash[number]}</span>تومان
                                                         بپردازید.
@@ -142,7 +142,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                                     </div>
                                                     <btn  id="enough-approve-button"
                                                          className="btn btn-rec btn-primary"
-                                                          onClick={(event)=>{ goToCash(prices[number]);}}>
+                                                          onClick={(event)=>{ goToCash(priceOfMileStoneForCash[number]);}}>
                                                         افزایش موجودی
                                                     </btn>
                                                     <btn onClick={modalCashEnough} id="enough-cancel-button"

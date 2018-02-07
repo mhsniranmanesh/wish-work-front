@@ -156,13 +156,13 @@ class Header2 extends React.Component {
                                 {/*</NavLink>*/}
                             {/*</li>*/}
                         </ul>
-                        <ul className="navbar-nav navbar-sidenav sidenav-toggler">
-                            <li className="nav-item">
-                                <a className="nav-link text-center" id="sidenavToggler">
-                                    <i className="fa fa-fw fa-angle-right"/>
-                                </a>
-                            </li>
-                        </ul>
+                        {/*<ul className="navbar-nav navbar-sidenav sidenav-toggler">*/}
+                            {/*<li className="nav-item">*/}
+                                {/*<a className="nav-link text-center" id="sidenavToggler">*/}
+                                    {/*<i className="fa fa-fw fa-angle-right"/>*/}
+                                {/*</a>*/}
+                            {/*</li>*/}
+                        {/*</ul>*/}
 
                         <ul className="navbar-nav navbar-right">
                             {/*   SEARCH BAR    */}

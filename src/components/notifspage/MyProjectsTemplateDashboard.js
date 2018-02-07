@@ -6,12 +6,13 @@ const MyProjectsTemplateDashboard = (props) => {
 var y = props.Detail.slug;
 var x,z;
     if(props.profileInfo.username === props.Detail.client){
-      x = 'فریلنسر';
       z = 'success';
+        x = 'کارفرما';
+
     }
     else {
-      x = 'کارفرما';
-      z = 'primary';
+        x = 'فریلنسر';
+        z = 'primary';
     }
     return(
         <div onClick={(event)=>{props.goToMyProjectPublic(y);}}>

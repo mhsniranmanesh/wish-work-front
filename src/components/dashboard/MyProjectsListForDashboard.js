@@ -39,7 +39,7 @@ if(Size<4 && Size>0) {
         <div className="dash-con con-body dash-notif mb-4">
             <h5>پروژه های من</h5>
             <div className="dash-divider"/>
-            {Total.map((projects , index) =>
+            {TotalSort.map((projects , index) =>
                 <MyProjectsTemplateDashboard key={index} Detail={projects} profileInfo={props.profileInfo}
                                              goToMyProjectPublic={props.goToMyProjectPublic}/>
             )}
@@ -53,7 +53,7 @@ else if(Size>=4){
             <div className="dash-con con-body dash-notif mb-4">
                 <h5>پروژه های من</h5>
                 <div className="dash-divider"/>
-                {Total.map((projects , index) =>
+                {TotalSort.map((projects , index) =>
                     <MyProjectsTemplateDashboard key={index} Detail={projects} profileInfo={props.profileInfo}
                                                  goToMyProjectPublic={props.goToMyProjectPublic}/>
                 )}

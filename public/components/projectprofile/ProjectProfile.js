@@ -237,7 +237,7 @@ class ProjectProfile extends React.Component {
             description: this.state.bid_description,
             project_id: this.state.projectDetail.uuid,
             number_of_milestones: this.state.Length,
-            price: this.state.bid_price,
+            price: (this.state.bid_price/1000),
             delivery_duration: this.state.delivery_duration,
             has_default_bid_controller: false,
         };
@@ -691,6 +691,8 @@ class ProjectProfile extends React.Component {
                                             TimeLimit={
                                                 this.state.projectDetail.time_limit
                                             }
+                                            release_date={this.state.projectDetail.release_date}
+
                                         />
                                     </div>
                                     :

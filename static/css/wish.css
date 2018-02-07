@@ -2033,7 +2033,7 @@ span.sup {
   width: 60px;
   height: 60px;
   border-radius: 10px;
-  margin: 10px 20px;
+  /*margin: 10px 20px;*/
   border: 1px solid #018abe;
 }
 
@@ -2213,4 +2213,26 @@ a.delete-project:hover:after {
 
 .fa-question-circle{
   /*padding-top: 5px;*/
+}
+
+.badge-freelancer{
+  font-size: 13px;
+  font-weight: 400;
+  border-radius: 5px;
+  color: #01be94;
+  border: 1px solid #01be94;
+  background: #fff;
+  margin: 0 5px;
+  padding: 5px 10px;
+}
+
+.badge-client{
+  font-size: 13px;
+  font-weight: 400;
+  border-radius: 5px;
+  color: #018abe;
+  border: 1px solid #018abe;
+  background: #fff;
+  margin: 0 5px;
+  padding: 5px 10px
 }

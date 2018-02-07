@@ -131,14 +131,12 @@ const ProjectDetail = (props) => {
                 {/*<span  ><a href="#" id="file-name"> فایل۳ - پروژه زیبا در جهت تأمین منافع و شخصیتهای بزرگ علمی   </a></span>*/}
                 {/*</div>*/}
                 {Files}
-                <br/>
                 <div className="tags" >
                     <li className='addedTag'>
                         <i className="fa fa-exchange"/> {to} به {from}
                     </li>
                     <li className='addedTag'>{fatherTagLogo} ترجمه ی متن {fatherTag}</li>
                 </div>
-                <br/>
 
             </div>
         )

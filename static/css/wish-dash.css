@@ -1875,7 +1875,7 @@ div #bg-primary-left {
 
 .tags {
     background: none repeat scroll 0 0 #fff;
-    display: inline;
+    display: inline-block;
     padding: 0.5em;
     width: 100%;
 }

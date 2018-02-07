@@ -661,13 +661,13 @@ span.notif-cat {
 
 .dashboard-my-projects{
     float: left;
-    padding: 5px 10px;
+    padding: 3px 10px;
     font-size: 13px;
     margin: 0;
 }
 
 #dashboard-my-projects{
-  margin-top: 0;
+  margin-top: 1px;
 }
 
 .notif-project {
@@ -1503,7 +1503,7 @@ div #bg-primary-left {
     content: '';
     position: absolute;
     display: block;
-    width: 0;
+    width: 4px;
     background: #f5f5f6;
     left: 50%;
     top: 20px;
@@ -1621,9 +1621,9 @@ div #bg-primary-left {
     -moz-border-radius: 20px;
     border-radius: 20px;
     text-align: center;
-    -moz-box-shadow: 0 0 0 5px #f5f5f6;
-    -webkit-box-shadow: 0 0 0 5px #f5f5f6;
-    box-shadow: 0 0 0 5px #f5f5f6;
+    -moz-box-shadow: 0 0 0 5px #dedede;
+    -webkit-box-shadow: 0 0 0 5px #dedede;
+    box-shadow: 0 0 0 5px #dedede;
     line-height: 40px;
     font-size: 15px;
     float: left;
@@ -1925,20 +1925,18 @@ div #bg-primary-left {
   font-weight: 300;
   border-radius: 5px;
   display: inline-block;
-  margin: 0;
+  margin: 0 0 0 10px;
   text-align: center;
   font-size: 13px;
   color: #018abe;
   border: 1px solid #adadad;
+  float: right;
 }
 
 .project-prop-money{
-  margin-right: 150px;
 }
 
 .project-prop-time{
-  float: left;
-  margin-left: 150px;
 
 }
 
@@ -1977,4 +1975,23 @@ div #bg-primary-left {
 
 .fa-download-dash-cp-now{
   color: #018abe;
+}
+
+.text-muted{
+  text-align: left;
+}
+
+.fa-question-circle-dash-info{
+  padding-top: 5px;
+}
+
+#timeInput, #priceInput{
+  width: 75%;
+}
+
+#priceInput{
+  margin-right: 15px;
+}
+#timeInput{
+  margin-right: 15px;
 }

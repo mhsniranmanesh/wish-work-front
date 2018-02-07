@@ -679,7 +679,7 @@ class Projectsubmition extends React.Component{
                       <div className="dash-divider"/>
                       <form>
                         <div className="form-group">
-                          <legend className="form-header-fontsize"> عنوان پروژه را مشخص کنید. </legend>
+                          <legend className="form-header-fontsize"> عنوان پروژه </legend>
                           <input type="text" className="form-control" id="subject" placeholder="عنوان پروژه" value={this.state.title} onChange={this.projectTitleState} onFocus={this.togglePopoverSubject}/>
                           <Popover placement="right" isOpen={this.state.popoverOpenSubject} target="subject" toggle={this.togglePopoverSubject}>
                             <PopoverBody className="beauty-text popover-beauty">عنوان پروژه بخش مهمی از کیفیت پیشنهادهای شما را تعیین می کند. محدودیت برای عنوان پروژه شما 200 حرف است. </PopoverBody>
@@ -687,7 +687,7 @@ class Projectsubmition extends React.Component{
 
                         </div>
                         <div className="input-group">
-                              <legend className="form-header-fontsize">زمینه ترجمه تان را انتخاب کنید.</legend>
+                              <legend className="form-header-fontsize">زمینه ترجمه</legend>
                                 <Row className= "fields">
                                   <Col>
                                     <label>
@@ -719,9 +719,11 @@ class Projectsubmition extends React.Component{
                         </div>
 
                         <div>
-                        <legend className="form-header-fontsize"> زبان مبد‌ا و مقصد را مشخص کنید. </legend>
+
                         <Row>
+
                           <Col>
+                            <legend className="form-header-fontsize"> زبان مبدأ </legend>
                               <div className="section">
                                   <Select
                                     className="customPicker form-body-fontsize"
@@ -739,6 +741,7 @@ class Projectsubmition extends React.Component{
                               </div>
                             </Col>
                             <Col>
+                                  <legend className="form-header-fontsize"> زبان مقصد </legend>
                                   <Select
                                     placeholder="به زبان ..."
                                     className="customPicker form-body-fontsize"
@@ -772,7 +775,7 @@ class Projectsubmition extends React.Component{
                         <Col>
 
                           <legend htmlFor="" className="col-form-label form-header-fontsize">
-                                <span className="form-header-fontsize">تعداد صفحات پروژه خود را مشخص کنید</span>
+                                <span className="form-header-fontsize">تعداد صفحات پروژه</span>
                           </legend>
                           <input type="text" className="form-control form-body-fontsize" id="pageInput" value={this.state.pageNumber} onChange={this.submitProjectPageState} onBlur={this.roundProjectPage} onFocus={this.togglePopoverPage}/>
                             <Popover placement="right" isOpen={this.state.popoverOpenPage} target="pageInput" toggle={this.togglePopoverpage}>
@@ -781,7 +784,8 @@ class Projectsubmition extends React.Component{
                         </Col>
                         <Col>
                           <legend htmlFor="" className="col-form-label form-header-fontsize">
-                                  <span className="form-header-fontsize">مدت برقراری مناقصه را مشخص کنید</span>
+                                  <span className="form-header-fontsize">مدت برقراری مناقصه</span>
+                                  <span className="user-inform"><i className="fa fa-question-circle"/></span>
                           </legend>
                           <input type="text" className="form-control form-body-fontsize" id="auctionInput" value={this.state.auctionTime} onChange={this.submitProjectAuctionState} onBlur={this.roundProjectAuctionTime} onFocus={this.togglePopoverAuctionInterval}/>
                             <Popover placement="left" isOpen={this.state.popoverOpenAuctionInterval} target="auctionInput" toggle={this.togglePopoverAuctionInterval}>
@@ -833,52 +837,59 @@ class Projectsubmition extends React.Component{
                         </div>
 
 
+                        <div className="row">
+                            <div className="form-group col-sm-6">
+                              <legend htmlFor="" className="col-form-label">
+                                    <span className="form-header-fontsize">بودجه موردنظر</span>
 
-                        <div className="form-group">
-                          <legend htmlFor="" className="col-form-label form-header-fontsize">
-                                <span className="form-header-fontsize">بودجه ی خود را مشخص کنید.</span>
+                              </legend>
 
-                          </legend>
-
-
-
-                          <input type="text" className="form-control form-body-fontsize" id="priceInput" value={this.state.budget} onChange={this.submitProjectPriceState} onBlur={this.roundProjectPrice} onFocus={this.togglePopoverPrice}/>
-                          <Popover placement="right" isOpen={this.state.popoverOpenPrice} target="priceInput" toggle={this.togglePopoverPrice}>
-                            <PopoverBody className="beauty-text popover-beauty">قیمت مورد نظرتان را به تومان وارد کنید </PopoverBody>
-                          </Popover>
-
-
-                        <div id="price-range" style={{display:"none"}}/>
-                          {/*<span className="price-msg">
-                              <i className="fa fa-exclamation-triangle" aria-hidden="true" />
-                              نارنجی: بودجه تعیین شده به نسبت ارزش پروژه کمتر است! ویش ورک پیشنهاد می کند که برای بالا بردن شانس انجام پروژه ی با کیفیت، کف بودجه را افزایش دهید.
-                          </span>*/}
-                          <div id="price-range" style={{display:"none"}}/>
-                          {/*<span className="price-msg">*/}
-                              {/*<i className="fa fa-exclamation-triangle" aria-hidden="true" />*/}
-                              {/*نارنجی: بودجه تعیین شده به نسبت ارزش پروژه کمتر است! ویش ورک پیشنهاد می کند که برای بالا بردن شانس انجام پروژه ی با کیفیت، کف بودجه را افزایش دهید.*/}
-                          {/*</span>*/}
-                        </div>
-                        <div className="form-group">
-                          <legend htmlFor="" className="col-form-label">
-                            <span className="form-header-fontsize">  زمان دلخواه خود را مشخص کنید. </span>
+                              <div className="row">
+                                <span>
+                                  <input type="text" className="form-control form-body-fontsize" id="priceInput" value={this.state.budget} onChange={this.submitProjectPriceState} onBlur={this.roundProjectPrice} onFocus={this.togglePopoverPrice}/>
+                                </span>
+                                <span className="form-header-fontsize submission-price-input">تومان</span>
+                              </div>
+                              <Popover placement="right" isOpen={this.state.popoverOpenPrice} target="priceInput" toggle={this.togglePopoverPrice}>
+                                <PopoverBody className="beauty-text popover-beauty">قیمت مورد نظرتان را به تومان وارد کنید </PopoverBody>
+                              </Popover>
 
 
-                          </legend>
-                          <input type="text" className="form-control form-body-fontsize" id="timeInput" value={this.state.time_limit} onChange={this.submitProjectTimeState} onBlur={this.roundProjectTime} onFocus={this.togglePopoverTime} />
-                          <Popover placement="right" isOpen={this.state.popoverOpenTime} target="timeInput" toggle={this.togglePopoverTime}>
-                            <PopoverBody className="beauty-text popover-beauty">زمان مورد نظرتان را به روز وارد کنید </PopoverBody>
-                          </Popover>
+                            <div id="price-range" style={{display:"none"}}/>
+                              {/*<span className="price-msg">
+                                  <i className="fa fa-exclamation-triangle" aria-hidden="true" />
+                                  نارنجی: بودجه تعیین شده به نسبت ارزش پروژه کمتر است! ویش ورک پیشنهاد می کند که برای بالا بردن شانس انجام پروژه ی با کیفیت، کف بودجه را افزایش دهید.
+                              </span>*/}
+                              <div id="price-range" style={{display:"none"}}/>
+                              {/*<span className="price-msg">*/}
+                                  {/*<i className="fa fa-exclamation-triangle" aria-hidden="true" />*/}
+                                  {/*نارنجی: بودجه تعیین شده به نسبت ارزش پروژه کمتر است! ویش ورک پیشنهاد می کند که برای بالا بردن شانس انجام پروژه ی با کیفیت، کف بودجه را افزایش دهید.*/}
+                              {/*</span>*/}
+                            </div>
+                            <div className="form-group col-sm-6">
+                              <legend htmlFor="" className="col-form-label">
+                                <span className="form-header-fontsize"> زمان مورد نیاز </span>
+                              </legend>
+                              <div className="row">
+                                <span>
+                                  <input type="text" className="form-control form-body-fontsize" id="timeInput" value={this.state.time_limit} onChange={this.submitProjectTimeState} onBlur={this.roundProjectTime} onFocus={this.togglePopoverTime} />
+                                </span>
+                                <span className="form-header-fontsize submission-day-input">روز</span>
+                              </div>
+                              <Popover placement="right" isOpen={this.state.popoverOpenTime} target="timeInput" toggle={this.togglePopoverTime}>
+                                <PopoverBody className="beauty-text popover-beauty">زمان مورد نظرتان را به روز وارد کنید </PopoverBody>
+                              </Popover>
 
-                          <div id="time-range"/>
-                          {/*<span className="time-msg">
-                              <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
-                              آبی: مقدار زمان طلب شده به نسبت اندازه ی پروژه مطلوب می باشد!
-                          </span>*/}
-                          {/*<span className="time-msg">*/}
-                              {/*<i className="fa fa-exclamation-triangle" aria-hidden="true"/>*/}
-                              {/*آبی: مقدار زمان طلب شده به نسبت اندازه ی پروژه مطلوب می باشد!*/}
-                          {/*</span>*/}
+                              <div id="time-range"/>
+                              {/*<span className="time-msg">
+                                  <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
+                                  آبی: مقدار زمان طلب شده به نسبت اندازه ی پروژه مطلوب می باشد!
+                              </span>*/}
+                              {/*<span className="time-msg">*/}
+                                  {/*<i className="fa fa-exclamation-triangle" aria-hidden="true"/>*/}
+                                  {/*آبی: مقدار زمان طلب شده به نسبت اندازه ی پروژه مطلوب می باشد!*/}
+                              {/*</span>*/}
+                            </div>
                         </div>
 
                           {showError ? <Error message={this.state.message}/> : (true)}

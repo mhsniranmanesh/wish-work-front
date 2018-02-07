@@ -31,7 +31,7 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                                                                             color="secondary"
                                                                             className="btn btn-secondary btn-rec"
                                                                             onClick={sendUploadedFileByFreelancer}>
-                                            <i className="fa fa-download"/>
+                                            <i className="fa fa-download fa-download-dash-cp-success"/>
                                         </Button> : (null)}
                                         <input type="file" color="secondary" className="btn btn-secondary btn-rec"
                                                onChange={(event) => {
@@ -63,7 +63,7 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                                             <Button type="submit" color="secondary"
                                                     className="btn btn-secondary btn-rec"
                                                     onClick={sendUploadedFileByFreelancer}>
-                                                <i className="fa fa-download"/>
+                                                <i className="fa fa-download fa-download-dash-cp-notyet"/>
                                             </Button> : (null)}
                                         <input type="file" color="secondary" className="btn btn-secondary btn-rec"
                                                onChange={(event) => {

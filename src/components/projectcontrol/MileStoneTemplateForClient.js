@@ -36,7 +36,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                         <div>
                             <div>
                                 <a download="wish-work-file" href={CPClient.project_controller_element_attachments[0].file} target="_blank">
-                                    <span id="download-symbol"> <i className="fa fa-download "
+                                    <span id="download-symbol"> <i className="fa fa-download fa-download-dash-cp-now"
                                                                    aria-hidden="true"/> </span>
                                     <span className="file-subject">فایل پروژه ی شما</span>
                                 </a>
@@ -58,7 +58,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                         <Button type="submit" color="secondary"
                                                 className="btn btn-secondary btn-rec" onClick={(event)=>
                                         {submitFeedBack(CPClient.project_controller_element_attachments[0].uuid);}}>
-                                            <i className="fa fa-download"/>
+                                            <i className="fa fa-download fa-download-dash-cp-now"/>
                                         </Button>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                 downloadFileModal('its the end' , CPClient.project_controller_element_attachments[0].uuid);
                             }}>
                                 <a download="wish-work-file" target="_blank">
-                                    <span id="download-symbol"> <i className="fa fa-download "
+                                    <span id="download-symbol"> <i className="fa fa-download fa-download-dash-cp-now "
                                                                    aria-hidden="true"/> </span>
                                     <span className="file-subject">فایل پروژه ی شما</span>
                                 </a>
@@ -121,7 +121,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                         <textarea type="text" className="form-control form-body-fontsize" id="Popover4"
                                                   placeholder="انتقادات و پیشنهادات خود را در این بخش بنویسید"/>
                                         <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
-                                            <i className="fa fa-download"/>
+                                            <i className="fa fa-download fa-download-dash-cp-now"/>
                                         </Button>
                                     </div>
                                 </div>
@@ -144,7 +144,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                 <div className="timeline-label">
                                     <h2><a href="#">{CPClient.description}</a></h2>
                                     <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
-                                        <i className="fa fa-download"/>
+                                        <i className="fa fa-download fa-download-dash-cp-notyet"/>
                                     </Button>
                                     <input type="file" color="secondary" className="btn btn-secondary btn-rec" placeholder="آپلود کنید"/>
                                 </div>
@@ -170,7 +170,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                 <div className="timeline-label">
                                     <h2><a href="#">{CPClient.description}</a></h2>
                                     <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
-                                        <i className="fa fa-download"/>
+                                        <i className="fa fa-download fa-download-dash-cp-now"/>
                                     </Button>
                                 </div>
                             </div>
@@ -191,7 +191,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                 <div className="timeline-label">
                                     <h2><a href="#">{CPClient.description}</a></h2>
                                     <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
-                                        <i className="fa fa-download"/>
+                                        <i className="fa fa-download fa-download-dash-cp-notyet"/>
                                     </Button>
                                 </div>
                             </div>
@@ -216,7 +216,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                         <div className="timeline-label">
                             <h2><a href="#">{CPClient.description}</a></h2>
                             <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
-                                <i className="fa fa-download"/>
+                                <i className="fa fa-download fa-download-dash-cp-notyet"/>
                             </Button>
                         </div>
                     </div>

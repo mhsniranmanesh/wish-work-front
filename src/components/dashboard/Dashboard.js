@@ -22,7 +22,7 @@ class Dashboard extends React.Component{
     this.state = { translationTo : "" , translationFrom : "" ,
         projectSkillTag : "" , translationFatherTag : false ,
         is_general: false , is_medical : false , is_technical : false , is_law : false ,
-        profileInfo:Object.assign({} , props.profileInfo[0]) , loading:true , suggestedProject:""};
+        profileInfo:Object.assign({} , props.profileInfo[0]) , loading:true , suggestedProject:"" , popoverOpenWishcoin:false};
 
         this.IsLaw = this.IsLaw.bind(this);
         this.IsMedical = this.IsMedical.bind(this);
@@ -38,8 +38,17 @@ class Dashboard extends React.Component{
         this.size = this.size.bind(this);
         this.WordCount = this.WordCount.bind(this);
         this.goToMyProjectPublic = this.goToMyProjectPublic.bind(this);
+        this.togglePopoverWishcoin = this.togglePopoverWishcoin.bind(this);
+
 
   }
+
+
+    togglePopoverWishcoin(){
+      this.setState({
+        popoverOpenWishcoin: !this.state.popoverOpenWishcoin
+      });
+    }
     goToMyProjectPublic(y){
         this.context.router.history.push({
             pathname:'/projects/' + y,
@@ -225,7 +234,11 @@ class Dashboard extends React.Component{
 
 
                     <div className="col-sm-5">
-                        <ProfileInfoForDashboard profileInfo={this.state.profileInfo} />
+                        <ProfileInfoForDashboard
+                          profileInfo={this.state.profileInfo}
+                          popoverOpenWishcoin = {this.state.popoverOpenWishcoin}
+                          togglePopoverWishcoin = {this.togglePopoverWishcoin}
+                           />
 
                         <DashboardProjectSubmission upVTF={this.updateValueTF} upVTT={this.updateValueTT}
                                                     translationFrom={this.state.translationFrom}
@@ -238,10 +251,11 @@ class Dashboard extends React.Component{
                         />
                     </div>
                     <div className="col-sm-7">
-                        <MyProjectsListForDashboard profileInfo={this.state.profileInfo} myFunc={this.gotoMyProjects}
+                        <MyProjectsListForDashboard   profileInfo={this.state.profileInfo} myFunc={this.gotoMyProjects}
                                                        size={this.size}
                                                        goToMyProjectPublic={this.goToMyProjectPublic}
-                                                    submitProject={this.submitProject}
+                                                       submitProject={this.submitProject}
+
                         />
 
                         <ProjectsListForDashboard Projects={this.state.profileInfo.suggested_projects}

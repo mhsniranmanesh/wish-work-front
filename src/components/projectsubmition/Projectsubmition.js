@@ -59,6 +59,7 @@ class Projectsubmition extends React.Component{
             popoverOpenDesc: false,
             popoverOpenPage: false,
             popoverOpenAuctionInterval: false,
+            popoverOpenAuction: false,
             number_of_pages : 0,
             fileIsUpload : false,
             inputTitle: 'فایل را بگیرید و اینجا رها کنید.',
@@ -76,6 +77,7 @@ class Projectsubmition extends React.Component{
         this.togglePopoverShow = this.togglePopoverShow.bind(this);
         this.togglePopoverDesc = this.togglePopoverDesc.bind(this);
         this.togglePopoverAuctionInterval = this.togglePopoverAuctionInterval.bind(this);
+        this.togglePopoverAuction = this.togglePopoverAuction.bind(this);
 
         this.handleOnChange = this.handleOnChange.bind(this);
         this.roundProjectAuctionTime = this.roundProjectAuctionTime.bind(this);
@@ -123,6 +125,12 @@ class Projectsubmition extends React.Component{
                 this.progressNumber();                                           //  ..  again which will trigger another
             }                        //  ..  setTimeout()
         }, 2000)
+    }
+
+    togglePopoverAuction(){
+      this.setState({
+        popoverOpenAuction: !this.state.popoverOpenAuction
+      });
     }
 
     togglePopoverAuctionInterval(){
@@ -785,9 +793,15 @@ class Projectsubmition extends React.Component{
                         <Col>
                           <legend htmlFor="" className="col-form-label form-header-fontsize">
                                   <span className="form-header-fontsize">مدت برقراری مناقصه</span>
-                                  <span className="user-inform"><i className="fa fa-question-circle"/></span>
+                                  <span className="user-inform" id="auctionTime" onClick={this.togglePopoverAuction}>
+                                    <i className="fa fa-question-circle"/>
+                                  </span>
                           </legend>
-                          <input type="text" className="form-control form-body-fontsize" id="auctionInput" value={this.state.auctionTime} onChange={this.submitProjectAuctionState} onBlur={this.roundProjectAuctionTime} onFocus={this.togglePopoverAuctionInterval}/>
+                          <Popover placement="left" isOpen={this.state.popoverOpenAuction} target="auctionTime" toggle={this.togglePopoverAuction}>
+                            <PopoverBody className="beauty-text popover-beauty">مدت زمانی که فریلنسر ها پروژه شما را مشاهده می کنند و می توانند قیمت پیشنهادی خود را اعلام کنند. </PopoverBody>
+                          </Popover>
+
+                          <input type="text" className="form-control form-body-fontsize" id="auctionInput" value={this.state.auction} onChange={this.submitProjectAuctionState} onBlur={this.roundProjectAuctionTime} onFocus={this.togglePopoverAuctionInterval}/>
                             <Popover placement="left" isOpen={this.state.popoverOpenAuctionInterval} target="auctionInput" toggle={this.togglePopoverAuctionInterval}>
                               <PopoverBody className="beauty-text popover-beauty">لطفا مدت برقراری مناقصه را بین ۲ تا ۷ روز وارد نمایید</PopoverBody>
                             </Popover>

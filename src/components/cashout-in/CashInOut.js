@@ -4,13 +4,15 @@ import CashOut from './CashOut';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as profileInfo from '../../actions/profileInfo';
+import Errors from './Error';
+import Error from "../profileinfo/Error";
 //import ChangeButton from './ChangeButton';
 
 class CashOutIn extends React.Component{
     constructor(props){
         super(props);
         this.state={priceForCashIn:"" , showCashIn:true , priceForSend:"" ,
-            priceForCashOut:"" , priceForWithdraw:"" , profileInfo:""};
+            priceForCashOut:"" , priceForWithdraw:"" , profileInfo:"" , showErrorForCashIn:false};
         this.ChangeToCashIn = this.ChangeToCashIn.bind(this);
         this.ChangeToCashOut = this.ChangeToCashOut.bind(this);
         this.onChangeCashIn = this.onChangeCashIn.bind(this);
@@ -42,14 +44,12 @@ class CashOutIn extends React.Component{
     }
     ChangeToCashIn(){
       // console.log(this.state.showCashIn , "showCashin 1 State");
-
         this.setState({showCashIn: true});
         console.log(this.state.showCashIn, 'showCashin TorF')
         //console.log(this.state)
     }
     ChangeToCashOut(){
       // console.log(this.state.showCashIn , "showCashOut 3 State");
-
         this.setState({showCashIn: false});
         console.log(this.state.showCashIn , "showCashOut 4 State");
     }
@@ -78,12 +78,20 @@ class CashOutIn extends React.Component{
 
     }
     sendToServerCashInRequest(){
-        this.setState({priceForSend: this.state.priceForCashIn});
-        this.props.actions.transActionPerform(this.state.priceForSend * 10).then(
-            () =>{ this.redirectToPaymentPage()
-            }
-            ).catch(err => { throw (err)});
-        console.log(this.state);
+        var validity = this.validatePrice(this.state.priceForSend);
+        if(validity) {
+            this.setState({priceForSend: this.state.priceForCashIn});
+            this.setState({showErrorForCashIn: false});
+            this.props.actions.transActionPerform(this.state.priceForSend * 10).then(
+                () => {
+                    this.redirectToPaymentPage()
+                }
+            ).catch(err => {
+                throw (err)
+            });
+            console.log(this.state);
+        }
+        this.setState({showErrorForCashIn: true})
     }
     sendToServerCashOutRequest(){
         this.setState({priceForWithdraw: this.state.priceForCashOut});
@@ -126,6 +134,7 @@ class CashOutIn extends React.Component{
                                       priceForSend={this.state.priceForWithdraw}
                                     />}
                             </div>
+                            {this.state.showErrorForCashIn ? <Error message="لطفا مبلغ خود را اعداد انگلیسی به تومان وارد کنید"/> : (null)}
                         </div>
                     </div>
                 </div>

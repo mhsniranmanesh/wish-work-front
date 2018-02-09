@@ -7,14 +7,16 @@ import {bindActionCreators} from 'redux';
 import * as ControlProjectActions from '../../actions/mileStoneActions';
 import * as ProfileInfoActions from '../../actions/profileInfo';
 import ProjectsList from './ProjectsList';
+import Errors from './Error';
+import Error from "../profileinfo/Error";
 
 class ProjectControl extends React.Component{
-    constructor(props){
-        super(props);
+    constructor(props , context){
+        super(props , context);
         this.state = {AsFreelancerProject:"" , AsClientProject:"", fileIsUpload:false, profileInfo:"",
             loadSuccess:false , file:"" , mileStoneId:"" , milestone_id:"" , dontHaveEnoughCash:false , haveEnoughCash:false
             , downloadFile:false, attachmentId:"" , priceForCashIn:0 , reviseValue:"" ,numberSee:0, activeProjectList : 0 ,
-            helpToWishWorkModal:false , donateValue:0 , validPrice:true };
+            helpToWishWorkModal:false, donateValue:0 , validPrice:true , showErrorForDonate:false };
         this.size = this.size.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
         this.sendUploadedFileByFreelancer = this.sendUploadedFileByFreelancer.bind(this);
@@ -27,10 +29,41 @@ class ProjectControl extends React.Component{
         this.reviseOnChange = this.reviseOnChange.bind(this);
         this.submitFeedBack = this.submitFeedBack.bind(this);
         this.changeView = this.changeView.bind(this);
-        // this.goToCashIn = this.goToCashIn.bind(this);
+        this.goToCashIn = this.goToCashIn.bind(this);
         this.donate = this.donate.bind(this);
         this.donateOnchange = this.donateOnchange.bind(this);
         this.validatePrice = this.validatePrice.bind(this);
+        this.goToCashInForDonate = this.goToCashInForDonate.bind(this);
+        this.goToPayPage = this.goToPayPage.bind(this);
+        this.donate = this.donate.bind(this);
+        this.toggleDonate = this.toggleDonate.bind(this);
+    }
+    toggleDonate(){
+        this.setState({helpToWishWorkModal:false})
+    }
+    donate(){
+        this.setState({helpToWishWorkModal: true})
+    }
+    goToCashInForDonate(){
+            var validity = this.validatePrice(this.state.donateValue);
+            if(validity){
+                this.setState({showErrorForDonate : false});
+                let price = this.state.donateValue;
+                this.props.actions.transActionPerform(price*10).then(
+                    () => this.goToPayPage()
+                )
+            }
+            else {
+                this.setState({showErrorForDonate : true})
+            }
+
+        // let price = this.state.donateValue;
+        // this.props.actions.transActionPerform(price*10).then(
+        //     () => this.goToPayPage()
+        // )
+    }
+    goToPayPage(){
+        window.location.assign(this.props.payLink.payment_url)
     }
     validatePrice(price){
         const pr = /^\d+$/ ;
@@ -39,22 +72,22 @@ class ProjectControl extends React.Component{
     donateOnchange(e){
         this.setState({donateValue : e.target.value})
     }
-    donate(){
-        var validity = this.validatePrice(this.state.donateValue);
-        if(validity){
-            //action to pay
-        }
-        else {
-            //lotfan mablagho adad bedin
-        }
-    }
-    // goToCashIn(y){
-    //     let price = y.toString();
-    //     this.context.router.history.push({
-    //         pathname: '/account/cash',
-    //         search: price
-    //     });
+    // donate(){
+    //     var validity = this.validatePrice(this.state.donateValue);
+    //     if(validity){
+    //         //action to pay
+    //     }
+    //     else {
+    //         //lotfan mablagho adad bedin
+    //     }
     // }
+    goToCashIn(){
+        let price = this.state.priceForCashIn.toString();
+        this.context.router.history.push({
+            pathname: '/account/cash',
+            search: price
+        });
+    }
     changeView(number){
         this.setState({numberSee: number});
         this.setState({activeProjectList: number});
@@ -177,15 +210,17 @@ class ProjectControl extends React.Component{
   render(){
     return(
       <div className="content-wrapper py-3">
-          <Modal isOpen={this.state.helpToWishWorkModal}>
+          <Modal isOpen={this.state.helpToWishWorkModal} toggle={this.toggleDonate}>
               <ModalBody>
                   پروژه ی شما به پایان رسید.
                   ممنون از این که سایت ما را انتخاب کردید.
                   در صورتی که تمایل به حمایت از ما دارید مبلغ خود را وارد کرده و بر روی کلید حمایت کلیک کنید
                   <input placeholder="مبلغ مورد نظر خود را به تومان وارد کنید"
                          value={this.state.donateValue} onChange={this.donateOnchange}/>
+                  تومان
               </ModalBody>
-              <button>ما را حمایت کنید</button>
+              <button onClick={this.goToCashInForDonate}>ما را حمایت کنید</button>
+              {this.state.showErrorForDonate?<Errors/>:(null)}
           </Modal>
           <Modal isOpen={this.state.downloadFile} toggle={this.toggle}>
               <ModalBody >
@@ -195,7 +230,7 @@ class ProjectControl extends React.Component{
           </Modal>
           <Modal isOpen={this.state.dontHaveEnoughCash} toggle={this.toggle2}>
               <ModalBody>شما وجه کافی ندارید، برای پرداخت وجه بر روی کلیک کنید</ModalBody>
-              <button >پرداخت وجه</button>
+              <button onClick={this.goToCashIn} >پرداخت وجه</button>
           </Modal>
           <Modal isOpen={this.state.haveEnoughCash} toggle={this.toggle3}>
               <ModalBody> شما دارای وجه کافی می باشید، برای پرداخت خودکار وجه{this.state.priceForCashIn}تومان ، دیدن فایل خود ، بازنگری فایل خود و نیز شروع کار مرحله ی بعد فریلنسر بر روی تایید کلیک کنید.</ModalBody>
@@ -220,6 +255,7 @@ class ProjectControl extends React.Component{
                                       reviseValue={this.state.reviseValue}
                                       submitFeedBack={this.submitFeedBack}
                                       numberSee={this.state.numberSee}
+                                      donate={this.donate}
 
                           />:(null)}
                       </div>
@@ -251,7 +287,8 @@ ProjectControl.PropTypes = {
 
 function mapStateToProps(state, ownProps) {
     return {
-        profileInfo: state.profileInfo
+        profileInfo: state.profileInfo,
+        payLink : state.payLink
     }
 }
 function mapDispatchToProps(dispatch) {

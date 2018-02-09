@@ -30,6 +30,7 @@ const MileStones = (props)=> {
                                                          reviseOnChange={props.reviseOnChange}
                                                          reviseValue={props.reviseValue}
                                                          submitFeedBack={props.submitFeedBack}
+                                                         donate={props.donate}
             />
         }
     }

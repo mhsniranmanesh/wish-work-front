@@ -30,7 +30,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
             return (
                 <div>
                     <div className="fl-list">
-                        <div className="fl-wrap media">
+                        <div className="fl-wrap media mb-1">
                             <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
                                  style={ {height:60 , width:60} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
 
@@ -92,7 +92,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                 return (
                     <div>
                         <div className="fl-list fl-wrap-self-bid">
-                            <div className="fl-wrap media ">
+                            <div className="fl-wrap media mb-1">
                                 <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
                                      style={ {height:60 , width:60} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
                                    <div className="bid-subject">
@@ -133,7 +133,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                 return (
                     <div>
                         <div className="fl-list">
-                            <div className="fl-wrap media">
+                            <div className="fl-wrap media mb-1">
                                 <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
                                      style={ {height:60 , width:60} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
                                  <div className="bid-subject">
@@ -167,7 +167,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
         return(
         <div>
             <div className="fl-list">
-                <div className="fl-wrap media">
+                <div className="fl-wrap media mb-1">
                     <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
                          style={ {height:60 , width:60} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
                     <div className="media-body">

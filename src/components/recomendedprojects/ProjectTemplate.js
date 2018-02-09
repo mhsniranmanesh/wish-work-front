@@ -75,9 +75,15 @@ const ProjectTemplate = ({ProjectDetail , goToProjectProfile}) =>{
                     </svg>
                   </div>
                 </span>*/}
-                <a href="#">
-                    <h6 ><strong className="form-header-fontsize">{ProjectDetail.title} (<Flag code={to_languageCode} height="10"/> به <Flag code={from_languageCode}
-                                                                                                                                             height="12"/>)</strong></h6>
+                <a href="#" className="mb-2">
+                    <span className="prject-title">
+                          {ProjectDetail.title}
+                    </span>
+                  <span className="project-header-flag">
+                        <span> <Flag code={from_languageCode} height="12"/> </span>
+                        <span className="detail-fontsize">به</span>
+                        <span> <Flag code={to_languageCode}  height="12"/> </span>
+                  </span>
                 </a>
                 <div id="wrap">
                     <h6  className="form-body-fontsize">

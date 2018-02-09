@@ -87,13 +87,13 @@ const ProjectDetail = (props) => {
     }
     if (props.Detail) {
         if (!props.Detail.is_verified) {
-            badge = <Badge color="secondary" pill>در انتظار تایید</Badge>
+            badge = <Badge color="secondary badge-banned" pill>در انتظار تایید</Badge>
         }
         else if ((!props.Detail.is_started) && props.Detail.is_verified) {
-            badge = <Badge color="info">در حال مناقصه</Badge>
+            badge = <Badge color="info badge-during-auction">در حال مناقصه</Badge>
         }
         else if (props.Detail.is_started && (!props.Detail.is_completed)) {
-            badge = <Badge color="success">در حال انجام</Badge>
+            badge = <Badge color="success badge-doing">در حال انجام</Badge>
         }
     }
     if (props.FromLanguage) {
@@ -107,7 +107,9 @@ const ProjectDetail = (props) => {
               <span>
                   <span>  {props.Detail.title} </span>
                   <span className="project-header-flag">
-                    <span> <Flag code={toLanguageCode} height="12"/> </span>به <span> <Flag code={fromLanguageCode} height="12"/> </span>
+                    <span> <Flag code={fromLanguageCode} height="12"/> </span>
+                    <span className="detail-fontsize">به</span>
+                    <span> <Flag code={toLanguageCode} height="12"/> </span>
                   </span>
               </span>
 

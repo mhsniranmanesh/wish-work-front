@@ -15,7 +15,7 @@ const ProjectTemplate = (props)=>{
                     <div className="wrap d-flex flex-row">
                         <div className="meta">
                             <p className="name">{props.AsFreelancerProject.title}</p>
-                            <span className="badge badge-pill badge-success">در حال انجام</span>
+                            <span className="badge badge-doing-dash-cp">در حال انجام</span>
                             <p className="time">فریلنسر</p>
                             <p className="preview">{x}</p>
                         </div>
@@ -31,7 +31,7 @@ const ProjectTemplate = (props)=>{
                     <div className="wrap d-flex flex-row">
                         <div className="meta">
                             <p className="name">{props.AsFreelancerProject.title}</p>
-                            <span className="badge badge-pill badge-success">در حال انجام</span>
+                            <span className="badge badge-doing-dash-cp">در حال انجام</span>
                             <p className="time">فریلنسر</p>
                             <p className="preview">{x}</p>
                         </div>
@@ -53,7 +53,7 @@ const ProjectTemplate = (props)=>{
                     <div className="wrap d-flex flex-row">
                         <div className="meta">
                             <p className="name">{props.AsClientProject.title}</p>
-                            <span className="badge badge-pill badge-success">در حال انجام</span>
+                            <span className="badge badge-doing-dash-cp">در حال انجام</span>
                             <p className="time">مشتری</p>
                             <p className="preview">{x}</p>
                         </div>
@@ -69,7 +69,7 @@ const ProjectTemplate = (props)=>{
                     <div className="wrap d-flex flex-row">
                         <div className="meta">
                             <p className="name">{props.AsClientProject.title}</p>
-                            <span className="badge badge-pill badge-success">در حال انجام</span>
+                            <span className="badge badge-doing-dash-cp">در حال انجام</span>
                             <p className="time">مشتری</p>
                             <p className="preview">{x}</p>
                         </div>

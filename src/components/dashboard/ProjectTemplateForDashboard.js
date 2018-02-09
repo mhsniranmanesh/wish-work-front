@@ -95,7 +95,8 @@ const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordC
                           {ProjectDetail.title}
                     </span>
                     <span className="project-header-flag">
-                          <span> <Flag code={from_languageCode} height="12"/> به </span>
+                          <span> <Flag code={from_languageCode} height="12"/> </span>
+                          <span className="detail-fontsize">به</span>
                           <span> <Flag code={to_languageCode}  height="12"/> </span>
                     </span>
                     <div className="project-discript">
@@ -161,7 +162,8 @@ const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordC
                           {ProjectDetail.title}
                     </span>
                     <span className="project-header-flag">
-                          <span> <Flag code={from_languageCode} height="12"/> به </span>
+                          <span> <Flag code={from_languageCode} height="12"/> </span>
+                          <span className="detail-fontsize">به</span>
                           <span> <Flag code={to_languageCode}  height="12"/> </span>
                     </span>
                     <div className="project-discript">

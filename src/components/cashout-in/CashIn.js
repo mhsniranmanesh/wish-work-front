@@ -18,8 +18,8 @@ const CashIn = (props) => {
           <div className="tab-pane fade show active text-center py-4"  role="tabpanel" aria-labelledby="deposit-tab">
           <form className="">
               <div className="form-group">
-                  <label className="col-form-label">{x}</label>
-                  <input type="text" className="form-control"
+                  <label className="col-form-label form-header-fontsize">{x}</label>
+                  <input type="text" className="form-control form-body-fontsize"
                          onChange={(event)=>{props.onChangeCashIn(event)}}
                          placeholder="مبلغ به ریال" value={priceForSend}/>
               </div>

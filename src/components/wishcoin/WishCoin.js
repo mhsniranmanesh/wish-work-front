@@ -53,20 +53,24 @@ class WishCoin extends React.Component {
                 <div className="content-wrapper py-3">
                     <div className="container-fluid">
                         <div className="row">
-                            <div className="col-sm-8 d-block mx-auto">
-                                <div className="dash-con dash-new-project con-body mb-4">
-                                    <h5>ویش‌کوین‌های من</h5>
-                                    <div className="dash-divider"></div>
-                                    <div className="row">
-                                        <div className="col-sm-4 col-sm-offset-4">
-                                            <div className="circle">
-                                                <a href="#"><h2>{this.state.profileInfo.wish_coins}</h2></a>
+                            <div className="col-sm-10 d-block mx-auto">
+
+                                      <div className="dash-con dash-new-project con-body mb-4">
+                                          <h5>ویش‌کوین‌های من</h5>
+                                          <div className="dash-divider"></div>
+                                          <div className="row">
+                                            <div className="col-sm-4">
+                                                <div className="circle">
+                                                    <a href="#"><h2>{this.state.profileInfo.wish_coins}</h2></a>
+                                                </div>
                                             </div>
-                                            <h4>ویش کوین چیست؟</h4>
-                                            <p>با ویش کوین می توانید از قابلیت های پلتفرم ویش ورک استفاده کنید. این قابلیت ها در حال حاضر شامل شرکت در مناقاصات و ثبت پروژه می باشد</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                            <div className="col-sm-8 wishcoin-descript">
+                                                <h4>ویش کوین چیست؟</h4>
+                                                <p>با ویش کوین می توانید از قابلیت های پلتفرم ویش ورک استفاده کنید. این قابلیت ها در حال حاضر شامل شرکت در مناقاصات و ثبت پروژه می باشد</p>
+                                            </div>
+                                          </div>
+                                       </div>
+
                                 <div className="dash-con dash-new-project con-body mb-4 d-flex">
                                     <div className="dash-divider"></div>
                                     <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -77,7 +81,7 @@ class WishCoin extends React.Component {
                                                     <span className="sup">ویش‌کوین</span>
                                                 </div>
                                                 <div className="type bg-dark">
-                                                    <sup>$</sup>1
+                                                    <sup>تومان</sup>10000
                                                 </div>
                                                 <div className="pricing-footer">
                                                     <btn href="#" className="btn btn-rec btn-light" onClick={this.modalCashEnough}>خرید</btn>
@@ -107,7 +111,7 @@ class WishCoin extends React.Component {
                                                     <span className="sup">ویش‌کوین</span>
                                                 </div>
                                                 <div className="type bg-dark">
-                                                    <sup>$</sup>2
+                                                    <sup>تومان</sup>20000
                                                 </div>
                                                 <div className="pricing-footer">
                                                     <btn href="#" className="btn btn-rec btn-light" onClick={this.modalCashNotEnough}>خرید</btn>
@@ -137,7 +141,7 @@ class WishCoin extends React.Component {
                                                     <span className="sup">ویش‌کوین</span>
                                                 </div>
                                                 <div className="type bg-dark">
-                                                    <sup>$</sup>3
+                                                    <sup>تومان</sup>30000
                                                 </div>
                                                 <div className="pricing-footer">
                                                     <a href="#" className="btn btn-rec btn-light">خرید</a>

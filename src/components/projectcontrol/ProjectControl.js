@@ -13,7 +13,8 @@ class ProjectControl extends React.Component{
         super(props);
         this.state = {AsFreelancerProject:"" , AsClientProject:"", fileIsUpload:false, profileInfo:"",
             loadSuccess:false , file:"" , mileStoneId:"" , milestone_id:"" , dontHaveEnoughCash:false , haveEnoughCash:false
-            , downloadFile:false, attachmentId:"" , priceForCashIn:0 , reviseValue:"" ,numberSee:0, activeProjectList : 0};
+            , downloadFile:false, attachmentId:"" , priceForCashIn:0 , reviseValue:"" ,numberSee:0, activeProjectList : 0 ,
+            helpToWishWorkModal:false , donateValue:0 , validPrice:true };
         this.size = this.size.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
         this.sendUploadedFileByFreelancer = this.sendUploadedFileByFreelancer.bind(this);
@@ -26,8 +27,34 @@ class ProjectControl extends React.Component{
         this.reviseOnChange = this.reviseOnChange.bind(this);
         this.submitFeedBack = this.submitFeedBack.bind(this);
         this.changeView = this.changeView.bind(this);
-
+        // this.goToCashIn = this.goToCashIn.bind(this);
+        this.donate = this.donate.bind(this);
+        this.donateOnchange = this.donateOnchange.bind(this);
+        this.validatePrice = this.validatePrice.bind(this);
     }
+    validatePrice(price){
+        const pr = /^\d+$/ ;
+        return pr.test(price) ;
+    }
+    donateOnchange(e){
+        this.setState({donateValue : e.target.value})
+    }
+    donate(){
+        var validity = this.validatePrice(this.state.donateValue);
+        if(validity){
+            //action to pay
+        }
+        else {
+            //lotfan mablagho adad bedin
+        }
+    }
+    // goToCashIn(y){
+    //     let price = y.toString();
+    //     this.context.router.history.push({
+    //         pathname: '/account/cash',
+    //         search: price
+    //     });
+    // }
     changeView(number){
         this.setState({numberSee: number});
         this.setState({activeProjectList: number});
@@ -149,8 +176,17 @@ class ProjectControl extends React.Component{
     }
   render(){
     return(
-
       <div className="content-wrapper py-3">
+          <Modal isOpen={this.state.helpToWishWorkModal}>
+              <ModalBody>
+                  پروژه ی شما به پایان رسید.
+                  ممنون از این که سایت ما را انتخاب کردید.
+                  در صورتی که تمایل به حمایت از ما دارید مبلغ خود را وارد کرده و بر روی کلید حمایت کلیک کنید
+                  <input placeholder="مبلغ مورد نظر خود را به تومان وارد کنید"
+                         value={this.state.donateValue} onChange={this.donateOnchange}/>
+              </ModalBody>
+              <button>ما را حمایت کنید</button>
+          </Modal>
           <Modal isOpen={this.state.downloadFile} toggle={this.toggle}>
               <ModalBody >
                   برای دانلود فایل خود باید ابتدا وجه مایل استون بعدی را بپردازید
@@ -158,7 +194,8 @@ class ProjectControl extends React.Component{
         <button onClick={this.okAndCheckBalanceInModal}>باشه</button>
           </Modal>
           <Modal isOpen={this.state.dontHaveEnoughCash} toggle={this.toggle2}>
-              <ModalBody>شما وجه کافی ندارید</ModalBody>
+              <ModalBody>شما وجه کافی ندارید، برای پرداخت وجه بر روی کلیک کنید</ModalBody>
+              <button >پرداخت وجه</button>
           </Modal>
           <Modal isOpen={this.state.haveEnoughCash} toggle={this.toggle3}>
               <ModalBody> شما دارای وجه کافی می باشید، برای پرداخت خودکار وجه{this.state.priceForCashIn}تومان ، دیدن فایل خود ، بازنگری فایل خود و نیز شروع کار مرحله ی بعد فریلنسر بر روی تایید کلیک کنید.</ModalBody>
@@ -204,6 +241,9 @@ class ProjectControl extends React.Component{
     )
   }
 }
+ProjectControl.contextTypes = {
+    router: PropTypes.object.isRequired
+};
 ProjectControl.PropTypes = {
     sendUploadedFileByFreelancerAction: PropTypes.func.isRequired,
     actions : PropTypes.func.isRequired,

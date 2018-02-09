@@ -1,12 +1,13 @@
 import React from 'react';
 import MileStoneFatherForFreelancer from './MileStoneFatherForFreelancer';
-import MileStoneFatherForClient from './MileStoneFatherForClient'
+import MileStoneFatherForClient from './MileStoneFatherForClient';
+import arraySort from 'array-sort';
+
 const MileStones = (props)=> {
     let FreelancerProject = [];
     let ClientProject = [];
     console.log(props.AsFreelancerProject, 'AsFreelancerProject');
     console.log(props.AsClientProject, 'AsClientProject');
-
     if(props.AsFreelancerProject.length) {
         for (var i = 0; i < props.AsFreelancerProject.length; i++) {
             FreelancerProject[2*i]=<MileStoneFatherForFreelancer key={i}
@@ -43,6 +44,7 @@ const MileStones = (props)=> {
         )
     }
     else if(props.AsClientProject.length && (props.numberSee %2 === 1)){
+        console.log(ClientProject , 'ClientProject');
         return(
             <div>
                 {ClientProject[props.numberSee]}

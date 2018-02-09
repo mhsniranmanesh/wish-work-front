@@ -107,8 +107,7 @@ const ProjectDetail = (props) => {
               <span>
                   <span>  {props.Detail.title} </span>
                   <span className="project-header-flag">
-                    <span> <Flag code={toLanguageCode} height="12"/> </span>
-                    <span> <Flag code={fromLanguageCode} height="12"/> </span>
+                    <span> <Flag code={toLanguageCode} height="12"/> </span>به <span> <Flag code={fromLanguageCode} height="12"/> </span>
                   </span>
               </span>
 

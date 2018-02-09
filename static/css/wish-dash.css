@@ -1243,6 +1243,7 @@ div #bg-primary-left {
     padding: 10px 0 15px 0;
     font-size: 0.9em;
     cursor: pointer;
+    margin-top: 15px;
 }
 
 .contact-list li.contact .wrap {
@@ -1903,11 +1904,12 @@ div #bg-primary-left {
 .cashout-title{
   text-align: center;
   margin-top: 10px;
+  font-size: 17px;
+  font-weight: 300;
 }
 
 .sheba-numb{
   margin-top: 5px;
-  font-size: 13px;
 }
 
 
@@ -1994,4 +1996,12 @@ div #bg-primary-left {
 }
 #timeInput{
   margin-right: 15px;
+}
+
+#deposit-tab,#draw-tab{
+  color: #fff;
+}
+
+.wishcoin-descript{
+  margin-top: 45px;
 }

@@ -16,8 +16,9 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                     <div>
                         <article className="timeline-entry">
                             <div className="timeline-entry-inner">
-                                <time className="timeline-time"><span>
-                            </span> <span className="text-muted">بازنگری شده</span></time>
+                                <time className="timeline-time">
+                                  <span className="text-muted">بازنگری شده</span>
+                                </time>
                                 <div className="timeline-icon bg-success">
                                     <i className="entypo-location"/>
                                 </div>
@@ -34,18 +35,21 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                 if(CPClient.project_controller_element_attachments[0].file){
                     return (
                         <div>
-                            <div>
-                                <a download="wish-work-file" href={CPClient.project_controller_element_attachments[0].file} target="_blank">
-                                    <span id="download-symbol"> <i className="fa fa-download fa-download-dash-cp-now"
-                                                                   aria-hidden="true"/> </span>
-                                    <span className="file-subject">فایل پروژه ی شما</span>
-                                </a>
-                            </div>
                             <article className="timeline-entry">
                                 <div className="timeline-entry-inner">
-                                    <time className="timeline-time"><span>
-                            </span> <span className="text-muted">فایل خود را دانلود کنید ، اگر پیشنهاد و یا انتقادی به ترجمه دارید میتوانید اینجا بفرستید،
-                                    در غیر این صورت بر روی تایید کلیک کنید</span>
+                                    <time className="timeline-time">
+                                    <div>
+                                        <span>
+                                          <a download="wish-work-file" href={CPClient.project_controller_element_attachments[0].file} target="_blank">
+                                            <span id="download-symbol"> <i className="fa fa-download fa-download-dash-cp-now"
+                                                                           aria-hidden="true"/> </span>
+                                            <span className="file-subject">فایل پروژه ی شما</span>
+                                          </a>
+                                        </span>
+                                        <span className="text-muted">فایل خود را دانلود کنید ، اگر پیشنهاد و یا انتقادی به ترجمه دارید میتوانید اینجا بفرستید،
+                                                در غیر این صورت بر روی تایید کلیک کنید
+                                        </span>
+                                    </div>
                                     </time>
                                     <div className="timeline-icon bg-warning">
                                         <i className="entypo-location"/>
@@ -80,8 +84,8 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                             </div>
                             <article className="timeline-entry">
                                 <div className="timeline-entry-inner">
-                                    <time className="timeline-time"><span>
-                            </span> <span className="text-muted">برای دیدن فایل پروژه ی خود ابتدا باید مبلغ مایل استون بعدی را واریز کنید</span>
+                                    <time className="timeline-time">
+                                      <span className="text-muted">برای دیدن فایل پروژه ی خود ابتدا باید مبلغ مایل استون بعدی را واریز کنید</span>
                                     </time>
                                     <div className="timeline-icon bg-warning">
                                         <i className="entypo-location"/>
@@ -109,8 +113,8 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                             </div>
                             <article className="timeline-entry">
                                 <div className="timeline-entry-inner">
-                                    <time className="timeline-time"><span>
-                            </span> <span className="text-muted">فایل خود را دانلود کنید ، اگر پیشنهاد و یا انتقادی به ترجمه دارید میتوانید اینجا بفرستید،
+                                    <time className="timeline-time">
+                                       <span className="text-muted">فایل خود را دانلود کنید ، اگر پیشنهاد و یا انتقادی به ترجمه دارید میتوانید اینجا بفرستید،
                                     در غیر این صورت بر روی تایید کلیک کنید</span>
                                     </time>
                                     <div className="timeline-icon bg-warning">
@@ -136,8 +140,9 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                     <div>
                         <article className="timeline-entry">
                             <div className="timeline-entry-inner">
-                                <time className="timeline-time"><span>
-                            </span> <span className="text-muted">پروژه از طرف شما به علت نپرداختن وجه کنسل شد.</span></time>
+                                <time className="timeline-time">
+                                  <span className="text-muted">پروژه از طرف شما به علت نپرداختن وجه کنسل شد.</span>
+                                </time>
                                 <div className="timeline-icon bg-danger">
                                     <i className="entypo-location"/>
                                 </div>
@@ -162,8 +167,9 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                     <div>
                         <article className="timeline-entry">
                             <div className="timeline-entry-inner">
-                                <time className="timeline-time"><span>
-                            </span> <span className="text-muted">در حال انجام</span></time>
+                                <time className="timeline-time">
+                                  <span className="text-muted">در حال انجام</span>
+                                </time>
                                 <div className="timeline-icon bg-primary">
                                     <i className="entypo-location"/>
                                 </div>
@@ -183,8 +189,9 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                     <div>
                         <article className="timeline-entry">
                             <div className="timeline-entry-inner">
-                                <time className="timeline-time"><span>
-                            </span> <span className="text-muted">فریلنسر شما پروژه را انجام نداده و پروژه به صورت خودکار کنسل شد، وجه شما طی دوروز آینده به حسابتان واریز می شود</span></time>
+                                <time className="timeline-time">
+                                  <span className="text-muted">فریلنسر شما پروژه را انجام نداده و پروژه به صورت خودکار کنسل شد، وجه شما طی دوروز آینده به حسابتان واریز می شود</span>
+                                </time>
                                 <div className="timeline-icon bg-warning">
                                     <i className="entypo-location"/>
                                 </div>

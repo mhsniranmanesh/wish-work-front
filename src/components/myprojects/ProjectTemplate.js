@@ -17,26 +17,26 @@ const ProjectTemplate = (props) => {
     //console.log(date , 'datedatedate');
     if (props.ClientProjects.is_banned) {
         x = "مسدود شده";
-        XClass = "badge badge-danger"
+        XClass = "badge badge-banned";
     }
     else {
         if (!props.ClientProjects.is_verified) {
             x = "در انتظار تایید";
-            XClass = "badge badge-default";
+            XClass = "badge badge-neutral";
         }
         else if ((!props.ClientProjects.is_started) && props.ClientProjects.is_verified) {
             x = "در حال مناقصه";
-            XClass = "badge badge-primary";
+            XClass = "badge badge-during-auction";
             XButtonName = "صفحه ی مناقصه";
         }
         else if (props.ClientProjects.is_started && (!props.ClientProjects.is_completed)) {
             x = "در حال انجام";
-            XClass = "badge badge-info";
+            XClass = "badge badge-doing";
             XButtonName = "کنترل پروژه"
         }
         else if (props.ClientProjects.is_completed) {
             x = "انجام شده";
-            XClass = "badge badge-success";
+            XClass = "badge badge-done";
             XButtonName = "مشاهده فایل ها"
         }
 
@@ -47,7 +47,7 @@ const ProjectTemplate = (props) => {
                 <div className="dash-con dash-new-project con-body mb-4">
                     <h6>
                         <strong>{props.ClientProjects.title}</strong>
-                        <Badge color="secondary" pill>{x}</Badge>
+                        <badge className={XClass}>{x}</badge>
                     </h6>
                     <div className="SubmittedPr">
                         <p >
@@ -70,7 +70,7 @@ const ProjectTemplate = (props) => {
                 <div className="dash-con dash-new-project con-body mb-4">
                     <h6>
                         <strong>{props.ClientProjects.title}</strong>
-                        <Badge color="info" pill>{x}</Badge>
+                          <badge className={XClass}>{x}</badge>
 
                     </h6>
 
@@ -95,7 +95,7 @@ const ProjectTemplate = (props) => {
                 <div className="dash-con dash-new-project con-body mb-4">
                     <h6>
                         <strong>{props.ClientProjects.title}</strong>
-                        <Badge color="success" pill>{x}</Badge>
+                          <badge className={XClass}>{x}</badge>
                     </h6>
 
 
@@ -119,7 +119,7 @@ const ProjectTemplate = (props) => {
                     <h6>
                         <i className="fa fa-trash-o" aria-hidden="true"/>
                         <strong>{props.ClientProjects.title}</strong>
-                        <Badge color="primary" pill>{x}</Badge>
+                          <badge className={XClass}>{x}</badge>
                     </h6>
 
 

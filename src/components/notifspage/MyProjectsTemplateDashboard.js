@@ -31,7 +31,7 @@ var x,z;
         return(
             <div onClick={(event)=>{props.goToMyProjectPublic(y);}}>
                 <a className="notif" >
-                    <Badge color='success'  pill className="badge-freelancer" > فریلنسر</Badge>
+                    <Badge color='success'  pill className="badge-freelancer" > کارفرما</Badge>
                     <span className="notif-txt">
                        {props.Detail.title }
                      </span>
@@ -48,7 +48,7 @@ var x,z;
           return(
             <div onClick={(event)=>{props.goToMyProjectPublic(y);}}>
                 <a className="notif" >
-                    <Badge color='primary'  pill className="badge-client"> کارفرما</Badge>
+                    <Badge color='primary'  pill className="badge-client"> فریلنسر</Badge>
                     <span className="notif-txt">
                        {props.Detail.title }
                      </span>

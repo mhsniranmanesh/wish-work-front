@@ -1,15 +1,18 @@
 import React from 'react';
 import MileStoneTemplateForClient from './MileStoneTemplateForClient';
+import arraySort from 'array-sort';
 //
 const MileStoneFatherForClient = (props)=>{
-    var clientcp = [];
+    var clientcp = [] , clientCpSort =[];
     if(props.project_controller.project_controller_elements.length) {
-        for (var i = 0; i < props.project_controller.project_controller_elements.length; i++) {
-            if (i < (props.project_controller.project_controller_elements.length - 1)) {
+        clientCpSort = arraySort(props.project_controller.project_controller_elements , 'order');
+        console.log('clientCpSortclientCpSortclientCpSort' , clientCpSort);
+        for (var i = 0; i < clientCpSort.length; i++) {
+            if (i < (clientCpSort.length - 1)) {
                 clientcp.push(<MileStoneTemplateForClient key={i}
-                                                          CPClient={props.project_controller.project_controller_elements[i]}
+                                                          CPClient={clientCpSort[i]}
                                                           downloadFileModal={props.downloadFileModal}
-                                                          priceForCashIn={props.project_controller.project_controller_elements[i+1].price}
+                                                          priceForCashIn={clientCpSort[i+1].price}
                                                           reviseOnChange={props.reviseOnChange}
                                                           reviseValue={props.reviseValue}
                                                           submitFeedBack={props.submitFeedBack}
@@ -17,7 +20,7 @@ const MileStoneFatherForClient = (props)=>{
             }
             else {
                 clientcp.push(<MileStoneTemplateForClient key={i}
-                                                          CPClient={props.project_controller.project_controller_elements[i]}
+                                                          CPClient={clientCpSort[i]}
                                                           downloadFileModal={props.downloadFileModal}
                                                           reviseOnChange={props.reviseOnChange}
                                                           reviseValue={props.reviseValue}
@@ -27,12 +30,14 @@ const MileStoneFatherForClient = (props)=>{
         }
         if (i > 0) {
             console.log(clientcp , 'clientcp');
+            // clientcpSort = arraySort(clientcp , 'project_controller_elements.order');
             return (
                 <div>
                     <div className="container">
                         <div className="row">
                             <div className="timeline-centered">
                                 {clientcp}
+                                {/*{clientcpSort}*/}
                             </div>
                         </div>
                     </div>

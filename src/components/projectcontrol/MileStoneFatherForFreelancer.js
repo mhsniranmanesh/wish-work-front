@@ -1,8 +1,10 @@
 import React from 'react';
 import MileStoneTemplate from './MileStoneTemplate';
 import PropTypes from 'prop-types';
+import arraySort from 'array-sort';
+
 const MileStoneFatherForFreelancer = (props) =>{
-    var m = [];
+    var m = [],sortM=[];
     var uploadSendToServerButton = true;
     console.log(props.project_controller.project_controller_elements , 'props.project_controller.project_controller_elements');
     if(props.project_controller.project_controller_elements.length) {
@@ -26,12 +28,13 @@ const MileStoneFatherForFreelancer = (props) =>{
         }
         if (i > 0) {
             console.log(m , 'm');
+            sortM = arraySort(m , 'order');
             return (
                 <div>
                 <div className="container">
                     <div className="row">
                         <div className="timeline-centered">
-                            {m}
+                            {sortM}
                         </div>
                     </div>
                 </div>

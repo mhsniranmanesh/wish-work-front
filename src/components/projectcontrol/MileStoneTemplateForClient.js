@@ -58,7 +58,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                         <Button type="submit" color="secondary"
                                                 className="btn btn-secondary btn-rec" onClick={(event)=>
                                         {submitFeedBack(CPClient.project_controller_element_attachments[0].uuid);}}>
-                                            <i className="fa fa-download fa-download-dash-cp-now"/>
+                                            <i className="fa fa-comment fa-download-dash-cp-now"/>
                                         </Button>
                                     </div>
                                 </div>
@@ -121,7 +121,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                         <textarea type="text" className="form-control form-body-fontsize" id="Popover4"
                                                   placeholder="انتقادات و پیشنهادات خود را در این بخش بنویسید"/>
                                         <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
-                                            <i className="fa fa-download fa-download-dash-cp-now"/>
+                                            <i className="fa fa-comment"/>
                                         </Button>
                                     </div>
                                 </div>

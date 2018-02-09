@@ -19,6 +19,11 @@ class CashOutIn extends React.Component{
         this.sendToServerCashOutRequest = this.sendToServerCashOutRequest.bind(this);
         this.size = this.size.bind(this);
         this.redirectToPaymentPage = this.redirectToPaymentPage.bind(this);
+        this.validatePrice = this.validatePrice.bind(this);
+    }
+    validatePrice(price){
+        const pr = /^\d+$/ ;
+        return pr.test(price) ;
     }
     size (obj) {
         let x = 0, key;

@@ -2050,11 +2050,18 @@ span.sup {
 }
 
 .download-file{
-  display: inline-block;
+    display: inline-block;
     padding: 2px 0 0 5px;
     margin: 0;
     border: 1px solid #018abe;
     border-radius: 5%;
+}
+
+.download-file-dash-cp{
+  border: 1px dashed #018abe;
+  border-radius: 5px;
+  margin: 0 10px;
+  padding-left: 5px;
 }
 
 .fa-download{
@@ -2066,6 +2073,13 @@ span.sup {
 #download-symbol{
   background-color: #018abe;
   padding-left: 2px;
+}
+
+#download-symbol-dash-cp{
+  background-color: #018abe;
+  padding-left: 2px;
+  line-height: 27px;
+  border-radius: 0 2px 2px 0;
 }
 
 #file-name{

@@ -638,6 +638,10 @@ class Projectsubmition extends React.Component{
            this.setState({showError: true});
            this.setState({message:"لطفا زمان مناقصه را بین ۲ تا ۷ روز انتخاب کنید"})
          }
+         else if(this.state.file === ""){
+             this.setState({showError: true});
+             this.setState({message:"لطفا فایل ترجمه ی خود را انتخاب کنید"})
+        }
         else {
             // this.setState({});
             this.setState({showError: false, type : STATIC_DATAS.TYPE.NORMAL ,category : STATIC_DATAS.CATEGORY.TRANSLATION ,  modal: !this.state.modal});
@@ -948,6 +952,7 @@ class Projectsubmition extends React.Component{
                                     <a href="#">
                                         <h6 className="form-header-fontsize"><strong>{this.state.title}</strong></h6>
                                     </a>
+                                    <p>{this.state.description}</p>
                                     {/*<span className="sub-heading">
                                         <a className="tag" href="#">#فارسی_به_انگلیسی</a>
                                         <a className="tag" href="#">#علمی</a>

@@ -233,7 +233,7 @@ class ProjectControl extends React.Component{
                 </div>
               </div>
           </Modal>
-          <Modal isOpen="true" toggle={this.toggle}>
+          <Modal isOpen={this.state.downloadFile} toggle={this.toggle}>
               <ModalBody >
                     <span className="form-header-fontsize">برای دانلود فایل خود باید ابتدا وجه مایل استون بعدی را بپردازید</span>
               </ModalBody>
@@ -241,11 +241,15 @@ class ProjectControl extends React.Component{
           </Modal>
           <Modal isOpen={this.state.dontHaveEnoughCash} toggle={this.toggle2}>
               <ModalBody>شما وجه کافی ندارید، برای پرداخت وجه بر روی کلیک کنید</ModalBody>
-              <button onClick={this.goToCashIn} >پرداخت وجه</button>
+              <button className="btn btn-rec btn-primary col-sm-3" onClick={this.goToCashIn} >پرداخت وجه</button>
           </Modal>
           <Modal isOpen={this.state.haveEnoughCash} toggle={this.toggle3}>
-              <ModalBody> شما دارای وجه کافی می باشید، برای پرداخت خودکار وجه{this.state.priceForCashIn}تومان ، دیدن فایل خود ، بازنگری فایل خود و نیز شروع کار مرحله ی بعد فریلنسر بر روی تایید کلیک کنید.</ModalBody>
-                <button onClick={this.nextMileStoneBegin}>تایید</button>
+              <ModalBody className="from-header-fontsize">
+                <div>شما دارای وجه کافی می باشید</div>
+                <div>برای مشاهده فایل، بازنگری آنها و شروع مرحله بعد تأیید کنید تا مبلغ {this.state.priceForCashIn} تومان از حساب شما کاسته شود</div>
+                <div>اگر از کار راضی نبودید با لغو همکاری مبلغ پرداختی به حساب شما بازگردانده می شود</div>
+              </ModalBody>
+                <button className="btn btn-rec btn-primary col-sm-3" onClick={this.nextMileStoneBegin}>تایید</button>
           </Modal>
               <div className="container-fluid">
               <div className="row">

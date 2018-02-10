@@ -7,12 +7,17 @@ import {bindActionCreators} from 'redux';
 class WishCoin extends React.Component {
   constructor(props){
     super(props);
-    this.state = {cashEnough: false, cashNotEnough:false, profileInfo:""};
+    this.state = {cashEnough: false, cashNotEnough:false, profileInfo:"" ,
+        wishCoinSubscription1:false , enoughForSubs1: false , enoughForSubs2:false , enoughForSubs3: false};
 
     this.modalCashEnough = this.modalCashEnough.bind(this);
     this.modalCashNotEnough = this.modalCashNotEnough.bind(this);
     this.size = this.size.bind(this);
+    this.wishCoinSubscription1 = this.wishCoinSubscription1.bind(this);
   };
+    wishCoinSubscription1(){
+        this.setState({wishCoinSubscription1: true})
+    }
     size (obj) {
         let x = 0, key;
         for (key in obj) {
@@ -31,6 +36,15 @@ class WishCoin extends React.Component {
             console.log(nextProps.profileInfo[0]);
             //inja az halate bler dar biad
             this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[x-1])});
+            if(nextProps.profileInfo[x-1].balance >= 5){
+                this.setState({enoughForSubs1: true})
+            }
+            if(nextProps.profileInfo[x-1].balance >= 10){
+                this.setState({enoughForSubs2: true})
+            }
+            if(nextProps.profileInfo[x-1].balance >= 15){
+                this.setState({enoughForSubs3: true})
+            }
         }
     }
     componentWillMount() {
@@ -57,7 +71,7 @@ class WishCoin extends React.Component {
 
                                       <div className="dash-con dash-new-project con-body mb-4">
                                           <h5>ویش‌کوین‌های من</h5>
-                                          <div className="dash-divider"></div>
+                                          <div className="dash-divider"/>
                                           <div className="row">
                                             <div className="col-sm-4">
                                                 <div className="circle">
@@ -72,7 +86,7 @@ class WishCoin extends React.Component {
                                        </div>
 
                                 <div className="dash-con dash-new-project con-body mb-4 d-flex">
-                                    <div className="dash-divider"></div>
+                                    <div className="dash-divider"/>
                                     <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                         <div className="db-wrapper">
                                             <div className="db-pricing-eleven bg-danger">
@@ -81,19 +95,23 @@ class WishCoin extends React.Component {
                                                     <span className="sup">ویش‌کوین</span>
                                                 </div>
                                                 <div className="type bg-dark">
-                                                    <sup>تومان</sup>10000
+                                                    <sup>تومان</sup>5000
                                                 </div>
                                                 <div className="pricing-footer">
-                                                    <btn href="#" className="btn btn-rec btn-light" onClick={this.modalCashEnough}>خرید</btn>
-                                                    <Modal isOpen={this.state.cashEnough} toggle={this.modalCashEnough}>
-                                                      <ModalBody>
-                                                        <div className="notenough-modalbody1">
-                                                        برای شروع پروژه باید مبلغ <span className="notenough-project-price">۲۵۰۰۰۰ تومان</span>  بپردازید.
-                                                        </div>
-                                                        <div className="notenough-modalbody2">
-                                                          لطفاً موجودی حساب خود را برای انجام این تراکنش افزایش دهید.
-                                                        </div>
-                                                      </ModalBody>
+                                                    <btn href="#" className="btn btn-rec btn-light" onClick={this.wishCoinSubscription1}>خرید</btn>
+                                                    <Modal isOpen={this.state.wishCoinSubscription1} toggle={this.wishCoinSubscription1}>
+                                                        {<ModalBody>
+                                                            <div className="notenough-modalbody1">
+                                                                برای شروع پروژه باید مبلغ <span
+                                                                className="notenough-project-price">۲۵۰۰۰۰ تومان</span>
+                                                                بپردازید.
+                                                            </div>
+                                                            <div className="notenough-modalbody2">
+                                                                لطفاً موجودی حساب خود را برای انجام این تراکنش افزایش
+                                                                دهید.
+                                                            </div>
+                                                        </ModalBody>
+                                                        }
                                                       <ModalFooter>
                                                         <btn onClick={this.modalCashEnough} id="notenough-cashin-button" className="btn btn-rec btn-primary"> افزایش موجودی</btn>
                                                         <btn onClick={this.modalCashEnough} id="notenouhg-cancel-button" className="btn btn-rec btn-secondary">انصراف</btn>
@@ -111,7 +129,7 @@ class WishCoin extends React.Component {
                                                     <span className="sup">ویش‌کوین</span>
                                                 </div>
                                                 <div className="type bg-dark">
-                                                    <sup>تومان</sup>20000
+                                                    <sup>تومان</sup>10000
                                                 </div>
                                                 <div className="pricing-footer">
                                                     <btn href="#" className="btn btn-rec btn-light" onClick={this.modalCashNotEnough}>خرید</btn>
@@ -141,7 +159,7 @@ class WishCoin extends React.Component {
                                                     <span className="sup">ویش‌کوین</span>
                                                 </div>
                                                 <div className="type bg-dark">
-                                                    <sup>تومان</sup>30000
+                                                    <sup>تومان</sup>15000
                                                 </div>
                                                 <div className="pricing-footer">
                                                     <a href="#" className="btn btn-rec btn-light">خرید</a>

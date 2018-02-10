@@ -210,23 +210,34 @@ class ProjectControl extends React.Component{
   render(){
     return(
       <div className="content-wrapper py-3">
-          <Modal isOpen={this.state.helpToWishWorkModal} toggle={this.toggleDonate}>
-              <ModalBody>
-                  پروژه ی شما به پایان رسید.
-                  ممنون از این که سایت ما را انتخاب کردید.
-                  در صورتی که تمایل به حمایت از ما دارید مبلغ خود را وارد کرده و بر روی کلید حمایت کلیک کنید
-                  <input placeholder="مبلغ مورد نظر خود را به تومان وارد کنید"
+          <Modal  isOpen={this.state.helpToWishWorkModal} toggle={this.toggleDonate}>
+              <ModalBody className="text-center form-header-fontsize">
+                  <div>
+                    پروژه ی شما به پایان رسید.
+                  </div>
+                  <div>
+                    اگر از ما راضی بودید هر چقدر که دوست دارید حمایتمون کنید
+                  </div>
+                  <input className="m-2 cp-dash-donate-input detail-fontsize" placeholder="مبلغ مورد نظر"
                          value={this.state.donateValue} onChange={this.donateOnchange}/>
-                  تومان
+                       <span className="mr-1">تومان</span>
               </ModalBody>
-              <button onClick={this.goToCashInForDonate}>ما را حمایت کنید</button>
-              {this.state.showErrorForDonate?<Errors/>:(null)}
+              <div className="row">
+                <div className="col-sm-4 mb-1">
+                  <button data-dismiss="modal" aria-hidden="true" className="btn btn-rec btn-primary">راضی نبودم</button>
+                </div>
+                <div className="col-sm-5"></div>
+                <div className="col-sm-2 mb-1">
+                  <button className="btn btn-rec btn-primary" onClick={this.goToCashInForDonate}>واریز</button>
+                  {this.state.showErrorForDonate?<Errors/>:(null)}
+                </div>
+              </div>
           </Modal>
-          <Modal isOpen={this.state.downloadFile} toggle={this.toggle}>
+          <Modal isOpen="true" toggle={this.toggle}>
               <ModalBody >
-                  برای دانلود فایل خود باید ابتدا وجه مایل استون بعدی را بپردازید
+                    <span className="form-header-fontsize">برای دانلود فایل خود باید ابتدا وجه مایل استون بعدی را بپردازید</span>
               </ModalBody>
-        <button onClick={this.okAndCheckBalanceInModal}>باشه</button>
+        <button className="btn btn-rec btn-primary col-sm-2" onClick={this.okAndCheckBalanceInModal}>باشه</button>
           </Modal>
           <Modal isOpen={this.state.dontHaveEnoughCash} toggle={this.toggle2}>
               <ModalBody>شما وجه کافی ندارید، برای پرداخت وجه بر روی کلیک کنید</ModalBody>

@@ -26,8 +26,8 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                         <div className="modal-dialog" role="document">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h5 className="modal-title" id="biddingModalLabel">{number} اطلاعات پیشنهاد
-                                        فریلنسر</h5>
+                                    <h5 className="modal-title" id="biddingModalLabel">
+                                       اطلاعات پیشنهاد فریلنسر{number + 1}</h5>
                                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -101,8 +101,8 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                             <div className="modal-dialog" role="document">
                                 <div className="modal-content">
                                     <div className="modal-header">
-                                        <h5 className="modal-title" id="biddingModalLabel">{number} اطلاعات پیشنهاد
-                                            فریلنسر</h5>
+                                        <h5 className="modal-title" id="biddingModalLabel">
+                                           اطلاعات پیشنهاد فریلنسر{number +1}</h5>
                                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

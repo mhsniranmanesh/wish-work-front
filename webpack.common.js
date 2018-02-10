@@ -6,7 +6,6 @@ const webpack = require('webpack');
 module.exports = {
   entry: {
     app: './src/index.js',
-    //app2: './public/index.js'
   },
   module: {
     rules: [{
@@ -28,7 +27,6 @@ module.exports = {
         },
         include: [
           path.resolve(__dirname, 'src'),
-          //path.resolve(__dirname, 'public')
         ]
       },
       {
@@ -64,10 +62,10 @@ module.exports = {
       'window.jQuery': 'jquery',
       Popper: ['popper.js', 'default'],
       // In case you imported plugins individually, you must also require them here:
-      Util: "exports-loader?Util!bootstrap/js/dist/util",
-      Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
+      Util: "exports-loader?Util!bootstrap/js/dist/dashboard/util",
+      Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dashboard/dropdown",
     }),
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(['dist/dashboard']),
     new HtmlWebpackPlugin({
       template: 'index.template.ejs',
       inject: 'body',
@@ -79,8 +77,8 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     chunkFilename: '[name].[chunkhash].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    path: path.resolve(__dirname, 'dist/dashboard'),
+    publicPath: '/dashboard/'
   }
 
 };

@@ -3,10 +3,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
-
 module.exports = {
     entry: {
-        //app: './src/index.js',
         app: './public/index.js'
     },
     module: {
@@ -23,13 +21,12 @@ module.exports = {
                 query: {
                     presets: [
                         'es2015',
-                        'react',
+                        'react'
                     ],
                     plugins: []
                 },
                 include: [
-                    //path.resolve(__dirname, 'src'),
-                    path.resolve(__dirname, 'public')
+                    path.resolve(__dirname, 'public'),
                 ]
             },
             {
@@ -65,12 +62,12 @@ module.exports = {
             'window.jQuery': 'jquery',
             Popper: ['popper.js', 'default'],
             // In case you imported plugins individually, you must also require them here:
-            Util: "exports-loader?Util!bootstrap/js/dist/util",
-            Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
+            Util: "exports-loader?Util!bootstrap/js/dist/public/util",
+            Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dashboard/dropdown",
         }),
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(['dist/public']),
         new HtmlWebpackPlugin({
-            template: 'index2.template.ejs',
+            template: 'index.public.template.ejs',
             inject: 'body',
         }),
         // new webpack.optimize.CommonsChunkPlugin({
@@ -80,8 +77,8 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[name].[chunkhash].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
+        path: path.resolve(__dirname, 'dist/public'),
+        publicPath: '/public/'
     }
 
 };

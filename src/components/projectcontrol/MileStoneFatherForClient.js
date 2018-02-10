@@ -16,10 +16,12 @@ const MileStoneFatherForClient = (props)=>{
                                                           reviseOnChange={props.reviseOnChange}
                                                           reviseValue={props.reviseValue}
                                                           submitFeedBack={props.submitFeedBack}
+                                                          donate={props.donate}
                 />)
             }
             else {
                 clientcp.push(<MileStoneTemplateForClient key={i}
+                                                          donate={props.donate}
                                                           CPClient={clientCpSort[i]}
                                                           downloadFileModal={props.downloadFileModal}
                                                           reviseOnChange={props.reviseOnChange}

@@ -20,6 +20,21 @@ export function profileInfo(){
     };
 }
 
+export function getPortSuccess(url) {
+    return {type: types.Get_PAYMENT_LINK_SUCCESS, url}
+}
+export function transActionPerform(price) {
+    var priceJson = {amount : price,
+        port : 1};
+    return function (dispatch){
+        return axios.post('/api/v1/accounts/transaction/perform/' , priceJson).then(payment_url =>{
+            dispatch(getPortSuccess(payment_url.data))
+        }).catch(err => {
+            throw (err);
+        })
+    }
+}
+
 export function sendFeedBack(send) {
     return function (dispatch) {
         return axios.post('/api/v1/projects/milestone/revise/' , send).then(

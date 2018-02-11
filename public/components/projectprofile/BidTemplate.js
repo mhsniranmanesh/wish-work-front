@@ -46,7 +46,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                 <Row>
                                     <span className="fl-discript  fl-discript-not-owner">{Bid.description} </span>
 
-                                    <Col className="owner-bidding-price"> <span>{Bid.price} تومان </span><span></span></Col>
+                                    <Col className="owner-bidding-price"> <span>{Bid.price * 1000} تومان </span><span></span></Col>
                                     <Col className="owner-bidding-price"> {Bid.delivery_duration} روز </Col>
                                     <Col className="owner-bidding-price"> {Bid.number_of_milestones} مرحله </Col>
 
@@ -98,7 +98,9 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                      style={ {height:60 , width:60} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
                                    <div className="bid-subject">
                                     <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
-                                    <span className="bidding-price">{Bid.price} تومان</span>
+                                    <span className="bidding-price">{Bid.price * 1000} تومان</span>
+                                       <Col className="owner-bidding-price"> {Bid.delivery_duration} روز </Col>
+                                       <Col className="owner-bidding-price"> {Bid.number_of_milestones} مرحله </Col>
                                        {freelancerIsSelected ? (null) :
                                            <i className="fa fa-trash-o delete-self-bid" aria-hidden="true"
                                               onClick={(event) => {
@@ -140,7 +142,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                  <div className="bid-subject">
                                     <a href="#"
                                        className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
-                                     <span className="bidding-price">{Bid.price} تومان</span>
+                                     <span className="bidding-price">{Bid.price * 1000} تومان</span>
                                     {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
                                     {/*data-toggle="modal" data-target="#accBiddingModal">*/}
                                     {/*<i className="fa fa-handshake-o"/>*/}
@@ -173,7 +175,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                          style={ {height:60 , width:60} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
                     <div className="media-body">
                         <a href="#" className="fl-name">{Bid.freelancer.first_name}</a>
-                        <span className="bidding-price">{Bid.price} تومان</span>
+                        <span className="bidding-price">{Bid.price * 1000} تومان</span>
                         {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
                                 {/*data-toggle="modal" data-target="#accBiddingModal">*/}
                             {/*<i className="fa fa-handshake-o"/>*/}

@@ -22,7 +22,7 @@ class ProjectProfile extends React.Component {
             Length: 0,
             bid_description: '',
             bid_price: '',
-            ModalState: 'modal',
+            ModalState: '',
             showError: false,
             showWarnings: false,
             profileInfo: Object.assign({}, props.profileInfo),
@@ -44,7 +44,8 @@ class ProjectProfile extends React.Component {
             modalAcceptOrReject:true,
             toggleSecondModal:true,
             modalCM :"",
-            notVerified:true
+            notVerified:true,
+            addBidModalForFreelancer:false
         };
 
         // delivery_duration: Array [ "This field is required." ]
@@ -83,7 +84,15 @@ class ProjectProfile extends React.Component {
         this.ModalReject = this.ModalReject.bind(this);
         this.toggleSecondModal = this.toggleSecondModal.bind(this);
         this.toggleNotVerify = this.toggleNotVerify.bind(this);
+        this.addBidModalForFreelancerShow = this.addBidModalForFreelancerShow.bind(this);
+        this.toggleBid = this.toggleBid.bind(this);
         //this.counter = this.counter.bind(this);
+    }
+    toggleBid(){
+        this.setState({addBidModalForFreelancer : !this.state.addBidModalForFreelancer})
+    }
+    addBidModalForFreelancerShow(){
+        this.setState({addBidModalForFreelancer: true})
     }
     toggleNotVerify(){
         this.setState({
@@ -233,6 +242,7 @@ class ProjectProfile extends React.Component {
         this.state.Length = Number(this.state.Length);
         // console.log('this.state.projectDetail.uuid', this.state.projectDetail.uuid);
         // console.log(this.state.projectDetail, 'complete project detail')
+
         var sendData = {
             description: this.state.bid_description,
             project_id: this.state.projectDetail.uuid,
@@ -326,6 +336,7 @@ class ProjectProfile extends React.Component {
         }
         else {
             this.state.bid_price = Number(this.state.bid_price);
+            this.setState({ModalState: 'modal'});
             this.state.delivery_duration = Number(this.state.delivery_duration);
             this.FinalSubmitBid()
         }
@@ -422,6 +433,7 @@ class ProjectProfile extends React.Component {
                 showError: false,
                 Length: this.state.amountOfMileStones
             });
+            this.setState({ModalState: 'modal'});
         }
     }
 
@@ -588,7 +600,7 @@ class ProjectProfile extends React.Component {
                                                                         //  call a 3s setTimeout when the loop is called
             this.setState({progressNumber: this.state.progressNumber +20});
                       console.log(this.state.progressNumber , 'progressNumber');                                                          //  increment the counter
-            if (i < 100) {                                                      //  if the counter < 100, call the loop function
+            if (this.state.progressNumber < 100) {                                                      //  if the counter < 100, call the loop function
                 this.progressNumber();                                           //  ..  again which will trigger another
             }                        //  ..  setTimeout()
         }, 7000)
@@ -704,6 +716,8 @@ class ProjectProfile extends React.Component {
                                         />
                                         <AddBid
                                             is_freelancer_selected={this.state.projectDetail.is_freelancer_selected}
+                                            toggleBid={this.toggleBid}
+                                            addBidModalForFreelancer={this.state.addBidModalForFreelancer}
                                             bidding_deadline={this.state.projectDetail.bidding_deadline}
                                             profileInfo={this.props.profileInfo}
                                             userHasBid={this.state.userHasBid}

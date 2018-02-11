@@ -10,6 +10,7 @@ const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash,
     var numberOfMileStonesOfEachFreelancer = [];
     var priceOfMileStoneForCash = [];
     if(Bids) {
+        console.log(Bids , 'BidsBids');
         for (var i = 0; i < Bids.length; i++) {
             BidT.push(<BidTemplate key={Bids[i].uuid}
                                    Bid={Bids[i]}

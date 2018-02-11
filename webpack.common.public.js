@@ -55,30 +55,4 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery',
-            Popper: ['popper.js', 'default'],
-            // In case you imported plugins individually, you must also require them here:
-            Util: "exports-loader?Util!bootstrap/js/dist/util",
-            Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dashboard/dropdown",
-        }),
-        new CleanWebpackPlugin(['dist']),
-        new HtmlWebpackPlugin({
-            template: 'index.public.template.ejs',
-            inject: 'body',
-        }),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //   name: 'common' // Specify the common bundle's name.
-        // })
-    ],
-    output: {
-        filename: '[name].bundle.js',
-        chunkFilename: '[name].[chunkhash].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
-    }
-
 };

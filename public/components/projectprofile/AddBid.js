@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Errors from './Errors';
 import moment from 'moment-jalaali';
 import Warnings from './Warnings';
+import {Modal} from 'reactstrap';
 
 const AddBid = (props) => {
     var userHasBid = props.userHasBid ;

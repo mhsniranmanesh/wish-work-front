@@ -6,7 +6,7 @@ import * as profileInfo from '../../actions/profileInfo.js';
 import {Input, Button} from 'reactstrap';
 import ProfileSkills from './ProfileSkills';
 import ProfilePic from './ProfilePic';
-import ResetPassword from './ResetPassword';
+// import ResetPassword from './ResetPassword';
 import update from 'react-addons-update';
 
 class Profileinfo extends React.Component{

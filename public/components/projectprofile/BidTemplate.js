@@ -44,6 +44,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                </div>
                           </div>
                                 <Row>
+                                    <span className="fl-discript  fl-discript-not-owner">{Bid.description} </span>
 
                                     <Col className="owner-bidding-price"> <span>{Bid.price} تومان </span><span></span></Col>
                                     <Col className="owner-bidding-price"> {Bid.delivery_duration} روز </Col>
@@ -146,7 +147,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                     {/*</button>*/}
                                 </div>
                               </div>
-                                    <span className="fl-discript  fl-discript-not-owner">{Bid.description} </span>
+                                    {/*<span className="fl-discript  fl-discript-not-owner">{Bid.description} </span>*/}
                                     {/*<div className="sub-heading">*/}
                                         {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
                                         {/*<a className="tag" href="#">#علمی</a>*/}
@@ -179,7 +180,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                         {/*</button>*/}
                     </div>
                 </div>
-                        <span className="fl-discript  fl-discript-not-owner">{Bid.description} </span>
+                        {/*<span className="fl-discript  fl-discript-not-owner">{Bid.description} </span>*/}
                         {/*<div className="sub-heading">*/}
                             {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
                             {/*<a className="tag" href="#">#علمی</a>*/}

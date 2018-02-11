@@ -134,7 +134,7 @@ const ProjectDetail = (props) => {
                 {Files}
                 <div className="tags" >
                     <li className='addedTag'>
-                        <i className="fa fa-exchange"/> {to} به {from}
+                        <i className="fa fa-exchange"/> {from} به {to}
                     </li>
                     <li className='addedTag'>{fatherTagLogo} ترجمه ی متن {fatherTag}</li>
                 </div>

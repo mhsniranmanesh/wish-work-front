@@ -10,7 +10,7 @@
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "start2": "webpack-dev-server --open --config webpack.dev2.js",
     "server": "webpack-dev-server --open 10.10.10.61 --config webpack.dev.js",
-    "public": "webpack-dev-server --open 10.10.10.61 --config webpack.dev2.js"
+    "public": "webpack-dev-server --open 10.10.10.61 --config webpack.dev.public.js"
   },
   "author": "Wish Work Technical Team",
   "license": "ISC",

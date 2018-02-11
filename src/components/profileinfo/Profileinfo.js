@@ -417,7 +417,7 @@ class Profileinfo extends React.Component{
                                     عنوان حرفه ای کوتاه
                                 </label>
                               </div>
-                                <input type="text" className="form-control form-control-danger" value={this.state.profileInfo.title || ''} onDoubleClick={this.changeTitleInput} onChange={this.changeTitleOnChange} readOnly={this.state.titleReadOnly} />
+                                <input type="text" className="form-control form-control-danger" value={this.state.profileInfo.title || ''} onClick={this.changeTitleInput} onChange={this.changeTitleOnChange} readOnly={this.state.titleReadOnly} />
                             </div>
                             <div className="form-group">
                               <div>
@@ -425,7 +425,7 @@ class Profileinfo extends React.Component{
                                     توضیح کامل در مورد من.
                                 </label>
                               </div>
-                                <Input type="textarea" className="form-control" id="" value={this.state.profileInfo.bio || ''} onDoubleClick={this.changeBioInput} onChange={this.changeBioOnChange} readOnly={this.state.bioReadOnly}/>
+                                <Input type="textarea" className="form-control" id="" value={this.state.profileInfo.bio || ''} onClick={this.changeBioInput} onChange={this.changeBioOnChange} readOnly={this.state.bioReadOnly}/>
                             </div>
 
 
@@ -433,15 +433,15 @@ class Profileinfo extends React.Component{
                                 <label htmlFor="" className="col-form-label">
                                     شغل
                                 </label>
-                                <Input className="form-control" id="" value={this.state.profileInfo.job || ''} onDoubleClick={this.changeJobInput} onChange={this.changeJobOnChange} readOnly={this.state.jobReadOnly}/>
+                                <Input className="form-control" id="" value={this.state.profileInfo.job || ''} onClick={this.changeJobInput} onChange={this.changeJobOnChange} readOnly={this.state.jobReadOnly}/>
                                 <label htmlFor="" className="col-form-label">
                                     مدرک تحصیلی
                                 </label>
-                                <Input className="form-control" id="" value={this.state.profileInfo.degree ||  ''} onDoubleClick={this.changeDegreeInput} onChange={this.changeDegreeOnChange} readOnly={this.state.degreeReadOnly}/>
+                                <Input className="form-control" id="" value={this.state.profileInfo.degree ||  ''} onClick={this.changeDegreeInput} onChange={this.changeDegreeOnChange} readOnly={this.state.degreeReadOnly}/>
                                 <label htmlFor="" className="col-form-label">
                                     دانشگاه
                                 </label>
-                                <Input className="form-control" id="" value={this.state.profileInfo.university || ''} onDoubleClick={this.changeUniversityInput} onChange={this.changeUniversityOnChange} readOnly={this.state.universityReadOnly}/>
+                                <Input className="form-control" id="" value={this.state.profileInfo.university || ''} onClick={this.changeUniversityInput} onChange={this.changeUniversityOnChange} readOnly={this.state.universityReadOnly}/>
                             </div>
 
 

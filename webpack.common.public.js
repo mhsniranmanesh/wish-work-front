@@ -65,7 +65,7 @@ module.exports = {
             Util: "exports-loader?Util!bootstrap/js/dist/util",
             Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dashboard/dropdown",
         }),
-        new CleanWebpackPlugin(['dist/public']),
+        new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             template: 'index.public.template.ejs',
             inject: 'body',

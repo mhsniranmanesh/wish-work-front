@@ -87,7 +87,7 @@ class WishCoin extends React.Component {
 
                                 <div className="dash-con dash-new-project con-body mb-4 d-flex">
                                     <div className="dash-divider"/>
-                                    <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div className="db-wrapper">
                                             <div className="db-pricing-eleven bg-danger">
                                                 <div className="price bg-danger">
@@ -121,7 +121,7 @@ class WishCoin extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div className="db-wrapper">
                                             <div className="db-pricing-eleven bg-primary popular">
                                                 <div className="price bg-primary">
@@ -151,7 +151,7 @@ class WishCoin extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div className="db-wrapper">
                                             <div className="db-pricing-eleven bg-warning">
                                                 <div className="price bg-warning">

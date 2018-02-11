@@ -4,9 +4,11 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as projectActions from '../../actions/projectSubmit.js';
 import Error from './Errors';
-import {Button , Modal , ModalHeader , ModalBody , ModalFooter , Row , Col , Popover, PopoverHeader, PopoverBody} from 'reactstrap';
+import {Modal , ModalHeader , ModalBody , ModalFooter , Row , Col , Popover, PopoverHeader, PopoverBody} from 'reactstrap';
 import Select from 'react-select';
 import Progress from 'react-progressbar';
+import Flag from 'react-world-flags';
+
 //TODO loading bar after submit + context router to public page of project
 
  const STATIC_DATAS = require('../../Datas/STATIC_DATAS.js');
@@ -115,6 +117,7 @@ class Projectsubmition extends React.Component{
     // //     this.setState({inputTitle : 'فایل شما آپلود شد' })
     // //     }
     // }
+
     progressNumber() {
         setTimeout( () => {
             var i = this.state.progressNumber + 20;
@@ -913,7 +916,7 @@ class Projectsubmition extends React.Component{
                           {showError ? <Error message={this.state.message}/> : (true)}
                           <div>
                             <span>
-                            <Button color="primary" className = "btn btn-rec btn-primary" onClick={this.handleSubmit}>ایجاد پروژه</Button>
+                            <button className = "btn btn-rec btn-primary" onClick={this.handleSubmit}>ایجاد پروژه</button>
                                 <p>۵۰ ویش کوین</p>
                             </span>
                               <Modal isOpen={this.state.loading}>
@@ -949,10 +952,11 @@ class Projectsubmition extends React.Component{
                                   </div>
                                 </span>*/}
                                 <div>
-                                    <a href="#">
+                                    <div>
                                         <h6 className="form-header-fontsize"><strong>{this.state.title}</strong></h6>
-                                    </a>
-                                    <p>{this.state.description}</p>
+                                        
+                                    </div>
+                                    <p className="form-body-fontsize">{this.state.description}</p>
                                     {/*<span className="sub-heading">
                                         <a className="tag" href="#">#فارسی_به_انگلیسی</a>
                                         <a className="tag" href="#">#علمی</a>
@@ -960,16 +964,26 @@ class Projectsubmition extends React.Component{
                                         <a className="tag" href="#">#میکرو_بیولوژی</a>
                                         <a className="tag" href="#">#فوری</a>
                                       </span>*/}
-                                    <span className="sub-heading">
-                                          {/*<i className="fa fa-user form-body-fontsize" style={{paddingLeft:'2px'}}/>4/5*/}
-                                          <i className="fa fa-usd form-body-fontsize" style={{marginRight:'10px', paddingLeft:'2px'}}/> {this.state.budget}
-                                          <i className="fa fa-clock-o form-body-fontsize" style={{marginRight:'10px' , paddingLeft:'2px'}}/>{this.state.time_limit}
-                                      </span>
+                                      <ul className="sub-heading form-body-fontsize">
+                                      {/*  <li className="project-prop">
+                                            <i className="fa fa-user"/>
+                                            4/5
+                                        </li>*/}
+
+                                        <li className="project-prop project-prop-money">
+                                            <i className="fa fa-usd"/>
+                                            {this.state.budget}
+                                        </li>
+                                        <li className="project-prop project-prop-time">
+                                            <i className="fa fa-clock-o"/>
+                                            {this.state.time_limit}
+                                         </li>
+                                      </ul>
                                 </div>
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="secondary" className = "btn btn-secondary btn-rec" onClick={this.toggle}>اصلاح</Button>
-                                <Button color="primary" className = "btn btn-primary btn-rec" onClick={this.submit}>تأیید</Button>{' '}
+                                <button color="secondary" className = "btn btn-secondary btn-rec" onClick={this.toggle}>اصلاح</button>
+                                <button color="primary" className = "btn btn-primary btn-rec" onClick={this.submit}>تأیید</button>{' '}
                               </ModalFooter>
                             </Modal>
                           </div>

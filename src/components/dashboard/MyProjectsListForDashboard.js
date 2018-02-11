@@ -67,9 +67,7 @@ else {
         <div className="dash-con con-body dash-notif mb-4">
             <h5>پروژه های من</h5>
             <div className="dash-divider"/>
-            <br/>
-            <h3>شما پروژه ای ندارید. برای ثبت پروژه کلیک کنید</h3>
-            <button className="btn btn-primary btn-rec" onClick={props.submitProject}>ثبت پروژه </button>
+            <button className="btn btn-primary btn-rec btn-block" onClick={props.submitProject}>ثبت پروژه </button>
         </div>
     )
 }

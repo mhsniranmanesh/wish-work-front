@@ -62,7 +62,7 @@ module.exports = {
             'window.jQuery': 'jquery',
             Popper: ['popper.js', 'default'],
             // In case you imported plugins individually, you must also require them here:
-            Util: "exports-loader?Util!bootstrap/js/dist/public/util",
+            Util: "exports-loader?Util!bootstrap/js/dist/util",
             Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dashboard/dropdown",
         }),
         new CleanWebpackPlugin(['dist/public']),
@@ -77,8 +77,8 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[name].[chunkhash].bundle.js',
-        path: path.resolve(__dirname, 'dist/public'),
-        publicPath: '/public/'
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     }
 
 };

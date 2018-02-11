@@ -1836,3 +1836,8 @@ div #bg-primary-left {
 .cp-dash-donate-input{
   width: 25%;
 }
+
+
+.browse-pic::before{
+  content: " ";
+}

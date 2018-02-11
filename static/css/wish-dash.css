@@ -1838,6 +1838,28 @@ div #bg-primary-left {
 }
 
 
-.browse-pic::before{
-  content: " ";
+#buttonImage {
+  float: right;
+  position: relative;
+  right: 0;
+  top: 0;
+  background: #018abe;
+  padding:10px;
+  color: #fff;
+  display: inline-block;
+  width: 55%;
+
+}
+
+#browse-pic {
+  opacity:0;
+  position:absolute;
+  left: 0;
+  top: 0;
+  height: 2.5rem;
+  width: 100%;
+}
+
+.upload-pic{
+  height: 2.5rem;
 }

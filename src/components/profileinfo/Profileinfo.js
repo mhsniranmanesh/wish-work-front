@@ -396,7 +396,7 @@ class Profileinfo extends React.Component{
 
                     <div className="dash-con dash-profile-info con-body mb-4">
 
-                      <span className="projectinfo">
+                      <span className="projectinfo form-header-fontsize mb-2">
                         <i className="fa fa-user" aria-hidden="true"/>
                         <h5 style={{display:'inline'}}>تغییر اطلاعات شخصی</h5>
                       </span>
@@ -405,7 +405,7 @@ class Profileinfo extends React.Component{
                         <form>
                             <div id="" className="form-group">
                                 <label htmlFor="" className="col-form-label">
-                                  <span className="point">
+                                  <span className="point form-body-fontsize">
 
                                     <i className="fa fa-exclamation point" aria-hidden="true"/>
                                       برای تغییر هر مورد روی آن دوبار کلیک کنید.
@@ -413,7 +413,7 @@ class Profileinfo extends React.Component{
                                   </span>
                                 </label>
                                 <div>
-                                <label htmlFor="" className="col-form-label">
+                                <label htmlFor="" className="col-form-label form-body-fontsize">
                                     عنوان حرفه ای کوتاه
                                 </label>
                               </div>
@@ -421,7 +421,7 @@ class Profileinfo extends React.Component{
                             </div>
                             <div className="form-group">
                               <div>
-                                <label htmlFor="" className="col-form-label">
+                                <label htmlFor="" className="col-form-label  form-body-fontsize">
                                     توضیح کامل در مورد من.
                                 </label>
                               </div>
@@ -430,15 +430,15 @@ class Profileinfo extends React.Component{
 
 
                             <div className="form-group">
-                                <label htmlFor="" className="col-form-label">
+                                <label htmlFor="" className="col-form-label  form-body-fontsize">
                                     شغل
                                 </label>
-                                <Input className="form-control" id="" value={this.state.profileInfo.job || ''} onClick={this.changeJobInput} onChange={this.changeJobOnChange} readOnly={this.state.jobReadOnly}/>
-                                <label htmlFor="" className="col-form-label">
+                                <Input className="form-control" id="" value={this.state.profileInfo.job || ''} onDoubleClick={this.changeJobInput} onChange={this.changeJobOnChange} readOnly={this.state.jobReadOnly}/>
+                                <label htmlFor="" className="col-form-label  form-body-fontsize">
                                     مدرک تحصیلی
                                 </label>
-                                <Input className="form-control" id="" value={this.state.profileInfo.degree ||  ''} onClick={this.changeDegreeInput} onChange={this.changeDegreeOnChange} readOnly={this.state.degreeReadOnly}/>
-                                <label htmlFor="" className="col-form-label">
+                                <Input className="form-control" id="" value={this.state.profileInfo.degree ||  ''} onDoubleClick={this.changeDegreeInput} onChange={this.changeDegreeOnChange} readOnly={this.state.degreeReadOnly}/>
+                                <label htmlFor="" className="col-form-label  form-body-fontsize">
                                     دانشگاه
                                 </label>
                                 <Input className="form-control" id="" value={this.state.profileInfo.university || ''} onClick={this.changeUniversityInput} onChange={this.changeUniversityOnChange} readOnly={this.state.universityReadOnly}/>

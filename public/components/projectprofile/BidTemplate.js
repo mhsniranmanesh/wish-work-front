@@ -33,26 +33,22 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                         <div className="fl-wrap media mb-1">
                             <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
                                  style={ {height:60 , width:60} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
-
-
-                               <div className="bid-subject">
-                                 <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
-                                 <button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec btn-handshake"
-                                         data-toggle="modal" data-target={"#" + (number*10) }>
-                                     <i className="fa fa-handshake-o"/>
-                                 </button>
-                               </div>
-                          </div>
-                                <Row>
-                                    <span className="fl-discript  fl-discript-not-owner">{Bid.description} </span>
-
-                                    <Col className="owner-bidding-price"> <span>{Bid.price} تومان </span><span></span></Col>
-                                    <Col className="owner-bidding-price"> {Bid.delivery_duration} روز </Col>
-                                    <Col className="owner-bidding-price"> {Bid.number_of_milestones} مرحله </Col>
-
-                                </Row>
-
-
+                           <div className="bid-subject">
+                             <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
+                             <button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec btn-handshake"
+                                     data-toggle="modal" data-target={"#" + (number*10) }>
+                                 <i className="fa fa-handshake-o"/>
+                             </button>
+                           </div>
+                        </div>
+                        <Row>
+                            <span className="fl-discript  fl-discript-not-owner mt-2 mr-2">{Bid.description} </span>
+                        </Row>
+                        <Row>
+                            <Col className="owner-bidding-price mt-2"> <span>{Bid.price} تومان </span><span></span></Col>
+                            <Col className="owner-bidding-price mt-2"> {Bid.delivery_duration} روز </Col>
+                            <Col className="owner-bidding-price mt-2"> {Bid.number_of_milestones} مرحله </Col>
+                        </Row>
                                 {/*<div className="sub-heading">*/}
                                     {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
                                     {/*<a className="tag" href="#">#علمی</a>*/}
@@ -60,8 +56,6 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                     {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
                                     {/*<a className="tag" href="#">#فوری</a>*/}
                                 {/*</div>*/}
-
-
                     </div>
                     <AddedBidsMileStone number_of_milestones={Bid.number_of_milestones}
                                         delivery_duration={Bid.delivery_duration}

@@ -145,21 +145,21 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                              aria-hidden="true" data-dismiss="modal">
                                             <div className="modal-dialog" role="document">
                                                 <div className="modal-content">
-                                                    <div className="enough-modalbody1">
+                                                    <div className="notenough-modalbody1">
                                                         <p>موجودی حساب شما {balance * 1000}تومان می باشد </p>
                                                         برای شروع پروژه باید مبلغ <span
-                                                        className="enough-project-price">{priceOfMileStoneForCash[number]}</span>تومان
+                                                        className="notenough-project-price">{priceOfMileStoneForCash[number]}</span>تومان
                                                         بپردازید.
                                                     </div>
-                                                    <div className="enough-modalbody2">
+                                                    <div className="notenough-modalbody2">
                                                     موجودی حساب شما کافی نمی باشد، برای افزایش موجودی بر روی کلید افزایش موجودی کلیک کنید
                                                     </div>
-                                                    <btn  id="enough-approve-button"
+                                                    <btn  id="notenough-approve-button"
                                                          className="btn btn-rec btn-primary"
                                                           onClick={(event)=>{ goToCash(priceOfMileStoneForCash[number]);}}>
                                                         افزایش موجودی
                                                     </btn>
-                                                    <btn onClick={modalCashEnough} id="enough-cancel-button"
+                                                    <btn onClick={modalCashEnough} id="notenough-cancel-button"
                                                          className="btn btn-rec btn-secondary" data-dismiss="modal">
                                                         انصراف
                                                     </btn>

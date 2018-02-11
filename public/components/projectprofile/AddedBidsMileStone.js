@@ -8,10 +8,23 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                 number, mileStoneX, goToCash, priceForCash, modalCashEnough,numberOfPages,
                                 cashinModalState , balance,prices, acceptBid , id ,numberOfMileStonesOfEachFreelancer}) => {
     var mileStones = [];
+    var dayNew = 0;
+    var pageNew = 0;
+
     for (var i = 0; i < number_of_milestones; i++) {
         var  x = Math.floor((delivery_duration) / (number_of_milestones) + (i * (delivery_duration) / (number_of_milestones)));
         var page = Math.floor((numberOfPages) / (number_of_milestones) + (i * (numberOfPages) / (number_of_milestones)));
-        mileStones.push(<MileStonesHorizentalTemplate i={i} key={i} x={x} page={page}/>);
+        var dayRemain;
+        var pageRemain;
+        dayOld = dayNew;
+        dayNew = x;
+        dayRemain = dayNew - dayOld;
+        var pageOld;
+        var dayOld;
+        pageOld = pageNew;
+        pageNew = page;
+        pageRemain = pageNew - pageOld;
+        mileStones.push(<MileStonesHorizentalTemplate i={i} key={i} a={number_of_milestones} x={x} page={page} dayRemain = {dayRemain} pageRemain={pageRemain}/>);
     }
     numberOfMileStonesOfEachFreelancer[number] = number_of_milestones;
     prices[number] = price_of_bid * 1000;
@@ -19,6 +32,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
     mileStoneX[number] = mileStones;
         if ((mileStoneX[number] !== undefined)) {
             var y = price_of_bid * 1000;
+            console.log('mileStoneX' , mileStoneX);
             if ((balance*1000) >= priceOfMileStoneForCash[number]) {
                 return (
                 <div>

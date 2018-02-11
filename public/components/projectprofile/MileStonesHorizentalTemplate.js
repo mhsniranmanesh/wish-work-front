@@ -8,6 +8,7 @@ const MileStonesHorizentalTemplate = (props) =>{
     // var numberDivided = Math.floor(numberDivided/)
     var end = props.a -1;
     var interval = props.a;
+    console.log('intervalintervalinterval' , interval);
 
         if(interval == 1){
           return(

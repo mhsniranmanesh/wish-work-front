@@ -52,15 +52,18 @@ const ProfilePic = (props) =>{
                         </label>
                     </div>
                  </div>
-                <input type="file" className="btn btn-primary btn-rec browse-pic" id="browse-pic" onChange={(e)=>props.picUploader(e)}/>
-                <span htmlFor="browse-pic">انتخاب عکس</span>
-                <Row>
-                    <Col>
-                <Button color={'#00a651'} className="btn btn-primary btn-rec" onClick={props.sendPicToServer}>
-                    <i className="fa fa-check" />آپلود عکس
-                </Button>
-                    </Col>
-                </Row>
+                 <div>
+                    <btn className="btn btn-primary btn-rec col-sm-4 mb-2" id="buttonImage">
+                        انتخاب عکس
+                        <input type="file" className="browse-pic" id="browse-pic"  onChange={(e)=>props.picUploader(e)}/>
+                    </btn>
+                    <div className="col-sm-3"></div>
+
+                    <btn className="btn btn-primary btn-rec mb-2 upload-pic" onClick={props.sendPicToServer}>
+                        <i className="fa fa-check" />آپلود عکس
+                    </btn>
+                  </div>
+
                 {props.imageSizeValidation ? <Error message="اندازه ی عکس باید کمتر از ۱ مگابایت باشد"/> : (null)}
                 {props.showError ? <Error message="لطفا فایل خود را عکس انتخاب کنید!"/> : (null)}
             </form>

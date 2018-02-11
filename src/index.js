@@ -47,7 +47,7 @@ function Authentication() {
 }
 function goToSignIn(err) {
     if(err){
-        window.location.href = '/signin/'
+        window.location.href = '/login/';
     }
 }
 
@@ -73,6 +73,8 @@ Authentication().then(() => {
         ,
         document.getElementById('root')
     );
-
+    $('#dashboard-loading').hide(function(){
+        $('#root').fadeIn('1000');
+    });
 });
 

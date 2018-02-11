@@ -433,11 +433,11 @@ class Profileinfo extends React.Component{
                                 <label htmlFor="" className="col-form-label  form-body-fontsize">
                                     شغل
                                 </label>
-                                <Input className="form-control" id="" value={this.state.profileInfo.job || ''} onDoubleClick={this.changeJobInput} onChange={this.changeJobOnChange} readOnly={this.state.jobReadOnly}/>
+                                <Input className="form-control" id="" value={this.state.profileInfo.job || ''} onClick={this.changeJobInput} onChange={this.changeJobOnChange} readOnly={this.state.jobReadOnly}/>
                                 <label htmlFor="" className="col-form-label  form-body-fontsize">
                                     مدرک تحصیلی
                                 </label>
-                                <Input className="form-control" id="" value={this.state.profileInfo.degree ||  ''} onDoubleClick={this.changeDegreeInput} onChange={this.changeDegreeOnChange} readOnly={this.state.degreeReadOnly}/>
+                                <Input className="form-control" id="" value={this.state.profileInfo.degree ||  ''} onClick={this.changeDegreeInput} onChange={this.changeDegreeOnChange} readOnly={this.state.degreeReadOnly}/>
                                 <label htmlFor="" className="col-form-label  form-body-fontsize">
                                     دانشگاه
                                 </label>
@@ -473,7 +473,7 @@ class Profileinfo extends React.Component{
                                        deleteFatherTag={this.deleteFatherTag}
                         /> : (null)
                     }
-                    <ResetPassword/>
+                    {/*<ResetPassword/>*/}
                 </div>
             </div>
         </div>

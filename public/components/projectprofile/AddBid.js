@@ -35,7 +35,7 @@ const AddBid = (props) => {
         return(
             <div>
             <div className="con mb-4">
-                <h5 className="project-title">
+                <h5 className="project-title form-header-fontsize">
                     درباره پروژه
                 </h5>
                 <div className="divider"/>
@@ -55,7 +55,7 @@ const AddBid = (props) => {
             <div>
                 <div className="con mb-4">
                   <div>
-                    <h5 className="project-title">
+                    <h5 className="project-title form-header-fontsize">
                         درباره پروژه
                     </h5>
                     <div className="divider"/>
@@ -181,7 +181,7 @@ const AddBid = (props) => {
         return(
             <div>
                 <div className="con mb-4">
-                    <h5 className="project-title">
+                    <h5 className="project-title form-header-fontsize">
                         درباره پروژه
                     </h5>
                     <div className="divider"/>
@@ -194,8 +194,9 @@ const AddBid = (props) => {
                     </div>
                 </div>
                 <div className="con mb-4">
-                    <button  color="primary" className="btn btn-primary btn-rec btn-block public-btn">
-                        شما در این مناقصه شرکت کرده اید.                   </button>
+                    <div className="public-page-descript form-body-fontsize">
+                        شما در این مناقصه شرکت کرده اید.
+                    </div>
                 </div>
             </div>
 
@@ -205,7 +206,7 @@ else {
     return(
         <div>
             <div className="con mb-4">
-                <h5 className="project-title">
+                <h5 className="project-title form-header-fontsize">
                     درباره پروژه
                 </h5>
                 <div className="divider"/>

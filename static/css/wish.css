@@ -1172,6 +1172,7 @@ textarea.form-control {
 
 .about-sub-heading .fa-calendar-o{
   color: #fe7541;
+  margin-left: 5px;
 }
 
 .btn-handshake{
@@ -2052,8 +2053,12 @@ span.sup {
     display: inline-block;
     padding: 2px 0 0 5px;
     margin: 0;
-    border: 1px solid #018abe;
+    border: 2px solid #018abe;
     border-radius: 5%;
+}
+
+.download-file-box{
+  display: block;
 }
 
 .download-file-dash-cp{
@@ -2300,4 +2305,13 @@ a.delete-project:hover:after {
   background: #fff;
   margin: 0 5px;
   padding: 5px 10px
+}
+
+
+.public-page-descript{
+  width: 100%;
+  border: 1px solid #018abe;
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px 0;
 }

@@ -53,25 +53,30 @@ const CountDown = (props) => {
     }
     if (diffMinutes >= 0) {
         return (
-            <div className="con mb-4">
-
-      <span className="counter-circle">
-          <div className="counter-numb">{diffMinutes}</div>
-          <div className="counter-char">دقیقه</div>
-      </span>
-
-                <span className="counter-circle">
-          <div className="counter-numb">{diffHours}</div>
-          <div className="counter-char">ساعت</div>
-      </span>
-
-                <span className="counter-circle">
-
-          <div className="counter-numb">{diffDays}</div>
-          <div className="counter-char">روز</div>
-      </span>
-
+        <div className="con mb-4">
+            <div className="mb-1">
+              <i class="fa fa-clock"></i>
+              <span className="form-header-fontsize">زمان باقیمانده برای ثبت پیشنهاد</span>
             </div>
+
+            <div className="dash-divider mb-3"></div>
+
+            <span className="counter-circle">
+                <div className="counter-numb">{diffMinutes}</div>
+                <div className="counter-char">دقیقه</div>
+            </span>
+
+            <span className="counter-circle">
+                <div className="counter-numb">{diffHours}</div>
+                <div className="counter-char">ساعت</div>
+            </span>
+
+            <span className="counter-circle">
+                <div className="counter-numb">{diffDays}</div>
+                <div className="counter-char">روز</div>
+            </span>
+
+        </div>
         )
     }
     else {

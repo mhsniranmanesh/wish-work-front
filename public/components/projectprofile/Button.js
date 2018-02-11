@@ -11,7 +11,7 @@ const Button = (props) =>{
         return (
             <div>
                 <div className="con mb-4">
-                    <h5 className="project-title">
+                    <h5 className="project-title form-header-fontsize">
                         درباره پروژه
                     </h5>
                     <div className="divider"/>
@@ -30,9 +30,9 @@ const Button = (props) =>{
                     </div>
                 </div>
                 <div className="con mb-4">
-                    <button className="btn btn-primary btn-rec btn-block">
+                    <div className="public-page-descript form-body-fontsize">
                         صفحه ی پروژه ی شما
-                    </button>
+                    </div>
                 </div>
             </div>
 
@@ -61,9 +61,9 @@ const Button = (props) =>{
                     </div>
                 </div>
                 <div className="con mb-4">
-                    <button className="btn btn-warning btn-rec btn-block">
+                    <div className="public-page-descript form-body-fontsize">
                          شما فریلنسر خود را انتخاب کرده اید. منتظر تایید او باشید
-                    </button>
+                    </div>
                 </div>
             </div>
         )

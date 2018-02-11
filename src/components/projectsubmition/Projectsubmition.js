@@ -928,9 +928,9 @@ class Projectsubmition extends React.Component{
                                   <span className="form-title-fontsize">  نحوه نمایش پروژه</span>
                                   <span>
 
-                                    <Popover placement="right" isOpen={this.state.popoverOpenShow} target="Popover3" toggle={this.togglePopoverShow}>
-                                      <PopoverBody className="beauty-text">پروژه شما به شکل زیر برای فریلنسرها نمایش داده می شود. </PopoverBody>
-                                    </Popover>
+                                    {/*<Popover placement="right" isOpen={this.state.popoverOpenShow} target="Popover3" toggle={this.togglePopoverShow}>*/}
+                                      {/*<PopoverBody className="beauty-text">پروژه شما به شکل زیر برای فریلنسرها نمایش داده می شود. </PopoverBody>*/}
+                                    {/*</Popover>*/}
                                   </span>
                               </ModalHeader>
 

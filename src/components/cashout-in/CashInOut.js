@@ -12,7 +12,7 @@ class CashOutIn extends React.Component{
     constructor(props){
         super(props);
         this.state={priceForCashIn:"" , showCashIn:true , priceForSend:"" ,
-            priceForCashOut:"" , priceForWithdraw:"" , profileInfo:"" , showErrorForCashIn:false};
+            priceForCashOut:"" , priceForWithdraw:"" , profileInfo:"" , showErrorForCashInOut:false  , message:"" , sheba:""};
         this.ChangeToCashIn = this.ChangeToCashIn.bind(this);
         this.ChangeToCashOut = this.ChangeToCashOut.bind(this);
         this.onChangeCashIn = this.onChangeCashIn.bind(this);
@@ -22,6 +22,10 @@ class CashOutIn extends React.Component{
         this.size = this.size.bind(this);
         this.redirectToPaymentPage = this.redirectToPaymentPage.bind(this);
         this.validatePrice = this.validatePrice.bind(this);
+        this.onChangeSheba = this.onChangeSheba.bind(this);
+    }
+    onChangeSheba(event){
+        this.setState({sheba : event.target.value});
     }
     validatePrice(price){
         const pr = /^\d+$/ ;
@@ -81,7 +85,7 @@ class CashOutIn extends React.Component{
         var validity = this.validatePrice(this.state.priceForSend);
         if(validity) {
             this.setState({priceForSend: this.state.priceForCashIn});
-            this.setState({showErrorForCashIn: false});
+            this.setState({showErrorForCashInOut: false});
             this.props.actions.transActionPerform(this.state.priceForSend * 10).then(
                 () => {
                     this.redirectToPaymentPage()
@@ -92,12 +96,13 @@ class CashOutIn extends React.Component{
             console.log(this.state);
         }
         else {
-            this.setState({showErrorForCashIn: true})
+            this.setState({showErrorForCashInOut: true});
+            this.setState({message: "لطفا مبلغ خود را اعداد انگلیسی به تومان وارد کنید"})
         }
     }
     sendToServerCashOutRequest(){
         this.setState({priceForWithdraw: this.state.priceForCashOut});
-        console.log(this.state);
+        console.log(this.state.sheba , 'sheba' , this.state.priceForCashOut , 'priceForCashOut');
     }
   render(){
     return(
@@ -131,12 +136,14 @@ class CashOutIn extends React.Component{
                                     <CashOut
                                       profileInfo={this.state.profileInfo}
                                       price={this.state.priceForCashOut}
-                                      onChangeCashin={this.state.onChangeCashOut}
-                                      sendToServerCashinRequest={this.sendToServerCashOutRequest}
+                                      onChangeCashOut={this.onChangeCashOut}
+                                      sendToServerCashOutRequest={this.sendToServerCashOutRequest}
                                       priceForSend={this.state.priceForWithdraw}
+                                      sheba={this.state.sheba}
+                                      onChangeSheba={this.onChangeSheba}
                                     />}
                             </div>
-                            {this.state.showErrorForCashIn ? <Error message="لطفا مبلغ خود را اعداد انگلیسی به تومان وارد کنید"/> : (null)}
+                            {this.state.showErrorForCashInOut ? <Error message={this.state.message}/> : (null)}
                         </div>
                     </div>
                 </div>

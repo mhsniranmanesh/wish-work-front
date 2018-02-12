@@ -4,7 +4,7 @@ import ProjectTemplateForDashboard from './ProjectTemplateForDashboard';
 
 
 const ProjectsListForDashboard = ({Projects , myFunc , goToProjectProfile , WordCount , size}) =>{
-    if(Projects !== []) {
+    if(Projects.length > 0) {
         var ProjectsArr = Projects;
         var Size = size(Projects);
         if(Size >=3){
@@ -30,6 +30,10 @@ const ProjectsListForDashboard = ({Projects , myFunc , goToProjectProfile , Word
     else {
         return(
             <div className="dash-con dash-recoms mb-4">
+                <h5>پروژه های پیشنهادی</h5>
+                <div className="dash-divider"/>
+                <br/>
+                <h6>در حال حاضر پروژه ی پیشنهادی برای شما وجود ندارد. :(</h6>
             </div>
         )
     }

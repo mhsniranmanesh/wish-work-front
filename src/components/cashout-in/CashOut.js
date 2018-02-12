@@ -15,15 +15,15 @@ const CashOut = (props) =>{
       x = 'مبلغ برداشتی را مشخص کنید.'
   }
 
-    if(props.profileInfo.balance > 1000) {
+    if(props.profileInfo.balance > 1) {
         return (
             <div id="draw" role="tabpanel" aria-labelledby="draw-tab">
                 <h5 className="cashout-title">موجودی قابل برداشت</h5>
-                <h4 className="py-2 cashout-title">{props.profileInfo.balance} تومان</h4>
+                <h4 className="py-2 cashout-title">{props.profileInfo.balance * 1000} تومان</h4>
                 <form className="">
                     <div className="form-group">
                         <label className="col-form-label form-header-fontsize">{x}</label>
-                        <input type="text" className="form-control form-body-fontsize" id=""
+                        <input type="text" className="form-control form-body-fontsize"
                                onChange={(event) => {
                                    props.onChangeCashOut(event)
                                }}
@@ -34,7 +34,8 @@ const CashOut = (props) =>{
                     </div>
                     <div className="form-group">
                         <label className="col-form-label form-header-fontsize">لطفا شماره شبای حساب خود را وارد کنید</label>
-                        <input type="text" className="form-control form-body-fontsize" id="" placeholder=""/>
+                        <input type="text" className="form-control form-body-fontsize"  placeholder="شماره شبا"
+                               onChange={(event)=>{props.onChangeSheba(event)}} value={props.sheba}/>
                         <div className="sheba-numb detail-fontsize">
                             <a href="http://www.banksepah.ir/default-1232.aspx" target="_blank">
                                 برای دریافت شماره شبا کلیک کنید

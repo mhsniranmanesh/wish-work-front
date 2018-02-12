@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const ProfileInfoForDashboard = ({profileInfo , togglePopoverWishcoin , popoverOpenWishcoin}) =>{
     let Image ;
-    var colorBackground;
+    var colorBackground = -1;
     var colorCode;
     if((profileInfo.profile_picture != null) || (profileInfo.profile_picture != undefined)){
         if(profileInfo.profile_picture == '/media/'){

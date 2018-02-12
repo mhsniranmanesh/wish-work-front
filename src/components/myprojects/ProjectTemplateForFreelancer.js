@@ -6,18 +6,18 @@ const ProjectTemplateForFreelancer = (props) =>{
             <div className="dash-con dash-new-project con-body mb-4">
                 <h6>
                     <strong>{props.FreelancerProject.title}</strong>
-                    <Badge color="success" pill>در حال انجام</Badge>
+                    <badge className="badge badge-doing">در حال انجام </badge>
                 </h6>
                 <div className="SubmittedPr">
                 </div>
                 <span className="sub-heading delete-project">
-</span>
+                </span>
                 <span className="sub-heading">
-                            <i className="fa fa-calendar"/>
-            </span>
-                <Button color="primary" className="btn btn-primary btn-rec" onClick={props.goToCP}>
+                          <i className="fa fa-calendar"/>
+                </span>
+                <button className="btn btn-primary btn-rec" onClick={props.goToCP}>
                     کنترل پروژه
-                </Button>
+                </button>
             </div>
         </div>
     )

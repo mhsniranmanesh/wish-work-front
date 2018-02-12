@@ -71,22 +71,23 @@ class WishCoin extends React.Component {
 
                                       <div className="dash-con dash-new-project con-body mb-4">
                                           <h5>ویش‌کوین‌های من</h5>
-                                          <div className="dash-divider"/>
+                                          {/*<div className="dash-divider"/>*/}
                                           <div className="row">
-                                            <div className="col-sm-4">
+                                            <div className="col-sm-3">
+                                              {/*<div className="form-header-fontsize">موجودی ویش کوین</div>*/}
                                                 <div className="circle">
-                                                    <a href="#"><h2>{this.state.profileInfo.wish_coins}</h2></a>
+                                                    <a href="#"><h2 className="form-header-fontsize">{this.state.profileInfo.wish_coins}</h2></a>
                                                 </div>
                                             </div>
-                                            <div className="col-sm-8 wishcoin-descript">
+                                            <div className="col-sm-9 wishcoin-descript">
                                                 <h4>ویش کوین چیست؟</h4>
                                                 <p>با ویش کوین می توانید از قابلیت های پلتفرم ویش ورک استفاده کنید. این قابلیت ها در حال حاضر شامل شرکت در مناقاصات و ثبت پروژه می باشد</p>
                                             </div>
                                           </div>
                                        </div>
 
-                                <div className="dash-con dash-new-project con-body mb-4 d-flex">
-                                    <div className="dash-divider"/>
+                                <div className="dash-con dash-new-project con-body mb-4">
+                                    <div className="row">
                                     <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div className="db-wrapper">
                                             <div className="db-pricing-eleven bg-danger">
@@ -166,6 +167,7 @@ class WishCoin extends React.Component {
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>

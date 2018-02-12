@@ -48,10 +48,36 @@ const FreelancerInfos = (props) =>{
 
                     </div>
                 </div>
+                <div className="freelancer-char-box ">
+                      <div className="freelancer-char">
+                             <span className="form-header-fontsize"> تحصیلات </span>
+                             :
+                             <span className="form-body-fontsize"> {props.freelancerDetail.university} </span>
+                      </div>
 
-                 تحصیلات : {props.freelancerDetail.university}
+                      <div className="freelancer-char">
+                             <span className="form-header-fontsize"> دانشگاه </span>
+                             :
+                             <span className="form-body-fontsize"> دانشگاه تهران </span>
+                      </div>
 
-                {props.showSkills ?<Tags Skills={props.Skills}/> : (null)}
+                      <div className="freelancer-char">
+                             <span className="form-header-fontsize"> عنوان حرفه ای </span>
+                             :
+                             <span className="form-body-fontsize"> مترجم فارسی به انگلیسی </span>
+                      </div>
+
+                      <div className="freelancer-char">
+                             <span className="form-header-fontsize"> در مورد من </span>
+                             :
+                             <span className="form-body-fontsize"> من دانشجوی مترجمی زبان انگلیسی دانشگاه تهران هستم و از بدو ورود به دانشگاه و حتی قیل از آن بدلیل علاقه فراوان به این کار به کار در این زمینه مشغول بوده ام. مدارک حرفه ای زیادی و لوح تقدیر های فراوان در این زمینه دارا می باشم </span>
+                      </div>
+                 </div>
+                 <div>
+                      <span className="form-header-fontsize">مهارت های من</span> 
+                        :
+                      <span>{props.showSkills ?<Tags Skills={props.Skills}/> : (null)}</span>
+                 </div>
             </div>
         </div>
     )

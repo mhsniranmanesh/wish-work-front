@@ -25,7 +25,7 @@ class Header2 extends React.Component {
     exit(){
         localStorage.removeItem('current_login_token');
         this.context.router.history.push({
-            pathname:'/signin/'
+            pathname:'/login/'
         });
     }
     componentWillReceiveProps(nextProps){

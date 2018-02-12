@@ -249,7 +249,7 @@ class Projectsubmition extends React.Component{
         return newValue;
     }
     redirect(){
-            this.context.router.history.push('/dashboard');
+            this.context.router.history.push('/project/me');
     }
 
     handleOnChange (value) {
@@ -476,16 +476,6 @@ class Projectsubmition extends React.Component{
     projectDescriptionState(event){
         this.setState({description: event.target.value,popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
     }
-    submitProjectTimeState(event){
-        let time = event.target.value;
-        console.log(time , 'time 1');
-        time = this.persianToEnglish(time);
-        console.log(time , 'time 2');
-        const trueOrFalseTimeValid = this.validateTime(time);
-        this.setState({time_limit: time , validTime: trueOrFalseTimeValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
-        //console.log('state:' ,this.state);
-        //console.log('length:' , this.state.translationFatherTag.length);
-    }
 
 
     submitProjectAuctionState(event){
@@ -506,12 +496,6 @@ class Projectsubmition extends React.Component{
     }
 
 
-    submitProjectPriceState(event){
-        let price = event.target.value;
-        price = this.persianToEnglish(price);
-        const trueOrFalsePriceValid = this.validatePrice(price);
-        this.setState({F: price , validPrice : trueOrFalsePriceValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,})
-    }
     projectTitleState(event){
         this.setState({title: event.target.value,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
     }
@@ -566,6 +550,23 @@ class Projectsubmition extends React.Component{
       event.target.value = numb;
       this.setState({pageNumber: numb, validPage : trueOrFalsePageValid2});
 
+    }
+    submitProjectPriceState(event){
+        let price = event.target.value;
+        price = this.persianToEnglish(price);
+        const trueOrFalsePriceValid = this.validatePrice(price);
+        this.setState({budget: price , validPrice : trueOrFalsePriceValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,})
+    }
+
+    submitProjectTimeState(event){
+        let time = event.target.value;
+        console.log(time , 'time 1');
+        time = this.persianToEnglish(time);
+        console.log(time , 'time 2');
+        const trueOrFalseTimeValid = this.validateTime(time);
+        this.setState({time_limit: time , validTime: trueOrFalseTimeValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
+        //console.log('state:' ,this.state);
+        //console.log('length:' , this.state.translationFatherTag.length);
     }
 
 
@@ -750,7 +751,6 @@ class Projectsubmition extends React.Component{
                               <div className="section">
                                   <Select
                                     className="customPicker form-body-fontsize"
-                                    ref="fromLanguage"
                                     placeholder="از زبان ..."
                                     options={options1}
                                     simpleValue
@@ -768,7 +768,6 @@ class Projectsubmition extends React.Component{
                                   <Select
                                     placeholder="به زبان ..."
                                     className="customPicker form-body-fontsize"
-                                    ref="toLanguage"
                                     options={options2}
                                     simpleValue
                                     clearable
@@ -816,7 +815,7 @@ class Projectsubmition extends React.Component{
                             <PopoverBody className="beauty-text popover-beauty">مدت زمانی که فریلنسر ها پروژه شما را مشاهده می کنند و می توانند قیمت پیشنهادی خود را اعلام کنند. </PopoverBody>
                           </Popover>
 
-                          <input type="text" className="form-control form-body-fontsize" id="auctionInput" value={this.state.auction} onChange={this.submitProjectAuctionState} onBlur={this.roundProjectAuctionTime} onFocus={this.togglePopoverAuctionInterval}/>
+                          <input type="text" className="form-control form-body-fontsize" id="auctionInput" value={this.state.auctionTime} onChange={this.submitProjectAuctionState} onBlur={this.roundProjectAuctionTime} onFocus={this.togglePopoverAuctionInterval}/>
                             <Popover placement="left" isOpen={this.state.popoverOpenAuctionInterval} target="auctionInput" toggle={this.togglePopoverAuctionInterval}>
                               <PopoverBody className="beauty-text popover-beauty">لطفا مدت برقراری مناقصه را بین ۲ تا ۷ روز وارد نمایید</PopoverBody>
                             </Popover>

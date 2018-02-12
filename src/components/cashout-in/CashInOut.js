@@ -91,7 +91,9 @@ class CashOutIn extends React.Component{
             });
             console.log(this.state);
         }
-        this.setState({showErrorForCashIn: true})
+        else {
+            this.setState({showErrorForCashIn: true})
+        }
     }
     sendToServerCashOutRequest(){
         this.setState({priceForWithdraw: this.state.priceForCashOut});

@@ -34,23 +34,29 @@ const AddBid = (props) => {
     if(diffMinutes < 0){
         return(
             <div>
-            <div className="con mb-4">
-                <h5 className="project-title form-header-fontsize">
-                    درباره پروژه
-                </h5>
-                <div className="divider"/>
-                <div className="sub-heading">
-                    {/*<div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div>*/}
-                  {/*  <div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div> */}
-                    <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</div>
-                    <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</div>
-                    <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m}</div>
+                <div className="con mb-4">
+                    <h5 className="project-title form-header-fontsize">
+                        درباره پروژه
+                    </h5>
+                    <div className="divider"/>
+                    <div className="about-sub-heading">
+                        {/*<div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div>*/}
+                        {/*    <div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div> */}
+                        <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</div>
+                        <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</div>
+                        <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m}</div>
+                    </div>
+                </div>
+                <div className="con mb-4">
+                    <div className="public-page-descript form-body-fontsize">
+مهلت این مناقصه به پایان رسیده است
+                    </div>
                 </div>
             </div>
-        </div>
+
         )
     }
-     if (diffMinutes>=0 && props.isLoggedIn && (userHasBid === false)) {
+     if (diffMinutes>=0 && props.isLoggedIn && (userHasBid === false) && props.isVerified) {
         return (
             <div>
                 <div className="con mb-4">
@@ -201,6 +207,30 @@ const AddBid = (props) => {
             </div>
 
         )
+    }
+    if(!props.isVerified){
+       return(
+           <div>
+               <div className="con mb-4">
+                   <h5 className="project-title form-header-fontsize">
+                       درباره پروژه
+                   </h5>
+                   <div className="divider"/>
+                   <div className="about-sub-heading">
+                       {/*<div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div>*/}
+                       {/*    <div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div> */}
+                       <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</div>
+                       <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</div>
+                       <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m}</div>
+                   </div>
+               </div>
+               <div className="con mb-4">
+                   <div className="public-page-descript form-body-fontsize">
+پروژه در انتظار تایید می باشد.
+                   </div>
+               </div>
+           </div>
+       )
     }
 else {
     return(

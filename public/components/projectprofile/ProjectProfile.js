@@ -715,6 +715,7 @@ class ProjectProfile extends React.Component {
                                             bidding_deadline={this.state.projectDetail.bidding_deadline}
                                         />
                                         <AddBid
+                                            isVerified={this.state.projectDetail.is_verified }
                                             is_freelancer_selected={this.state.projectDetail.is_freelancer_selected}
                                             toggleBid={this.toggleBid}
                                             addBidModalForFreelancer={this.state.addBidModalForFreelancer}

@@ -14,7 +14,7 @@ class Header2 extends React.Component {
     constructor(props){
         super(props);
         this.state = {activeDashboard : true , activeProject : false , activeProfile: false , activeAccounting : false , activeMessage : false,
-            profileInfo:Object.assign({} , props.profileInfo[0])};
+            profileInfo:Object.assign({} , props.profileInfo[0]) , classForCollapseProject:"nav-link nav-link-collapse collapsed"};
         this.dashboardActive = this.dashboardActive.bind(this);
         this.projectActive = this.projectActive.bind(this);
         this.profileActive = this.profileActive.bind(this);
@@ -91,7 +91,7 @@ class Header2 extends React.Component {
                             </li>
                             <li className = { this.state.activeProject ? "nav-item active" : "nav-item" } data-toggle="tooltip" data-placement="right" title="پروژه"
                                 onClick={this.projectActive}>
-                                <a className="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents">
+                                <a className={this.state.classForCollapseProject} data-toggle="collapse" href="#collapseComponents">
                                     <i className="fa fa-fw fa-tasks"/>
                                     <span className="nav-link-text">پروژه</span>
                                 </a>

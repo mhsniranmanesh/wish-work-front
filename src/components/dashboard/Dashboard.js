@@ -39,7 +39,7 @@ class Dashboard extends React.Component{
         this.WordCount = this.WordCount.bind(this);
         this.goToMyProjectPublic = this.goToMyProjectPublic.bind(this);
         this.togglePopoverWishcoin = this.togglePopoverWishcoin.bind(this);
-
+        this.goToCP = this.goToCP.bind(this);
 
   }
 
@@ -185,6 +185,9 @@ class Dashboard extends React.Component{
         event.preventDefault();
         this.context.router.history.push('/project/me');
     }
+    goToCP() {
+        this.context.router.history.push('project/control');
+    }
 
     updateValueTT (newValue) {
         if(newValue === null){
@@ -255,6 +258,8 @@ class Dashboard extends React.Component{
                                                        size={this.size}
                                                        goToMyProjectPublic={this.goToMyProjectPublic}
                                                        submitProject={this.submitProject}
+                                                      gotoMyProjects={this.gotoMyProjects}
+                                                      goToCP={this.goToCP}
 
                         />
 

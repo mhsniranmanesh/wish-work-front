@@ -141,11 +141,10 @@ class ProjectProfile extends React.Component {
     }
 
     redirect() {
-        alert('Congratulation, your project is started now!');
-        this.context.router.history.push({
-            pathname: '/project/cp',
-        });
-
+        let newState = Object.assign({} , this.state);
+        newState.projectDetail.is_freelancer_selected = true;
+        this.setState({newState});
+        alert('شما فریلنسر خود را انتخاب کردید منتظر تایید او باشید');
     }
 
     deleteBid(x) {
@@ -159,8 +158,8 @@ class ProjectProfile extends React.Component {
 
     acceptBid(id) {
         this.props.actions.selectBid(id).then(
-            () => this.redirect)
-            .catch(err => {
+            () => this.redirect()
+        ).catch(err => {
                 console.log(err)
             })
     }
@@ -650,6 +649,7 @@ class ProjectProfile extends React.Component {
                                 <div className="con mb-4"> {
                                     this.state.showBidsList ? <BidsList
                                             numberOfPages={this.state.projectAdditional.number_of_pages}
+                                            is_freelancer_selected={this.state.projectDetail.is_freelancer_selected}
                                             freelancerIsSelected={this.state.freelancerIsSelected}
                                             acceptBid={this.acceptBid}
                                             goToFreelancerProfile={this.goToFreelancerProfile}

@@ -9,9 +9,6 @@ const ProjectTemplateForFreelancer = (props) =>{
                     <Badge color="success" pill>در حال انجام</Badge>
                 </h6>
                 <div className="SubmittedPr">
-                    <p >
-                        لطفا منتظر تایید پروژه باشید.
-                    </p>
                 </div>
                 <span className="sub-heading delete-project">
 </span>

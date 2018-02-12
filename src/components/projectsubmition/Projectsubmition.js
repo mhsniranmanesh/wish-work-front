@@ -68,10 +68,12 @@ class Projectsubmition extends React.Component{
             file:"",
             loading: false,
             progressNumber: 10,
+            showErrorFromServerSide: false
         };
         //this.state.translationTo = this.props.dashProjectSubmit.translationTo;
         //this.state.translationFrom = this.props.dashProjectSubmit.translationFrom;
         this.progressNumber = this.progressNumber.bind(this);
+        this.ErrorFromServerSide = this.ErrorFromServerSide.bind(this);
         this.togglePopoverSubject = this.togglePopoverSubject.bind(this);
         this.togglePopoverPage = this.togglePopoverPage.bind(this);
         this.togglePopoverPrice = this.togglePopoverPrice.bind(this);
@@ -111,7 +113,14 @@ class Projectsubmition extends React.Component{
         this.submitProjectAuctionState = this.submitProjectAuctionState.bind(this);
         this.redirect = this.redirect.bind(this);
     }
-
+    ErrorFromServerSide(){
+        this.setState({progressNumber : 10});
+        this.setState({modal : false});
+        this.setState({loading: false});
+        this.setState({showError : true});
+        // console.log('HEEEELLOOOO');
+        this.setState({message:"خطا در اتصال به سرور، لطفا مجددا تلاش کنید(اتصال اینترنت خود را بررسی کنید)"})
+    }
     // componentDidMount(){
     // // if(this.state.fileIsUpload){
     // //     this.setState({inputTitle : 'فایل شما آپلود شد' })
@@ -119,15 +128,17 @@ class Projectsubmition extends React.Component{
     // }
 
     progressNumber() {
-        setTimeout( () => {
-            var i = this.state.progressNumber + 20;
-            //  call a 3s setTimeout when the loop is called
-            this.setState({progressNumber: i});
-            console.log(this.state.progressNumber , 'progressNumber');                                                          //  increment the counter
-            if (i < 100) {                                                      //  if the counter < 100, call the loop function
-                this.progressNumber();                                           //  ..  again which will trigger another
-            }                        //  ..  setTimeout()
-        }, 2000)
+        if(this.state.progressNumber > 10) {
+            setTimeout(() => {
+                var i = this.state.progressNumber + 20;
+                //  call a 3s setTimeout when the loop is called
+                this.setState({progressNumber: i});
+                console.log(this.state.progressNumber, 'progressNumber');                                                          //  increment the counter
+                if (this.state.progressNumber < 80) {                                                      //  if the counter < 100, call the loop function
+                    this.progressNumber();                                           //  ..  again which will trigger another
+                }                        //  ..  setTimeout()
+            }, 2000)
+        }
     }
 
     togglePopoverAuction(){
@@ -238,10 +249,7 @@ class Projectsubmition extends React.Component{
         return newValue;
     }
     redirect(){
-        setTimeout( () => {
-            this.context.router.history.push('/dashboard');
-        } , 5000
-        )
+            this.context.router.history.push('/project/me');
     }
 
     handleOnChange (value) {
@@ -249,19 +257,19 @@ class Projectsubmition extends React.Component{
   		this.setState({ multiValue: value });
   	}
     submit(){
-        var Send2 = JSON.parse(JSON.stringify(this.state));
+        // var Send2 = JSON.parse(JSON.stringify(this.state));
         var Send1 = JSON.parse(JSON.stringify(this.state));
         var Send3  = {file: this.state.file};
-        delete Send1.file;
-        delete Send2.file;
-        console.log('from_language' , this.state.from_language);
+        console.log('filesss' , this.state.file);
         console.log('this.state.translationFrom' , this.state.translationFrom);
-        console.log('STATE IS:' , Send3);
+        // console.log('STATE IS:' , Send3);
         this.setState({loading: true});
-        this.props.actions.projectSubmit(Send1 , Send3).then(
-            () => this.progressNumber()
-            ).then(() => this.redirect()).catch(error => {
-            console.log(error);
+        this.setState({progressNumber: 11});
+        this.progressNumber();
+        this.props.actions.projectSubmit(Send1 ,Send3).then(
+                () => this.redirect()
+        ).catch(error => {
+            this.ErrorFromServerSide();
         });
     }
 
@@ -468,16 +476,6 @@ class Projectsubmition extends React.Component{
     projectDescriptionState(event){
         this.setState({description: event.target.value,popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
     }
-    submitProjectTimeState(event){
-        let time = event.target.value;
-        console.log(time , 'time 1');
-        time = this.persianToEnglish(time);
-        console.log(time , 'time 2');
-        const trueOrFalseTimeValid = this.validateTime(time);
-        this.setState({time_limit: time , validTime: trueOrFalseTimeValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
-        //console.log('state:' ,this.state);
-        //console.log('length:' , this.state.translationFatherTag.length);
-    }
 
 
     submitProjectAuctionState(event){
@@ -498,12 +496,6 @@ class Projectsubmition extends React.Component{
     }
 
 
-    submitProjectPriceState(event){
-        let price = event.target.value;
-        price = this.persianToEnglish(price);
-        const trueOrFalsePriceValid = this.validatePrice(price);
-        this.setState({budget: price , validPrice : trueOrFalsePriceValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,})
-    }
     projectTitleState(event){
         this.setState({title: event.target.value,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
     }
@@ -558,6 +550,23 @@ class Projectsubmition extends React.Component{
       event.target.value = numb;
       this.setState({pageNumber: numb, validPage : trueOrFalsePageValid2});
 
+    }
+    submitProjectPriceState(event){
+        let price = event.target.value;
+        price = this.persianToEnglish(price);
+        const trueOrFalsePriceValid = this.validatePrice(price);
+        this.setState({budget: price , validPrice : trueOrFalsePriceValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,})
+    }
+
+    submitProjectTimeState(event){
+        let time = event.target.value;
+        console.log(time , 'time 1');
+        time = this.persianToEnglish(time);
+        console.log(time , 'time 2');
+        const trueOrFalseTimeValid = this.validateTime(time);
+        this.setState({time_limit: time , validTime: trueOrFalseTimeValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
+        //console.log('state:' ,this.state);
+        //console.log('length:' , this.state.translationFatherTag.length);
     }
 
 
@@ -647,7 +656,7 @@ class Projectsubmition extends React.Component{
         }
         else {
             // this.setState({});
-            this.setState({showError: false, type : STATIC_DATAS.TYPE.NORMAL ,category : STATIC_DATAS.CATEGORY.TRANSLATION ,  modal: !this.state.modal});
+            this.setState({showError: false, type : STATIC_DATAS.TYPE.NORMAL ,category : STATIC_DATAS.CATEGORY.TRANSLATION ,  modal: true});
             this.setState({from_language: this.state.translationFrom});
             this.setState({to_language: this.state.translationTo});
             this.setState({number_of_pages: this.state.pageNumber});
@@ -742,7 +751,6 @@ class Projectsubmition extends React.Component{
                               <div className="section">
                                   <Select
                                     className="customPicker form-body-fontsize"
-                                    ref="fromLanguage"
                                     placeholder="از زبان ..."
                                     options={options1}
                                     simpleValue
@@ -760,7 +768,6 @@ class Projectsubmition extends React.Component{
                                   <Select
                                     placeholder="به زبان ..."
                                     className="customPicker form-body-fontsize"
-                                    ref="toLanguage"
                                     options={options2}
                                     simpleValue
                                     clearable
@@ -808,7 +815,7 @@ class Projectsubmition extends React.Component{
                             <PopoverBody className="beauty-text popover-beauty">مدت زمانی که فریلنسر ها پروژه شما را مشاهده می کنند و می توانند قیمت پیشنهادی خود را اعلام کنند. </PopoverBody>
                           </Popover>
 
-                          <input type="text" className="form-control form-body-fontsize" id="auctionInput" value={this.state.auction} onChange={this.submitProjectAuctionState} onBlur={this.roundProjectAuctionTime} onFocus={this.togglePopoverAuctionInterval}/>
+                          <input type="text" className="form-control form-body-fontsize" id="auctionInput" value={this.state.auctionTime} onChange={this.submitProjectAuctionState} onBlur={this.roundProjectAuctionTime} onFocus={this.togglePopoverAuctionInterval}/>
                             <Popover placement="left" isOpen={this.state.popoverOpenAuctionInterval} target="auctionInput" toggle={this.togglePopoverAuctionInterval}>
                               <PopoverBody className="beauty-text popover-beauty">لطفا مدت برقراری مناقصه را بین ۲ تا ۷ روز وارد نمایید</PopoverBody>
                             </Popover>

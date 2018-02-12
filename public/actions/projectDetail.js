@@ -45,21 +45,19 @@ export function deleteBid(bidId) {
         return axios.delete('/api/v1/projects/bid/delete/' ,{data: {bid_id : bidId}}).then(Success=>{
             dispatch(deleteBidSuccess(Success))
             }
-
         ).catch(err =>{
             throw (err)
         })
     }
-
 }
 
 export function selectBid(selectedBid) {
     console.log(selectedBid);
     return function (dispatch) {
         return axios.post('/api/v1/projects/bid/select/', {bid_id: selectedBid}).then(select => {
-            dispatch(selectBidSuccess(select)).catch(err => {
-                throw (err)
-            })
+            dispatch(selectBidSuccess(select))
+        }).catch(err => {
+            throw (err)
         })
     }
 }

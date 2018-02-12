@@ -73,8 +73,5 @@ Authentication().then(() => {
         ,
         document.getElementById('root')
     );
-    $('#dashboard-loading').hide(function(){
-        $('#root').fadeIn('1000');
-    });
 });
 

@@ -20,8 +20,9 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                         <div>
                             <article className="timeline-entry">
                                 <div className="timeline-entry-inner">
-                                    <time className="timeline-time"><span> تاریخ پایان مهلت زمان آپلود:{date}
-                            </span> <span className="text-muted">در حال انجام</span></time>
+                                    <time className="timeline-time">
+                                      <span> تاریخ پایان مهلت زمان آپلود:{date} </span>
+                                      <span className="text-muted">در حال انجام</span></time>
                                     <div className="timeline-icon bg-primary">
                                         <i className="entypo-location"/>
                                     </div>

@@ -16,24 +16,28 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
             if(CPClient.is_revised){
                 return (
                     <div>
-                        <div>
-                            <a download="wish-work-file"
-                               href={CPClient.project_controller_element_attachments[0].file} target="_blank">
-                                    <span id="download-symbol"> <i className="fa fa-download fa-download-dash-cp-now"
-                                                                   aria-hidden="true"/> </span>
-                                <span className="file-subject">فایل پروژه ی شما</span>
-                            </a>
-                        </div>
+
                         <article className="timeline-entry">
                             <div className="timeline-entry-inner">
-                                <time className="timeline-time"><span>
-                            </span> <span className="text-muted">بازنگری شده</span></time>
-                                <div className="timeline-icon bg-success">
-                                    <i className="entypo-location"/>
+                                <div className="col-sm-6">
+                                    <div className="timeline-icon bg-success">
+                                        <i className="entypo-location"/>
+                                    </div>
+                                    <div className="timeline-label">
+                                        <h2 className="form-header-fontsize"><a href="#">{CPClient.description}</a></h2>
+                                    </div>
                                 </div>
-                                <div className="timeline-label">
-                                    <h2><a href="#">{CPClient.description}</a></h2>
-                                </div>
+                                <time className="timeline-time">
+                                  <div className="dash-cp-file">
+                                      <a download="wish-work-file" href={CPClient.project_controller_element_attachments[0].file} target="_blank">
+                                              <span id="download-symbol-dash-cp">
+                                                <i className="fa fa-download fa-download-dash-cp" aria-hidden="true"/>
+                                              </span>
+                                              <span className="file-subject">فایل پروژه ی شما</span>
+                                      </a>
+                                  </div>
+                                  <span className="text-muted">بازنگری شده</span>
+                                </time>
                             </div>
                         </article>
                     </div>
@@ -46,36 +50,40 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                         var date = moment(CPClient.revision_deadline, 'YYYY-M-D HH:mm:ss').format('jYYYY/jM/jD HH:mm:ss');
                         return (
                             <div>
-                                <div>
-                                    <a download="wish-work-file"
-                                       href={CPClient.project_controller_element_attachments[0].file} target="_blank">
-                                    <span id="download-symbol"> <i className="fa fa-download fa-download-dash-cp-now"
-                                                                   aria-hidden="true"/> </span>
-                                        <span className="file-subject">فایل پروژه ی شما</span>
-                                    </a>
-                                </div>
+
                                 <article className="timeline-entry">
                                     <div className="timeline-entry-inner">
-                                        <time className="timeline-time"><span>
-                            </span> <span className="text-muted">فایل خود را دانلود کنید ، اگر پیشنهاد و یا انتقادی به ترجمه دارید میتوانید اینجا بفرستید،
-                                    در غیر این صورت بر روی تایید کلیک کنید. مهلت ثبت بازنگری {date}</span>
+                                      <div className="col-sm-6">
+                                            <div className="timeline-icon bg-warning">
+                                                <i className="entypo-location"/>
+                                            </div>
+                                            <div className="timeline-label">
+                                                <h2 className="form-header-fontsize"><a href="#">{CPClient.description}</a></h2>
+                                                <textarea type="text" className="form-control form-body-fontsize"
+                                                          id="Popover4"
+                                                          placeholder="انتقادات و پیشنهادات خود را در این بخش بنویسید"
+                                                          onChange={reviseOnChange} value={reviseValue}/>
+                                                <Button type="submit" color="secondary"
+                                                        className="btn btn-secondary btn-rec" onClick={(event) => {
+                                                    submitFeedBack(CPClient.project_controller_element_attachments[0].uuid);
+                                                }}>
+                                                    <i className="fa fa-comment fa-download-dash-cp-now"/>
+                                                </Button>
+                                            </div>
+                                        </div>
+                                        <time className="timeline-time">
+                                          <div className="dash-cp-file">
+                                              <a download="wish-work-file" href={CPClient.project_controller_element_attachments[0].file} target="_blank">
+                                                  <span id="download-symbol-dash-cp">
+                                                    <i className="fa fa-download fa-download-dash-cp" aria-hidden="true"/>
+                                                  </span>
+                                                  <span className="file-subject">فایل پروژه ی شما</span>
+                                              </a>
+                                          </div>
+                                          <span className="text-muted form-body-fontsize">فایل خود را دانلود کنید ، اگر پیشنهاد و یا انتقادی به ترجمه دارید میتوانید اینجا بفرستید،
+                                            در غیر این صورت بر روی تایید کلیک کنید. <span className="point">مهلت ثبت بازنگری {date}</span>
+                                          </span>
                                         </time>
-                                        <div className="timeline-icon bg-warning">
-                                            <i className="entypo-location"/>
-                                        </div>
-                                        <div className="timeline-label">
-                                            <h2><a href="#">{CPClient.description}</a></h2>
-                                            <textarea type="text" className="form-control form-body-fontsize"
-                                                      id="Popover4"
-                                                      placeholder="انتقادات و پیشنهادات خود را در این بخش بنویسید"
-                                                      onChange={reviseOnChange} value={reviseValue}/>
-                                            <Button type="submit" color="secondary"
-                                                    className="btn btn-secondary btn-rec" onClick={(event) => {
-                                                submitFeedBack(CPClient.project_controller_element_attachments[0].uuid);
-                                            }}>
-                                                <i className="fa fa-comment fa-download-dash-cp-now"/>
-                                            </Button>
-                                        </div>
                                     </div>
                                 </article>
                             </div>
@@ -85,32 +93,35 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                         //milestone e akhar
                         return (
                             <div>
-                                <div onClick={(event) => {
-                                    downloadFileModal('its the end' , CPClient.project_controller_element_attachments[0].uuid);donate();
-                                }}>
-                                    <a download="wish-work-file" target="_blank">
-                                    <span id="download-symbol"> <i className="fa fa-download fa-download-dash-cp-now "
-                                                                   aria-hidden="true"/> </span>
-                                        <span className="file-subject">فایل پروژه ی شما</span>
-                                    </a>
-                                </div>
                                 <article className="timeline-entry">
                                     <div className="timeline-entry-inner">
-                                        <time className="timeline-time"><span>
-                            </span> <span className="text-muted">فایل خود را دانلود کنید ، اگر پیشنهاد و یا انتقادی به ترجمه دارید میتوانید اینجا بفرستید،
-                                    در غیر این صورت بر روی تایید کلیک کنید</span>
+                                        <div className="col-sm-6">
+                                            <div className="timeline-icon bg-warning">
+                                                <i className="entypo-location"/>
+                                            </div>
+                                            <div className="timeline-label">
+                                                <h2 className="form-header-fontsize"><a href="#">{CPClient.description}</a></h2>
+                                                <textarea type="text" className="form-control form-body-fontsize" id="Popover4"
+                                                          placeholder="انتقادات و پیشنهادات خود را در این بخش بنویسید"/>
+                                                <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
+                                                    <i className="fa fa-comment"/>
+                                                </Button>
+                                            </div>
+                                        </div>
+                                        <time className="timeline-time">
+                                            <div className="dash-cp-file" onClick={(event) => {
+                                                downloadFileModal('its the end' , CPClient.project_controller_element_attachments[0].uuid);donate();
+                                            }}>
+                                                <a download="wish-work-file" target="_blank">
+                                                  <span id="download-symbol-dash-cp">
+                                                    <i className="fa fa-download fa-download-dash-cp"  aria-hidden="true"/>
+                                                  </span>
+                                                  <span className="file-subject">فایل پروژه ی شما</span>
+                                                </a>
+                                            </div>
+                                            <span className="text-muted form-body-fontsize">فایل خود را دانلود کنید ، اگر پیشنهاد و یا انتقادی به ترجمه دارید میتوانید اینجا بفرستید،
+                                              در غیر این صورت بر روی تایید کلیک کنید</span>
                                         </time>
-                                        <div className="timeline-icon bg-warning">
-                                            <i className="entypo-location"/>
-                                        </div>
-                                        <div className="timeline-label">
-                                            <h2><a href="#">{CPClient.description}</a></h2>
-                                            <textarea type="text" className="form-control form-body-fontsize" id="Popover4"
-                                                      placeholder="انتقادات و پیشنهادات خود را در این بخش بنویسید"/>
-                                            <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
-                                                <i className="fa fa-comment"/>
-                                            </Button>
-                                        </div>
                                     </div>
                                 </article>
                             </div>
@@ -130,15 +141,17 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                             </div>
                             <article className="timeline-entry">
                                 <div className="timeline-entry-inner">
-                                    <time className="timeline-time"><span>
-                            </span> <span className="text-muted">برای دیدن فایل پروژه ی خود ابتدا باید مبلغ مایل استون بعدی را واریز کنید</span>
+                                    <div className="col-sm-6">
+                                        <div className="timeline-icon bg-warning">
+                                            <i className="entypo-location"/>
+                                        </div>
+                                        <div className="timeline-label">
+                                            <h2 className="form-header-fontsize"><a href="#">{CPClient.description}</a></h2>
+                                        </div>
+                                    </div>
+                                    <time className="timeline-time">
+                                        <span className="text-muted form-body-fontsize">برای دیدن فایل پروژه ی خود ابتدا باید مبلغ مایل استون بعدی را واریز کنید</span>
                                     </time>
-                                    <div className="timeline-icon bg-warning">
-                                        <i className="entypo-location"/>
-                                    </div>
-                                    <div className="timeline-label">
-                                        <h2><a href="#">{CPClient.description}</a></h2>
-                                    </div>
                                 </div>
                             </article>
                         </div>
@@ -157,14 +170,17 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                     <div>
                         <article className="timeline-entry">
                             <div className="timeline-entry-inner">
-                                <time className="timeline-time"><span>
-                            </span> <span className="text-muted">پروژه از طرف شما به علت نپرداختن وجه کنسل شد.</span></time>
-                                <div className="timeline-icon bg-danger">
-                                    <i className="entypo-location"/>
+                                <div className="col-sm-6">
+                                    <div className="timeline-icon bg-danger">
+                                        <i className="entypo-location"/>
+                                    </div>
+                                    <div className="timeline-label">
+                                        <h2 className="col-sm-6"><a href="#">{CPClient.description}</a></h2>
+                                    </div>
                                 </div>
-                                <div className="timeline-label">
-                                    <h2><a href="#">{CPClient.description}</a></h2>
-                                </div>
+                                <time className="timeline-time">
+                                    <span className="text-muted form-body-fontsize">پروژه از طرف شما به علت نپرداختن وجه کنسل شد.</span>
+                                </time>
                             </div>
                         </article>
                     </div>
@@ -179,17 +195,20 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                     <div>
                         <article className="timeline-entry">
                             <div className="timeline-entry-inner">
-                                <time className="timeline-time"><span>
-                            </span> <span className="text-muted">در حال انجام</span></time>
-                                <div className="timeline-icon bg-primary">
-                                    <i className="entypo-location"/>
+                                <div className="col-sm-6">
+                                  <div className="timeline-icon bg-primary">
+                                      <i className="entypo-location"/>
+                                  </div>
+                                  <div className="timeline-label">
+                                      <h2 className="form-header-fontsize"><a href="#">{CPClient.description}</a></h2>
+                                    {  /*<Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
+                                          <i className="fa fa-download fa-download-dash-cp-now"/>
+                                      </Button>*/}
+                                  </div>
                                 </div>
-                                <div className="timeline-label">
-                                    <h2><a href="#">{CPClient.description}</a></h2>
-                                    <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
-                                        <i className="fa fa-download fa-download-dash-cp-now"/>
-                                    </Button>
-                                </div>
+                                <time className="timeline-time">
+                                  <span className="text-muted form-body-fontsize">در حال انجام</span>
+                                </time>
                             </div>
                         </article>
                     </div>
@@ -200,14 +219,17 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                     <div>
                         <article className="timeline-entry">
                             <div className="timeline-entry-inner">
-                                <time className="timeline-time"><span>
-                            </span> <span className="text-muted">فریلنسر شما پروژه را انجام نداده و پروژه به صورت خودکار کنسل شد، وجه شما طی دوروز آینده به حسابتان واریز می شود</span></time>
-                                <div className="timeline-icon bg-warning">
-                                    <i className="entypo-location"/>
+                                <div className="col-sm-6">
+                                    <div className="timeline-icon bg-warning">
+                                        <i className="entypo-location"/>
+                                    </div>
+                                    <div className="timeline-label">
+                                        <h2 className="form-header-fontsize"><a href="#">{CPClient.description}</a></h2>
+                                    </div>
                                 </div>
-                                <div className="timeline-label">
-                                    <h2><a href="#">{CPClient.description}</a></h2>
-                                </div>
+                                <time className="timeline-time">
+                                    <span className="text-muted form-body-fontsize">فریلنسر شما پروژه را انجام نداده و پروژه به صورت خودکار کنسل شد، وجه شما طی دوروز آینده به حسابتان واریز می شود</span>
+                                </time>
                             </div>
                         </article>
                     </div>
@@ -222,14 +244,18 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
             <div>
                 <article className="timeline-entry">
                     <div className="timeline-entry-inner">
-                        <time className="timeline-time"><span>
-                            </span> <span className="text-muted">هنوز نرسیده</span></time>
-                        <div className="timeline-icon bg-secondary">
-                            <i className="entypo-location"/>
+                        <div className="col-sm-6">
+                          <div className="timeline-icon bg-secondary">
+                              <i className="entypo-location"/>
+                          </div>
+                          <div className="timeline-label">
+                              <h2 className="form-header-fontsize"><a href="#">{CPClient.description}</a></h2>
+                          </div>
                         </div>
-                        <div className="timeline-label">
-                            <h2><a href="#">{CPClient.description}</a></h2>
-                        </div>
+                        <time className="timeline-time">
+                            <span className="text-muted form-body-fontsize">هنوز نرسیده</span>
+                        </time>
+
                     </div>
                 </article>
             </div>

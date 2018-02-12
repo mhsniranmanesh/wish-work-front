@@ -46,7 +46,7 @@ var x,z;
         }
         else{
           return(
-            <div onClick={(event)=>{props.goToMyProjectPublic(y);}}>
+            <div onClick={(event)=>{props.goToCP();}}>
                 <a className="notif" >
                     <Badge color='primary'  pill className="badge-client"> فریلنسر</Badge>
                     <span className="notif-txt">

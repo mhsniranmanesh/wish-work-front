@@ -10,16 +10,42 @@ import financialManagement from './financialmanagement/FinancialManagement';
 class App extends React.Component {
   constructor(props , context){
     super(props , context);
-
+    this.state = {fetch:false};
+    this.size = this.size.bind(this);
 
   }
+    size (obj) {
+        let x = 0, key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) x++;
+        }
+        return x;
+    };
+  componentWillMount(){
+      var x = this.size(this.props.profileInfo);
+      if (x > 0) {
+        this.setState({fetch: true})
+      }
+  }
+  componentWillReceiveProps(nextProps){
+      var size = this.size(nextProps.profileInfo);
+      if(this.props.profileInfo != nextProps.profileInfo ) {
+          this.setState({fetch: true})
+      }
+  }
   render(){
-    return(
-      <div>
-        <Header2/>
-        <Main />
-      </div>
-      );
+    if(!this.state.fetch) {
+        return (
+            <div id="dashboard-loading" className="loading"></div>
+
+    );
+    }
+      return(
+          <div>
+            <Header2/>
+            <Main/>
+          </div>
+      )
     }
 }
 

@@ -40,8 +40,8 @@ if(Size<4 && Size>0) {
             <h5>پروژه های من</h5>
             <div className="dash-divider"/>
             {TotalSort.map((projects , index) =>
-                <MyProjectsTemplateDashboard key={index} Detail={projects} profileInfo={props.profileInfo}
-                                             goToMyProjectPublic={props.goToMyProjectPublic}/>
+                <MyProjectsTemplateDashboard key={index} Detail={projects} profileInfo={props.profileInfo} goToCP={props.goToCP}
+                                             goToMyProjectPublic={props.goToMyProjectPublic} gotoMyProjects={props.gotoMyProjects}/>
             )}
             <button className="btn btn-primary btn-rec" onClick={props.myFunc}> <i
                 className="fa fa-angle-right" aria-hidden="true"/> بیشتر</button>
@@ -54,8 +54,8 @@ else if(Size>=4){
                 <h5>پروژه های من</h5>
                 <div className="dash-divider"/>
                 {TotalSort.map((projects , index) =>
-                    <MyProjectsTemplateDashboard key={index} Detail={projects} profileInfo={props.profileInfo}
-                                                 goToMyProjectPublic={props.goToMyProjectPublic}/>
+                    <MyProjectsTemplateDashboard key={index} Detail={projects} profileInfo={props.profileInfo} goToCP={props.goToCP}
+                                                 goToMyProjectPublic={props.goToMyProjectPublic} gotoMyProjects={props.gotoMyProjects}/>
                 )}
                 <button className="btn btn-primary btn-rec" onClick={props.myFunc}> <i
                     className="fa fa-angle-right" aria-hidden="true"/> بیشتر</button>

@@ -409,7 +409,7 @@ class Profileinfo extends React.Component{
                                   <span className="point form-body-fontsize">
 
                                     <i className="fa fa-exclamation point" aria-hidden="true"/>
-                                      برای تغییر هر مورد روی آن دوبار کلیک کنید.
+<span className="ml-2">                                      برای تغییر هر مورد روی آن یکبار کلیک کنید.</span>
 
                                   </span>
                                 </label>

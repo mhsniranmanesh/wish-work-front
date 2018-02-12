@@ -73,7 +73,11 @@ const FreelancerInfos = (props) =>{
                              <span className="form-body-fontsize"> من دانشجوی مترجمی زبان انگلیسی دانشگاه تهران هستم و از بدو ورود به دانشگاه و حتی قیل از آن بدلیل علاقه فراوان به این کار به کار در این زمینه مشغول بوده ام. مدارک حرفه ای زیادی و لوح تقدیر های فراوان در این زمینه دارا می باشم </span>
                       </div>
                  </div>
-                {props.showSkills ?<Tags Skills={props.Skills}/> : (null)}
+                 <div>
+                      <span className="form-header-fontsize">مهارت های من</span> 
+                        :
+                      <span>{props.showSkills ?<Tags Skills={props.Skills}/> : (null)}</span>
+                 </div>
             </div>
         </div>
     )

@@ -2335,6 +2335,7 @@ a.delete-project:hover:after {
   /* border: 2px solid #018abe; */
   margin-top: 15px;
   padding-right: 5px;
+  margin-bottom: 10px;
   /* background-color: #e1e1e1; */
   border-radius: 5px;
 }

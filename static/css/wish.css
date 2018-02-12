@@ -2084,6 +2084,7 @@ span.sup {
   text-align: center;
 }
 
+
 #download-symbol{
   background-color: #018abe;
   padding-left: 2px;
@@ -2092,8 +2093,8 @@ span.sup {
 #download-symbol-dash-cp{
   background-color: #018abe;
   padding-left: 2px;
-  line-height: 27px;
-  border-radius: 0 2px 2px 0;
+  /*line-height: 27px;*/
+  border-radius: 0 4px 4px 0;
 }
 
 #file-name{
@@ -2320,8 +2321,10 @@ a.delete-project:hover:after {
 
 .public-page-descript{
   width: 100%;
-  border: 1px solid #018abe;
+  border: 1px solid #adadad;
   border-radius: 5px;
   text-align: center;
   padding: 5px 0;
+  background-color: #efefef;
+  color: #018abe;
 }

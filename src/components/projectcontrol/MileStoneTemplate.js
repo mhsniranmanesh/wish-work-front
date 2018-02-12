@@ -20,24 +20,28 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                         <div>
                             <article className="timeline-entry">
                                 <div className="timeline-entry-inner">
-                                    <time className="timeline-time"><span> تاریخ پایان مهلت زمان آپلود:{date}
-                            </span> <span className="text-muted">در حال انجام</span></time>
-                                    <div className="timeline-icon bg-primary">
-                                        <i className="entypo-location"/>
+                                  <div className="col-sm-6">
+                                        <div className="timeline-icon bg-primary">
+                                            <i className="entypo-location"/>
+                                        </div>
+                                        <div className="timeline-label">
+                                            <h2 className="font-header-fontsize"><a href="#">{CP.description}</a></h2>
+                                            {uploadSendToServerButton ? <Button type="submit"
+                                                                                color="secondary"
+                                                                                className="btn btn-secondary btn-rec"
+                                                                                onClick={sendUploadedFileByFreelancer}>
+                                                <i className="fa fa-download fa-download-dash-cp-success"/>
+                                            </Button> : (null)}
+                                            <input type="file" color="secondary" className="btn btn-secondary btn-rec"
+                                                   onChange={(event) => {
+                                                       uploadFile(event, CP.uuid);
+                                                   }} placeholder="آپلود کنید"/>
+                                         </div>
                                     </div>
-                                    <div className="timeline-label">
-                                        <h2><a href="#">{CP.description}</a></h2>
-                                        {uploadSendToServerButton ? <Button type="submit"
-                                                                            color="secondary"
-                                                                            className="btn btn-secondary btn-rec"
-                                                                            onClick={sendUploadedFileByFreelancer}>
-                                            <i className="fa fa-download fa-download-dash-cp-success"/>
-                                        </Button> : (null)}
-                                        <input type="file" color="secondary" className="btn btn-secondary btn-rec"
-                                               onChange={(event) => {
-                                                   uploadFile(event, CP.uuid);
-                                               }} placeholder="آپلود کنید"/>
-                                    </div>
+                                    <time className="timeline-time font-body-fontsize">
+                                      <span> تاریخ پایان مهلت زمان آپلود:{date} </span>
+                                      <span className="text-muted point">در حال انجام</span>
+                                    </time>
                                 </div>
                             </article>
                         </div>
@@ -48,28 +52,30 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                         <div>
                             <article className="timeline-entry">
                                 <div className="timeline-entry-inner">
+                                    <div className="col-sm-6">
+                                          <div className="timeline-icon bg-warning">
+                                              <i className="entypo-location"/>
+                                          </div>
+                                          <div className="timeline-label">
+                                              <h2 className="font-header-fontsize"><a href="#">{CP.description}</a></h2>
+                                              {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
+                                              {/*<i className="fa fa-download"/>*/}
+                                              {/*</button>*/}
+                                              {uploadSendToServerButton ?
+                                              <Button type="submit" color="secondary"
+                                                      className="btn btn-secondary btn-rec"
+                                                      onClick={sendUploadedFileByFreelancer}>
+                                                  <i className="fa fa-download fa-download-dash-cp-notyet"/>
+                                              </Button> : (null)}
+                                              <input type="file" color="secondary" className="btn btn-secondary btn-rec"
+                                                     onChange={(event) => {
+                                                         uploadFile(event, CP.uuid);
+                                                     }} placeholder="تغییر فایل"/>
+                                          </div>
+                                    </div>
                                     <time className="timeline-time">
-                                      <span>آپلود شده</span> <span className="text-muted">در انتظار نظر کارفرما  </span>
+                                      <span className="font-body-fontsize">آپلود شده</span> <span className="text-muted">در انتظار نظر کارفرما  </span>
                                     </time>
-                                    <div className="timeline-icon bg-warning">
-                                        <i className="entypo-location"/>
-                                    </div>
-                                    <div className="timeline-label">
-                                        <h2><a href="#">{CP.description}</a></h2>
-                                        {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
-                                        {/*<i className="fa fa-download"/>*/}
-                                        {/*</button>*/}
-                                        {uploadSendToServerButton ?
-                                            <Button type="submit" color="secondary"
-                                                    className="btn btn-secondary btn-rec"
-                                                    onClick={sendUploadedFileByFreelancer}>
-                                                <i className="fa fa-download fa-download-dash-cp-notyet"/>
-                                            </Button> : (null)}
-                                        <input type="file" color="secondary" className="btn btn-secondary btn-rec"
-                                               onChange={(event) => {
-                                                   uploadFile(event, CP.uuid);
-                                               }} placeholder="تغییر فایل"/>
-                                    </div>
                                 </div>
                             </article>
                         </div>
@@ -80,22 +86,25 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                         <div>
                             <article className="timeline-entry">
                                 <div className="timeline-entry-inner">
-                                    <time className="timeline-time"><span>  </span> <span
-                                        className="text-muted">پایان یافته</span></time>
-                                    <div className="timeline-icon bg-success">
-                                        <i className="entypo-location"/>
+                                    <div className="col-sm-6">
+                                        <div className="timeline-icon bg-success">
+                                            <i className="entypo-location"/>
+                                        </div>
+                                        <div className="timeline-label">
+                                            <h2 className="form-header-fontsize"><a href="#">{CP.description}</a></h2>
+                                            <p>خواسته ی کارفرما از شما برای مایل استون بعدی</p>
+                                            <p>{CP.project_controller_element_attachments[0].client_feedback}</p>
+                                            {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
+                                            {/*<i className="fa fa-download"/>*/}
+                                            {/*</button>*/}
+                                            {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
+                                            {/*نرسیده*/}
+                                            {/*</button>*/}
+                                        </div>
                                     </div>
-                                    <div className="timeline-label">
-                                        <h2><a href="#">{CP.description}</a></h2>
-                                        <p>خواسته ی کارفرما از شما برای مایل استون بعدی</p>
-                                        <p>{CP.project_controller_element_attachments[0].client_feedback}</p>
-                                        {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
-                                        {/*<i className="fa fa-download"/>*/}
-                                        {/*</button>*/}
-                                        {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
-                                        {/*نرسیده*/}
-                                        {/*</button>*/}
-                                    </div>
+                                    <time className="timeline-time">
+                                       <span className="text-muted form-body-fontsize">پایان یافته</span>
+                                    </time>
                                 </div>
                             </article>
                         </div>
@@ -114,21 +123,25 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                     <div>
                         <article className="timeline-entry">
                             <div className="timeline-entry-inner">
-                                <time className="timeline-time"><span>  </span> <span className="text-muted">
-                                    پروژه ی شما به علت تاخیر در ارائه فایل کنسل شد</span>
+                                <div className="col-sm-6">
+                                    <div className="timeline-icon bg-danger">
+                                        <i className="entypo-location"/>
+                                    </div>
+                                    <div className="timeline-label">
+                                        <h2 className="form-header-fontsize"><a href="#">{CP.description}</a></h2>
+                                        {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
+                                        {/*<i className="fa fa-download"/>*/}
+                                        {/*</button>*/}
+                                        {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
+                                        {/*نرسیده*/}
+                                        {/*</button>*/}
+                                    </div>
+                                </div>
+                                <time className="timeline-time">
+                                   <span className="text-muted font-body-fontsize">
+                                    پروژه ی شما به علت تاخیر در ارائه فایل کنسل شد
+                                   </span>
                                 </time>
-                                <div className="timeline-icon bg-danger">
-                                    <i className="entypo-location"/>
-                                </div>
-                                <div className="timeline-label">
-                                    <h2><a href="#">{CP.description}</a></h2>
-                                    {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
-                                    {/*<i className="fa fa-download"/>*/}
-                                    {/*</button>*/}
-                                    {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
-                                    {/*نرسیده*/}
-                                    {/*</button>*/}
-                                </div>
                             </div>
                         </article>
                     </div>
@@ -141,20 +154,23 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                 <div>
                     <article className="timeline-entry">
                         <div className="timeline-entry-inner">
-                            <time className="timeline-time"><span>  </span> <span
-                                className="text-muted">شروع نشده</span></time>
-                            <div className="timeline-icon bg-secondary">
-                                <i className="entypo-location"/>
+                            <div className="col-sm-6">
+                                <div className="timeline-icon bg-secondary">
+                                    <i className="entypo-location"/>
+                                </div>
+                                <div className="timeline-label">
+                                    <h2 className="form-header-fontsize"><a href="#">{CP.description}</a></h2>
+                                    {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
+                                    {/*<i className="fa fa-download"/>*/}
+                                    {/*</button>*/}
+                                    {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
+                                    {/*نرسیده*/}
+                                    {/*</button>*/}
+                                </div>
                             </div>
-                            <div className="timeline-label">
-                                <h2><a href="#">{CP.description}</a></h2>
-                                {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
-                                {/*<i className="fa fa-download"/>*/}
-                                {/*</button>*/}
-                                {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
-                                {/*نرسیده*/}
-                                {/*</button>*/}
-                            </div>
+                            <time className="timeline-time">
+                               <span className="text-muted font-body-fontsize">شروع نشده</span>
+                            </time>
                         </div>
                     </article>
                 </div>
@@ -165,7 +181,7 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
     else {
         return(
             <div>
-                Hello
+              
             </div>
         )
     }

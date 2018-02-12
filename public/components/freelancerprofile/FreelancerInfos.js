@@ -5,13 +5,16 @@ const FreelancerInfos = (props) =>{
     let Image ;
     let colorBackground;
     let colorCode;
-    if(props.freelancerDetail.profile_picture != null){
+    if(props.freelancerDetail.profile_picture != null || (props.freelancerDetail.profile_picture != undefined)){
         Image = props.freelancerDetail.profile_picture
     }
     else{
-        Image = require("../../../static/img/profile_pic/" + props.freelancerDetail.first_name[0].charCodeAt() + ".png");
-        // Image = "http://via.placeholder.com/125x125";
-        colorBackground = props.freelancerDetail.first_name[0].charCodeAt()%5;
+        console.log(props.freelancerDetail.length , 'props.freelancerDetail.length');
+        if(props.freelancerDetail.first_name) {
+            Image = require("../../../static/img/profile_pic/" + props.freelancerDetail.first_name[0].charCodeAt() + ".png");
+            // Image = "http://via.placeholder.com/125x125";
+            colorBackground = props.freelancerDetail.first_name[0].charCodeAt() % 5;
+        }
     }
     if(colorBackground === 0){
         colorCode = '#018abe'
@@ -28,6 +31,7 @@ const FreelancerInfos = (props) =>{
     else if(colorBackground === 4){
         colorCode = '#707117'
     }
+    // console.log(props.freelancerDetail.first_name[0] , 'props.freelancerDetail.first_name[0]');
     return(
         <div>
             <div className="con fl-p mb-4">

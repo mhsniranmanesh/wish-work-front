@@ -55,7 +55,7 @@ class FreelancerProfile extends React.Component {
             this.setState({skills: nextProps.freelancerDetail.skills});
             this.setState({freelancerDetail: Object.assign({}, nextProps.freelancerDetail)});
             this.setState({showSkills : true});
-            var numberOfProjects = this.size(nextProps.freelancerDetail.freelancer_projects)
+            var numberOfProjects = this.size(nextProps.freelancerDetail.freelancer_projects);
             if(numberOfProjects > 0){
                 this.setState({numberOfProjects: numberOfProjects })
             }

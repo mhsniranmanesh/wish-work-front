@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ProjectTemplate from './ProjectTemplate';
 
 const ProjectsList = ({Projects , goToProjectProfile}) =>{
-    if(Projects) {
+    if(Projects.length) {
         return (
             <div>
                 {Projects.map((ProjectDetail, index) =>
@@ -14,7 +14,10 @@ const ProjectsList = ({Projects , goToProjectProfile}) =>{
     }
     else {
         return(
-            null
+           <div>
+               <br/>
+               <h6>در حال حاضر پروژه ی پیشنهادی برای شما وجود ندارد :(</h6>
+           </div>
         )
     }
 };

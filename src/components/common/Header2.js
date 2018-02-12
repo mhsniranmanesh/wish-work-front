@@ -17,7 +17,7 @@ class Header2 extends React.Component {
             profileInfo:Object.assign({} , props.profileInfo[0]) , classForCollapseProject:"nav-link nav-link-collapse collapsed" ,
             classForCollapseProfileInfo : "nav-link nav-link-collapse collapsed"  , classForCollapseAccount: "nav-link nav-link-collapse collapsed",
             classCollapseChildProject:"sidenav-second-level collapse" , classCollapseChildProfile:"sidenav-second-level collapse" ,
-            classCollapseChildAccount : "sidenav-second-level collapse"
+            classCollapseChildAccount : "sidenav-second-level collapse" , colorBackground: -1 , colorCode: 0 , Image: null
         };
         this.dashboardActive = this.dashboardActive.bind(this);
         this.projectActive = this.projectActive.bind(this);
@@ -25,15 +25,99 @@ class Header2 extends React.Component {
         this.accountingActive = this.accountingActive.bind(this);
         this.messageActive = this.messageActive.bind(this);
         this.exit = this.exit.bind(this);
+        this.size = this.size.bind(this);
     }
+    size (obj) {
+        let x = 0, key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) x++;
+        }
+        return x;
+    };
     exit(){
         localStorage.removeItem('current_login_token');
         this.context.router.history.push({
             pathname:'/login/'
         });
     }
+    componentWillMount(){
+        let x = this.size(this.props.profileInfo);
+        if(x>0){
+            let Image ;
+            // console.log(Image , 'IMMMAAAGEEE');
+            var colorBackground = -1;
+            var colorCode;
+            if((this.props.profileInfo[x-1].profile_picture != null) || (this.props.profileInfo[x-1].profile_picture != undefined)){
+                if(this.props.profileInfo[x-1].profile_picture == '/media/'){
+                    Image = require("../../../static/img/profile_pic/" + this.props.profileInfo[x-1].first_name[0].charCodeAt() + ".png");
+                    colorBackground = this.props.profileInfo[x-1].first_name[0].charCodeAt()%5;
+                }
+                else {
+                    Image = this.props.profileInfo[x-1].profile_picture;
+                    // console.log("/media/", Image);
+                }
+            }
+            else{
+                Image= require("../../../static/img/profile_pic/" + this.props.profileInfo[x-1].first_name[0].charCodeAt() + ".png");
+                colorBackground = this.props.profileInfo[x-1].first_name[0].charCodeAt()%5;
+            }
+            if(colorBackground === 0){
+                colorCode = '#018abe'
+            }
+            else if(colorBackground === 1){
+                colorCode = '#014762'
+            }
+            else if(colorBackground === 2){
+                colorCode = '#69144F'
+            }
+            else if(colorBackground === 3){
+                colorCode = '#c96929'
+            }
+            else if(colorBackground === 4){
+                colorCode = '#707117'
+            }
+            this.setState({colorBackground: colorBackground , colorCode:colorCode , Image:Image});
+            // console.log(nextProps.profileInfo[0]);
+            // this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[0])});
+        }
+    }
     componentWillReceiveProps(nextProps){
+        let x = this.size(nextProps.profileInfo);
         if(this.props.profileInfo != nextProps.profileInfo ) {
+            let Image ;
+            // console.log(Image , 'IMMMAAAGEEE');
+            var colorBackground = -1;
+            var colorCode;
+            if((nextProps.profileInfo[x-1].profile_picture != null) || (nextProps.profileInfo[x-1].profile_picture != undefined)){
+                if(nextProps.profileInfo[x-1].profile_picture == '/media/'){
+                    Image = require("../../../static/img/profile_pic/" + nextProps.profileInfo[x-1].first_name[0].charCodeAt() + ".png");
+                    colorBackground = nextProps.profileInfo[x-1].first_name[0].charCodeAt()%5;
+                }
+                else {
+                    Image = nextProps.profileInfo[x-1].profile_picture;
+                    // console.log("/media/", Image);
+                }
+            }
+            else{
+                Image= require("../../../static/img/profile_pic/" + nextProps.profileInfo[x-1].first_name[0].charCodeAt() + ".png");
+                colorBackground = nextProps.profileInfo[x-1].first_name[0].charCodeAt()%5;
+            }
+            if(colorBackground === 0){
+                colorCode = '#018abe'
+            }
+            else if(colorBackground === 1){
+                colorCode = '#014762'
+            }
+            else if(colorBackground === 2){
+                colorCode = '#69144F'
+            }
+            else if(colorBackground === 3){
+                colorCode = '#c96929'
+            }
+            else if(colorBackground === 4){
+                colorCode = '#707117'
+            }
+            this.setState({colorBackground: colorBackground , colorCode:colorCode , Image:Image});
             console.log(nextProps.profileInfo[0]);
             this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[0])});
         }
@@ -228,8 +312,7 @@ class Header2 extends React.Component {
                                 <a className="nav-link dropdown-toggle" href="http://example.com"
                                    id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false">
-                                    <img className="rounded-circle" src="http://via.placeholder.com/50x50" width="30"
-                                         height="30"/>
+                                    <img className="rounded-circle" src={this.state.Image} style={ {height:30 , width:30 , backgroundColor:this.state.colorCode} }/>
                                     {this.state.profileInfo.first_name + ' ' + this.state.profileInfo.last_name}
                                 </a>
                                 <div id="profile" className="dropdown-menu" aria-labelledby="navbarUserDropdown" onClick={this.exit}>

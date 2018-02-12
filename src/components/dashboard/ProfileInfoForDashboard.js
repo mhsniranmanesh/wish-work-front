@@ -4,9 +4,13 @@ import PropTypes from 'prop-types';
 
 const ProfileInfoForDashboard = ({profileInfo , togglePopoverWishcoin , popoverOpenWishcoin}) =>{
     let Image ;
+    var colorBackground;
+    var colorCode;
     if((profileInfo.profile_picture != null) || (profileInfo.profile_picture != undefined)){
         if(profileInfo.profile_picture == '/media/'){
-            Image = "http://via.placeholder.com/125x125";
+            Image = require("../../../static/img/profile_pic/" + profileInfo.first_name[0].charCodeAt() + ".png");
+            // Image = "http://via.placeholder.com/125x125";
+            colorBackground = profileInfo.first_name[0].charCodeAt()%5;
         }
         else {
             Image = profileInfo.profile_picture;
@@ -14,17 +18,33 @@ const ProfileInfoForDashboard = ({profileInfo , togglePopoverWishcoin , popoverO
         }
     }
     else{
-        Image = "http://via.placeholder.com/125x125";
+       Image= require("../../../static/img/profile_pic/" + profileInfo.first_name[0].charCodeAt() + ".png")
+        colorBackground = profileInfo.first_name[0].charCodeAt()%5;
+
     }
-
-
-    console.log(popoverOpenWishcoin , "popOverOpenWishcoin")
+    if(colorBackground === 0){
+        colorCode = '#018abe'
+    }
+    else if(colorBackground === 1){
+        colorCode = '#014762'
+    }
+    else if(colorBackground === 2){
+        colorCode = '#69144F'
+    }
+    else if(colorBackground === 3){
+        colorCode = '#c96929'
+    }
+    else if(colorBackground === 4){
+        colorCode = '#707117'
+    }
+    console.log(colorCode , 'colorCode');
+    console.log(popoverOpenWishcoin , "popOverOpenWishcoin");
     return(
         <div className="dash-con dash-profile mb-4">
             <div className="row">
                 <div className="mx-auto">
 
-                    <img src={Image} className="rounded-circle" style={ {height:125 , width:125} }/>
+                    <img src={Image} className="rounded-circle" style={ {height:125 , width:125 , backgroundColor:colorCode} }/>
                     <br/>
                     <div className="dash-client-name mb-2"> {profileInfo.first_name + ' ' + profileInfo.last_name} </div>
 

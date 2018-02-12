@@ -2328,3 +2328,17 @@ a.delete-project:hover:after {
   background-color: #efefef;
   color: #018abe;
 }
+
+
+.freelancer-char{
+  display: block;
+  /* border: 2px solid #018abe; */
+  margin-top: 15px;
+  padding-right: 5px;
+  /* background-color: #e1e1e1; */
+  border-radius: 5px;
+}
+
+.freelancer-char-box{
+  margin-top: 10px;
+}

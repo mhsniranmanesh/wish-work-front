@@ -386,7 +386,8 @@ class Profileinfo extends React.Component{
         <div className="container-fluid">
             <div className="row">
                 <div className="col-sm-6 d-block mx-auto">
-                    <ProfilePic Picture={this.state.profileInfo.profile_picture}
+                    <ProfilePic profileInfo={this.state.profileInfo}
+                                Picture={this.state.profileInfo.profile_picture}
                                 picUploader={this.picUploader}
                                 imagePreviewUrl={this.state.imagePreviewUrl}
                                 showError={this.state.showError}

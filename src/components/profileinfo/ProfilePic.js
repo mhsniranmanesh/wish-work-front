@@ -5,11 +5,15 @@ import Error from './Error';
 
 const ProfilePic = (props) =>{
     var Image ;
+    var colorBackground = -1;
+    var colorCode;
     if(props.imagePreviewUrl === "") {
         if ((props.Picture != null) || (props.Picture != undefined)) {
             if (props.Picture == '/media/') {
-                Image = "http://via.placeholder.com/125x125";
-               // console.log('Hello', Image);
+                Image = require("../../../static/img/profile_pic/" + props.profileInfo.first_name[0].charCodeAt() + ".png");
+                // Image = "http://via.placeholder.com/125x125";
+                colorBackground = props.profileInfo.first_name[0].charCodeAt()%5;
+                // console.log('Hello', Image);
             }
             else {
                 Image = props.Picture;
@@ -17,11 +21,28 @@ const ProfilePic = (props) =>{
             }
         }
         else {
-            Image = "http://via.placeholder.com/125x125";
+            Image = require("../../../static/img/profile_pic/" + props.profileInfo.first_name[0].charCodeAt() + ".png");
+            // Image = "http://via.placeholder.com/125x125";
+            colorBackground = props.profileInfo.first_name[0].charCodeAt()%5;
         }
     }
     else {
         Image = props.imagePreviewUrl
+    }
+    if(colorBackground === 0){
+        colorCode = '#018abe'
+    }
+    else if(colorBackground === 1){
+        colorCode = '#014762'
+    }
+    else if(colorBackground === 2){
+        colorCode = '#69144F'
+    }
+    else if(colorBackground === 3){
+        colorCode = '#c96929'
+    }
+    else if(colorBackground === 4){
+        colorCode = '#707117'
     }
     return(
         <div className="dash-con dash-profile-info con-body mb-4">
@@ -37,7 +58,7 @@ const ProfilePic = (props) =>{
             <form className="" >
                 <div className="media mt-3 mb-3">
                     <a href="#" className="">
-                        <img className="rounded-circle d-flex ml-3" src={Image}  style={ {height:125 , width:125} }/>
+                        <img className="rounded-circle d-flex ml-3" src={Image}  style={ {height:125 , width:125 , backgroundColor:colorCode} }/>
 
                         <i className="fa fa-camera"/>
                     </a>

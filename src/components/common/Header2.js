@@ -14,7 +14,11 @@ class Header2 extends React.Component {
     constructor(props){
         super(props);
         this.state = {activeDashboard : true , activeProject : false , activeProfile: false , activeAccounting : false , activeMessage : false,
-            profileInfo:Object.assign({} , props.profileInfo[0]) , classForCollapseProject:"nav-link nav-link-collapse collapsed"};
+            profileInfo:Object.assign({} , props.profileInfo[0]) , classForCollapseProject:"nav-link nav-link-collapse collapsed" ,
+            classForCollapseProfileInfo : "nav-link nav-link-collapse collapsed"  , classForCollapseAccount: "nav-link nav-link-collapse collapsed",
+            classCollapseChildProject:"sidenav-second-level collapse" , classCollapseChildProfile:"sidenav-second-level collapse" ,
+            classCollapseChildAccount : "sidenav-second-level collapse"
+        };
         this.dashboardActive = this.dashboardActive.bind(this);
         this.projectActive = this.projectActive.bind(this);
         this.profileActive = this.profileActive.bind(this);
@@ -42,12 +46,26 @@ class Header2 extends React.Component {
     }
     projectActive(){
         if(!this.state.activeProject) {
+            this.setState({classForCollapseProject: "nav-link nav-link-collapse ",
+                classForCollapseProfileInfo:"nav-link nav-link-collapse collapsed",
+                classForCollapseAccount:"nav-link nav-link-collapse collapsed",
+                classCollapseChildProject:"sidenav-second-level collapse show",
+                classCollapseChildAccount:"sidenav-second-level collapse",
+                classCollapseChildProfile:"sidenav-second-level collapse"
+            });
             this.setState(prevState => ({activeProject: !prevState.activeProject}));
             this.setState({activeDashboard : false ,activeProfile : false,activeAccounting:false, activeMessage : false })
         }
     }
     profileActive(){
         if(!this.state.activeProfile){
+            this.setState({classForCollapseProject: "nav-link nav-link-collapse collapsed",
+                classForCollapseProfileInfo:"nav-link nav-link-collapse ",
+                classForCollapseAccount:"nav-link nav-link-collapse collapsed",
+                classCollapseChildProject:"sidenav-second-level collapse",
+                classCollapseChildAccount:"sidenav-second-level collapse",
+                classCollapseChildProfile:"sidenav-second-level collapse show"
+            });
             this.setState(prevState => ({activeProfile: !prevState.activeProfile}));
             this.setState({activeDashboard : false ,activeProject : false, activeAccounting:false, activeMessage : false })
 
@@ -55,6 +73,13 @@ class Header2 extends React.Component {
     }
     accountingActive() {
         if (!this.state.activeAccounting) {
+            this.setState({classForCollapseProject: "nav-link nav-link-collapse collapsed",
+                classForCollapseProfileInfo:"nav-link nav-link-collapse collapsed",
+                classForCollapseAccount:"nav-link nav-link-collapse ",
+                classCollapseChildProject:"sidenav-second-level collapse",
+                classCollapseChildAccount:"sidenav-second-level collapse show",
+                classCollapseChildProfile:"sidenav-second-level collapse"
+            });
             this.setState(prevState => ({activeAccounting: !prevState.activeAccounting}));
             this.setState({activeDashboard: false, activeProject: false, activeProfile: false, activeMessage: false})
         }
@@ -95,7 +120,7 @@ class Header2 extends React.Component {
                                     <i className="fa fa-fw fa-tasks"/>
                                     <span className="nav-link-text">پروژه</span>
                                 </a>
-                                <ul className="sidenav-second-level collapse" id="collapseComponents">
+                                <ul className={this.state.classCollapseChildProject} id="collapseComponents">
                                     <li>
                                         <NavLink to="/project/submit">ثبت پروژه</NavLink>
                                     </li>
@@ -110,14 +135,15 @@ class Header2 extends React.Component {
                                     </li>
                                 </ul>
                             </li>
+                            {/*"nav-link nav-link-collapse collapsed"*/}
                             <li className={this.state.activeProfile ? "nav-item active" : "nav-item"} data-toggle="tooltip" data-placement="right" title="پروفایل"
                                 onClick={this.profileActive}>
-                                <a className="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+                                <a className={this.state.classForCollapseProfileInfo} data-toggle="collapse"
                                    href="#profileComponents">
                                     <i className="fa fa-fw fa-user"/>
                                     <span className="nav-link-text">پروفایل</span>
                                 </a>
-                                <ul className="sidenav-second-level collapse" id="profileComponents">
+                                <ul className={this.state.classCollapseChildProfile} id="profileComponents">
                                     <li>
                                         <NavLink to="/profile/edit">ویرایش اطلاعات</NavLink>
                                     </li>
@@ -128,12 +154,12 @@ class Header2 extends React.Component {
                             </li>
                             <li className={this.state.activeAccounting ? "nav-item active" : "nav-item"} data-toggle="tooltip" data-placement="right" title="حساب"
                                 onClick={this.accountingActive}>
-                                <a className="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+                                <a className={this.state.classForCollapseAccount} data-toggle="collapse"
                                    href="#accountComponents">
                                     <i className="fa fa-fw fa-usd"/>
                                     <span className="nav-link-text">حساب</span>
                                 </a>
-                                <ul className="sidenav-second-level collapse" id="accountComponents">
+                                <ul className={this.state.classCollapseChildAccount} id="accountComponents">
                                     <li>
                                         <NavLink to="/account/cash">واریز - برداشت</NavLink>
                                     </li>

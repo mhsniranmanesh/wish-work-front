@@ -6,10 +6,7 @@ const TranslationTagTemplate = (props) => {
   return(
       <div className="tags" >
           <li className='addedTag'>
-              <i className='fa fa-times-circle'
-                 aria-hidden={true}
-                 onClick={(event)=>{props.deleteSkills(id);}}
-              />{ ' ' +props.fromLanguage + ' ' +'به' + ' ' + props.toLanguage}
+              { ' ' +props.fromLanguage + ' ' +'به' + ' ' + props.toLanguage}
           </li>
       </div>
 

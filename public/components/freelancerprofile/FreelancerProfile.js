@@ -62,6 +62,11 @@ class FreelancerProfile extends React.Component {
         }
     }
     render(){
+        if(!this.state.freelancerDetail.first_name){
+            return(
+                <div></div>
+            )
+        }
         return(
             <section className="profile">
                 <div className="container">

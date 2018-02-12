@@ -32,12 +32,57 @@ const FreelancerInfos = (props) =>{
         colorCode = '#707117'
     }
     // console.log(props.freelancerDetail.first_name[0] , 'props.freelancerDetail.first_name[0]');
-    return(
-        <div>
-            <div className="con fl-p mb-4">
+    if(props.freelancerDetail.first_name) {
+        return (
+            <div>
+                <div className="con fl-p mb-4">
+                    <div className="media">
+                        <img className="d-flex  ml-3 rounded-circle" src={Image}
+                             style={{height: 60, width: 60, backgroundColor: colorCode}}/>
+                        <div className="media-body">
+                            <h5 className="name">{props.freelancerDetail.first_name + ' ' + props.freelancerDetail.last_name} </h5>
+                            <h6 className="s-discript">{props.freelancerDetail.title}</h6>
+                            <div className="divider"/>
+                            <span className="discript">
+                                {props.freelancerDetail.bio}
+                        </span>
+
+                        </div>
+                    </div>
+                    <div className="freelancer-char-box ">
+                        <div className="freelancer-char">
+                            <span className="form-header-fontsize"> دانشگاه </span>
+                            :
+                            <span className="form-body-fontsize"> {props.freelancerDetail.university} </span>
+                        </div>
+
+                        <div className="freelancer-char">
+                            <span className="form-header-fontsize"> عنوان حرفه ای </span>
+                            :
+                            <span className="form-body-fontsize"> {props.freelancerDetail.title} </span>
+                        </div>
+
+                        <div className="freelancer-char">
+                            <span className="form-header-fontsize"> در مورد من </span>
+                            :
+                            <span className="form-body-fontsize">{props.freelancerDetail.bio}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span className="form-header-fontsize">مهارت های من</span>
+                        :
+                        <span>{props.showSkills ? <Tags Skills={props.Skills}/> : (null)}</span>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+    else {
+        return(
+            <div>
                 <div className="media">
                     <img className="d-flex  ml-3 rounded-circle" src={Image}
-                         style={{height:60 , width:60 , backgroundColor:colorCode}}/>
+                         style={{height: 60, width: 60, backgroundColor: colorCode}}/>
                     <div className="media-body">
                         <h5 className="name">{props.freelancerDetail.first_name + ' ' + props.freelancerDetail.last_name} </h5>
                         <h6 className="s-discript">{props.freelancerDetail.title}</h6>
@@ -48,39 +93,9 @@ const FreelancerInfos = (props) =>{
 
                     </div>
                 </div>
-                <div className="freelancer-char-box ">
-                      <div className="freelancer-char">
-                             <span className="form-header-fontsize"> تحصیلات </span>
-                             :
-                             <span className="form-body-fontsize"> {props.freelancerDetail.university} </span>
-                      </div>
-
-                      <div className="freelancer-char">
-                             <span className="form-header-fontsize"> دانشگاه </span>
-                             :
-                             <span className="form-body-fontsize"> دانشگاه تهران </span>
-                      </div>
-
-                      <div className="freelancer-char">
-                             <span className="form-header-fontsize"> عنوان حرفه ای </span>
-                             :
-                             <span className="form-body-fontsize"> مترجم فارسی به انگلیسی </span>
-                      </div>
-
-                      <div className="freelancer-char">
-                             <span className="form-header-fontsize"> در مورد من </span>
-                             :
-                             <span className="form-body-fontsize"> من دانشجوی مترجمی زبان انگلیسی دانشگاه تهران هستم و از بدو ورود به دانشگاه و حتی قیل از آن بدلیل علاقه فراوان به این کار به کار در این زمینه مشغول بوده ام. مدارک حرفه ای زیادی و لوح تقدیر های فراوان در این زمینه دارا می باشم </span>
-                      </div>
-                 </div>
-                 <div>
-                      <span className="form-header-fontsize">مهارت های من</span> 
-                        :
-                      <span>{props.showSkills ?<Tags Skills={props.Skills}/> : (null)}</span>
-                 </div>
             </div>
-        </div>
-    )
+        )
+    }
 };
 
 FreelancerInfos.PropTypes = {

@@ -9,7 +9,7 @@ const FreelancerSampleProjectTemplate = ({Project}) =>{
                 <span>
                 <h4 className="card-title"><i className="fa fa-pencil translation-pencil-public"/> {Project.title}</h4>
                 </span>
-                    <Badge color="primary">انجام شده</Badge>
+                    <badge className="badge badge-done">انجام شده</badge>
                     {/*<p className="card-text">{Project.Describtion}</p>*/}
                     {/*<p className="card-text"><small className="text-muted">{Project.ReleaseTime}</small></p>*/}
                 </div>
@@ -23,7 +23,7 @@ const FreelancerSampleProjectTemplate = ({Project}) =>{
                 <span>
                 <h4 className="card-title"><i className="fa fa-pencil translation-pencil-public"/> {Project.title}</h4>
                 </span>
-                    <Badge color="success">در حال انجام</Badge>
+                    <badge className="badge badge-doing">در حال انجام</badge>
 
                     {/*<p className="card-text">{Project.Describtion}</p>*/}
                     {/*<p className="card-text"><small className="text-muted">{Project.ReleaseTime}</small></p>*/}

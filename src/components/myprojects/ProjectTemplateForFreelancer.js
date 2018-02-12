@@ -1,6 +1,13 @@
 import React from 'react';
 import {Badge , Button} from 'reactstrap';
+import moment from 'moment-jalaali';
 const ProjectTemplateForFreelancer = (props) =>{
+    let category ;
+    var date = moment(props.FreelancerProject.release_date, 'YYYY-M-D HH:mm:ss').format('jYYYY/jM/jD HH:mm:ss');
+    console.log('props.FreelancerProject.category' , props.FreelancerProject.category);
+    if(props.FreelancerProject.category === 1){
+        category = 'ترجمه'
+    }
     return(
         <div>
             <div className="dash-con dash-new-project con-body mb-4">
@@ -13,8 +20,10 @@ const ProjectTemplateForFreelancer = (props) =>{
                 <span className="sub-heading delete-project">
                 </span>
                 <span className="sub-heading">
-                      <i className="fa fa-calendar"/>
+                      <i className="fa fa-calendar"/> تاریخ ثبت پروژه:                     {date}
+
                 </span>
+                <div className="SubmittedPr"> {category}</div>
                 <button className="btn btn-primary btn-rec" onClick={props.goToCP}>
                     کنترل پروژه
                 </button>

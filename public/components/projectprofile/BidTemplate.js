@@ -69,6 +69,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                         <div className="divider"/>
 
                     </div>
+                  </div>
                 )
             }
             else {
@@ -81,7 +82,6 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                     goToFreelancerProfile(Bid.freelancer.username);
                                 }}/>
 
-<<<<<<< HEAD
                                 {/*<div className="sub-heading">*/}
                                     {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
                                     {/*<a className="tag" href="#">#علمی</a>*/}
@@ -89,7 +89,6 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                     {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
                                     {/*<a className="tag" href="#">#فوری</a>*/}
                                 {/*</div>*/}
-=======
 
                                 <div className="bid-subject">
                                     <a href="#"
@@ -118,7 +117,6 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
 
                         </div>
                         <div className="divider"/>
->>>>>>> c4a7e02bb79d94a8a299daf2268e2ee02b3dde5e
                     </div>
                 )
             }

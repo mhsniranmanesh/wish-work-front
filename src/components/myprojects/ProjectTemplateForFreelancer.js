@@ -13,7 +13,7 @@ const ProjectTemplateForFreelancer = (props) =>{
                 <span className="sub-heading delete-project">
                 </span>
                 <span className="sub-heading">
-                          <i className="fa fa-calendar"/>
+                      <i className="fa fa-calendar"/>
                 </span>
                 <button className="btn btn-primary btn-rec" onClick={props.goToCP}>
                     کنترل پروژه

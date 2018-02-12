@@ -1914,8 +1914,8 @@ ul.social-button li.copyright {
     display: inline-block;
     padding: 16px;
     text-align: center;
-    width: 180px;
-    height: 180px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     border: 2px solid #5396f7;
 }
@@ -1978,7 +1978,7 @@ ul.social-button li.copyright {
 .circle h2 {
     font-size: 60px;
     position: relative;
-    top: 40px;
+    top: 20px;
 }
 
 span.sup {

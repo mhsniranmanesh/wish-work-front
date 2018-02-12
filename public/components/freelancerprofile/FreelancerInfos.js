@@ -9,9 +9,9 @@ const FreelancerInfos = (props) =>{
         Image = props.freelancerDetail.profile_picture
     }
     else{
-        Image = require("../../../static/img/profile_pic/" + Bid.freelancer.first_name[0].charCodeAt() + ".png");
+        Image = require("../../../static/img/profile_pic/" + props.freelancerDetail.first_name[0].charCodeAt() + ".png");
         // Image = "http://via.placeholder.com/125x125";
-        colorBackground = profileInfo.first_name[0].charCodeAt()%5;
+        colorBackground = props.freelancerDetail.first_name[0].charCodeAt()%5;
     }
     if(colorBackground === 0){
         colorCode = '#018abe'

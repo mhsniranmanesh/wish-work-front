@@ -19,8 +19,8 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
     }
     else {
         // Image = "http://via.placeholder.com/125x125";
-        console.log('Hi', Image);
-        Image = require("../../../static/img/profile_pic/" + profileInfo.first_name[0].charCodeAt() + ".png");
+        // console.log('Hi', Image);
+        Image = require("../../../static/img/profile_pic/" + Bid.freelancer.first_name[0].charCodeAt() + ".png");
         // Image = "http://via.placeholder.com/125x125";
         colorBackground = profileInfo.first_name[0].charCodeAt()%5;
         console.log('Bid.profile_picture', Bid.freelancer.profile_picture);

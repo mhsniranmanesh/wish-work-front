@@ -743,6 +743,9 @@ section.signup .con-body .col-right {
     .con-title {
         padding: 30px 0 90px 0;
     }
+    .timeline-centered:before{
+      left:16px;
+    }
 }
 
 section.signup-form {

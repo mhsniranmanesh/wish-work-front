@@ -57,11 +57,10 @@ const ProfilePic = (props) =>{
             <div className="dash-divider"/>
             <form className="" >
                 <div className="media mt-3 mb-3">
-                    <a href="#" className="">
+                    <span>
                         <img className="rounded-circle d-flex ml-3" src={Image}  style={ {height:125 , width:125 , backgroundColor:colorCode} }/>
-
                         <i className="fa fa-camera"/>
-                    </a>
+                    </span>
                     <div className="media-body">
                         <label htmlFor="" className="col-form-label form-body-fontsize">
                             برای تغییر عکس پروفایل، روی عکس خود کلیک کنید.

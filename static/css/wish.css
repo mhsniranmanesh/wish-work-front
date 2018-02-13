@@ -577,6 +577,7 @@ a:hover {
     font-size: 14px;
     font-weight: 400;
     margin: 5px 0;
+    line-height: 1.7;
 
 }
 .detail-fontsize{
@@ -587,6 +588,7 @@ a:hover {
 .form-body-fontsize {
     font-size: 13px;
     font-weight: 300;
+    line-height: 1.5;
 }
 
 .submission-day-input{
@@ -1425,12 +1427,12 @@ p.card-text {
     font-weight: 300;
 }
 .translation-pencil-public{
-    color: #0056b3;
+    color: #018abe;
 }
 h4.card-title {
     font-weight: 500;
     font-size: 1.25rem;
-    color: #0056b3;
+    color: #018abe;
 }
 
 h4.card-title a {}
@@ -1981,7 +1983,7 @@ ul.social-button li.copyright {
 .circle h2 {
     font-size: 60px;
     position: relative;
-    top: 20px;
+    /*top: 20px;*/
 }
 
 span.sup {

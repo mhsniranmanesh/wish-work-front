@@ -723,6 +723,7 @@ span.notif-cat {
     color: rgb(255, 255, 255);
     margin: 0px auto;
     transition: all 0.3s ease;
+    display: none;
 }
 
 .sub-label {
@@ -962,6 +963,7 @@ span .project-header-flag span{
     box-sizing: border-box;
     display: inline-block;
     width: 50%;
+    margin-top: 15px;
 }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time>span {

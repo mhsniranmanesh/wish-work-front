@@ -16,7 +16,7 @@ const ProjectsList = ({Projects , goToProjectProfile}) =>{
         return(
            <div>
                <br/>
-               <h6>در حال حاضر پروژه ی پیشنهادی برای شما وجود ندارد :(</h6>
+               <h6 className="form-header-fontsize">در حال حاضر پروژه ی پیشنهادی برای شما وجود ندارد :(</h6>
            </div>
         )
     }

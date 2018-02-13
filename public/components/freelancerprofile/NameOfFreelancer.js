@@ -3,10 +3,10 @@ import React from 'react';
 const NameOfFreelancer = (props) => {
     return(
         <div className="col-sm-4">
-            <div className="con mb-4">
-                <button id="inviteBtn" type="submit" className="btn btn-success btn-rec mb-3">
-                    <i className="fa fa-user" aria-hidden="true"/> صفحه ی رسمی فریلنسر                </button>
-            </div>
+            {/*<div className="con mb-4">
+                <div id="inviteBtn" className="public-page-descript">
+                    <i className="fa fa-user" aria-hidden="true"/> صفحه ی رسمی فریلنسر                </div>
+            </div>*/}
             <div className="con mb-4">
                 <h5 className="project-title">
                     تاریخچه کاری

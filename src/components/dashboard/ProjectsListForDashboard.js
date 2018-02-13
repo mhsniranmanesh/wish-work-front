@@ -33,7 +33,7 @@ const ProjectsListForDashboard = ({Projects , myFunc , goToProjectProfile , Word
                 <h5>پروژه های پیشنهادی</h5>
                 <div className="dash-divider"/>
                 <br/>
-                <h6>در حال حاضر پروژه ی پیشنهادی برای شما وجود ندارد. :(</h6>
+                <h6 className="form-header-fontsize">در حال حاضر پروژه ی پیشنهادی برای شما وجود ندارد. :(</h6>
             </div>
         )
     }

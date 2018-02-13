@@ -42,7 +42,7 @@ const Button = (props) =>{
         return(
             <div>
                 <div className="con mb-4">
-                    <h5 className="project-title">
+                    <h5 className="project-title form-header-fontsize">
                         درباره پروژه
                     </h5>
                     <div className="divider"/>

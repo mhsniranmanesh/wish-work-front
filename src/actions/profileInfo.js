@@ -31,8 +31,10 @@ export function loadNewInfosSuccess(profileInfo){
     return{type: types.UPDATE_NEW_INFOS_SUCCESS , profileInfo}
 }
 export function loadNewSkillsSuccess(profileSkills) {
+    // var prObj = {profileSkills};
+    // console.log(prObj);
     debugger;
-    return{type: types.UPDATE_NEW_SKILLS_IN_INFOS_SUCCESS , profileSkills}
+    return{type: types.UPDATE_NEW_SKILLS_IN_INFOS_SUCCESS , payload:profileSkills}
 }
 export function profileInfo(){
   return function(dispatch){

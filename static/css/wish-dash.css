@@ -1764,6 +1764,9 @@ div #bg-primary-left {
     /*width: 100%;*/
 }
 
+.tags li.addedTag:hover{
+    color: dimgrey;
+}
 .tags li.tagAdd,
 .tags li.addedTag {
     float: right;

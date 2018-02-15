@@ -23,20 +23,14 @@ export default function profileInfo(state= initialState.profileInfo , action){
           return [...state , Object.assign({}, action.PSD)];
       case types.UPDATE_NEW_SKILLS_IN_INFOS_SUCCESS :
           var size2 = size(state);
-          // var translation_skill = action.profileSkills;
-          // var translation_skills = {translation_skill};
-          // var skills ={
-          //     0: translation_skills ,
-          //     length: 1
-          // };
-          // console.log(skills , 'skills');
+           var translation_skill = action.payload;
+          var translation_skills = {translation_skill};
           debugger;
           return [...state , Object.assign({} ,state[size2 - 1] , {
               skills : Object.assign({} , state[size2 - 1].skills , {
-                  translation_skill : Object.assign({} , state[size2 -1].skills[0].translation_skill , action.profileSkills)
+                  translation_skill : Object.assign({} , state[size2 -1].skills[0].translation_skill , translation_skills)
               })
-          })]    ;  // case types.SUBMIT_PROJECT_SUCCESS:
-      //     return [...state , Object.assign({} , state , action.projectSubmit)];
+          })];
     default:
         return state;
   }

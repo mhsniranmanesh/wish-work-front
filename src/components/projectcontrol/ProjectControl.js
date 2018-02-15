@@ -247,7 +247,7 @@ class ProjectControl extends React.Component{
               <ModalBody className="from-header-fontsize">
                 <div>شما دارای وجه کافی می باشید</div>
                 <div>برای مشاهده فایل، بازنگری آنها و شروع مرحله بعد تأیید کنید تا مبلغ {this.state.priceForCashIn} تومان از حساب شما کاسته شود</div>
-                <div>اگر از کار راضی نبودید با لغو همکاری مبلغ پرداختی به حساب شما بازگردانده می شود</div>
+                <div>اگر از کار راضی نبودید با لغو همکاری بعد از بررسی و کسر ۱۰ درصد خسارت مبلغ پرداختی به حساب شما بازگردانده می شود</div>
               </ModalBody>
                 <button className="btn btn-rec btn-primary col-sm-3" onClick={this.nextMileStoneBegin}>تایید</button>
           </Modal>

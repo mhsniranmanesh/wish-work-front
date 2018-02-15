@@ -129,15 +129,41 @@ class Profileinfo extends React.Component{
         let from_language = this.state.selectValueTF;
         let to_language = this.state.selectValueTT;
         let newState = Object.assign({} , this.state);
+
         newState.language_set = {from_language , to_language} ;
         newState.ClickedOnAdd = true;
+        this.setState({comment : "تگ شما افزوده شد، برای قبت تغییر بروی ثبت تغییرات کلیک کنید"});
         this.setState({language_set:{from_language , to_language}}, this.add);
-        this.setState({comment : "تگ شما افزوده شد، برای قبت تغییر بروی ثبت تغییرات کلیک کنید"})
     }
     add(){
         let newState = Object.assign({} , this.state);
-        newState.skills[0].translation_skill.language_set.push(this.state.language_set);
-        this.setState({newState})
+        let found = false;
+        console.log(newState.skills[0].translation_skill.language_set.length , 'newState.skills[0].translation_skill.language_set.length');
+        for(var i = 0; i < newState.skills[0].translation_skill.language_set.length; i++) {
+            // console.log(newState.skills[0].translation_skill.language_set[i] , this.state.language_set);
+            if ((newState.skills[0].translation_skill.language_set[i].from_language === this.state.language_set.from_language)
+                 && (newState.skills[0].translation_skill.language_set[i].to_language === this.state.language_set.to_language)
+            ) {
+                found = true;
+                this.setState({comment : "این تگ برای شما وجود دارد"});
+                // console.log(found , 'found');
+            }
+        }
+        if((i === (newState.skills[0].translation_skill.language_set.length)) && (found === false)){
+            // console.log(i , 'iiii');
+            // console.log(found , 'found');
+            newState.skills[0].translation_skill.language_set.push(this.state.language_set);
+            this.setState({comment : "تگ شما افزوده شد، برای قبت تغییر بروی ثبت تغییرات کلیک کنید"})
+        }
+
+        // console.log(newState.skills[0].translation_skill.language_set.includes(this.state.language_set) ,'newState.skills[0].translation_skill.language_set.includes(this.state.language_set)');
+        // if(!newState.skills[0].translation_skill.language_set.includes(this.state.language_set)) {
+        //     newState.skills[0].translation_skill.language_set.push(this.state.language_set);
+        //     this.setState({newState})
+        // }
+        // else {
+        //     this.setState({comment : "این تگ برای شما وجود دارد"})
+        // }
 
     }
     showSkills(){
@@ -158,7 +184,8 @@ class Profileinfo extends React.Component{
         this.setState({is_technical: true });
         let newState = Object.assign({} , this.state);
         newState.skills[0].translation_skill.is_technical = true ;
-        this.setState({newState})
+        this.setState({newState});
+        this.setState({comment : "تگ شما افزوده شد، برای قبت تغییر بروی ثبت تغییرات کلیک کنید"})
 
     }
 
@@ -167,6 +194,8 @@ class Profileinfo extends React.Component{
         let newState = Object.assign({} , this.state);
         newState.skills[0].translation_skill.is_general = true ;
         this.setState({newState});
+        this.setState({comment : "تگ شما افزوده شد، برای قبت تغییر بروی ثبت تغییرات کلیک کنید"})
+
     }
 
     IsMedical(){
@@ -174,6 +203,7 @@ class Profileinfo extends React.Component{
         let newState = Object.assign({} , this.state);
         newState.skills[0].translation_skill.is_medical = true ;
         this.setState({newState});
+        this.setState({comment : "تگ شما افزوده شد، برای قبت تغییر بروی ثبت تغییرات کلیک کنید"})
     }
 
     IsLaw(){
@@ -181,6 +211,7 @@ class Profileinfo extends React.Component{
         let newState = Object.assign({} , this.state);
         newState.skills[0].translation_skill.is_legal= true;
         this.setState({newState});
+        this.setState({comment : "تگ شما افزوده شد، برای قبت تغییر بروی ثبت تغییرات کلیک کنید"})
     }
 
     changeTitleInput(){
@@ -218,7 +249,6 @@ class Profileinfo extends React.Component{
         let profileInfo = Object.assign({} , this.state.profileInfo);
         profileInfo.degree = event.target.value;
         this.setState({profileInfo});
-
     }
     changeUniversityOnChange(event){
         let profileInfo = Object.assign({} , this.state.profileInfo);

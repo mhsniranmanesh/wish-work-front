@@ -37,6 +37,12 @@ class ProjectControl extends React.Component{
         this.goToPayPage = this.goToPayPage.bind(this);
         this.donate = this.donate.bind(this);
         this.toggleDonate = this.toggleDonate.bind(this);
+        this.goToSubmitProject = this.goToSubmitProject.bind(this);
+    }
+    goToSubmitProject(){
+        this.context.router.history.push({
+            pathname: '/project/submit'
+        });
     }
     toggleDonate(){
         this.setState({helpToWishWorkModal:false})
@@ -263,6 +269,7 @@ class ProjectControl extends React.Component{
                           <div className="dash-divider"/>
                           <label className="col-form-label form-header-fontsize">زمان بندی پروژه شما</label>
                           {this.state.loadSuccess? <MileStones
+                                      goToSubmitProject={this.goToSubmitProject}
                                       AsClientProject={this.state.AsClientProject}
                                       AsFreelancerProject={this.state.AsFreelancerProject}
                                       uploadFile={this.uploadFile}

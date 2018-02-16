@@ -216,10 +216,12 @@ class ProjectProfile extends React.Component {
         // console.log(price, 'this is price');
         // console.log(this.state.priceForCash, 'price of freelancer');
         //console.log(bid_price , 'bid_price')
-        this.context.router.history.push({
-            pathname: '/account/cash',
-            search: price
-        });
+        // this.context.router.history.push({
+        //     pathname: '/account/cash',
+        //     search: price
+        // });
+        window.location.assign('http://wishworkstage.ir/account/cash/?' + price);
+        // window.location.assign('http://wishwork.ir/account/cash/?' + price)
     }
 
     goToRegister() {
@@ -439,7 +441,9 @@ class ProjectProfile extends React.Component {
 
     SignUp(event) {
         event.preventDefault();
-        this.context.router.history.push('/signup');
+        // this.context.router.history.push('/signup');
+        window.location.assign('http://wishworkstage.ir/signup');
+        // window.location.assign('http://wishwork.ir/signup');
     }
 
     valueOfMileStones(event) {
@@ -693,13 +697,14 @@ class ProjectProfile extends React.Component {
                                         <CountDown release_date={this.state.projectDetail.release_date}
                                                    BidDuration={this.state.projectDetail.bid_duration}
                                                    bidding_deadline={this.state.projectDetail.bidding_deadline}
+                                                   ownerOfProject={this.state.ownerOfProject}
                                         />
                                         <Button
                                             myFunc=""
                                             name="hi"
                                             is_freelancer_selected={this.state.projectDetail.is_freelancer_selected}
                                             budget={
-                                                this.state.projectDetail.budget
+                                                (this.state.projectDetail.budget * 1000)
                                             }
                                             TimeLimit={
                                                 this.state.projectDetail.time_limit
@@ -714,6 +719,8 @@ class ProjectProfile extends React.Component {
                                             release_date={this.state.projectDetail.release_date}
                                             BidDuration={this.state.projectDetail.bid_duration}
                                             bidding_deadline={this.state.projectDetail.bidding_deadline}
+                                            ownerOfProject={this.state.ownerOfProject}
+
                                         />
                                         <AddBid
                                             isVerified={this.state.projectDetail.is_verified }
@@ -772,7 +779,7 @@ class ProjectProfile extends React.Component {
                                                 this.state.showError
                                             }
                                             budget={
-                                                this.state.projectDetail.budget
+                                                (this.state.projectDetail.budget * 1000)
                                             }
                                             delivery_duration={
                                                 this.state.delivery_duration

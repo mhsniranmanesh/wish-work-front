@@ -54,7 +54,11 @@ const MileStones = (props)=> {
     }
     else {
         return(
-            <div></div>
+            <div>
+                <h5>
+                <i className="fa fa-quote-left" aria-hidden="true"/> در حال حاظر شما پروژه ای ندارید، برای ثبت پروژه بر روی دکمه ی ثبت کلیک کنید!</h5>
+                <button onClick={props.goToSubmitProject} className="btn btn-primary btn-rec">ثبت پروژه</button>
+            </div>
         )
     }
 };

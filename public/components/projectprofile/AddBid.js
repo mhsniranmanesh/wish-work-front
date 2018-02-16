@@ -31,7 +31,7 @@ const AddBid = (props) => {
         var m = moment(props.release_date, 'YYYY-M-D HH:mm:ss').format('jYYYY/jM/jD HH:mm:ss');
         console.log(props.isLoggedIn , 'props.isLoggedIn')
     }
-    if(diffMinutes < 0){
+    if(diffMinutes < 0 ){
         return(
             <div>
                 <div className="con mb-4">
@@ -49,7 +49,7 @@ const AddBid = (props) => {
                 </div>
                 <div className="con mb-4">
                     <div className="public-page-descript form-body-fontsize">
-مهلت این مناقصه به پایان رسیده است
+ مناقصه به پایان رسیده است
                     </div>
                 </div>
             </div>

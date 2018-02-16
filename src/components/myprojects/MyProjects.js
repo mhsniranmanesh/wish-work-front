@@ -35,9 +35,9 @@ class MyProjects extends React.Component {
     }
     goToTender(y){
         let slug = y.toString();
-        this.context.router.history.push({
-            pathname: '/projects/' + slug,
-        });
+        window.location.assign('http://wishworkstage.ir/projects/' + slug);
+        // window.location.assign('http://wishwork.ir/projects/' + slug);
+
     }
     size (obj) {
         let x = 0, key;

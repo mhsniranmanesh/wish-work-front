@@ -20,9 +20,9 @@ class Recomendedprojects extends React.Component{
         return x;
     };
     goToProjectProfile(slug){
-        this.context.router.history.push({
-            pathname:'/projects/' + slug,
-        });
+        window.location.assign('http://wishworkstage.ir/projects/' + slug);
+        // window.location.assign('http://wishwork.ir/projects/' + slug);
+
     }
     componentWillMount(){
         var x = this.size(this.props.profileInfo);

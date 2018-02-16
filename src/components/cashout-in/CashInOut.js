@@ -59,7 +59,7 @@ class CashOutIn extends React.Component{
     }
     componentWillMount(){
         if(this.props.location.search){
-            let cash = Number(this.props.location.search.slice(1));
+            let cash = Number(this.props.location.search.slice(1)) * 1000;
             //console.log(cash , 'cash');
             this.setState({priceForCashIn : cash}) ;
             this.setState({priceForSend : cash});

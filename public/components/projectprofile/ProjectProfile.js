@@ -207,6 +207,7 @@ class ProjectProfile extends React.Component {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//TODO mahdudiate kalame dar pishnahade gheymat, ghesmate tozihat
 
     goToCash(y) {
         //this.setState({priceForCash : x});

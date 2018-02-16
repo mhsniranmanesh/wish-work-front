@@ -2,21 +2,56 @@ import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import PropTypes from 'prop-types';
 
 
 class WishCoin extends React.Component {
   constructor(props){
     super(props);
     this.state = {cashEnough: false, cashNotEnough:false, profileInfo:"" ,
-        wishCoinSubscription1:false , enoughForSubs1: false , enoughForSubs2:false , enoughForSubs3: false};
+        wishCoinSubscription1:false , enoughForSubs1: false , enoughForSubs2:false , priceForCoin:0,
+        enoughForSubs3: false, wishCoinSubscription2:false , wishCoinSubscription3:false};
 
     this.modalCashEnough = this.modalCashEnough.bind(this);
     this.modalCashNotEnough = this.modalCashNotEnough.bind(this);
     this.size = this.size.bind(this);
     this.wishCoinSubscription1 = this.wishCoinSubscription1.bind(this);
+    this.wishCoinSubscription2 = this.wishCoinSubscription2.bind(this);
+    this.wishCoinSubscription3 = this.wishCoinSubscription3.bind(this);
+    this.buyWishCoinSubscription1 = this.buyWishCoinSubscription1.bind(this);
+    this.buyWishCoinSubscription2 = this.buyWishCoinSubscription2.bind(this);
+    this.buyWishCoinSubscription3 = this.buyWishCoinSubscription3.bind(this);
+    this.goToCashIn = this.goToCashIn.bind(this);
   };
+    goToCashIn(){
+        let price = this.state.priceForCoin.toString();
+        console.log(price , 'price');
+        this.context.router.history.push({
+            pathname: '/account/cash',
+            search: price
+        })
+    };
+    buyWishCoinSubscription3(){
+//action
+        //TODO action for wishcoin reduce
+    }
+    buyWishCoinSubscription2(){
+//action
+    }
+    buyWishCoinSubscription1(){
+//action
+    }
+    wishCoinSubscription3(){
+        this.setState({priceForCoin: 15});
+        this.setState({wishCoinSubscription3: !this.state.wishCoinSubscription3})
+    }
+    wishCoinSubscription2(){
+        this.setState({priceForCoin: 10});
+        this.setState({wishCoinSubscription2: !this.state.wishCoinSubscription2})
+    }
     wishCoinSubscription1(){
-        this.setState({wishCoinSubscription1: true})
+        this.setState({priceForCoin: 5});
+        this.setState({wishCoinSubscription1: !this.state.wishCoinSubscription1})
     }
     size (obj) {
         let x = 0, key;
@@ -52,6 +87,15 @@ class WishCoin extends React.Component {
         var x = this.size(this.props.profileInfo);
         if (x > 0) {
             this.setState({profileInfo: Object.assign({}, this.props.profileInfo[x-1])});
+            if(this.props.profileInfo[x-1].balance >= 5){
+                this.setState({enoughForSubs1: true})
+            }
+            if(this.props.profileInfo[x-1].balance >= 10){
+                this.setState({enoughForSubs2: true})
+            }
+            if(this.props.profileInfo[x-1].balance >= 15){
+                this.setState({enoughForSubs3: true})
+            }
         }
     }
 
@@ -90,82 +134,122 @@ class WishCoin extends React.Component {
                                     <div className="row">
                                     <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div className="db-wrapper">
-                                            <div className="db-pricing-eleven bg-danger">
-                                                <div className="price bg-danger">
-                                                    50
-                                                    <span className="sup">ویش‌کوین</span>
-                                                </div>
-                                                <div className="type bg-dark">
-                                                    <sup>تومان</sup>5000
-                                                </div>
-                                                <div className="pricing-footer">
-                                                    <btn href="#" className="btn btn-rec btn-light" onClick={this.wishCoinSubscription1}>خرید</btn>
-                                                    <Modal isOpen={this.state.wishCoinSubscription1} toggle={this.wishCoinSubscription1}>
-                                                        {<ModalBody>
+                                            <img className="img-responsive" src={require("../../../static/img/wish cards-04.png")}
+                                                 style={ {height:540 , width:390}} onClick={this.wishCoinSubscription1}/>
+                                                    <Modal isOpen={this.state.wishCoinSubscription1 && this.state.enoughForSubs1} toggle={this.wishCoinSubscription1}>
+                                                        <ModalBody>
                                                             <div className="notenough-modalbody1">
-                                                                برای شروع پروژه باید مبلغ <span
-                                                                className="notenough-project-price">۲۵۰۰۰۰ تومان</span>
+                                                                برای خرید باید مبلغ <span
+                                                                className="notenough-project-price">۵۰۰۰ تومان </span>
                                                                 بپردازید.
                                                             </div>
                                                             <div className="notenough-modalbody2">
-                                                                لطفاً موجودی حساب خود را برای انجام این تراکنش افزایش
-                                                                دهید.
+                                                                شما موجودی کافی دارید، برای خرید بر روی تایید کلیک کنید
                                                             </div>
                                                         </ModalBody>
-                                                        }
+
                                                       <ModalFooter>
-                                                        <btn onClick={this.modalCashEnough} id="notenough-cashin-button" className="btn btn-rec btn-primary"> افزایش موجودی</btn>
-                                                        <btn onClick={this.modalCashEnough} id="notenouhg-cancel-button" className="btn btn-rec btn-secondary">انصراف</btn>
+                                                        <btn onClick={this.buyWishCoinSubscription1} id="notenough-cashin-button" className="btn btn-rec btn-primary">تایید</btn>
+                                                        <btn onClick={this.wishCoinSubscription1} id="notenouhg-cancel-button" className="btn btn-rec btn-secondary">انصراف</btn>
                                                       </ModalFooter>
                                                     </Modal>
-                                                </div>
-                                            </div>
+                                            <Modal isOpen={this.state.wishCoinSubscription1 && (!this.state.enoughForSubs1)} toggle={this.wishCoinSubscription1}>
+                                                <ModalBody>
+                                                    <div className="notenough-modalbody1">
+                                                        برای خرید باید مبلغ <span
+                                                        className="notenough-project-price">۵۰۰۰ تومان </span>
+                                                        بپردازید.
+                                                    </div>
+                                                    <div className="notenough-modalbody2">
+                                                        شما موجودی کافی ندارید، برای افزایش موجودی بر روی افزایش موجودی کلیک کنید
+                                                    </div>
+                                                </ModalBody>
+
+                                                <ModalFooter>
+                                                    <btn onClick={this.goToCashIn} id="notenough-cashin-button" className="btn btn-rec btn-primary">افزایش موجودی</btn>
+                                                    <btn onClick={this.wishCoinSubscription1} id="notenouhg-cancel-button" className="btn btn-rec btn-secondary">انصراف</btn>
+                                                </ModalFooter>
+                                            </Modal>
+
+                                                {/*</div>*/}
+                                            {/*</div>*/}
                                         </div>
                                     </div>
                                     <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div className="db-wrapper">
-                                            <div className="db-pricing-eleven bg-primary popular">
-                                                <div className="price bg-primary">
-                                                    100
-                                                    <span className="sup">ویش‌کوین</span>
-                                                </div>
-                                                <div className="type bg-dark">
-                                                    <sup>تومان</sup>10000
-                                                </div>
-                                                <div className="pricing-footer">
-                                                    <btn href="#" className="btn btn-rec btn-light" onClick={this.modalCashNotEnough}>خرید</btn>
-                                                    <Modal isOpen={this.state.cashNotEnough} toggle={this.modalCashNotEnough}>
-                                                      <ModalBody>
-                                                        <div className="enough-modalbody1">
-                                                          برای شروع پروژه باید مبلغ <span className="enough-project-price">۲۵۰۰۰۰ تومان</span>  بپردازید.
-                                                        </div>
-                                                        <div className="enough-modalbody2">
-                                                          در صورت تأیید این مبلغ از موجودی شما کسر شده و پروژه به صورت خودکار شروع می شود
-                                                        </div>
-                                                      </ModalBody>
-                                                      <ModalFooter>
-                                                        <btn onClick={this.modalCashNotEnough} id="enough-approve-button" className="btn btn-rec btn-primary">تأیید</btn>
-                                                        <btn onClick={this.modalCashNotEnough} id="enough-cancel-button" className="btn btn-rec btn-secondary">انصراف</btn>
-                                                      </ModalFooter>
-                                                    </Modal>
-                                                </div>
-                                            </div>
+                                            <br/>
+                                            <img className="img-responsive" src={require("../../../static/img/wish cards-03.png")}
+                                                 style={ {height:540 , width:390}} onClick={this.wishCoinSubscription2}/>
+                                            <Modal isOpen={this.state.wishCoinSubscription2 && this.state.enoughForSubs2} toggle={this.wishCoinSubscription2}>
+                                                <ModalBody>
+                                                    <div className="notenough-modalbody1">
+                                                        برای خرید باید مبلغ <span
+                                                        className="notenough-project-price">۱۰۰۰۰ تومان </span>
+                                                        بپردازید.
+                                                    </div>
+                                                    <div className="notenough-modalbody2">
+                                                        شما موجودی کافی دارید، برای خرید بر روی تایید کلیک کنید
+                                                    </div>
+                                                </ModalBody>
+
+                                                <ModalFooter>
+                                                    <btn onClick={this.buyWishCoinSubscription2} id="notenough-cashin-button" className="btn btn-rec btn-primary">تایید</btn>
+                                                    <btn onClick={this.wishCoinSubscription2} id="notenouhg-cancel-button" className="btn btn-rec btn-secondary">انصراف</btn>
+                                                </ModalFooter>
+                                            </Modal>
+                                            <Modal isOpen={this.state.wishCoinSubscription2 && (!this.state.enoughForSubs2)} toggle={this.wishCoinSubscription2}>
+                                                <ModalBody>
+                                                    <div className="notenough-modalbody1">
+                                                        برای خرید باید مبلغ <span className="notenough-project-price">۱۰۰۰۰ تومان </span>بپردازید.
+                                                    </div>
+                                                    <div className="notenough-modalbody2">
+                                                        شما موجودی کافی ندارید، برای افزایش موجودی بر روی افزایش موجودی کلیک کنید
+                                                    </div>
+                                                </ModalBody>
+
+                                                <ModalFooter>
+                                                    <btn onClick={this.goToCashIn} id="notenough-cashin-button" className="btn btn-rec btn-primary">افزایش موجودی</btn>
+                                                    <btn onClick={this.wishCoinSubscription2} id="notenouhg-cancel-button" className="btn btn-rec btn-secondary">انصراف</btn>
+                                                </ModalFooter>
+                                            </Modal>
                                         </div>
                                     </div>
                                     <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div className="db-wrapper">
-                                            <div className="db-pricing-eleven bg-warning">
-                                                <div className="price bg-warning">
-                                                    150
-                                                    <span className="sup">ویش‌کوین</span>
-                                                </div>
-                                                <div className="type bg-dark">
-                                                    <sup>تومان</sup>15000
-                                                </div>
-                                                <div className="pricing-footer">
-                                                    <a href="#" className="btn btn-rec btn-light">خرید</a>
-                                                </div>
-                                            </div>
+                                            <img className="img-responsive" src={require("../../../static/img/wish cards-02.png")}
+                                                 style={ {height:540 , width:390}} onClick={this.wishCoinSubscription3}/>
+                                            <Modal isOpen={this.state.wishCoinSubscription3 && this.state.enoughForSubs3} toggle={this.wishCoinSubscription2}>
+                                                <ModalBody>
+                                                    <div className="notenough-modalbody1">
+                                                        برای خرید باید مبلغ <span
+                                                        className="notenough-project-price">۱۵۰۰۰ تومان </span>
+                                                        بپردازید.
+                                                    </div>
+                                                    <div className="notenough-modalbody2">
+                                                        شما موجودی کافی دارید، برای خرید بر روی تایید کلیک کنید
+                                                    </div>
+                                                </ModalBody>
+
+                                                <ModalFooter>
+                                                    <btn onClick={this.buyWishCoinSubscription3} id="notenough-cashin-button" className="btn btn-rec btn-primary">تایید</btn>
+                                                    <btn onClick={this.wishCoinSubscription3} id="notenouhg-cancel-button" className="btn btn-rec btn-secondary">انصراف</btn>
+                                                </ModalFooter>
+                                            </Modal>
+                                            <Modal isOpen={this.state.wishCoinSubscription3 && (!this.state.enoughForSubs3)} toggle={this.wishCoinSubscription3}>
+                                                <ModalBody>
+                                                    <div className="notenough-modalbody1">
+                                                        برای خرید باید مبلغ <span className="notenough-project-price">۱۵۰۰۰ تومان </span>بپردازید.
+                                                    </div>
+                                                    <div className="notenough-modalbody2">
+                                                        شما موجودی کافی ندارید، برای افزایش موجودی بر روی افزایش موجودی کلیک کنید
+                                                    </div>
+                                                </ModalBody>
+
+                                                <ModalFooter>
+                                                    <btn onClick={this.goToCashIn} id="notenough-cashin-button" className="btn btn-rec btn-primary">افزایش موجودی</btn>
+                                                    <btn onClick={this.wishCoinSubscription3} id="notenouhg-cancel-button" className="btn btn-rec btn-secondary">انصراف</btn>
+                                                </ModalFooter>
+                                            </Modal>
                                         </div>
                                     </div>
                                     </div>
@@ -178,6 +262,10 @@ class WishCoin extends React.Component {
         )
     }
 }
+WishCoin.contextTypes = {
+    router: PropTypes.object.isRequired
+};
+
 function mapStateToProps(state , ownProps){
 
     return{

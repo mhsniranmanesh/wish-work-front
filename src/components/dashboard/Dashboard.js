@@ -214,21 +214,6 @@ class Dashboard extends React.Component{
         }
     }
   render(){
-        if(this.state.loading){
-            return (
-                <div className="content-wrapper py-3">
-                    <div className="container-fluid">
-                            <div className="center-loading">
-
-                            </div>
-                            <div className="load-4">
-                                <div className="ring-1">
-                                </div>
-                        </div>
-                    </div>
-                </div>
-            );
-        }
     return(
       <div>
         <div className="content-wrapper py-3">
@@ -262,13 +247,14 @@ class Dashboard extends React.Component{
                                                       goToCP={this.goToCP}
 
                         />
-
-                        <ProjectsListForDashboard Projects={this.state.profileInfo.suggested_projects}
-                                                  goToProjectProfile={this.goToProjectProfile}
-                                                  myFunc={this.gotoRecomendedProjects}
-                                                  WordCount={this.WordCount}
-                                                  size={this.size}
-                        />
+                        {this.state.profileInfo.is_freelancer ?
+                            <ProjectsListForDashboard Projects={this.state.profileInfo.suggested_projects}
+                                                      goToProjectProfile={this.goToProjectProfile}
+                                                      myFunc={this.gotoRecomendedProjects}
+                                                      WordCount={this.WordCount}
+                                                      size={this.size}
+                            />:(null)
+                        }
                     </div>
 
 

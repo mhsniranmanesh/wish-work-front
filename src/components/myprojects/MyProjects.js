@@ -120,4 +120,3 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(mapStateToProps , mapDispatchToProps )(MyProjects);
 
-//TODO pass function to component for change route !

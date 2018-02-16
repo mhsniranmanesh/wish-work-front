@@ -5,7 +5,6 @@ import Flag from 'react-world-flags';
 import {Row , Col} from 'reactstrap';
 
 
-//TODO tags maping !
 
 const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordCount}) => {
     var from_languageCode,

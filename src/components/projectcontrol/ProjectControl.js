@@ -16,7 +16,7 @@ class ProjectControl extends React.Component{
         this.state = {AsFreelancerProject:"" , AsClientProject:"", fileIsUpload:false, profileInfo:"",
             loadSuccess:false , file:"" , mileStoneId:"" , milestone_id:"" , dontHaveEnoughCash:false , haveEnoughCash:false
             , downloadFile:false, attachmentId:"" , priceForCashIn:0 , reviseValue:"" ,numberSee:0, activeProjectList : 0 ,
-            helpToWishWorkModal:false, donateValue:0 , validPrice:true , showErrorForDonate:false };
+            helpToWishWorkModal:false, donateValue:0 , validPrice:true , showErrorForDonate:false  , message:""};
         this.size = this.size.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
         this.sendUploadedFileByFreelancer = this.sendUploadedFileByFreelancer.bind(this);
@@ -54,7 +54,7 @@ class ProjectControl extends React.Component{
                 )
             }
             else {
-                this.setState({showErrorForDonate : true})
+                this.setState({showErrorForDonate : true , message:"وجه کافی ندارید، لطفا در صورت تمایل واریز کنید."})
             }
 
         // let price = this.state.donateValue;
@@ -103,9 +103,13 @@ class ProjectControl extends React.Component{
     reviseOnChange(e){
         this.setState({reviseValue: e.target.value})
     }
-    nextMileStoneBegin(){
+    /////after submit , pulesho kam kon!
 
+    nextMileStoneBegin(){
+        // this.props.actions.pay =>
     }
+
+    ////
     toggle3(){
         this.setState({haveEnoughCash: !this.state.haveEnoughCash})
     }
@@ -229,7 +233,7 @@ class ProjectControl extends React.Component{
                 <div className="col-sm-5"></div>
                 <div className="col-sm-2 mb-1">
                   <button className="btn btn-rec btn-primary" onClick={this.goToCashInForDonate}>واریز</button>
-                  {this.state.showErrorForDonate?<Errors/>:(null)}
+                  {this.state.showErrorForDonate?<Errors message={this.state.message}/>:(null)}
                 </div>
               </div>
           </Modal>
@@ -246,7 +250,7 @@ class ProjectControl extends React.Component{
           <Modal isOpen={this.state.haveEnoughCash} toggle={this.toggle3}>
               <ModalBody className="from-header-fontsize">
                 <div>شما دارای وجه کافی می باشید</div>
-                <div>برای مشاهده فایل، بازنگری آنها و شروع مرحله بعد تأیید کنید تا مبلغ {this.state.priceForCashIn} تومان از حساب شما کاسته شود</div>
+                <div>برای مشاهده فایل، بازنگری آنها و شروع مرحله بعد تأیید کنید تا مبلغ {this.state.priceForCashIn*1000} تومان از حساب شما کاسته شود</div>
                 <div>اگر از کار راضی نبودید با لغو همکاری بعد از بررسی و کسر ۱۰ درصد خسارت مبلغ پرداختی به حساب شما بازگردانده می شود</div>
               </ModalBody>
                 <button className="btn btn-rec btn-primary col-sm-3" onClick={this.nextMileStoneBegin}>تایید</button>

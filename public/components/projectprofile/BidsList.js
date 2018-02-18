@@ -3,7 +3,8 @@ import BidTemplate from './BidTemplate';
 import PropTypes from 'prop-types';
 
 const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash, cashinModalState, modalCashEnough ,
-                      profileInfo ,deleteBid , goToFreelancerProfile, acceptBid , freelancerIsSelected , numberOfPages , is_freelancer_selected}) => {
+                      profileInfo ,deleteBid , goToFreelancerProfile, acceptBid , freelancerIsSelected , numberOfPages
+                      , is_freelancer_selected , toPersianNum}) => {
     var BidT = [] ;
     var prices = [];
     var mileStoneX = {};
@@ -14,6 +15,7 @@ const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash,
         for (var i = 0; i < Bids.length; i++) {
             BidT.push(<BidTemplate key={Bids[i].uuid}
                                    Bid={Bids[i]}
+                                   toPersianNum={toPersianNum}
                                    is_freelancer_selected={is_freelancer_selected}
                                    ownerOfProject={ownerOfProject}
                                    isLoggedIn={isLoggedIn}

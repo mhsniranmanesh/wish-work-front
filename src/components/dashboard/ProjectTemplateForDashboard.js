@@ -6,7 +6,7 @@ import {Row , Col} from 'reactstrap';
 
 
 
-const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordCount}) => {
+const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordCount , toPersianNum}) => {
     var from_languageCode,
         from,
         to,
@@ -122,11 +122,11 @@ const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordC
 
                       <li className="project-prop project-prop-money">
                         <span>  <i className="fa fa-usd"/>
-                          {ProjectDetail.budget} </span>
+                          {toPersianNum(ProjectDetail.budget*1000)} (تومان)</span>
                       </li>
                       <li className="project-prop project-prop-time">
-                          <i className="fa fa-clock-o"/>
-                          {ProjectDetail.time_limit}
+                          <span><i className="fa fa-clock-o"/>
+                          {toPersianNum(ProjectDetail.time_limit)} (روز)</span>
                        </li>
                     </ul>
                 </div>
@@ -189,13 +189,13 @@ const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordC
                       </li>*/}
 
                       <li className="project-prop project-prop-money">
-                          <i className="fa fa-usd"/>
-                          {ProjectDetail.budget}
+                         <span> <i className="fa fa-usd"/>
+                             {toPersianNum(ProjectDetail.budget)} (تومان)</span>
                       </li>
-                      <li className="project-prop project-prop-time">
-                          <i className="fa fa-clock-o"/>
-                          {ProjectDetail.time_limit}
-                       </li>
+                        <li className="project-prop project-prop-time">
+                          <span><i className="fa fa-clock-o"/>
+                              {toPersianNum(ProjectDetail.time_limit)} (روز)</span>
+                        </li>
                     </ul>
                 </div>
             </div>

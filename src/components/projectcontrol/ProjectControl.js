@@ -16,7 +16,8 @@ class ProjectControl extends React.Component{
         this.state = {AsFreelancerProject:"" , AsClientProject:"", fileIsUpload:false, profileInfo:"",
             loadSuccess:false , file:"" , mileStoneId:"" , milestone_id:"" , dontHaveEnoughCash:false , haveEnoughCash:false
             , downloadFile:false, attachmentId:"" , priceForCashIn:0 , reviseValue:"" ,numberSee:0, activeProjectList : 0 ,
-            helpToWishWorkModal:false, donateValue:0 , validPrice:true , showErrorForDonate:false  , message:""};
+            helpToWishWorkModal:false, donateValue:0 , validPrice:true , showErrorForDonate:false  ,
+            message:"" , modalCancelProject:false , cancelIdProject:""};
         this.size = this.size.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
         this.sendUploadedFileByFreelancer = this.sendUploadedFileByFreelancer.bind(this);
@@ -38,6 +39,40 @@ class ProjectControl extends React.Component{
         this.donate = this.donate.bind(this);
         this.toggleDonate = this.toggleDonate.bind(this);
         this.goToSubmitProject = this.goToSubmitProject.bind(this);
+        this.modalCancelProject = this.modalCancelProject.bind(this);
+        this.modalCancelProjectToggle = this.modalCancelProjectToggle.bind(this);
+        this.toPersianNum = this.toPersianNum.bind(this);
+    }
+    toPersianNum( num, dontTrim ) {
+
+        var i = 0,
+
+            dontTrim = dontTrim || false,
+
+            num = dontTrim ? num.toString() : num.toString().trim(),
+            len = num.length,
+
+            res = '',
+            pos,
+
+            persianNumbers = typeof persianNumber == 'undefined' ?
+                ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'] :
+                persianNumbers;
+
+        for (; i < len; i++)
+            if (( pos = persianNumbers[num.charAt(i)] ))
+                res += pos;
+            else
+                res += num.charAt(i);
+
+        return res;
+    }
+
+    modalCancelProjectToggle(){
+        this.setState({modalCancelProject : !this.state.modalCancelProject})
+    }
+    modalCancelProject(){
+        this.setState({modalCancelProject : true})
     }
     goToSubmitProject(){
         this.context.router.history.push({
@@ -220,6 +255,11 @@ class ProjectControl extends React.Component{
   render(){
     return(
       <div className="content-wrapper py-3">
+          <Modal isOpen={this.state.modalCancelProject} toggle={this.modalCancelProjectToggle}>
+              <ModalBody>
+                  motmaeni?
+              </ModalBody>
+          </Modal>
           <Modal  isOpen={this.state.helpToWishWorkModal} toggle={this.toggleDonate}>
               <ModalBody className="text-center form-header-fontsize">
                   <div>
@@ -282,6 +322,8 @@ class ProjectControl extends React.Component{
                                       submitFeedBack={this.submitFeedBack}
                                       numberSee={this.state.numberSee}
                                       donate={this.donate}
+                                      modalCancelProject={this.modalCancelProject}
+                                      toPersianNum={this.toPersianNum}
 
                           />:(null)}
                       </div>

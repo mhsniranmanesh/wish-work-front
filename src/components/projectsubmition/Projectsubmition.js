@@ -112,6 +112,7 @@ class Projectsubmition extends React.Component{
         this.submitProjectPageState = this.submitProjectPageState.bind(this);
         this.submitProjectAuctionState = this.submitProjectAuctionState.bind(this);
         this.redirect = this.redirect.bind(this);
+        this.toPersianNum = this.toPersianNum.bind(this);
     }
     ErrorFromServerSide(){
         this.setState({progressNumber : 10});
@@ -229,7 +230,30 @@ class Projectsubmition extends React.Component{
       });
   }
 
+    toPersianNum( num, dontTrim ) {
 
+        var i = 0,
+
+            dontTrim = dontTrim || false,
+
+            num = dontTrim ? num.toString() : num.toString().trim(),
+            len = num.length,
+
+            res = '',
+            pos,
+
+            persianNumbers = typeof persianNumber == 'undefined' ?
+                ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'] :
+                persianNumbers;
+
+        for (; i < len; i++)
+            if (( pos = persianNumbers[num.charAt(i)] ))
+                res += pos;
+            else
+                res += num.charAt(i);
+
+        return res;
+    }
 
     persianToEnglish(value) {
         var newValue = "";
@@ -620,6 +644,10 @@ class Projectsubmition extends React.Component{
             this.setState({showError: true});
             this.setState({message:"لطفا مبلغ خود را وارد کنید"})
         }
+        else if(this.state.budget < 10000){
+            this.setState({showError: true});
+            this.setState({message:"بودجه ی شما نمی تواند از ۱۰۰۰۰ تومان کمتر باشد"})
+        }
         else if(!this.state.validPrice){
             this.setState({showError: true});
             this.setState({message:"لطفا مبلغ خود را صحیح وارد کنید"})
@@ -896,7 +924,7 @@ class Projectsubmition extends React.Component{
                             </div>
                             <div className="form-group col-sm-6">
                               <legend htmlFor="" className="col-form-label">
-                                <span className="form-header-fontsize"> زمان مورد نیاز </span>
+                                <span className="form-header-fontsize"> محدودیت زمانی برای دریافت پروژه </span>
                               </legend>
                               <div className="row">
                                 <span>
@@ -905,7 +933,7 @@ class Projectsubmition extends React.Component{
                                 <span className="form-header-fontsize submission-day-input">روز</span>
                               </div>
                               <Popover placement="right" isOpen={this.state.popoverOpenTime} target="timeInput" toggle={this.togglePopoverTime}>
-                                <PopoverBody className="beauty-text popover-beauty">زمان مورد نظرتان را به روز وارد کنید </PopoverBody>
+                                <PopoverBody className="beauty-text popover-beauty">تا چند روز پس از مناقصه، پروژه ی شما تحویل داده می شود؟</PopoverBody>
                               </Popover>
 
                               <div id="time-range"/>
@@ -924,7 +952,8 @@ class Projectsubmition extends React.Component{
                           <div>
                             <span>
                             <button className = "btn btn-rec btn-primary" onClick={this.handleSubmit}>ایجاد پروژه</button>
-                                <p>۵۰ ویش کوین</p>
+                                <br/>
+<img src={require("../../../static/img/wish coin-05.png")} style={{height:35}}/> 50
                             </span>
                               <Modal isOpen={this.state.loading}>
                                   <ModalBody>

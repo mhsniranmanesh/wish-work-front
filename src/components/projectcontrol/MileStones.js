@@ -16,6 +16,7 @@ const MileStones = (props)=> {
                                                                  fileIsUpload={props.fileIsUpload}
                                                                  mileStoneid={props.mileStoneid}
                                                                  sendUploadedFileByFreelancer={props.sendUploadedFileByFreelancer}
+                                                                 toPersianNum={props.toPersianNum}
 
             />
         }
@@ -31,6 +32,7 @@ const MileStones = (props)=> {
                                                          reviseValue={props.reviseValue}
                                                          submitFeedBack={props.submitFeedBack}
                                                          donate={props.donate}
+                                                         toPersianNum={props.toPersianNum}
             />
         }
     }
@@ -40,6 +42,7 @@ const MileStones = (props)=> {
     if(props.AsFreelancerProject.length && (props.numberSee%2 === 0)) {
         return (
             <div>
+
                 {FreelancerProject[props.numberSee]}
             </div>
         )
@@ -48,7 +51,20 @@ const MileStones = (props)=> {
         console.log(ClientProject , 'ClientProject');
         return(
             <div>
+                <div className="cp-cancel-div">
+                <button className = "btn btn-danger btn-rec cp-cancel" onClick={props.modalCancelProject}><p> کنسل کردن پروژه</p> </button>
+            </div>
                 {ClientProject[props.numberSee]}
+            </div>
+        )
+    }
+    else if(props.AsClientProject.length && (props.AsFreelancerProject.length===0) && (props.numberSee % 2 === 0)){
+        return(
+            <div>
+                <div className="cp-cancel-div">
+                    <button className = "btn btn-danger btn-rec cp-cancel" onClick={props.modalCancelProject}><p> کنسل کردن پروژه</p> </button>
+                </div>
+                {ClientProject[props.numberSee+1]}
             </div>
         )
     }

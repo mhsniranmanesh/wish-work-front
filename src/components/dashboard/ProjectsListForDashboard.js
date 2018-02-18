@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ProjectTemplateForDashboard from './ProjectTemplateForDashboard';
 
 
-const ProjectsListForDashboard = ({Projects , myFunc , goToProjectProfile , WordCount , size}) =>{
+const ProjectsListForDashboard = ({Projects , myFunc , goToProjectProfile , WordCount , size , toPersianNum}) =>{
     if(Projects.length > 0) {
         var ProjectsArr = Projects;
         var Size = size(Projects);
@@ -16,6 +16,7 @@ const ProjectsListForDashboard = ({Projects , myFunc , goToProjectProfile , Word
                 <div className="dash-divider"/>
                 {ProjectsArr.map((ProjectDetail, index) =>
                     <ProjectTemplateForDashboard key={index} ProjectDetail={ProjectDetail}
+                                                 toPersianNum={toPersianNum}
                                                  goToProjectProfile={goToProjectProfile} WordCount={WordCount}/>
                 )}
                 <form onSubmit={myFunc}>

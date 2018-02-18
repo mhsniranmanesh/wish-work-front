@@ -66,6 +66,7 @@ export function deleteProject(id) {
 }
 export function projectSubmit(projectSubmit , File){
     var fileFormData = new FormData();
+    var budget = Math.round(projectSubmit.budget/1000);
     console.log('projectSubmit' , projectSubmit);
     console.log('Project File:', File );
     fileFormData.append('from_language' ,projectSubmit.from_language);
@@ -74,7 +75,7 @@ export function projectSubmit(projectSubmit , File){
     fileFormData.append('time_limit' , projectSubmit.time_limit);
     fileFormData.append('bid_duration' , projectSubmit.bid_duration);
     fileFormData.append('number_of_pages' , projectSubmit.number_of_pages);
-    fileFormData.append('budget' , projectSubmit.budget);
+    fileFormData.append('budget' , budget);
     fileFormData.append('file', File.file);
     fileFormData.append('title' , projectSubmit.title);
     fileFormData.append('type' , projectSubmit.type);

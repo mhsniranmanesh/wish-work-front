@@ -19,7 +19,7 @@ const CashOut = (props) =>{
         return (
             <div id="draw" role="tabpanel" aria-labelledby="draw-tab">
                 <h5 className="cashout-title">موجودی قابل برداشت</h5>
-                <h4 className="py-2 cashout-title">{props.profileInfo.balance * 1000} تومان</h4>
+                <h4 className="py-2 cashout-title">{props.toPersianNum(props.profileInfo.balance * 1000)} تومان</h4>
                 <form className="">
                     <div className="form-group">
                         <label className="col-form-label form-header-fontsize">{x}</label>

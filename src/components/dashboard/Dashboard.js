@@ -22,7 +22,8 @@ class Dashboard extends React.Component{
     this.state = { translationTo : "" , translationFrom : "" ,
         projectSkillTag : "" , translationFatherTag : false ,
         is_general: false , is_medical : false , is_technical : false , is_law : false ,
-        profileInfo:Object.assign({} , props.profileInfo[0]) , loading:true , suggestedProject:"" , popoverOpenWishcoin:false};
+        profileInfo:Object.assign({} , props.profileInfo[0]) , loading:true , 
+        suggestedProject:"" , popoverOpenWishcoin:false};
 
         this.IsLaw = this.IsLaw.bind(this);
         this.IsMedical = this.IsMedical.bind(this);
@@ -40,9 +41,33 @@ class Dashboard extends React.Component{
         this.goToMyProjectPublic = this.goToMyProjectPublic.bind(this);
         this.togglePopoverWishcoin = this.togglePopoverWishcoin.bind(this);
         this.goToCP = this.goToCP.bind(this);
+        this.toPersianNum = this.toPersianNum.bind(this);
 
   }
+    toPersianNum( num, dontTrim ) {
 
+        var i = 0,
+
+            dontTrim = dontTrim || false,
+
+            num = dontTrim ? num.toString() : num.toString().trim(),
+            len = num.length,
+
+            res = '',
+            pos,
+
+            persianNumbers = typeof persianNumber == 'undefined' ?
+                ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'] :
+                persianNumbers;
+
+        for (; i < len; i++)
+            if (( pos = persianNumbers[num.charAt(i)] ))
+                res += pos;
+            else
+                res += num.charAt(i);
+
+        return res;
+    }
 
     togglePopoverWishcoin(){
       this.setState({
@@ -225,6 +250,7 @@ class Dashboard extends React.Component{
 
                     <div className="col-sm-5">
                         <ProfileInfoForDashboard
+                          toPersianNum={this.toPersianNum}
                           profileInfo={this.state.profileInfo}
                           popoverOpenWishcoin = {this.state.popoverOpenWishcoin}
                           togglePopoverWishcoin = {this.togglePopoverWishcoin}
@@ -250,7 +276,9 @@ class Dashboard extends React.Component{
 
                         />
                         {this.state.profileInfo.is_freelancer ?
-                            <ProjectsListForDashboard Projects={this.state.profileInfo.suggested_projects}
+                            <ProjectsListForDashboard
+                                                      toPersianNum={this.toPersianNum}
+                                                      Projects={this.state.profileInfo.suggested_projects}
                                                       goToProjectProfile={this.goToProjectProfile}
                                                       myFunc={this.gotoRecomendedProjects}
                                                       WordCount={this.WordCount}

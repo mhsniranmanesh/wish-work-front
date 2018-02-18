@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Flag from 'react-world-flags'
 
-const ProjectTemplate = ({ProjectDetail , goToProjectProfile}) =>{
+const ProjectTemplate = ({ProjectDetail , goToProjectProfile , toPersianNum}) =>{
     var from_languageCode,
         from,
         to,
@@ -105,11 +105,11 @@ const ProjectTemplate = ({ProjectDetail , goToProjectProfile}) =>{
 
                     <li className="project-prop project-prop-money">
                         <i className="fa fa-usd"/>
-                        {ProjectDetail.budget}
+                        {toPersianNum(ProjectDetail.budget*1000)}
                     </li>
                     <li className="project-prop project-prop-time">
                         <i className="fa fa-clock-o"/>
-                        {ProjectDetail.time_limit}
+                        {toPersianNum(ProjectDetail.time_limit)}
                     </li>
                 </ul>
             </div>

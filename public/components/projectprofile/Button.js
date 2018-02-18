@@ -18,15 +18,17 @@ const Button = (props) =>{
                     <div className="about-sub-heading">
                         {/*<div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a*/}
                             {/*href="#">4/5</a></div>*/}
-                        <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget}
+                        <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.toPersianNum(props.budget)}
                             تومان
                         </div>
                         <div className="not-inline"><i className="fa fa-calendar-o"/>
-                            <strong>مهلت:</strong> {props.TimeLimit} روز
+                            <strong>مهلت:</strong> {props.toPersianNum(props.TimeLimit)} روز
                         </div>
                         <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m}
                             قبل
                         </div>
+                        <div className="not-inline"><i className="fa fa-book"/> تعداد صفحات: <strong> {props.toPersianNum(props.numberOfPages)}</strong></div>
+
                     </div>
                 </div>
                 <div className="con mb-4">
@@ -49,14 +51,16 @@ const Button = (props) =>{
                     <div className="about-sub-heading">
                         {/*<div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a*/}
                             {/*href="#">4/5</a></div>*/}
-                        <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget}
+                        <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.toPersianNum(props.budget)}
                             تومان
                         </div>
                         <div className="not-inline"><i className="fa fa-calendar-o"/>
-                            <strong>مهلت:</strong> {props.TimeLimit} روز
+                            <strong>مهلت:</strong> {props.toPersianNum(props.TimeLimit)} روز
                         </div>
                         <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m}
                         </div>
+                        <div className="not-inline"><i className="fa fa-book"/> تعداد صفحات: <strong> {props.toPersianNum(props.numberOfPages)}</strong></div>
+
                     </div>
                 </div>
                 <div className="con mb-4">

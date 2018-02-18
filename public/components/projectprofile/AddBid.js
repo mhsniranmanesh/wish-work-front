@@ -42,9 +42,10 @@ const AddBid = (props) => {
                     <div className="about-sub-heading">
                         {/*<div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div>*/}
                         {/*    <div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div> */}
-                        <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</div>
-                        <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</div>
+                        <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.toPersianNum(props.budget)} تومان</div>
+                        <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.toPersianNum(props.TimeLimit)} روز</div>
                         <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m}</div>
+                        <div className="not-inline"><i className="fa fa-book"/> تعداد صفحات: <strong> {props.toPersianNum(props.numberOfPages)}</strong></div>
                     </div>
                 </div>
                 <div className="con mb-4">
@@ -69,9 +70,10 @@ const AddBid = (props) => {
 
                         {/*<div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div>*/}
                       {/*  <div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div> */}
-                        <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</div>
-                        <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</div>
+                        <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.toPersianNum(props.budget)} تومان</div>
+                        <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.toPersianNum(props.TimeLimit)} روز</div>
                         <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m} </div>
+                          <div className="not-inline"><i className="fa fa-book"/> تعداد صفحات: <strong> {props.toPersianNum(props.numberOfPages)}</strong></div>
 
                       </div>
                     </div>
@@ -151,6 +153,7 @@ const AddBid = (props) => {
                                                 <div className="timeline-centered"  id="cp-public">
 
                                                     <AddBidMileStones
+                                                                      toPersianNum={props.toPersianNum}
                                                                       numberOfPages={props.numberOfPages}
                                                                       number_of_milestones={props.amountOfMileStones}
                                                                       delivery_duration={props.delivery_duration}
@@ -183,7 +186,7 @@ const AddBid = (props) => {
             </div>
         )
     }
-   if (diffMinutes>=0 && props.isLoggedIn && (userHasBid === true)){
+   if (diffMinutes>=0 && props.isLoggedIn && (userHasBid === true) && !(props.freelancerIsSelected)){
         return(
             <div>
                 <div className="con mb-4">
@@ -194,9 +197,10 @@ const AddBid = (props) => {
                     <div className="about-sub-heading">
                         {/*<div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div>*/}
                     {/*    <div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div> */}
-                        <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</div>
-                        <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</div>
+                        <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.toPersianNum(props.budget)} تومان</div>
+                        <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.toPersianNum(props.TimeLimit)} روز</div>
                         <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m}</div>
+                        <div className="not-inline"><i className="fa fa-book"/> تعداد صفحات: <strong> {props.toPersianNum(props.numberOfPages)}</strong></div>
                     </div>
                 </div>
                 <div className="con mb-4">
@@ -208,7 +212,7 @@ const AddBid = (props) => {
 
         )
     }
-    if(!props.isVerified){
+    if(props.isLoggedIn && (userHasBid === true) && (props.freelancerIsSelected)){
        return(
            <div>
                <div className="con mb-4">
@@ -219,9 +223,35 @@ const AddBid = (props) => {
                    <div className="about-sub-heading">
                        {/*<div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div>*/}
                        {/*    <div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div> */}
-                       <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</div>
-                       <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</div>
+                       <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.toPersianNum(props.budget)} تومان</div>
+                       <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.toPersianNum(props.TimeLimit)} روز</div>
                        <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m}</div>
+                       <div className="not-inline"><i className="fa fa-book"/> تعداد صفحات: <strong> {props.toPersianNum(props.numberOfPages)}</strong></div>
+                   </div>
+               </div>
+               <div className="con mb-4">
+                   <div className="public-page-descript form-body-fontsize">
+شما این مناقصه را برنده شده اید. به قسمت کنترل پروژه بروید                   </div>
+               </div>
+           </div>
+       )
+    }
+    if(!props.isVerified ){
+       return(
+           <div>
+               <div className="con mb-4">
+                   <h5 className="project-title form-header-fontsize">
+                       درباره پروژه
+                   </h5>
+                   <div className="divider"/>
+                   <div className="about-sub-heading">
+                       {/*<div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div>*/}
+                       {/*    <div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div> */}
+                       <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.toPersianNum(props.budget)} تومان</div>
+                       <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.toPersianNum(props.TimeLimit)} روز</div>
+                       <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m}</div>
+                       <div className="not-inline"><i className="fa fa-book"/> تعداد صفحات: <strong> {props.toPersianNum(props.numberOfPages)}</strong></div>
+
                    </div>
                </div>
                <div className="con mb-4">
@@ -242,9 +272,11 @@ else {
                 <div className="divider"/>
                 <div className="about-sub-heading">
                 {/*    <div className="not-inline"><i className="fa fa-user"/> <strong>امتیاز کارفرما:</strong> <a href="#">4/5</a></div> */}
-                    <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.budget} تومان</div>
-                    <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.TimeLimit} روز</div>
+                    <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {props.toPersianNum(props.budget)} تومان</div>
+                    <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {props.toPersianNum(props.TimeLimit)} روز</div>
                     <div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m}</div>
+                    <div className="not-inline"><i className="fa fa-book"/> تعداد صفحات: <strong> {props.toPersianNum(props.numberOfPages)}</strong></div>
+
                 </div>
             </div>
             <div className="con mb-4">

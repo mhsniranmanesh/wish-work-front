@@ -9,8 +9,9 @@ import {bindActionCreators} from 'redux';
 import * as projectActions from '../../actions/projectDetail';
 import Button from './Button';
 import CountDown from './CountDown';
-import {Modal , ModalHeader, ModalBody} from 'reactstrap';
+import {Modal , ModalHeader, ModalBody , ModalFooter} from 'reactstrap';
 import Progress from 'react-progressbar'
+import Errors from "./Errors";
 
 class ProjectProfile extends React.Component {
     constructor(props) {
@@ -45,7 +46,10 @@ class ProjectProfile extends React.Component {
             toggleSecondModal:true,
             modalCM :"",
             notVerified:true,
-            addBidModalForFreelancer:false
+            addBidModalForFreelancer:false,
+            MLNumberForModal:0,
+            myTime:0,
+            myPrice:0
         };
 
         // delivery_duration: Array [ "This field is required." ]
@@ -87,6 +91,31 @@ class ProjectProfile extends React.Component {
         this.addBidModalForFreelancerShow = this.addBidModalForFreelancerShow.bind(this);
         this.toggleBid = this.toggleBid.bind(this);
         //this.counter = this.counter.bind(this);
+        this.toPersianNum = this.toPersianNum.bind(this);
+    }
+    toPersianNum( num, dontTrim ) {
+
+        var i = 0,
+
+            dontTrim = dontTrim || false,
+
+            num = dontTrim ? num.toString() : num.toString().trim(),
+            len = num.length,
+
+            res = '',
+            pos,
+
+            persianNumbers = typeof persianNumber == 'undefined' ?
+                ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'] :
+                persianNumbers;
+
+        for (; i < len; i++)
+            if (( pos = persianNumbers[num.charAt(i)] ))
+                res += pos;
+            else
+                res += num.charAt(i);
+
+        return res;
     }
     toggleBid(){
         this.setState({addBidModalForFreelancer : !this.state.addBidModalForFreelancer})
@@ -244,12 +273,12 @@ class ProjectProfile extends React.Component {
         this.state.Length = Number(this.state.Length);
         // console.log('this.state.projectDetail.uuid', this.state.projectDetail.uuid);
         // console.log(this.state.projectDetail, 'complete project detail')
-
+        var bid_price = Math.ceil(this.state.bid_price/1000);
         var sendData = {
             description: this.state.bid_description,
             project_id: this.state.projectDetail.uuid,
             number_of_milestones: this.state.Length,
-            price: (this.state.bid_price/1000),
+            price: bid_price,
             delivery_duration: this.state.delivery_duration,
             has_default_bid_controller: false,
         };
@@ -363,7 +392,7 @@ class ProjectProfile extends React.Component {
     }
 
     roundBidAmount(event) {
-        let numb = Number(this.state.bid_price);
+        let numb = Number((this.state.bid_price));
         numb = (Math.ceil(numb));
         const trueOrFalsePriceValid2 = this.validateBidAmount(numb);
 
@@ -465,9 +494,12 @@ class ProjectProfile extends React.Component {
         }
         return x;
     };
-
+    componentDidMount() {
+        this.interval = setInterval(() => this.setState({ time: Date.now() }), 1000);
+    }
     componentWillMount() {
         //console.log('this.props:', this.props.location.pathname.slice(10));
+        clearInterval(this.interval);
         if (this.state.loading) {
             clearInterval(this.state.intervalId);
         }
@@ -482,6 +514,9 @@ class ProjectProfile extends React.Component {
                 if (this.props.projectDetail[sIze-1].general.project_bids[i].freelancer.username === this.props.profileInfo.username) {
                     this.setState({userHasBid:true});
                     this.setState({isLoggedIn:true});
+                    this.setState({myPrice:this.props.projectDetail[sIze-1].general.project_bids[i].price});
+                    this.setState({myTime:this.props.projectDetail[sIze-1].general.project_bids[i].delivery_duration});
+                    this.setState({MLNumberForModal:this.props.projectDetail[sizeD - 1].general.project_bids[i].number_of_milestones})
                 }
             }
         }
@@ -505,7 +540,11 @@ class ProjectProfile extends React.Component {
             if(nextProps.projectDetail[sizeD-1].general.project_bids.length>0) {
                 for (var i = 0; i < nextProps.projectDetail[sizeD - 1].general.project_bids.length; i++) {
                     if (nextProps.projectDetail[sizeD - 1].general.project_bids[i].freelancer.username === this.props.profileInfo.username) {
-                        this.setState({userHasBid: true})
+                        this.setState({userHasBid: true});
+                        this.setState({myPrice:nextProps.projectDetail[sizeD - 1].general.project_bids[i].price});
+                        this.setState({myTime:nextProps.projectDetail[sizeD - 1].general.project_bids[i].delivery_duration});
+                        this.setState({MLNumberForModal:this.props.projectDetail[sizeD - 1].general.project_bids[i].number_of_milestones})
+
                     }
                     else {
                         this.setState({userHasBid: false})
@@ -553,7 +592,10 @@ class ProjectProfile extends React.Component {
                 if(this.props.projectDetail[sizeD-1].general.project_bids.length >0) {
                     for (var y = 0; y < this.props.projectDetail[sizeD - 1].general.project_bids.length; y++) {
                         if (this.props.projectDetail[sizeD - 1].general.project_bids[y].freelancer.username === nextProps.profileInfo.username) {
-                            this.setState({userHasBid: true})
+                            this.setState({userHasBid: true});
+                            this.setState({myPrice:this.props.projectDetail[sizeD - 1].general.project_bids[y].price});
+                            this.setState({myTime:this.props.projectDetail[sizeD - 1].general.project_bids[y].delivery_duration});
+                            this.setState({MLNumberForModal:this.props.projectDetail[sizeD - 1].general.project_bids[y].number_of_milestones})
                         }
                         else {
                             this.setState({userHasBid: false})
@@ -630,13 +672,23 @@ class ProjectProfile extends React.Component {
                                 <Modal
                                     isOpen={this.state.freelancerIsSelected && (!this.state.projectDetail.is_started) && this.state.modalAcceptOrReject}>
                                     <ModalBody>تبریک! شما برای این پروژه انتخاب شده اید. برای تایید برروی «تایید» کلیک
-                                        کنید</ModalBody>
-                                    <button onClick={this.acceptBidFromFreelancer}> تایید</button>
-                                    <button onClick={this.rejectBidFromFreelancer}>انصراف</button>
+                                        کنید
+                                        <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {this.toPersianNum(this.state.myPrice * 1000)} تومان</div>
+                                        <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {this.toPersianNum(this.state.myTime*1)} روز</div>
+                                        <div className="not-inline"><i className="fa fa-font-awesome"></i> <strong>تعداد بازه های تحویل:</strong> {this.toPersianNum(this.state.MLNumberForModal)} بازه</div>
+                                        {/*<div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m}</div>*/}
+                                        {/*<div className="not-inline"><i className="fa fa-book"/> تعداد صفحات: <strong> {this.toPersianNum(props.numberOfPages)}</strong></div>*/}
+                                    </ModalBody>
+                                    <ModalFooter>
+                                    <button className="btn btn-rec btn-primary" onClick={this.acceptBidFromFreelancer}> تایید</button>
+                                    <button className="btn btn-rec btn-secondary" onClick={this.rejectBidFromFreelancer}>انصراف</button>
+                                    </ModalFooter>
                                 </Modal>
                                 <Modal isOpen={(!this.state.modalAcceptOrReject) && (this.state.toggleSecondModal)}>
                                     <ModalBody>{this.state.modalCM}</ModalBody>
-                                    <button onClick={this.toggleSecondModal}>باشه</button>
+                                    <ModalFooter>
+                                    <button className="btn btn-rec btn-primary" onClick={this.toggleSecondModal}>باشه</button>
+                                    </ModalFooter>
                                 </Modal>
                                 <Modal isOpen={this.state.projectDetail.is_started && this.state.isStartedModal}
                                        toggle={this.toggle}>
@@ -653,6 +705,7 @@ class ProjectProfile extends React.Component {
 
                                 <div className="con mb-4"> {
                                     this.state.showBidsList ? <BidsList
+                                            toPersianNum={this.toPersianNum}
                                             numberOfPages={this.state.projectAdditional.number_of_pages}
                                             is_freelancer_selected={this.state.projectDetail.is_freelancer_selected}
                                             freelancerIsSelected={this.state.freelancerIsSelected}
@@ -698,8 +751,11 @@ class ProjectProfile extends React.Component {
                                                    BidDuration={this.state.projectDetail.bid_duration}
                                                    bidding_deadline={this.state.projectDetail.bidding_deadline}
                                                    ownerOfProject={this.state.ownerOfProject}
+                                                   toPersianNum={this.toPersianNum}
+
                                         />
                                         <Button
+
                                             myFunc=""
                                             name="hi"
                                             is_freelancer_selected={this.state.projectDetail.is_freelancer_selected}
@@ -709,13 +765,17 @@ class ProjectProfile extends React.Component {
                                             TimeLimit={
                                                 this.state.projectDetail.time_limit
                                             }
+                                            numberOfPages={this.state.projectAdditional.number_of_pages}
                                             release_date={this.state.projectDetail.release_date}
+                                            toPersianNum={this.toPersianNum}
+
 
                                         />
                                     </div>
                                     :
                                     <div>
                                         <CountDown
+                                            toPersianNum={this.toPersianNum}
                                             release_date={this.state.projectDetail.release_date}
                                             BidDuration={this.state.projectDetail.bid_duration}
                                             bidding_deadline={this.state.projectDetail.bidding_deadline}
@@ -723,6 +783,8 @@ class ProjectProfile extends React.Component {
 
                                         />
                                         <AddBid
+                                            freelancerIsSelected={this.state.freelancerIsSelected}
+                                            toPersianNum={this.toPersianNum}
                                             isVerified={this.state.projectDetail.is_verified }
                                             is_freelancer_selected={this.state.projectDetail.is_freelancer_selected}
                                             toggleBid={this.toggleBid}
@@ -789,6 +851,8 @@ class ProjectProfile extends React.Component {
                                             Bids={this.state.projectDetail.project_bids}
                                             start_date={this.state.projectDetail.start_date}
                                         />
+                                        {this.state.showError ? <Errors message="پیشنهاد شما ثبت نشد! لطفا مجدد تلاش کنید"/>:(null)}
+
                                     </div>
                                 }
                             </div>

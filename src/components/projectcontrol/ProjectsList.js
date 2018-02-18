@@ -10,7 +10,7 @@ const ProjectsList = (props) => {
     if(props.AsClientProject.length){
         for(var j=0 ; j < props.AsClientProject.length; j++){
             numberC[j] = j ;
-            List.push(<ProjectTemplate key={j*10} AsClientProject={props.AsClientProject[j]} numberSee={j*2 + 1}
+            List.push(<ProjectTemplate key={j*10 + 1} AsClientProject={props.AsClientProject[j]} numberSee={j*2 + 1}
                                        activeProjectList={j*2 + 1}
                                        changeView={props.changeView}
                                        orgNumberSee={props.numberSee}

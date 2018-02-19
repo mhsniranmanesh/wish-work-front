@@ -15,6 +15,7 @@ const ProjectsList = (props) => {
                                        changeView={props.changeView}
                                        orgNumberSee={props.numberSee}
                                        orgActiveProjectList={2*j + 1}
+                                       setIdForCanceling={props.setIdForCanceling}
             />)
         }
     }

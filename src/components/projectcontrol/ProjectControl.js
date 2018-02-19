@@ -2,7 +2,7 @@ import React from 'react';
 import MileStones from './MileStones';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {Modal , ModalBody} from 'reactstrap';
+import {Modal , ModalBody , ModalFooter} from 'reactstrap';
 import {bindActionCreators} from 'redux';
 import * as ControlProjectActions from '../../actions/mileStoneActions';
 import * as ProfileInfoActions from '../../actions/profileInfo';
@@ -17,7 +17,7 @@ class ProjectControl extends React.Component{
             loadSuccess:false , file:"" , mileStoneId:"" , milestone_id:"" , dontHaveEnoughCash:false , haveEnoughCash:false
             , downloadFile:false, attachmentId:"" , priceForCashIn:0 , reviseValue:"" ,numberSee:0, activeProjectList : 0 ,
             helpToWishWorkModal:false, donateValue:0 , validPrice:true , showErrorForDonate:false  ,
-            message:"" , modalCancelProject:false , cancelIdProject:""};
+            message:"" , modalCancelProject:false , cancelIdProject:"" , finalModalForCanceling:false};
         this.size = this.size.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
         this.sendUploadedFileByFreelancer = this.sendUploadedFileByFreelancer.bind(this);
@@ -42,6 +42,27 @@ class ProjectControl extends React.Component{
         this.modalCancelProject = this.modalCancelProject.bind(this);
         this.modalCancelProjectToggle = this.modalCancelProjectToggle.bind(this);
         this.toPersianNum = this.toPersianNum.bind(this);
+        this.cancelProjectSendToServer = this.cancelProjectSendToServer.bind(this);
+        this.setIdForCanceling = this.setIdForCanceling.bind(this);
+        this.okCanceling = this.okCanceling.bind(this);
+        this.toggleOkCanceling = this.toggleOkCanceling.bind(this);
+    }
+    toggleOkCanceling(){
+        this.setState({finalModalForCanceling: !this.state.finalModalForCanceling})
+    }
+    okCanceling(){
+        this.setState({modalCancelProject:false});
+        this.setState({finalModalForCanceling:true})
+    }
+    setIdForCanceling(id){
+        this.setState({cancelIdProject:id})
+    }
+    cancelProjectSendToServer(){
+        this.props.actions.cancelProject(this.state.cancelIdProject).then(
+            () => this.okCanceling()
+        ).catch(err =>{
+            throw (err)
+        })
     }
     toPersianNum( num, dontTrim ) {
 
@@ -255,10 +276,25 @@ class ProjectControl extends React.Component{
   render(){
     return(
       <div className="content-wrapper py-3">
+          <Modal isOpen={this.state.finalModalForCanceling} toggle={this.toggleOkCanceling}>
+              <ModalBody>
+                  پروژه ی شما لغو شد، در صورت عدم صحیح پروژه وجه شما تا ۴۸ ساعت آینده به حسابتان واریز می گردد
+              </ModalBody>
+              <ModalFooter>
+                  <button className="btn btn-rec btn-primary" onClick={this.toggleOkCanceling}>باشه</button>
+              </ModalFooter>
+          </Modal>
           <Modal isOpen={this.state.modalCancelProject} toggle={this.modalCancelProjectToggle}>
               <ModalBody>
-                  motmaeni?
+                  آیا برای لغو پروژه اطمینان دارید؟
+                  در صورت لغو پروژه درصورت دریافت فایل بازه ای که انجام شده است، اگر که صحیح انجام شده باشد، به فریلنسر شما پرداخته می شود.
+                  در غیر این صورت وجه شما بازگردانده می شود.
               </ModalBody>
+              <ModalFooter>
+                  <button className="btn btn-rec btn-primary" onClick={this.cancelProjectSendToServer}>لغو پروژه</button>
+                  <button className="btn btn-rec btn-secondary" onClick={this.modalCancelProjectToggle}>می خواهم ادامه دهم</button>
+
+              </ModalFooter>
           </Modal>
           <Modal  isOpen={this.state.helpToWishWorkModal} toggle={this.toggleDonate}>
               <ModalBody className="text-center form-header-fontsize">
@@ -330,11 +366,13 @@ class ProjectControl extends React.Component{
                   </div>
                   <div className="col-sm-4 contacts-section">
                       {this.state.loadSuccess? <ProjectsList
+                          cancelIdProject={this.state.cancelIdProject}
                           AsClientProject={this.state.AsClientProject}
                           AsFreelancerProject={this.state.AsFreelancerProject}
                           changeView={this.changeView}
                           activeProjectList={this.state.activeProjectList}
                           numberSee={this.state.numberSee}
+                          setIdForCanceling={this.setIdForCanceling}
                         />
                       :(null)
                        }

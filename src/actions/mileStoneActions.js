@@ -46,6 +46,18 @@ export function sendFeedBack(send) {
         });
     }
 }
+export function cancelProject(id) {
+    var pId = {project_id : id};
+    return function (dispatch) {
+        return axios.post('/api/v1/projects/cancel/' , pId).then(
+            ()=>{
+                dispatch(profileInfo());
+            }
+        ).catch(err =>{
+            throw (err);
+        });
+    }
+}
 
 export function sendUploadedFileByFreelancerAction(sendData) {
     return function (dispatch) {

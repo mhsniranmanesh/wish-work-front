@@ -22,7 +22,33 @@ class WishCoin extends React.Component {
     this.buyWishCoinSubscription2 = this.buyWishCoinSubscription2.bind(this);
     this.buyWishCoinSubscription3 = this.buyWishCoinSubscription3.bind(this);
     this.goToCashIn = this.goToCashIn.bind(this);
+    this.toPersianNum = this.toPersianNum.bind(this);
   };
+    toPersianNum( num, dontTrim ) {
+
+        var i = 0,
+
+            dontTrim = dontTrim || false,
+
+            num = dontTrim ? num.toString() : num.toString().trim(),
+            len = num.length,
+
+            res = '',
+            pos,
+
+            persianNumbers = typeof persianNumber == 'undefined' ?
+                ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'] :
+                persianNumbers;
+
+        for (; i < len; i++)
+            if (( pos = persianNumbers[num.charAt(i)] ))
+                res += pos;
+            else
+                res += num.charAt(i);
+
+        return res;
+
+    }
     goToCashIn(){
         let price = this.state.priceForCoin.toString();
         console.log(price , 'price');
@@ -120,7 +146,7 @@ class WishCoin extends React.Component {
                                             <div className="col-sm-3">
                                               {/*<div className="form-header-fontsize">موجودی ویش کوین</div>*/}
                                                 <div className="circle">
-                                                    <a href="#"><h2 className="form-header-fontsize">{this.state.profileInfo.wish_coins}</h2></a>
+                                                    <a href="#"><h2 className="form-header-fontsize">{this.toPersianNum(this.state.profileInfo.wish_coins)}</h2></a>
                                                 </div>
                                             </div>
                                             <div className="col-sm-9 wishcoin-descript">
@@ -135,7 +161,7 @@ class WishCoin extends React.Component {
                                     <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div className="db-wrapper">
                                             <img className="img-responsive" src={require("../../../static/img/wish cards-04.png")}
-                                                 style={ {height:540 , width:390}} onClick={this.wishCoinSubscription1}/>
+                                                 style={ {height:500}} onClick={this.wishCoinSubscription1}/>
                                                     <Modal isOpen={this.state.wishCoinSubscription1 && this.state.enoughForSubs1} toggle={this.wishCoinSubscription1}>
                                                         <ModalBody>
                                                             <div className="notenough-modalbody1">
@@ -179,7 +205,7 @@ class WishCoin extends React.Component {
                                         <div className="db-wrapper">
                                             <br/>
                                             <img className="img-responsive" src={require("../../../static/img/wish cards-03.png")}
-                                                 style={ {height:540 , width:390}} onClick={this.wishCoinSubscription2}/>
+                                                 style={ {height:500}} onClick={this.wishCoinSubscription2}/>
                                             <Modal isOpen={this.state.wishCoinSubscription2 && this.state.enoughForSubs2} toggle={this.wishCoinSubscription2}>
                                                 <ModalBody>
                                                     <div className="notenough-modalbody1">
@@ -217,7 +243,7 @@ class WishCoin extends React.Component {
                                     <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div className="db-wrapper">
                                             <img className="img-responsive" src={require("../../../static/img/wish cards-02.png")}
-                                                 style={ {height:540 , width:390}} onClick={this.wishCoinSubscription3}/>
+                                                 style={ {height:500}} onClick={this.wishCoinSubscription3}/>
                                             <Modal isOpen={this.state.wishCoinSubscription3 && this.state.enoughForSubs3} toggle={this.wishCoinSubscription2}>
                                                 <ModalBody>
                                                     <div className="notenough-modalbody1">

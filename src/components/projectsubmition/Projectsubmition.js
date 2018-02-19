@@ -810,7 +810,8 @@ class Projectsubmition extends React.Component{
                         </div>
 
                         <div className="form-group drag-drop mt-2 mb-4 ">
-                            <label className="form-header-fontsize">فایل های مربوط به پروژه را آپلود کنید.</label>
+                            <label className="form-header-fontsize">فایل های مربوط به پروژه را آپلود کنید.
+                                <p>(در صورتی که چند فایل است،آنها را به فرمت .zip تبدیل کرده و آپلود کنید.)</p></label>
                             <label className="container form-control-file " htmlFor="inputFile">
 
                                 {this.state.fileIsUpload ? <p className="uploaded-project">فایل شما انتخاب شد ، برای تغییر فایل خود روی <strong> اینجا</strong> کلیک کنید</p>
@@ -953,7 +954,7 @@ class Projectsubmition extends React.Component{
                             <span>
                             <button className = "btn btn-rec btn-primary" onClick={this.handleSubmit}>ایجاد پروژه</button>
                                 <br/>
-<img src={require("../../../static/img/wish coin-05.png")} style={{height:35}}/> 50
+<img src={require("../../../static/img/wish coin-05.png")} style={{height:35}}/> ۵۰
                             </span>
                               <Modal isOpen={this.state.loading}>
                                   <ModalBody>

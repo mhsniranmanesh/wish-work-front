@@ -48,7 +48,7 @@ const ProjectTemplate = (props)=>{
 
             return (
                 <li className="contact active" onClick={(event) => {
-                    props.changeView(props.numberSee);
+                    props.changeView(props.numberSee);props.setIdForCanceling(props.AsClientProject.uuid)
                 }}>
                     <div className="wrap d-flex flex-row">
                         <div className="meta">
@@ -64,7 +64,7 @@ const ProjectTemplate = (props)=>{
         else {
             return(
                 <li className="contact" onClick={(event) => {
-                    props.changeView(props.numberSee);
+                    props.changeView(props.numberSee);props.setIdForCanceling(props.AsClientProject.uuid)
                 }}>
                     <div className="wrap d-flex flex-row">
                         <div className="meta">

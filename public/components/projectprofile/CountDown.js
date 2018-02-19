@@ -27,6 +27,7 @@ const CountDown = (props) => {
         var diffMinutes = Math.floor(diffSec / 60) % 60;
         var diffHours = Math.floor(diffSec / 3600) % 24;
         var diffDays = Math.floor(diffSec / (3600 * 24));
+        var diffSecForCount = diffSec - (diffMinutes*60) - (diffHours*3600) - (diffDays*24*3600);
         console.log(diffHours, 'diffHours');
         // var date = releaseDate.getDate(),
         //      minutes = releaseDate.getMinutes(),
@@ -50,46 +51,67 @@ const CountDown = (props) => {
         // console.log(props.isLoggedIn , 'props.isLoggedIn')
         // console.log(m, 'This is just m');
         // console.log(m+1, 'This is m +1')
+        console.log(diffSec , '(diffSec')
     }
     if (diffMinutes >= 0) {
         return (
         <div className="con mb-4">
             <div className="mb-1">
-              <i class="fa fa-clock"></i>
+              <i className="fa fa-clock"></i>
               <span className="form-header-fontsize">زمان باقیمانده برای ثبت پیشنهاد</span>
             </div>
 
             <div className="dash-divider mb-3"></div>
 
             <span className="counter-circle">
-                <div className="counter-numb">{diffMinutes}</div>
+                <div className="counter-numb">{props.toPersianNum(diffSecForCount)}</div>
+                <div className="counter-char">ثانیه</div>
+            </span>
+            <span className="counter-circle">
+                <div className="counter-numb">{props.toPersianNum(diffMinutes)}</div>
                 <div className="counter-char">دقیقه</div>
             </span>
 
             <span className="counter-circle">
-                <div className="counter-numb">{diffHours}</div>
+                <div className="counter-numb">{props.toPersianNum(diffHours)}</div>
                 <div className="counter-char">ساعت</div>
             </span>
 
             <span className="counter-circle">
-                <div className="counter-numb">{diffDays}</div>
+                <div className="counter-numb">{props.toPersianNum(diffDays)}</div>
                 <div className="counter-char">روز</div>
             </span>
 
         </div>
         )
     }
-    else {
+
+    else if(diffMinutes < 0 && (diffSec > (-86400)) && props.ownerOfProject){
         return(
             <div className="con mb-4">
-                <button className="btn btn-primary btn-rec btn-block" >مهلت شرکت در مناقصه ی این پروژه به اتمام رسیده است                   </button>
-
+                <button className="btn btn-primary btn-rec btn-block" >مناقصه ی پروژه به اتمام رسیده است </button>
+                <button className="btn btn-primary btn-rec btn-block" > شما یک روز از زمان پایان مهلت انتخاب دارید </button>
 
 
             </div>
         )
     }
-}
+    else if(diffMinutes < 0 && (diffSec < (-86400)) && props.ownerOfProject) {
+        return(
+            <div className="con mb-4">
+                <button className="btn btn-primary btn-rec btn-block" >مهلت انتخاب توسط شما به پایان رسیده است  </button>
+            </div>
+        )
+    }
+    else if(diffMinutes < 0 && (!props.ownerOfProject)){
+        return(
+            <div className="con mb-4">
+                <button className="btn btn-primary btn-rec btn-block" >مناقصه ی پروژه به اتمام رسیده است     </button>
+            </div>
+        )
+    }
+
+};
 
 
 export default CountDown;

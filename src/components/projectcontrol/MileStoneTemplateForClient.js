@@ -2,7 +2,7 @@ import React from 'react';
 import {Button} from 'reactstrap';
 import moment from 'moment-jalaali';
 const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
-                                        priceForCashIn , reviseOnChange ,
+                                        priceForCashIn , reviseOnChange ,toPersianNum,
                                         reviseValue, submitFeedBack , donate})=>{
     var today = new Date().getTime();
     var revision_deadline = new Date(CPClient.revision_deadline).getTime();
@@ -24,7 +24,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                         <i className="entypo-location"/>
                                     </div>
                                     <div className="timeline-label">
-                                        <h2 className="form-header-fontsize"><a href="#">{CPClient.description}</a></h2>
+                                        <h2 className="form-header-fontsize"><a href="#">{toPersianNum(CPClient.description)}</a></h2>
                                     </div>
                                 </div>
                                 <time className="timeline-time">
@@ -58,7 +58,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                                 <i className="entypo-location"/>
                                             </div>
                                             <div className="timeline-label">
-                                                <h2 className="form-header-fontsize"><a href="#">{CPClient.description}</a></h2>
+                                                <h2 className="form-header-fontsize"><a href="#">{toPersianNum(CPClient.description)}</a></h2>
                                                 <textarea type="text" className="form-control form-body-fontsize"
                                                           id="Popover4"
                                                           placeholder="انتقادات و پیشنهادات خود را در این بخش بنویسید"
@@ -100,7 +100,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                                 <i className="entypo-location"/>
                                             </div>
                                             <div className="timeline-label">
-                                                <h2 className="form-header-fontsize"><a href="#">{CPClient.description}</a></h2>
+                                                <h2 className="form-header-fontsize"><a href="#">{toPersianNum(CPClient.description)}</a></h2>
                                                 <textarea type="text" className="form-control form-body-fontsize" id="Popover4"
                                                           placeholder="انتقادات و پیشنهادات خود را در این بخش بنویسید"/>
                                                 <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
@@ -146,7 +146,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                             <i className="entypo-location"/>
                                         </div>
                                         <div className="timeline-label">
-                                            <h2 className="form-header-fontsize"><a href="#">{CPClient.description}</a></h2>
+                                            <h2 className="form-header-fontsize"><a href="#">{toPersianNum(CPClient.description)}</a></h2>
                                         </div>
                                     </div>
                                     <time className="timeline-time">
@@ -175,7 +175,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                         <i className="entypo-location"/>
                                     </div>
                                     <div className="timeline-label">
-                                        <h2 className="col-sm-6"><a href="#">{CPClient.description}</a></h2>
+                                        <h2 className="col-sm-6"><a href="#">{toPersianNum(CPClient.description)}</a></h2>
                                     </div>
                                 </div>
                                 <time className="timeline-time">
@@ -200,7 +200,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                       <i className="entypo-location"/>
                                   </div>
                                   <div className="timeline-label">
-                                      <h2 className="form-header-fontsize"><a href="#">{CPClient.description}</a></h2>
+                                      <h2 className="form-header-fontsize"><a href="#">{toPersianNum(CPClient.description)}</a></h2>
                                     {  /*<Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
                                           <i className="fa fa-download fa-download-dash-cp-now"/>
                                       </Button>*/}
@@ -224,7 +224,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                         <i className="entypo-location"/>
                                     </div>
                                     <div className="timeline-label">
-                                        <h2 className="form-header-fontsize"><a href="#">{CPClient.description}</a></h2>
+                                        <h2 className="form-header-fontsize"><a href="#">{toPersianNum(CPClient.description)}</a></h2>
                                     </div>
                                 </div>
                                 <time className="timeline-time">
@@ -249,7 +249,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                               <i className="entypo-location"/>
                           </div>
                           <div className="timeline-label">
-                              <h2 className="form-header-fontsize"><a href="#">{CPClient.description}</a></h2>
+                              <h2 className="form-header-fontsize"><a href="#">{toPersianNum(CPClient.description)}</a></h2>
                           </div>
                         </div>
                         <time className="timeline-time">

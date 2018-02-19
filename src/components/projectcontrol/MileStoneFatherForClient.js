@@ -16,6 +16,7 @@ const MileStoneFatherForClient = (props)=>{
                                                           reviseOnChange={props.reviseOnChange}
                                                           reviseValue={props.reviseValue}
                                                           submitFeedBack={props.submitFeedBack}
+                                                          toPersianNum={props.toPersianNum}
                                                           donate={props.donate}
                 />)
             }
@@ -26,6 +27,7 @@ const MileStoneFatherForClient = (props)=>{
                                                           downloadFileModal={props.downloadFileModal}
                                                           reviseOnChange={props.reviseOnChange}
                                                           reviseValue={props.reviseValue}
+                                                          toPersianNum={props.toPersianNum}
                                                           submitFeedBack={props.submitFeedBack}
                 />)
             }

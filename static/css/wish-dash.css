@@ -1943,3 +1943,16 @@ div #bg-primary-left {
   height: 2.5rem;
   width: 45%;
 }
+.cp-cancel-div{
+    float: left;
+}
+
+.cp-cancel{
+    height: 2rem;
+    /*width: 1rem;*/
+    /*float: left;*/
+    font-size: 0.8rem;
+}
+.cp-cancel p{
+    margin-top: 0px;
+}

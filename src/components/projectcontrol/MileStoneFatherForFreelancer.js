@@ -16,6 +16,7 @@ const MileStoneFatherForFreelancer = (props) =>{
                 m.push(<MileStoneTemplate key={i}
                                           CP={sortM[i]}
                                           uploadFile={props.uploadFile}
+                                          toPersianNum={props.toPersianNum}
                                           uploadSendToServerButton={uploadSendToServerButton}
                                           sendUploadedFileByFreelancer={props.sendUploadedFileByFreelancer}
                 />)
@@ -23,6 +24,7 @@ const MileStoneFatherForFreelancer = (props) =>{
             else {
                 m.push(<MileStoneTemplate key={i}
                                           CP={sortM[i]}
+                                          toPersianNum={props.toPersianNum}
                                           uploadFile={props.uploadFile}
                                           uploadSendToServerButton={false}
                 />)

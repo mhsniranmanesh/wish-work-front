@@ -2,7 +2,7 @@ import React from 'react'
 import {Popover, PopoverHeader, PopoverBody} from 'reactstrap';
 import PropTypes from 'prop-types';
 
-const ProfileInfoForDashboard = ({profileInfo , togglePopoverWishcoin , popoverOpenWishcoin}) =>{
+const ProfileInfoForDashboard = ({profileInfo , togglePopoverWishcoin , popoverOpenWishcoin , toPersianNum}) =>{
     let Image ;
     var colorBackground = -1;
     var colorCode;
@@ -48,8 +48,11 @@ const ProfileInfoForDashboard = ({profileInfo , togglePopoverWishcoin , popoverO
                     <br/>
                     <div className="dash-client-name mb-2"> {profileInfo.first_name + ' ' + profileInfo.last_name} </div>
 
-                    <div className="dash-balance mb-2">موجودی:   {profileInfo.balance * 1000}</div>
-                    <div className="dash-coin"><span className="user-inform"><i className="fa fa-question-circle fa-question-circle-dash-info " id="wishcoinGuide" onClick={togglePopoverWishcoin}/></span><span>ویش کوین: {profileInfo.wish_coins}</span></div>
+                    <div className="dash-balance mb-2">موجودی:   {toPersianNum(profileInfo.balance * 1000)}</div>
+                    <div className="dash-coin"> <span><img src={require("../../../static/img/wish coin-05.png")} style={{height:35}}/> {toPersianNum(profileInfo.wish_coins)}</span>
+                        <span className="user-inform"><i className="fa fa-question-circle fa-question-circle-dash-info " id="wishcoinGuide" onClick={togglePopoverWishcoin}/>
+                    </span>
+                    </div>
                       <Popover placement="right" isOpen={popoverOpenWishcoin} target="wishcoinGuide" toggle={togglePopoverWishcoin}>
                         <PopoverBody className="beauty-text popover-beauty">ویش کوین واحد پول ماست. شما با ویش کوین ها پروژه ثبت می کنید و پیشنهاداتون رو برای هر پروژه ثبت می کنید.  </PopoverBody>
                       </Popover>

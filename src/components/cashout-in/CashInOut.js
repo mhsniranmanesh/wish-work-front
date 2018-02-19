@@ -23,6 +23,31 @@ class CashOutIn extends React.Component{
         this.redirectToPaymentPage = this.redirectToPaymentPage.bind(this);
         this.validatePrice = this.validatePrice.bind(this);
         this.onChangeSheba = this.onChangeSheba.bind(this);
+        this.toPersianNum = this.toPersianNum.bind(this);
+    }
+    toPersianNum( num, dontTrim ) {
+
+        var i = 0,
+
+            dontTrim = dontTrim || false,
+
+            num = dontTrim ? num.toString() : num.toString().trim(),
+            len = num.length,
+
+            res = '',
+            pos,
+
+            persianNumbers = typeof persianNumber == 'undefined' ?
+                ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'] :
+                persianNumbers;
+
+        for (; i < len; i++)
+            if (( pos = persianNumbers[num.charAt(i)] ))
+                res += pos;
+            else
+                res += num.charAt(i);
+
+        return res;
     }
     onChangeSheba(event){
         this.setState({sheba : event.target.value});
@@ -141,6 +166,7 @@ class CashOutIn extends React.Component{
                                       priceForSend={this.state.priceForWithdraw}
                                       sheba={this.state.sheba}
                                       onChangeSheba={this.onChangeSheba}
+                                      toPersianNum={this.toPersianNum}
                                     />}
                             </div>
                             {this.state.showErrorForCashInOut ? <Error message={this.state.message}/> : (null)}

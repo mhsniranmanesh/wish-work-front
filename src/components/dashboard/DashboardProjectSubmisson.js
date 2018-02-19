@@ -55,7 +55,6 @@ const DashboardProjectSubmission = (props) =>{
                                     options={options1}
                                     simpleValue
                                     clearable
-                                    name="select-language"
                                     value={props.translationFrom}
                                     onChange={props.upVTF}
                                     labelKey="name"
@@ -70,7 +69,6 @@ const DashboardProjectSubmission = (props) =>{
                                 options={options2}
                                 simpleValue
                                 clearable
-                                name="select-language"
                                 value={props.translationTo}
                                 onChange={props.upVTT}
                                 labelKey="name"

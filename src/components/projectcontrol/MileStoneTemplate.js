@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment-jalaali';
 import {Button} from 'reactstrap';
 //project_controller_element_attachments
-const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUploadedFileByFreelancer}) => {
+const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUploadedFileByFreelancer, toPersianNum}) => {
     var today = new Date().getTime();
     var submission_deadline = new Date(CP.submission_deadline).getTime();
     var timeDiffFromSubmission = submission_deadline - today;
@@ -25,7 +25,7 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                                             <i className="entypo-location"/>
                                         </div>
                                         <div className="timeline-label">
-                                            <h2 className="font-header-fontsize"><a href="#">{CP.description}</a></h2>
+                                            <h2 className="font-header-fontsize"><a href="#">{toPersianNum(CP.description)}</a></h2>
                                             {uploadSendToServerButton ? <Button type="submit"
                                                                                 color="secondary"
                                                                                 className="btn btn-secondary btn-rec"
@@ -57,7 +57,7 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                                               <i className="entypo-location"/>
                                           </div>
                                           <div className="timeline-label">
-                                              <h2 className="font-header-fontsize"><a href="#">{CP.description}</a></h2>
+                                              <h2 className="font-header-fontsize"><a href="#">{toPersianNum(CP.description)}</a></h2>
                                               {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
                                               {/*<i className="fa fa-download"/>*/}
                                               {/*</button>*/}
@@ -91,7 +91,7 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                                             <i className="entypo-location"/>
                                         </div>
                                         <div className="timeline-label">
-                                            <h2 className="form-header-fontsize"><a href="#">{CP.description}</a></h2>
+                                            <h2 className="form-header-fontsize"><a href="#">{toPersianNum(CP.description)}</a></h2>
                                             <p>خواسته ی کارفرما از شما برای مایل استون بعدی</p>
                                             <p>{CP.project_controller_element_attachments[0].client_feedback}</p>
                                             {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
@@ -128,7 +128,7 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                                         <i className="entypo-location"/>
                                     </div>
                                     <div className="timeline-label">
-                                        <h2 className="form-header-fontsize"><a href="#">{CP.description}</a></h2>
+                                        <h2 className="form-header-fontsize"><a href="#">{toPersianNum(CP.description)}</a></h2>
                                         {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
                                         {/*<i className="fa fa-download"/>*/}
                                         {/*</button>*/}
@@ -159,7 +159,7 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                                     <i className="entypo-location"/>
                                 </div>
                                 <div className="timeline-label">
-                                    <h2 className="form-header-fontsize"><a href="#">{CP.description}</a></h2>
+                                    <h2 className="form-header-fontsize"><a href="#">{toPersianNum(CP.description)}</a></h2>
                                     {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
                                     {/*<i className="fa fa-download"/>*/}
                                     {/*</button>*/}

@@ -10,7 +10,32 @@ class Recomendedprojects extends React.Component{
         this.state = {profileInfo:""};
         this.goToProjectProfile = this.goToProjectProfile.bind(this);
         this.size = this.size.bind(this);
+        this.toPersianNum = this.toPersianNum.bind(this);
 
+    }
+    toPersianNum( num, dontTrim ) {
+
+        var i = 0,
+
+            dontTrim = dontTrim || false,
+
+            num = dontTrim ? num.toString() : num.toString().trim(),
+            len = num.length,
+
+            res = '',
+            pos,
+
+            persianNumbers = typeof persianNumber == 'undefined' ?
+                ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'] :
+                persianNumbers;
+
+        for (; i < len; i++)
+            if (( pos = persianNumbers[num.charAt(i)] ))
+                res += pos;
+            else
+                res += num.charAt(i);
+
+        return res;
     }
     size (obj) {
         let x = 0, key;
@@ -20,9 +45,9 @@ class Recomendedprojects extends React.Component{
         return x;
     };
     goToProjectProfile(slug){
-        this.context.router.history.push({
-            pathname:'/projects/' + slug,
-        });
+        window.location.assign('http://wishworkstage.ir/projects/' + slug);
+        // window.location.assign('http://wishwork.ir/projects/' + slug);
+
     }
     componentWillMount(){
         var x = this.size(this.props.profileInfo);
@@ -51,6 +76,7 @@ class Recomendedprojects extends React.Component{
                           <h5 className="form-title-fontsize">پروژه های پیشنهادی برای شما</h5>
                           <div className="dash-divider"/>
                           <ProjectsList
+                              toPersianNum={this.toPersianNum}
                               goToProjectProfile={this.goToProjectProfile}
                               Projects={this.state.profileInfo.suggested_projects}/>
                           {/**/}

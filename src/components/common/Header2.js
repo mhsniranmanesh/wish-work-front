@@ -17,7 +17,8 @@ class Header2 extends React.Component {
             profileInfo:Object.assign({} , props.profileInfo[0]) , classForCollapseProject:"nav-link nav-link-collapse collapsed" ,
             classForCollapseProfileInfo : "nav-link nav-link-collapse collapsed"  , classForCollapseAccount: "nav-link nav-link-collapse collapsed",
             classCollapseChildProject:"sidenav-second-level collapse" , classCollapseChildProfile:"sidenav-second-level collapse" ,
-            classCollapseChildAccount : "sidenav-second-level collapse" , colorBackground: -1 , colorCode: 0 , Image: null
+            classCollapseChildAccount : "sidenav-second-level collapse" , colorBackground: -1 ,
+            colorCode: 0 , Image: null , toggleForResponsiveCollapse:"collapse navbar-collapse"
         };
         this.dashboardActive = this.dashboardActive.bind(this);
         this.projectActive = this.projectActive.bind(this);
@@ -26,6 +27,15 @@ class Header2 extends React.Component {
         this.messageActive = this.messageActive.bind(this);
         this.exit = this.exit.bind(this);
         this.size = this.size.bind(this);
+        this.toggleForResponsive = this.toggleForResponsive.bind(this);
+    }
+    toggleForResponsive(){
+        if(this.state.toggleForResponsiveCollapse === "collapse navbar-collapse" ) {
+            this.setState({toggleForResponsiveCollapse:"collapse navbar-collapse show"})
+        }
+        else {
+            this.setState({toggleForResponsiveCollapse:"collapse navbar-collapse"})
+        }
     }
     size (obj) {
         let x = 0, key;
@@ -36,9 +46,11 @@ class Header2 extends React.Component {
     };
     exit(){
         localStorage.removeItem('current_login_token');
-        this.context.router.history.push({
-            pathname:'/login/'
-        });
+        window.location.assign('http://wishworkstage.ir/login/');
+        // window.location.assign('http://wishwork.ir/login/');
+        // this.context.router.history.push({
+        //     pathname:'/login/'
+        // });
     }
     componentWillMount(){
         let x = this.size(this.props.profileInfo);
@@ -186,14 +198,14 @@ class Header2 extends React.Component {
                     </a>
                     <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                            aria-label="Toggle navigation">
+                            aria-label="Toggle navigation" onClick={this.toggleForResponsive}>
                         <span className="navbar-toggler-icon"/>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarResponsive">
+                    <div className={this.state.toggleForResponsiveCollapse} id="navbarResponsive">
                         <ul className="navbar-nav navbar-sidenav">
                             <li className={this.state.activeDashboard ? "nav-item active" : "nav-item"} data-toggle="tooltip" data-placement="right"
                                 title="داشبورد" onClick={this.dashboardActive}>
-                                <NavLink to="/dashboard" className="nav-link">
+                                <NavLink to="/dashboard" className="nav-link" onClick={this.toggleForResponsive}>
                                     <i className="fa fa-fw fa-dashboard"/>
                                     <span className="nav-link-text">داشبورد</span>
                                 </NavLink>
@@ -205,16 +217,17 @@ class Header2 extends React.Component {
                                     <span className="nav-link-text">پروژه</span>
                                 </a>
                                 <ul className={this.state.classCollapseChildProject} id="collapseComponents">
-                                    <li>
+                                    <li onClick={this.toggleForResponsive}>
                                         <NavLink to="/project/submit">ثبت پروژه</NavLink>
                                     </li>
-                                    <li>
+                                    {this.state.profileInfo.is_freelancer?<li onClick={this.toggleForResponsive}>
                                         <NavLink to="/project/recommend">دریافت پروژه</NavLink>
-                                    </li>
-                                    <li>
+                                    </li> : (null)
+                                    }
+                                    <li onClick={this.toggleForResponsive}>
                                         <NavLink to="/project/control">کنترل پروژه</NavLink>
                                     </li>
-                                    <li>
+                                    <li onClick={this.toggleForResponsive}>
                                         <NavLink to="/project/me">پروژه های من</NavLink>
                                     </li>
                                 </ul>
@@ -228,7 +241,7 @@ class Header2 extends React.Component {
                                     <span className="nav-link-text">پروفایل</span>
                                 </a>
                                 <ul className={this.state.classCollapseChildProfile} id="profileComponents">
-                                    <li>
+                                    <li onClick={this.toggleForResponsive}>
                                         <NavLink to="/profile/edit">ویرایش اطلاعات</NavLink>
                                     </li>
                                     {/*<li>*/}
@@ -244,13 +257,13 @@ class Header2 extends React.Component {
                                     <span className="nav-link-text">حساب</span>
                                 </a>
                                 <ul className={this.state.classCollapseChildAccount} id="accountComponents">
-                                    <li>
+                                    <li onClick={this.toggleForResponsive}>
                                         <NavLink to="/account/cash">واریز - برداشت</NavLink>
                                     </li>
                                     {/*<li>*/}
                                         {/*<NavLink to='/account/manage'>مدیریت مالی</NavLink>*/}
                                     {/*</li>*/}
-                                    <li>
+                                    <li onClick={this.toggleForResponsive}>
                                         <NavLink to='/account/wishcoin'>ویش‌کوین</NavLink>
                                     </li>
                                     {/*<li>*/}

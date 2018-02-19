@@ -6,7 +6,7 @@ import {Row , Col} from 'reactstrap';
 
 const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                          goToCash , priceForCash, cashinModalState, modalCashEnough, priceOfMileStoneForCash,
-                         acceptBid, profileInfo , deleteBid , prices , goToFreelancerProfile ,
+                         acceptBid, profileInfo , deleteBid , prices , goToFreelancerProfile , toPersianNum,
                          numberOfMileStonesOfEachFreelancer ,freelancerIsSelected , numberOfPages , is_freelancer_selected}) => {
     console.log(ownerOfProject , 'ownerOfProject2');
     var bidOfFreelancer = false;
@@ -66,14 +66,15 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                 <span className="fl-discript  fl-discript-not-owner mt-2 mr-4">{Bid.description} </span>
                             </Row>
                             <Row>
-                                <Col className="owner-bidding-price mt-2"> <span>{Bid.price} تومان </span><span></span></Col>
-                                <Col className="owner-bidding-price mt-2"> {Bid.delivery_duration} روز </Col>
-                                <Col className="owner-bidding-price mt-2"> {Bid.number_of_milestones} مرحله </Col>
+                                <Col className="owner-bidding-price mt-2"> <span>{toPersianNum(Bid.price*1000)} تومان </span><span></span></Col>
+                                <Col className="owner-bidding-price mt-2"> {toPersianNum(Bid.delivery_duration)} روز </Col>
+                                <Col className="owner-bidding-price mt-2"> {toPersianNum(Bid.number_of_milestones)} مرحله </Col>
                             </Row>
                     </div>
 
                         <AddedBidsMileStone number_of_milestones={Bid.number_of_milestones}
                                             delivery_duration={Bid.delivery_duration}
+                                            toPersianNum={toPersianNum}
                                             price_of_bid={Bid.price}
                                             key={Bid.uuid}
                                             number={number}
@@ -119,9 +120,9 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                 <span className="fl-discript  fl-discript-not-owner mt-2 mr-2">{Bid.description} </span>
                             </Row>
                             <Row>
-                                <Col className="owner-bidding-price mt-2"> <span>{Bid.price} تومان </span></Col>
-                                <Col className="owner-bidding-price mt-2"> {Bid.delivery_duration} روز </Col>
-                                <Col className="owner-bidding-price mt-2"> {Bid.number_of_milestones} مرحله </Col>
+                                <Col className="owner-bidding-price mt-2"> <span>{toPersianNum(Bid.price*1000)} تومان </span></Col>
+                                <Col className="owner-bidding-price mt-2"> {toPersianNum(Bid.delivery_duration)} روز </Col>
+                                <Col className="owner-bidding-price mt-2"> {toPersianNum(Bid.number_of_milestones)} مرحله </Col>
                             </Row>
 
 
@@ -165,9 +166,9 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                   </Row>
                                   <Row>
 
-                                       <Col className="owner-bidding-price mt-2 mr-4">{Bid.price * 1000} تومان</Col>
-                                       <Col className="owner-bidding-price mt-2 mr-4"> {Bid.delivery_duration} روز </Col>
-                                       <Col className="owner-bidding-price mt-2 mr-4"> {Bid.number_of_milestones} مرحله </Col>
+                                       <Col className="owner-bidding-price mt-2 mr-4">{toPersianNum(Bid.price * 1000)} تومان</Col>
+                                       <Col className="owner-bidding-price mt-2 mr-4"> {toPersianNum(Bid.delivery_duration)} روز </Col>
+                                       <Col className="owner-bidding-price mt-2 mr-4"> {toPersianNum(Bid.number_of_milestones)} مرحله </Col>
 
                                   </Row>
 
@@ -204,7 +205,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                  <div className="bid-subject">
                                     <a href="#"
                                        className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
-                                     <span className="bidding-price">{Bid.price * 1000} تومان</span>
+                                     <span className="bidding-price">{toPersianNum(Bid.price * 1000)} تومان</span>
                                     {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
                                     {/*data-toggle="modal" data-target="#accBiddingModal">*/}
                                     {/*<i className="fa fa-handshake-o"/>*/}
@@ -237,7 +238,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                          style={ {height:60 , width:60 , backgroundColor:colorCode} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
                        <div className="media-body mt-3">
                         <a href="#" className="fl-name">{Bid.freelancer.first_name}</a>
-                        <span className="bidding-price">{Bid.price * 1000} تومان</span>
+                        <span className="bidding-price">{toPersianNum(Bid.price * 1000)} تومان</span>
                         {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
                                 {/*data-toggle="modal" data-target="#accBiddingModal">*/}
                             {/*<i className="fa fa-handshake-o"/>*/}

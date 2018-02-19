@@ -24,7 +24,7 @@ var pageNew = 0;
            pageOld = pageNew;
            pageNew = page;
            pageRemain = pageNew - pageOld;
-            rows.push(<MileStonesHorizentalTemplate i={i} a={a} key={i} numberOfMileStones={props.number_of_milestones}
+            rows.push(<MileStonesHorizentalTemplate toPersianNum={props.toPersianNum} i={i} a={a} key={i} numberOfMileStones={props.number_of_milestones}
                                                     x={x} page={page} dayRemain = {dayRemain} pageRemain={pageRemain}/>);
 
         }
@@ -41,7 +41,7 @@ var pageNew = 0;
             var page1 = props.numberOfPages;
             pageRemain = page1 - pageNew;
             dayRemain = y - dayNew;
-            rows.push(<MileStonesHorizentalTemplate i={i} a={a} key={i*10} numberOfMileStones={props.number_of_milestones}
+            rows.push(<MileStonesHorizentalTemplate toPersianNum={props.toPersianNum} i={i} a={a} key={i*10} numberOfMileStones={props.number_of_milestones}
                                                     x={y} page={page1} numberOfPages={props.numberOfPages} pageRemain={pageRemain} dayRemain={dayRemain}/>);
 
         }

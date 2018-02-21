@@ -1140,7 +1140,13 @@ textarea.form-control {
   border-radius: 5px;
   font-weight: 300;
 }
-
+.badge-cancel-dash-cp{
+    border: 1px solid #ee4749;
+    background: #03141b;
+    color: #ee4749;
+    border-radius: 5px;
+    font-weight: 300;
+}
 .badge-doing-dash-cp{
   border: 1px solid #01be94;
   background: #03141b;
@@ -2319,7 +2325,16 @@ a.delete-project:hover:after {
 .fa-question-circle{
   /*padding-top: 5px;*/
 }
-
+.badge-cancel{
+    font-size: 13px;
+    font-weight: 400;
+    border-radius: 5px;
+    color: #ee4749;
+    border: 1px solid #ee4749;
+    background: #fff;
+    margin: 0 5px;
+    padding: 5px 10px;
+}
 .badge-freelancer{
   font-size: 13px;
   font-weight: 400;

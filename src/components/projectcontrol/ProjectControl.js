@@ -63,6 +63,7 @@ class ProjectControl extends React.Component{
         ).catch(err =>{
             throw (err)
         })
+        // console.log(this.state.cancelIdProject , 'this.state.cancelIdProject');
     }
     toPersianNum( num, dontTrim ) {
 
@@ -360,6 +361,7 @@ class ProjectControl extends React.Component{
                                       donate={this.donate}
                                       modalCancelProject={this.modalCancelProject}
                                       toPersianNum={this.toPersianNum}
+                                      setIdForCanceling={this.setIdForCanceling}
 
                           />:(null)}
                       </div>

@@ -527,6 +527,21 @@ a:hover {
     z-index: 103;
 }
 
+.fields span.radio-disabled::before{
+    content: " ";
+    /*margin-left: px;*/
+    position: absolute;
+    top: 7px;
+    right: -15px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #a1a1a1;
+    border-radius: 4px;
+    z-index: 103;
+}
+
+
 .fields label input[type="radio"]+span::before {
     border-radius: 18px;
 }
@@ -559,6 +574,8 @@ a:hover {
     -o-transition: .25s all ease;
     transition: .25s all ease;
 }
+
+
 
 
 /*fonts*/
@@ -2261,6 +2278,7 @@ a.delete-project:hover:after {
   border: 1px dashed #018abe;
   border-radius: 15px;
   padding: 60px 0;
+  margin-top: -35px;
 }
 
 .cp-public-text{

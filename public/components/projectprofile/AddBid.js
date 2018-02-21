@@ -133,8 +133,8 @@ const AddBid = (props) => {
                                                 <Row className= "fields">
                                                     <Col>
                                                       <label>
-                                                        <input className="btn-radio" type="radio" name="rb" id="rb1" onChange={props.valueOfMileStones} value={props.amountOfMileStones} checked={props.CheckLength}/>
-                                                          <span htmlFor="rb1" className="radio-text form-body-fontsize">۱</span>
+                                                        <input className="btn-radio" type="radio" name="rb" id="rb1" onChange={props.valueOfMileStones} value={props.amountOfMileStones} checked={props.CheckLength}  disabled/>
+                                                          <span htmlFor="rb1" className=" radio-disabled form-body-fontsize">۱</span>
                                                       </label>
                                                     </Col>
                                                     <Col>
@@ -157,6 +157,7 @@ const AddBid = (props) => {
                                                     </Col>
                                                 </Row>
                                           </div>
+                                          <div className="form-body-fontsize point">تذکر: اگر  می خواهید پروژه را در ۲ مرحله تحویل دهید باید زمان انجام پروژه حداقل ۱۰ روز باشد. ۳ مرحله حداقل ۱۴ روز و ۴ مرحله حداقل ۱۸ روز نیازمند می باشد. در ضمن فعلا حداقل زمان انجام پروژه ۷ روز می باشد.</div>
 
                                     </form>
                                     {props.showError ? <Errors message={props.message}/> : (true)}

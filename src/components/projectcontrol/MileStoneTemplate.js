@@ -26,17 +26,28 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                                         </div>
                                         <div className="timeline-label">
                                             <h2 className="font-header-fontsize"><a href="#">{toPersianNum(CP.description)}</a></h2>
-                                            {uploadSendToServerButton ? <Button type="submit"
-                                                                                color="secondary"
+                                            {uploadSendToServerButton ? <btn type="submit"
                                                                                 className="btn btn-secondary btn-rec"
+                                                                                id="buttonImage"
                                                                                 onClick={sendUploadedFileByFreelancer}>
-                                                <i className="fa fa-download fa-download-dash-cp-success"/>
-                                            </Button> : (null)}
-                                            <input type="file" color="secondary" className="btn btn-secondary btn-rec"
+                                                                                آپلود فایل
+                                                                        </btn> : (null)}
+                                            <input type="file"  className="browse-pic"
                                                    onChange={(event) => {
                                                        uploadFile(event, CP.uuid);
-                                                   }} placeholder="آپلود کنید"/>
+                                                   }} />
                                          </div>
+
+
+
+
+
+
+
+
+
+
+
                                     </div>
                                     <time className="timeline-time font-body-fontsize">
                                       <span> تاریخ پایان مهلت زمان آپلود:{date} </span>
@@ -181,7 +192,7 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
     else {
         return(
             <div>
-              
+
             </div>
         )
     }

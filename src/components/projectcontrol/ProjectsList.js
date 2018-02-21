@@ -31,7 +31,12 @@ const ProjectsList = (props) => {
             />)
         }
     }
-    List.push(<HelpForCP/>);
+    List.push(<HelpForCP
+        key={117}
+        changeView={props.changeView}
+        numberSee={-1}
+        orgNumberSee={props.numberSee}
+    />);
     return(
     <ul className="contact-list">
         {List}

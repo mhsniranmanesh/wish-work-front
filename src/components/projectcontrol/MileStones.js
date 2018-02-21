@@ -40,84 +40,101 @@ const MileStones = (props)=> {
     //yek myfunc tuye toolbar tarif kon ke az babae miad , badesh ru un ke click mikone ye chi tu state avaz mishe ke un inja ham hast va baes mishe inja
     //ham avaz she
     // tuye tul bar yeja be onvane freelancer va client dare ;)
-    if(props.AsFreelancerProject.length && (props.numberSee%2 === 0)) {
-        if(props.AsFreelancerProject[numb/2].is_canceled){
-            return (
-                <div>
-                    <div className="cp-cancel-div">
-                        <span className="badge badge-cancel-dash-cp">لغو شده</span>
-                    </div>
-                    {FreelancerProject[props.numberSee]}
-                </div>
-            )
-        }
-        else {
-            return (
-                <div>
-
-                    {FreelancerProject[props.numberSee]}
-                </div>
-            )
-        }
-    }
-    else if(props.AsClientProject.length && (props.numberSee %2 === 1)){
-        console.log(props.AsClientProject[(numb-1)/2].is_canceled , 'props.AsClientProject[numb].is_canceled');
-        if(props.AsClientProject[(numb-1)/2].is_canceled){
-            return (
-                <div>
-                    <div className="cp-cancel-div">
-                        <span className="badge badge-cancel-dash-cp">لغو شده</span>
-                    </div>
-                    {ClientProject[props.numberSee]}
-                </div>
-            )
-        }
-        else {
-            return (
-                <div>
-                    <div className="cp-cancel-div">
-                        <button className="btn btn-danger btn-rec cp-cancel"
-                                onClick={() =>{props.modalCancelProject();props.setIdForCanceling(props.AsClientProject[(numb-1)/2].uuid)}}><p> لغو
-                            پروژه</p></button>
-                    </div>
-                    {ClientProject[props.numberSee]}
-                </div>
-            )
-        }
-    }
-    else if(props.AsClientProject.length && (props.AsFreelancerProject.length===0) && (props.numberSee % 2 === 0)){
-        if(props.AsClientProject[(numb)/2].is_canceled){
-            return (
-                <div>
-                    <div className="cp-cancel-div">
-                        <span className="badge badge-cancel-dash-cp">لغو شده</span>
-                    </div>
-                    {ClientProject[props.numberSee + 1]}
-                </div>
-            )
-        }
-        else {
-            return (
-                <div>
-                    <div className="cp-cancel-div">
-                        <button className="btn btn-danger btn-rec cp-cancel"
-                                onClick={() =>{props.modalCancelProject();props.setIdForCanceling(props.AsClientProject[(numb)/2].uuid)}}><p> لغو
-                            پروژه</p></button>
-                    </div>
-                    {ClientProject[props.numberSee + 1]}
-                </div>
-            )
-        }
-    }
-    else {
+    if(props.numberSee === -1){
         return(
             <div>
-                <h5>
-                <i className="fa fa-quote-left" aria-hidden="true"/> در حال حاظر شما پروژه ای ندارید، برای ثبت پروژه بر روی دکمه ی ثبت کلیک کنید!</h5>
-                <button onClick={props.goToSubmitProject} className="btn btn-primary btn-rec">ثبت پروژه</button>
+                <h1>Hi</h1>
             </div>
         )
     }
+    else {
+        if (props.AsFreelancerProject.length && (props.numberSee % 2 === 0)) {
+            if (props.AsFreelancerProject[numb / 2].is_canceled) {
+                return (
+                    <div>
+                        <div className="cp-cancel-div">
+                            <span className="badge badge-cancel-dash-cp">لغو شده</span>
+                        </div>
+                        {FreelancerProject[props.numberSee]}
+                    </div>
+                )
+            }
+            else {
+                return (
+                    <div>
+
+                        {FreelancerProject[props.numberSee]}
+                    </div>
+                )
+            }
+        }
+        else if (props.AsClientProject.length && (props.numberSee % 2 === 1)) {
+            console.log(props.AsClientProject[(numb - 1) / 2].is_canceled, 'props.AsClientProject[numb].is_canceled');
+            if (props.AsClientProject[(numb - 1) / 2].is_canceled) {
+                return (
+                    <div>
+                        <div className="cp-cancel-div">
+                            <span className="badge badge-cancel-dash-cp">لغو شده</span>
+                        </div>
+                        {ClientProject[props.numberSee]}
+                    </div>
+                )
+            }
+            else {
+                return (
+                    <div>
+                        <div className="cp-cancel-div">
+                            <button className="btn btn-danger btn-rec cp-cancel"
+                                    onClick={() => {
+                                        props.modalCancelProject();
+                                        props.setIdForCanceling(props.AsClientProject[(numb - 1) / 2].uuid)
+                                    }}><p> لغو
+                                پروژه</p></button>
+                        </div>
+                        {ClientProject[props.numberSee]}
+                    </div>
+                )
+            }
+        }
+        else if (props.AsClientProject.length && (props.AsFreelancerProject.length === 0) && (props.numberSee % 2 === 0)) {
+            if (props.AsClientProject[(numb) / 2].is_canceled) {
+                return (
+                    <div>
+                        <div className="cp-cancel-div">
+                            <span className="badge badge-cancel-dash-cp">لغو شده</span>
+                        </div>
+                        {ClientProject[props.numberSee + 1]}
+                    </div>
+                )
+            }
+            else {
+                return (
+                    <div>
+                        <div className="cp-cancel-div">
+                            <button className="btn btn-danger btn-rec cp-cancel"
+                                    onClick={() => {
+                                        props.modalCancelProject();
+                                        props.setIdForCanceling(props.AsClientProject[(numb) / 2].uuid)
+                                    }}><p> لغو
+                                پروژه</p></button>
+                        </div>
+                        {ClientProject[props.numberSee + 1]}
+                    </div>
+                )
+            }
+        }
+        else {
+            return (
+                <div>
+                    <h5>
+                        <i className="fa fa-quote-left" aria-hidden="true"/> در حال حاظر شما پروژه ای ندارید، برای ثبت
+                        پروژه بر روی دکمه ی ثبت کلیک کنید!</h5>
+                    <button onClick={props.goToSubmitProject} className="btn btn-primary btn-rec">ثبت پروژه</button>
+                </div>
+            )
+        }
+    }
+
 };
 export default MileStones;
 

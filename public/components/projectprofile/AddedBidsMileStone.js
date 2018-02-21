@@ -46,8 +46,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div className="modal-body">
-                                    <div className="jumbotron">
+                                <div className="modal-body client-choose-milestone">
                                         <div className="container">
                                             <div className="row">
                                                 <div className="timeline-centered">
@@ -55,7 +54,6 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                                 <div className="modal-footer">
                                     {/*<Button color="primary" className="btn btn-primary btn-rec"
@@ -121,8 +119,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div className="modal-body">
-                                        <div className="jumbotron">
+                                    <div className="modal-body client-choose-milestone">
                                             <div className="container">
                                                 <div className="row">
                                                     <div className="timeline-centered">
@@ -130,7 +127,6 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
                                     <div className="modal-footer">
                                         {/*<Button color="primary" className="btn btn-primary btn-rec"

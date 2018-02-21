@@ -1077,8 +1077,9 @@ section.signin .con-body .sub-label {
 }
 
 textarea.form-control {
-    min-height: 100px;
+    min-height: 70px;
 }
+
 
 .navbar-toggler {
     border-radius: 0;
@@ -2347,4 +2348,10 @@ a.delete-project:hover:after {
 
 .freelancer-char-box{
   margin-top: 10px;
+}
+
+.client-choose-milestone{
+  width: 115%;
+  margin-right: -25px;
+  margin-top: 35px;
 }

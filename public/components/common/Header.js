@@ -7,11 +7,19 @@ import Greeting from './Greeting';
 class Header extends React.Component {
 constructor(props){
     super(props);
-    this.state ={profile_picture: "http://via.placeholder.com/50x50" , isLoggedIn:false };
+    this.state ={profile_picture: "" , isLoggedIn:false , Image:"" , colorCode:0 , colorBackground:0 };
     this.SignUp = this.SignUp.bind(this);
-    this.GoToDashboard = this.GoToDashboard.bind(this)
+    this.GoToDashboard = this.GoToDashboard.bind(this);
+    this.size = this.size.bind(this);
 }
-
+size(obj) {
+        let x = 0,
+            key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) x++;
+        }
+        return x;
+    };
 SignUp(event){
     event.preventDefault();
     // this.context.router.history.push('/signup');
@@ -24,13 +32,91 @@ GoToDashboard(event){
     window.location.assign('http://wishworkstage.ir/dashboard/');
     // window.location.assign('http://wishwork.ir/dashboard/');
 }
+    componentWillMount(){
+        let x = this.size(this.props.profileInfo);
+        if(x>0){
+            let Image ;
+            // console.log(Image , 'IMMMAAAGEEE');
+            var colorBackground = -1;
+            var colorCode;
+            if((this.props.profileInfo.profile_picture != null) || (this.props.profileInfo.profile_picture != undefined)){
+                if(this.props.profileInfo.profile_picture == '/media/'){
+                    Image = require("../../../static/img/profile_pic/" + this.props.profileInfo[x-1].first_name[0].charCodeAt() + ".png");
+                    colorBackground = this.props.profileInfo.first_name[0].charCodeAt()%5;
+                }
+                else {
+                    Image = this.props.profileInfo.profile_picture;
+                    // console.log("/media/", Image);
+                }
+            }
+            else{
+                Image= require("../../../static/img/profile_pic/" + this.props.profileInfo.first_name[0].charCodeAt() + ".png");
+                colorBackground = this.props.profileInfo.first_name[0].charCodeAt()%5;
+            }
+            if(colorBackground === 0){
+                colorCode = '#018abe'
+            }
+            else if(colorBackground === 1){
+                colorCode = '#014762'
+            }
+            else if(colorBackground === 2){
+                colorCode = '#69144F'
+            }
+            else if(colorBackground === 3){
+                colorCode = '#c96929'
+            }
+            else if(colorBackground === 4){
+                colorCode = '#707117'
+            }
+            this.setState({colorBackground: colorBackground , colorCode:colorCode , Image:Image});
+            // console.log(nextProps.profileInfo[0]);
+            // this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[0])});
+        }
+    }
 
 componentWillReceiveProps(nextProps){
-        if(this.props.profileInfo != nextProps.profileInfo ) {
-
+    let x = this.size(nextProps.profileInfo);
+    if(this.props.profileInfo != nextProps.profileInfo ) {
+                let Image ;
+                this.setState({isLoggedIn: true});
+                // console.log(Image , 'IMMMAAAGEEE');
+                var colorBackground = -1;
+                var colorCode;
+                if((nextProps.profileInfo.profile_picture != null) || (nextProps.profileInfo.profile_picture != undefined)){
+                    if(nextProps.profileInfo[x-1].profile_picture == '/media/'){
+                        Image = require("../../../static/img/profile_pic/" + nextProps.profileInfo.first_name[0].charCodeAt() + ".png");
+                        colorBackground = nextProps.profileInfo.first_name[0].charCodeAt()%5;
+                    }
+                    else {
+                        Image = nextProps.profileInfo[x-1].profile_picture;
+                        // console.log("/media/", Image);
+                    }
+                }
+                else{
+                    Image= require("../../../static/img/profile_pic/" + nextProps.profileInfo.first_name[0].charCodeAt() + ".png");
+                    colorBackground = nextProps.profileInfo.first_name[0].charCodeAt()%5;
+                }
+                if(colorBackground === 0){
+                    colorCode = '#018abe'
+                }
+                else if(colorBackground === 1){
+                    colorCode = '#014762'
+                }
+                else if(colorBackground === 2){
+                    colorCode = '#69144F'
+                }
+                else if(colorBackground === 3){
+                    colorCode = '#c96929'
+                }
+                else if(colorBackground === 4){
+                    colorCode = '#707117'
+                }
+                this.setState({colorBackground: colorBackground , colorCode:colorCode , Image:Image});
+                console.log(nextProps.profileInfo ,' HaHaHa!');
+                this.setState({profileInfo: Object.assign({}, nextProps.profileInfo)});
             //console.log(nextProps.profileDetail);
             //inja az halate bler dar biad
-            this.setState({profile_picture: nextProps.profileInfo.profile_picture , isLoggedIn:true});
+            // this.setState({profile_picture: nextProps.profileInfo.profile_picture , isLoggedIn:true});
         }
 }
 
@@ -50,9 +136,10 @@ componentWillReceiveProps(nextProps){
                     <ul className="navbar-nav navbar-right">
 
                             <Greeting isLoggedIn={this.state.isLoggedIn}
-                                      profileInfo={this.props.profileInfo}
-                                      profilePic={this.state.profile_picture}
+                                      profileInfo={this.state.profileInfo}
+                                      profilePic={this.state.Image}
                                       SignUp={this.SignUp}
+                                      colorCode={this.state.colorCode}
                                       GoToDashboard={this.GoToDashboard}
                             />
                             {/*{pleaseRegister ?  {<a className="nav-link dropdown-toggle" href="http://example.com" id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">*/}

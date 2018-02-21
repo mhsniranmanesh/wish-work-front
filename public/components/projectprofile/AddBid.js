@@ -126,7 +126,7 @@ const AddBid = (props) => {
                                             بازه های تحویل پروژه را انتخاب کنید
                                         </label>
                                         <div className="input-group mb-1">
-                                            <input type="number" className="form-control"
+                                            <input type="text" className="form-control"
                                                    placeholder="تعداد موعدهای تحویل پروژه"
                                                    onChange={props.valueOfMileStones}
                                                    value={props.amountOfMileStones}/>

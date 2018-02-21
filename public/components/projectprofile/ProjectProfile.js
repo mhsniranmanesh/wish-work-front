@@ -19,7 +19,7 @@ class ProjectProfile extends React.Component {
 
         this.state = {
             projectDetail: "",
-            amountOfMileStones: 0,
+            amountOfMileStones: '',
             Length: 0,
             bid_description: '',
             bid_price: '',
@@ -49,7 +49,9 @@ class ProjectProfile extends React.Component {
             addBidModalForFreelancer:false,
             MLNumberForModal:0,
             myTime:0,
-            myPrice:0
+            myPrice:0,
+            ErrorModal:false,
+            ErrorMsgModal: ""
         };
 
         // delivery_duration: Array [ "This field is required." ]
@@ -136,7 +138,7 @@ class ProjectProfile extends React.Component {
         this.setState({modalCM: "پیشنهاد شما کنسل شد، ۱۰ ویش کوین بابت انصراف از شما کم شد"})
     }
     ModalError(){
-
+        this.setState({ErrorModal: !this.state.ErrorModal})
     }
     ModalAccept(){
         this.setState({modalAcceptOrReject:false});
@@ -289,7 +291,7 @@ class ProjectProfile extends React.Component {
             () => this.clicksubmit()
         )
             .catch(err => {
-                console.log(err)
+                this.setState({loading:false , ErrorModal:true , ErrorMsgModal:"خطا در اتصال ، مجددا تلاش کنید."});
             });
 
     }
@@ -300,10 +302,24 @@ class ProjectProfile extends React.Component {
                 showError: true,
                 message: "توضیحی در رابطه با پیشنهاد خود بدهید، این بخش برای مشتری بسیار تاثیر گذار است"
             });
-        } else if (this.state.bid_price === '') {
+        }
+        else if(this.state.delivery_duration < 0){
+            this.setState({
+                showError: true,
+                message: "لطفا زمان پیشنهادی خود را بیشتر از صفر وارد کنید"
+            });
+
+        }
+        else if (this.state.bid_price === '') {
             this.setState({
                 showError: true,
                 message: "لطفا قیمت پیشنهادی خود را ارائه دهید."
+            });
+        }
+        else if (this.state.bid_price < 1000) {
+            this.setState({
+                showError: true,
+                message: "لطفا قیمت پیشنهادی خود را بیشتر از ۱۰۰۰ وارد نمایید"
             });
         }
         else if (this.state.bid_price !== '' && !this.state.validPrice) {
@@ -382,49 +398,55 @@ class ProjectProfile extends React.Component {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
     BidPrice(event) {
-        let price = event.target.value;
-        price = this.persianToEnglish(price);
-        const trueOrFalsePriceValid = this.validateBidAmount(price);
-        this.setState({
-            bid_price: price, validPrice: trueOrFalsePriceValid
-        })
-
+        if(event.target.value !== '') {
+            let price = event.target.value;
+            price = this.persianToEnglish(price);
+            const trueOrFalsePriceValid = this.validateBidAmount(price);
+            this.setState({
+                bid_price: price, validPrice: trueOrFalsePriceValid
+            })
+        }
     }
 
     roundBidAmount(event) {
-        let numb = Number((this.state.bid_price));
-        numb = (Math.ceil(numb));
-        const trueOrFalsePriceValid2 = this.validateBidAmount(numb);
+        if(event.target.value !== '') {
+            let numb = Number((this.state.bid_price));
+            numb = (Math.ceil(numb));
+            const trueOrFalsePriceValid2 = this.validateBidAmount(numb);
 
-        if (isNaN(numb)) {
-            numb = '';
+            if (isNaN(numb)) {
+                numb = '';
+            }
+            event.target.value = numb;
+            this.setState({bid_price: numb, validPrice: trueOrFalsePriceValid2})
         }
-        event.target.value = numb;
-        this.setState({bid_price: numb, validPrice: trueOrFalsePriceValid2})
-
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     DeliveryTime(event) {
-        let time = event.target.value;
-        time = this.persianToEnglish(time);
-        const trueOrFalseTimeValid = this.validateDeliveryTime(time);
-        this.setState({
-            delivery_duration: time, validTime: trueOrFalseTimeValid
-        });
+        if(event.target.value !== '') {
+            let time = event.target.value;
+            time = this.persianToEnglish(time);
+            const trueOrFalseTimeValid = this.validateDeliveryTime(time);
+            this.setState({
+                delivery_duration: time, validTime: trueOrFalseTimeValid
+            });
+        }
     }
 
     roundDeliveryTime(event) {
-        let numb = Number(this.state.delivery_duration);
-        numb = (Math.ceil(numb));
-        const trueOrFalseTimeValid2 = this.validateDeliveryTime(numb);
-        if (isNaN(numb)) {
-            numb = '';
+        if(event.target.value !== '') {
+            let numb = Number(this.state.delivery_duration);
+            numb = (Math.ceil(numb));
+            const trueOrFalseTimeValid2 = this.validateDeliveryTime(numb);
+            if (isNaN(numb)) {
+                numb = '';
+            }
+            event.target.value = numb;
+            this.setState({
+                delivery_duration: numb, validTime: trueOrFalseTimeValid2
+            });
         }
-        event.target.value = numb;
-        this.setState({
-            delivery_duration: numb, validTime: trueOrFalseTimeValid2
-        });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -451,7 +473,7 @@ class ProjectProfile extends React.Component {
         else if ((((this.state.delivery_duration -2)/this.state.amountOfMileStones ) <4) && (this.state.delivery_duration>=7)){
             this.setState({
                 showError: true,
-                message: "فاصله ی بین بازه های زمانی باید بیشتر از ۴ روز باشد!(دو روز مهلت اعمال تغییرات است.)"
+                message: "فاصله ی بین بازه های زمانی باید بیشتر از ۴ روز باشد!"
             });
         }
         else if((((this.state.delivery_duration -2)/this.state.amountOfMileStones ) <4) && (this.state.delivery_duration<7)){
@@ -500,9 +522,7 @@ class ProjectProfile extends React.Component {
     componentWillMount() {
         //console.log('this.props:', this.props.location.pathname.slice(10));
         clearInterval(this.interval);
-        if (this.state.loading) {
-            clearInterval(this.state.intervalId);
-        }
+
         // var x= this.size()
         // if()
         // this.setState({})
@@ -514,9 +534,9 @@ class ProjectProfile extends React.Component {
                 if (this.props.projectDetail[sIze-1].general.project_bids[i].freelancer.username === this.props.profileInfo.username) {
                     this.setState({userHasBid:true});
                     this.setState({isLoggedIn:true});
-                    this.setState({myPrice:this.props.projectDetail[sIze-1].general.project_bids[i].price});
-                    this.setState({myTime:this.props.projectDetail[sIze-1].general.project_bids[i].delivery_duration});
-                    this.setState({MLNumberForModal:this.props.projectDetail[sizeD - 1].general.project_bids[i].number_of_milestones})
+                    // this.setState({myPrice:this.props.projectDetail[sIze-1].general.project_bids[i].price});
+                    // this.setState({myTime:this.props.projectDetail[sIze-1].general.project_bids[i].delivery_duration});
+                    // this.setState({MLNumberForModal:this.props.projectDetai[sIze - 1].general.project_bids[i].number_of_milestones})
                 }
             }
         }
@@ -543,7 +563,7 @@ class ProjectProfile extends React.Component {
                         this.setState({userHasBid: true});
                         this.setState({myPrice:nextProps.projectDetail[sizeD - 1].general.project_bids[i].price});
                         this.setState({myTime:nextProps.projectDetail[sizeD - 1].general.project_bids[i].delivery_duration});
-                        this.setState({MLNumberForModal:this.props.projectDetail[sizeD - 1].general.project_bids[i].number_of_milestones})
+                        this.setState({MLNumberForModal:nextProps.projectDetail[sizeD - 1].general.project_bids[i].number_of_milestones})
 
                     }
                     else {
@@ -668,6 +688,14 @@ class ProjectProfile extends React.Component {
                                     <ModalBody>
                                         <Progress completed={this.state.progressNumber}/>
                                     </ModalBody>
+                                </Modal>
+                                <Modal isOpen={this.state.ErrorModal} toggle={this.ModalError}>
+                                    <ModalBody>
+                                        {this.state.ErrorMsgModal}
+                                    </ModalBody>
+                                    <ModalFooter>
+                                        <button className="btn btn-rec btn-primary" onClick={this.ModalError}>باشه</button>
+                                    </ModalFooter>
                                 </Modal>
                                 <Modal
                                     isOpen={this.state.freelancerIsSelected && (!this.state.projectDetail.is_started) && this.state.modalAcceptOrReject}>

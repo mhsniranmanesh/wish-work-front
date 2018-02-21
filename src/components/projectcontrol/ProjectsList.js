@@ -2,6 +2,7 @@ import React from 'react' ;
 import PropTypes from 'prop-types';
 import {Button} from 'reactstrap';
 import ProjectTemplate from './ProjectTemplate';
+import HelpForCP from './HelpForCP';
 
 const ProjectsList = (props) => {
     var numberC = [];
@@ -30,7 +31,8 @@ const ProjectsList = (props) => {
             />)
         }
     }
-  return(
+    List.push(<HelpForCP/>);
+    return(
     <ul className="contact-list">
         {List}
       </ul>

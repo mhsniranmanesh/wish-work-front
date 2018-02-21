@@ -51,7 +51,19 @@ class ProjectProfile extends React.Component {
             myTime:0,
             myPrice:0,
             ErrorModal:false,
-            ErrorMsgModal: ""
+            ErrorMsgModal: "",
+            stateForMileStone1:false,
+            stateForMileStone2:false,
+            stateForMileStone3:false,
+            stateForMileStone4:false,
+            DisableMileStone1:true,
+            DisableMileStone2:true,
+            DisableMileStone3:true,
+            DisableMileStone4:true,
+            ClassMileStone1:" radio-disabled form-body-fontsize",
+            ClassMileStone2:" radio-disabled form-body-fontsize",
+            ClassMileStone3:" radio-disabled form-body-fontsize",
+            ClassMileStone4:" radio-disabled form-body-fontsize",
         };
 
         // delivery_duration: Array [ "This field is required." ]
@@ -94,6 +106,22 @@ class ProjectProfile extends React.Component {
         this.toggleBid = this.toggleBid.bind(this);
         //this.counter = this.counter.bind(this);
         this.toPersianNum = this.toPersianNum.bind(this);
+        this.is1MileStone = this.is1MileStone.bind(this);
+        this.is2MileStone = this.is2MileStone.bind(this);
+        this.is3MileStone = this.is3MileStone.bind(this);
+        this.is4MileStone = this.is4MileStone.bind(this);
+    }
+    is1MileStone(){
+        this.setState({ ModalState: 'modal',amountOfMileStones: 1 , stateForMileStone1:true ,stateForMileStone2:false , stateForMileStone3:false , stateForMileStone4:false })
+    }
+    is2MileStone(){
+        this.setState({ModalState: 'modal',amountOfMileStones: 2 , stateForMileStone1:false ,stateForMileStone2:true , stateForMileStone3:false , stateForMileStone4:false })
+    }
+    is3MileStone(){
+        this.setState({ModalState: 'modal',amountOfMileStones: 3 , stateForMileStone1:false ,stateForMileStone2:false , stateForMileStone3:true , stateForMileStone4:false })
+    }
+    is4MileStone(){
+        this.setState({ModalState: 'modal',amountOfMileStones: 4 , stateForMileStone1:false ,stateForMileStone2:false , stateForMileStone3:false , stateForMileStone4:true })
     }
     toPersianNum( num, dontTrim ) {
 
@@ -279,7 +307,7 @@ class ProjectProfile extends React.Component {
         var sendData = {
             description: this.state.bid_description,
             project_id: this.state.projectDetail.uuid,
-            number_of_milestones: this.state.Length,
+            number_of_milestones: this.state.amountOfMileStones,
             price: bid_price,
             delivery_duration: this.state.delivery_duration,
             has_default_bid_controller: false,
@@ -355,7 +383,7 @@ class ProjectProfile extends React.Component {
         else if (this.state.amountOfMileStones < 1) {
             this.setState({
                 showError: true,
-                message: "لطفا تعداد بازه های زمانی را بیشتر از ۱ انتخاب کنید!"
+                message: "لطفا تعداد بازه های زمانی را بیشتر از صفر انتخاب کنید!"
             });
         }
         else if(this.state.amountOfMileStones > 4){
@@ -364,29 +392,29 @@ class ProjectProfile extends React.Component {
                 message: "لطفا تعداد بازه های زمانی را  کمتر از ۴ انتخاب کنید!"
             });
         }
-        else if (this.state.Length < 1) {
-            this.setState({
-                showError: true,
-                message: "لطفا تعداد بازه های زمانی را بیشتر از ۱ انتخاب کنید!"
-            });
-        }
-        else if(this.state.Length > 4){
-            this.setState({
-                showError: true,
-                message: "لطفا تعداد بازه های زمانی را  کمتر از ۴ انتخاب کنید!"
-            });
-        }
-        else if((((this.state.delivery_duration -2)/this.state.amountOfMileStones ) <4) && (this.state.delivery_duration<7)){
-            this.setState({showWarnings:true,
-                message: "فعلا نمیتوان پیشنهاد زیر ۷ روز را به ثبت رساند"
-            })
-        }
+        // else if (this.state.Length < 1) {
+        //     this.setState({
+        //         showError: true,
+        //         message: "لطفا تعداد بازه های زمانی را بیشتر از ۱ انتخاب کنید!"
+        //     });
+        // }
+        // else if(this.state.Length > 4){
+        //     this.setState({
+        //         showError: true,
+        //         message: "لطفا تعداد بازه های زمانی را  کمتر از ۴ انتخاب کنید!"
+        //     });
+        // }
+        // else if((((this.state.delivery_duration -2)/this.state.amountOfMileStones ) <4) && (this.state.delivery_duration<7)){
+        //     this.setState({showWarnings:true,
+        //         message: "فعلا نمیتوان پیشنهاد زیر ۷ روز را به ثبت رساند"
+        //     })
+        // }
         else {
             this.state.bid_price = Number(this.state.bid_price);
-            this.setState({ModalState: 'modal'});
             this.state.delivery_duration = Number(this.state.delivery_duration);
             this.FinalSubmitBid()
         }
+        console.log(this.state.amountOfMileStones , 'this.state.amountOfMileStones === 2');
     }
 
     BidDescription(event) {
@@ -424,10 +452,64 @@ class ProjectProfile extends React.Component {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     DeliveryTime(event) {
-        if(event.target.value !== '') {
+        if(event.target.value !== '' || event.target.value !==0) {
             let time = event.target.value;
             time = this.persianToEnglish(time);
             const trueOrFalseTimeValid = this.validateDeliveryTime(time);
+            if(event.target.value>0) {
+                this.setState({DisableMileStone1: false, ClassMileStone1: "radio-text form-body-fontsize"});
+                if (event.target.value > 9) {
+                    this.setState({DisableMileStone2: false, ClassMileStone2: "radio-text form-body-fontsize" , ModalState: 'modal'});
+                }
+                else {
+                    this.setState({DisableMileStone2: true, ModalState:'',
+                        ClassMileStone2: " radio-disabled form-body-fontsize" , stateForMileStone2:false });
+                    if(this.state.amountOfMileStones === 2){
+                        this.setState({amountOfMileStones : ''});
+                    }
+                }
+                if (event.target.value > 13) {
+                    this.setState({DisableMileStone3: false, ClassMileStone3: "radio-text form-body-fontsize" , ModalState: 'modal'  })
+                }
+                else {
+                    this.setState({DisableMileStone3: true, ModalState:'',
+                        ClassMileStone3: " radio-disabled form-body-fontsize" , stateForMileStone3:false});
+                    if(this.state.amountOfMileStones === 3){
+                        this.setState({amountOfMileStones : ''});
+                    }
+                }
+                if (event.target.value > 17) {
+                    this.setState({DisableMileStone4: false, ClassMileStone4: "radio-text form-body-fontsize" , ModalState: 'modal'})
+                }
+                else {
+                    this.setState({DisableMileStone4: true, ModalState:'',
+                        ClassMileStone4: " radio-disabled form-body-fontsize" , stateForMileStone4:false});
+                    if(this.state.amountOfMileStones === 4){
+                        this.setState({amountOfMileStones : ''});
+                    }
+                }
+            }
+            else {
+                this.setState({
+                    stateForMileStone1:false,
+                    stateForMileStone2:false,
+                    stateForMileStone3:false,
+                    stateForMileStone4:false,
+                    DisableMileStone1:true,
+                    DisableMileStone2:true,
+                    DisableMileStone3:true,
+                    DisableMileStone4:true,
+                    ModalState:'',
+                    ClassMileStone1:" radio-disabled form-body-fontsize",
+                    ClassMileStone2:" radio-disabled form-body-fontsize",
+                    ClassMileStone3:" radio-disabled form-body-fontsize",
+                    ClassMileStone4:" radio-disabled form-body-fontsize",
+                });
+                if((this.state.amountOfMileStones === 2) || (this.state.amountOfMileStones === 3) ||
+                    (this.state.amountOfMileStones === 1) || (this.state.amountOfMileStones === 4)){
+                    this.setState({amountOfMileStones : ''});
+                }
+            }
             this.setState({
                 delivery_duration: time, validTime: trueOrFalseTimeValid
             });
@@ -458,7 +540,14 @@ class ProjectProfile extends React.Component {
                 message: "لطفا ابتدا زمان پیشنهادی خود را انتخاب کنید!"
             });
         }
+        else if(this.state.amountOfMileStones === ''){
+            this.setState({
+                showError: true,
+                message: "لطفا تعداد بازه های زمانی خود را مشخص نمایید!"
+            });
+        }
         else if (this.state.amountOfMileStones < 1) {
+            console.log(typeof this.state.amountOfMileStones , 'this.state.amountOfMileStones');
             this.setState({
                 showError: true,
                 message: "لطفا تعداد بازه های زمانی را بیشتر از ۱ انتخاب کنید!"
@@ -661,15 +750,17 @@ class ProjectProfile extends React.Component {
     //     }
     // }
     progressNumber() {
-        setTimeout( () => {
-            var i = this.state.progressNumber + 20;
-                                                                        //  call a 3s setTimeout when the loop is called
-            this.setState({progressNumber: this.state.progressNumber +20});
-                      console.log(this.state.progressNumber , 'progressNumber');                                                          //  increment the counter
-            if (this.state.progressNumber < 100) {                                                      //  if the counter < 100, call the loop function
-                this.progressNumber();                                           //  ..  again which will trigger another
-            }                        //  ..  setTimeout()
-        }, 7000)
+        if(this.state.progressNumber > 10) {
+            setTimeout(() => {
+                var i = this.state.progressNumber + 20;
+                //  call a 3s setTimeout when the loop is called
+                this.setState({progressNumber: i});
+                console.log(this.state.progressNumber, 'progressNumber');                                                          //  increment the counter
+                if (this.state.progressNumber < 80) {                                                      //  if the counter < 100, call the loop function
+                    this.progressNumber();                                           //  ..  again which will trigger another
+                }                        //  ..  setTimeout()
+            }, 2000)
+        }
     }
     render() {
         if (this.state.showBidsList) {
@@ -703,7 +794,7 @@ class ProjectProfile extends React.Component {
                                         کنید
                                         <div className="not-inline"><i className="fa fa-usd"/> <strong>بودجه:</strong> {this.toPersianNum(this.state.myPrice * 1000)} تومان</div>
                                         <div className="not-inline"><i className="fa fa-calendar-o"/> <strong>مهلت:</strong> {this.toPersianNum(this.state.myTime*1)} روز</div>
-                                        <div className="not-inline"><i className="fa fa-font-awesome"></i> <strong>تعداد بازه های تحویل:</strong> {this.toPersianNum(this.state.MLNumberForModal)} بازه</div>
+                                        <div className="not-inline"><i className="fa fa-font-awesome"/> <strong>تعداد بازه های تحویل:</strong> {this.toPersianNum(this.state.MLNumberForModal)} بازه</div>
                                         {/*<div className="not-inline"><i className="fa fa-clock-o"/> <strong>زمان ثبت:</strong> {m}</div>*/}
                                         {/*<div className="not-inline"><i className="fa fa-book"/> تعداد صفحات: <strong> {this.toPersianNum(props.numberOfPages)}</strong></div>*/}
                                     </ModalBody>
@@ -811,6 +902,22 @@ class ProjectProfile extends React.Component {
 
                                         />
                                         <AddBid
+                                            ClassMileStone1={this.state.ClassMileStone1}
+                                            ClassMileStone2={this.state.ClassMileStone2}
+                                            ClassMileStone3={this.state.ClassMileStone3}
+                                            ClassMileStone4={this.state.ClassMileStone4}
+                                            DisableMileStone1={this.state.DisableMileStone1}
+                                            DisableMileStone2={this.state.DisableMileStone2}
+                                            DisableMileStone3={this.state.DisableMileStone3}
+                                            DisableMileStone4={this.state.DisableMileStone4}
+                                            is1MileStone={this.is1MileStone}
+                                            is2MileStone={this.is2MileStone}
+                                            is3MileStone={this.is3MileStone}
+                                            is4MileStone={this.is4MileStone}
+                                            stateForMileStone1={this.state.stateForMileStone1}
+                                            stateForMileStone2={this.state.stateForMileStone2}
+                                            stateForMileStone3={this.state.stateForMileStone3}
+                                            stateForMileStone4={this.state.stateForMileStone4}
                                             freelancerIsSelected={this.state.freelancerIsSelected}
                                             toPersianNum={this.toPersianNum}
                                             isVerified={this.state.projectDetail.is_verified }

@@ -190,7 +190,7 @@ const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordC
 
                       <li className="project-prop project-prop-money">
                          <span> <i className="fa fa-usd"/>
-                             {toPersianNum(ProjectDetail.budget)} (تومان)</span>
+                             {toPersianNum(ProjectDetail.budget*1000)} (تومان)</span>
                       </li>
                         <li className="project-prop project-prop-time">
                           <span><i className="fa fa-clock-o"/>

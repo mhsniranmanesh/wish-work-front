@@ -133,35 +133,32 @@ const AddBid = (props) => {
                                                 <Row className= "fields">
                                                     <Col>
                                                       <label>
-                                                        <input className="btn-radio" type="radio" name="rb" id="rb1" onChange={props.valueOfMileStones} value={props.amountOfMileStones} checked={props.CheckLength}  disabled/>
-                                                          <span htmlFor="rb1" className=" radio-disabled form-body-fontsize">۱</span>
+                                                        <input className="btn-radio" type="radio" name="rb" id="rb1" onChange={props.is1MileStone} checked={props.stateForMileStone1}  disabled={props.DisableMileStone1}/>
+                                                          <span htmlFor="rb1" className={props.ClassMileStone1}>۱</span>
                                                       </label>
                                                     </Col>
                                                     <Col>
                                                       <label>
-                                                        <input className="btn-radio" type="radio" name="rb" id="rb2" onChange={props.valueOfMileStones} value={props.amountOfMileStones} checked={props.CheckLength}/>
-                                                        <span htmlFor="rb2" className="radio-text form-body-fontsize">۲</span>
+                                                        <input className="btn-radio" type="radio" name="rb" id="rb2" onChange={props.is2MileStone}  checked={props.stateForMileStone2} disabled={props.DisableMileStone2}/>
+                                                        <span htmlFor="rb2" className={props.ClassMileStone2}>۲</span>
                                                     </label>
                                                     </Col>
                                                     <Col>
                                                         <label>
-                                                          <input className="btn-radio" type="radio" name="rb" id="rb3" onChange={props.valueOfMileStones} value={props.amountOfMileStones} checked={props.CheckLength}/>
-                                                          <span htmlFor="rb3" className="radio-text form-body-fontsize">۳</span>
+                                                          <input className="btn-radio" type="radio" name="rb" id="rb3" onChange={props.is3MileStone}  checked={props.stateForMileStone3} disabled={props.DisableMileStone3}/>
+                                                          <span htmlFor="rb3" className={props.ClassMileStone3}>۳</span>
                                                         </label>
                                                     </Col>
                                                     <Col>
                                                       <label>
-                                                        <input className="btn-radio" type="radio" name="rb" id="rb4" onChange={props.valueOfMileStones} value={props.amountOfMileStones} checked={props.CheckLength}/>
-                                                        <span htmlFor="rb4" className="radio-text form-body-fontsize">۴</span>
+                                                        <input className="btn-radio" type="radio" name="rb" id="rb4" onChange={props.is4MileStone}  checked={props.stateForMileStone4} disabled={props.DisableMileStone4}/>
+                                                        <span htmlFor="rb4" className={props.ClassMileStone4}>۴</span>
                                                       </label>
                                                     </Col>
                                                 </Row>
                                           </div>
-<<<<<<< HEAD
                                           <div className="form-body-fontsize point">تذکر: اگر  می خواهید پروژه را در ۲ مرحله تحویل دهید باید زمان انجام پروژه حداقل ۱۰ روز باشد. ۳ مرحله حداقل ۱۴ روز و ۴ مرحله حداقل ۱۸ روز نیازمند می باشد. در ضمن فعلا حداقل زمان انجام پروژه ۷ روز می باشد.</div>
 
-=======
->>>>>>> a4d067d3e8d6f4566b0919f9bbfbbfc67f771a57
                                     </form>
                                     {props.showError ? <Errors message={props.message}/> : (true)}
                                     {props.showWarnings ? <Warnings message={props.message}/> : (true)}
@@ -177,7 +174,7 @@ const AddBid = (props) => {
                                                                       numberOfPages={props.numberOfPages}
                                                                       number_of_milestones={props.amountOfMileStones}
                                                                       delivery_duration={props.delivery_duration}
-                                                                      Length={props.Length}/>
+                                                                      Length={props.amountOfMileStones}/>
                                                 </div>
                                             </div>
                                         </div>
@@ -310,6 +307,10 @@ else {
 };
 
 AddBid.PropTypes ={
+    is1MileStone: PropTypes.func.isRequired,
+    is2MileStone: PropTypes.func.isRequired,
+    is3MileStone: PropTypes.func.isRequired,
+    is4MileStone: PropTypes.func.isRequired,
     amountOfMileStones: PropTypes.object.isRequired,
     Length: PropTypes.element.isRequired
 };

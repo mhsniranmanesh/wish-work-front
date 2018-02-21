@@ -55,7 +55,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                 <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
                                      style={ {height:60 , width:60 , backgroundColor:colorCode} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
                                <div className="bid-subject">
-                                 <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
+                                 <a onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username)}} className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
                                  <button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec btn-handshake"
                                          data-toggle="modal" data-target={"#" + (number*10) }>
                                      <i className="fa fa-handshake-o"/>
@@ -112,7 +112,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
 
 
                                 <div className="bid-subject">
-                                    <a href="#"
+                                    <a onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username)}}
                                        className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                 }}/>
 
                                <div className="bid-subject">
-                                  <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
+                                  <a onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username)}} className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
                                </div>
                                {freelancerIsSelected ? (null) :
                                    <i className="fa fa-trash-o delete-self-bid" aria-hidden="true"
@@ -237,7 +237,8 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                     <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
                          style={ {height:60 , width:60 , backgroundColor:colorCode} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
                        <div className="media-body mt-3">
-                        <a href="#" className="fl-name">{Bid.freelancer.first_name}</a>
+                        <a onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username)}} className="fl-name">
+                            {Bid.freelancer.first_name} {Bid.freelancer.last_name}</a>
                         <span className="bidding-price">{toPersianNum(Bid.price * 1000)} تومان</span>
                         {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
                                 {/*data-toggle="modal" data-target="#accBiddingModal">*/}

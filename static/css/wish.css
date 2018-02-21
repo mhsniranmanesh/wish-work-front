@@ -1077,8 +1077,9 @@ section.signin .con-body .sub-label {
 }
 
 textarea.form-control {
-    min-height: 100px;
+    min-height: 70px;
 }
+
 
 .navbar-toggler {
     border-radius: 0;

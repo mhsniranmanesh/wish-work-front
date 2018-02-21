@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import Errors from './Errors';
 import moment from 'moment-jalaali';
 import Warnings from './Warnings';
-import {Modal} from 'reactstrap';
+import {Modal , Row , Col} from 'reactstrap';
+
 
 const AddBid = (props) => {
     var userHasBid = props.userHasBid ;
@@ -89,27 +90,30 @@ const AddBid = (props) => {
                                 </div>
                                 <div className="modal-body">
                                     <form className="signup-form" onSubmit={(event)=> props.returnFalse(event)}>
-                                        <div className="form-group">
-                                            <input type="text"
-                                                   className="form-control form-control-danger"
-                                                   placeholder="قیمت پیشنهادی (تومان)"
-                                                   value={props.bid_price}
-                                                   onChange={props.BidPrice}
-                                                   onBlur={props.roundBidAmount}
-                                            />
-                                        </div>
-                                        <div className="form-group">
-                                            <input type="text"
-                                                   className="form-control form-control-danger"
-                                                   placeholder="زمان پیشنهادی (روز)"
-                                                   value={props.delivery_duration}
-                                                   onChange={props.DeliveryTime}
-                                                   onBlur={props.roundDeliveryTime}
-                                            />
-                                        </div>
+                                      <div className="row">
+                                          <div className="form-group col-sm-5">
+                                              <input type="text"
+                                                     className="form-control form-control-danger"
+                                                     placeholder="قیمت پیشنهادی (تومان)"
+                                                     value={props.bid_price}
+                                                     onChange={props.BidPrice}
+                                                     onBlur={props.roundBidAmount}
+                                              />
+                                          </div>
+                                          <div className="col-sm-2"></div>
+                                          <div className="form-group col-sm-5">
+                                              <input type="text"
+                                                     className="form-control form-control-danger"
+                                                     placeholder="زمان پیشنهادی (روز)"
+                                                     value={props.delivery_duration}
+                                                     onChange={props.DeliveryTime}
+                                                     onBlur={props.roundDeliveryTime}
+                                              />
+                                          </div>
+                                      </div>
                                         <div className="form-group">
                                             <textarea type="text"
-                                                      className="form-control"
+                                                      className="form-control  add-bid-descript"
                                                       placeholder="توضیحات"
                                                       value={props.bid_description}
                                                       onChange={props.BidDescription}
@@ -123,25 +127,37 @@ const AddBid = (props) => {
                                             {/*/>*/}
                                         {/*</div>*/}
                                         <label htmlFor="skillType" className="col-form-label d-block">
-                                            بازه های تحویل پروژه را انتخاب کنید
+                                            در چند مرحله پروژه را تحویل می دهید؟
                                         </label>
-                                        <div className="input-group mb-1">
-                                            <input type="number" className="form-control"
-                                                   placeholder="تعداد موعدهای تحویل پروژه"
-                                                   onChange={props.valueOfMileStones}
-                                                   value={props.amountOfMileStones}/>
-                                            <Button type="submit" className="btn btn-success btn-rec"
-                                                    onClick={props.CheckLength}>انتخاب</Button>
+                                          <div className="input-group mb-1">
+                                                <Row className= "fields">
+                                                    <Col>
+                                                      <label>
+                                                        <input className="btn-radio" type="radio" name="rb" id="rb1" onChange={props.valueOfMileStones} value={props.amountOfMileStones} checked={props.CheckLength}/>
+                                                          <span htmlFor="rb1" className="radio-text form-body-fontsize">۱</span>
+                                                      </label>
+                                                    </Col>
+                                                    <Col>
+                                                      <label>
+                                                        <input className="btn-radio" type="radio" name="rb" id="rb2" onChange={props.valueOfMileStones} value={props.amountOfMileStones} checked={props.CheckLength}/>
+                                                        <span htmlFor="rb2" className="radio-text form-body-fontsize">۲</span>
+                                                    </label>
+                                                    </Col>
+                                                    <Col>
+                                                        <label>
+                                                          <input className="btn-radio" type="radio" name="rb" id="rb3" onChange={props.valueOfMileStones} value={props.amountOfMileStones} checked={props.CheckLength}/>
+                                                          <span htmlFor="rb3" className="radio-text form-body-fontsize">۳</span>
+                                                        </label>
+                                                    </Col>
+                                                    <Col>
+                                                      <label>
+                                                        <input className="btn-radio" type="radio" name="rb" id="rb4" onChange={props.valueOfMileStones} value={props.amountOfMileStones} checked={props.CheckLength}/>
+                                                        <span htmlFor="rb4" className="radio-text form-body-fontsize">۴</span>
+                                                      </label>
+                                                    </Col>
+                                                </Row>
+                                          </div>
 
-                                        </div>
-                                        <div className="row mb-3">
-                                            <div className="col-sm-6 text-muted">
-                                                حداقل: <span className="badge badge-success">2</span>
-                                            </div>
-                                            <div className="col-sm-6 text-muted">
-                                                حداکثر: <span className="badge badge-danger">4</span>
-                                            </div>
-                                        </div>
                                     </form>
                                     {props.showError ? <Errors message={props.message}/> : (true)}
                                     {props.showWarnings ? <Warnings message={props.message}/> : (true)}

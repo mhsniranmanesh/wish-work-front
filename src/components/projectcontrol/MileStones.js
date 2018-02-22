@@ -47,7 +47,16 @@ const MileStones = (props)=> {
                 <h5>
                     <i className="fa fa-quote-left" aria-hidden="true"/>   راهنمای کنترل پروژه ی ویش ورک
                 </h5>
-                <HelpForCPContent/>
+                <HelpForCPContent anvaeBaze={props.anvaeBaze}
+                                  mohlateErsal={props.mohlateErsal}
+                                  mohlateBazNegari={props.mohlateBazNegari}
+                                  laghv={props.laghv}
+                                  bishtar={props.bishtar}
+                                  onClickAnvaeBaze={props.onClickAnvaeBaze}
+                                  onClickMohlateErsal={props.onClickMohlateErsal}
+                                  onClickMohlateBazNegari={props.onClickMohlateBazNegari}
+                                  onClickLaghv={props.onClickLaghv}
+                                  onClickBishtar={props.onClickBishtar}/>
             </div>
         )
     }

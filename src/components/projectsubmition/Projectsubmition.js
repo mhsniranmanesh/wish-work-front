@@ -951,10 +951,10 @@ class Projectsubmition extends React.Component{
 
                           {showError ? <Error message={this.state.message}/> : (true)}
                           <div>
-                            <span>
+                            <span >
                             <button className = "btn btn-rec btn-primary" onClick={this.handleSubmit}>ایجاد پروژه</button>
-                                <br/>
-<img src={require("../../../static/img/wish coin-05.png")} style={{height:35}}/> ۵۰
+                                                                <span className="wishcoin-description">۵۰</span>
+                                <img className="wishcoin-project-submission" src={require("../../../static/img/wish coin-05.png")} style={{height:25}}/>
                             </span>
                               <Modal isOpen={this.state.loading}>
                                   <ModalBody>

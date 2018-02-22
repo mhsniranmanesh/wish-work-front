@@ -29,7 +29,7 @@ var x,z;
     if((props.Detail.is_canceled)){
         return (
             <div onClick={(event) => {
-                props.goToMyProjectPublic(y);
+                props.goToCP();
             }}>
                 <a className="notif">
                     <Badge color='danger' pill className="badge-cancel"> لغو شده</Badge>

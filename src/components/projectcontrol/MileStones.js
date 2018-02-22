@@ -2,6 +2,7 @@ import React from 'react';
 import MileStoneFatherForFreelancer from './MileStoneFatherForFreelancer';
 import MileStoneFatherForClient from './MileStoneFatherForClient';
 import arraySort from 'array-sort';
+import HelpForCPContent from './HelpForCPContent';
 
 const MileStones = (props)=> {
     let FreelancerProject = [];
@@ -43,7 +44,10 @@ const MileStones = (props)=> {
     if(props.numberSee === -1){
         return(
             <div>
-                <h1>Hi</h1>
+                <h5>
+                    <i className="fa fa-quote-left" aria-hidden="true"/>   راهنمای کنترل پروژه ی ویش ورک
+                </h5>
+                <HelpForCPContent/>
             </div>
         )
     }

@@ -2033,6 +2033,13 @@ div #bg-primary-left {
         top: 24px;
     }
 }
+.fa-edit-x:hover{
+    text-shadow: 1px 1px;
+}
+.fa-edit{
+    font-size: 20px;
+    color: #01be94;
+}
 @media screen and (max-width: 380px) {
     .process-model.more-icon-preocess li {
         width: 16%;

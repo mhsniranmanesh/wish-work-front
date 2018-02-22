@@ -49,7 +49,7 @@ export function profileInfo(){
 export function updateSkills(profileSkills) {
     return function (dispatch) {
         return axios.post('/api/v1/skills/add/translation/' , profileSkills).then(profileskills =>{
-            dispatch(loadNewSkillsSuccess(profileskills.data))
+            dispatch(profileInfo())
         }).catch(error =>{
             throw (error);
         })

@@ -34,6 +34,7 @@ class ProjectProfile extends React.Component {
             priceForCash: "",
             validPrice: false,
             validTime: false,
+            time:"",
             cashinModalState: false,
             projectAdditional: "",
             progressNumber: 10,
@@ -50,6 +51,7 @@ class ProjectProfile extends React.Component {
             MLNumberForModal:0,
             myTime:0,
             myPrice:0,
+            isMounted:false,
             ErrorModal:false,
             ErrorMsgModal: "",
             stateForMileStone1:false,
@@ -606,18 +608,41 @@ class ProjectProfile extends React.Component {
         return x;
     };
     componentDidMount() {
-        this.interval = setInterval(() => this.setState({ time: Date.now() }), 1000);
+        var sIze = this.size(this.props.projectDetail);
+        this.interval = setInterval(() => this.setState({time: Date.now()}), 1000);
+
+        // if(sIze>0 && this.props.profileInfo.username) {
+        // }
+    }
+    componentWillUnmount(){
+        clearInterval(this.interval);
     }
     componentWillMount() {
         //console.log('this.props:', this.props.location.pathname.slice(10));
-        clearInterval(this.interval);
 
         // var x= this.size()
         // if()
         // this.setState({})
-        this.props.actions.projectDetail(this.props.location.pathname.slice(10));
+        // clearInterval(this.interval);
         var sIze = this.size(this.props.projectDetail);
+        var profileSize = this.size(this.props.profileInfo);
+        if(profileSize > 0){
+            this.setState({isLoggedIn:true});
+        }
+        if(sIze === 0) {
+            this.props.actions.projectDetail(this.props.location.pathname.slice(10));
+        }
         if(sIze>0 && this.props.profileInfo.username) {
+            this.setState({
+                showBidsList: true
+            });
+
+            this.setState({
+                projectDetail: Object.assign({}, this.props.projectDetail[sIze - 1].general)
+            });
+            this.setState({
+                projectAdditional: Object.assign({}, this.props.projectDetail[sIze - 1].additional_info)
+            });
             for (var i = 0; i < this.props.projectDetail[sIze-1].general.project_bids.length; i++) {
                 // console.log(props.this.state.projectDetail.project_bids[i].username , 'props.Bids[i].username' , props.profileInfo.username , 'props.profileInfo.username');
                 if (this.props.projectDetail[sIze-1].general.project_bids[i].freelancer.username === this.props.profileInfo.username) {
@@ -653,7 +678,6 @@ class ProjectProfile extends React.Component {
                         this.setState({myPrice:nextProps.projectDetail[sizeD - 1].general.project_bids[i].price});
                         this.setState({myTime:nextProps.projectDetail[sizeD - 1].general.project_bids[i].delivery_duration});
                         this.setState({MLNumberForModal:nextProps.projectDetail[sizeD - 1].general.project_bids[i].number_of_milestones})
-
                     }
                     else {
                         this.setState({userHasBid: false})

@@ -329,7 +329,7 @@ class Header2 extends React.Component {
                                     {this.state.profileInfo.first_name + ' ' + this.state.profileInfo.last_name}
                                 </a>
                                 <div id="profile" className="dropdown-menu" aria-labelledby="navbarUserDropdown" onClick={this.exit}>
-                                    <a className="dropdown-item" href="#">خروج</a>
+                                    <a className="dropdown-item" >خروج</a>
                                 </div>
                             </li>
                         </ul>

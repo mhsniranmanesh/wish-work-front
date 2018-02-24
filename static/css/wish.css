@@ -1268,7 +1268,10 @@ textarea.form-control {
 .sub-heading .fa{
   display: inline-block;
 }
-
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
 section.profile {
     background-color: #f1f1f1;
     padding-bottom: 75px;
@@ -1285,13 +1288,39 @@ section.profile {
     overflow: hidden;
     border-top: 1px solid #e9ecef;
 }
+@media (max-width: 576px) {
+    .image-size-not-found {
+        height: 100px;
+    }
+}
+@media (min-width: 1200px) {
+    .image-size-not-found {
+        height: 400px;
+    }
+}
+@media (min-width: 768px){
+    .image-size-not-found{
+        height: 250px;
+    }
+}
+@media (min-width: 992px) {
+    .image-size-not-found{
+        height: 300px;
+    }
+}
 
 .project-title {
     display: inline;
     font-weight: 400;
     line-height: 1.75rem;
 }
-
+.not-found-title{
+    text-align: center;
+    font-size: 30px;
+}
+.margin-auto-for-con{
+    margin: auto;
+}
 .modal-content {
   padding: 20px;
   border: 3px solid #ff7600;

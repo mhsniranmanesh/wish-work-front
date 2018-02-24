@@ -24,6 +24,7 @@ class ProjectProfile extends React.Component {
             bid_description: '',
             bid_price: '',
             ModalState: '',
+            notFoundPage:false,
             showError: false,
             showWarnings: false,
             profileInfo: Object.assign({}, props.profileInfo),
@@ -630,7 +631,13 @@ class ProjectProfile extends React.Component {
             this.setState({isLoggedIn:true});
         }
         if(sIze === 0) {
-            this.props.actions.projectDetail(this.props.location.pathname.slice(10));
+            this.props.actions.projectDetail(this.props.location.pathname.slice(10)).then().catch(
+                err=>{
+                    if(err="Project Not Found"){
+                        this.setState({notFoundPage : true})
+                    }
+                }
+            );
         }
         if(sIze>0 && this.props.profileInfo.username) {
             this.setState({
@@ -1000,7 +1007,7 @@ class ProjectProfile extends React.Component {
                                                 this.state.showError
                                             }
                                             budget={
-                                                (this.state.projectDetail.budget * 1000)
+                                                (thwis.state.projectDetail.budget * 1000)
                                             }
                                             delivery_duration={
                                                 this.state.delivery_duration
@@ -1020,9 +1027,27 @@ class ProjectProfile extends React.Component {
                 </section>
             )
         }
+        else if(this.state.notFoundPage){
+            return (
+                <section className="profile">
+                    <div className="container">
+                        <div className="row">
+                                <div className="con mb-5 margin-auto-for-con">
+                                <img src={require('../../../static/img/404wishwork.jpg')} className="image-size-not-found"/>
+                                    <br/><br/>
+                                <h5 className="not-found-title">پروژه ی مورد نظر یافت نشد!</h5>
+                                </div>
+                            </div>
+                    </div>
+                </section>
+            )
+
+        }
         else {
             return (
-                <div></div>
+              <div>
+
+              </div>
             )
         }
     }

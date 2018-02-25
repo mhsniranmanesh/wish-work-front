@@ -23,22 +23,23 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link href="css/fontiran.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="css/wish-dash.css">-->
 
 
 </head>
 
-<body>
+<body class="fixed-nav" id="page-top" dir="rtl">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src='img/IMG_2665.jpg' height="50"
+            <img src='img/IMG_2665.jpg' height="30"
                  class="d-inline-block align-top" alt="nav-logo"/>
         </a>
     </div>
 </nav>
 <div class="container">
     <h5 class="success-cash"><i class="fa fa-quote-left" aria-hidden="true"></i>  پرداخت شما با موفقیت انجام شد</h5>
-    <div class="box first">
+    <div id="dashboard" class="box first" onclick="goToDashboard()">
         <span class="icon-cont"><i class="fa fa-rocket"></i></span>
 
         <h3>داشبورد شما</h3>
@@ -46,7 +47,7 @@
 
     </div>
 
-    <div class="box second">
+    <div id="project-submission" class="box second" onclick="goToProjectSubmission()">
         <span class="icon-cont"><i class="fa fa-edit"></i></span>
 
         <h3>ثبت پروژه</h3>
@@ -54,15 +55,15 @@
 
     </div>
 
-    <div class="box third">
-        <span class="icon-cont"><i class="fa fa-desktop"></i></span>
+    <!--<div class="box third">-->
+        <!--<span class="icon-cont"><i class="fa fa-desktop"></i></span>-->
 
-        <h3>صفحه ی پروژه شما</h3>
+        <!--<h3>صفحه ی پروژه شما</h3>-->
 
-    </div>
+    <!--</div>-->
 
     <div class="box fourth">
-        <span class="icon-cont"><i class="fa fa-coffee"></i></span>
+        <span class="icon-cont"><i class="fa fa-coffee" onclick="goToProfileInfo()"></i></span>
 
         <h3>ویرایش اطلاعات</h3>
 
@@ -82,7 +83,7 @@
 <script src="vendor/persianumber/persianumber.min.js"></script>
 <!-- Bootstrap-Select -->
 <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
-
+<script src="js/afterCashInOut.js"></script>
 
 
 </body>

@@ -1,20 +1,20 @@
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
 
-
-
-module.exports = {
-    entry: {
-        app: './public/index.js'
+module.exports={
+    entry: './public/indexServer.js',
+    target: 'node',
+    output: {
+        path:_dirname,
+        filename: "serverPublic.js",
+        libraryTarget: "commonjs2"
     },
+    devtool:"cheap-module-source-map",
     module: {
         rules: [{
             test: /\.css$/,
             use: [
-                'style-loader',
-                'css-loader'
+                'style-loader/locals',
+                'css-loader/locals'
             ]
         },
             {
@@ -27,15 +27,19 @@ module.exports = {
                     ],
                     plugins: []
                 },
-                include: [
-                    path.resolve(__dirname, 'public'),
-                ]
+                // include: [
+                //     path.resolve(__dirname, 'src'),
+                // ]
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: [
                     'file-loader'
-                ]
+                ],
+                options: {
+                    name:"public/media/[name].[ext]",
+                    emit: false
+                }
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -56,5 +60,5 @@ module.exports = {
                 ]
             }
         ]
-    },
-}
+    }
+};

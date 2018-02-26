@@ -23,7 +23,7 @@ class Dashboard extends React.Component{
         projectSkillTag : "" , translationFatherTag : false ,
         is_general: false , is_medical : false , is_technical : false , is_law : false ,
         profileInfo:Object.assign({} , props.profileInfo[0]) , loading:true , 
-        suggestedProject:"" , popoverOpenWishcoin:false};
+        suggestedProject:"" , popoverOpenWishcoin:false , showMyProjects:false};
 
         this.IsLaw = this.IsLaw.bind(this);
         this.IsMedical = this.IsMedical.bind(this);
@@ -180,15 +180,19 @@ class Dashboard extends React.Component{
 
     componentWillReceiveProps(nextProps){
         var size = this.size(nextProps.profileInfo);
+        var sizeClientProjects = this.size(nextProps.profileInfo[size-1].client_projects);
+        var sizeFreelancerProjects = this.size(nextProps.profileInfo[size-1].freelancer_projects);
         if(this.props.profileInfo != nextProps.profileInfo ) {
             // console.log(nextProps.profileInfo[0]);
             //inja az halate bler dar biad
             this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[size-1])});
-            this.setState({loading: false})
+            this.setState({loading: false});
+            if((sizeClientProjects>0) || (sizeFreelancerProjects)){
+                this.setState({showMyProjects: true})
+            }
         }
     }
     componentWillMount() {
-// aval bler bashe
         var x = this.size(this.props.profileInfo);
         if (x > 0) {
             this.setState({loading: false});
@@ -201,6 +205,12 @@ class Dashboard extends React.Component{
             //     this.setState({showSkills: true});
             //
             // }
+            var size = this.size(this.props.profileInfo);
+            var sizeClientProjects = this.size(this.props.profileInfo[size-1].client_projects);
+            var sizeFreelancerProjects = this.size(this.props.profileInfo[size-1].freelancer_projects);
+            if((sizeClientProjects>0) || (sizeFreelancerProjects)){
+                this.setState({showMyProjects: true})
+            }
         }
     }
     gotoRecomendedProjects(event){
@@ -267,6 +277,7 @@ class Dashboard extends React.Component{
                         />
                     </div>
                     <div className="col-sm-7">
+                        {this.state.showMyProjects ?
                         <MyProjectsListForDashboard   profileInfo={this.state.profileInfo} myFunc={this.gotoMyProjects}
                                                        size={this.size}
                                                        goToMyProjectPublic={this.goToMyProjectPublic}
@@ -274,7 +285,7 @@ class Dashboard extends React.Component{
                                                       gotoMyProjects={this.gotoMyProjects}
                                                       goToCP={this.goToCP}
 
-                        />
+                        /> : (null)}
                         {this.state.profileInfo.is_freelancer ?
                             <ProjectsListForDashboard
                                                       toPersianNum={this.toPersianNum}

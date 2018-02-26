@@ -12,7 +12,7 @@ const ProjectsListForDashboard = ({Projects , myFunc , goToProjectProfile , Word
         }
         return (
             <div className="dash-con dash-recoms mb-4">
-                <h5>پروژه های پیشنهادی</h5>
+                <h5>پروژه های پیشنهادی برای شما</h5>
                 <div className="dash-divider"/>
                 {ProjectsArr.map((ProjectDetail, index) =>
                     <ProjectTemplateForDashboard key={index} ProjectDetail={ProjectDetail}

@@ -113,7 +113,16 @@ class Projectsubmition extends React.Component{
         this.submitProjectAuctionState = this.submitProjectAuctionState.bind(this);
         this.redirect = this.redirect.bind(this);
         this.toPersianNum = this.toPersianNum.bind(this);
+        this.size = this.size.bind(this);
     }
+    size (obj) {
+        let x = 0, key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) x++;
+        }
+        return x;
+    };
+
     ErrorFromServerSide(){
         this.setState({progressNumber : 10});
         this.setState({modal : false});
@@ -335,6 +344,11 @@ class Projectsubmition extends React.Component{
 
     componentWillMount(){
        // console.log('this.props.location.search.length' , this.props.location.search.length);
+        let x = this.size(this.props.profileInfo);
+        if(x>0){
+            this.setState({profileInfo : this.props.profileInfo[x-1]});
+            // console.log('XXX')
+        }
         if(this.props.location.search.length === 6){
             if(this.props.location.search[1] === '1'){
                 this.state.translationFrom = 1;
@@ -682,6 +696,9 @@ class Projectsubmition extends React.Component{
              this.setState({showError: true});
              this.setState({message:"لطفا فایل ترجمه ی خود را انتخاب کنید"})
         }
+        else if(this.state.profileInfo.wish_coins < 50){
+             this.setState({showError:true , message:"ویش کوین شما کمتر از ۵۰ عدد می باشد، لطفا به حساب خود مراجعه کرده و در صفحه ی ویش کوین ، خریداری کنید"})
+        }
         else {
             // this.setState({});
             this.setState({showError: false, type : STATIC_DATAS.TYPE.NORMAL ,category : STATIC_DATAS.CATEGORY.TRANSLATION ,  modal: true});
@@ -951,10 +968,10 @@ class Projectsubmition extends React.Component{
 
                           {showError ? <Error message={this.state.message}/> : (true)}
                           <div>
-                            <span>
+                            <span >
                             <button className = "btn btn-rec btn-primary" onClick={this.handleSubmit}>ایجاد پروژه</button>
-                                <br/>
-<img src={require("../../../static/img/wish coin-05.png")} style={{height:35}}/> ۵۰
+                                                                <span className="wishcoin-description">۵۰</span>
+                                <img className="wishcoin-project-submission" src={require("../../../static/img/wish coin-05.png")} style={{height:25}}/>
                             </span>
                               <Modal isOpen={this.state.loading}>
                                   <ModalBody>
@@ -1050,7 +1067,7 @@ Projectsubmition.PropTypes = {
 
 function mapStateToProps(state , ownProps){
     return {
-
+        profileInfo : state.profileInfo
     };
 }
 function mapDispatchToProps(dispatch){

@@ -49,7 +49,7 @@ const ProfileInfoForDashboard = ({profileInfo , togglePopoverWishcoin , popoverO
                     <div className="dash-client-name mb-2"> {profileInfo.first_name + ' ' + profileInfo.last_name} </div>
 
                     <div className="dash-balance mb-2">موجودی:   {toPersianNum(profileInfo.balance * 1000)}</div>
-                    <div className="dash-coin"> <span><img src={require("../../../static/img/wish coin-05.png")} style={{height:35}}/> {toPersianNum(profileInfo.wish_coins)}</span>
+                    <div className="dash-coin"> <span><img src={require("../../../static/img/wish coin-05.png")} style={{height:25}}/> {toPersianNum(profileInfo.wish_coins)}</span>
                         <span className="user-inform"><i className="fa fa-question-circle fa-question-circle-dash-info " id="wishcoinGuide" onClick={togglePopoverWishcoin}/>
                     </span>
                     </div>

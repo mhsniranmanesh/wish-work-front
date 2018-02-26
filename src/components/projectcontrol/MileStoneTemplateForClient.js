@@ -73,7 +73,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                         </div>
                                         <time className="timeline-time">
                                           <div className="dash-cp-file">
-                                              <a download="wish-work-file" href={CPClient.project_controller_element_attachments[0].file} target="_blank">
+                                              <a download="wish-work-cp-file" href={CPClient.project_controller_element_attachments[0].file} target="_blank">
                                                   <span id="download-symbol-dash-cp">
                                                     <i className="fa fa-download fa-download-dash-cp" aria-hidden="true"/>
                                                   </span>
@@ -134,7 +134,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                             <div onClick={(event) => {
                                 downloadFileModal(priceForCashIn, CPClient.project_controller_element_attachments[0].uuid);
                             }}>
-                                <a download="wish-work-file" target="_blank">
+                                <a download="wish-work-cp-file" target="_blank">
                                     <span id="download-symbol"> <i className="fa fa-money-bill-alt"/> </span>
                                     <span className="file-subject">پرداخت وجه</span>
                                 </a>

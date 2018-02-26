@@ -17,7 +17,9 @@ class ProjectControl extends React.Component{
             loadSuccess:false , file:"" , mileStoneId:"" , milestone_id:"" , dontHaveEnoughCash:false , haveEnoughCash:false
             , downloadFile:false, attachmentId:"" , priceForCashIn:0 , reviseValue:"" ,numberSee:0, activeProjectList : 0 ,
             helpToWishWorkModal:false, donateValue:0 , validPrice:true , showErrorForDonate:false  ,
-            message:"" , modalCancelProject:false , cancelIdProject:"" , finalModalForCanceling:false};
+            message:"" , modalCancelProject:false , cancelIdProject:"" , finalModalForCanceling:false , anvaeBaze:"active" ,
+            mohlateErsal:"" , mohlateBazNegari:"" , laghv:"" , bishtar:""
+        };
         this.size = this.size.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
         this.sendUploadedFileByFreelancer = this.sendUploadedFileByFreelancer.bind(this);
@@ -46,6 +48,26 @@ class ProjectControl extends React.Component{
         this.setIdForCanceling = this.setIdForCanceling.bind(this);
         this.okCanceling = this.okCanceling.bind(this);
         this.toggleOkCanceling = this.toggleOkCanceling.bind(this);
+        this.onClickAnvaeBaze = this.onClickAnvaeBaze.bind(this);
+        this.onClickMohlateErsal = this.onClickMohlateErsal.bind(this);
+        this.onClickMohlateBazNegari = this.onClickMohlateBazNegari.bind(this);
+        this.onClickLaghv = this.onClickLaghv.bind(this);
+        this.onClickBishtar = this.onClickBishtar.bind(this);
+    }
+    onClickBishtar(){
+        this.setState({anvaeBaze:"" , mohlateErsal:"" , mohlateBazNegari:"" , laghv:"" , bishtar:"active"})
+    }
+    onClickLaghv(){
+        this.setState({anvaeBaze:"" , mohlateErsal:"" , mohlateBazNegari:"" , laghv:"active" , bishtar:""})
+    }
+    onClickMohlateBazNegari(){
+        this.setState({anvaeBaze:"" , mohlateErsal:"" , mohlateBazNegari:"active" , laghv:"" , bishtar:""})
+    }
+    onClickAnvaeBaze(){
+        this.setState({anvaeBaze:"active" , mohlateErsal:"" , mohlateBazNegari:"" , laghv:"" , bishtar:""})
+    }
+    onClickMohlateErsal(){
+        this.setState({anvaeBaze:"" , mohlateErsal:"active" , mohlateBazNegari:"" , laghv:"" , bishtar:""})
     }
     toggleOkCanceling(){
         this.setState({finalModalForCanceling: !this.state.finalModalForCanceling})
@@ -63,6 +85,7 @@ class ProjectControl extends React.Component{
         ).catch(err =>{
             throw (err)
         })
+        // console.log(this.state.cancelIdProject , 'this.state.cancelIdProject');
     }
     toPersianNum( num, dontTrim ) {
 
@@ -345,6 +368,16 @@ class ProjectControl extends React.Component{
                           <div className="dash-divider"/>
                           <label className="col-form-label form-header-fontsize">زمان بندی پروژه شما</label>
                           {this.state.loadSuccess? <MileStones
+                                      anvaeBaze={this.state.anvaeBaze}
+                                      mohlateErsal={this.state.mohlateErsal}
+                                      mohlateBazNegari={this.state.mohlateBazNegari}
+                                      laghv={this.state.laghv}
+                                      bishtar={this.state.bishtar}
+                                      onClickAnvaeBaze={this.onClickAnvaeBaze}
+                                      onClickMohlateErsal={this.onClickMohlateErsal}
+                                      onClickMohlateBazNegari={this.onClickMohlateBazNegari}
+                                      onClickLaghv={this.onClickLaghv}
+                                      onClickBishtar={this.onClickBishtar}
                                       goToSubmitProject={this.goToSubmitProject}
                                       AsClientProject={this.state.AsClientProject}
                                       AsFreelancerProject={this.state.AsFreelancerProject}
@@ -360,6 +393,7 @@ class ProjectControl extends React.Component{
                                       donate={this.donate}
                                       modalCancelProject={this.modalCancelProject}
                                       toPersianNum={this.toPersianNum}
+                                      setIdForCanceling={this.setIdForCanceling}
 
                           />:(null)}
                       </div>

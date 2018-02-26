@@ -6,6 +6,7 @@ import * as profileInfo from '../../actions/profileInfo.js';
 import {Input, Button} from 'reactstrap';
 import ProfileSkills from './ProfileSkills';
 import ProfilePic from './ProfilePic';
+import {Badge} from 'reactstrap';
 // import ResetPassword from './ResetPassword';
 import update from 'react-addons-update';
 
@@ -53,18 +54,29 @@ class Profileinfo extends React.Component{
         if(key === 1){
             stateCopy.skills[0].translation_skill.is_general = false;
             this.setState({stateCopy});
+            this.setState({is_general : false});
+            console.log('1')
         }
         else if(key === 2){
+            stateCopy.is_medical = false;
             stateCopy.skills[0].translation_skill.is_medical = false;
             this.setState({stateCopy});
+            this.setState({is_medical : false});
+            console.log('2')
         }
         else if(key === 3){
+            stateCopy.is_technical = false;
             stateCopy.skills[0].translation_skill.is_technical = false;
             this.setState({stateCopy});
+            this.setState({is_technical : false});
+            console.log('3')
         }
         else if(key === 4){
+            stateCopy.is_legal = false;
             stateCopy.skills[0].translation_skill.is_legal = false;
             this.setState({stateCopy});
+            this.setState({is_legal : false});
+            console.log('4')
         }
     }
     deleteSkills(id){
@@ -279,8 +291,7 @@ class Profileinfo extends React.Component{
         };
         this.setState({comment : "تغییرات با موفقیت اعمال شد"});
         console.log('sendSkills' ,sendSkills);
-        this.props.actions.updateSkills(sendSkills).then(
-            () => this.redirect())
+        this.props.actions.updateSkills(sendSkills).then()
             .catch(error => {
                 this.setState({comment : "خطا در اتصال، لطفا مجدد تلاش کنید"});
                 console.log(error);
@@ -300,10 +311,10 @@ class Profileinfo extends React.Component{
         };
         console.log(this.state.profileInfo);
         this.setState({bioReadOnly : true , jobReadOnly : true , degreeReadOnly: true , universityReadOnly: true});
-        this.props.actions.updateInformations(sendDataInfos).then(
-            () => this.redirect())
+        this.props.actions.updateInformations(sendDataInfos).then()
             .catch(error => {
                 console.log(error);
+                this.setState({comment : "خطا در اتصال، لطفا مجدد تلاش کنید"});
                 this.setState({saving: false});
             });
     }
@@ -439,7 +450,7 @@ class Profileinfo extends React.Component{
                                   <span className="point form-body-fontsize">
 
                                     <i className="fa fa-exclamation point" aria-hidden="true"/>
-<span className="ml-2">                                      برای تغییر هر مورد روی آن یکبار کلیک کنید.</span>
+<span className="ml-2">                                      برای تغییر هر مورد روی <i className="fa fa-edit"/>  آن یکبار کلیک کنید، بعد از اعمال تغییرات بر روی ثبت تغییرات کلیک کنید</span>
 
                                   </span>
                                 </label>
@@ -448,7 +459,7 @@ class Profileinfo extends React.Component{
                                     عنوان حرفه ای کوتاه
                                 </label>
                               </div>
-                                <input type="text" className="form-control form-control-danger" value={this.state.profileInfo.title || ''} onClick={this.changeTitleInput} onChange={this.changeTitleOnChange} readOnly={this.state.titleReadOnly} />
+                                <i className="fa fa-edit fa-edit-x" onClick={this.changeTitleInput}/><input type="text" className="form-control form-control-danger" value={this.state.profileInfo.title || ''}  onChange={this.changeTitleOnChange} readOnly={this.state.titleReadOnly} />
                             </div>
                             <div className="form-group">
                               <div>
@@ -456,7 +467,7 @@ class Profileinfo extends React.Component{
                                     توضیح کامل در مورد من.
                                 </label>
                               </div>
-                                <Input type="textarea" className="form-control" id="" value={this.state.profileInfo.bio || ''} onClick={this.changeBioInput} onChange={this.changeBioOnChange} readOnly={this.state.bioReadOnly}/>
+                                <i className="fa fa-edit fa-edit-x" onClick={this.changeBioInput}/><Input type="textarea" className="form-control" id="" value={this.state.profileInfo.bio || ''}  onChange={this.changeBioOnChange} readOnly={this.state.bioReadOnly}/>
                             </div>
 
 
@@ -464,19 +475,20 @@ class Profileinfo extends React.Component{
                                 <label htmlFor="" className="col-form-label  form-body-fontsize">
                                     شغل
                                 </label>
-                                <Input className="form-control" id="" value={this.state.profileInfo.job || ''} onClick={this.changeJobInput} onChange={this.changeJobOnChange} readOnly={this.state.jobReadOnly}/>
-                                <label htmlFor="" className="col-form-label  form-body-fontsize">
+                                <i className="fa fa-edit fa-edit-x" onClick={this.changeJobInput}/><Input className="form-control" id="" value={this.state.profileInfo.job || ''} onChange={this.changeJobOnChange} readOnly={this.state.jobReadOnly}/>
+                                    <label htmlFor="" className="col-form-label  form-body-fontsize">
                                     مدرک تحصیلی
                                 </label>
-                                <Input className="form-control" id="" value={this.state.profileInfo.degree ||  ''} onClick={this.changeDegreeInput} onChange={this.changeDegreeOnChange} readOnly={this.state.degreeReadOnly}/>
+                                <i className="fa fa-edit fa-edit-x" onClick={this.changeDegreeInput}/><Input className="form-control" id="" value={this.state.profileInfo.degree ||  ''}  onChange={this.changeDegreeOnChange} readOnly={this.state.degreeReadOnly}/>
                                 <label htmlFor="" className="col-form-label  form-body-fontsize">
                                     دانشگاه
                                 </label>
-                                <Input className="form-control" id="" value={this.state.profileInfo.university || ''} onClick={this.changeUniversityInput} onChange={this.changeUniversityOnChange} readOnly={this.state.universityReadOnly}/>
+                                <i className="fa fa-edit fa-edit-x" onClick={this.changeUniversityInput}/><Input className="form-control" id="" value={this.state.profileInfo.university || ''}  onChange={this.changeUniversityOnChange} readOnly={this.state.universityReadOnly}/>
                             </div>
 
 
-
+                            <Badge color="danger" pill>{this.state.comment}</Badge>
+                                <br/>
                             <Button color="primary" className="btn btn-primary btn-rec" onClick={this.submitChanges}>
                                 <i className="fa fa-check" />ثبت تغییرات
                             </Button>

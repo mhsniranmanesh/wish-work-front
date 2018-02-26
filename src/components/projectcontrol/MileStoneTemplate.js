@@ -12,7 +12,7 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
     var diffHoursFromSubmission = Math.floor(diffSecFromSubmission / 3600) % 24;
     var diffDaysFromSubmission = Math.floor(diffSecFromSubmission / (3600 * 24));
     if(CP) {
-        if (CP.is_started) {
+        if (CP.is_started ) {
             if (diffSecFromSubmission > 0) {
                 if (!CP.is_submitted) {
                     var date = moment(CP.submission_deadline, 'YYYY-M-D HH:mm:ss').format('jYYYY/jM/jD HH:mm:ss');

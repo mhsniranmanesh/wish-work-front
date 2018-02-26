@@ -1140,7 +1140,13 @@ textarea.form-control {
   border-radius: 5px;
   font-weight: 300;
 }
-
+.badge-cancel-dash-cp{
+    border: 1px solid #ee4749;
+    background: #03141b;
+    color: #ee4749;
+    border-radius: 5px;
+    font-weight: 300;
+}
 .badge-doing-dash-cp{
   border: 1px solid #01be94;
   background: #03141b;
@@ -1262,7 +1268,10 @@ textarea.form-control {
 .sub-heading .fa{
   display: inline-block;
 }
-
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
 section.profile {
     background-color: #f1f1f1;
     padding-bottom: 75px;
@@ -1279,13 +1288,39 @@ section.profile {
     overflow: hidden;
     border-top: 1px solid #e9ecef;
 }
+@media (max-width: 576px) {
+    .image-size-not-found {
+        height: 100px;
+    }
+}
+@media (min-width: 1200px) {
+    .image-size-not-found {
+        height: 400px;
+    }
+}
+@media (min-width: 768px){
+    .image-size-not-found{
+        height: 250px;
+    }
+}
+@media (min-width: 992px) {
+    .image-size-not-found{
+        height: 300px;
+    }
+}
 
 .project-title {
     display: inline;
     font-weight: 400;
     line-height: 1.75rem;
 }
-
+.not-found-title{
+    text-align: center;
+    font-size: 30px;
+}
+.margin-auto-for-con{
+    margin: auto;
+}
 .modal-content {
   padding: 20px;
   border: 3px solid #ff7600;
@@ -2319,7 +2354,16 @@ a.delete-project:hover:after {
 .fa-question-circle{
   /*padding-top: 5px;*/
 }
-
+.badge-cancel{
+    font-size: 13px;
+    font-weight: 400;
+    border-radius: 5px;
+    color: #ee4749;
+    border: 1px solid #ee4749;
+    background: #fff;
+    margin: 0 5px;
+    padding: 5px 10px;
+}
 .badge-freelancer{
   font-size: 13px;
   font-weight: 400;

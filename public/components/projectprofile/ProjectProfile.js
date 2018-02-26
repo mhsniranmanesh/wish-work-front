@@ -1007,7 +1007,7 @@ class ProjectProfile extends React.Component {
                                                 this.state.showError
                                             }
                                             budget={
-                                                (thwis.state.projectDetail.budget * 1000)
+                                                (this.state.projectDetail.budget * 1000)
                                             }
                                             delivery_duration={
                                                 this.state.delivery_duration

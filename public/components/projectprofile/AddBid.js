@@ -157,11 +157,8 @@ const AddBid = (props) => {
                                                     </Col>
                                                 </Row>
                                           </div>
-<<<<<<< HEAD
                                           <div className="form-body-fontsize point">تذکر: اگر  می خواهید پروژه را در ۲ مرحله تحویل دهید باید زمان انجام پروژه حداقل ۱۰ روز باشد. ۳ مرحله حداقل ۱۴ روز و ۴ مرحله حداقل ۱۸ روز نیازمند می باشد. در ضمن فعلا حداقل زمان انجام پروژه ۷ روز می باشد.</div>
 
-=======
->>>>>>> a4d067d3e8d6f4566b0919f9bbfbbfc67f771a57
                                     </form>
                                     {props.showError ? <Errors message={props.message}/> : (true)}
                                     {props.showWarnings ? <Warnings message={props.message}/> : (true)}

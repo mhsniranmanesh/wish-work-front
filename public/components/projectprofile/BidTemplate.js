@@ -53,9 +53,15 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                     <div className="fl-list">
                             <div className="fl-wrap media mb-1">
                                 <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
-                                     style={ {height:60 , width:60 , backgroundColor:colorCode} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
-                               <div className="bid-subject" onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}>
+                                     style={ {height:60 , width:60 , backgroundColor:colorCode}} onClick={(event) => {
+                                    goToFreelancerProfile(Bid.freelancer.username);
+                                }}  />
+                               <div className="bid-subject" >
+                                   <div onClick={(event) => {
+                                       goToFreelancerProfile(Bid.freelancer.username);
+                                   }}>
                                  <a href='#' className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
+                                   </div>
                                  <button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec btn-handshake"
                                          data-toggle="modal" data-target={"#" + (number*10) }>
                                      <i className="fa fa-handshake-o"/>

@@ -643,7 +643,12 @@ class ProjectProfile extends React.Component {
             this.setState({
                 showBidsList: true
             });
-
+            if (this.props.profileInfo.username == this.props.projectDetail[sIze - 1].general.client) {
+                console.log('profileInfo.username', this.props.profileInfo.username, 'projectDetail.client', this.props.projectDetail[sIze - 1].general.client);
+                this.setState({
+                    ownerOfProject: true
+                });
+            }
             this.setState({
                 projectDetail: Object.assign({}, this.props.projectDetail[sIze - 1].general)
             });

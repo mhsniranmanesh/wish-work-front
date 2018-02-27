@@ -58,7 +58,16 @@ export function cancelProject(id) {
         });
     }
 }
-
+export function nextMileStoneBegin(id) {
+    return function (dispatch) {
+        var ids = {milestone_id : id};
+        return axios.post('/api/v1/projects/milestone/download/' , ids).then(() =>{
+            dispatch(profileInfo())
+        }).catch(err =>{
+            throw (err)
+        })
+    }
+}
 export function sendUploadedFileByFreelancerAction(sendData) {
     return function (dispatch) {
         var fileData = new FormData();

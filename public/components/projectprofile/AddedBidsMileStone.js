@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ModalCashin from './ModalCashin';
 
 const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_bid, priceOfMileStoneForCash,
-                                number, mileStoneX, goToCash, priceForCash, modalCashEnough,numberOfPages,toPersianNum,
+                                number, mileStoneX, goToCash, priceForCash, modalCashEnough,numberOfPages,toPersianNum,bid_controller,
                                 cashinModalState , balance,prices, acceptBid , id ,numberOfMileStonesOfEachFreelancer}) => {
     var mileStones = [];
     var dayNew = 0;
@@ -28,7 +28,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
     }
     numberOfMileStonesOfEachFreelancer[number] = number_of_milestones;
     prices[number] = price_of_bid * 1000;
-    priceOfMileStoneForCash[number] = prices[number]/numberOfMileStonesOfEachFreelancer[number];
+    priceOfMileStoneForCash[number] = bid_controller[number].price;
     mileStoneX[number] = mileStones;
         if ((mileStoneX[number] !== undefined)) {
             var y = price_of_bid * 1000;
@@ -75,7 +75,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                                 <div className="enough-modalbody1">
                                                     <p>موجودی حساب شما {toPersianNum(balance *1000)}تومان می باشد </p>
                                                     برای شروع پروژه باید مبلغ <span
-                                                    className="enough-project-price">{toPersianNum(priceOfMileStoneForCash[number])}</span>تومان
+                                                    className="enough-project-price">{toPersianNum(priceOfMileStoneForCash[number]*1000)}</span>تومان
                                                     بپردازید.
                                                 </div>
                                                 <div className="enough-modalbody2">
@@ -144,7 +144,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
                                                     <div className="notenough-modalbody1">
                                                         <p>موجودی حساب شما {toPersianNum(balance * 1000)}تومان می باشد </p>
                                                         برای شروع پروژه باید مبلغ <span
-                                                        className="notenough-project-price">{toPersianNum(priceOfMileStoneForCash[number])}</span>تومان
+                                                        className="notenough-project-price">{toPersianNum(priceOfMileStoneForCash[number]*1000)}</span>تومان
                                                         بپردازید.
                                                     </div>
                                                     <div className="notenough-modalbody2">

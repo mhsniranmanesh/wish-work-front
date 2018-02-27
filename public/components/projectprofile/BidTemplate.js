@@ -6,7 +6,7 @@ import {Row , Col} from 'reactstrap';
 
 const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                          goToCash , priceForCash, cashinModalState, modalCashEnough, priceOfMileStoneForCash,
-                         acceptBid, profileInfo , deleteBid , prices , goToFreelancerProfile , toPersianNum,
+                         acceptBid, profileInfo , deleteBid , prices , goToFreelancerProfile , toPersianNum,bid_controller,
                          numberOfMileStonesOfEachFreelancer ,freelancerIsSelected , numberOfPages , is_freelancer_selected}) => {
     console.log(ownerOfProject , 'ownerOfProject2');
     var bidOfFreelancer = false;
@@ -96,6 +96,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                             numberOfMileStonesOfEachFreelancer={numberOfMileStonesOfEachFreelancer}
                                             priceOfMileStoneForCash={priceOfMileStoneForCash}
                                             numberOfPages={numberOfPages}
+                                            bid_controller={bid_controller}
 
                         />
 

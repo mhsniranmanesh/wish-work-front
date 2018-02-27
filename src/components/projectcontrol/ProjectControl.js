@@ -18,7 +18,7 @@ class ProjectControl extends React.Component{
             , downloadFile:false, attachmentId:"" , priceForCashIn:0 , reviseValue:"" ,numberSee:0, activeProjectList : 0 ,
             helpToWishWorkModal:false, donateValue:0 , validPrice:true , showErrorForDonate:false  ,
             message:"" , modalCancelProject:false , cancelIdProject:"" , finalModalForCanceling:false , anvaeBaze:"active" ,
-            mohlateErsal:"" , mohlateBazNegari:"" , laghv:"" , bishtar:""
+            mohlateErsal:"" , mohlateBazNegari:"" , laghv:"" , bishtar:"" , modalForErrors:false
         };
         this.size = this.size.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
@@ -192,6 +192,13 @@ class ProjectControl extends React.Component{
 
     nextMileStoneBegin(){
         // this.props.actions.pay =>
+        this.setState({haveEnoughCash: !this.state.haveEnoughCash})
+        this.props.actions.nextMileStoneBegin(this.state.mileStoneId).then(
+        ).catch(
+            err=>{
+                throw (err)
+            }
+        )
     }
 
     ////
@@ -209,7 +216,7 @@ class ProjectControl extends React.Component{
     downloadFileModal(priceForCashIn , id){
         console.log('HelloId' , id);
         if(priceForCashIn !== 'its the end') {
-            this.setState({downloadFile: true, attachmentId: id, priceForCashIn:priceForCashIn})
+            this.setState({downloadFile: true, mileStoneId: id, priceForCashIn:priceForCashIn})
         }
         else{
         }
@@ -299,6 +306,11 @@ class ProjectControl extends React.Component{
   render(){
     return(
       <div className="content-wrapper py-3">
+          <Modal isOpen={this.state.modalForErrors}>
+              <ModalBody>
+                  خطا در اتصال به سرور، لطفا اتصال به اینترنت خود را بررسی کنید
+              </ModalBody>
+          </Modal>
           <Modal isOpen={this.state.finalModalForCanceling} toggle={this.toggleOkCanceling}>
               <ModalBody>
                   پروژه ی شما لغو شد، در صورت عدم صحیح پروژه وجه شما تا ۴۸ ساعت آینده به حسابتان واریز می گردد
@@ -356,7 +368,7 @@ class ProjectControl extends React.Component{
               <ModalBody className="from-header-fontsize">
                 <div>شما دارای وجه کافی می باشید</div>
                 <div>برای مشاهده فایل، بازنگری آنها و شروع مرحله بعد تأیید کنید تا مبلغ {this.state.priceForCashIn*1000} تومان از حساب شما کاسته شود</div>
-                <div>اگر از کار راضی نبودید با لغو همکاری بعد از بررسی و کسر ۱۰ درصد خسارت مبلغ پرداختی به حساب شما بازگردانده می شود</div>
+                <div>اگر از کار راضی نبودید با لغو همکاری بعد از بررسی و داوری توسط ویش ورک، در صورت فقدان کیفیت ، مبلغ شما طی ۴۸ ساعت آینده به حساب شما واریز می شود</div>
               </ModalBody>
                 <button className="btn btn-rec btn-primary col-sm-3" onClick={this.nextMileStoneBegin}>تایید</button>
           </Modal>

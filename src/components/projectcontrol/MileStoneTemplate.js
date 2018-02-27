@@ -37,17 +37,6 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                                                        uploadFile(event, CP.uuid);
                                                    }} />
                                          </div>
-
-
-
-
-
-
-
-
-
-
-
                                     </div>
                                     <time className="timeline-time font-body-fontsize">
                                       <span> تاریخ پایان مهلت زمان آپلود:{date} </span>
@@ -72,12 +61,14 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                                               {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
                                               {/*<i className="fa fa-download"/>*/}
                                               {/*</button>*/}
+                                              <p> برای تغییر فایل خود بر روی کلید زیر کلیک کنید</p>
                                               {uploadSendToServerButton ?
-                                              <Button type="submit" color="secondary"
+                                              <btn type="submit"
                                                       className="btn btn-secondary btn-rec"
+                                                   id="buttonImage2"
                                                       onClick={sendUploadedFileByFreelancer}>
                                                   <i className="fa fa-download fa-download-dash-cp-notyet"/>
-                                              </Button> : (null)}
+                                              </btn> : (null)}
                                               <input type="file" color="secondary" className="btn btn-secondary btn-rec"
                                                      onChange={(event) => {
                                                          uploadFile(event, CP.uuid);

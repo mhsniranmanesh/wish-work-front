@@ -63,12 +63,13 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                                           id="Popover4"
                                                           placeholder="انتقادات و پیشنهادات خود را در این بخش بنویسید"
                                                           onChange={reviseOnChange} value={reviseValue}/>
-                                                <Button type="submit" color="secondary"
-                                                        className="btn btn-secondary btn-rec" onClick={(event) => {
+                                                <button
+                                                        className="btn btn-success btn-rec" onClick={(event) => {
                                                     submitFeedBack(CPClient.project_controller_element_attachments[0].uuid);
                                                 }}>
                                                     <i className="fa fa-comment fa-download-dash-cp-now"/>
-                                                </Button>
+                                                    تایید
+                                                </button>
                                             </div>
                                         </div>
                                         <time className="timeline-time">
@@ -103,9 +104,10 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                                 <h2 className="form-header-fontsize"><a href="#">{toPersianNum(CPClient.description)}</a></h2>
                                                 <textarea type="text" className="form-control form-body-fontsize" id="Popover4"
                                                           placeholder="انتقادات و پیشنهادات خود را در این بخش بنویسید"/>
-                                                <Button type="submit" color="secondary" className="btn btn-secondary btn-rec">
+                                                <button type="submit" className="btn btn-secondary btn-rec">
+                                                    تایید
                                                     <i className="fa fa-comment"/>
-                                                </Button>
+                                                </button>
                                             </div>
                                         </div>
                                         <time className="timeline-time">
@@ -131,14 +133,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                 else if(priceForCashIn) {
                     return (
                         <div>
-                            <div onClick={(event) => {
-                                downloadFileModal(priceForCashIn, CPClient.project_controller_element_attachments[0].uuid);
-                            }}>
-                                <a download="wish-work-cp-file" target="_blank">
-                                    <span id="download-symbol"> <i className="fa fa-money-bill-alt"/> </span>
-                                    <span className="file-subject">پرداخت وجه</span>
-                                </a>
-                            </div>
+
                             <article className="timeline-entry">
                                 <div className="timeline-entry-inner">
                                     <div className="col-sm-6">
@@ -148,6 +143,13 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                         <div className="timeline-label">
                                             <h2 className="form-header-fontsize"><a href="#">{toPersianNum(CPClient.description)}</a></h2>
                                         </div>
+                                    </div>
+                                    <div className="btn btn-primary" onClick={(event) => {
+                                        downloadFileModal(priceForCashIn, CPClient.uuid);
+                                    }}>
+                                        <a download="wish-work-cp-file" target="_blank">
+                                            <span className="file-subject">پرداخت وجه</span>
+                                        </a>
                                     </div>
                                     <time className="timeline-time">
                                         <span className="text-muted form-body-fontsize">برای دیدن فایل پروژه ی خود ابتدا باید مبلغ مایل استون بعدی را واریز کنید</span>

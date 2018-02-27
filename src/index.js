@@ -7,6 +7,7 @@ import "../static/css/bootstrap-rtl.min.css";
 import "../static/css/fontiran.css"
 import "react-bootstrap-select";
 import "font-awesome/css/font-awesome.min.css";
+// import 'bootstrap-fileinput';
 import configureStore from './store/configureStore.js';
 import {profileInfo} from './actions/profileInfo.js';
 import {recomendedProject} from './actions/recomendedProjectForFreelancer';

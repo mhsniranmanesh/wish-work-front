@@ -66,6 +66,21 @@ export function updateInformations(sendData) {
         })
     }
 }
+export function cashOut(amount , account) {
+    console.log(amount , 'amount');
+    var x = {
+        amount:Number(amount),
+        account_number:account
+    };
+    console.log(x , 'xxxx');
+    return function (dispatch) {
+        return axios.post('/api/v1/accounts/transaction/cashout/' , x).then(
+            dispatch(profileInfo())
+        ).catch(error =>{
+            throw (error)
+        })
+    }
+}
 export function getPortSuccess(url) {
     return {type: types.Get_PAYMENT_LINK_SUCCESS, url}
 }

@@ -24,6 +24,30 @@ class CashOutIn extends React.Component{
         this.validatePrice = this.validatePrice.bind(this);
         this.onChangeSheba = this.onChangeSheba.bind(this);
         this.toPersianNum = this.toPersianNum.bind(this);
+        this.persianToEnglish = this.persianToEnglish.bind(this);
+        // this.roundChashOut = this.roundChashOut.bind(this);
+    }
+    // roundChashOut(event){
+    //     let numb = Number(event.target.value);
+    //     numb = (Math.ceil(numb));
+    //     this.setState
+    // }
+    persianToEnglish(value) {
+        var newValue = "";
+        for (var i = 0; i < value.length; i++) {
+            var ch = value.charCodeAt(i);
+            if (ch >= 1776 && ch <= 1785) // For Persian digits.
+            {
+                var newChar = ch - 1728;
+                newValue = newValue + String.fromCharCode(newChar);
+            } else if (ch >= 1632 && ch <= 1641) // For Arabic & Unix digits.
+            {
+                var newChar = ch - 1584;
+                newValue = newValue + String.fromCharCode(newChar);
+            } else
+                newValue = newValue + String.fromCharCode(ch);
+        }
+        return newValue;
     }
     toPersianNum( num, dontTrim ) {
 
@@ -127,7 +151,31 @@ class CashOutIn extends React.Component{
     }
     sendToServerCashOutRequest(){
         this.setState({priceForWithdraw: this.state.priceForCashOut});
-        console.log(this.state.sheba , 'sheba' , this.state.priceForCashOut , 'priceForCashOut');
+        var validity = this.validatePrice(this.state.priceForCashOut);
+        if(validity) {
+            console.log(this.persianToEnglish(this.state.sheba), 'sheba', this.persianToEnglish(this.state.priceForCashOut), 'priceForCashOut');
+            var x = Math.round(this.state.priceForCashOut / 1000);
+            var n = x.toString();
+            console.log(n, 'ye');
+            this.props.actions.cashOut(n, this.persianToEnglish(this.state.sheba)).then(
+
+            ).catch(err=>{
+                if(err.response.data.message === "Not enough balance"){
+                    this.setState({showErrorForCashInOut: true});
+                    this.setState({message: "شما مبلغ کافی برایی انجام این برداشت ندارید"});
+                    throw (err);
+                }
+                else {
+                    console.log(err.response);
+                    throw (err);
+                }
+
+            })
+        }
+        else {
+            this.setState({showErrorForCashInOut: true});
+            this.setState({message: "لطفا مبلغ خود را اعداد انگلیسی به تومان وارد کنید"})
+        }
     }
   render(){
     return(

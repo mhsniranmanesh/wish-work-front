@@ -23,14 +23,14 @@ size(obj) {
 SignUp(event){
     event.preventDefault();
     // this.context.router.history.push('/signup');
-    window.location.assign('http://wishworkstage.ir/signup/');
-    // window.location.assign('http://wishwork.ir/signup/');
+    // window.location.assign('http://wishworkstage.ir/signup/');
+    window.location.assign('http://wishwork.ir/signup/');
 }
 GoToDashboard(event){
     event.preventDefault();
     // this.context.router.history.push('/dashboard');
-    window.location.assign('http://wishworkstage.ir/dashboard/');
-    // window.location.assign('http://wishwork.ir/dashboard/');
+    // window.location.assign('http://wishworkstage.ir/dashboard/');
+    window.location.assign('http://wishwork.ir/dashboard/');
 }
     componentWillMount(){
         let x = this.size(this.props.profileInfo);

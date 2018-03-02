@@ -282,8 +282,8 @@ class ProjectProfile extends React.Component {
         //     pathname: '/account/cash',
         //     search: price
         // });
-        window.location.assign('http://wishworkstage.ir/account/cash/?' + price);
-        // window.location.assign('http://wishwork.ir/account/cash/?' + price)
+        // window.location.assign('http://wishworkstage.ir/account/cash/?' + price);
+        window.location.assign('http://wishwork.ir/account/cash/?' + price)
     }
 
     goToRegister() {
@@ -585,8 +585,8 @@ class ProjectProfile extends React.Component {
     SignUp(event) {
         event.preventDefault();
         // this.context.router.history.push('/signup');
-        window.location.assign('http://wishworkstage.ir/signup');
-        // window.location.assign('http://wishwork.ir/signup');
+        // window.location.assign('http://wishworkstage.ir/signup');
+        window.location.assign('http://wishwork.ir/signup');
     }
 
     valueOfMileStones(event) {

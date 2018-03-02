@@ -160,8 +160,7 @@ class WishCoin extends React.Component {
                                     <div className="row">
                                     <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div className="db-wrapper">
-                                            <img className="img-responsive" src={require("../../../static/img/wish cards-04.png")}
-                                                 style={ {height:500}} onClick={this.wishCoinSubscription1}/>
+                                            <img className="img-responsive wish-coin-sub-image" src={require("../../../static/img/wish cards-04.png")} onClick={this.wishCoinSubscription1}/>
                                                     <Modal isOpen={this.state.wishCoinSubscription1 && this.state.enoughForSubs1} toggle={this.wishCoinSubscription1}>
                                                         <ModalBody>
                                                             <div className="notenough-modalbody1">
@@ -204,8 +203,7 @@ class WishCoin extends React.Component {
                                     <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div className="db-wrapper">
                                             <br/>
-                                            <img className="img-responsive" src={require("../../../static/img/wish cards-03.png")}
-                                                 style={ {height:500}} onClick={this.wishCoinSubscription2}/>
+                                            <img className="img-responsive wish-coin-sub-image" src={require("../../../static/img/wish cards-03.png")} onClick={this.wishCoinSubscription2}/>
                                             <Modal isOpen={this.state.wishCoinSubscription2 && this.state.enoughForSubs2} toggle={this.wishCoinSubscription2}>
                                                 <ModalBody>
                                                     <div className="notenough-modalbody1">
@@ -242,8 +240,7 @@ class WishCoin extends React.Component {
                                     </div>
                                     <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div className="db-wrapper">
-                                            <img className="img-responsive" src={require("../../../static/img/wish cards-02.png")}
-                                                 style={ {height:500}} onClick={this.wishCoinSubscription3}/>
+                                            <img className="img-responsive wish-coin-sub-image" src={require("../../../static/img/wish cards-02.png")} onClick={this.wishCoinSubscription3}/>
                                             <Modal isOpen={this.state.wishCoinSubscription3 && this.state.enoughForSubs3} toggle={this.wishCoinSubscription2}>
                                                 <ModalBody>
                                                     <div className="notenough-modalbody1">

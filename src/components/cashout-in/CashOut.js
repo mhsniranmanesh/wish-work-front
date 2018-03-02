@@ -18,7 +18,7 @@ const CashOut = (props) =>{
     if(props.profileInfo.balance > 1) {
         return (
             <div id="draw" role="tabpanel" aria-labelledby="draw-tab">
-                <h5 className="cashout-title">موجودی قابل برداشت</h5>
+                <h5 className="cashout-title">موجودی قابل برداشت(مبالغ برداشتی باید مضربی از ۱۰۰۰ تومان باشد):</h5>
                 <h4 className="py-2 cashout-title">{props.toPersianNum(props.profileInfo.balance * 1000)} تومان</h4>
                 <form className="">
                     <div className="form-group">
@@ -27,7 +27,7 @@ const CashOut = (props) =>{
                                onChange={(event) => {
                                    props.onChangeCashOut(event)
                                }}
-                               placeholder="مبلغ قابل برداشت تا سقف ۱.۰۰۰.۰۰۰ تومان"
+                               placeholder="مبلغ قابل برداشت تا سقف ۵.۰۰۰.۰۰۰ تومان"
                                value={priceForWithdraw}
 
                         />
@@ -53,7 +53,7 @@ const CashOut = (props) =>{
     else {
       return(
           <div id="draw" role="tabpanel" aria-labelledby="draw-tab">
-              <h5 className="cashout-title">موجودی قابل برداشت:</h5>
+              <h5 className="cashout-title">موجودی قابل برداشت(مبالغ برداشتی باید مضربی از ۱۰۰۰ تومان باشد):</h5>
               <h4 className="py-2 cashout-title">{props.profileInfo.balance} تومان</h4>
                   <h5 className="cashout-title">موجودی شما برای برداشت کافی نمی باشد</h5>
           </div>

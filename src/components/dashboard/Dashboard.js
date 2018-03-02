@@ -75,8 +75,8 @@ class Dashboard extends React.Component{
       });
     }
     goToMyProjectPublic(y){
-        window.location.assign('http://wishworkstage.ir/projects/' + y);
-        // window.location.assign('http://wishwork.ir/projects/' + slug);
+        // window.location.assign('http://wishworkstage.ir/projects/' + y);
+        window.location.assign('http://wishwork.ir/projects/' + y);
 
     }
     WordCount(str) {
@@ -91,8 +91,8 @@ class Dashboard extends React.Component{
         return x;
     };
     goToProjectProfile(slug){
-        window.location.assign('http://wishworkstage.ir/projects/' + slug);
-        // window.location.assign('http://wishwork.ir/projects/' + slug);
+        // window.location.assign('http://wishworkstage.ir/projects/' + slug);
+        window.location.assign('http://wishwork.ir/projects/' + slug);
         // this.context.router.history.push({
         //     pathname:'/projects/' + slug,
         // });

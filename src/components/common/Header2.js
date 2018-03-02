@@ -46,8 +46,8 @@ class Header2 extends React.Component {
     };
     exit(){
         localStorage.removeItem('current_login_token');
-        window.location.assign('http://wishworkstage.ir/login/');
-        // window.location.assign('http://wishwork.ir/login/');
+        // window.location.assign('http://wishworkstage.ir/login/');
+        window.location.assign('http://wishwork.ir/login/');
         // this.context.router.history.push({
         //     pathname:'/login/'
         // });

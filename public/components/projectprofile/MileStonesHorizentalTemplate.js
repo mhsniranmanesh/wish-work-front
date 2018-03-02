@@ -18,6 +18,8 @@ const MileStonesHorizentalTemplate = (props) =>{
                       <i className="fa fa-caret-left cp-start-fa" aria-hidden="true"></i>
                     </span>
                     <span className="cp-connector-2"></span>
+                    <span className="cp-public-text"> {props.toPersianNum(props.dayRemain)} روز </span>
+                    <span className="cp-public-text"> {props.toPersianNum(props.pageRemain)} صفحه</span>
                 </div>
                 <div className="col-sm-2 col-xs-4">
                       <span className=" cp-circle">

@@ -99,14 +99,14 @@ const CountDown = (props) => {
     else if(diffMinutes < 0 && (diffSec < (-86400)) && props.ownerOfProject) {
         return(
             <div className="con mb-4">
-                <button className="btn btn-primary btn-rec btn-block" >مهلت انتخاب توسط شما به پایان رسیده است  </button>
+                <div className="public-page-descript form-body-fontsize">مهلت انتخاب توسط شما به پایان رسیده است  </div>
             </div>
         )
     }
     else if(diffMinutes < 0 && (!props.ownerOfProject)){
         return(
             <div className="con mb-4">
-                <button className="btn btn-primary btn-rec btn-block" >مناقصه ی پروژه به اتمام رسیده است     </button>
+                <div className="public-page-descript form-body-fontsize">مناقصه ی پروژه به اتمام رسیده است     </div>
             </div>
         )
     }

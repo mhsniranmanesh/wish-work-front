@@ -131,33 +131,65 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                     }
                 }
                 else if(priceForCashIn) {
-                    return (
-                        <div>
-
-                            <article className="timeline-entry">
-                                <div className="timeline-entry-inner">
-                                    <div className="col-sm-6">
-                                        <div className="timeline-icon bg-warning">
-                                            <i className="entypo-location"/>
+                    if(!CPClient.is_last_element) {
+                        return (
+                            <div>
+                                <article className="timeline-entry">
+                                    <div className="timeline-entry-inner">
+                                        <div className="col-sm-6">
+                                            <div className="timeline-icon bg-warning">
+                                                <i className="entypo-location"/>
+                                            </div>
+                                            <div className="timeline-label">
+                                                <h2 className="form-header-fontsize"><a
+                                                    href="#">{toPersianNum(CPClient.description)}</a></h2>
+                                            </div>
                                         </div>
-                                        <div className="timeline-label">
-                                            <h2 className="form-header-fontsize"><a href="#">{toPersianNum(CPClient.description)}</a></h2>
+                                        <div className="btn btn-primary" onClick={(event) => {
+                                            downloadFileModal(priceForCashIn, CPClient.uuid);
+                                        }}>
+                                            <a download="wish-work-cp-file" target="_blank">
+                                                <span className="file-subject">پرداخت وجه</span>
+                                            </a>
                                         </div>
+                                        <time className="timeline-time">
+                                            <span className="text-muted form-body-fontsize">برای دیدن فایل پروژه ی خود ابتدا باید مبلغ مایل استون بعدی را واریز کنید</span>
+                                        </time>
                                     </div>
-                                    <div className="btn btn-primary" onClick={(event) => {
-                                        downloadFileModal(priceForCashIn, CPClient.uuid);
-                                    }}>
-                                        <a download="wish-work-cp-file" target="_blank">
-                                            <span className="file-subject">پرداخت وجه</span>
-                                        </a>
+                                </article>
+                            </div>
+                        )
+                    }
+                    else {
+                        //milestone e akhar
+                        return (
+                            <div>
+                                <article className="timeline-entry">
+                                    <div className="timeline-entry-inner">
+                                        <div className="col-sm-6">
+                                            <div className="timeline-icon bg-warning">
+                                                <i className="entypo-location"/>
+                                            </div>
+                                            <div className="timeline-label">
+                                                <h2 className="form-header-fontsize"><a
+                                                    href="#">{toPersianNum(CPClient.description)}</a></h2>
+                                            </div>
+                                        </div>
+                                        <div className="btn btn-primary" onClick={(event) => {
+                                            downloadFileModal(priceForCashIn, CPClient.uuid);
+                                        }}>
+                                            <a download="wish-work-cp-file" target="_blank">
+                                                <span className="file-subject">دانلود فایل بازه آخر</span>
+                                            </a>
+                                        </div>
+                                        <time className="timeline-time">
+                                            <span className="text-muted form-body-fontsize">شما مبلغ این بازه را پرداخت کرده اید</span>
+                                        </time>
                                     </div>
-                                    <time className="timeline-time">
-                                        <span className="text-muted form-body-fontsize">برای دیدن فایل پروژه ی خود ابتدا باید مبلغ مایل استون بعدی را واریز کنید</span>
-                                    </time>
-                                </div>
-                            </article>
-                        </div>
-                    )
+                                </article>
+                            </div>
+                        )
+                    }
                 }
                 else {
                     return (
@@ -222,7 +254,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                         <article className="timeline-entry">
                             <div className="timeline-entry-inner">
                                 <div className="col-sm-6">
-                                    <div className="timeline-icon bg-warning">
+                                    <div className="timeline-icon bg-danger">
                                         <i className="entypo-location"/>
                                     </div>
                                     <div className="timeline-label">

@@ -14,7 +14,7 @@ const ProfileInfoForDashboard = ({profileInfo , togglePopoverWishcoin , popoverO
         }
         else {
             Image = profileInfo.profile_picture;
-            console.log("/media/", Image);
+            // console.log("/media/", Image);
         }
     }
     else{
@@ -37,8 +37,8 @@ const ProfileInfoForDashboard = ({profileInfo , togglePopoverWishcoin , popoverO
     else if(colorBackground === 4){
         colorCode = '#707117'
     }
-    console.log(colorCode , 'colorCode');
-    console.log(popoverOpenWishcoin , "popOverOpenWishcoin");
+    // console.log(colorCode , 'colorCode');
+    // console.log(popoverOpenWishcoin , "popOverOpenWishcoin");
     return(
         <div className="dash-con dash-profile mb-4">
             <div className="row">

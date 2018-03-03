@@ -170,6 +170,8 @@ const AddBid = (props) => {
                                                 <div className="timeline-centered"  id="cp-public">
 
                                                     <AddBidMileStones
+                                                                      width={props.width}
+                                                                      height={props.height}
                                                                       toPersianNum={props.toPersianNum}
                                                                       numberOfPages={props.numberOfPages}
                                                                       number_of_milestones={props.amountOfMileStones}

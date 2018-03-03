@@ -18,7 +18,7 @@ class ProjectControl extends React.Component{
             , downloadFile:false, attachmentId:"" , priceForCashIn:0 , reviseValue:"" ,numberSee:0, activeProjectList : 0 ,
             helpToWishWorkModal:false, donateValue:0 , validPrice:true , showErrorForDonate:false  ,
             message:"" , modalCancelProject:false , cancelIdProject:"" , finalModalForCanceling:false , anvaeBaze:"active" ,
-            mohlateErsal:"" , mohlateBazNegari:"" , laghv:"" , bishtar:"" , modalForErrors:false
+            mohlateErsal:"" , mohlateBazNegari:"" , laghv:"" , bishtar:"" , modalForErrors:false,loading:false,lastMileStoneModal:false
         };
         this.size = this.size.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
@@ -53,6 +53,15 @@ class ProjectControl extends React.Component{
         this.onClickMohlateBazNegari = this.onClickMohlateBazNegari.bind(this);
         this.onClickLaghv = this.onClickLaghv.bind(this);
         this.onClickBishtar = this.onClickBishtar.bind(this);
+        this.loading = this.loading.bind(this);
+        this.lastMileStone = this.lastMileStone.bind(this);
+        this.lastMileStoneModalToggle = this.lastMileStoneModalToggle.bind(this);
+    }
+    lastMileStoneModalToggle(){
+        this.setState({lastMileStoneModal: !this.state.lastMileStoneModal})
+    }
+    loading(){
+        this.setState({loading : !this.state.loading})
     }
     onClickBishtar(){
         this.setState({anvaeBaze:"" , mohlateErsal:"" , mohlateBazNegari:"" , laghv:"" , bishtar:"active"})
@@ -192,13 +201,21 @@ class ProjectControl extends React.Component{
 
     nextMileStoneBegin(){
         // this.props.actions.pay =>
-        this.setState({haveEnoughCash: !this.state.haveEnoughCash})
+        this.setState({haveEnoughCash: !this.state.haveEnoughCash});
         this.props.actions.nextMileStoneBegin(this.state.mileStoneId).then(
         ).catch(
             err=>{
                 throw (err)
             }
         )
+    }
+    lastMileStone(){
+        this.setState({lastMileStoneModal:!this.state.lastMileStoneModal});
+        this.props.actions.nextMileStoneBegin(this.state.mileStoneId).then(
+        ).catch(
+            err=>{
+                throw (err)
+            })
     }
 
     ////
@@ -219,6 +236,7 @@ class ProjectControl extends React.Component{
             this.setState({downloadFile: true, mileStoneId: id, priceForCashIn:priceForCashIn})
         }
         else{
+            this.setState({lastMileStoneModal:true , mileStoneId: id})
         }
     }
     okAndCheckBalanceInModal(){
@@ -235,9 +253,12 @@ class ProjectControl extends React.Component{
             file : this.state.file,
             milestone_id: this.state.milestone_id
         };
-        this.props.actions.sendUploadedFileByFreelancerAction(sendData).then().catch(
+        this.setState({loading:true});
+        this.props.actions.sendUploadedFileByFreelancerAction(sendData).then(
+            () => this.loading
+        ).catch(
             err=>{
-                throw (err)
+                throw (err);
             }
         )
     }
@@ -306,6 +327,14 @@ class ProjectControl extends React.Component{
   render(){
     return(
       <div className="content-wrapper py-3">
+          <Modal isOpen={this.state.lastMileStoneModal} toggle={this.lastMileStoneModalToggle}>
+              <ModalBody >
+                  شما پول این بازه را قبلا پرداخت کرده اید، برای دریافت فایل خود بر روی تایید کلیک نمایید.
+              </ModalBody>
+              <ModalFooter>
+                  <button className="btn btn-rec btn-primary" onClick={this.lastMileStone}>تایید</button>
+              </ModalFooter>
+          </Modal>
           <Modal isOpen={this.state.modalForErrors}>
               <ModalBody>
                   خطا در اتصال به سرور، لطفا اتصال به اینترنت خود را بررسی کنید
@@ -380,6 +409,7 @@ class ProjectControl extends React.Component{
                           <div className="dash-divider"/>
                           <label className="col-form-label form-header-fontsize">زمان بندی پروژه شما</label>
                           {this.state.loadSuccess? <MileStones
+                                      loading={this.state.loading}
                                       anvaeBaze={this.state.anvaeBaze}
                                       mohlateErsal={this.state.mohlateErsal}
                                       mohlateBazNegari={this.state.mohlateBazNegari}

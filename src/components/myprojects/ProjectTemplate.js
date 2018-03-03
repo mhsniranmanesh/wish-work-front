@@ -6,10 +6,10 @@ import {Button , Badge , Alert} from 'reactstrap';
 
 const ProjectTemplate = (props) => {
     var x = "";
-    console.log(props.ClientProjects.release_date,'release date');
+    // console.log(props.ClientProjects.release_date,'release date');
     moment.loadPersian({usePersianDigits: true});
     var date = moment(props.ClientProjects.release_date, 'YYYY-M-D HH:mm:ss').format('jYYYY/jM/jD HH:mm:ss');
-    console.log(date , 'date');
+    // console.log(date , 'date');
     var XClass = "";
     var XButtonName = "";
     var XHref = props.ClientProjects;

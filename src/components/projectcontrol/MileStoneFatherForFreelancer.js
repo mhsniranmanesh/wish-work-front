@@ -19,6 +19,7 @@ const MileStoneFatherForFreelancer = (props) =>{
                                           toPersianNum={props.toPersianNum}
                                           uploadSendToServerButton={uploadSendToServerButton}
                                           sendUploadedFileByFreelancer={props.sendUploadedFileByFreelancer}
+                                          loading={props.loading}
                 />)
             }
             else {
@@ -27,6 +28,7 @@ const MileStoneFatherForFreelancer = (props) =>{
                                           toPersianNum={props.toPersianNum}
                                           uploadFile={props.uploadFile}
                                           uploadSendToServerButton={false}
+                                          loading={props.loading}
                 />)
             }
         }

@@ -143,7 +143,7 @@ class Projectsubmition extends React.Component{
                 var i = this.state.progressNumber + 20;
                 //  call a 3s setTimeout when the loop is called
                 this.setState({progressNumber: i});
-                console.log(this.state.progressNumber, 'progressNumber');                                                          //  increment the counter
+                // console.log(this.state.progressNumber, 'progressNumber');                                                          //  increment the counter
                 if (this.state.progressNumber < 80) {                                                      //  if the counter < 100, call the loop function
                     this.progressNumber();                                           //  ..  again which will trigger another
                 }                        //  ..  setTimeout()
@@ -293,8 +293,8 @@ class Projectsubmition extends React.Component{
         // var Send2 = JSON.parse(JSON.stringify(this.state));
         var Send1 = JSON.parse(JSON.stringify(this.state));
         var Send3  = {file: this.state.file};
-        console.log('filesss' , this.state.file);
-        console.log('this.state.translationFrom' , this.state.translationFrom);
+        // console.log('filesss' , this.state.file);
+        // console.log('this.state.translationFrom' , this.state.translationFrom);
         // console.log('STATE IS:' , Send3);
         this.setState({loading: true});
         this.setState({progressNumber: 11});
@@ -459,7 +459,7 @@ class Projectsubmition extends React.Component{
         }
     }
     updateValueTT (newValue) {
-        console.log(this.props);
+        // console.log(this.props);
         if(newValue === null){
             this.setState({
                 translationTo: ""
@@ -496,8 +496,8 @@ class Projectsubmition extends React.Component{
         let reader = new FileReader();
         let file = e.target.files[0];
         this.setState({file : file});
-        console.log(file , 'file');
-        console.log(this.state , 'this.state dragdrop');
+        // console.log(file , 'file');
+        // console.log(this.state , 'this.state dragdrop');
         // reader.onloadend = () => {
         //     this.setState({
         //         file: file,
@@ -598,9 +598,9 @@ class Projectsubmition extends React.Component{
 
     submitProjectTimeState(event){
         let time = event.target.value;
-        console.log(time , 'time 1');
+        // console.log(time , 'time 1');
         time = this.persianToEnglish(time);
-        console.log(time , 'time 2');
+        // console.log(time , 'time 2');
         const trueOrFalseTimeValid = this.validateTime(time);
         this.setState({time_limit: time , validTime: trueOrFalseTimeValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
         //console.log('state:' ,this.state);
@@ -624,7 +624,7 @@ class Projectsubmition extends React.Component{
 
 
     handleSubmit(event){
-        console.log(this.state.field);
+        // console.log(this.state.field);
         event.preventDefault();
         if(!this.state.title.length){
             this.setState({showError: true});

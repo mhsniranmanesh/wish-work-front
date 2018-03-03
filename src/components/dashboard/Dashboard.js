@@ -105,9 +105,9 @@ class Dashboard extends React.Component{
         // console.log(this.props.profileInfo);
         // console.log(this.props);
         // console.log(this.state);
-        console.log(this.state.is_general);
+        // console.log(this.state.is_general);
         if(this.state.is_general){
-            console.log(this.state.projectSkillTag);
+            // console.log(this.state.projectSkillTag);
             this.context.router.history.push({
                 pathname:'/project/submit',
                 search : this.state.translationFrom +' ' + this.state.translationTo + ' ' + '1'

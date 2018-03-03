@@ -4,7 +4,7 @@ import moment from 'moment-jalaali';
 const ProjectTemplateForFreelancer = (props) =>{
     let category ;
     var date = moment(props.FreelancerProject.release_date, 'YYYY-M-D HH:mm:ss').format('jYYYY/jM/jD HH:mm:ss');
-    console.log('props.FreelancerProject.category' , props.FreelancerProject.category);
+    // console.log('props.FreelancerProject.category' , props.FreelancerProject.category);
     if(props.FreelancerProject.category === 1){
         category = 'ترجمه'
     }

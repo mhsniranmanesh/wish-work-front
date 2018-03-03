@@ -54,6 +54,8 @@ class ProjectProfile extends React.Component {
             myPrice:0,
             isMounted:false,
             ErrorModal:false,
+            width:0,
+            height:0,
             ErrorMsgModal: "",
             stateForMileStone1:false,
             stateForMileStone2:false,
@@ -67,6 +69,7 @@ class ProjectProfile extends React.Component {
             ClassMileStone2:" radio-disabled form-body-fontsize",
             ClassMileStone3:" radio-disabled form-body-fontsize",
             ClassMileStone4:" radio-disabled form-body-fontsize",
+            componentMount : false,
         };
 
         // delivery_duration: Array [ "This field is required." ]
@@ -113,6 +116,10 @@ class ProjectProfile extends React.Component {
         this.is2MileStone = this.is2MileStone.bind(this);
         this.is3MileStone = this.is3MileStone.bind(this);
         this.is4MileStone = this.is4MileStone.bind(this);
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    }
+    updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
     is1MileStone(){
         this.setState({ ModalState: 'modal',amountOfMileStones: 1 , stateForMileStone1:true ,stateForMileStone2:false , stateForMileStone3:false , stateForMileStone4:false })
@@ -611,16 +618,19 @@ class ProjectProfile extends React.Component {
     componentDidMount() {
         var sIze = this.size(this.props.projectDetail);
         this.interval = setInterval(() => this.setState({time: Date.now()}), 1000);
+        this.setState({componentMount:true});
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
 
         // if(sIze>0 && this.props.profileInfo.username) {
         // }
     }
     componentWillUnmount(){
         clearInterval(this.interval);
+        window.removeEventListener('resize', this.updateWindowDimensions);
     }
     componentWillMount() {
         //console.log('this.props:', this.props.location.pathname.slice(10));
-
         // var x= this.size()
         // if()
         // this.setState({})
@@ -628,7 +638,21 @@ class ProjectProfile extends React.Component {
         var sIze = this.size(this.props.projectDetail);
         var profileSize = this.size(this.props.profileInfo);
         if(profileSize > 0){
+            this.setState({
+                showBidsList: true
+            });
             this.setState({isLoggedIn:true});
+        }
+        if(sIze > 0){
+            this.setState({
+                showBidsList: true
+            });
+            this.setState({
+                projectDetail: Object.assign({}, this.props.projectDetail[sIze - 1].general)
+            });
+            this.setState({
+                projectAdditional: Object.assign({}, this.props.projectDetail[sIze - 1].additional_info)
+            });
         }
         if(sIze === 0) {
             this.props.actions.projectDetail(this.props.location.pathname.slice(10)).then().catch(
@@ -938,6 +962,8 @@ class ProjectProfile extends React.Component {
 
                                         />
                                         <AddBid
+                                            width={this.state.width}
+                                            height={this.state.height}
                                             ClassMileStone1={this.state.ClassMileStone1}
                                             ClassMileStone2={this.state.ClassMileStone2}
                                             ClassMileStone3={this.state.ClassMileStone3}

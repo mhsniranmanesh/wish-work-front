@@ -1293,21 +1293,34 @@ section.profile {
     border-top: 1px solid #e9ecef;
 }
 @media (max-width: 576px) {
+    .col-xs-2-milestone{
+width: 49.99%;
+    }
     .image-size-not-found {
         height: 100px;
     }
 }
 @media (min-width: 1200px) {
+    .col-xs-2-milestone{
+
+    }
     .image-size-not-found {
         height: 400px;
     }
 }
 @media (min-width: 768px){
+    .col-xs-2-milestone{
+        width: 47.99%;
+
+    }
     .image-size-not-found{
         height: 250px;
     }
 }
 @media (min-width: 992px) {
+    .col-xs-2-milestone{
+
+    }
     .image-size-not-found{
         height: 300px;
     }

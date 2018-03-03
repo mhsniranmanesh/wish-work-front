@@ -9,6 +9,7 @@ const Greeting = (props) => {
                                   profilePic={props.profilePic}
                                   GoToDashboard={props.GoToDashboard}
                                   colorCode={props.colorCode}
+                                  exit={props.exit}
             />
         )
     }

@@ -34,14 +34,14 @@ const MileStonesHorizentalTemplate = (props) =>{
               if(props.i === 0){
                     if(interval == 2){
                       return(
-                        <div className="col-sm-6 col-xs-2">
-                            <div className="col-sm-6 col-xs-2">
+                        <div className="col-sm-6 col-xs-2 col-xs-2-milestone">
+                            <div className="col-sm-6 col-xs-2 col-xs-2-milestone">
                                 <span className="cp-circle">
                                   <i className="fa fa-caret-left cp-start-fa" aria-hidden="true"></i>
                                 </span>
                                 <span className="cp-connector-2 "></span>
                             </div>
-                            <div className="col-sm-6 col-xs-2 cp-beside-finish">
+                            <div className="col-sm-6 col-xs-2 cp-beside-finish col-xs-2-milestone">
                               <span className="cp-public-text"> {props.toPersianNum(props.dayRemain)} روز </span>
                               <span className=" cp-circle"></span>
                               <span className="cp-connector"></span>
@@ -54,8 +54,8 @@ const MileStonesHorizentalTemplate = (props) =>{
                     }
                     else if(interval == 3){
                       return(
-                        <div className="col-sm-5 col-xs-2">
-                            <div className="col-sm-6 col-xs-2">
+                        <div className="col-sm-5 col-xs-2 col-xs-2-milestone">
+                            <div className="col-sm-6 col-xs-2 col-xs-2-milestone">
                                 <span className="cp-circle">
                                   <i className="fa fa-caret-left cp-start-fa" aria-hidden="true"></i>
                                 </span>
@@ -72,14 +72,14 @@ const MileStonesHorizentalTemplate = (props) =>{
                     }
                     else if(interval == 4){
                       return(
-                        <div className="col-sm-4 col-xs-2">
-                            <div className="col-sm-6 col-xs-2">
+                        <div className="col-sm-4 col-xs-2 col-xs-2-milestone">
+                            <div className="col-sm-6 col-xs-2 col-xs-2-milestone">
                                 <span className="cp-circle">
                                   <i className="fa fa-caret-left cp-start-fa" aria-hidden="true"></i>
                                 </span>
                                 <span className="cp-connector"></span>
                             </div>
-                            <div className="col-sm-6 col-xs-2  cp-beside-finish">
+                            <div className="col-sm-6 col-xs-2  cp-beside-finish col-xs-2-milestone">
                               <span className="cp-public-text"> {props.toPersianNum(props.dayRemain)} روز </span>
                               <span className=" cp-circle"></span>
                               <span className="cp-connector"></span>
@@ -98,14 +98,14 @@ const MileStonesHorizentalTemplate = (props) =>{
               else if(props.i === end){
                     if(interval == 2){
                       return(
-                        <div className="col-sm-6 col-xs-2">
-                            <div className="col-sm-6 col-xs-2  cp-beside-start">
+                        <div className="col-sm-6 col-xs-2 col-xs-2-milestone">
+                            <div className="col-sm-6 col-xs-2  cp-beside-start col-xs-2-milestone">
                               <span className="cp-public-text"> {props.toPersianNum(props.dayRemain)} روز </span>
                               <span className=" cp-circle"></span>
                               <span className="cp-connector-2"></span>
                               <span className="cp-public-text"> {props.toPersianNum(props.pageRemain)} صفحه</span>
                             </div>
-                            <div className="col-sm-6 col-xs-2 cp-start">
+                            <div className="col-sm-6 col-xs-2 cp-start col-xs-2-milestone">
                               <span className=" cp-circle">
                                 <i className="fa fa-stop cp-finish-fa" aria-hidden="true"></i>
 
@@ -116,14 +116,14 @@ const MileStonesHorizentalTemplate = (props) =>{
                     }
                     else if(interval == 3){
                       return(
-                          <div className="col-sm-5 col-xs-2">
-                              <div className="col-sm-6 col-xs-2  cp-beside-start">
+                          <div className="col-sm-5 col-xs-2 col-xs-2-milestone">
+                              <div className="col-sm-6 col-xs-2  cp-beside-start col-xs-2-milestone">
                                 <span className="cp-public-text"> {props.toPersianNum(props.dayRemain)} روز </span>
                                 <span className=" cp-circle"></span>
                                 <span className="cp-connector"></span>
                                 <span className="cp-public-text"> {props.toPersianNum(props.pageRemain)} صفحه</span>
                               </div>
-                              <div className="col-sm-6 col-xs-2 cp-start">
+                              <div className="col-sm-6 col-xs-2 cp-start col-xs-2-milestone">
                                 <span className=" cp-circle">
                                   <i className="fa fa-stop cp-finish-fa" aria-hidden="true"></i>
 
@@ -141,7 +141,7 @@ const MileStonesHorizentalTemplate = (props) =>{
                                 <span className="cp-connector"></span>
                                 <span className="cp-public-text">{props.toPersianNum(props.pageRemain)}</span><span className="cp-public-text-4"> صفحه</span>
                               </div>
-                              <div className="col-sm-6 col-xs-2 cp-start">
+                              <div className="col-sm-6 col-xs-2 cp-start col-xs-2-milestone">
                                 <span className=" cp-circle">
                                   <i className="fa fa-stop cp-finish-fa" aria-hidden="true"></i>
 
@@ -159,7 +159,7 @@ const MileStonesHorizentalTemplate = (props) =>{
               else if((props.i % 2 !== 0) && (props.i !== end)){
                     if(interval == 2){
                       return(
-                          <div className="col-sm-3 col-xs-2  cp-between">
+                          <div className="col-sm-3 col-xs-2  cp-between col-xs-2-milestone">
                             <span className="cp-public-text"> {props.toPersianNum(props.dayRemain)} روز </span>
                             <span className=" cp-circle"></span>
                             <span className="cp-connector-2"></span>
@@ -169,7 +169,7 @@ const MileStonesHorizentalTemplate = (props) =>{
                     }
                     else if(interval == 3){
                       return(
-                          <div className="col-sm-2 col-xs-2  cp-between">
+                          <div className="col-sm-2 col-xs-2  cp-between col-xs-2-milestone">
                             <span className="cp-public-text"> {props.toPersianNum(props.dayRemain)} روز </span>
                             <span className=" cp-circle"></span>
                             <span className="cp-connector"></span>
@@ -179,7 +179,7 @@ const MileStonesHorizentalTemplate = (props) =>{
                     }
                     else if(interval == 4){
                       return(
-                        <div className="col-sm-2 col-xs-2  cp-between">
+                        <div className="col-sm-2 col-xs-2  cp-between col-xs-2-milestone">
                           <span className="cp-public-text"> {props.toPersianNum(props.dayRemain)} روز </span>
                           <span className=" cp-circle"></span>
                           <span className="cp-connector"></span>
@@ -196,7 +196,7 @@ const MileStonesHorizentalTemplate = (props) =>{
               else{
                     if(interval == 2){
                       return(
-                          <div className="col-sm-3 col-xs-2  cp-between">
+                          <div className="col-sm-3 col-xs-2  cp-between col-xs-2-milestone">
                             <span className="cp-public-text"> {props.toPersianNum(props.dayRemain)} روز </span>
                             <span className=" cp-circle"></span>
                             <span className="cp-connector-2"></span>
@@ -206,7 +206,7 @@ const MileStonesHorizentalTemplate = (props) =>{
                     }
                     else if(interval == 3){
                       return(
-                          <div className="col-sm-2 col-xs-2  cp-between">
+                          <div className="col-sm-2 col-xs-2  cp-between col-xs-2-milestone">
                             <span className="cp-public-text"> {props.toPersianNum(props.dayRemain)} روز </span>
                             <span className=" cp-circle"></span>
                             <span className="cp-connector"></span>
@@ -216,7 +216,7 @@ const MileStonesHorizentalTemplate = (props) =>{
                     }
                     else if(interval == 4){
                       return(
-                        <div className="col-sm-2 col-xs-2 cp-between">
+                        <div className="col-sm-2 col-xs-2 cp-between col-xs-2-milestone">
                           <span className="cp-public-text"> {props.toPersianNum(props.dayRemain)} روز </span>
                           <span className=" cp-circle"></span>
                           <span className="cp-connector"></span>

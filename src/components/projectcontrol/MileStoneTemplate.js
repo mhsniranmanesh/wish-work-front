@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment-jalaali';
 import {Button} from 'reactstrap';
 //project_controller_element_attachments
-const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUploadedFileByFreelancer, toPersianNum}) => {
+const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUploadedFileByFreelancer, toPersianNum , loading}) => {
     var today = new Date().getTime();
     var submission_deadline = new Date(CP.submission_deadline).getTime();
     var timeDiffFromSubmission = submission_deadline - today;
@@ -32,6 +32,9 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                                                                                 onClick={sendUploadedFileByFreelancer}>
                                                                                 آپلود فایل
                                                                         </btn> : (null)}
+                                            {loading ? <div className="load-4">
+                                                <div className="ring-1"></div>
+                                            </div> : (null)}
                                             <input type="file"  className="browse-pic"
                                                    onChange={(event) => {
                                                        uploadFile(event, CP.uuid);
@@ -62,14 +65,14 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                                               {/*<i className="fa fa-download"/>*/}
                                               {/*</button>*/}
                                               <p> برای تغییر فایل خود بر روی کلید زیر کلیک کنید</p>
-                                              {uploadSendToServerButton ?
+                                              {(false) ?
                                               <btn type="submit"
                                                       className="btn btn-secondary btn-rec"
                                                    id="buttonImage2"
                                                       onClick={sendUploadedFileByFreelancer}>
                                                   <i className="fa fa-download fa-download-dash-cp-notyet"/>
                                               </btn> : (null)}
-                                              <input type="file" color="secondary" className="btn btn-secondary btn-rec"
+                                              <input type="file" color="secondary" className="browse-pic"
                                                      onChange={(event) => {
                                                          uploadFile(event, CP.uuid);
                                                      }} placeholder="تغییر فایل"/>

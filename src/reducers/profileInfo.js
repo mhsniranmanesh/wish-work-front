@@ -16,7 +16,6 @@ export default function profileInfo(state= initialState.profileInfo , action){
         return [...state , Object.assign({} , action.profileInfo)];
         //it update profileInfo to new information
       case types.UPDATE_NEW_INFOS_SUCCESS:
-          debugger;
           var size1 = size(state);
           return  [...state , Object.assign({} , state[size1 - 1] , action.profileInfo)];
       case types.PROJECT_SUBMIT_LOCAL_FOR_DASHBOARD:
@@ -25,7 +24,6 @@ export default function profileInfo(state= initialState.profileInfo , action){
           var size2 = size(state);
            var translation_skill = action.payload;
           var translation_skills = {translation_skill};
-          debugger;
           return [...state , Object.assign({} ,state[size2 - 1] , {
               skills : Object.assign({} , state[size2 - 1].skills , {
                   translation_skill : Object.assign({} , state[size2 -1].skills[0].translation_skill , translation_skills)

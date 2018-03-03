@@ -11,6 +11,7 @@ constructor(props){
     this.SignUp = this.SignUp.bind(this);
     this.GoToDashboard = this.GoToDashboard.bind(this);
     this.size = this.size.bind(this);
+    this.exit = this.exit.bind(this);
 }
 size(obj) {
         let x = 0,
@@ -20,6 +21,14 @@ size(obj) {
         }
         return x;
     };
+    exit(){
+        localStorage.removeItem('current_login_token');
+        // window.location.assign('http://wishworkstage.ir/login/');
+        window.location.assign('http://wishwork.ir/login/');
+        // this.context.router.history.push({
+        //     pathname:'/login/'
+        // });
+    }
 SignUp(event){
     event.preventDefault();
     // this.context.router.history.push('/signup');
@@ -83,12 +92,12 @@ componentWillReceiveProps(nextProps){
                 var colorBackground = -1;
                 var colorCode;
                 if((nextProps.profileInfo.profile_picture != null) || (nextProps.profileInfo.profile_picture != undefined)){
-                    if(nextProps.profileInfo[x-1].profile_picture == '/media/'){
+                    if(nextProps.profileInfo.profile_picture == '/media/'){
                         Image = require("../../../static/img/profile_pic/" + nextProps.profileInfo.first_name[0].charCodeAt() + ".png");
                         colorBackground = nextProps.profileInfo.first_name[0].charCodeAt()%5;
                     }
                     else {
-                        Image = nextProps.profileInfo[x-1].profile_picture;
+                        Image = nextProps.profileInfo.avatar;
                         // console.log("/media/", Image);
                     }
                 }
@@ -141,6 +150,7 @@ componentWillReceiveProps(nextProps){
                                       SignUp={this.SignUp}
                                       colorCode={this.state.colorCode}
                                       GoToDashboard={this.GoToDashboard}
+                                      exit={this.exit}
                             />
                             {/*{pleaseRegister ?  {<a className="nav-link dropdown-toggle" href="http://example.com" id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">*/}
                                 {/*<img className="rounded-circle" src={this.state.profile_picture} width="30" height="30"/>*/}

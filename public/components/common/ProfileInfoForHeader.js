@@ -11,7 +11,7 @@ const ProfileInfoForHeader = (props) =>{
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarUserDropdown">
                 <button className="dropdown-item" onClick={props.GoToDashboard}>پنل کاربری</button>
-                <button className="dropdown-item" >خروج</button>
+                <button className="dropdown-item" onClick={props.exit}>خروج</button>
             </div>
             </li>
         </div>

@@ -59,7 +59,7 @@ class Recomendedprojects extends React.Component{
     componentWillReceiveProps(nextProps) {
         var size = this.size(nextProps.profileInfo);
         if (this.props.profileInfo != nextProps.profileInfo) {
-            console.log(nextProps.profileInfo[0]);
+            // console.log(nextProps.profileInfo[0]);
             //inja az halate bler dar biad
             this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[size - 1])});
         }

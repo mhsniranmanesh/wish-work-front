@@ -110,6 +110,11 @@ const CountDown = (props) => {
             </div>
         )
     }
+    else {
+        return(
+            <div></div>
+        )
+    }
 
 };
 

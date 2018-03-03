@@ -2202,7 +2202,7 @@ a.delete-project:hover:after {
     height: 20px;
     margin: auto;
     padding: 10px;
-    border: 7px dashed #4b9cdb;
+    border: 7px dashed #dbac4b;
     border-radius: 100%;
 }
 @keyframes loadingD {

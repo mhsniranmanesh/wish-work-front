@@ -130,7 +130,7 @@ class Header2 extends React.Component {
                 colorCode = '#707117'
             }
             this.setState({colorBackground: colorBackground , colorCode:colorCode , Image:Image});
-            console.log(nextProps.profileInfo[0]);
+            // console.log(nextProps.profileInfo[0]);
             this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[x-1])});
         }
     }

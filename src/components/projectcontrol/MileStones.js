@@ -19,6 +19,7 @@ const MileStones = (props)=> {
                                                                  mileStoneid={props.mileStoneid}
                                                                  sendUploadedFileByFreelancer={props.sendUploadedFileByFreelancer}
                                                                  toPersianNum={props.toPersianNum}
+                                                                 loading={props.loading}
 
             />
         }

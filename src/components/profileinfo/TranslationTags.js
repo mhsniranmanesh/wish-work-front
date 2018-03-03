@@ -10,7 +10,7 @@ const TranslationTags = (props) =>{
     //console.log('props.Skills[0].translation_skill.languages[0]' , props.Skills[0].translation_skill.languages[0]);
     if(props.Skills[0].translation_skill) {
         for (var x = 0; x < props.Skills[0].translation_skill.language_set.length; x++) {
-            console.log(props.Skills[0].translation_skill.language_set.length);
+            // console.log(props.Skills[0].translation_skill.language_set.length);
             for (var y = 1; y < 7; y++) {
                 if(props.Skills[0].translation_skill.language_set[x]) {
                     if (STATIC_DATAS.AVAILABLEFROMLANGUAGES[y - 1].index == props.Skills[0].translation_skill.language_set[x].from_language) {

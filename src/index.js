@@ -22,6 +22,7 @@ import App from './components/App.js';
 import axios from 'axios';
 import { syncHistoryWithStore } from 'react-router-redux';
 //import {Authentication} from './promises/authentication';
+const queryString = require('query-string');
 
 
 if (process.env.NODE_ENV !== 'production') {
@@ -49,7 +50,13 @@ function Authentication() {
 }
 function goToLogIn(err) {
     if(err){
-        window.location.assign('http://wishwork.ir/login/');
+        var parsed={};
+        parsed.url = window.location.toString().slice(22);
+        const stringified = queryString.stringify(parsed);
+        location.search = stringified;
+        console.log(stringified , 'stringified');
+        console.log( 'window.location');
+        window.location.href = 'http://wishwork.ir/login/' + '?' + stringified;
     }
 }
 

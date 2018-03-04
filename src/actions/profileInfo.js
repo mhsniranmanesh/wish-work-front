@@ -85,7 +85,7 @@ export function getPortSuccess(url) {
     return {type: types.Get_PAYMENT_LINK_SUCCESS, url}
 }
 export function transActionPerform(price) {
-    var priceJson = {amount : price,
+    var priceJson = {amount : price, reason : 1,
                      port : 1};
     return function (dispatch){
         return axios.post('/api/v1/accounts/transaction/perform/' , priceJson).then(payment_url =>{
@@ -93,6 +93,15 @@ export function transActionPerform(price) {
         }).catch(err => {
             throw (err);
             })
+    }
+}
+export function reduceBalanceForWishCoin(subsNumb) {
+    return function (dispatch) {
+        return axios.post('').then(
+            dispatch(profileInfo())
+        ).catch(err => {
+            throw (err)
+        })
     }
 }
 export function updateInformationsPic(profileinfo , getState){

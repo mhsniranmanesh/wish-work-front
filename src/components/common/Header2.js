@@ -106,7 +106,7 @@ class Header2 extends React.Component {
                     colorBackground = nextProps.profileInfo[x-1].first_name[0].charCodeAt()%5;
                 }
                 else {
-                    Image = nextProps.profileInfo[x-1].profile_picture;
+                    Image = nextProps.profileInfo[x-1].avatar;
                     // console.log("/media/", Image);
                 }
             }

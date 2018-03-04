@@ -143,7 +143,7 @@ class ProjectControl extends React.Component{
             if(validity){
                 this.setState({showErrorForDonate : false});
                 let price = this.state.donateValue;
-                this.props.actions.transActionPerform(price*10).then(
+                this.props.actions.transActionPerformForDonate(price*10 , 2).then(
                     () => this.goToPayPage()
                 )
             }

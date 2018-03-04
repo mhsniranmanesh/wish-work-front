@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 // import * as profileInfo from '../actions/profileInfo.js';
 import { withRouter } from 'react-router-dom';
 // import financialManagement from './financialmanagement/FinancialManagement';
-const queryString = require('query-string');
 
 class App extends React.Component {
   constructor(props , context){

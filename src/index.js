@@ -27,6 +27,7 @@ const queryString = require('query-string');
 
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');
+  console.log(window.location.pathname , 'pathname');
     // console.log(this.props , 'console.log(location.search);');
 
 }
@@ -51,7 +52,7 @@ function Authentication() {
 function goToLogIn(err) {
     if(err){
         var parsed={};
-        parsed.url = window.location.toString().slice(22);
+        parsed.url = window.location.pathname.toString();
         const stringified = queryString.stringify(parsed);
         location.search = stringified;
         console.log(stringified , 'stringified');

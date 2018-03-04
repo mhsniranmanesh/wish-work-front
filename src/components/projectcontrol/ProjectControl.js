@@ -236,7 +236,7 @@ class ProjectControl extends React.Component{
             this.setState({downloadFile: true, mileStoneId: id, priceForCashIn:priceForCashIn})
         }
         else{
-            this.setState({lastMileStoneModal:true , mileStoneId: id})
+            this.setState({ mileStoneId: id})
         }
     }
     okAndCheckBalanceInModal(){
@@ -374,7 +374,7 @@ class ProjectControl extends React.Component{
               </ModalBody>
               <div className="row">
                 <div className="col-sm-4 mb-1">
-                  <button data-dismiss="modal" aria-hidden="true" className="btn btn-rec btn-primary">راضی نبودم</button>
+                  <button aria-hidden="true" className="btn btn-rec btn-primary" onClick={this.toggleDonate}>راضی نبودم</button>
                 </div>
                 <div className="col-sm-5"></div>
                 <div className="col-sm-2 mb-1">

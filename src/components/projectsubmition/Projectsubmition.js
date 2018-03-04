@@ -67,6 +67,7 @@ class Projectsubmition extends React.Component{
             inputTitle: 'فایل را بگیرید و اینجا رها کنید.',
             file:"",
             loading: false,
+            popoverOpenWishcoin:false,
             progressNumber: 10,
             showErrorFromServerSide: false
         };
@@ -114,6 +115,13 @@ class Projectsubmition extends React.Component{
         this.redirect = this.redirect.bind(this);
         this.toPersianNum = this.toPersianNum.bind(this);
         this.size = this.size.bind(this);
+        this.togglePopoverWishcoin = this.togglePopoverWishcoin.bind(this);
+
+    }
+    togglePopoverWishcoin(){
+        this.setState({
+            popoverOpenWishcoin: !this.state.popoverOpenWishcoin
+        });
     }
     size (obj) {
         let x = 0, key;
@@ -972,7 +980,13 @@ class Projectsubmition extends React.Component{
                             <button className = "btn btn-rec btn-primary" onClick={this.handleSubmit}>ایجاد پروژه</button>
                                                                 <span className="wishcoin-description">۵۰</span>
                                 <img className="wishcoin-project-submission" src={require("../../../static/img/wish coin-05.png")} style={{height:25}}/>
+
                             </span>
+                              <span className="user-inform"><i className="fa fa-question-circle fa-question-circle-dash-info " id="wishcoinGuide" onClick={this.togglePopoverWishcoin}/>
+                    </span>
+                          <Popover placement="right" isOpen={this.state.popoverOpenWishcoin} target="wishcoinGuide" toggle={this.togglePopoverWishcoin}>
+                              <PopoverBody className="beauty-text popover-beauty">برای ثبت پروژه شما باید ۵۰ ویش کوین بپردازید.  </PopoverBody>
+                          </Popover>
                               <Modal isOpen={this.state.loading}>
                                   <ModalBody>
                                     <Progress completed={this.state.progressNumber}/>

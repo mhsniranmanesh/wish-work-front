@@ -20,13 +20,14 @@ import '../static/css/wish-dash.css';
 import {BrowserRouter} from 'react-router-dom';
 import App from './components/App.js';
 import axios from 'axios';
-import { syncHistoryWithStore } from 'react-router-redux'
+import { syncHistoryWithStore } from 'react-router-redux';
 //import {Authentication} from './promises/authentication';
-
 
 
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');
+    // console.log(this.props , 'console.log(location.search);');
+
 }
 function Authentication() {
     return new Promise((resolve , reject) => {
@@ -46,7 +47,7 @@ function Authentication() {
 
     // console.log('token is: ' , axios.defaults.headers.common['Authorization']);
 }
-function goToSignIn(err) {
+function goToLogIn(err) {
     if(err){
         window.location.assign('http://wishwork.ir/login/');
     }
@@ -54,9 +55,10 @@ function goToSignIn(err) {
 
 Authentication().then(() => {
     console.log('ok' , axios.defaults.headers.common['Authorization'] );
+    // console.log(this.props , 'console.log(location.search);');
     const store = configureStore();
     store.dispatch(profileInfo()).then().catch(
-        err => {goToSignIn(err)}
+        err => {goToLogIn(err)}
     );
     // store.dispatch(projectSubmitLocalForDashboard())
     // store.dispatch(profileInfo());

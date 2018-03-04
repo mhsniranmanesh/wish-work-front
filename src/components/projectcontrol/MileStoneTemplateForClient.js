@@ -103,8 +103,12 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                             <div className="timeline-label">
                                                 <h2 className="form-header-fontsize"><a href="#">{toPersianNum(CPClient.description)}</a></h2>
                                                 <textarea type="text" className="form-control form-body-fontsize" id="Popover4"
-                                                          placeholder="انتقادات و پیشنهادات خود را در این بخش بنویسید"/>
-                                                <button type="submit" className="btn btn-secondary btn-rec">
+                                                          placeholder="انتقادات و پیشنهادات خود را در این بخش بنویسید"
+                                                          onChange={reviseOnChange} value={reviseValue}
+                                                />
+                                                <button type="submit" className="btn btn-success btn-rec"
+                                                        onClick={(event) =>{submitFeedBack(CPClient.project_controller_element_attachments[0].uuid)}}
+                                                >
                                                     تایید
                                                     <i className="fa fa-comment"/>
                                                 </button>
@@ -114,7 +118,7 @@ const MileStoneTemplateForClient = ({CPClient , downloadFileModal ,
                                             <div className="dash-cp-file" onClick={(event) => {
                                                 downloadFileModal('its the end' , CPClient.project_controller_element_attachments[0].uuid);donate();
                                             }}>
-                                                <a download="wish-work-file" target="_blank">
+                                                <a download="wish-work-file" href={CPClient.project_controller_element_attachments[0].file} target="_blank">
                                                   <span id="download-symbol-dash-cp">
                                                     <i className="fa fa-download fa-download-dash-cp"  aria-hidden="true"/>
                                                   </span>

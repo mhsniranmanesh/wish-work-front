@@ -6,7 +6,7 @@ const HelpForCPContent = (props) =>{
             <section className="design-process-section" id="process-tab">
                 <div className="container">
                     <div className="row">
-                        <div className="col-xs-12">
+                        <div className="col-xs-14">
                             <ul className="process-model more-icon-preocess" role="tablist">
                                 <li role="presentation" className={props.anvaeBaze} onClick={props.onClickAnvaeBaze}><a  role="tab" ><i className="fa fa-map-pin" aria-hidden="true"/>
                                     <p>انواع بازه های زمانی</p>
@@ -28,10 +28,17 @@ const HelpForCPContent = (props) =>{
                                 <div role="tabpanel" className={"tab-pane"+ props.anvaeBaze} id="discover">
                                     <div className="design-process-content">
                                         <h3 className="semi-bold">انواع بازه های زمانی</h3>
-<div className="timeline-icon bg-success"></div>  : درحال انجام
-<p>زرد : در انتظار بازنگری و تایید</p>
-<p>سبز : پایان یافته</p>
-<p>توسی : هنوز نرسیده</p>
+
+                             <span className="text-primary">آبی</span>
+                                        : درحال انجام
+<p>                            <span className="text-warning">زرد</span>
+    : در انتظار بازنگری و تایید</p>
+<p>                            <span className="text-success">سبز</span>
+    : پایان یافته</p>
+<p>                            <span className="text-secondary">توسی</span>
+    : هنوز نرسیده</p>
+<p>                            <span className="text-danger">لغو شده</span>
+    : هنوز نرسیده</p>
                                         هنگامی که پروژه در حال انجام است برای فریلنسران قابلیت آپلود فایل وجود دارد
                                         هنگامی که پروژه در مرحله ی بازنگری و تایید است کارفرما ۲۴ ساعت فرصت دارد تا پروژه را به تایید خود برساند و مبلغ فاز بعدی را بپردازد تا فاز بعدی شروع شود
                                     </div>

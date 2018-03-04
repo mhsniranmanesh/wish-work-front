@@ -241,7 +241,7 @@ class WishCoin extends React.Component {
                                     <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div className="db-wrapper">
                                             <img className="img-responsive wish-coin-sub-image" src={require("../../../static/img/wish cards-02.png")} onClick={this.wishCoinSubscription3}/>
-                                            <Modal isOpen={this.state.wishCoinSubscription3 && this.state.enoughForSubs3} toggle={this.wishCoinSubscription2}>
+                                            <Modal isOpen={this.state.wishCoinSubscription3 && this.state.enoughForSubs3} toggle={this.wishCoinSubscription3}>
                                                 <ModalBody>
                                                     <div className="notenough-modalbody1">
                                                         برای خرید باید مبلغ <span

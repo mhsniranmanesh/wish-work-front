@@ -96,8 +96,9 @@ export function transActionPerform(price) {
     }
 }
 export function reduceBalanceForWishCoin(subsNumb) {
+    var pg = {package : subsNumb};
     return function (dispatch) {
-        return axios.post('').then(
+        return axios.post('/api/v1/accounts/transaction/wishcoin/' , pg).then(
             dispatch(profileInfo())
         ).catch(err => {
             throw (err)

@@ -58,17 +58,23 @@ class WishCoin extends React.Component {
         })
     };
     buyWishCoinSubscription3(){
-        this.props.actions.reduceBalanceForWishCoin(3).then()
+        this.props.actions.reduceBalanceForWishCoin(3).then(
+            () => this.wishCoinSubscription3
+        ).catch(err => {throw(err)})
 //action
         //TODO action for wishcoin reduce
     }
     buyWishCoinSubscription2(){
-        this.props.actions.reduceBalanceForWishCoin(2).then()
+        this.props.actions.reduceBalanceForWishCoin(2).then(
+            () => this.wishCoinSubscription2
+        ).catch(err=>{throw (err)})
 
 //action
     }
     buyWishCoinSubscription1(){
-        this.props.actions.reduceBalanceForWishCoin(1).then()
+        this.props.actions.reduceBalanceForWishCoin(1).then(
+            () => this.wishCoinSubscription1
+        ).catch(err=>{throw (err)})
 
 //action
     }

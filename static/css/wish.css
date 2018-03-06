@@ -527,6 +527,21 @@ a:hover {
     z-index: 103;
 }
 
+.fields span.radio-disabled::before{
+    content: " ";
+    /*margin-left: px;*/
+    position: absolute;
+    top: 7px;
+    right: -15px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #a1a1a1;
+    border-radius: 4px;
+    z-index: 103;
+}
+
+
 .fields label input[type="radio"]+span::before {
     border-radius: 18px;
 }
@@ -559,6 +574,8 @@ a:hover {
     -o-transition: .25s all ease;
     transition: .25s all ease;
 }
+
+
 
 
 /*fonts*/
@@ -1077,8 +1094,9 @@ section.signin .con-body .sub-label {
 }
 
 textarea.form-control {
-    min-height: 100px;
+    min-height: 70px;
 }
+
 
 .navbar-toggler {
     border-radius: 0;
@@ -1122,7 +1140,17 @@ textarea.form-control {
   border-radius: 5px;
   font-weight: 300;
 }
-
+.badge-cancel-dash-cp{
+    border: 1px solid #ee4749;
+    background: #ed4749;
+    color: #f2f9f7;
+    border-radius: 5px;
+    font-weight: 400;
+    padding: .25rem 1.2rem;
+}
+.wish-coin-sub-image:hover{
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
 .badge-doing-dash-cp{
   border: 1px solid #01be94;
   background: #03141b;
@@ -1244,7 +1272,10 @@ textarea.form-control {
 .sub-heading .fa{
   display: inline-block;
 }
-
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
 section.profile {
     background-color: #f1f1f1;
     padding-bottom: 75px;
@@ -1261,13 +1292,52 @@ section.profile {
     overflow: hidden;
     border-top: 1px solid #e9ecef;
 }
+@media (max-width: 576px) {
+    .col-xs-2-milestone{
+width: 49.99%;
+    }
+    .image-size-not-found {
+        height: 100px;
+    }
+}
+@media (min-width: 1200px) {
+    .col-xs-2-milestone{
+
+    }
+    .image-size-not-found {
+        height: 400px;
+    }
+}
+@media (min-width: 768px){
+    .col-xs-2-milestone{
+        width: 47.99%;
+
+    }
+    .image-size-not-found{
+        height: 250px;
+    }
+}
+@media (min-width: 992px) {
+    .col-xs-2-milestone{
+
+    }
+    .image-size-not-found{
+        height: 300px;
+    }
+}
 
 .project-title {
     display: inline;
     font-weight: 400;
     line-height: 1.75rem;
 }
-
+.not-found-title{
+    text-align: center;
+    font-size: 30px;
+}
+.margin-auto-for-con{
+    margin: auto;
+}
 .modal-content {
   padding: 20px;
   border: 3px solid #ff7600;
@@ -2260,6 +2330,7 @@ a.delete-project:hover:after {
   border: 1px dashed #018abe;
   border-radius: 15px;
   padding: 60px 0;
+  margin-top: -35px;
 }
 
 .cp-public-text{
@@ -2300,7 +2371,16 @@ a.delete-project:hover:after {
 .fa-question-circle{
   /*padding-top: 5px;*/
 }
-
+.badge-cancel{
+    font-size: 13px;
+    font-weight: 400;
+    border-radius: 5px;
+    color: #ee4749;
+    border: 1px solid #ee4749;
+    background: #fff;
+    margin: 0 5px;
+    padding: 5px 10px;
+}
 .badge-freelancer{
   font-size: 13px;
   font-weight: 400;
@@ -2347,4 +2427,10 @@ a.delete-project:hover:after {
 
 .freelancer-char-box{
   margin-top: 10px;
+}
+
+.client-choose-milestone{
+  width: 115%;
+  margin-right: -25px;
+  margin-top: 35px;
 }

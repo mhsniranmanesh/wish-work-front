@@ -17,7 +17,9 @@ class ProjectControl extends React.Component{
             loadSuccess:false , file:"" , mileStoneId:"" , milestone_id:"" , dontHaveEnoughCash:false , haveEnoughCash:false
             , downloadFile:false, attachmentId:"" , priceForCashIn:0 , reviseValue:"" ,numberSee:0, activeProjectList : 0 ,
             helpToWishWorkModal:false, donateValue:0 , validPrice:true , showErrorForDonate:false  ,
-            message:"" , modalCancelProject:false , cancelIdProject:"" , finalModalForCanceling:false};
+            message:"" , modalCancelProject:false , cancelIdProject:"" , finalModalForCanceling:false , anvaeBaze:"active" ,
+            mohlateErsal:"" , mohlateBazNegari:"" , laghv:"" , bishtar:"" , modalForErrors:false,loading:false,lastMileStoneModal:false
+        };
         this.size = this.size.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
         this.sendUploadedFileByFreelancer = this.sendUploadedFileByFreelancer.bind(this);
@@ -46,6 +48,35 @@ class ProjectControl extends React.Component{
         this.setIdForCanceling = this.setIdForCanceling.bind(this);
         this.okCanceling = this.okCanceling.bind(this);
         this.toggleOkCanceling = this.toggleOkCanceling.bind(this);
+        this.onClickAnvaeBaze = this.onClickAnvaeBaze.bind(this);
+        this.onClickMohlateErsal = this.onClickMohlateErsal.bind(this);
+        this.onClickMohlateBazNegari = this.onClickMohlateBazNegari.bind(this);
+        this.onClickLaghv = this.onClickLaghv.bind(this);
+        this.onClickBishtar = this.onClickBishtar.bind(this);
+        this.loading = this.loading.bind(this);
+        this.lastMileStone = this.lastMileStone.bind(this);
+        this.lastMileStoneModalToggle = this.lastMileStoneModalToggle.bind(this);
+    }
+    lastMileStoneModalToggle(){
+        this.setState({lastMileStoneModal: !this.state.lastMileStoneModal})
+    }
+    loading(){
+        this.setState({loading : !this.state.loading})
+    }
+    onClickBishtar(){
+        this.setState({anvaeBaze:"" , mohlateErsal:"" , mohlateBazNegari:"" , laghv:"" , bishtar:"active"})
+    }
+    onClickLaghv(){
+        this.setState({anvaeBaze:"" , mohlateErsal:"" , mohlateBazNegari:"" , laghv:"active" , bishtar:""})
+    }
+    onClickMohlateBazNegari(){
+        this.setState({anvaeBaze:"" , mohlateErsal:"" , mohlateBazNegari:"active" , laghv:"" , bishtar:""})
+    }
+    onClickAnvaeBaze(){
+        this.setState({anvaeBaze:"active" , mohlateErsal:"" , mohlateBazNegari:"" , laghv:"" , bishtar:""})
+    }
+    onClickMohlateErsal(){
+        this.setState({anvaeBaze:"" , mohlateErsal:"active" , mohlateBazNegari:"" , laghv:"" , bishtar:""})
     }
     toggleOkCanceling(){
         this.setState({finalModalForCanceling: !this.state.finalModalForCanceling})
@@ -63,6 +94,7 @@ class ProjectControl extends React.Component{
         ).catch(err =>{
             throw (err)
         })
+        // console.log(this.state.cancelIdProject , 'this.state.cancelIdProject');
     }
     toPersianNum( num, dontTrim ) {
 
@@ -111,7 +143,7 @@ class ProjectControl extends React.Component{
             if(validity){
                 this.setState({showErrorForDonate : false});
                 let price = this.state.donateValue;
-                this.props.actions.transActionPerform(price*10).then(
+                this.props.actions.transActionPerformForDonate(price*10 , 2).then(
                     () => this.goToPayPage()
                 )
             }
@@ -169,6 +201,21 @@ class ProjectControl extends React.Component{
 
     nextMileStoneBegin(){
         // this.props.actions.pay =>
+        this.setState({haveEnoughCash: !this.state.haveEnoughCash});
+        this.props.actions.nextMileStoneBegin(this.state.mileStoneId).then(
+        ).catch(
+            err=>{
+                throw (err)
+            }
+        )
+    }
+    lastMileStone(){
+        this.setState({lastMileStoneModal:!this.state.lastMileStoneModal});
+        this.props.actions.nextMileStoneBegin(this.state.mileStoneId).then(
+        ).catch(
+            err=>{
+                throw (err)
+            })
     }
 
     ////
@@ -186,9 +233,10 @@ class ProjectControl extends React.Component{
     downloadFileModal(priceForCashIn , id){
         console.log('HelloId' , id);
         if(priceForCashIn !== 'its the end') {
-            this.setState({downloadFile: true, attachmentId: id, priceForCashIn:priceForCashIn})
+            this.setState({downloadFile: true, mileStoneId: id, priceForCashIn:priceForCashIn})
         }
         else{
+            this.setState({ mileStoneId: id})
         }
     }
     okAndCheckBalanceInModal(){
@@ -205,9 +253,12 @@ class ProjectControl extends React.Component{
             file : this.state.file,
             milestone_id: this.state.milestone_id
         };
-        this.props.actions.sendUploadedFileByFreelancerAction(sendData).then().catch(
+        this.setState({loading:true});
+        this.props.actions.sendUploadedFileByFreelancerAction(sendData).then(
+            () => this.loading
+        ).catch(
             err=>{
-                throw (err)
+                throw (err);
             }
         )
     }
@@ -276,6 +327,19 @@ class ProjectControl extends React.Component{
   render(){
     return(
       <div className="content-wrapper py-3">
+          <Modal isOpen={this.state.lastMileStoneModal} toggle={this.lastMileStoneModalToggle}>
+              <ModalBody >
+                  شما پول این بازه را قبلا پرداخت کرده اید، برای دریافت فایل خود بر روی تایید کلیک نمایید.
+              </ModalBody>
+              <ModalFooter>
+                  <button className="btn btn-rec btn-primary" onClick={this.lastMileStone}>تایید</button>
+              </ModalFooter>
+          </Modal>
+          <Modal isOpen={this.state.modalForErrors}>
+              <ModalBody>
+                  خطا در اتصال به سرور، لطفا اتصال به اینترنت خود را بررسی کنید
+              </ModalBody>
+          </Modal>
           <Modal isOpen={this.state.finalModalForCanceling} toggle={this.toggleOkCanceling}>
               <ModalBody>
                   پروژه ی شما لغو شد، در صورت عدم صحیح پروژه وجه شما تا ۴۸ ساعت آینده به حسابتان واریز می گردد
@@ -310,7 +374,7 @@ class ProjectControl extends React.Component{
               </ModalBody>
               <div className="row">
                 <div className="col-sm-4 mb-1">
-                  <button data-dismiss="modal" aria-hidden="true" className="btn btn-rec btn-primary">راضی نبودم</button>
+                  <button aria-hidden="true" className="btn btn-rec btn-primary" onClick={this.toggleDonate}>راضی نبودم</button>
                 </div>
                 <div className="col-sm-5"></div>
                 <div className="col-sm-2 mb-1">
@@ -333,7 +397,7 @@ class ProjectControl extends React.Component{
               <ModalBody className="from-header-fontsize">
                 <div>شما دارای وجه کافی می باشید</div>
                 <div>برای مشاهده فایل، بازنگری آنها و شروع مرحله بعد تأیید کنید تا مبلغ {this.state.priceForCashIn*1000} تومان از حساب شما کاسته شود</div>
-                <div>اگر از کار راضی نبودید با لغو همکاری بعد از بررسی و کسر ۱۰ درصد خسارت مبلغ پرداختی به حساب شما بازگردانده می شود</div>
+                <div>اگر از کار راضی نبودید با لغو همکاری بعد از بررسی و داوری توسط ویش ورک، در صورت فقدان کیفیت ، مبلغ شما طی ۴۸ ساعت آینده به حساب شما واریز می شود</div>
               </ModalBody>
                 <button className="btn btn-rec btn-primary col-sm-3" onClick={this.nextMileStoneBegin}>تایید</button>
           </Modal>
@@ -345,6 +409,17 @@ class ProjectControl extends React.Component{
                           <div className="dash-divider"/>
                           <label className="col-form-label form-header-fontsize">زمان بندی پروژه شما</label>
                           {this.state.loadSuccess? <MileStones
+                                      loading={this.state.loading}
+                                      anvaeBaze={this.state.anvaeBaze}
+                                      mohlateErsal={this.state.mohlateErsal}
+                                      mohlateBazNegari={this.state.mohlateBazNegari}
+                                      laghv={this.state.laghv}
+                                      bishtar={this.state.bishtar}
+                                      onClickAnvaeBaze={this.onClickAnvaeBaze}
+                                      onClickMohlateErsal={this.onClickMohlateErsal}
+                                      onClickMohlateBazNegari={this.onClickMohlateBazNegari}
+                                      onClickLaghv={this.onClickLaghv}
+                                      onClickBishtar={this.onClickBishtar}
                                       goToSubmitProject={this.goToSubmitProject}
                                       AsClientProject={this.state.AsClientProject}
                                       AsFreelancerProject={this.state.AsFreelancerProject}
@@ -360,6 +435,7 @@ class ProjectControl extends React.Component{
                                       donate={this.donate}
                                       modalCancelProject={this.modalCancelProject}
                                       toPersianNum={this.toPersianNum}
+                                      setIdForCanceling={this.setIdForCanceling}
 
                           />:(null)}
                       </div>

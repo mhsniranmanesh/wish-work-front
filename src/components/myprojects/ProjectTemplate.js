@@ -6,10 +6,10 @@ import {Button , Badge , Alert} from 'reactstrap';
 
 const ProjectTemplate = (props) => {
     var x = "";
-    console.log(props.ClientProjects.release_date,'release date');
+    // console.log(props.ClientProjects.release_date,'release date');
     moment.loadPersian({usePersianDigits: true});
     var date = moment(props.ClientProjects.release_date, 'YYYY-M-D HH:mm:ss').format('jYYYY/jM/jD HH:mm:ss');
-    console.log(date , 'date');
+    // console.log(date , 'date');
     var XClass = "";
     var XButtonName = "";
     var XHref = props.ClientProjects;
@@ -33,6 +33,12 @@ const ProjectTemplate = (props) => {
             x = "در حال انجام";
             XClass = "badge badge-doing";
             XButtonName = "کنترل پروژه"
+        }
+        else if ((props.ClientProjects.is_canceled)){
+            x = "لغو شده";
+            XClass = "badge badge-cancel";
+            XButtonName = "کنترل پروژه"
+
         }
         else if (props.ClientProjects.is_completed) {
             x = "انجام شده";
@@ -89,13 +95,36 @@ const ProjectTemplate = (props) => {
             </div>
         )
     }
-    else if (props.ClientProjects.is_started && (!props.ClientProjects.is_completed)) {
+    else if (props.ClientProjects.is_started && (!props.ClientProjects.is_completed) && (!props.ClientProjects.is_canceled)) {
         return(
             <div>
                 <div className="dash-con dash-new-project con-body mb-4">
                     <h6>
                         <strong>{props.ClientProjects.title}</strong>
                           <badge className={XClass}>{x}</badge>
+                    </h6>
+
+
+
+                    <span className="sub-heading">
+                            <i className="fa fa-calendar"/> {date}
+            </span>
+
+
+                    <Button color="primary" className="btn btn-primary btn-rec" onClick={props.goToCP}>
+                        {XButtonName}
+                    </Button>
+                </div>
+            </div>
+        )
+    }
+    else if((props.ClientProjects.is_canceled)){
+        return(
+            <div>
+                <div className="dash-con dash-new-project con-body mb-4">
+                    <h6>
+                        <strong>{props.ClientProjects.title}</strong>
+                        <badge className={XClass}>{x}</badge>
                     </h6>
 
 

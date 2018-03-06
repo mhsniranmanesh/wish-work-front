@@ -46,8 +46,8 @@ class Header2 extends React.Component {
     };
     exit(){
         localStorage.removeItem('current_login_token');
-        window.location.assign('http://wishworkstage.ir/login/');
-        // window.location.assign('http://wishwork.ir/login/');
+        // window.location.assign('http://wishworkstage.ir/login/');
+        window.location.assign('http://wishwork.ir/login/');
         // this.context.router.history.push({
         //     pathname:'/login/'
         // });
@@ -106,7 +106,7 @@ class Header2 extends React.Component {
                     colorBackground = nextProps.profileInfo[x-1].first_name[0].charCodeAt()%5;
                 }
                 else {
-                    Image = nextProps.profileInfo[x-1].profile_picture;
+                    Image = nextProps.profileInfo[x-1].avatar;
                     // console.log("/media/", Image);
                 }
             }
@@ -130,8 +130,8 @@ class Header2 extends React.Component {
                 colorCode = '#707117'
             }
             this.setState({colorBackground: colorBackground , colorCode:colorCode , Image:Image});
-            console.log(nextProps.profileInfo[0]);
-            this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[0])});
+            // console.log(nextProps.profileInfo[0]);
+            this.setState({profileInfo: Object.assign({}, nextProps.profileInfo[x-1])});
         }
     }
     dashboardActive (){
@@ -325,11 +325,11 @@ class Header2 extends React.Component {
                                 <a className="nav-link dropdown-toggle" href="http://example.com"
                                    id="navbarUserDropdown" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false">
-                                    <img className="rounded-circle" src={this.state.Image} style={ {height:30 , width:30 , backgroundColor:this.state.colorCode} }/>
+                                    <img className="rounded-circle" src={this.state.Image} style={{height:30 , width:30 , backgroundColor:this.state.colorCode}}/>
                                     {this.state.profileInfo.first_name + ' ' + this.state.profileInfo.last_name}
                                 </a>
                                 <div id="profile" className="dropdown-menu" aria-labelledby="navbarUserDropdown" onClick={this.exit}>
-                                    <a className="dropdown-item" href="#">خروج</a>
+                                    <a className="dropdown-item" >خروج</a>
                                 </div>
                             </li>
                         </ul>

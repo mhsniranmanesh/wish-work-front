@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 import Main from '../routes/routes.js';
 import Header2 from './common/Header2.js';
 import {connect} from 'react-redux';
-import * as profileInfo from '../actions/profileInfo.js';
+// import * as profileInfo from '../actions/profileInfo.js';
 import { withRouter } from 'react-router-dom';
-import financialManagement from './financialmanagement/FinancialManagement';
+// import financialManagement from './financialmanagement/FinancialManagement';
 
 class App extends React.Component {
   constructor(props , context){
     super(props , context);
     this.state = {fetch:false};
     this.size = this.size.bind(this);
-
   }
     size (obj) {
         let x = 0, key;
@@ -22,6 +21,7 @@ class App extends React.Component {
         return x;
     };
   componentWillMount(){
+      console.log(this.props , 'console.log(location.search);');
       var x = this.size(this.props.profileInfo);
       if (x > 0) {
         this.setState({fetch: true})

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment-jalaali';
 import {Button} from 'reactstrap';
 //project_controller_element_attachments
-const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUploadedFileByFreelancer, toPersianNum}) => {
+const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUploadedFileByFreelancer, toPersianNum , loading}) => {
     var today = new Date().getTime();
     var submission_deadline = new Date(CP.submission_deadline).getTime();
     var timeDiffFromSubmission = submission_deadline - today;
@@ -12,7 +12,7 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
     var diffHoursFromSubmission = Math.floor(diffSecFromSubmission / 3600) % 24;
     var diffDaysFromSubmission = Math.floor(diffSecFromSubmission / (3600 * 24));
     if(CP) {
-        if (CP.is_started) {
+        if (CP.is_started ) {
             if (diffSecFromSubmission > 0) {
                 if (!CP.is_submitted) {
                     var date = moment(CP.submission_deadline, 'YYYY-M-D HH:mm:ss').format('jYYYY/jM/jD HH:mm:ss');
@@ -26,16 +26,19 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                                         </div>
                                         <div className="timeline-label">
                                             <h2 className="font-header-fontsize"><a href="#">{toPersianNum(CP.description)}</a></h2>
-                                            {uploadSendToServerButton ? <Button type="submit"
-                                                                                color="secondary"
+                                            {uploadSendToServerButton ? <btn type="submit"
                                                                                 className="btn btn-secondary btn-rec"
+                                                                                id="buttonImage"
                                                                                 onClick={sendUploadedFileByFreelancer}>
-                                                <i className="fa fa-download fa-download-dash-cp-success"/>
-                                            </Button> : (null)}
-                                            <input type="file" color="secondary" className="btn btn-secondary btn-rec"
+                                                                                آپلود فایل
+                                                                        </btn> : (null)}
+                                            {loading ? <div className="load-4">
+                                                <div className="ring-1"></div>
+                                            </div> : (null)}
+                                            <input type="file"  className="browse-pic"
                                                    onChange={(event) => {
                                                        uploadFile(event, CP.uuid);
-                                                   }} placeholder="آپلود کنید"/>
+                                                   }} />
                                          </div>
                                     </div>
                                     <time className="timeline-time font-body-fontsize">
@@ -61,13 +64,15 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
                                               {/*<button type="submit" className="btn btn-secondary btn-rec" disabled>*/}
                                               {/*<i className="fa fa-download"/>*/}
                                               {/*</button>*/}
-                                              {uploadSendToServerButton ?
-                                              <Button type="submit" color="secondary"
+                                              <p> برای تغییر فایل خود بر روی کلید زیر کلیک کنید</p>
+                                              {(false) ?
+                                              <btn type="submit"
                                                       className="btn btn-secondary btn-rec"
+                                                   id="buttonImage2"
                                                       onClick={sendUploadedFileByFreelancer}>
                                                   <i className="fa fa-download fa-download-dash-cp-notyet"/>
-                                              </Button> : (null)}
-                                              <input type="file" color="secondary" className="btn btn-secondary btn-rec"
+                                              </btn> : (null)}
+                                              <input type="file" color="secondary" className="browse-pic"
                                                      onChange={(event) => {
                                                          uploadFile(event, CP.uuid);
                                                      }} placeholder="تغییر فایل"/>
@@ -181,7 +186,7 @@ const MileStoneTemplate = ({CP , uploadFile , uploadSendToServerButton, sendUplo
     else {
         return(
             <div>
-              
+
             </div>
         )
     }

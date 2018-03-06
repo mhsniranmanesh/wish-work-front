@@ -67,6 +67,7 @@ class Projectsubmition extends React.Component{
             inputTitle: 'فایل را بگیرید و اینجا رها کنید.',
             file:"",
             loading: false,
+            popoverOpenWishcoin:false,
             progressNumber: 10,
             showErrorFromServerSide: false
         };
@@ -113,7 +114,23 @@ class Projectsubmition extends React.Component{
         this.submitProjectAuctionState = this.submitProjectAuctionState.bind(this);
         this.redirect = this.redirect.bind(this);
         this.toPersianNum = this.toPersianNum.bind(this);
+        this.size = this.size.bind(this);
+        this.togglePopoverWishcoin = this.togglePopoverWishcoin.bind(this);
+
     }
+    togglePopoverWishcoin(){
+        this.setState({
+            popoverOpenWishcoin: !this.state.popoverOpenWishcoin
+        });
+    }
+    size (obj) {
+        let x = 0, key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) x++;
+        }
+        return x;
+    };
+
     ErrorFromServerSide(){
         this.setState({progressNumber : 10});
         this.setState({modal : false});
@@ -134,7 +151,7 @@ class Projectsubmition extends React.Component{
                 var i = this.state.progressNumber + 20;
                 //  call a 3s setTimeout when the loop is called
                 this.setState({progressNumber: i});
-                console.log(this.state.progressNumber, 'progressNumber');                                                          //  increment the counter
+                // console.log(this.state.progressNumber, 'progressNumber');                                                          //  increment the counter
                 if (this.state.progressNumber < 80) {                                                      //  if the counter < 100, call the loop function
                     this.progressNumber();                                           //  ..  again which will trigger another
                 }                        //  ..  setTimeout()
@@ -284,8 +301,8 @@ class Projectsubmition extends React.Component{
         // var Send2 = JSON.parse(JSON.stringify(this.state));
         var Send1 = JSON.parse(JSON.stringify(this.state));
         var Send3  = {file: this.state.file};
-        console.log('filesss' , this.state.file);
-        console.log('this.state.translationFrom' , this.state.translationFrom);
+        // console.log('filesss' , this.state.file);
+        // console.log('this.state.translationFrom' , this.state.translationFrom);
         // console.log('STATE IS:' , Send3);
         this.setState({loading: true});
         this.setState({progressNumber: 11});
@@ -335,6 +352,11 @@ class Projectsubmition extends React.Component{
 
     componentWillMount(){
        // console.log('this.props.location.search.length' , this.props.location.search.length);
+        let x = this.size(this.props.profileInfo);
+        if(x>0){
+            this.setState({profileInfo : this.props.profileInfo[x-1]});
+            // console.log('XXX')
+        }
         if(this.props.location.search.length === 6){
             if(this.props.location.search[1] === '1'){
                 this.state.translationFrom = 1;
@@ -445,7 +467,7 @@ class Projectsubmition extends React.Component{
         }
     }
     updateValueTT (newValue) {
-        console.log(this.props);
+        // console.log(this.props);
         if(newValue === null){
             this.setState({
                 translationTo: ""
@@ -482,8 +504,8 @@ class Projectsubmition extends React.Component{
         let reader = new FileReader();
         let file = e.target.files[0];
         this.setState({file : file});
-        console.log(file , 'file');
-        console.log(this.state , 'this.state dragdrop');
+        // console.log(file , 'file');
+        // console.log(this.state , 'this.state dragdrop');
         // reader.onloadend = () => {
         //     this.setState({
         //         file: file,
@@ -584,9 +606,9 @@ class Projectsubmition extends React.Component{
 
     submitProjectTimeState(event){
         let time = event.target.value;
-        console.log(time , 'time 1');
+        // console.log(time , 'time 1');
         time = this.persianToEnglish(time);
-        console.log(time , 'time 2');
+        // console.log(time , 'time 2');
         const trueOrFalseTimeValid = this.validateTime(time);
         this.setState({time_limit: time , validTime: trueOrFalseTimeValid,   popoverOpenTime: false, popoverOpenPrice: false,  popoverOpenShow: false,  popoverOpenDesc: false, popoverOpenSubject: false,});
         //console.log('state:' ,this.state);
@@ -610,7 +632,7 @@ class Projectsubmition extends React.Component{
 
 
     handleSubmit(event){
-        console.log(this.state.field);
+        // console.log(this.state.field);
         event.preventDefault();
         if(!this.state.title.length){
             this.setState({showError: true});
@@ -681,6 +703,9 @@ class Projectsubmition extends React.Component{
          else if(this.state.file === ""){
              this.setState({showError: true});
              this.setState({message:"لطفا فایل ترجمه ی خود را انتخاب کنید"})
+        }
+        else if(this.state.profileInfo.wish_coins < 50){
+             this.setState({showError:true , message:"ویش کوین شما کمتر از ۵۰ عدد می باشد، لطفا به حساب خود مراجعه کرده و در صفحه ی ویش کوین ، خریداری کنید"})
         }
         else {
             // this.setState({});
@@ -951,11 +976,17 @@ class Projectsubmition extends React.Component{
 
                           {showError ? <Error message={this.state.message}/> : (true)}
                           <div>
-                            <span>
+                            <span >
                             <button className = "btn btn-rec btn-primary" onClick={this.handleSubmit}>ایجاد پروژه</button>
-                                <br/>
-<img src={require("../../../static/img/wish coin-05.png")} style={{height:35}}/> ۵۰
+                                                                <span className="wishcoin-description">۵۰</span>
+                                <img className="wishcoin-project-submission" src={require("../../../static/img/wish coin-05.png")} style={{height:25}}/>
+
                             </span>
+                              <span className="user-inform"><i className="fa fa-question-circle fa-question-circle-dash-info " id="wishcoinGuide" onClick={this.togglePopoverWishcoin}/>
+                    </span>
+                          <Popover placement="right" isOpen={this.state.popoverOpenWishcoin} target="wishcoinGuide" toggle={this.togglePopoverWishcoin}>
+                              <PopoverBody className="beauty-text popover-beauty">برای ثبت پروژه شما باید ۵۰ ویش کوین بپردازید.  </PopoverBody>
+                          </Popover>
                               <Modal isOpen={this.state.loading}>
                                   <ModalBody>
                                     <Progress completed={this.state.progressNumber}/>
@@ -1050,7 +1081,7 @@ Projectsubmition.PropTypes = {
 
 function mapStateToProps(state , ownProps){
     return {
-
+        profileInfo : state.profileInfo
     };
 }
 function mapDispatchToProps(dispatch){

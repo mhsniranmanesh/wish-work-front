@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import Errors from './Errors';
 import moment from 'moment-jalaali';
 import Warnings from './Warnings';
-import {Modal} from 'reactstrap';
+import {Modal , Row , Col} from 'reactstrap';
+
 
 const AddBid = (props) => {
     var userHasBid = props.userHasBid ;
@@ -89,27 +90,30 @@ const AddBid = (props) => {
                                 </div>
                                 <div className="modal-body">
                                     <form className="signup-form" onSubmit={(event)=> props.returnFalse(event)}>
-                                        <div className="form-group">
-                                            <input type="text"
-                                                   className="form-control form-control-danger"
-                                                   placeholder="قیمت پیشنهادی (تومان)"
-                                                   value={props.bid_price}
-                                                   onChange={props.BidPrice}
-                                                   onBlur={props.roundBidAmount}
-                                            />
-                                        </div>
-                                        <div className="form-group">
-                                            <input type="text"
-                                                   className="form-control form-control-danger"
-                                                   placeholder="زمان پیشنهادی (روز)"
-                                                   value={props.delivery_duration}
-                                                   onChange={props.DeliveryTime}
-                                                   onBlur={props.roundDeliveryTime}
-                                            />
-                                        </div>
+                                      <div className="row">
+                                          <div className="form-group col-sm-5">
+                                              <input type="text"
+                                                     className="form-control form-control-danger"
+                                                     placeholder="قیمت پیشنهادی (تومان)"
+                                                     value={props.bid_price}
+                                                     onChange={props.BidPrice}
+                                                     onBlur={props.roundBidAmount}
+                                              />
+                                          </div>
+                                          <div className="col-sm-2"></div>
+                                          <div className="form-group col-sm-5">
+                                              <input type="text"
+                                                     className="form-control form-control-danger"
+                                                     placeholder="زمان پیشنهادی (روز)"
+                                                     value={props.delivery_duration}
+                                                     onChange={props.DeliveryTime}
+                                                     onBlur={props.roundDeliveryTime}
+                                              />
+                                          </div>
+                                      </div>
                                         <div className="form-group">
                                             <textarea type="text"
-                                                      className="form-control"
+                                                      className="form-control  add-bid-descript"
                                                       placeholder="توضیحات"
                                                       value={props.bid_description}
                                                       onChange={props.BidDescription}
@@ -123,25 +127,38 @@ const AddBid = (props) => {
                                             {/*/>*/}
                                         {/*</div>*/}
                                         <label htmlFor="skillType" className="col-form-label d-block">
-                                            بازه های تحویل پروژه را انتخاب کنید
+                                            در چند مرحله پروژه را تحویل می دهید؟
                                         </label>
-                                        <div className="input-group mb-1">
-                                            <input type="number" className="form-control"
-                                                   placeholder="تعداد موعدهای تحویل پروژه"
-                                                   onChange={props.valueOfMileStones}
-                                                   value={props.amountOfMileStones}/>
-                                            <Button type="submit" className="btn btn-success btn-rec"
-                                                    onClick={props.CheckLength}>انتخاب</Button>
+                                          <div className="input-group mb-1">
+                                                <Row className= "fields">
+                                                    <Col>
+                                                      <label>
+                                                        <input className="btn-radio" type="radio" name="rb" id="rb1" onChange={props.is1MileStone} checked={props.stateForMileStone1}  disabled={props.DisableMileStone1}/>
+                                                          <span htmlFor="rb1" className={props.ClassMileStone1}>۱</span>
+                                                      </label>
+                                                    </Col>
+                                                    <Col>
+                                                      <label>
+                                                        <input className="btn-radio" type="radio" name="rb" id="rb2" onChange={props.is2MileStone}  checked={props.stateForMileStone2} disabled={props.DisableMileStone2}/>
+                                                        <span htmlFor="rb2" className={props.ClassMileStone2}>۲</span>
+                                                    </label>
+                                                    </Col>
+                                                    <Col>
+                                                        <label>
+                                                          <input className="btn-radio" type="radio" name="rb" id="rb3" onChange={props.is3MileStone}  checked={props.stateForMileStone3} disabled={props.DisableMileStone3}/>
+                                                          <span htmlFor="rb3" className={props.ClassMileStone3}>۳</span>
+                                                        </label>
+                                                    </Col>
+                                                    <Col>
+                                                      <label>
+                                                        <input className="btn-radio" type="radio" name="rb" id="rb4" onChange={props.is4MileStone}  checked={props.stateForMileStone4} disabled={props.DisableMileStone4}/>
+                                                        <span htmlFor="rb4" className={props.ClassMileStone4}>۴</span>
+                                                      </label>
+                                                    </Col>
+                                                </Row>
+                                          </div>
+                                          <div className="form-body-fontsize point">تذکر: اگر  می خواهید پروژه را در ۲ مرحله تحویل دهید باید زمان انجام پروژه حداقل ۱۰ روز باشد. ۳ مرحله حداقل ۱۴ روز و ۴ مرحله حداقل ۱۸ روز نیازمند می باشد.</div>
 
-                                        </div>
-                                        <div className="row mb-3">
-                                            <div className="col-sm-6 text-muted">
-                                                حداقل: <span className="badge badge-success">2</span>
-                                            </div>
-                                            <div className="col-sm-6 text-muted">
-                                                حداکثر: <span className="badge badge-danger">4</span>
-                                            </div>
-                                        </div>
                                     </form>
                                     {props.showError ? <Errors message={props.message}/> : (true)}
                                     {props.showWarnings ? <Warnings message={props.message}/> : (true)}
@@ -153,11 +170,13 @@ const AddBid = (props) => {
                                                 <div className="timeline-centered"  id="cp-public">
 
                                                     <AddBidMileStones
+                                                                      width={props.width}
+                                                                      height={props.height}
                                                                       toPersianNum={props.toPersianNum}
                                                                       numberOfPages={props.numberOfPages}
                                                                       number_of_milestones={props.amountOfMileStones}
                                                                       delivery_duration={props.delivery_duration}
-                                                                      Length={props.Length}/>
+                                                                      Length={props.amountOfMileStones}/>
                                                 </div>
                                             </div>
                                         </div>
@@ -290,6 +309,10 @@ else {
 };
 
 AddBid.PropTypes ={
+    is1MileStone: PropTypes.func.isRequired,
+    is2MileStone: PropTypes.func.isRequired,
+    is3MileStone: PropTypes.func.isRequired,
+    is4MileStone: PropTypes.func.isRequired,
     amountOfMileStones: PropTypes.object.isRequired,
     Length: PropTypes.element.isRequired
 };

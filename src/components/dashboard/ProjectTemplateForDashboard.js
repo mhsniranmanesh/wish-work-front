@@ -18,7 +18,7 @@ const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordC
 
     if(ProjectDetail.description.length >= 180){
         newDescription = ProjectDetail.description.substring(0,181);
-        console.log(newDescription , 'newDescription');
+        // console.log(newDescription , 'newDescription');
     }
     if (ProjectDetail.from_language) {
         if (ProjectDetail.from_language === 1) {
@@ -190,7 +190,7 @@ const ProjectTemplateForDashboard = ({ProjectDetail , goToProjectProfile , WordC
 
                       <li className="project-prop project-prop-money">
                          <span> <i className="fa fa-usd"/>
-                             {toPersianNum(ProjectDetail.budget)} (تومان)</span>
+                             {toPersianNum(ProjectDetail.budget*1000)} (تومان)</span>
                       </li>
                         <li className="project-prop project-prop-time">
                           <span><i className="fa fa-clock-o"/>

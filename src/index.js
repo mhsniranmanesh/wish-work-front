@@ -7,6 +7,7 @@ import "../static/css/bootstrap-rtl.min.css";
 import "../static/css/fontiran.css"
 import "react-bootstrap-select";
 import "font-awesome/css/font-awesome.min.css";
+// import 'bootstrap-fileinput';
 import configureStore from './store/configureStore.js';
 import {profileInfo} from './actions/profileInfo.js';
 import {recomendedProject} from './actions/recomendedProjectForFreelancer';
@@ -19,13 +20,16 @@ import '../static/css/wish-dash.css';
 import {BrowserRouter} from 'react-router-dom';
 import App from './components/App.js';
 import axios from 'axios';
-import { syncHistoryWithStore } from 'react-router-redux'
+import { syncHistoryWithStore } from 'react-router-redux';
 //import {Authentication} from './promises/authentication';
-
+const queryString = require('query-string');
 
 
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');
+  console.log(window.location.pathname , 'pathname');
+    // console.log(this.props , 'console.log(location.search);');
+
 }
 function Authentication() {
     return new Promise((resolve , reject) => {
@@ -45,21 +49,27 @@ function Authentication() {
 
     // console.log('token is: ' , axios.defaults.headers.common['Authorization']);
 }
-function goToSignIn(err) {
+function goToLogIn(err) {
     if(err){
-        window.location.href = '/login/';
+        var parsed={};
+        parsed.url = window.location.pathname.toString();
+        const stringified = queryString.stringify(parsed);
+        location.search = stringified;
+        console.log(stringified , 'stringified');
+        console.log( 'window.location');
+        window.location.href = 'http://wishwork.ir/login/' + '?' + stringified;
     }
 }
 
 Authentication().then(() => {
     console.log('ok' , axios.defaults.headers.common['Authorization'] );
+    // console.log(this.props , 'console.log(location.search);');
     const store = configureStore();
-    // store.dispatch(profileInfo()).then().catch(
-    //     err => {goToSignIn(err)}
-    // )
-    ;
+    store.dispatch(profileInfo()).then().catch(
+        err => {goToLogIn(err)}
+    );
     // store.dispatch(projectSubmitLocalForDashboard())
-    store.dispatch(profileInfo());
+    // store.dispatch(profileInfo());
     store.dispatch(recomendedProject());
     store.dispatch(Notifications());
     store.dispatch(getSubmittedProjects());

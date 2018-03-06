@@ -19,12 +19,24 @@ export function profileInfo(){
         });
     };
 }
-
+export function transActionPerformForDonate(price , reason) {
+    var priceJson = {amount : price,
+                    port : 1,
+                    reason : reason
+    };
+    return function (dispatch) {
+        return axios.post('/api/v1/accounts/transaction/perfom').then(payment_url =>{
+            dispatch(getPortSuccess((payment_url.data)))
+        }).catch(err => {
+            throw (err);
+        })
+    }
+}
 export function getPortSuccess(url) {
     return {type: types.Get_PAYMENT_LINK_SUCCESS, url}
 }
 export function transActionPerform(price) {
-    var priceJson = {amount : price,
+    var priceJson = {amount : price, reason : 1,
         port : 1};
     return function (dispatch){
         return axios.post('/api/v1/accounts/transaction/perform/' , priceJson).then(payment_url =>{
@@ -58,7 +70,16 @@ export function cancelProject(id) {
         });
     }
 }
-
+export function nextMileStoneBegin(id) {
+    return function (dispatch) {
+        var ids = {milestone_id : id};
+        return axios.post('/api/v1/projects/milestone/download/' , ids).then(() =>{
+            dispatch(profileInfo())
+        }).catch(err =>{
+            throw (err)
+        })
+    }
+}
 export function sendUploadedFileByFreelancerAction(sendData) {
     return function (dispatch) {
         var fileData = new FormData();

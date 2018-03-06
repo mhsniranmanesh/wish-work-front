@@ -6,7 +6,7 @@ import {Row , Col} from 'reactstrap';
 
 const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                          goToCash , priceForCash, cashinModalState, modalCashEnough, priceOfMileStoneForCash,
-                         acceptBid, profileInfo , deleteBid , prices , goToFreelancerProfile , toPersianNum,
+                         acceptBid, profileInfo , deleteBid , prices , goToFreelancerProfile , toPersianNum,bid_controller,
                          numberOfMileStonesOfEachFreelancer ,freelancerIsSelected , numberOfPages , is_freelancer_selected}) => {
     console.log(ownerOfProject , 'ownerOfProject2');
     var bidOfFreelancer = false;
@@ -53,9 +53,15 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                     <div className="fl-list">
                             <div className="fl-wrap media mb-1">
                                 <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
-                                     style={ {height:60 , width:60 , backgroundColor:colorCode} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
-                               <div className="bid-subject">
-                                 <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
+                                     style={ {height:60 , width:60 , backgroundColor:colorCode}} onClick={(event) => {
+                                    goToFreelancerProfile(Bid.freelancer.username);
+                                }}  />
+                               <div className="bid-subject" >
+                                   <div onClick={(event) => {
+                                       goToFreelancerProfile(Bid.freelancer.username);
+                                   }}>
+                                 <a href='#' className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
+                                   </div>
                                  <button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec btn-handshake"
                                          data-toggle="modal" data-target={"#" + (number*10) }>
                                      <i className="fa fa-handshake-o"/>
@@ -90,6 +96,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                             numberOfMileStonesOfEachFreelancer={numberOfMileStonesOfEachFreelancer}
                                             priceOfMileStoneForCash={priceOfMileStoneForCash}
                                             numberOfPages={numberOfPages}
+                                            bid_controller={bid_controller}
 
                         />
 
@@ -111,8 +118,8 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                 }}/>
 
 
-                                <div className="bid-subject">
-                                    <a href="#"
+                                <div className="bid-subject" onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}>
+                                    <a href='#'
                                        className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
                                 </div>
                             </div>
@@ -151,8 +158,8 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                                      style={ {height:60 , width:60 , backgroundColor:colorCode} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);
                                 }}/>
 
-                               <div className="bid-subject">
-                                  <a href="#" className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
+                               <div className="bid-subject" onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}>
+                                  <a  href='#' className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
                                </div>
                                {freelancerIsSelected ? (null) :
                                    <i className="fa fa-trash-o delete-self-bid" aria-hidden="true"
@@ -202,7 +209,7 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
                             <div className="fl-wrap media mb-1">
                                 <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
                                      style={ {height:60 , width:60 , backgroundColor:colorCode} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
-                                 <div className="bid-subject">
+                                 <div className="bid-subject" onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}>
                                     <a href="#"
                                        className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
                                      <span className="bidding-price">{toPersianNum(Bid.price * 1000)} تومان</span>
@@ -231,33 +238,34 @@ const BidTemplate = ({Bid , isLoggedIn , ownerOfProject, number , mileStoneX ,
     }
     else {
         return(
-        <div>
-            <div className="fl-list">
-                <div className="fl-wrap media mb-1">
-                    <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
-                         style={ {height:60 , width:60 , backgroundColor:colorCode} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
-                       <div className="media-body mt-3">
-                        <a href="#" className="fl-name">{Bid.freelancer.first_name}</a>
-                        <span className="bidding-price">{toPersianNum(Bid.price * 1000)} تومان</span>
-                        {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
-                                {/*data-toggle="modal" data-target="#accBiddingModal">*/}
+            <div>
+                <div className="fl-list">
+                    <div className="fl-wrap media mb-1">
+                        <img className="d-flex  ml-3 rounded-circle clickable-img" src={Image}
+                             style={ {height:60 , width:60 , backgroundColor:colorCode} } onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}/>
+                        <div className="bid-subject" onClick={(event)=>{goToFreelancerProfile(Bid.freelancer.username);}}>
+                            <a href="#"
+                               className="fl-name">{Bid.freelancer.first_name} {Bid.freelancer.last_name} </a>
+                            <span className="bidding-price">{toPersianNum(Bid.price * 1000)} تومان</span>
+                            {/*<button id="accBiddingBtn" type="submit" className="btn btn-primary float-left btn-rec"*/}
+                            {/*data-toggle="modal" data-target="#accBiddingModal">*/}
                             {/*<i className="fa fa-handshake-o"/>*/}
-                        {/*</button>*/}
+                            {/*</button>*/}
+                        </div>
                     </div>
+                    {/*<span className="fl-discript  fl-discript-not-owner">{Bid.description} </span>*/}
+                    {/*<div className="sub-heading">*/}
+                    {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
+                    {/*<a className="tag" href="#">#علمی</a>*/}
+                    {/*<a className="tag" href="#">#زیست_شناسی</a>*/}
+                    {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
+                    {/*<a className="tag" href="#">#فوری</a>*/}
+                    {/*</div>*/}
+
+
                 </div>
-                        {/*<span className="fl-discript  fl-discript-not-owner">{Bid.description} </span>*/}
-                        {/*<div className="sub-heading">*/}
-                            {/*<a className="tag" href="#">#فارسی_به_انگلیسی</a>*/}
-                            {/*<a className="tag" href="#">#علمی</a>*/}
-                            {/*<a className="tag" href="#">#زیست_شناسی</a>*/}
-                            {/*<a className="tag" href="#">#میکرو_بیولوژی</a>*/}
-                            {/*<a className="tag" href="#">#فوری</a>*/}
-                        {/*</div>*/}
-
-
+                <div className="divider"/>
             </div>
-            <div className="divider"/>
-        </div>
         )
     }
 };

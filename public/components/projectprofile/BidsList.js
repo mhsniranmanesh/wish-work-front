@@ -34,6 +34,7 @@ const BidsList = ({Bids , isLoggedIn , ownerOfProject , priceForCash , goToCash,
                                    priceOfMileStoneForCash={priceOfMileStoneForCash}
                                    freelancerIsSelected={freelancerIsSelected}
                                    numberOfPages={numberOfPages}
+                                   bid_controller={Bids[i].bid_controller}
             />);
         }
     }

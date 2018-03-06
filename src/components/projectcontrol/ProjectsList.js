@@ -2,6 +2,7 @@ import React from 'react' ;
 import PropTypes from 'prop-types';
 import {Button} from 'reactstrap';
 import ProjectTemplate from './ProjectTemplate';
+import HelpForCP from './HelpForCP';
 
 const ProjectsList = (props) => {
     var numberC = [];
@@ -10,7 +11,7 @@ const ProjectsList = (props) => {
     if(props.AsClientProject.length){
         for(var j=0 ; j < props.AsClientProject.length; j++){
             numberC[j] = j ;
-            List.push(<ProjectTemplate key={j*10 + 1} AsClientProject={props.AsClientProject[j]} numberSee={j*2 + 1}
+            List.push(<ProjectTemplate key={j*10 + 100} AsClientProject={props.AsClientProject[j]} numberSee={j*2 + 1}
                                        activeProjectList={j*2 + 1}
                                        changeView={props.changeView}
                                        orgNumberSee={props.numberSee}
@@ -30,7 +31,13 @@ const ProjectsList = (props) => {
             />)
         }
     }
-  return(
+    List.push(<HelpForCP
+        key={117}
+        changeView={props.changeView}
+        numberSee={-1}
+        orgNumberSee={props.numberSee}
+    />);
+    return(
     <ul className="contact-list">
         {List}
       </ul>

@@ -31,9 +31,9 @@ const MyProjectsListForDashboard = (props) =>{
     else if(y){
         Total = y;
     }
-    console.log(Total , 'Total');
+    // console.log(Total , 'Total');
     var TotalSort = arraySort(Total , 'release_time');
-    console.log(TotalSort , 'TotalSort');
+    // console.log(TotalSort , 'TotalSort');
 if(Size<4 && Size>0) {
     return (
         <div className="dash-con con-body dash-notif mb-4">

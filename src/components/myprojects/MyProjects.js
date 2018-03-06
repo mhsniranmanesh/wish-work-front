@@ -35,8 +35,8 @@ class MyProjects extends React.Component {
     }
     goToTender(y){
         let slug = y.toString();
-        window.location.assign('http://wishworkstage.ir/projects/' + slug);
-        // window.location.assign('http://wishwork.ir/projects/' + slug);
+        // window.location.assign('http://wishworkstage.ir/projects/' + slug);
+        window.location.assign('http://wishwork.ir/projects/' + slug);
 
     }
     size (obj) {

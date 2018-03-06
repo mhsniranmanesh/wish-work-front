@@ -49,7 +49,7 @@ export function profileInfo(){
 export function updateSkills(profileSkills) {
     return function (dispatch) {
         return axios.post('/api/v1/skills/add/translation/' , profileSkills).then(profileskills =>{
-            dispatch(loadNewSkillsSuccess(profileskills.data))
+            dispatch(profileInfo())
         }).catch(error =>{
             throw (error);
         })
@@ -66,11 +66,26 @@ export function updateInformations(sendData) {
         })
     }
 }
+export function cashOut(amount , account) {
+    console.log(amount , 'amount');
+    var x = {
+        amount:Number(amount),
+        account_number:account
+    };
+    console.log(x , 'xxxx');
+    return function (dispatch) {
+        return axios.post('/api/v1/accounts/transaction/cashout/' , x).then(
+            dispatch(profileInfo())
+        ).catch(error =>{
+            throw (error)
+        })
+    }
+}
 export function getPortSuccess(url) {
     return {type: types.Get_PAYMENT_LINK_SUCCESS, url}
 }
 export function transActionPerform(price) {
-    var priceJson = {amount : price,
+    var priceJson = {amount : price, reason : 1,
                      port : 1};
     return function (dispatch){
         return axios.post('/api/v1/accounts/transaction/perform/' , priceJson).then(payment_url =>{
@@ -78,6 +93,16 @@ export function transActionPerform(price) {
         }).catch(err => {
             throw (err);
             })
+    }
+}
+export function reduceBalanceForWishCoin(subsNumb) {
+    var pg = {package : subsNumb};
+    return function (dispatch) {
+        return axios.post('/api/v1/accounts/transaction/wishcoin/' , pg).then(
+            dispatch(profileInfo())
+        ).catch(err => {
+            throw (err)
+        })
     }
 }
 export function updateInformationsPic(profileinfo , getState){

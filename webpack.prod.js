@@ -57,7 +57,7 @@ module.exports = merge(common, {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    new CompressionPlugin(),
+    new CompressionPlugin({}),
   ],
   output: {
     filename: '[name].[hash].js',

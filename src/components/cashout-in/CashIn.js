@@ -21,7 +21,7 @@ const CashIn = (props) => {
                   <label className="col-form-label form-header-fontsize">{x}</label>
                   <input type="text" className="form-control form-body-fontsize"
                          onChange={(event)=>{props.onChangeCashIn(event)}}
-                         placeholder="مبلغ به ریال" value={priceForSend}/>
+                         placeholder="مبلغ به تومان" value={priceForSend}/>
               </div>
               <Button color="primary" className="btn btn-primary btn-rec" onClick={props.sendToServerCashInRequest}>
                   واریز

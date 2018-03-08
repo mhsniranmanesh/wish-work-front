@@ -378,18 +378,18 @@ class ProjectProfile extends React.Component {
                 message: "لطفا زمان پیشنهادی را به عدد وارد کنید"
             });
         }
-        else if(((this.state.delivery_duration - 2)/this.state.amountOfMileStones ) <4){
-            this.setState({
-                showError: true,
-                message: "فاصله ی بین بازه های زمانی باید بیشتر از ۴ روز باشد!(دو روز مهلت اعمال تغییرات است.)"
-            });
-        }
-        else if (((this.state.delivery_duration - 2)/this.state.Length ) <4){
-            this.setState({
-                showError: true,
-                message: "فاصله ی بین بازه های زمانی باید بیشتر از ۴ روز باشد!(دو روز مهلت اعمال تغییرات است.)"
-            });
-        }
+        // else if(((this.state.delivery_duration - 2)/this.state.amountOfMileStones ) <4){
+        //     this.setState({
+        //         showError: true,
+        //         message: "فاصله ی بین بازه های زمانی باید بیشتر از ۴ روز باشد!(دو روز مهلت اعمال تغییرات است.)"
+        //     });
+        // }
+        // else if (((this.state.delivery_duration - 2)/this.state.Length ) <4){
+        //     this.setState({
+        //         showError: true,
+        //         message: "فاصله ی بین بازه های زمانی باید بیشتر از ۴ روز باشد!(دو روز مهلت اعمال تغییرات است.)"
+        //     });
+        // }
         else if (this.state.amountOfMileStones < 1) {
             this.setState({
                 showError: true,

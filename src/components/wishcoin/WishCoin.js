@@ -3,6 +3,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
+import * as profileInfo from '../../actions/profileInfo.js';
+
 
 
 class WishCoin extends React.Component {
@@ -309,7 +311,7 @@ function mapStateToProps(state , ownProps){
 }
 function mapDispatchToProps(dispatch){
     return{
-        //actions2 : bindActionCreators(x , dispatch)
+        actions : bindActionCreators(profileInfo , dispatch)
     }
 }
 

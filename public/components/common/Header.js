@@ -45,6 +45,7 @@ GoToDashboard(event){
         let x = this.size(this.props.profileInfo);
         if(x>0){
             let Image ;
+            this.setState({isLoggedIn: true});
             // console.log(Image , 'IMMMAAAGEEE');
             var colorBackground = -1;
             var colorCode;

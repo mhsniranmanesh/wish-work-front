@@ -28,7 +28,7 @@ const AddedBidsMileStone = ({number_of_milestones, delivery_duration, price_of_b
     }
     numberOfMileStonesOfEachFreelancer[number] = number_of_milestones;
     prices[number] = price_of_bid * 1000;
-    priceOfMileStoneForCash[number] = bid_controller[number].price;
+    priceOfMileStoneForCash[number] = bid_controller[0].price;
     mileStoneX[number] = mileStones;
         if ((mileStoneX[number] !== undefined)) {
             var y = price_of_bid * 1000;

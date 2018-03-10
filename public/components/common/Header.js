@@ -122,7 +122,7 @@ componentWillReceiveProps(nextProps){
                     colorCode = '#707117'
                 }
                 this.setState({colorBackground: colorBackground , colorCode:colorCode , Image:Image});
-                console.log(nextProps.profileInfo ,' HaHaHa!');
+                // console.log(nextProps.profileInfo ,' HaHaHa!');
                 this.setState({profileInfo: Object.assign({}, nextProps.profileInfo)});
             //console.log(nextProps.profileDetail);
             //inja az halate bler dar biad

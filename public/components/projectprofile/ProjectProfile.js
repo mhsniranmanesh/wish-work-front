@@ -618,16 +618,16 @@ class ProjectProfile extends React.Component {
     componentDidMount() {
         var sIze = this.size(this.props.projectDetail);
         this.interval = setInterval(() => this.setState({time: Date.now()}), 1000);
-        this.setState({componentMount:true});
-        this.updateWindowDimensions();
-        window.addEventListener('resize', this.updateWindowDimensions);
+        // this.setState({componentMount:true});
+        // this.updateWindowDimensions();
+        // window.addEventListener('resize', this.updateWindowDimensions);
 
         // if(sIze>0 && this.props.profileInfo.username) {
         // }
     }
     componentWillUnmount(){
         clearInterval(this.interval);
-        window.removeEventListener('resize', this.updateWindowDimensions);
+        // window.removeEventListener('resize', this.updateWindowDimensions);
     }
     componentWillMount() {
         //console.log('this.props:', this.props.location.pathname.slice(10));
@@ -642,6 +642,10 @@ class ProjectProfile extends React.Component {
                 showBidsList: true
             });
             this.setState({isLoggedIn:true});
+            this.setState({
+                profileInfo: Object.assign({}, this.props.profileInfo)
+            });
+
         }
         if(sIze > 0){
             this.setState({
@@ -663,7 +667,7 @@ class ProjectProfile extends React.Component {
                 }
             );
         }
-        if(sIze>0 && this.props.profileInfo.username) {
+        if(sIze>0 && profileSize>0) {
             this.setState({
                 showBidsList: true
             });
